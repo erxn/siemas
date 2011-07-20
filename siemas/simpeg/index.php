@@ -104,6 +104,9 @@ else
 	define('APPPATH', BASEPATH.$application_folder.'/');
 }
 
+// testing
+
+
 /*
 |---------------------------------------------------------------
 | LOAD THE FRONT CONTROLLER
