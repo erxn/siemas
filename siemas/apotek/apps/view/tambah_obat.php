@@ -13,21 +13,21 @@
 				<li><a href="<?php echo $this->base_url?>index.php/statistik">Statistik</a></li>
                             </ul>
                     <div class="iconMenu">
-						<a href="resep">
+						<a href="<?php echo $this->base_url?>index.php/resep">
 						<img src="<?php echo $this->base_url?>Template_files/images/resep.png" alt="member" width="50px" height="50px"/></a>
-						<span><a href="resep">
+						<span><a href="<?php echo $this->base_url?>index.php/resep">
 						Resep</a></span>
 					</div>
 					<div class="iconMenu">
-						<a href="tambah_obat">
+						<a href="<?php echo $this->base_url?>index.php/tambah_obat">
 						<img src="<?php echo $this->base_url?>Template_files/images/tambah_obat.png" alt="member" width="50px" height="50px"/></a>
-						<span id="current"><a href="tambah_obat">
+						<span><a href="<?php echo $this->base_url?>index.php/tambah_obat">
 						Tambah Obat</a></span>
 					</div>
 					<div class="iconMenu">
-						<a href="laporan">
+						<a href="<?php echo $this->base_url?>index.php/laporan">
 						<img src="<?php echo $this->base_url?>Template_files/images/laporan.png" alt="member" width="50px" height="50px"/></a>
-						<span ><a href="laporan">
+						<span><a href="<?php echo $this->base_url?>index.php/laporan">
 						Laporan</a></span>
 					</div>
                     </div><!-- End. .grid_12-->

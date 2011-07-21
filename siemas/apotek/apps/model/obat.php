@@ -19,4 +19,11 @@ class Model_obat {
 
         return $result;
     }
+
+    public function ambil_narkotik(){
+
+        $result = $this->db->results("SELECT * FROM obat WHERE narkotik='1'");
+
+        return $result;
+    }
 }
