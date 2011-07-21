@@ -151,7 +151,7 @@
   </tr>
   <tr>
     <td><input type="checkbox" name="checkbox11" id="checkbox11" /> 
-      Mqsa Pembekuan </td>
+      Masa Pembekuan </td>
     <td><input type="checkbox" name="checkbox17" id="checkbox20" /> 
     LDL Cholesterol*</td>
     <td><input type="checkbox" name="checkbox26" id="checkbox32" />

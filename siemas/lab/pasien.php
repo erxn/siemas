@@ -36,7 +36,9 @@
                                 <td>&nbsp;</td>
                               </tr>
                             </table>
-                            <h4>&nbsp;</h4>
+                            <h4>
+                              <input type="submit" name="simpan2" value="Cetak" />
+                            </h4>
                           <table width="972" class="tablesorter" id="myTable" border="1">
 <thead>
                                 <tr>

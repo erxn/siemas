@@ -8,7 +8,8 @@
         <p><strong>Cari Pasien</strong></p>
 <table>
             <tr><td>Jenis Pemeriksaan</td> <td><input type="text" class="input-short" name="jenis_periksa"></td></tr>
-            <tr><td>Tanggal Pemeriksaan </td><td><input type="text" class="input-short" name="jenis_periksa"></td></tr>
+            <tr>
+<td>Tanggal Pemeriksaan </td><td><input type="text" class="input-short" name="jenis_periksa"></td></tr>
             <tr><td>Nama Pasien </td> <td><input type="text" class="input-short" name="jenis_periksa"></td></tr>
             <tr><td></td><td><div align="right">
               <input type="submit" value="Cari" class="submit-green">
@@ -16,6 +17,8 @@
         </table>
         <p>&nbsp;</p>
     </form>
+    <strong>Hasil Pencarian:</strong> Jenis Pemeriksaan: <strong>Urin</strong>
+    Tanggal Pemeriksaan: - 
     </fieldset>
 <!--<form action="">
     <fieldset>
@@ -25,7 +28,7 @@
     </fieldset>
 </form> -->
     <form action="">
-                        <table width="602" class="tablesorter" id="myTable">
+                        <table width="745" class="tablesorter" id="myTable">
            	  <thead>
                                 <tr>
                                     <th width="7%" style="width:5%">No</th>
@@ -34,17 +37,18 @@
                                   <th width="17%" style="width:13%">Tgl Kunjungan</th>
                                   <th width="15%" style="width:13%">Dokter Pengirim</th>
                                   <th width="23%" style="width:20%">Jenis Pemeriksaan</th>
+                                  <th width="23%" style="width:20%">Status Hasil Pemeriksaan</th>
                               </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="align-center">1</td>
-                                    <td><a href="">Don Quixote</a></td>
+                                    <td><a href="pasien.php">Don Quixote</a></td>
                                     <td>23 th</td>
                                     <td>15 Juli 2011</td>
                                     <td>Dr. Dindin</td>
-                                    <td><a href="#">Urin</a>, <a href="#">Gol. Darah</a>, <a href="#">Hb</a></td>
-                                    
+                                    <td><a href="#">Urin, Gol. Darah, Hb</td>
+                                    <td><a href="#"></a></td>
                                 </tr>
                                 <tr>
                                     <td class="align-center">2</td>
@@ -53,9 +57,8 @@
                                     <td>16 Juli 2011</td>
                                     <td>Dr. Ilham</td>
                                     <td>Hb, Gol. Darah,Urin</td>
-                                    
+                                    <td>Hb, Gol. Darah,Urin</td>
                                 </tr>
-                                
                             </tbody>
                         </table>
     </form>
