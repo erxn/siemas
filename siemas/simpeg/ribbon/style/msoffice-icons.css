@@ -1,0 +1,219 @@
+.msoffice-icon-save-22x22 {
+	width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-save-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-preferences-22x22 {
+	width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-preferences-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-exit-22x22 {
+	width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-exit-22x22.gif") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-paste-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-paste-32x32-noshadow.gif") !important;
+	background-position: left top !important;
+}
+
+.ui-state-disabled .msoffice-icon-paste-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-paste-32x32-disabled-noshadow.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-cut-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+    background-image: url("./common/icons/icon-cut-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-copy-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+    background-image: url("./common/icons/icon-copy-22x22.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-properties-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-properties-32x32-noshadow.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-zoom-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-zoom-32x32.gif") !important;
+	background-position: left top !important;
+}
+.msoffice-icon-zoom100-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/icon-zoom100-32x32.gif") !important;
+	background-position: left top !important;
+}
+
+/* ========================= */
+
+.msoffice-icon-libur-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/view-calendar-month.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-jam-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/chronometer.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-highscores-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/games-highscores.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-absenhariini-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/resource-calendar-insert.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-absendulu-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/resource-calendar-child-insert.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-newpegawai-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/list-resource-add.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-editpegawai-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/user-properties.png") !important;
+	background-position: left top !important;
+}
+
+
+.msoffice-icon-cuti-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/edit-cut.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-kegiatan-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/mail-mark-task.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-strukturorganisasi-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+        background-image: url("./common/icons/code-class.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-kenaikangaji-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+        background-image: url("./common/icons/office-chart-line-stacked.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-write-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/document-edit.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-irc-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/irc-join-channel.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-gaji-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+        background-image: url("./common/icons/documentation.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-pangkat-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+        background-image: url("./common/icons/rating.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-jabatan-22x22 {
+    width: 22px !important;
+	height: 22px !important;
+	margin-top: 0px !important;
+        background-image: url("./common/icons/distribute-vertical-margin.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-magnifier-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/document-edit-verify.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-calendar-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/view-calendar.png") !important;
+	background-position: left top !important;
+}

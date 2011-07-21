@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Ribbon</title>
+        <style type="text/css">body { margin: 0; padding: 0; font: 12px/*62.5%*/ Verdana, sans-serif; }</style>
+        <link type="text/css" href="themes/base/ui.all.css" rel="stylesheet" />
+        <link type="text/css" href="themes/base/ui.tabs.css" rel="stylesheet" />
+        <link type="text/css" href="style/ui.button.css" rel="stylesheet" />
+        <link type="text/css" href="style/ui.ribbon.css" rel="stylesheet" />
+        <link type="text/css" href="style/ui.orbButton.css" rel="stylesheet" />
+        <link type="text/css" href="style/ui.ribbon.style.msoffice.css" rel="stylesheet" />
+        <link type="text/css" href="style/msoffice-icons.css" rel="stylesheet" />
+
+        <script language="JavaScript" type="text/javascript" src="jquery-1.3.2.js"></script>
+        <script language="JavaScript" type="text/javascript">
+            (function ($) {
+                var $prev_focused = null;
+                var focus_orig = $.fn.focus;
+                $.fn.focus = function () {
+                    if (!arguments.length) {
+                        if ($prev_focused) $prev_focused.blur();
+                        $prev_focused = this;
+                    }
+                    else {
+                        focus_orig.apply(this, function () { $prev_focused = $(this); });
+                    }
+                    return focus_orig.apply(this, arguments);
+                };
+                $(document).click(function () {
+                    if ($prev_focused) $prev_focused.blur();
+                    $prev_focused = null;
+		
+                    $(document).find('.ui-state-focus').blur();
+                });
+            })(jQuery);
+        </script>
+        <script language="JavaScript" type="text/javascript" src="ui/ui.core.js"></script>
+        <script language="JavaScript" type="text/javascript" src="ui/ui.tabs.js"></script>
+        <script language="JavaScript" type="text/javascript" src="ui/ui.ribbon.js"></script>
+        <script language="JavaScript" type="text/javascript" src="ui/ui.orbButton.js"></script>
+        <script language="JavaScript" type="text/javascript" src="ui/ui.button.js"></script>
+
+        <script language="JavaScript" type="text/javascript">
+            jQuery(function ($) {
+                $('#log').dblclick(function () { $('#log').empty(); });
+	
+                $('.ui-button').button({ useSlidingDoors: true });
+                //$('.ui-orbButton').orbButton();
+                $('#ribbon-msoffice').wrap('<div class="style-msoffice"></div>');
+	
+                $('#ribbon, #ribbon-msoffice').ribbon({
+                    collapsible: true
+                })
+            });
+        </script>
+
+
+    </head>
+    <body>
+
+        <div id="ribbon-msoffice">
+            <ul>
+                <li><a href="#ribbon-msofficeTabHome"><span><label>Home</label></span></a></li>
+                <li><a href="#ribbon-msofficeTabInput"><span><label>Input Data</label></span></a></li>
+            </ul>
+
+            <div id="ribbon-msofficeTabHome">
+                <ul>
+                    <li id="groupHariIni_ribbon-msofficeTabHome">
+                        <div>
+                            <table style="margin: 0px 20px 0px 10px; float: left">
+                                <tr>
+                                    <td colspan="2"><strong>Senin, 18 Juli 2011</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Jam Buka</td>
+                                    <td>: 07.30</td>
+                                </tr>
+                                <tr>
+                                    <td>Jam Tutup</td>
+                                    <td>: 14.30</td>
+                                </tr>
+                            </table>
+
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat detail hari ini">
+                                <span class="ui-icon msoffice-icon-magnifier-32x32"></span>
+                                <span class="ui-button-label">Detail</span>
+                            </button>
+
+                        </div>
+                        <h3><span>Hari Ini</span></h3>
+                    </li>
+                    <li id="groupKalender_ribbon-msofficeTabHome">
+                        <div>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat kalender bulan ini">
+                                <span class="ui-icon msoffice-icon-calendar-32x32"></span>
+                                <span class="ui-button-label">Kalender Bulan&nbsp;Ini</span>
+                            </button>
+                        </div>
+                        <h3><span>Kalender</span></h3>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div id="ribbon-msofficeTabInput">
+                <ul>
+                    <li id="groupAbsensi_ribbon-msofficeTabInput">
+                        <div>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kehadiran pegawai pada hari ini">
+                                <span class="ui-icon msoffice-icon-absenhariini-32x32"></span>
+                                <span class="ui-button-label">Absensi Hari&nbsp;Ini</span>
+                            </button>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kehadiran pegawai pada tanggal-tanggal terdahulu">
+                                <span class="ui-icon msoffice-icon-absendulu-32x32"></span>
+                                <span class="ui-button-label">Absensi Terdahulu</span>
+                            </button>
+                            <ul class="ui-ribbon-element ui-ribbon-list">
+                                <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Atur jam buka dan jam selesai Puskesmas"><span class="ui-icon msoffice-icon-jam-22x22"></span><span class="ui-button-label">Jam Buka</span></button></li>
+                                <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input hari-hari Puskesmas libur"><span class="ui-icon msoffice-icon-libur-22x22"></span><span class="ui-button-label">Hari Libur</span></button></li>
+                            </ul>
+                        </div>
+                        <h3><span>Absensi</span></h3>
+                    </li>
+                    <li id="groupCuti_ribbon-msofficeTabInput">
+                        <div>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input cuti pegawai">
+                                <span class="ui-icon msoffice-icon-cuti-32x32"></span>
+                                <span class="ui-button-label">Input Cuti</span>
+                            </button>
+                        </div>
+                        <h3><span>Cuti</span></h3>
+                    </li>
+                    <li id="groupKegiatan_ribbon-msofficeTabInput">
+                        <div>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kegiatan luar Puskesmas">
+                                <span class="ui-icon msoffice-icon-kegiatan-32x32"></span>
+                                <span class="ui-button-label">Input Kegiatan&nbsp;Luar</span>
+                            </button>
+                        </div>
+                        <h3><span>Kegiatan</span></h3>
+                    </li>
+                    <li id="groupPegawai_ribbon-msofficeTabInput">
+                        <div>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Atur jam mulai dan jam selesai Puskesmas">
+                                <span class="ui-icon msoffice-icon-newpegawai-32x32"></span>
+                                <span class="ui-button-label">Input Pegawai&nbsp;Baru</span>
+                            </button>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Edit data pegawai">
+                                <span class="ui-icon msoffice-icon-editpegawai-32x32"></span>
+                                <span class="ui-button-label">Edit Data&nbsp;Pegawai</span>
+                            </button>
+                            <ul class="ui-ribbon-element ui-ribbon-list">
+                                <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan gaji"><span class="ui-icon msoffice-icon-gaji-22x22"></span><span class="ui-button-label">Gaji</span></button></li>
+                                <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan jabatan"><span class="ui-icon msoffice-icon-jabatan-22x22"></span><span class="ui-button-label">Jabatan</span></button></li>
+                                <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan pangkat/golongan"><span class="ui-icon msoffice-icon-pangkat-22x22"></span><span class="ui-button-label">Pangkat</span></button></li>
+                            </ul>
+                            <ul class="ui-ribbon-element ui-ribbon-list">
+                                <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input kenaikan gaji yang akan datang"><span class="ui-icon msoffice-icon-kenaikangaji-22x22"></span><span class="ui-button-label">Kenaikan Gaji YAD</span></button></li>
+                                <li><button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input struktur organisasi"><span class="ui-icon msoffice-icon-strukturorganisasi-22x22"></span><span class="ui-button-label">Struktur Organisasi</span></button></li>
+                            </ul>
+
+                        </div>
+                        <h3><span>Pegawai</span></h3>
+                    </li>
+                    <li id="groupPenilaian_ribbon-msofficeTabInput">
+                        <div>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input penilaian DP3">
+                                <span class="ui-icon msoffice-icon-write-32x32"></span>
+                                <span class="ui-button-label">Input Penilaian&nbsp;DP3</span>
+                            </button>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input tunjangan untuk tiap pegawai">
+                                <span class="ui-icon msoffice-icon-irc-32x32"></span>
+                                <span class="ui-button-label">Input Tunjangan</span>
+                            </button>
+                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Atur rumus untuk perhitungan TPP">
+                                <span class="ui-icon msoffice-icon-highscores-32x32"></span>
+                                <span class="ui-button-label">Perhitungan TPP</span>
+                            </button>
+                        </div>
+                        <h3><span>Penilaian dan Tunjangan</span></h3>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </body>
+</html>
