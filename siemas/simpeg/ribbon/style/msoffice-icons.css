@@ -217,3 +217,67 @@
 	background-image: url("./common/icons/view-calendar.png") !important;
 	background-position: left top !important;
 }
+
+.msoffice-icon-agenda-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/view-calendar-agenda.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-biodata-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/view-pim-contacts.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-signed-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/mail-signed.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-rekapabsen-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/view-calendar-tasks.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-rekapabsenjam-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/view-calendar-tasks-time.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-rekaptpp-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/tpp.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-rekapdp3-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/dp3.png") !important;
+	background-position: left top !important;
+}
+
+.msoffice-icon-rekaptunjangan-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/application-x-javascript.png") !important;
+	background-position: left top !important;
+}
