@@ -7,7 +7,7 @@
                     <div class="grid_12">
                             <ul id="nav">
                                 <li><a href="">Home</a></li>
-                                <li><a href="">History</a></li>
+                                <li><a href="<?php echo $this->base_url?>index.php/history">History</a></li>
                                 <li><a href="">Obat</a></li>
                                 <li><a href="">Kadaluarsa</a></li>
 				<li><a href="">Statistik</a></li>
@@ -79,12 +79,12 @@
                                 <img class="next" src="<?php echo $this->base_url?>Template_files/arrow000.gif" alt="next"/>
                                 <img class="last" src="<?php echo $this->base_url?>Template_files/arrow-su.gif" alt="last"/>
                                 <select class="pagesize input-short align-center">
+                                    <option value="<?php echo $jumlah ?>">Semua</option>
                                     <option value="10">10</option>
-                                    <option value="20">20</option>
-                                    <option value="30" selected="selected">30</option>
+                                    <option value="20" selected="selected">20</option>
+                                    <option value="30">30</option>
                                     <option value="40">40</option>
                                     <option value="50">50</option>
-                                    <option value="<?php echo $jumlah ?>">Semua</option>
                                 </select>
                                 </div>
                             </form>

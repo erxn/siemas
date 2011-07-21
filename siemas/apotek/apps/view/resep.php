@@ -7,7 +7,7 @@
                     <div class="grid_12">
                             <ul id="nav">
                                 <li><a href="">Home</a></li>
-                                <li><a href="">History</a></li>
+                                <li><a href="<?php echo $this->base_url?>index.php/history">History</a></li>
                                 <li><a href="">Obat</a></li>
                                 <li><a href="">Kadaluarsa</a></li>
 				<li><a href="">Statistik</a></li>
