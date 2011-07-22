@@ -42,13 +42,13 @@
                           <table width="972" class="tablesorter" id="myTable" border="1">
 <thead>
                                 <tr>
-                                    <th width="4%" style="width:5%">No</th>
-                                  <th width="13%" style="width:5%">Tgl Pemeriksaan</th>
+                                    <th width="6%" style="width:5%">No</th>
+                                  <th width="10%" style="width:5%">Tgl Pemeriksaan</th>
                                   <th width="14%" style="width:15%">Pemeriksaan</th>
-                                  <th width="15%" style="width:16%">No. Sampel</th>
-                                  <th width="27%" style="width:16%">Hasil</th>
+                                  <th width="17%" style="width:16%">No. Sampel</th>
+                                  <th width="20%" style="width:16%">Hasil</th>
                                   <th width="18%" style="width:17%">Nilai Rujukan</th>
-                                  <th width="9%" style="width:14%">Aksi</th>
+                                  <th width="15%" style="width:14%">Aksi</th>
           </tr>
                             </thead>
                             <tbody>

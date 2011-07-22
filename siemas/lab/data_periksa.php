@@ -31,13 +31,13 @@
                         <table width="745" class="tablesorter" id="myTable">
            	  <thead>
                                 <tr>
-                                    <th width="7%" style="width:5%">No</th>
-                                  <th width="27%" style="width:20%">Nama Pasien</th>
-                                  <th width="11%" style="width:13%">Umur</th>
-                                  <th width="17%" style="width:13%">Tgl Kunjungan</th>
-                                  <th width="15%" style="width:13%">Dokter Pengirim</th>
-                                  <th width="23%" style="width:20%">Jenis Pemeriksaan</th>
-                                  <th width="23%" style="width:20%">Status Hasil Pemeriksaan</th>
+                                    <th width="4%" style="width:5%">No</th>
+                                  <th width="19%" style="width:20%">Nama Pasien</th>
+                                  <th width="12%" style="width:13%">Umur</th>
+                                  <th width="12%" style="width:13%">Tgl Kunjungan</th>
+                                  <th width="12%" style="width:13%">Dokter Pengirim</th>
+                                  <th width="21%" style="width:20%">Jenis Pemeriksaan</th>
+                                  <th width="20%" style="width:20%">Status Hasil Pemeriksaan</th>
                               </tr>
                             </thead>
                             <tbody>

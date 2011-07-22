@@ -12,7 +12,7 @@
                 <td>date Picker</td>
             </tr>
             <tr>
-                <td>ID KK</td>
+                <td>ID Pasien</td>
                 <td><strong>M-12340902</strong></td>
             </tr>
             <tr>
@@ -40,21 +40,18 @@
                 <td><strong>3335252431413</strong></td>
             </tr>
             <tr>
-                <td>Poli Tujuan</td>
-                <td>
-                    <select name="poli_tujuan">
-                        <option value="poli_umum">BP UMUM</option>
-                        <option value="poli_gigi">GIGI</option>
-                        <option value="poli_KIA">KIA</option>
-                        <option value="poli_lab">LABORATORIUM</option>
-                        <option value="poli_radiologi">RADIOLOGI</option>
-                    </select>
-                </td>
+              <td>&nbsp;</td>
+              <td><form name="form1" method="post" action="">
+                <input type="radio" name="radio" id="radio" value="radio">
+              Bawa kartu
+              <input type="radio" name="radio" id="radio2" value="radio"> 
+              Tidak Bawa
+</form>              </td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Daftar"></td>
+                <td><input type="submit" value="Tambah"></td>
             </tr>
         </table>
-    </body>
+</body>
 </html>

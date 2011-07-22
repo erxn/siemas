@@ -111,7 +111,7 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 	
 .float-left    { float: left; }
 	
-.float-right   { float: right; }
+.float-right   { float: right; margin-bottom: 5px; }
 
 .bottom-spacing { margin-bottom: 20px; }
 
@@ -123,7 +123,7 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 
 
 #header { 
-	margin-bottom: 20px; 
+	margin-bottom: 20px;
 	}
 
 #header-status {
@@ -343,7 +343,7 @@ div.module h2 span {
 	}
 
 div.module table {
-	width: 70%;
+	width: 90%;
 	margin: 0 0 10px 0;
 	border-left: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
@@ -359,7 +359,7 @@ div.module table th {
 	background-color: #eeeeee;
 	color: #444444;
 	padding: 5px;
-	text-align: left;
+	text-align: center;
 	border-right: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
 	}
@@ -373,6 +373,10 @@ div.module table td {
 div.module table tr.odd td { /* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
 	background-color: #f1f5fa;
 	}
+
+.noborder, .noborder tr, .noborder td {
+            border: none !important;
+}
 	
 .table-apply {
 	width: 40%; float: right; text-align: right; margin-right: 10px;
@@ -434,7 +438,7 @@ a.button:hover span{
 /* button inside a module box */
 div.module a.button {
     /* Sliding right image */
-    background: transparent url(button-s.gif) no-repeat scroll top right; 
+    background: transparent url(button-r.gif) no-repeat scroll top right;
 	display: block;
 	float: left;
 	height: 26px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
@@ -447,7 +451,7 @@ div.module a.button {
 	}
 	
 div.module a.button span {
-	background: transparent url(button-m.gif) no-repeat top left; 
+	background: transparent url(button-l.gif) no-repeat top left;
 	display: block;
 	line-height: 15px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
 	padding: 4px 0 7px 10px;
@@ -503,7 +507,7 @@ textarea {
 	}
 	
 .input-medium { 
-	width: 50% 
+	width: 150px;
 	}
 	
 .input-long { 
@@ -540,7 +544,7 @@ input.submit-green {
 	color: #ffffff; 
 	font-size: 14px; 
 	padding: 2px 12px; 
-	margin: 0px 10px 0 0;
+	margin: 0px 0px 0 0;
 	cursor: pointer;
 	}
 

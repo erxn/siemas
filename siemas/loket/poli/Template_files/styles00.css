@@ -280,7 +280,7 @@ ul#nav li#current a {
 /* -------------------- Box module -------------------- */
 
 div.module { 
-	background: url('module-b.gif') no-repeat scroll bottom left; 
+	background: url('module-b.gif') no-repeat scroll bottom left;
 	float: left; 
 	width: 100%; 
 	margin-bottom: 20px; 
@@ -373,7 +373,10 @@ div.module table td {
 div.module table tr.odd td { /* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
 	background-color: #f1f5fa;
 	}
-	
+
+
+
+
 .table-apply {
 	width: 40%; float: right; text-align: right; margin-right: 10px;
 	}
