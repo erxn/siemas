@@ -188,6 +188,12 @@
                 <td><input type="text" name="tmt_golruang" maxlength="255" class="datepicker"/></td>
             </tr>
             <tr>
+                <td><label>Pangkat</label></td>
+                <td><input type="text" name="pangkat" id="pangkat" maxlength="255"/></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
                 <td><label>Jabatan</label></td>
                 <td><input type="text" name="jabatan" id="jabatan" maxlength="255"/></td>
                 <td><label>TMT</label></td>
@@ -238,7 +244,7 @@ for(var j in pangkat) {
 
 function setJabatan(gol_ruang) {
 
-    $("#jabatan").val(pangkat[gol_ruang]);
+    $("#pangkat").val(pangkat[gol_ruang]);
 
 }
 
