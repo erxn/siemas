@@ -21,7 +21,7 @@
 					<div class="iconMenu">
 						<a href="<?php echo $this->base_url?>index.php/tambah_obat">
 						<img src="<?php echo $this->base_url?>Template_files/images/tambah_obat.png" alt="member" width="50px" height="50px"/></a>
-						<span><a href="<?php echo $this->base_url?>index.php/tambah_obat">
+						<span id="current"><a href="<?php echo $this->base_url?>index.php/tambah_obat">
 						Tambah Obat</a></span>
 					</div>
 					<div class="iconMenu">

@@ -15,7 +15,7 @@
                     <div class="iconMenu">
 						<a href="<?php echo $this->base_url?>index.php/resep">
 						<img src="<?php echo $this->base_url?>Template_files/images/resep.png" alt="member" width="50px" height="50px"/></a>
-						<span><a href="<?php echo $this->base_url?>index.php/resep">
+						<span id="current"><a href="<?php echo $this->base_url?>index.php/resep">
 						Resep</a></span>
 					</div>
 					<div class="iconMenu">
