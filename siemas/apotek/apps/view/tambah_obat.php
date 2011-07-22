@@ -40,33 +40,53 @@
         </div> <!-- End #header -->
         
 		<div class="container_12">
-        
-
+                <form method="POST">
+                <table>
+			<tr>
+                            <td width="100px">
+                                <p align="right">No SBKK :</p>
+                            </td>
+                            <td width="120px">
+				<input type="text" maxlength="255" name="no_sbkk">
+                            </td>
+                        </tr>
+		</table>
             
                 <!-- Example table -->
-                <div class="module" style="width: 756px ;">
+                <div class="module" style="width: 933px ;">
                 	<h2><span>Data Obat</span></h2>
                     
                     <div class="module-table-body">
-                    	<form action="">
                         <table id="myTable" class="tablesorter" >
                         	<thead>
                                 <tr>
                                     <th style="width:7%">ID Obat</th>
-                                    <th style="width:30%">Nama Obat</th>
-                                    <th style="width:15%">Satuan</th>
-                                    <th style="width:13%">Jumlah</th>
+                                    <th style="width:28%">Nama Obat</th>
+                                    <th style="width:10%">Satuan</th>
+                                    <th style="width:7%">Jumlah</th>
+                                    <th style="width:15%">Kadaluarsa</th>
+                                    <th style="width:13%">No Batch</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($list as $list) { ?>
+                                <?php $n=1; foreach ($list as $list) { ?>
                                 <tr>
                                     <td class="align-center"><?php echo $list->id_obat ; ?></td>
                                     <td><?php echo $list->nbk_obat ; ?></td>
                                     <td><?php echo $list->satuan_obat ; ?></td>
-                                    <td><input type="text" maxlength="255"></td>
+                                    <td><input type="text" name="tambah[$n]" maxlength="255" size="10px"></td>
+                                    <td><input type="text" name="day[$n]" maxlength="2" size="2px" value="dd" onfocus="if(this.value=='dd'){this.value=''}" onblur="if(this.value==''){this.value='dd'}" >
+                                        - <input type="text" name="month[$n]" maxlength="2" size="2px" value="mm" onfocus="if(this.value=='mm'){this.value=''}" onblur="if(this.value==''){this.value='mm'}" >
+                                        - <input type="text" name="year[$n]" maxlength="4" size="4px" value="yyyy" onfocus="if(this.value=='yyyy'){this.value=''}" onblur="if(this.value==''){this.value='yyyy'}" ></td>
+                                    <td><input type="text" name="no_batch[$n]" maxlength="255" size="20px"></td>
                                 </tr>
-                                <?php } ?>
+                                <?php $n++; } ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><input class="submit-gray" type="submit" value="Tambah"></td>
+                                </tr>
                             </tbody>
                         </table>
                         </form>

@@ -15,6 +15,7 @@ class Controller_obat extends Panada {
         $list = $this->obat->ambil();
         $views['list'] = $list;
         $views['jumlah'] = $this->obat->jumlah();
+
         $this->view_obat($views);
     }
 

@@ -26,4 +26,28 @@ class Model_obat {
 
         return $result;
     }
+
+    public function tambah($sbkk,$isi,$kadaluarsa,$batch){
+
+        $date=date('Y-m-d');
+        $result = $this->db->results("SELECT * FROM obat");
+        $n=1;
+       foreach ($result as $result) {
+			if( isset($isi[$n])){
+                            $total=$result->stok_obat+$isi[$n];
+                        }
+                            else{
+                                $total = $result->stok_oba;
+                            }
+                        $data->no_sbkk = $sbkk;
+                        $data->tanggal =$date;
+                        $data->stok_awal_obat = $result->stok_obat;
+                        $data->total_obat = $total;
+                        $data->penambahan_obat = $total - $result->stok_obat;
+                        $data->tanggal_kadaluarsa = $kadaluarsa;
+                        $data->no_batch = $batch;
+                        $data->id_obat = $result->id_obat;
+			$n++;
+		}
+    }
 }
