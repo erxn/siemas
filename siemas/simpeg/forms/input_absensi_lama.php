@@ -161,15 +161,25 @@ EOS;
 
                     return ob_get_clean();
                 }
+
+                $tahun_ini = intval(date("Y"));
+                $tahun = array($tahun_ini - 2, $tahun_ini - 1, $tahun_ini);
+
                 ?>
 
-                <p>Tahun <strong><?php echo date("Y") ?></strong> Bulan
+                <p>Tahun
+                    <select id="tahun">
+                        <?php for ($i = 0; $i < count($tahun); $i++) : ?>
+                            <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini) echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
+                        <?php endfor; ?>
+                    </select>
+                   Bulan
                     <select id="bulan">
                         <?php for ($i = 1; $i <= 12; $i++) : ?>
-                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini)
-                                echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
-                                <?php endfor; ?>
+                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini) echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                        <?php endfor; ?>
                     </select>
+                   <input type="button" value="Tampilkan" class="submit-green"/>
                 </p>
 
                 <p>

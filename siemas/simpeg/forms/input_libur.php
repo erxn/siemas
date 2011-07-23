@@ -1,182 +1,236 @@
-<h3>
-    Tahun <?php echo date("Y") ?>
-</h3>
+<?php include 'header.php'; ?>
 
-<?php
+<?php include 'list_pegawai.php'; ?>
 
-$bulan = array(
-    "",
-    "Januari",
-    "Februari",
-    "Maret",
-    "April",
-    "Mei",
-    "Juni",
-    "Juli",
-    "Agustus",
-    "September",
-    "Oktober",
-    "November",
-    "Desember"
-);
+<script type="text/javascript" src="jquery.js"></script>
 
-$bulan_ini = intval(date("n"));
+<div class="belowribbon">
+    <h1>
+        Input hari libur nasional
+    </h1>
+</div>
 
-function getCalendar($month,$year)
-{
-	// Use the PHP time() function to find out the timestamp for the current time
-	$current_time = time();
+<div id="page">
 
-	// Get the first day of the month
-	$month_start = mktime(0,0,0,$month, 1, $year);
+    <div style="margin: 0px 1%">
+        <div class="module">
+            <h2><span>Input hari libur</span></h2>
+            <div class="module-body">
+                <?php
+                $bulan = array(
+                    "",
+                    "Januari",
+                    "Februari",
+                    "Maret",
+                    "April",
+                    "Mei",
+                    "Juni",
+                    "Juli",
+                    "Agustus",
+                    "September",
+                    "Oktober",
+                    "November",
+                    "Desember"
+                );
 
-	// Get the name of the month
-	$month_name = date('F', $month_start);
+                $bulan_ini = intval(date("n"));
 
-	// Figure out which day of the week the month starts on.
-	$first_day = date('D', $month_start);
+                function getCalendar($month, $year) {
+                    // Use the PHP time() function to find out the timestamp for the current time
+                    $current_time = time();
 
-	// Assign an offset to decide which number of day of the week the month starts on.
-	switch($first_day)
-	{
-	case "Sun":
-		$offset = 0;
-		break;
-	case "Mon":
-		$offset = 1;
-		break;
-	case "Tue":
-		$offset = 2;
-		break;
-	case "Wed":
-		$offset = 3;
-		break;
-	case "Thu":
-		$offset = 4;
-		break;
-	case "Fri":
-		$offset = 5;
-		break;
-	case "Sat":
-		$offset = 6;
-		break;
-	}
+                    // Get the first day of the month
+                    $month_start = mktime(0, 0, 0, $month, 1, $year);
 
-	// determine how many days were in last month.
-	//	Note: The cal_days_in_month() function returns the number of days in a month for the specified year and calendar.
-	//  Gregorian Calendar: http://en.wikipedia.org/wiki/Gregorian_calendar
-	//  Define this using the constant: CAL_GREGORIAN
-	if($month == 1)
-		$num_days_last = cal_days_in_month(CAL_GREGORIAN, 12, ($year -1));
-	else
-		$num_days_last = cal_days_in_month(CAL_GREGORIAN, ($month - 1), $year);
+                    // Get the name of the month
+                    $month_name = date('F', $month_start);
 
-	// determine how many days are in the this month.
-	$num_days_current = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+                    // Figure out which day of the week the month starts on.
+                    $first_day = date('D', $month_start);
 
-	// Count through the days of the current month -- building an array
-	for($i = 0; $i < $num_days_current; $i++)
-	{
-		$num_days_array[] = $i+1;
-	}
+                    // Assign an offset to decide which number of day of the week the month starts on.
+                    switch ($first_day) {
+                        case "Sun":
+                            $offset = 0;
+                            break;
+                        case "Mon":
+                            $offset = 1;
+                            break;
+                        case "Tue":
+                            $offset = 2;
+                            break;
+                        case "Wed":
+                            $offset = 3;
+                            break;
+                        case "Thu":
+                            $offset = 4;
+                            break;
+                        case "Fri":
+                            $offset = 5;
+                            break;
+                        case "Sat":
+                            $offset = 6;
+                            break;
+                    }
 
-	// Count through the days of last month -- building an array
-	for($i = 0; $i < $num_days_last; $i++)
-	{
-		$num_days_last_array[] = '';
-	}
+                    // determine how many days were in last month.
+                    //	Note: The cal_days_in_month() function returns the number of days in a month for the specified year and calendar.
+                    //  Gregorian Calendar: http://en.wikipedia.org/wiki/Gregorian_calendar
+                    //  Define this using the constant: CAL_GREGORIAN
+                    if ($month == 1)
+                        $num_days_last = cal_days_in_month(CAL_GREGORIAN, 12, ($year - 1));
+                    else
+                        $num_days_last = cal_days_in_month(CAL_GREGORIAN, ($month - 1), $year);
 
-	if($offset > 0){
-		$offset_correction = array_slice($num_days_last_array, -$offset, $offset);
-		$new_count = array_merge($offset_correction, $num_days_array);
-		$offset_count = count($offset_correction);
-	}
-	else
-	{
-		$new_count = $num_days_array;
-	}
+                    // determine how many days are in the this month.
+                    $num_days_current = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
-	// How many days do we now have?
-	$current_num = count($new_count);
+                    // Count through the days of the current month -- building an array
+                    for ($i = 0; $i < $num_days_current; $i++) {
+                        $num_days_array[] = $i + 1;
+                    }
 
-	// Our display is to be 35 cells so if we have less than that we need to dip into next month
-	if($current_num > 35)
-	{
-		$num_weeks = 6;
-		$outset = (42 - $current_num);
-	}
-	else if($current_num < 35)
-	{
-		$num_weeks = 5;
-		$outset = (35 - $current_num);
-	}
-	if($current_num == 35)
-	{
-		$num_weeks = 5;
-		$outset = 0;
-	}
+                    // Count through the days of last month -- building an array
+                    for ($i = 0; $i < $num_days_last; $i++) {
+                        $num_days_last_array[] = '';
+                    }
 
-	// Outset Correction
-	for($i = 1; $i <= $outset; $i++)
-	{
-		$new_count[] = '';
-	}
+                    if ($offset > 0) {
+                        $offset_correction = array_slice($num_days_last_array, -$offset, $offset);
+                        $new_count = array_merge($offset_correction, $num_days_array);
+                        $offset_count = count($offset_correction);
+                    } else {
+                        $new_count = $num_days_array;
+                    }
 
-	// Now let's "chunk" the $new_count array
-	// into weeks. Each week has 7 days
-	// so we will array_chunk it into 7 days.
-	$weeks = array_chunk($new_count, 7);
+                    // How many days do we now have?
+                    $current_num = count($new_count);
 
-	// Start the output buffer so we can output our calendar nicely
-	ob_start();
+                    // Our display is to be 35 cells so if we have less than that we need to dip into next month
+                    if ($current_num > 35) {
+                        $num_weeks = 6;
+                        $outset = (42 - $current_num);
+                    } else if ($current_num < 35) {
+                        $num_weeks = 5;
+                        $outset = (35 - $current_num);
+                    }
+                    if ($current_num == 35) {
+                        $num_weeks = 5;
+                        $outset = 0;
+                    }
 
-	// Build the heading portion of the calendar table
-	echo <<<EOS
+                    // Outset Correction
+                    for ($i = 1; $i <= $outset; $i++) {
+                        $new_count[] = '';
+                    }
+
+                    // Now let's "chunk" the $new_count array
+                    // into weeks. Each week has 7 days
+                    // so we will array_chunk it into 7 days.
+                    $weeks = array_chunk($new_count, 7);
+
+                    // Start the output buffer so we can output our calendar nicely
+                    ob_start();
+
+                    // Build the heading portion of the calendar table
+                    echo <<<EOS
 	<table id="calendar" width="100%" border="1">
 	<tr class="daynames">
-		<td>Minggu</td><td>Senin</td><td>Selasa</td><td>Rabu</td><td>Kamis</td><td>Jumat</td><td>Sabtu</td>
+		<th>Minggu</th>
+                <th>Senin</th>
+                <th>Selasa</th>
+                <th>Rabu</th>
+                <th>Kamis</th>
+                <th>Jumat</th>
+                <th>Sabtu</th>
 	</tr>
 EOS;
 
-	foreach($weeks AS $week){
-		echo '<tr class="week">';
-		foreach($week as $day)
-		{
-			if($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time))
-				echo '<td class="today">'.$day.'</td>';
-			else
-				echo '<td class="days">'.$day.'</td>';
-		}
-		echo '</tr>';
-	}
+                    foreach ($weeks AS $week) {
+                        echo '<tr class="week">';
+                        foreach ($week as $day) {
+                            if ($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time))
+                                echo '<td class="today"><a href="#" onclick="inputLibur(this); return false;">' . $day . '</a></td>';
+                            else
+                                echo '<td class="days"><a href="#" onclick="inputLibur(this); return false;">' . $day . '</a></td>';
+                        }
+                        echo '</tr>';
+                    }
 
-	echo '</table>';
+                    echo '</table>';
 
-	return ob_get_clean();
-}
+                    return ob_get_clean();
+                }
 
-?>
+                $tahun_ini = intval(date("Y"));
+                $tahun = array($tahun_ini - 2, $tahun_ini - 1, $tahun_ini);
+                ?>
 
-<p>Bulan:
-    <select id="bulan">
-        <?php for($i = 1; $i <= 12; $i++) : ?>
-        <option value="<?php echo $i; ?>" <?php if($i == $bulan_ini) echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
-        <?php endfor; ?>
-    </select>
-</p>
+                <p>Tahun
+                    <select id="tahun">
+                        <?php for ($i = 0; $i < count($tahun); $i++) : ?>
+                            <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini)
+                            echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
+                        <?php endfor; ?>
+                    </select>
+                    Bulan
+                    <select id="bulan">
+                        <?php for ($i = 1; $i <= 12; $i++) : ?>
+                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini)
+                                echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                        <?php endfor; ?>
+                        </select>
+                        <input type="button" value="Tampilkan" class="submit-green"/>
+                    </p>
 
-<table width="100%">
-    <tr>
-        <td width="70%"><?php echo getCalendar($bulan_ini, intval(date("Y"))); ?></td>
-        <td>
-            <h4>Hari libur</h4>
-            <ul>
-                <li>Cuti bersama (12 Juli) &middot; <a href="#" title="Hapus hari libur ini">Hapus</a></li>
-            </ul>
-        </td>
-    </tr>
-</table>
+                    <div class="notification n-information">
+                        Klik pada tanggal libur nasional
+                    </div>
 
-<p>
-    Klik pada tanggal yang libur
-</p>
+                    <table width="100%" border="0" style="border: none">
+                        <tr style="border: none">
+                            <td style="padding-right: 20px; border: none" width="75%"><?php echo getCalendar($bulan_ini, intval(date("Y"))); ?></td>
+                            <td style="border: none" width="25%">
+                                <h4>Libur bulan <?php echo $bulan[$bulan_ini]; ?></h4>
+                                <ul class="bullets">
+                                    <li>Libur nasional 1 (12 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
+                                    <li>Libur nasional 2 (29 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup_libur" class="inline_popup">
+                <h4 id="tanggal_libur"></h4>
+                <input type="text" class="input-long" style="width: 200px;" id="keterangan_libur"/>
+                <input type="submit" value="Simpan" class="submit-green" style="margin: 0px"/>
+                <input type="button" value="Batal" class="submit-gray" style="margin: 0px" onclick="$('#popup_libur').fadeOut()"/>
+            </div>
+
+            <script type="text/javascript">
+
+                function inputLibur(t) {
+
+                    var tanggal = $(t).text();
+                    var bulan   = document.getElementById('bulan').options[$('#bulan').val() - 1].innerHTML;
+                    var tahun   = $('#tahun').val();
+
+                    $('#popup_libur').fadeOut('fast', function(){
+
+                        $('#tanggal_libur').text(tanggal + " " + bulan + " " + tahun + " adalah libur:");
+                        $(this).css({left: $(t).offset().left + 'px', top: $(t).offset().top + 25 + 'px'}).fadeIn()
+
+                    });
+                
+                    $('#keterangan_libur').focus();
+
+                }
+
+            </script>
+
+<?php include 'footer.php'; ?>

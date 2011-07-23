@@ -1,31 +1,46 @@
+<?php include 'header.php'; ?>
+
 <?php include 'list_pegawai.php'; ?>
 
-<table width="100%" border="0">
-    <tbody>
-        <tr>
-            <td>Pilih pegawai</td>
-            <td>
-                <select name="sel_pegawai">
-                    <option value="0">-</option>
-                    <?php for($j = 1; $j < count($pegawai); $j++) {
+<div class="belowribbon">
+    <h1>
+        Input tanggal kenaikan gaji YAD
+        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+    </h1>
+</div>
 
-                        echo "<option>{$pegawai[$j]}</option>";
+<div id="page">
 
-                    } ?>
-                </select>
-                <input type="button" value="Pilih"/>
-            </td>
-        </tr>
-        <tr>
-            <td>Data</td>
-            <td>
-                Jabatan: Dokter<br/>
-                Pangkat: Penata/IIIc
-            </td>
-        </tr>
-        <tr>
-            <td>Kenaikan gaji YAD</td>
-            <td><input type="text" name="tanggal_yad" maxlength="255" class="datepicker"/></td>
-        </tr>
-    </tbody>
-</table>
+    <div class="grid_6" style="width: 48%">
+
+        <div class="module">
+            <h2><span>Masukkan data</span></h2>
+            <div class="module-body">
+                <table width="100%" class="noborder">
+                    <tbody>
+                        <tr>
+                            <td>Pilih pegawai</td>
+                            <td>
+                                <select name="sel_pegawai" class="input-long">
+                                    <option value="0">-</option>
+                                    <?php
+                                    for ($j = 1; $j < count($pegawai); $j++) {
+
+                                        echo "<option>{$pegawai[$j]}</option>";
+                                    } ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Kenaikan gaji YAD</td>
+                            <td><input type="text" name="tanggal_yad" maxlength="255" class="datepicker input-medium"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include 'footer.php'; ?>
