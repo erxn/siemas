@@ -281,3 +281,11 @@
 	background-image: url("./common/icons/application-x-javascript.png") !important;
 	background-position: left top !important;
 }
+
+.msoffice-icon-home-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/go-home.png") !important;
+	background-position: left top !important;
+}

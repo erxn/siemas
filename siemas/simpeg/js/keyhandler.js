@@ -26,29 +26,37 @@ function funcKeyDown(evt, cur_x, cur_y) {
         case 39: 	// kanan
             next_x = parseInt(cur_x + 1);
             next_y = cur_y;
-            $('#field_' + next_x + '_' + next_y).select();
-            $('#field_' + cur_x + '_' + cur_y).blur();
+            if($('#field_' + next_x + '_' + next_y).length) {
+                $('#field_' + next_x + '_' + next_y).select();
+                $('#field_' + cur_x + '_' + cur_y).blur();
+            }
             return false;
 		
         case 37: 	// kiri
             next_x = parseInt(cur_x - 1);
             next_y = cur_y;
-            $('#field_' + next_x + '_' + next_y).select();
-            $('#field_' + cur_x + '_' + cur_y).blur();
+            if($('#field_' + next_x + '_' + next_y).length) {
+                $('#field_' + next_x + '_' + next_y).select();
+                $('#field_' + cur_x + '_' + cur_y).blur();
+            }
             return false;
 	
         case 38: 	// atas
             next_x = cur_x;
             next_y = parseInt(cur_y - 1);
-            $('#field_' + next_x + '_' + next_y).select();
-            $('#field_' + cur_x + '_' + cur_y).blur();
+            if($('#field_' + next_x + '_' + next_y).length) {
+                $('#field_' + next_x + '_' + next_y).select();
+                $('#field_' + cur_x + '_' + cur_y).blur();
+            }
             return false;
 		
         case 40: 	// bawah
             next_x = cur_x;
             next_y = parseInt(cur_y + 1);
-            $('#field_' + next_x + '_' + next_y).select();
-            $('#field_' + cur_x + '_' + cur_y).blur();
+            if($('#field_' + next_x + '_' + next_y).length) {
+                $('#field_' + next_x + '_' + next_y).select();
+                $('#field_' + cur_x + '_' + cur_y).blur();
+            }
             return false;
 	
     }

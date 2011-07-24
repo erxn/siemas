@@ -65,6 +65,55 @@
             </div>
         </div>
     </div>
+
+    <div class="grid_6" style="width: 48%">
+
+        <div class="module">
+            <h2><span>Data cuti pegawai ini</span></h2>
+            <div class="module-table-body">
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Keperluan</th>
+                            <th>Keterangan</th>
+                            <th>Alamat</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cuti_done">
+                            <td>12 Januari 2011</td>
+                            <td>Cuti tahunan</td>
+                            <td></td>
+                            <td>Bogor</td>
+                            <td>
+                                <a href="#">Hapus</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>24 Agustus 2011</td>
+                            <td>Cuti tahunan</td>
+                            <td></td>
+                            <td>Bogor</td>
+                            <td>
+                                <a href="#">Hapus</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>25 Agustus 2011</td>
+                            <td>Cuti tahunan</td>
+                            <td></td>
+                            <td>Bogor</td>
+                            <td>
+                                <a href="#">Hapus</a>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <?php include 'footer.php'; ?>

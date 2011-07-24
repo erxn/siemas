@@ -19,7 +19,7 @@
                 <table width="100%" class="noborder">
                     <tbody>
                         <tr>
-                            <td>Pilih pegawai</td>
+                            <td width="30%">Pilih pegawai</td>
                             <td>
                                 <select name="sel_pegawai">
                                     <option value="0">-</option>

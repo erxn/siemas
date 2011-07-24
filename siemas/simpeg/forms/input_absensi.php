@@ -25,7 +25,7 @@
                             <th>Nama</th>
                             <th>
                                 <input type="checkbox" id="ck_all" title="Klik jika seluruhnya hadir" onchange="$('.ck_absen').attr('checked', this.checked)"/>
-                                <label for="ck_all" style="display: inline">Hadir semuanya</label>
+                                <label for="ck_all" style="display: inline" title="Klik jika seluruhnya hadir">Hadir semuanya</label>
                             </th>
                             <th>Jam hadir</th>
                         </tr>
@@ -41,7 +41,7 @@
                                     <label for="ck<?php echo $i ?>" style="display: inline">Hadir</label>
                                 </td>
                                 <td>
-                                    <input type="text" value="07.30" class="input-short" style="width: 70px; text-align: center"/>
+                                    <input type="text" id="field_0_<?php echo $i ?>" value="07.30" class="input-short" style="width: 70px; text-align: center"/>
                                 </td>
                             </tr>
                         <?php endfor; ?>
@@ -52,5 +52,7 @@
         </div>
 
     </div>
+
+<script type="text/javascript" src="js/keyhandler.js"></script>
 
 <?php include 'footer.php'; ?>

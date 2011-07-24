@@ -830,3 +830,7 @@ a.dashboard-module span {
     padding: 10px;
     display: none
 }
+
+.cuti_done td {
+    color: #AAAAAA;
+}

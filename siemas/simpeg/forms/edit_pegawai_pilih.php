@@ -23,7 +23,7 @@
                 <?php
                 for ($j = 1; $j < count($pegawai); $j++) {
 
-                    echo "<li><a href='#'>{$pegawai[$j]}</a></li>";
+                    echo "<li><a href='forms/edit_pegawai.php'>{$pegawai[$j]}</a></li>";
 
                 } ?>
                 </ul>
