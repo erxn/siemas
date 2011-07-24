@@ -11,6 +11,17 @@
     </h1>
 </div>
 
+<script type="text/javascript" src="jquery-ui/js/jquery-ui-1.7.3.custom.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $( ".datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+</script>
+
 <div id="page">
     <div class="grid_6" style="width: 48%">
         <div class="module">

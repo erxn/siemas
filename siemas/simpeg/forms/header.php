@@ -53,6 +53,8 @@
         <!-- JQuery thickbox plugin script -->
         <script type="text/javascript" src="template/thickbox.js"></script>
 
+        <link type="text/css" href="jquery-ui/css/redmond/jquery-ui-1.7.3.custom.css" rel="stylesheet" />
+
         <!-- Initiate WYIWYG text area -->
         <script type="text/javascript">
             $(function()

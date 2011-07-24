@@ -33,11 +33,11 @@
                         </tr>
                         <tr>
                             <td>Dari tanggal</td>
-                            <td><input type="text" name="dari_tanggal" maxlength="255" class="datepicker input-medium"/></td>
+                            <td><input type="text" name="dari_tanggal" maxlength="255" class="input-medium datepicker" id="from"/></td>
                         </tr>
                         <tr>
                             <td>Sampai tanggal</td>
-                            <td><input type="text" name="sampai_tanggal" maxlength="255" class="datepicker input-medium"/></td>
+                            <td><input type="text" name="sampai_tanggal" maxlength="255" class="input-medium datepicker" id="to"/></td>
                         </tr>
                         <tr>
                             <td>Keperluan</td>
@@ -113,7 +113,28 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<script type="text/javascript" src="jquery-ui/js/jquery-ui-1.7.3.custom.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var dates = $( "#from, #to" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 3,
+            onSelect: function( selectedDate ) {
+                var option = this.id == "from" ? "minDate" : "maxDate",
+                instance = $( this ).data( "datepicker" ),
+                date = $.datepicker.parseDate(
+                instance.settings.dateFormat ||
+                    $.datepicker._defaults.dateFormat,
+                selectedDate, instance.settings );
+                dates.not( this ).datepicker( "option", option, date );
+            },
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+</script>
+
 
 <?php include 'footer.php'; ?>

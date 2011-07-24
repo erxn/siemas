@@ -89,7 +89,7 @@
                                 </tr>
                             </table>
 
-                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat detail hari ini">
+                            <button href="forms/hari_ini.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat detail hari ini">
                                 <span class="ui-icon msoffice-icon-magnifier-32x32"></span>
                                 <span class="ui-button-label">Detail</span>
                             </button>
@@ -194,7 +194,7 @@
                 <ul>
                     <li id="groupPegawai_ribbon-msofficeTabLaporan">
                         <div>
-                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar urut kepangkatan pegawai">
+                            <button href="laporan/duk.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar urut kepangkatan pegawai">
                                 <span class="ui-icon msoffice-icon-agenda-32x32"></span>
                                 <span class="ui-button-label">Daftar Kepangkatan</span>
                             </button>
