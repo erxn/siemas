@@ -60,8 +60,8 @@
                                 <img class="last" src="<?php echo $this->base_url?>Template_files/arrow-su.gif" alt="last"/>
                                 <select class="pagesize input-short align-center">
                                     <option value="<?php echo $jumlah ?>">Semua</option>
-                                    <option value="10">10</option>
-                                    <option value="20" selected="selected">20</option>
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
                                     <option value="30">30</option>
                                     <option value="40">40</option>
                                     <option value="50">50</option>

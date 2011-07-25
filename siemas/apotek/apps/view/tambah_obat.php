@@ -40,14 +40,15 @@
         </div> <!-- End #header -->
         
 		<div class="container_12">
-                <form method="POST">
+                <form method="POST"
+                      onsubmit="if(document.getElementById('sbkk').value == '') {alert('No SBKK Harus Diisi'); return false} " >
                 <table>
 			<tr>
                             <td width="100px">
                                 <p align="right">No SBKK :</p>
                             </td>
                             <td width="120px">
-				<input type="text" maxlength="255" name="no_sbkk">
+				<input type="text" maxlength="255" name="no_sbkk" id="sbkk">
                             </td>
                         </tr>
 		</table>
@@ -62,9 +63,9 @@
                                 <tr>
                                     <th style="width:7%">ID Obat</th>
                                     <th style="width:28%">Nama Obat</th>
-                                    <th style="width:10%">Satuan</th>
+                                    <th style="width:8%">Satuan</th>
                                     <th style="width:7%">Jumlah</th>
-                                    <th style="width:15%">Kadaluarsa</th>
+                                    <th style="width:17%">Kadaluarsa</th>
                                     <th style="width:13%">No Batch</th>
                                 </tr>
                             </thead>
@@ -74,18 +75,23 @@
                                     <td class="align-center"><?php echo $list->id_obat ; ?></td>
                                     <td><?php echo $list->nbk_obat ; ?></td>
                                     <td><?php echo $list->satuan_obat ; ?></td>
-                                    <td><input type="text" name="tambah[$n]" maxlength="255" size="10px"></td>
-                                    <td><input type="text" name="day[$n]" maxlength="2" size="2px" value="dd" onfocus="if(this.value=='dd'){this.value=''}" onblur="if(this.value==''){this.value='dd'}" >
-                                        - <input type="text" name="month[$n]" maxlength="2" size="2px" value="mm" onfocus="if(this.value=='mm'){this.value=''}" onblur="if(this.value==''){this.value='mm'}" >
-                                        - <input type="text" name="year[$n]" maxlength="4" size="4px" value="yyyy" onfocus="if(this.value=='yyyy'){this.value=''}" onblur="if(this.value==''){this.value='yyyy'}" ></td>
-                                    <td><input type="text" name="no_batch[$n]" maxlength="255" size="20px"></td>
+                                    <td><input type="text"  id="field_0_<?php echo $n-1 ?>" name="tambah[<?php echo $n?>]" maxlength="255" size="10px"
+                                               jValKey="{valid:/[0-9]/, message:'&quot;%c&quot; Invalid Character - Only Digits Allowed', cFunc:'$(\'#formContainer\').jVal()'}"></td>
+                                    <td><input type="text"  id="field_1_<?php echo $n-1 ?>"name="day[<?php echo $n?>]" maxlength="2" size="2px" value="dd" onfocus="if(this.value=='dd'){this.value=''}" onblur="if(this.value==''){this.value='dd'}"
+                                               jValKey="{valid:/[0-9]/, message:'&quot;%c&quot; Invalid Character - Only Digits Allowed', cFunc:'$(\'#formContainer\').jVal()'}">
+                                        - <input type="text"  id="field_2_<?php echo $n-1 ?>"  name="month[<?php echo $n?>]" maxlength="2" size="2px" value="mm" onfocus="if(this.value=='mm'){this.value=''}" onblur="if(this.value==''){this.value='mm'}"
+                                                 jValKey="{valid:/[0-9]/, message:'&quot;%c&quot; Invalid Character - Only Digits Allowed', cFunc:'$(\'#formContainer\').jVal()'}">
+                                        - <input type="text" id="field_3_<?php echo $n-1 ?>" name="year[<?php echo $n?>]" maxlength="4" size="4px" value="yyyy" onfocus="if(this.value=='yyyy'){this.value=''}" onblur="if(this.value==''){this.value='yyyy'}"
+                                                 jValKey="{valid:/[0-9]/, message:'&quot;%c&quot; Invalid Character - Only Digits Allowed', cFunc:'$(\'#formContainer\').jVal()'}"></td>
+                                    <td><input type="text"  id="field_4_<?php echo $n-1 ?>" name="no_batch[<?php echo $n?>]" maxlength="255" size="20px"></td>
                                 </tr>
                                 <?php $n++; } ?>
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td><input class="submit-gray" type="submit" value="Tambah"></td>
+                                    <td><input id="submitButton" class="submit-gray" type="submit" value="Tambah"
+                                               onClick="if ( $('#form').jVal({style:'blank',padding:8,border:0,wrap:false}) ) alert('success - submit form');"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -99,9 +105,9 @@
                                 <img class="next" src="<?php echo $this->base_url?>Template_files/arrow000.gif" alt="next"/>
                                 <img class="last" src="<?php echo $this->base_url?>Template_files/arrow-su.gif" alt="last"/>
                                 <select class="pagesize input-short align-center">
-                                    <option value="<?php echo $jumlah ?>">Semua</option>
-                                    <option value="10">10</option>
-                                    <option value="20" selected="selected">20</option>
+                                    <option value="<?php echo ($jumlah + 1) ?>">Semua</option>
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
                                     <option value="30">30</option>
                                     <option value="40">40</option>
                                     <option value="50">50</option>

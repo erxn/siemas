@@ -37,7 +37,7 @@ class Model_obat {
                             $total=$result->stok_obat+$isi[$n];
                         }
                             else{
-                                $total = $result->stok_oba;
+                                $total = $result->stok_obat;
                             }
                         $data->no_sbkk = $sbkk;
                         $data->tanggal =$date;
@@ -47,6 +47,7 @@ class Model_obat {
                         $data->tanggal_kadaluarsa = $kadaluarsa;
                         $data->no_batch = $batch;
                         $data->id_obat = $result->id_obat;
+                        $query = $this->db->insert('history_obat',$data);
 			$n++;
 		}
     }

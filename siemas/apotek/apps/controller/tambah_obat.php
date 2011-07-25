@@ -12,6 +12,7 @@ class Controller_tambah_obat extends Panada {
     public function index(){
         
         $views['page_title']    = 'Tambah Obat - Apotek';
+        $views['error']    = NULL;
         $list = $this->obat->ambil();
         $views['list'] = $list;
         $views['jumlah'] = $this->obat->jumlah();
@@ -23,13 +24,17 @@ class Controller_tambah_obat extends Panada {
             $month = $_POST['month'];
             $year = $_POST['year'];
             $batch = $_POST['no_batch'];
-            foreach ($list as $list){
-                if(isset ($year[$n]) && isset ($month[$n]) && isset ($day[$n]))
-                {$kadaluarsa[$n]=$year[$n].'-'.$month[$n].'-'.$day[$n];}
-                    else {$kadaluarsa[$n]= NULL;}
-                $n++;
-            }
-            $this->obat->tambah($sbkk, $isi, $kadaluarsa, $batch);
+            if(!$sbkk)
+                $views['error']    = 'NO SBKK harus diisi';
+            else{
+                foreach ($list as $list){
+                    if(isset ($year[$n]) && isset ($month[$n]) && isset ($day[$n]))
+                        {$kadaluarsa[$n]=$year[$n].'-'.$month[$n].'-'.$day[$n];}
+                        else {$kadaluarsa[$n]= NULL;}
+                    $n++;
+                    }
+                $this->obat->tambah($sbkk, $isi, $kadaluarsa, $batch);
+                }
         }
 
 
