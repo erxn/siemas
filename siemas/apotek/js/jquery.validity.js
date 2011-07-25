@@ -94,7 +94,7 @@
             email:"#{field} must be formatted as an email.",
             usd:"#{field} must be formatted as a US Dollar amount.",
             url:"#{field} must be formatted as a URL.",
-            number:"#{field} must be formatted as a number.",
+            number:"Kotak ini harus berisi angka!",
             zip:"#{field} must be formatted as a zipcode ##### or #####-####.",
             phone:"#{field} must be formatted as a phone number ###-###-####.",
             guid:"#{field} must be formatted as a guid like {3F2504E0-4F89-11D3-9A0C-0305E82C3301}.",

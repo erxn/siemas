@@ -27,7 +27,7 @@
 							<p align="right">Tanggal :</p>
 						</td>
 						<td width="120px">
-							<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
+							<input id="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
 						</td>
                                         </tr>
 				</table>
@@ -86,7 +86,7 @@
         	<div class="container_12">
             	<div class="grid_12">
                 	<!-- You can change the copyright line for your own -->
-                	<p>&copy; 2009. Magic Admin.</p>
+                	<p>&copy; 2011. Siemas.</p>
         		</div>
             </div>
             <div style="clear:both;"></div>

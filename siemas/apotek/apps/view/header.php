@@ -25,7 +25,9 @@
         
         <!-- Thickbox stylesheet -->
         <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>Template_files/thickbox.css" media="screen" />
+
         
+
         <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
         <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>Template_files/theme-bl.css" media="screen" />
         <!--<link rel="stylesheet" type="text/css" href="css/theme-red.css" media="screen" />-->
@@ -60,7 +62,9 @@
                 <!-- JQuery Validation Script -->
                 <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.js"></script>
                 <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.pack.js"></script>
-        
+
+
+
         <!-- Initiate WYIWYG text area -->
 		<script type="text/javascript">
 			$(function()

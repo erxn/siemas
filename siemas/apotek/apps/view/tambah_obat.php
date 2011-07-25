@@ -79,11 +79,11 @@
                                 <td><?php echo $list->satuan_obat; ?></td>
                                 <td><input  class="input_angka" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
                                            ></td>
-                                <td><input type="text"  id="field_1_<?php echo $n - 1 ?>"name="day[<?php echo $n ?>]" maxlength="2" size="2px" value="dd" onfocus="if(this.value=='dd'){this.value=''}" onblur="if(this.value==''){this.value='dd'}"
+                                <td><input type="text"  id="field_1_<?php echo $n - 1 ?>"name="day[<?php echo $n ?>]" maxlength="2" size="2px" value="hh" onfocus="if(this.value=='hh'){this.value=''}" onblur="if(this.value==''){this.value='hh'}"
                                              >
-                                    - <input type="text"  id="field_2_<?php echo $n - 1 ?>"  name="month[<?php echo $n ?>]" maxlength="2" size="2px" value="mm" onfocus="if(this.value=='mm'){this.value=''}" onblur="if(this.value==''){this.value='mm'}"
+                                    - <input type="text"  id="field_2_<?php echo $n - 1 ?>"  name="month[<?php echo $n ?>]" maxlength="2" size="2px" value="bb" onfocus="if(this.value=='bb'){this.value=''}" onblur="if(this.value==''){this.value='bb'}"
                                              >
-                                    - <input type="text" id="field_3_<?php echo $n - 1 ?>" name="year[<?php echo $n ?>]" maxlength="4" size="4px" value="yyyy" onfocus="if(this.value=='yyyy'){this.value=''}" onblur="if(this.value==''){this.value='yyyy'}"
+                                    - <input type="text" id="field_3_<?php echo $n - 1 ?>" name="year[<?php echo $n ?>]" maxlength="4" size="4px" value="tttt" onfocus="if(this.value=='tttt'){this.value=''}" onblur="if(this.value==''){this.value='tttt'}"
                                              ></td>
                                 <td><input type="text"  id="field_4_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
                             </tr>
@@ -130,7 +130,7 @@
     <div class="container_12">
         <div class="grid_12">
             <!-- You can change the copyright line for your own -->
-            <p>&copy; 2009. Magic Admin.</p>
+            <p>&copy; 2011. Siemas.</p>
         </div>
     </div>
     <div style="clear:both;"></div>
@@ -157,4 +157,4 @@
 
 </body>
 </html>
-<!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
+<!-- This document originaly created by R Bagus Putra r4yv1n@yahoo.com -->

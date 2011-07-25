@@ -44,7 +44,7 @@
 						<div id="resep">
 							<form method="post">
 								Tanggal resep yang akan diinputkan adalah
-								<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
+								<input id="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
 								<input type="submit" value="ubah">
 							</form>		
 						</div>
@@ -125,7 +125,7 @@
         	<div class="container_12">
             	<div class="grid_12">
                 	<!-- You can change the copyright line for your own -->
-                	<p>&copy; 2009. Magic Admin.</p>
+                	<p>&copy; 2011. Siemas.</p>
         		</div>
             </div>
             <div style="clear:both;"></div>
