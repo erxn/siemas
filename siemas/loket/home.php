@@ -1,4 +1,4 @@
-<h2>PENDAFTARAN PASIEN </h2>
+<h2>PENDAFTARAN PASIEN</h2>
 
 <div style="width: 49%; float: left;border: 1px black solid ">
     <h3>KK</h3>
