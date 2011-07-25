@@ -34,7 +34,7 @@
         <!--<link rel="stylesheet" type="text/css" href="css/theme-graphite.css" media="screen" />-->
 
         <!-- Jquery stylesheet -->
-        <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>js/jVal.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>js/jquery.validity.css" media="screen" />
         
 		<!-- JQuery engine script-->
 		<script type="text/javascript" src="<?php echo $this->base_url?>Template_files/jquery-1.js"></script>
@@ -58,7 +58,8 @@
 		<script type="text/javascript" src="<?php echo $this->base_url?>js/keyhandler.js"></script>
 
                 <!-- JQuery Validation Script -->
-                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jVal.js"></script>
+                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.js"></script>
+                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.pack.js"></script>
         
         <!-- Initiate WYIWYG text area -->
 		<script type="text/javascript">

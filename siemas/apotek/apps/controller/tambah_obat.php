@@ -16,7 +16,8 @@ class Controller_tambah_obat extends Panada {
         $list = $this->obat->ambil();
         $views['list'] = $list;
         $views['jumlah'] = $this->obat->jumlah();
-        $n=1;
+        $isi['1'] = NULL;
+        $n='1';
         if($_POST){
             $sbkk = $_POST['no_sbkk'];
             $isi = $_POST['tambah'];

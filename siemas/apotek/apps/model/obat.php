@@ -31,7 +31,7 @@ class Model_obat {
 
         $date=date('Y-m-d');
         $result = $this->db->results("SELECT * FROM obat");
-        $n=1;
+        $n='1';
        foreach ($result as $result) {
 			if( isset($isi[$n])){
                             $total=$result->stok_obat+$isi[$n];
@@ -39,15 +39,23 @@ class Model_obat {
                             else{
                                 $total = $result->stok_obat;
                             }
-                        $data->no_sbkk = $sbkk;
-                        $data->tanggal =$date;
-                        $data->stok_awal_obat = $result->stok_obat;
-                        $data->total_obat = $total;
-                        $data->penambahan_obat = $total - $result->stok_obat;
-                        $data->tanggal_kadaluarsa = $kadaluarsa;
-                        $data->no_batch = $batch;
-                        $data->id_obat = $result->id_obat;
+                        $data['id_history_obat'] = NULL;
+                        $data['no_sbkk'] = $sbkk;
+                        $data['tanggal'] =$date;
+                        $data['stok_awal_obat'] = $result->stok_obat;
+                        $data['total_obat'] = $total;
+                        $data['penambahan_obat'] = $total - $result->stok_obat;
+                        $data2['stok_obat'] = $total;
+                        $data3['id_obat'] = $result->id_obat;
+                        if( isset($kadaluarsa[$n])){
+                        $data['tanggal_kadaluarsa'] = $kadaluarsa[$n];}
+                        if( isset($batch[$n])){
+                        $data['no_batch'] = $batch[$n];}
+                        $data['id_obat'] = $result->id_obat;
+                        if($data['penambahan_obat']){
                         $query = $this->db->insert('history_obat',$data);
+                        $query = $this->db->update('obat', $data2, $data3);
+                        }
 			$n++;
 		}
     }
