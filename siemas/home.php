@@ -24,7 +24,7 @@
     <a href="#" class="kotak"><img src="images/kia.png" border="0"/><br/>Poli KIA</a>
     <a href="#" class="kotak"><img src="images/kia.png" border="0"/><br/>Poli KIA</a>
     <a href="#" class="kotak"><img src="images/lab.png" border="0"/><br/>Laboratorium</a>
-    <a href="#" class="kotak"><img src="images/rontgen.png" border="0"/><br/>Radiologi</a>
+    <a href="#" class="kotak"><img src="images/radiologi.jpg" border="0"/><br/>Radiologi</a>
     <a href="#" class="kotak"><img src="images/apotek.png" border="0"/><br/>Apotek</a>
     <a href="#" class="kotak"><img src="images/pegawai.png" border="0"/><br/>Kepegawaian</a>
 </div>
