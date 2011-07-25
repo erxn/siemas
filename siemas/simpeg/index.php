@@ -198,11 +198,11 @@
                                 <span class="ui-icon msoffice-icon-agenda-32x32"></span>
                                 <span class="ui-button-label">Daftar Kepangkatan</span>
                             </button>
-                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat biodata fungsional dari pegawai">
+                            <button href="laporan/biodata_fungsional.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat biodata fungsional dari pegawai">
                                 <span class="ui-icon msoffice-icon-biodata-32x32"></span>
                                 <span class="ui-button-label">Biodata Fungsional</span>
                             </button>
-                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat Surat Keterangan Untuk Mendapatkan Tunjangan Keluarga (SKUM PTK)">
+                            <button href="laporan/skumptk.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat Surat Keterangan Untuk Mendapatkan Tunjangan Keluarga (SKUM PTK)">
                                 <span class="ui-icon msoffice-icon-signed-32x32"></span>
                                 <span class="ui-button-label">SKUM PTK</span>
                             </button>
@@ -211,11 +211,11 @@
                     </li>
                     <li id="groupAbsensi_ribbon-msofficeTabLaporan">
                         <div>
-                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi absensi bulanan">
+                            <button href="laporan/rekap_absensi.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi absensi bulanan">
                                 <span class="ui-icon msoffice-icon-rekapabsen-32x32"></span>
                                 <span class="ui-button-label">Rekap Absensi</span>
                             </button>
-                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi jam kerja efektif bulanan">
+                            <button href="laporan/rekap_jam_efek.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi jam kerja efektif bulanan">
                                 <span class="ui-icon msoffice-icon-rekapabsenjam-32x32"></span>
                                 <span class="ui-button-label">Rekap Jam Kerja Efektif</span>
                             </button>

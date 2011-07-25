@@ -170,28 +170,31 @@ EOS;
                     <select id="tahun">
                         <?php for ($i = 0; $i < count($tahun); $i++) : ?>
                             <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini)
-                            echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
-                        <?php endfor; ?>
+                                echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
+                                <?php endfor; ?>
                     </select>
                     Bulan
                     <select id="bulan">
                         <?php for ($i = 1; $i <= 12; $i++) : ?>
-                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini)
-                                echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
-                        <?php endfor; ?>
+                                    <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini)
+                                        echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                                <?php endfor; ?>
                         </select>
                         <input type="button" value="Tampilkan" class="submit-green"/>
                     </p>
 
                     <div class="notification n-information">
-                        Klik pada tanggal libur nasional
+                        Klik pada tanggal libur Puskesmas, baik libur nasional maupun libur-libur lainnya
                     </div>
 
                     <table width="100%" border="0" style="border: none">
                         <tr style="border: none">
-                            <td style="padding-right: 20px; border: none" width="75%"><?php echo getCalendar($bulan_ini, intval(date("Y"))); ?></td>
+                            <td style="padding-right: 20px; border: none" width="75%">
+                                <h4>Puskesmas Bogor Tengah</h4>
+                                <?php echo getCalendar($bulan_ini, intval(date("Y"))); ?>
+                            </td>
                             <td style="border: none" width="25%">
-                                <h4>Libur bulan <?php echo $bulan[$bulan_ini]; ?></h4>
+                                <h4>Libur bulan <?php echo $bulan[$bulan_ini]; ?> (PKM Bogor Tengah)</h4>
                                 <ul class="bullets">
                                     <li>Libur nasional 1 (12 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
                                     <li>Libur nasional 2 (29 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
@@ -200,37 +203,54 @@ EOS;
                         </tr>
                     </table>
 
-                        </div>
-                    </div>
+                    <table width="100%" border="0" style="border: none">
+                        <tr style="border: none">
+                            <td style="padding-right: 20px; border: none" width="75%">
+                                <h4>BP Pemda</h4>
+                                <?php echo getCalendar($bulan_ini, intval(date("Y"))); ?>
+                            </td>
+                            <td style="border: none" width="25%">
+                                <h4>Libur bulan <?php echo $bulan[$bulan_ini]; ?> (BP Pemda)</h4>
+                                <ul class="bullets">
+                                    <li>Libur nasional 1 (12 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
+                                    <li>Libur nasional 2 (29 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div id="popup_libur" class="inline_popup">
-                <h4 id="tanggal_libur"></h4>
-                <input type="text" class="input-long" style="width: 200px;" id="keterangan_libur"/>
-                <input type="submit" value="Simpan" class="submit-green" style="margin: 0px"/>
-                <input type="button" value="Batal" class="submit-gray" style="margin: 0px" onclick="$('#popup_libur').fadeOut()"/>
-            </div>
+    <div id="popup_libur" class="inline_popup">
+        <h4 id="tanggal_libur"></h4>
+        <input type="text" class="input-long" style="width: 200px;" id="keterangan_libur"/>
+        <input type="submit" value="Simpan" class="submit-green" style="margin: 0px"/>
+        <input type="button" value="Batal" class="submit-gray" style="margin: 0px" onclick="$('#popup_libur').fadeOut()"/>
+    </div>
 
-            <script type="text/javascript">
+    <script type="text/javascript">
 
-                function inputLibur(t) {
+        function inputLibur(t) {
 
-                    var tanggal = $(t).text();
-                    var bulan   = document.getElementById('bulan').options[$('#bulan').val() - 1].innerHTML;
-                    var tahun   = $('#tahun').val();
+            var tanggal = $(t).text();
+            var bulan   = document.getElementById('bulan').options[$('#bulan').val() - 1].innerHTML;
+            var tahun   = $('#tahun').val();
 
-                    $('#popup_libur').fadeOut('fast', function(){
+            $('#popup_libur').fadeOut('fast', function(){
 
-                        $('#tanggal_libur').text(tanggal + " " + bulan + " " + tahun + " adalah libur:");
-                        $(this).css({left: $(t).offset().left + 'px', top: $(t).offset().top + 25 + 'px'}).fadeIn()
+                $('#tanggal_libur').text(tanggal + " " + bulan + " " + tahun + " adalah libur:");
+                $(this).css({left: $(t).offset().left + 'px', top: $(t).offset().top + 25 + 'px'}).fadeIn()
 
-                    });
-                
-                    $('#keterangan_libur').focus();
+            });
 
-                }
+            $('#keterangan_libur').focus();
 
-            </script>
+        }
+
+    </script>
 
 <?php include 'footer.php'; ?>
