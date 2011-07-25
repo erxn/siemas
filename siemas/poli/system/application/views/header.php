@@ -1,8 +1,9 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
-		<title><?php echo $title_header; ?></title>
+		<title>Puskesmas Bogor Tengah</title>
        
         <!-- CSS Reset -->
 		<link rel="stylesheet" type="text/css" href="Template_files/reset000.css" media="screen" />
@@ -110,18 +111,48 @@
 			});
         </script>
 	</head>
-    
-    
-    <!-- Footer -->
-        <div id="footer">
-        	<div class="container_12">
-            	<div class="grid_12">
-                	<!-- You can change the copyright line for your own -->
-                	<p>&copy; 2009. Magic Admin.</p>
-        		</div>
-            </div>
-            <div style="clear:both;"></div>
-        </div> <!-- End #footer -->
-	</body>
-</html>
-<!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
+	<body>
+    	<!-- Header -->
+        <div id="header">
+            <!-- Header. Status part -->
+            <div id="header-status">
+                <div class="container_12">
+                    <div class="grid_8">
+                        <span id="text-invitation"></span>
+                        <!-- Messages displayed through the thickbox -->
+                        
+                    </div>
+                    <div class="grid_4">
+                        <a href="" id="logout">
+                        Logout
+                        </a>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div> <!-- End #header-status -->
+            
+             <img src="Template_files/logo0000.gif" style="position: absolute; top:56px; left:60px" />
+            <img src="Template_files/puskesmas.png" style="position: absolute; top:45px; left:120px" />
+            <img src="Template_files/alamat.png" style="position: absolute; top:95px; left:120px" />
+            <img src="Template_files/gigi.png" style="position: absolute; top:40px; right:2px" />
+            <!-- Header. Main part -->
+            <div id="header-main">
+                <div class="container_12">
+                    <div class="grid_12">                       												
+                            <ul id="nav">
+                                 <li><a href="">Home</a></li>
+                                <li id="current"><a href="#">Antrian</a></li>
+                                <li><a href="#">Pasien</a></li>
+								<li><a href="#">Statistik</a></li>
+								<li><a href="#">Laporan</a></li>
+                            </ul>
+                       
+                    </div><!-- End. .grid_12-->
+                    <div style="clear: both;"></div>
+                </div><!-- End. .container_12 -->
+            </div> <!-- End #header-main -->
+            <div style="clear: both;"></div>
+            <!-- Sub navigation -->
+            
+        </div> <!-- End #header -->
+        

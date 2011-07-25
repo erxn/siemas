@@ -194,9 +194,7 @@
                 <div class="module">
                 	<h2><span>Data Pasien</span></h2>
                     
-                    <div class="module-table-body">
-                    	<form action="">
-						
+                    <div class="module-table-body">	
                         <table id="myTable" class="tablesorter">
                         	<thead>
                                 <tr>
@@ -336,7 +334,6 @@
                                
                             </tbody>
                         </table>
-                        </form>
                         <div class="pager" id="pager">
                             <form action="">
                                 <div>
@@ -352,7 +349,6 @@
                                     <option value="40">40</option>
                                 </select>
                                 </div>
-                            </form>
                         </div>
                         
                         <div style="clear: both"></div>
