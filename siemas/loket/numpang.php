@@ -15,3 +15,9 @@
                         <td><a href="#">Adnan Alghani</a> </td>
                     </tr>
                 </table>
+
+
+
+ <a class="tambah" href="loket_register_kk.php">
+                                <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> KK Baru
+                            </a>

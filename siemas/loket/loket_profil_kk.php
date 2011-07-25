@@ -90,6 +90,17 @@
                 } );
             });
         </script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#test").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                        $( "#datepicker" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                    }
+                });
+            });
+        </script>
         <!-- Initiate tablesorter script -->
 
         <script type="text/javascript">
@@ -170,181 +181,156 @@
             </div>
             <!-- End #subnav -->
         </div>
-
-
     </head>
-
     <body>
-        <script>
-            $(function() {
-                $( "#datepicker" ).datepicker({
-                    changeMonth: true,
-                    changeYear: true
-                });
-            });
-        </script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $("#test").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%"})
-            });
-        </script>
         <div>
             <!-- KIRI -->
-            <div class="grid_6" style="width: 45%">
+            <div class="grid_6" style="width: 47%">
                 <div class="module">
                     <h2><span>Kepala Keluarga (KK)</span></h2>
                     <div class="module-body">
                         <div id="daftar_kk">
-                            <h5>Cari KK</h5>
-                            <table style="width:60% " class="noborder" >
-                                <tr>
-                                    <td>Nama</td>
-                                    <td>:</td>
-                                    <td style="width:50%"><input type="text" class="input-medium"/></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td>:</td>
-                                    <td><input type="text" class="input-medium"/></td>
-                                    <td><div align="right">
-                                            <input class="submit-green" type="submit" value="Cari"/>
-                                        </div></td>
-                                </tr>
-                            </table>
-                            <hr style="width: 100%; border: 1px solid #cccccc"></hr>
-                            <br/>
-                            <h4 class="float-right">Hasil Pencarian: 5 orang</h4>
-
-                            
-                            <table id="myTable" class="tablesorter" style="width: 100%">
-                                <thead>
-                                    <tr>
-                                        <th class="header" style="width: 3%;">No</th>
-                                        <th class="header" style="width: 7%;">Nama</th>
-                                        <th class="header" style="width: 16%;">Alamat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="even">
-                                        <td class="align-center">1</td>
-                                        <td><a href="loket_profil_kk.php">Dimas Putera</a></td>
-                                        <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    </tr>
-                                    <tr class="even">
-                                        <td class="align-center">1</td>
-                                        <td><a href="">Meri Marlina</a></td>
-                                        <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    </tr>
-                                    <tr class="even">
-                                        <td class="align-center">1</td>
-                                        <td><a href="">Meri Marlina</a></td>
-                                        <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div id="pager" class="pager">
-                                <form action="">
-                                    <div>
-                                        <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                        <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                        <input type="text" class="pagedisplay input-short align-center"/>
-                                        <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                        <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                        <select class="pagesize input-short align-center">
-                                            <option selected="selected" value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option value="30">30</option>
-                                            <option value="40">40</option>
-                                        </select>
-                                    </div>
-                                </form>
+                            <div id="profil_kk">
+                                <div align="left">
+                                    <input class="submit-green" type="submit" onclick="tampilkan_hasil_cari();return false;" value="<< Kembali"/>
+                                </div>
+                                <br/>
+                                <table class="noborder" style="width: 100%">
+                                    <tbody>
+                                        <tr class="odd">
+                                            <td colspan="2"><strong>Profil KK</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td  style="width: 25%;" >Tgl. Pendaftaran</td>
+                                            <td>Selasa, 18 Januari 2011</td>
+                                        </tr>
+                                        <tr  class="odd">
+                                            <td>Nama KK</td>
+                                            <td><span style="color: #24cc57; font-weight: bold">Dimas Putera</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jenis Kelamin</td>
+                                            <td>Laki-laki</td>
+                                        </tr>
+                                        <tr class="odd">
+                                            <td>Alamat</td>
+                                            <td>Jl. Bara IV No. 13 Kecamatan Pabaton, Kelurahan Bogor Tengah, Bogor</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <br/>
-                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid_6" style="width: 47%">
+                <div class="module">
+                    <h2><span>Registrasi Pasien baru</span></h2>
+                    <div class="module-body">
+                        <table class="noborder">
+                            <tr>
+                                <td colspan="2"><strong>Anggota Keluarga</strong>
+                                </td>
+                            </tr>
+                            <tr  class="odd">
+                                <td>Kepala Keluarga</td>
+                                <td><a href="">Dimas Putera</a></td>
 
+                            </tr>
+                            <tr>
+                                <td>Istri</td>
+                                <td><a href="">Meri Marlina</a></td>
 
+                            </tr>
+                            <tr  class="odd">
+                                <td>Anak</td>
+                                <td><a href="">Annisa Anastasia</a></td>
+                            </tr>
+                            <tr >
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div id="tombol_tambah" class="float-left">
+                            <a class="tambah" onclick="$('#tambah_anggota').slideDown();  $('#tombol_tambah').hide(); return false;" href="#">
+                                <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah Anggota KK"/> Tambah Anggota KK
+                            </a>
+                        </div>
+                        <div style="clear: both"></div>
+                        <div id="tambah_anggota" style="display: none">
+                            <strong>Masukkan Data</strong>
+                            <table class="noborder">
+                                <tr>
+                                    <td>Tgl. Pendaftaran</td>
+                                    <td style="width: 65%"><input id="datepicker" type="text" class="input-medium"/></td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>Nama Pasien</td>
+                                    <td><input class="input-medium" type="text" name="nama_pasien" size="25" maxlength="255"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Jenis Kelamin</td>
+                                    <td><input type="radio" name="jk_pasien" value="L"/>Laki-laki &nbsp;&nbsp;&nbsp;
+                                        <input type="radio" name="jk_pasien" value="P" />Perempuan
+                                    </td>
+                                </tr>
+
+                                <tr  class="odd">
+                                    <td>Tanggal Lahir</td>
+                                    <td><input class="input-short" style="width: 6%" type="text" name="jk_pasien" size="1" maxlength="2"/>
+                                        <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
+                                        <select name="bulan_pasien"  style="width: 25%">
+                                            <?php  for($i=1;$i<=12;$i++) {?>
+                                            <option value="<?php echo $bulan[$i]; ?>"><?php echo $bulan[$i]; ?></option>
+                                                <?php } ?>
+                                        </select>
+                                        <input class="input-short"  style="width: 11%" type="text" name="tahun_pasien" size="3" maxlength="4"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Status dlm Keluarga</td>
+                                    <td>
+                                        <select name="status_keluarga">
+                                            <option value="00">Kepala Keluarga</option>
+                                            <option value="01">Ibu</option>
+                                            <option value="02">Anak</option>
+                                            <option value="03">Keponakan</option>
+                                            <option value="04">Kakek</option>
+                                            <option value="05">Nenek</option>
+                                            <option value="06">Tinggal Sementara</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>Status Pelayanan</td>
+                                    <td>
+                                        <select name="status_pelayanan">
+                                            <option value="umum">Umum</option>
+                                            <option value="askes">Askes</option>
+                                            <option value="jamkesmas">Jamkesmas</option>
+                                            <option value="lain">Lain-lain</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>No. Kartu</td>
+                                    <td><input class="input-medium" type="text" name="no_kartu"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><div align="right">
+                                            <input class="submit-green" type="submit" value="Daftar" />
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
 
                     </div>
                 </div>
             </div>
+            <div style="clear: both;"></div>
         </div>
-
-        <!-- KANAN -->
-        <div class="grid_6" style="width: 49%">
-            <div class="module">
-                <h2><span>Registrasi KK Baru</span></h2>
-                <div class="module-body">
-                    <form action="loket_kk_sukses.php">
-                        <table class="noborder" style="width: 98%">
-                            <span style="font-size: 15px; color: #138d39;"><strong>MASUKKAN DATA KK</strong></span>
-                            
-                            
-                            <tr>
-                                <td style="width: 5%">Tgl. Pendaftaran</td>
-                                <td style="width: 15%"><input id="datepicker" type="text" class="input-medium"/></td>
-                            </tr>
-                            <tr class="odd">
-                                <td>Nama KK</td>
-                                <td><input style="width: 55%" type="text" name="nama_kk" maxlength="255" size="25" class="input-short"/></td>
-                            </tr>
-                            <tr>
-                                <td>Jenis Kelamin</td>
-                                <td>
-                                    <input type="radio" name="jk_kk" value="L"/>Laki-laki &nbsp;&nbsp;&nbsp;
-                                    <input type="radio" name="jk_kk" value="P" />Perempuan
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td>Alamat</td>
-                                <td>
-                                    <textarea name="textarea" cols="26" rows="2"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-
-                                    <table style="width: 100%"  class="noborder" >
-                                        <tr>
-                                            <td width="15%">Kecamatan</td>
-                                            <td><input type="text" name="kecamatan" class="input-medium"/></td>
-                                        </tr>
-                                        <tr class="odd">
-                                            <td>Kelurahan </td>
-                                            <td><input type="text" name="kelurahan" class="input-medium"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kab / Kota </td>
-                                            <td><input type="text" name="kab_kota" class="input-medium"/></td>
-                                        </tr>
-                                        <tr  class="odd">
-                                            <td colspan="2"><i><b>Keterangan Tambahan</b></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <input type="radio" name="status_wil" value="luar_wil"/>
-                                                Luar Wilayah &nbsp;&nbsp;<input type="radio" name="status_wil" value="luar_kota"/>
-                                                Luar Kota</td>
-                                        </tr>
-                                        <tr>
-                                            <td height="29"></td>
-                                            <td><div align="right">
-                                                    <input class="submit-green" type="submit" value="Daftar" />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div style="clear: both;"></div>
-
     </body>
-
 </html>
