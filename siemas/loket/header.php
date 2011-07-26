@@ -136,7 +136,13 @@
         </script>
         <script type="text/javascript">
             $(document).ready(function(){
-                $("#test").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%"})
+                $("#test").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                        $( "#datepicker" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                    }
+                });
             });
         </script>
     </head>
@@ -149,7 +155,6 @@
                         <img src="Template_files/logo0000.gif"/>
                         <ul id="nav">
                             <li  id="current"><a href="home_loket.php">Home</a></li>
-                            <li><a href="antrian.php">Antrian</a></li>
                             <li><a href="registrasi.php">Registrasi</a></li>
                             <li><a href="loket_pembayaran.php">Pembayaran</a></li>
                             <li><a href="statistik.php">Statistik</a></li>
@@ -158,4 +163,4 @@
                     </div>
                 </div>
             </div>
-        <div style="clear: both;"></div>
+            <div style="clear: both;"></div>

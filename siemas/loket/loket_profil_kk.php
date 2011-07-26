@@ -182,7 +182,7 @@
                 return false;
             };
         </script>
-                <script>
+        <script>
             $(function() {
                 $( "#datepicker" ).datepicker({
                     changeMonth: true,
@@ -191,9 +191,16 @@
             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function(){
-                $("#test").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%"})
-            });
+            function tampilkan_pop_up(){
+                $("#test").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                        $( "#datepicker" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                    }
+                });
+                return false;
+            };
         </script>
         <div>
             <!-- KIRI -->
@@ -237,11 +244,11 @@
             </div>
             <div class="grid_6" style="width: 47%">
                 <div class="module">
-                    <h2><span>Registrasi Pasien baru</span></h2>
+                    <h2><span>Anggota Keluarga</span></h2>
                     <div class="module-body">
                         <table class="noborder">
                             <tr>
-                                <td colspan="2"><strong>Anggota Keluarga</strong>
+                                <td colspan="2"><strong>Daftar Anggota Keluarga</strong>
                                 </td>
                             </tr>
                             <tr  class="odd">
@@ -265,78 +272,80 @@
                         </table>
                         <div id="tombol_tambah" class="float-left">
                             <a class="tambah" onclick="$('#tambah_anggota').slideDown();  $('#tombol_tambah').hide(); return false;" href="#">
-                                <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah Anggota KK"/> Tambah Anggota KK
+                                <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah Anggota KK"/> Tambah Pasien
                             </a>
                         </div>
                         <div style="clear: both"></div>
                         <div id="tambah_anggota" style="display: none">
                             <strong>Masukkan Data</strong>
-                            <table class="noborder">
-                                <tr>
-                                    <td>Tgl. Pendaftaran</td>
-                                    <td style="width: 65%"><input id="datepicker" type="text" class="input-medium"/></td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>Nama Pasien</td>
-                                    <td><input class="input-medium" type="text" name="nama_pasien" size="25" maxlength="255"/></td>
-                                </tr>
-                                <tr>
-                                    <td>Jenis Kelamin</td>
-                                    <td><input type="radio" name="jk_pasien" value="L"/>Laki-laki &nbsp;&nbsp;&nbsp;
-                                        <input type="radio" name="jk_pasien" value="P" />Perempuan
-                                    </td>
-                                </tr>
+                            <form action="reg_kunjungan.php">
+                                <table class="noborder">
+                                    <tr>
+                                        <td>Tgl. Pendaftaran</td>
+                                        <td style="width: 65%"><input id="datepicker" type="text" class="input-medium"/></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td>Nama Pasien</td>
+                                        <td><input class="input-medium" type="text" name="nama_pasien" size="25" maxlength="255"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jenis Kelamin</td>
+                                        <td><input type="radio" name="jk_pasien" value="L"/>Laki-laki &nbsp;&nbsp;&nbsp;
+                                            <input type="radio" name="jk_pasien" value="P" />Perempuan
+                                        </td>
+                                    </tr>
 
-                                <tr class="odd">
-                                    <td>Tanggal Lahir</td>
-                                    <td><input class="input-short" style="width: 6%" type="text" name="tgl_pasien" size="1" maxlength="2"/>
-                                        <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
-                                        <select name="bulan_pasien" style="width: 25%">
-                                            <?php  for($i=1;$i<=12;$i++) {?>
-                                            <option value="<?php echo $bulan[$i]; ?>"><?php echo $bulan[$i]; ?></option>
-                                                <?php } ?>
-                                        </select>
-                                        <input class="input-short"  style="width: 11%" type="text" name="tahun_pasien" size="3" maxlength="4"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Status dlm Keluarga</td>
-                                    <td>
-                                        <select name="status_keluarga">
-                                            <option value="00">Kepala Keluarga</option>
-                                            <option value="01">Ibu</option>
-                                            <option value="02">Anak</option>
-                                            <option value="03">Keponakan</option>
-                                            <option value="04">Kakek</option>
-                                            <option value="05">Nenek</option>
-                                            <option value="06">Tinggal Sementara</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>Status Pelayanan</td>
-                                    <td>
-                                        <select name="status_pelayanan">
-                                            <option value="umum">Umum</option>
-                                            <option value="askes">Askes</option>
-                                            <option value="jamkesmas">Jamkesmas</option>
-                                            <option value="lain">Lain-lain</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>No. Kartu</td>
-                                    <td><input class="input-medium" type="text" name="no_kartu"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><div align="right">
-                                            <input class="submit-green" type="submit" value="Daftar" />
-                                        </div>
-                                    </td>
+                                    <tr class="odd">
+                                        <td>Tanggal Lahir</td>
+                                        <td><input class="input-short" style="width: 6%" type="text" name="tgl_pasien" size="1" maxlength="2"/>
+                                            <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
+                                            <select name="bulan_pasien" style="width: 25%">
+                                                <?php  for($i=1;$i<=12;$i++) {?>
+                                                <option value="<?php echo $bulan[$i]; ?>"><?php echo $bulan[$i]; ?></option>
+                                                    <?php } ?>
+                                            </select>
+                                            <input class="input-short"  style="width: 11%" type="text" name="tahun_pasien" size="3" maxlength="4"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status dlm Keluarga</td>
+                                        <td>
+                                            <select name="status_keluarga">
+                                                <option value="00">Kepala Keluarga</option>
+                                                <option value="01">Ibu</option>
+                                                <option value="02">Anak</option>
+                                                <option value="03">Keponakan</option>
+                                                <option value="04">Kakek</option>
+                                                <option value="05">Nenek</option>
+                                                <option value="06">Tinggal Sementara</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td>Status Pelayanan</td>
+                                        <td>
+                                            <select name="status_pelayanan">
+                                                <option value="umum">Umum</option>
+                                                <option value="askes">Askes</option>
+                                                <option value="jamkesmas">Jamkesmas</option>
+                                                <option value="lain">Lain-lain</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>No. Kartu</td>
+                                        <td><input class="input-medium" type="text" name="no_kartu"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><div>
+                                                <input id="test" class="submit-green" type="submit" value="Daftar" onclick="tampilkan_pop_up();return false;" />
+                                            </div>
+                                        </td>
 
-                                </tr>
-                            </table>
+                                    </tr>
+                                </table>
+                            </form>
                         </div>
 
                     </div>
