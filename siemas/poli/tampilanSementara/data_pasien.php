@@ -3,35 +3,14 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
 		<title>Puskesmas Bogor Tengah</title>
-       
-        <!-- CSS Reset -->
 		<link rel="stylesheet" type="text/css" href="Template_files/reset000.css" media="screen" />
-       
-        <!-- Fluid 960 Grid System - CSS framework -->
 		<link rel="stylesheet" type="text/css" href="Template_files/grid0000.css" media="screen" />
-		
-        <!-- IE Hacks for the Fluid 960 Grid System -->
-        <!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css" media="screen" /><![endif]-->
-		<!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
-        
-        <!-- Main stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/styles00.css" media="screen" />
-        
-        <!-- WYSIWYG editor stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/jquery00.css" media="screen" />
-        
-        <!-- Table sorter stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/tablesor.css" media="screen" />
-        
-        <!-- Thickbox stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/thickbox.css" media="screen" />
-        
-        <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
         <link rel="stylesheet" type="text/css" href="Template_files/theme-bl.css" media="screen" />
-        <!--<link rel="stylesheet" type="text/css" href="css/theme-red.css" media="screen" />-->
-        <!--<link rel="stylesheet" type="text/css" href="css/theme-yellow.css" media="screen" />-->
-        <!--<link rel="stylesheet" type="text/css" href="css/theme-green.css" media="screen" />-->
-        <!--<link rel="stylesheet" type="text/css" href="css/theme-graphite.css" media="screen" />-->
+        
         
 		<!-- JQuery engine script-->
 		<script type="text/javascript" src="Template_files/jquery-1.js"></script>

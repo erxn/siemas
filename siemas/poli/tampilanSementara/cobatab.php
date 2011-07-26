@@ -23,154 +23,24 @@
         <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
 
 
+
         <script>
             $(function() {
                  
                 $( "#tabs" ).tabs();
             });
         </script>
-
-        <!-- Initiate WYIWYG text area -->
-        <script type="text/javascript">
-            $(function()
-            {
-                $('#wysiwyg').wysiwyg(
-                {
-                    controls : {
-                        separator01 : { visible : true },
-                        separator03 : { visible : true },
-                        separator04 : { visible : true },
-                        separator00 : { visible : true },
-                        separator07 : { visible : false },
-                        separator02 : { visible : false },
-                        separator08 : { visible : false },
-                        insertOrderedList : { visible : true },
-                        insertUnorderedList : { visible : true },
-                        undo: { visible : true },
-                        redo: { visible : true },
-                        justifyLeft: { visible : true },
-                        justifyCenter: { visible : true },
-                        justifyRight: { visible : true },
-                        justifyFull: { visible : true },
-                        subscript: { visible : true },
-                        superscript: { visible : true },
-                        underline: { visible : true },
-                        increaseFontSize : { visible : false },
-                        decreaseFontSize : { visible : false }
-                    }
-                } );
-            });
-        </script>
-
-        <!-- Initiate tablesorter script -->
-        <script type="text/javascript">
-            $(document).ready(function() { 
-                $("#myTable") 
-                .tablesorter({
-                    // zebra coloring
-                    widgets: ['zebra'],
-                    // pass the headers argument and assing a object 
-                    headers: { 
-                        // assign the sixth column (we start counting zero) 
-                        6: { 
-                            // disable it by setting the property sorter to false 
-                            sorter: false 
-                        } 
-                    }
-                }) 
-                .tablesorterPager({container: $("#pager")}); 
-            }); 
-        </script>
-
-        <!-- Initiate password strength script -->
-        <script type="text/javascript">
-            $(function() {
-                $('.password').pstrength();
-            });
-        </script>
-
     </head>
     <body>
-        <link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
-        <script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
 
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
-            });
-        </script>
-
-      
-        
-        <!-- Header -->
-        <div id="header">
-            <!-- Header. Status part -->
-
-            <div id="header-status">
-                <div class="container_12">
-                    <div class="grid_8">
-                        <span id="text-invitation"></span>
-                        <!-- Messages displayed through the thickbox -->
-
-                    </div>
-                    <div class="grid_4">
-                        <a href="" id="logout">
-                            Logout
-                        </a>
-                    </div>
-                </div>
-                <div style="clear:both;"></div>
-            </div> <!-- End #header-status -->
-
-            <img src="Template_files/logo0000.gif" style="position: absolute; top:56px; left:60px" />
-            <img src="Template_files/puskesmas.png" style="position: absolute; top:45px; left:120px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:95px; left:120px" />
-            <img src="Template_files/gigi.png" style="position: absolute; top:40px; right:2px" />
-
-            <!-- Header. Main part -->
-            <div id="header-main">
-                <div class="container_12">
-                    <div class="grid_12">
-                        <ul id="nav">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Antrian</a></li>
-                            <li><a href="#">Pasien</a></li>
-                            <li id="current"><a href="#">Statistik</a></li>
-                            <li><a href="laporan.php">Laporan</a></li>
-                        </ul>
-
-                    </div><!-- End. .grid_12-->
-                    <div style="clear: both;"></div>
-                </div><!-- End. .container_12 -->
-            </div> <!-- End #header-main -->
-            <div style="clear: both;"></div>
-            <!-- Sub navigation -->
-            <div id="subnav">
-                <div class="container_12">
-                    <div class="grid_12">
-
-                    </div><!-- End. .grid_12-->
-                </div><!-- End. .container_12 -->
-                <div style="clear: both;"></div>
-            </div> <!-- End #subnav -->
-        </div> <!-- End #header -->
-
-        <div class="container_12">
-
-
-
-            <!-- Form elements -->    
-            <div class="grid_12" style=" padding: 20px 1.5% 20px 1.5%;  width: 100%; ">
-
-                <div class="module" style="float: left; margin-left: 300px; width: 48%">
-
-               <div  id="tabs">
+        <div class="module" style="width: 50% ;margin-right: 400px ">
+            <div  id="tabs">
                 <ul>
                     <li><a href="#tabs-a">Statistik Penyakit</a></li>
                     <li><a href="#tabs-b">Statistik Wilayah</a></li>
                 </ul>
-                    
-                     <div id="tabs-a">
+
+                <div id="tabs-a">
 
                     <table border="0" width="100%" class="noborder" style="text-align: center">
                         <tbody>
@@ -237,13 +107,13 @@
                             </tr>
                             <tr>
                                 <td style="text-align: center !important">
-                                    <a class="pop" href="bulanan_penyakit.php" class="tombol-kotak">
+                                    <a id="datepicker" href="bulanan_penyakit.php" class="tombol-kotak">
                                         <img src="Template_files/bulan.png" width="90" height="80" alt="edit" />
                                         <span>Lihat grafik</span>
                                     </a>
                                 </td>
-                                <td style="text-align: center !important">
-                                    <a class="pop" href="tahunan_penyakit.php" class="tombol-kotak">
+                                <td id="datepicker" style="text-align: center !important">
+                                    <a id="datepicker1" href="tahunan_penyakit.php" class="tombol-kotak">
                                         <img src="Template_files/tahun.png" width="80" height="80" alt="edit" />
                                         <span>Lihat grafik</span>
                                     </a>
@@ -251,10 +121,12 @@
                             </tr>
                         </tbody>
                     </table>
+
+
+
                 </div>
 
-                   
-                   <div id="tabs-b">
+                <div id="tabs-b">
                     
                         <table border="0" width="100%" class="noborder" style="text-align: center">
                             <tbody>
@@ -320,13 +192,13 @@
                                 </tr>
                                 <tr>
                                     <td style="text-align: center !important">
-                                        <a class="pop"href="bulanan_wilayah.php" class="tombol-kotak">
+                                        <a id="datepicker2" href="bulanan_wilayah.php" class="tombol-kotak">
                                             <img src="Template_files/bulan.png" width="90" height="80" alt="edit" />
                                             <span>Lihat grafik</span>
                                         </a>
                                     </td>
                                     <td style="text-align: center !important">
-                                        <a class="pop" href="tahunan_wilayah.php" class="tombol-kotak">
+                                        <a id="datepicker3" href="tahunan_wilayah.php" class="tombol-kotak">
                                             <img src="Template_files/tahun.png" width="80" height="80" alt="edit" />
                                             <span>Lihat grafik</span>
                                         </a>
@@ -337,20 +209,10 @@
 
 
                 </div>
-                </div>
+            </div>
 
-
-            </div>	
         </div>
 
-
-        <!-- Footer -->
-        <div id="footer">
-            
-                    <p>&copy; 2009. Magic Admin.</p>
-          
-            
-        </div> <!-- End #footer -->
     </body>
 </html>
 <!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->

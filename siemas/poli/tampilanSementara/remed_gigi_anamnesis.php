@@ -337,8 +337,7 @@
 
         <div class="module" style="float: left; margin-left:15px; margin-top: -70px; width: 45%">
 
-            <link type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
-
+            
             <script>
                 $(function() {
                     $( "#tabs1" ).tabs();

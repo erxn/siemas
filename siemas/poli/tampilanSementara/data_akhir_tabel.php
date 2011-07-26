@@ -1,127 +1,125 @@
-<html>
-<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
-		<title>Puskesmas Bogor Tengah</title>
-       
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
+        <title>Puskesmas Bogor Tengah</title>
+
         <!-- CSS Reset -->
-		<link rel="stylesheet" type="text/css" href="Template_files/reset000.css" media="screen" />
-       
-        <!-- Fluid 960 Grid System - CSS framework -->
-		<link rel="stylesheet" type="text/css" href="Template_files/grid0000.css" media="screen" />
-		
-        <!-- IE Hacks for the Fluid 960 Grid System -->
-        <!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css" media="screen" /><![endif]-->
-		<!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
-        
-        <!-- Main stylesheet -->
+        <link rel="stylesheet" type="text/css" href="Template_files/reset000.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/grid0000.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="Template_files/styles00.css" media="screen" />
-        
-        <!-- WYSIWYG editor stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/jquery00.css" media="screen" />
-        
-        <!-- Table sorter stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/tablesor.css" media="screen" />
-        
-        <!-- Thickbox stylesheet -->
-        <link rel="stylesheet" type="text/css" href="Template_files/thickbox.css" media="screen" />
-        
-        <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
-        <link rel="stylesheet" type="text/css" href="Template_files/theme-bl.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/thickbox.css" media="screen" /><link rel="stylesheet" type="text/css" href="Template_files/theme-bl.css" media="screen" />
+        <script type="text/javascript" src="Template_files/jquery-1.js"></script>
 
-</head>
-<body>        
-		<div class="container_12">
-            <!-- To-do list -->
-          
-           
-            
-            <!-- Form elements -->    
-            <div class="grid_12" style=" margin-top: 10px; ">
-            
-                             <div class="module" style="margin-right: 200px; width: 48%">			<!--buat nampilin data pasien-->
-                                    <h2><span>Data Rekam Medik Pasien</span></h2>
-                        
-                                        <div class="module-body">
-                          <form action="">
-                           
-							<table style="width:100%;" class="noborder">
-							<tr>
-								<td>Id KK:</td>
-								<td style="width: 50%">A9889</td>
-					
-							</tr>
-							<tr>
-								<td>Id Pasien:</td>
-								<td style="width: 50%">0889898</td>
-					
-							</tr>
-							
-							<tr>
-								<td>Nama:</td>
-								<td style="width: 50%">Meri Marlina</td>
-					
-							</tr>
-							
-							<tr>
-								<td>Umur:</td>
-								<td>20</td>
-							</tr>
-							
-							<tr>
-								<td>Alamat:</td>
-								<td>Jl.ir H. Juanda RT 09/99 No 76 Dramaga Timur Kab Dramaga Bogor</td>
-							</tr>
-							
-							<tr>
-								<td>Tanggal Kunjungan:</td>
-								<td style="width: 50%">20-09-2011</td>
-							</tr>
-							
-							<tr>
-								<td>Anamnesis:</td>
-								<td>pasien terkena sariawan yg pparah</td>
-							</tr>
-							
-							<tr>
-								<td>Hasil Diagnosa:</td>
-								<td>pasien harus cabut gigi</td>
-							</tr>
-							
-							<tr>
-								<td>Penyakit:</td>
-								<td>03-Penyakit Pulpa & Jar. Periapikal</td>
-							</tr>
-							
-							<tr>
-								<td>Tindakan:</td>
-								<td>Pengobatan Periode</td>
-							</tr>
-							
-							<tr>
-								<td>Resep Obat:</td>
-								<td>Amoksilin</td>
-							</tr>
+        <!-- JQuery WYSIWYG plugin script -->
+        <script type="text/javascript" src="Template_files/jquery00.js"></script>
+        <script type="text/javascript" src="Template_files/jquery01.js"></script>
+        <script type="text/javascript" src="Template_files/jquery02.js"></script>
+        <script type="text/javascript" src="Template_files/jquery03.js"></script>
+        <script type="text/javascript" src="Template_files/thickbox.js"></script>
+ <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
 
-							<tr>
-								<td>Keterangan:</td>
-								<td>gigi Pasien harus segera diberi obat, agar terhidar dairi gigi bolong</td>
-							</tr>
-							
-							<tr>
-								<td>Harga:</td>
-								<td style="width: 50%">Rp. 50.000</td>
-							</tr>
-							
-							</table>
-							
-                          
-                        </form>
-                     </div> <!-- End .module-body -->
-</div>
-						
-						
-					
-	
-	</body>
+        
+        
+            <script>
+                $(function() {
+                 
+                    $( "#tabs" ).tabs();
+                });
+            </script>
+    </head>
+    <body>
+
+        <div class="module" style="width: 50% ;margin-right: 400px ">
+            <div  id="tabs">
+                <ul>
+                    <li><a href="#tabs-a">Data Diagnosa Dokter</a></li>
+                    
+                </ul>
+
+                <div id="tabs-a">
+
+                     <table style="width:100%;" class="noborder">
+
+                                <tr class="odd">
+                                    <td>Id KK:</td>
+                                    <td style="width: 50%"><input type="text" class="input-long" value="S98989"></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Id Pasien:</td>
+                                    <td style="width: 50%"><input type="text" class="input-long" value="898989"></td>
+
+                                </tr>
+
+                                <tr class="odd">
+                                    <td>Nama:</td>
+                                    <td style="width: 50%"><input type="text" class="input-long" value="Meri MArlina" ></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Umur:</td>
+                                    <td><input type="text" class="input-long" value="20" ></td>
+                                </tr>
+
+                                <tr class="odd">
+                                    <td>Alamat:</td>
+                                    <td><textarea rows="6" cols="30">Jl.ir H. Juanda RT 09/99 No 76 Dramaga Timur Kab Dramaga Bogor</textarea></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Tanggal Kunjungan:</td>
+                                    <td style="width: 50%"><input type="text" class="input-long" value="20-05-2010" ></td>
+                                </tr>
+
+                                <tr class="odd">
+                                    <td>Anamnesis:</td>
+                                    <td><textarea rows="6" cols="30">pasien terkena sariawan yg pparah</textarea></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Hasil Diagnosa:</td>
+                                    <td><textarea rows="6" cols="30">pasien harus cabut gigi</textarea></td>
+                                </tr>
+
+                                <tr class="odd">
+                                    <td>Penyakit:</td>
+                                    <td><input type="text" class="input-long" value="03-Penyakit Pulpa & Jar PEriapikal" ></td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>Tindakan:</td>
+                                    <td><input type="text" class="input-long" value="Pengobatan Periode" ></td>
+                                </tr>
+
+                                <tr class="odd">
+                                    <td>Resep Obat:</td>
+                                    <td><textarea rows="6" cols="30">Amoksilin</textarea></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Keterangan:</td>
+                                    <td><textarea rows="6" cols="30">gigi Pasien harus segera diberi obat, agar terhidar dairi gigi bolong</textarea></td>
+                                </tr>
+
+                                 <tr>
+                                    <td>Harga:</td>
+                                    <td><input type="text" class="input-long" value="50. 000" ></td>
+                                </tr>
+                              
+                            </table>
+                 
+
+            </div>
+        </div>
+
+        </div>
+
+    </body>
 </html>
 <!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
