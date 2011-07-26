@@ -1,9 +1,9 @@
 <html> <head>
-
+            <title></title>
     </head>
 
     <body>
-
+        <h2>Data Pasien</h2>
         <table border ="1">
 
 
@@ -37,7 +37,7 @@
                             <thead>
 
                                 <?php
-                                foreach ($data_pasien->result() as $row) {
+                                foreach ($id->result() as $row) {                  // buat nampilin data yg ada didatabase
                                     ?>
                                     <tr>
                                         <th><?php echo $row->id_pasien; ?></th>
@@ -55,13 +55,6 @@
 
 
                             </thead>
-                            <tbody>
-
-                                <!--disini logic buat loopingnya-->
-
-
-                            </tbody>
-
                         </table>
                         <div class="pager" id="pager">
                             <form action="">
@@ -81,9 +74,7 @@
                         </div>
 
                         <div style="clear: both"></div>
-                    </div> <!-- End .module-table-body -->
-                </div> <!-- End .module -->
-
+                   
 
                 <div class="pagination">           
                     <a href="" class="button"><span><img src="Template_files/arrow-sv.gif" height="9" width="12" alt="First" /> First</span></a> 
@@ -112,12 +103,6 @@
                     <a href="" class="button last"><span>Last <img src="Template_files/arrow-sw.gif" height="9" width="12" alt="Last" /></span></a>
                     <div style="clear: both;"></div> 
                 </div>
-
-
-
-
-            </div> <!-- End .grid_12 -->
-
 
 
 

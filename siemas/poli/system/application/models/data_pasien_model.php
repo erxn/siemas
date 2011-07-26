@@ -26,7 +26,7 @@ Class Data_pasien_model extends Model{
     
     
     
-    function get_data_pasien_model($val, $col='id_pasien'){                                     //ngambil data pasien berdasarkan id yang dicari0
+    function get_data_pasien_model($val, $col='id_pasien'){                           //buat ngambil  data pasien per id          //ngambil data pasien berdasarkan id yang dicari0
         $data="";
           $data_pasien=$this->db->query("SELECT tanggal_pendaftaran, KK_id_KK, nama_pasien, jk, tanggal_lahir, status_pelayanan, no_kartu_layana FROM siemas WHERE $col=$val");
           
@@ -44,6 +44,11 @@ Class Data_pasien_model extends Model{
    
    function update_data_pasien_model($id_pasien){
         
+   }
+   
+   function ambil_pasien_KK_model(){
+       $this->db->groupby('alamat');
+       $this->db->get('biodata');
    }
 }
 

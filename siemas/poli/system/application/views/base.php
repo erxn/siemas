@@ -3,85 +3,85 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
-        <base href="<?php echo base_url(); ?>">
-            <title><?php echo $title; ?></title>         <!---buat bisa diubah ubah title halamannya-->
+        <base href="<?php echo base_url(); ?>" />
+        <title><?php echo $title; ?></title>         <!---buat bisa diubah ubah title halamannya-->
 
 
 
-            <link rel="stylesheet" type="text/css" href="Template_files/reset000.css" media="screen" />
-            <link rel="stylesheet" type="text/css" href="Template_files/grid0000.css" media="screen" />
-            <link rel="stylesheet" type="text/css" href="Template_files/styles00.css" media="screen" />
-            <link rel="stylesheet" type="text/css" href="Template_files/jquery00.css" media="screen" />
-            <link rel="stylesheet" type="text/css" href="Template_files/tablesor.css" media="screen" />
-            <link rel="stylesheet" type="text/css" href="Template_files/thickbox.css" media="screen" /><link rel="stylesheet" type="text/css" href="Template_files/theme-bl.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/reset000.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/grid0000.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/styles00.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/jquery00.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/tablesor.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="Template_files/thickbox.css" media="screen" /><link rel="stylesheet" type="text/css" href="Template_files/theme-bl.css" media="screen" />
 
 
 
-            <script type="text/javascript" src="Template_files/jquery-1.js"></script>
-            <script type="text/javascript" src="Template_files/jquery00.js"></script>
-            <script type="text/javascript" src="Template_files/jquery01.js"></script>
-            <script type="text/javascript" src="Template_files/jquery02.js"></script>
-            <script type="text/javascript" src="Template_files/jquery03.js"></script>
-            <script type="text/javascript" src="Template_files/thickbox.js"></script>
+        <script type="text/javascript" src="Template_files/jquery-1.js"></script>
+        <script type="text/javascript" src="Template_files/jquery00.js"></script>
+        <script type="text/javascript" src="Template_files/jquery01.js"></script>
+        <script type="text/javascript" src="Template_files/jquery02.js"></script>
+        <script type="text/javascript" src="Template_files/jquery03.js"></script>
+        <script type="text/javascript" src="Template_files/thickbox.js"></script>
 
-            <!-- Initiate WYIWYG text area -->
-            <script type="text/javascript">
-                $(function()
+        <!-- Initiate WYIWYG text area -->
+        <script type="text/javascript">
+            $(function()
+            {
+                $('#wysiwyg').wysiwyg(
                 {
-                    $('#wysiwyg').wysiwyg(
-                    {
-                        controls : {
-                            separator01 : { visible : true },
-                            separator03 : { visible : true },
-                            separator04 : { visible : true },
-                            separator00 : { visible : true },
-                            separator07 : { visible : false },
-                            separator02 : { visible : false },
-                            separator08 : { visible : false },
-                            insertOrderedList : { visible : true },
-                            insertUnorderedList : { visible : true },
-                            undo: { visible : true },
-                            redo: { visible : true },
-                            justifyLeft: { visible : true },
-                            justifyCenter: { visible : true },
-                            justifyRight: { visible : true },
-                            justifyFull: { visible : true },
-                            subscript: { visible : true },
-                            superscript: { visible : true },
-                            underline: { visible : true },
-                            increaseFontSize : { visible : false },
-                            decreaseFontSize : { visible : false }
-                        }
-                    } );
-                });
-            </script>
+                    controls : {
+                        separator01 : { visible : true },
+                        separator03 : { visible : true },
+                        separator04 : { visible : true },
+                        separator00 : { visible : true },
+                        separator07 : { visible : false },
+                        separator02 : { visible : false },
+                        separator08 : { visible : false },
+                        insertOrderedList : { visible : true },
+                        insertUnorderedList : { visible : true },
+                        undo: { visible : true },
+                        redo: { visible : true },
+                        justifyLeft: { visible : true },
+                        justifyCenter: { visible : true },
+                        justifyRight: { visible : true },
+                        justifyFull: { visible : true },
+                        subscript: { visible : true },
+                        superscript: { visible : true },
+                        underline: { visible : true },
+                        increaseFontSize : { visible : false },
+                        decreaseFontSize : { visible : false }
+                    }
+                } );
+            });
+        </script>
 
-            <!-- Initiate tablesorter script -->
-            <script type="text/javascript">
-                $(document).ready(function() { 
-                    $("#myTable") 
-                    .tablesorter({
-                        // zebra coloring
-                        widgets: ['zebra'],
-                        // pass the headers argument and assing a object 
-                        headers: { 
-                            // assign the sixth column (we start counting zero) 
-                            6: { 
-                                // disable it by setting the property sorter to false 
-                                sorter: false 
-                            } 
-                        }
-                    }) 
-                    .tablesorterPager({container: $("#pager")}); 
-                }); 
-            </script>
+        <!-- Initiate tablesorter script -->
+        <script type="text/javascript">
+            $(document).ready(function() { 
+                $("#myTable") 
+                .tablesorter({
+                    // zebra coloring
+                    widgets: ['zebra'],
+                    // pass the headers argument and assing a object 
+                    headers: { 
+                        // assign the sixth column (we start counting zero) 
+                        6: { 
+                            // disable it by setting the property sorter to false 
+                            sorter: false 
+                        } 
+                    }
+                }) 
+                .tablesorterPager({container: $("#pager")}); 
+            }); 
+        </script>
 
-            <!-- Initiate password strength script -->
-            <script type="text/javascript">
-                $(function() {
-                    $('.password').pstrength();
-                });
-            </script>
+        <!-- Initiate password strength script -->
+        <script type="text/javascript">
+            $(function() {
+                $('.password').pstrength();
+            });
+        </script>
     </head>
     <body>
         <!-- Header -->
@@ -144,4 +144,17 @@
             </div><!-- End. .container_12 -->
             <div style="clear: both;"></div>
         </div> <!-- End #subnav -->
-        </div> <!-- End #header -->
+       
+        
+        
+        
+        
+        <div id="footer">
+            <div class="container_12">
+                <div class="grid_12">
+                    <!-- You can change the copyright line for your own -->
+                    <p>&copy; 2009. Magic Admin.</p>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div> <!-- End #footer -->
