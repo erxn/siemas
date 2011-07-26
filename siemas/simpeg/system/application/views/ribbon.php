@@ -1,8 +1,11 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+        
+        <base href="<?php echo base_url(); ?>"/>
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>SIMPEG</title>
+        <title>Sistem Informasi Kepegawaian Puskesmas</title>
         <style type="text/css">body { margin: 0; padding: 0; font: 12px/*62.5%*/ Verdana, sans-serif; }</style>
         <link type="text/css" href="ribbon/themes/base/ui.all.css" rel="stylesheet" />
         <link type="text/css" href="ribbon/themes/base/ui.tabs.css" rel="stylesheet" />
@@ -70,7 +73,7 @@
                 <ul>
                     <li id="groupHariIni_ribbon-msofficeTabHome">
                         <div>
-                            <button href="forms/home.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Halaman muka">
+                            <button href="index.php/home" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Halaman muka">
                                 <span class="ui-icon msoffice-icon-home-32x32"></span>
                                 <span class="ui-button-label">Beranda</span>
                             </button>
@@ -89,7 +92,7 @@
                                 </tr>
                             </table>
 
-                            <button href="forms/hari_ini.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat detail hari ini">
+                            <button href="index.php/home/hari_ini" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat detail hari ini">
                                 <span class="ui-icon msoffice-icon-magnifier-32x32"></span>
                                 <span class="ui-button-label">Detail</span>
                             </button>
@@ -99,7 +102,7 @@
                     </li>
                     <li id="groupKalender_ribbon-msofficeTabHome">
                         <div>
-                            <button href="forms/home_kalender.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat kalender bulan ini">
+                            <button href="index.php/home/kalender" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat kalender bulan ini">
                                 <span class="ui-icon msoffice-icon-calendar-32x32"></span>
                                 <span class="ui-button-label">Kalender Bulan&nbsp;Ini</span>
                             </button>
@@ -114,24 +117,24 @@
                 <ul>
                     <li id="groupAbsensi_ribbon-msofficeTabInput">
                         <div>
-                            <button href="forms/input_absensi.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kehadiran pegawai pada hari ini">
+                            <button href="index.php/absensi" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kehadiran pegawai pada hari ini">
                                 <span class="ui-icon msoffice-icon-absenhariini-32x32"></span>
                                 <span class="ui-button-label">Absensi Hari&nbsp;Ini</span>
                             </button>
-                            <button href="forms/input_absensi_lama.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kehadiran pegawai pada tanggal-tanggal terdahulu">
+                            <button href="index.php/absensi/pilih_tanggal_absensi" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kehadiran pegawai pada tanggal-tanggal terdahulu">
                                 <span class="ui-icon msoffice-icon-absendulu-32x32"></span>
                                 <span class="ui-button-label">Absensi Terdahulu</span>
                             </button>
                             <ul class="ui-ribbon-element ui-ribbon-list">
-                                <li><button href="forms/input_jadwal_pkm.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Atur jam buka dan jam selesai Puskesmas"><span class="ui-icon msoffice-icon-jam-22x22"></span><span class="ui-button-label">Jam Kerja</span></button></li>
-                                <li><button href="forms/input_libur.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input hari-hari Puskesmas libur"><span class="ui-icon msoffice-icon-libur-22x22"></span><span class="ui-button-label">Hari Libur</span></button></li>
+                                <li><button href="index.php/absensi/jam_kerja" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Atur jam buka dan jam selesai Puskesmas"><span class="ui-icon msoffice-icon-jam-22x22"></span><span class="ui-button-label">Jam Kerja</span></button></li>
+                                <li><button href="index.php/absensi/input_libur" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input hari-hari Puskesmas libur"><span class="ui-icon msoffice-icon-libur-22x22"></span><span class="ui-button-label">Hari Libur</span></button></li>
                             </ul>
                         </div>
                         <h3><span>Absensi</span></h3>
                     </li>
                     <li id="groupCuti_ribbon-msofficeTabInput">
                         <div>
-                            <button href="forms/input_cuti.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input cuti pegawai">
+                            <button href="index.php/cuti" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input cuti pegawai">
                                 <span class="ui-icon msoffice-icon-cuti-32x32"></span>
                                 <span class="ui-button-label">Input Cuti</span>
                             </button>
@@ -140,7 +143,7 @@
                     </li>
                     <li id="groupKegiatan_ribbon-msofficeTabInput">
                         <div>
-                            <button href="forms/input_kegiatan.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kegiatan luar Puskesmas">
+                            <button href="index.php/kegiatan" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input kegiatan luar Puskesmas">
                                 <span class="ui-icon msoffice-icon-kegiatan-32x32"></span>
                                 <span class="ui-button-label">Input Kegiatan&nbsp;Luar</span>
                             </button>
@@ -149,22 +152,22 @@
                     </li>
                     <li id="groupPegawai_ribbon-msofficeTabInput">
                         <div>
-                            <button href="forms/input_pegawai.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Atur jam mulai dan jam selesai Puskesmas">
+                            <button href="index.php/pegawai" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Atur jam mulai dan jam selesai Puskesmas">
                                 <span class="ui-icon msoffice-icon-newpegawai-32x32"></span>
                                 <span class="ui-button-label">Input Pegawai&nbsp;Baru</span>
                             </button>
-                            <button href="forms/edit_pegawai_pilih.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Edit data pegawai">
+                            <button href="index.php/pegawai/edit_pegawai_pilih" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Edit data pegawai">
                                 <span class="ui-icon msoffice-icon-editpegawai-32x32"></span>
                                 <span class="ui-button-label">Edit Data&nbsp;Pegawai</span>
                             </button>
                             <ul class="ui-ribbon-element ui-ribbon-list">
-                                <li><button href="forms/input_perubahan_gaji.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan gaji"><span class="ui-icon msoffice-icon-gaji-22x22"></span><span class="ui-button-label">Gaji</span></button></li>
-                                <li><button href="forms/input_perubahan_jabatan.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan jabatan"><span class="ui-icon msoffice-icon-jabatan-22x22"></span><span class="ui-button-label">Jabatan</span></button></li>
-                                <li><button href="forms/input_perubahan_pangkat.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan pangkat/golongan"><span class="ui-icon msoffice-icon-pangkat-22x22"></span><span class="ui-button-label">Pangkat</span></button></li>
+                                <li><button href="index.php/pegawai/input_perubahan_gaji" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan gaji"><span class="ui-icon msoffice-icon-gaji-22x22"></span><span class="ui-button-label">Gaji</span></button></li>
+                                <li><button href="index.php/pegawai/input_perubahan_jabatan" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan jabatan"><span class="ui-icon msoffice-icon-jabatan-22x22"></span><span class="ui-button-label">Jabatan</span></button></li>
+                                <li><button href="index.php/pegawai/input_perubahan_pangkat" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input perubahan pangkat/golongan"><span class="ui-icon msoffice-icon-pangkat-22x22"></span><span class="ui-button-label">Pangkat</span></button></li>
                             </ul>
                             <ul class="ui-ribbon-element ui-ribbon-list">
-                                <li><button href="forms/input_kenaikan_yad.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input kenaikan gaji yang akan datang"><span class="ui-icon msoffice-icon-kenaikangaji-22x22"></span><span class="ui-button-label">Kenaikan Gaji YAD</span></button></li>
-                                <li><button href="forms/input_struktur_organisasi.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input struktur organisasi"><span class="ui-icon msoffice-icon-strukturorganisasi-22x22"></span><span class="ui-button-label">Struktur Organisasi</span></button></li>
+                                <li><button href="index.php/pegawai/input_kenaikan_yad" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input kenaikan gaji yang akan datang"><span class="ui-icon msoffice-icon-kenaikangaji-22x22"></span><span class="ui-button-label">Kenaikan Gaji YAD</span></button></li>
+                                <li><button href="index.php/pegawai/input_struktur_organisasi" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-simple-button" title="Input struktur organisasi"><span class="ui-icon msoffice-icon-strukturorganisasi-22x22"></span><span class="ui-button-label">Struktur Organisasi</span></button></li>
                             </ul>
 
                         </div>
@@ -172,15 +175,15 @@
                     </li>
                     <li id="groupPenilaian_ribbon-msofficeTabInput">
                         <div>
-                            <button href="forms/input_dp3.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input penilaian DP3">
+                            <button href="index.php/penilaian/input_dp3" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input penilaian DP3">
                                 <span class="ui-icon msoffice-icon-write-32x32"></span>
                                 <span class="ui-button-label">Input Penilaian&nbsp;DP3</span>
                             </button>
-                            <button href="forms/input_tunjangan.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input tunjangan untuk tiap pegawai">
+                            <button href="index.php/penilaian/input_tunjangan" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Input tunjangan untuk tiap pegawai">
                                 <span class="ui-icon msoffice-icon-irc-32x32"></span>
                                 <span class="ui-button-label">Input Tunjangan</span>
                             </button>
-                            <button href="forms/input_rumus_tpp.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Atur rumus untuk perhitungan TPP">
+                            <button href="index.php/penilaian/input_rumus_tpp" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Atur rumus untuk perhitungan TPP">
                                 <span class="ui-icon msoffice-icon-highscores-32x32"></span>
                                 <span class="ui-button-label">Perhitungan TPP</span>
                             </button>
@@ -265,7 +268,7 @@
 
         <div id="page_content_container">
 
-            <iframe id="page_content" frameborder="0" width="100%" height="100%" src="forms/home.php"></iframe>
+            <iframe id="page_content" frameborder="0" width="100%" height="100%" src="index.php/home"></iframe>
 
         </div>
 

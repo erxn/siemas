@@ -1,6 +1,4 @@
-<?php include 'header.php'; ?>
-
-<?php include 'list_pegawai.php'; ?>
+<?php $this->load->view('header'); ?>
 
 <script type="text/javascript" src="jquery.js"></script>
 
@@ -194,4 +192,4 @@ EOS;
 
 </div>
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer'); ?>

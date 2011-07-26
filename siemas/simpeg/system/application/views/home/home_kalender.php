@@ -1,6 +1,4 @@
-<?php include 'header.php'; ?>
-
-<?php include 'list_pegawai.php'; ?>
+<?php $this->load->view('header') ?>
 
 <div class="belowribbon">
     <h1>
@@ -233,4 +231,4 @@ $tahun = array($tahun_ini - 2, $tahun_ini - 1, $tahun_ini);
 
 </div>
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer') ?>

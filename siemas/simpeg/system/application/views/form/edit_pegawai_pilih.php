@@ -1,6 +1,35 @@
-<?php include 'header.php'; ?>
+<?php $this->load->view('header');
 
-<?php include 'list_pegawai.php'; ?>
+$pegawai = array(
+        "",
+        "Dr. ILHAM CHAIDIR",
+        "Dr. YOHANA MARI YUSTINI",
+        "Drg. MELLYAWATI",
+        "Dr. DINDIN A. SETIAWATY",
+        "Dr. LINA RUFLINA",
+        "Drg. SITI MILYARNI REMIKA, MM",
+        "ROSMIATI",
+        "SADIYAH, AMKG",
+        "Drg. KARINA AMALIA",
+        "SUGIHARYATI, AMKeb",
+        "HUSNA",
+        "ENENG SURTININGSIH, AMKep",
+        "ENDAH PURASANTI, AMKeb",
+        "DWIJO KURJIANTO, AMAK",
+        "SEPTY MARHAENY, AMKep",
+        "FEBBY HENDRIYANI  S.",
+        "NINA ANDRIYANTI, AMKL",
+        "RIDWANUDIN HARIS, AMKep",
+        "MARICE SINORITA, AMKeb",
+        "T A R P I N, AMRad",
+        "MARYANI, A.Md Kp",
+        "IIS AISAH",
+        "MAD SOLEH",
+        "AGTI NURVITASARI, SKM",
+        "NIDA NURAIDA, AMdG"
+    );
+
+?>
 
 <script type="text/javascript" src="template/jquery.js"></script>
 
@@ -23,7 +52,7 @@
                 <?php
                 for ($j = 1; $j < count($pegawai); $j++) {
 
-                    echo "<li><a href='forms/edit_pegawai.php'>{$pegawai[$j]}</a></li>";
+                    echo "<li><a href='index.php/pegawai/edit_pegawai'>{$pegawai[$j]}</a></li>";
 
                 } ?>
                 </ul>
@@ -36,4 +65,4 @@
 
 <script type="text/javascript" src="js/list_filter.js"></script>
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer'); ?>

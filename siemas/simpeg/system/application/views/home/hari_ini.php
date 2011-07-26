@@ -1,6 +1,4 @@
-<?php include 'header.php'; ?>
-
-<?php include 'list_pegawai.php'; ?>
+<?php $this->load->view('header') ?>
 
 <div class="belowribbon">
     <h1>
@@ -52,4 +50,4 @@
 
 </div>
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer') ?>

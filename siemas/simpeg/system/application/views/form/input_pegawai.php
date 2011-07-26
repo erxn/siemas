@@ -1,6 +1,35 @@
-<?php include 'header.php'; ?>
+<?php $this->load->view('header');
 
-<?php include 'list_pegawai.php'; ?>
+$pegawai = array(
+        "",
+        "Dr. ILHAM CHAIDIR",
+        "Dr. YOHANA MARI YUSTINI",
+        "Drg. MELLYAWATI",
+        "Dr. DINDIN A. SETIAWATY",
+        "Dr. LINA RUFLINA",
+        "Drg. SITI MILYARNI REMIKA, MM",
+        "ROSMIATI",
+        "SADIYAH, AMKG",
+        "Drg. KARINA AMALIA",
+        "SUGIHARYATI, AMKeb",
+        "HUSNA",
+        "ENENG SURTININGSIH, AMKep",
+        "ENDAH PURASANTI, AMKeb",
+        "DWIJO KURJIANTO, AMAK",
+        "SEPTY MARHAENY, AMKep",
+        "FEBBY HENDRIYANI  S.",
+        "NINA ANDRIYANTI, AMKL",
+        "RIDWANUDIN HARIS, AMKep",
+        "MARICE SINORITA, AMKeb",
+        "T A R P I N, AMRad",
+        "MARYANI, A.Md Kp",
+        "IIS AISAH",
+        "MAD SOLEH",
+        "AGTI NURVITASARI, SKM",
+        "NIDA NURAIDA, AMdG"
+    );
+
+?>
 
 <script type="text/javascript" src="template/jquery.js"></script>
 
@@ -39,7 +68,7 @@
                         </tr>
                         <tr>
                             <td><label>Tanggal lahir</label></td>
-                            <td><input type="text" name="tanggal_lahir" maxlength="255" class="datepicker input-long"/></td>
+                            <td><input type="text" name="tanggal_lahir" maxlength="255" class="input-long"/></td>
                         </tr>
                         <tr>
                             <td><label>Alamat</label></td>
@@ -165,8 +194,8 @@
                         <tr>
                             <td>1</td>
                             <td><input type="text" name="tanggungan_nama[]" maxlength="255" class="input-long"/></td>
-                            <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="datepicker input-long"/></td>
-                            <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="datepicker input-long"/></td>
+                            <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long"/></td>
+                            <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="input-long"/></td>
                             <td><input type="text" name="tanggungan_pekerjaan[]" maxlength="255" class="input-long"/></td>
                             <td style="text-align: center">
                                 <input type="checkbox" name="tanggungan_dapat_tunjangan[]" checked="checked"/>
@@ -336,4 +365,4 @@
 
 </script>
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer'); ?>

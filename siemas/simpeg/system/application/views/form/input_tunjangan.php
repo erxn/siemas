@@ -1,6 +1,35 @@
-<?php include 'header.php'; ?>
+<?php $this->load->view('header');
 
-<?php include 'list_pegawai.php'; ?>
+$pegawai = array(
+        "",
+        "Dr. ILHAM CHAIDIR",
+        "Dr. YOHANA MARI YUSTINI",
+        "Drg. MELLYAWATI",
+        "Dr. DINDIN A. SETIAWATY",
+        "Dr. LINA RUFLINA",
+        "Drg. SITI MILYARNI REMIKA, MM",
+        "ROSMIATI",
+        "SADIYAH, AMKG",
+        "Drg. KARINA AMALIA",
+        "SUGIHARYATI, AMKeb",
+        "HUSNA",
+        "ENENG SURTININGSIH, AMKep",
+        "ENDAH PURASANTI, AMKeb",
+        "DWIJO KURJIANTO, AMAK",
+        "SEPTY MARHAENY, AMKep",
+        "FEBBY HENDRIYANI  S.",
+        "NINA ANDRIYANTI, AMKL",
+        "RIDWANUDIN HARIS, AMKep",
+        "MARICE SINORITA, AMKeb",
+        "T A R P I N, AMRad",
+        "MARYANI, A.Md Kp",
+        "IIS AISAH",
+        "MAD SOLEH",
+        "AGTI NURVITASARI, SKM",
+        "NIDA NURAIDA, AMdG"
+    );
+
+?>
 
 <script type="text/javascript">
 
@@ -80,11 +109,42 @@ function funcKeyDown(evt, cur_x, cur_y) {
     </h1>
 </div>
 
+<?php
+$bulan = array(
+    "",
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+);
+
+$bulan_ini = intval(date("n"));
+
+?>
+
 <div id="page">
 
     <div style="margin: 0px 1%">
         <div class="module">
-            <h2><span>Masukkan jumlah tunjangan dan PPh</span></h2>
+            <h2><span>
+                    Tahun&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="tahun" value="<?php echo date("Y"); ?>" class="input-short" style="width: 70px"/>
+                    Bulan&nbsp;&nbsp;&nbsp;
+                    <select name="bulan">
+                        <?php for ($i = 1; $i <= 12; $i++) : ?>
+                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini) echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                        <?php endfor; ?>
+                    </select>
+                    <input type="button" value="Tampilkan" class="submit-green" style="font-size: 11px; height: 23px; overflow: hidden; vertical-align: top"/>
+                </span></h2>
             <div class="module-table-body">
                 <table width="100%">
                     <thead>
@@ -118,4 +178,4 @@ function funcKeyDown(evt, cur_x, cur_y) {
 
 
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer'); ?>

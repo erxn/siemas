@@ -1,6 +1,8 @@
 <?php
 
-$pegawai = array(
+class List_pegawai extends Model {
+    
+var $pegawai = array(
     "",
     "Dr. ILHAM CHAIDIR",
     "Dr. YOHANA MARI YUSTINI",
@@ -28,4 +30,6 @@ $pegawai = array(
     "AGTI NURVITASARI, SKM",
     "NIDA NURAIDA, AMdG"
 );
-?>
+
+
+}
