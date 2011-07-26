@@ -221,8 +221,9 @@
                                 <thead>
                                     <tr>
                                         <th class="header" style="width: 3%;">No</th>
-                                        <th class="header" style="width: 7%;">Nama</th>
+                                        <th class="header" style="width: 10%;">KK</th>
                                         <th class="header" style="width: 16%;">Alamat</th>
+                                        <th class="header" style="width: 9%;">Anggota</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -230,16 +231,19 @@
                                         <td class="align-center">1</td>
                                         <td><a href="loket_profil_kk.php">Dimas Putera</a></td>
                                         <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
+                                        <td><a href="">Annisa</a>, <a href="">Adit</a>, <a href="">Adnan</a></td>
                                     </tr>
                                     <tr class="even">
-                                        <td class="align-center">1</td>
+                                        <td class="align-center">2</td>
                                         <td><a href="">Meri Marlina</a></td>
                                         <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
+                                        <td><a href="">Annisa</a>, <a href="">Adit</a>, <a href="">Adnan</a></td>
                                     </tr>
                                     <tr class="even">
-                                        <td class="align-center">1</td>
+                                        <td class="align-center">3</td>
                                         <td><a href="">Meri Marlina</a></td>
                                         <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
+                                        <td><a href="">Annisa</a>, <a href="">Adit</a>, <a href="">Adnan</a></td>
                                     </tr>
                                 </tbody>
                             </table>

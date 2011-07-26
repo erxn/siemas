@@ -199,6 +199,7 @@
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                     </tr>
+                                    
                                 </tbody>
                             </table>
 
@@ -224,7 +225,7 @@
                     </tr>
                     <tr>
                         <td>Jenis Kelamin</td>
-                        <td><input type="radio" name="jk_pasien" value="L">Laki-laki &nbsp;&nbsp;&nbsp;/>
+                        <td><input type="radio" name="jk_pasien" value="L"/>Laki-laki &nbsp;&nbsp;&nbsp;
                             <input type="radio" name="jk_pasien" value="P" />Perempuan
                         </td>
                     </tr>
@@ -233,8 +234,8 @@
                         <td>Tanggal Lahir</td>
                         <td><input class="input-short" style="width: 6%" type="text" name="jk_pasien" size="1" maxlength="2"/>
                             <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
-                            <select name="bulan_pasien"  style="width: 25%">
-                                <?php  for($i=1;$i<=12;$i++) {?>
+                            <select name="bulan_pasien" style="width: 25%">
+                                <?php for($i=1;$i<=12;$i++) {?>
                                 <option value="<?php echo $bulan[$i]; ?>"><?php echo $bulan[$i]; ?></option>
                                     <?php } ?>
                             </select>

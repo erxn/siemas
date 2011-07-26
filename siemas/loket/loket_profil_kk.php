@@ -128,19 +128,6 @@
                 $('.password').pstrength();
             });
         </script>
-        <script type="text/javascript">
-            function tampilkan_profil_kk() {
-                $('#daftar_kk').hide();
-                $('#profil_kk').show();
-                return false;
-            };
-            function tampilkan_hasil_cari(){
-                $('#daftar_kk').show();
-                $('#profil_kk').hide();
-                return false;
-            };
-        </script>
-
         <div id="header">
             <!-- Header. Main part -->
             <div id="header-main">
@@ -183,6 +170,31 @@
         </div>
     </head>
     <body>
+        <script type="text/javascript">
+            function tampilkan_profil_kk() {
+                $('#daftar_kk').hide();
+                $('#profil_kk').show();
+                return false;
+            };
+            function tampilkan_hasil_cari(){
+                $('#daftar_kk').show();
+                $('#profil_kk').hide();
+                return false;
+            };
+        </script>
+                <script>
+            $(function() {
+                $( "#datepicker" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#test").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%"})
+            });
+        </script>
         <div>
             <!-- KIRI -->
             <div class="grid_6" style="width: 47%">
@@ -275,11 +287,11 @@
                                     </td>
                                 </tr>
 
-                                <tr  class="odd">
+                                <tr class="odd">
                                     <td>Tanggal Lahir</td>
-                                    <td><input class="input-short" style="width: 6%" type="text" name="jk_pasien" size="1" maxlength="2"/>
+                                    <td><input class="input-short" style="width: 6%" type="text" name="tgl_pasien" size="1" maxlength="2"/>
                                         <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
-                                        <select name="bulan_pasien"  style="width: 25%">
+                                        <select name="bulan_pasien" style="width: 25%">
                                             <?php  for($i=1;$i<=12;$i++) {?>
                                             <option value="<?php echo $bulan[$i]; ?>"><?php echo $bulan[$i]; ?></option>
                                                 <?php } ?>
