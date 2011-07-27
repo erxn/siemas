@@ -8,48 +8,25 @@
 
         <!-- CSS Reset -->
         <link rel="stylesheet" type="text/css" href="Template_files/reset000.css" media="screen" />
-
-        <!-- Fluid 960 Grid System - CSS framework -->
         <link rel="stylesheet" type="text/css" href="Template_files/grid0000.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />
         <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" />
-
-
-        <!-- IE Hacks for the Fluid 960 Grid System -->
-        <!--[if IE 6]><link rel="stylesheet" type="text/css" href="css/ie6.css" media="screen" /><![endif]-->
-        <!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" /><![endif]-->
-
-        <!-- Main stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/styles00.css" media="screen" />
-
-        <!-- WYSIWYG editor stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/jquery00.css" media="screen" />
-
-        <!-- Table sorter stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/tablesor.css" media="screen" />
-
-
-        <!-- Thickbox stylesheet -->
         <link rel="stylesheet" type="text/css" href="Template_files/thickbox.css" media="screen" />
-
-        <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
         <link rel="stylesheet" type="text/css" href="Template_files/theme-bl.css" media="screen" />
+        
+        <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
         <!--<link rel="stylesheet" type="text/css" href="css/theme-red.css" media="screen" />-->
         <!--<link rel="stylesheet" type="text/css" href="css/theme-yellow.css" media="screen" />-->
         <!--<link rel="stylesheet" type="text/css" href="css/theme-green.css" media="screen" />-->
         <!--<link rel="stylesheet" type="text/css" href="css/theme-graphite.css" media="screen" />-->
 
         <!-- JQuery engine script-->
-
         <script type="text/javascript" src="Template_files/jquery-1.js"></script>
-
-        <!-- JQuery WYSIWYG plugin script -->
         <script type="text/javascript" src="Template_files/jquery00.js"></script>
-
-        <!-- JQuery tablesorter plugin script-->
         <script type="text/javascript" src="Template_files/jquery01.js"></script>
-
-        <!-- JQuery pager plugin script for tablesorter tables -->
         <script type="text/javascript" src="Template_files/jquery02.js"></script>
 
 
@@ -150,11 +127,28 @@
     </head>
     <body>
         <div id="header">
+            <div id="header-status">
+                <div class="container_12">
+                    <div class="grid_8">
+                        <span id="text-invitation"></span>
+                        <!-- Messages displayed through the thickbox -->
+
+                    </div>
+                    <div class="grid_4">
+                        <a href="" id="logout">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
             <!-- Header. Main part -->
             <div id="header-main">
                 <div class="container_12">
                     <div class="grid_12">
                         <img src="Template_files/logo0000.gif"/>
+                        <img src="Template_files/puskesmas.png" style="position: absolute; top:45px; left:120px" />
+                        <img src="Template_files/alamat.png" style="position: absolute; top:95px; left:120px" />
                         <ul id="nav">
                             <li  id="current"><a href="index.php">Home</a></li>
                             <li><a href="index.php/registrasi">Registrasi</a></li>
@@ -166,4 +160,8 @@
                     </div>
                 </div>
             </div>
+            
+                        
+                        
+            
             <div style="clear: both;"></div>

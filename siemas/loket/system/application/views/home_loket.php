@@ -111,10 +111,10 @@
                 <h2><span>LOKET PUSKESMAS BOGOR TENGAH</span></h2>
                 <div class="module-body">
                     <div style="width: 800px; height: auto;padding: 2px; text-align: center; margin: 0 auto">
-                        <a href="index.php/pembayaran" class="kotak"><img src="images/loket_besar.png" border="0"/><br/>
-                            Pembayaran</a>
                         <a href="index.php/registrasi" class="kotak"><img src="images/antrian2.png" border="0"/><br/>
                             Antrian & Registrasi</a>
+                        <a href="index.php/pembayaran" class="kotak"><img src="images/loket_besar.png" border="0"/><br/>
+                            Pembayaran</a>
                         <a href="index.php/pasien" class="kotak"><img src="images/pasien.png" border="0"/><br/>
                             Data Pasien</a>
                     </div>
