@@ -1,5 +1,21 @@
 <?php $this->view_header();?>
 
+<!-- Date Picker stylesheet -->
+                <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>js/jquery-ui/css/redmond/jquery-ui-1.7.3.custom.css" media="screen" />
+        <!-- JQuery Date Picker Script -->
+                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery-ui/js/jquery-1.3.2.min.js"></script>
+                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery-ui/js/jquery-ui-1.7.3.custom.min.js"></script>
+
+        <script type="text/javascript">
+            $(function() {
+                $( "#tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
+            });
+</script>
+
 <!-- Header. Main part -->
 			
             <div id="header-main">

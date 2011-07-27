@@ -39,7 +39,6 @@
         <div id="footer">
         	<div class="container_12">
             	<div class="grid_12">
-                	<!-- You can change the copyright line for your own -->
                 	<p>&copy; 2011. Siemas.</p>
         		</div>
             </div>
@@ -47,4 +46,4 @@
         </div> <!-- End #footer -->
 	</body>
 </html>
-<!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
+<!-- This document originaly created by R Bagus Dimas Putra r4yv1n@yahoo.com -->
