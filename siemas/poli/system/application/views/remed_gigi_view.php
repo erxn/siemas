@@ -1,7 +1,24 @@
+<?php $this->load->view('header');?>
+<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
+<script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />      
-<link type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
+    });
+</script>
+
+<script>
+    $(function() {
+        $( "#tabs1" ).tabs();
+        $( "#tabs2" ).tabs();
+        $( "#tabs" ).tabs();
+    });
+</script>
+
 <script>
     $(function() {
         $( "#datepicker" ).datepicker({
@@ -12,67 +29,68 @@
     });
 </script>
 
+<div id="subnav">
+    <div class="container_12">
+        <div class="grid_12">
+            <ul>
+                <li><a href="#">Medical Record</a></li>
+                <li><a href="#">Data Pasien</a></li>
+            </ul>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
-    });
-</script>
+        </div><!-- End. .grid_12-->
+    </div><!-- End. .container_12 -->
+    <div style="clear: both;"></div>
+</div> <!-- End #subnav -->
+</div> <!-- End #header -->
 
+<h2 style="margin-left: 30px ; margin-top: 20px">Rekam Medik Pasien</h2>
+<div class="grid_6" style="width: 45%; margin-left:20px; margin-top: 30px ">
+    <div  id="tabs2">
+        <ul>
+            <li><a href="#tabs-a">Data Pasien</a></li>
 
-<script>
-    $(function() {
-        $( "#tabs1" ).tabs();
-        $( "#tabs" ).tabs();
-    });
-</script>
+        </ul>
+        <div id="tabs-a">
 
-
-
-<h2 style="margin-left: 15px">Rekam Medik Pasien</h2>
-<div class="grid_6" style="width: 45%; margin-left:15px">
-    <div class="module">
-        <h2><span>Data Pasien </span></h2>              <!--buat data pasien yg dari pendaftaran-->
-        <div class="module-body">
-            <form>
+            <form style="margin: 20px">
                 <table style="width:90%;" class="noborder">
                     <strong></strong>
                     <tr  class="odd">
                         <td>Tanggal Pendaftaran:</td>
-                        <td style="width: 50%"> </td>
+                        <td style="width: 50%">  20-09-2011 </td>
                     </tr>
                     <tr>
                         <td>Nama Pasien:</td>
-                        <td style="width: 50%"></td>
+                        <td style="width: 50%">Meri MArlina</td>
                     </tr>
                     <tr  class="odd">
                         <td>Jenis Kelamin:</td>
-                        <td style="width: 50%"></td>
+                        <td style="width: 50%">P</td>
 
                     </tr>
 
                     <tr>
-                        <td>Tanggal Lahir:</td>
-                        <td></td>
+                        <td>Tanggal Lahir</td>
+                        <td>19-02-1990</td>
 
                     </tr>
                     <tr class="odd">
-                        <td >Umur:</td>
-                        <td></td>
+                        <td >Status Dalam Keluarga:</td>
+                        <td>Istri</td>
 
                     </tr>
                     <tr>
                         <td >Status Dalam Keluarga:</td>
-                        <td></td>
+                        <td>Istri</td>
 
                     </tr>
                     <tr class="odd">
-                        <td>Status Pelayanan:</td>
-                        <td></td>
+                        <td>Status PElayanan</td>
+                        <td>Askes</td>
                     </tr>
                     <tr>
-                        <td>No Kartu:</td>
-                        <td></td>
+                        <td>No Kartu</td>
+                        <td>090998989</td>
                     </tr>
                 </table>
             </form>
@@ -80,8 +98,6 @@
 
     </div>
 </div>
-
-
 
 
 <div class="module" style="width: 50% ;margin-right: 15px ">
@@ -95,14 +111,16 @@
 
         </ul>
 
-
         <div id="tabs-a">
 
             <div style="padding: 10px;">
 
                 <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
+                <tr>
+                    
+                    <td><input type="submit" class="submit-green" value="Cari "></td>
+                </tr>
 
-                <img src="Template_files/cari.png">
             </div>
             <table id="">
                 <thead>
@@ -117,7 +135,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="odd">
+                    <tr>
                         <td class="align-center">1</td>
                         <td><a href="data_akhir_tabel.php" class="pop">20-08-2009</a></td>
                         <td>Sariawan</td>
@@ -126,6 +144,25 @@
                         <td>AMoksilin</td>
                         <td>Perlu tindakan cepatttttt!!</td>
                     </tr>
+                    <tr class="odd">
+                        <td class="align-center">2</td>
+                        <td><a href="#" class="pop">20-08-2009</a></td>
+                        <td>Sariawan</td>
+                        <td>Bolong gigi</td>
+                        <td>Karies, Cabut Gigi</td>
+                        <td>AMoksilin</td>
+                        <td>Perlu tindakan cepatttttt!!</td>
+                    </tr>
+                    <tr>
+                        <td class="align-center">3</td>
+                        <td><a href="#" class="pop">20-08-2009</a></td>
+                        <td>Sariawan</td>
+                        <td>Bolong gigi</td>
+                        <td>Karies, Cabut Gigi</td>
+                        <td>AMoksilin</td>
+                        <td>Perlu tindakan cepatttttt!!</td>
+                    </tr>
+
                 </tbody>
             </table>
 
@@ -133,10 +170,10 @@
                 <form action="">
                     <div>
                         <img class="first" src="Template_files/arrow-st.gif" alt="first"/>
-                        <img class="prev" src="Template_files/arrow-18.gif" alt="prev"/> 
+                        <img class="prev" src="Template_files/arrow-18.gif" alt="prev"/>
                         <input type="text" class="pagedisplay input-short align-center"/>
                         <img class="next" src="Template_files/arrow000.gif" alt="next"/>
-                        <img class="last" src="Template_files/arrow-su.gif" alt="last"/> 
+                        <img class="last" src="Template_files/arrow-su.gif" alt="last"/>
                         <select class="pagesize input-short align-center">
                             <option value="10" selected="selected">10</option>
                             <option value="20">20</option>
@@ -148,77 +185,93 @@
             <br/>
             <br/>
         </div>
+
     </div>
 </div>
 
-<div class="">
 
-    <div id="tabs1">
-        <ul>
-            <li><a href="#tabs1-1">Anamnesis</a></li>
-            <li><a href="#tabs2-2">Diagnosa</a></li>
-            <li><a href="#tabs3-3">Layanan</a></li>
-            <li><a href="#tabs4-4">Resep Dokter</a></li>
-            <li><a href="#tabs5-5">Keterangan</a></li>
-        </ul>
-        <div id="tabs1-1">
-            <table class="noborder" style="width:100%">
-                <tr>
-                    <td>Anamnesis:</td>
-                    <td><textarea rows="5" cols="40"></textarea></td>
-                </tr>
-            </table>
-        </div>
-        <div id="tabs2-2">
-            <table class="noborder" style="width:100%">
-                <tr>
-                    <td>Diagnosa:</td>
-                    <td><textarea rows="5" cols="40"></textarea></td>
-                </tr>
-            </table>
-        </div>
-        <div id="tabs3-3">
+<div class="module" style="float: left; margin-left:15px; margin-top: 30px; width: 45%">
+    <div class="">
 
-            <table class="noborder" style="width:100%">
-                <tr>
-                    <td>Layanan:</td>
-                    <td><textarea rows="5" cols="40"></textarea></td>
-                </tr>
-            </table>
+        <div id="tabs1">
+            <ul>
+                <li><a href="#tabs1-1">Anamnesis</a></li>
+                <li><a href="#tabs2-2">Diagnosa</a></li>
+                <li><a href="#tabs3-3">Layanan</a></li>
+                <li><a href="#tabs4-4">Resep Dokter</a></li>
+                <li><a href="#tabs5-5">Keterangan</a></li>
+            </ul>
+            <div id="tabs1-1">
+                <table class="noborder" style="width:100%">
+                    <tr>
+                        <td>Anamnesis:</td>
+                        <td><textarea rows="5" cols="40"></textarea></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="tabs2-2">
+                <table class="noborder" style="width:100%">
+                    <tr>
+                        <td>Diagnosa:</td>
+                        <td><textarea rows="5" cols="40"></textarea></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="tabs3-3">
 
-        </div>
+                <table class="noborder" style="width:100%">
+                    <tr>
+                        <td>Layanan:</td>
+                        <td><textarea rows="5" cols="40"></textarea></td>
+                    </tr>
+                </table>
 
-        <div id="tabs4-4">
-            <table class="noborder" style="width:100%">
-                <tr>
-                    <td>Resep Dokter:</td>
-                    <td><textarea rows="5" cols="40"></textarea></td>
-                </tr>
-            </table>
+            </div>
 
-        </div>
+            <div id="tabs4-4">
+                <table class="noborder" style="width:100%">
+                    <tr>
+                        <td>Resep Dokter:</td>
+                        <td><textarea rows="5" cols="40"></textarea></td>
+                    </tr>
+                </table>
 
-        <div id="tabs5-5">
-            <table class="noborder" style="width:100%">
-                <tr>
-                    <td>Keterangan:</td>
-                    <td><textarea rows="5" cols="40"></textarea></td>
-                </tr>
+            </div>
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td style="margin-rightt: 300px">
-                        <a class="pop" href="data_akhir_diagnosis.php">
-                            <img src="Template_files/masukkandata.png">
-                        </a>
-                    </td>
-                </tr>
-            </table>
+            <div id="tabs5-5">
+                <table class="noborder" style="width:100%">
+                    <tr>
+                        <td>Keterangan:</td>
+                        <td><textarea rows="5" cols="40"></textarea></td>
+                    </tr>
+
+                    <tr>
+
+                        <td></td>
+                        <td>
+                            <a class="pop" href="index.php/rekam_medik_gigi/data_diagnosis_dokter">             <!--index.php/namacontroller/nama fungsi-->
+                                <input type="submit" class="submit-green" value="Lihat Hasil Diagnosis ">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
 
         </div>
 
     </div>
-
 </div>
 
+
+<!-- Footer -->
+<div id="footer">
+    <div class="container_12">
+        <div class="grid_12">
+            <p>&copy; 2009. Magic Admin.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->

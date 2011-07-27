@@ -1,23 +1,28 @@
+<?php $this->load->view('header');?>
 
-<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />
-<script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
 
 
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#datepicker").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
+<script>
+    $(function() {
+
+        $( "#tabs" ).tabs();
     });
 </script>
 
 <div class="container_12">
-    <div class="grid_12" style=" padding: 20px 1.5% 20px 1.5%;  width: 100%; ">
+    <div class="grid_12" style=" width: 40%; margin-left:400px; margin-top: 100px ">
 
-        <div class="module" style="float: left; width: 48%">
+        <div  id="tabs">
+            <ul>
+                <li><a href="#tabs-a">Statistik Penyakit</a></li>
+                <li><a href="#tabs-b">Statistik Wilayah</a></li>
+            </ul>
 
-            <h2><span>Statistik Berdasarkan Penyakit</span></h2>
 
-            <div class="module-body">
+            <div id="tabs-a">
 
                 <table border="0" width="100%" class="noborder" style="text-align: center">
                     <tbody>
@@ -59,7 +64,7 @@
                                     <option value="10">2009</option>
                                     <option value="11">2010</option>
                                     <option value="12">2011</option>
-                                </select>                                                            
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -98,17 +103,10 @@
                         </tr>
                     </tbody>
                 </table>
-
-            </div> <!-- End .module-body -->
-        </div>
+            </div>
 
 
-
-        <div class="module" style="float: left; width: 48%">
-
-            <h2><span>Statistik Berdasarkan Wilayah</span></h2>
-
-            <div class="module-body">
+            <div id="tabs-b">
 
                 <table border="0" width="100%" class="noborder" style="text-align: center">
                     <tbody>
@@ -149,7 +147,7 @@
                                     <option value="10">2009</option>
                                     <option value="11">2010</option>
                                     <option value="12">2011</option>
-                                </select>                                                            
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -189,7 +187,8 @@
                     </tbody>
                 </table>
 
-            </div> <!-- End .module-body -->
+
+            </div>
         </div>
     </div>
-</div>	
+</div>
