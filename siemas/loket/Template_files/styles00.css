@@ -327,7 +327,7 @@ div.module div.module-table-body {
 
 div.module h2 { 
     /* Sliding right image */
-    background: url('module-h2.gif') no-repeat scroll top left;
+    background: url('module-h.gif') no-repeat scroll top left;
 	display: block;
 	float: left;
 	height: 32px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
@@ -346,7 +346,7 @@ div.module h2 {
 
 div.module h2 span { 
 	/* Background left image */ 
-	background: url('module-i2.gif') no-repeat top right;
+	background: url('module-i.gif') no-repeat top right;
 	display: block;
 	line-height: 20px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
 	padding: 7px 0 5px 18px;

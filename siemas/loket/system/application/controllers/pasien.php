@@ -14,7 +14,7 @@ class Pasien extends Controller {
         $this->load->view('profil_pasien');
     }
 
-    function profil_kk(){
-       $this->load->view('profil_kk');
+    function registrasi_kunjungan(){
+        $this->load->view('registrasi_kunjungan');
     }
 }
