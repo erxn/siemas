@@ -4,21 +4,11 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
         <title>Puskesmas Bogor Tengah</title>
 
-
-        <!-- 1. Add these JavaScript inclusions in the head of your page -->
+        
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/highcharts.js"></script>
-
-        <!-- 1a) Optional: add a theme file -->
-        <!--
-                <script type="text/javascript" src="../js/themes/gray.js"></script>
-		-->
-
-        <!-- 1b) Optional: the exporting module -->
         <script type="text/javascript" src="js/modules/exporting.js"></script>
 
-
-        <!-- 2. Add the JavaScript to initialize the chart on document ready -->
         <script type="text/javascript">
 		
             var chart;
