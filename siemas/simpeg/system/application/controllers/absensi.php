@@ -25,5 +25,13 @@ class Absensi extends Controller {
     function input_libur($bulan = 0, $tahun = 0) {
         $this->load->view('form/input_libur');
     }
+    
+    function rekap_absensi($bulan = 0, $tahun = 0) {
+        $this->load->view('laporan/rekap_absensi');
+    }
+
+    function rekap_jam_efek($bulan = 0, $tahun = 0) {
+        $this->load->view('laporan/rekap_jam_efek');
+    }
 
 }

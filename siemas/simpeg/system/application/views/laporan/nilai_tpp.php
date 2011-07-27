@@ -1,6 +1,35 @@
-<?php include 'header.php'; ?>
+<?php $this->load->view('header');
 
-<?php include '../forms/list_pegawai.php'; ?>
+$pegawai = array(
+        "",
+        "Dr. ILHAM CHAIDIR",
+        "Dr. YOHANA MARI YUSTINI",
+        "Drg. MELLYAWATI",
+        "Dr. DINDIN A. SETIAWATY",
+        "Dr. LINA RUFLINA",
+        "Drg. SITI MILYARNI REMIKA, MM",
+        "ROSMIATI",
+        "SADIYAH, AMKG",
+        "Drg. KARINA AMALIA",
+        "SUGIHARYATI, AMKeb",
+        "HUSNA",
+        "ENENG SURTININGSIH, AMKep",
+        "ENDAH PURASANTI, AMKeb",
+        "DWIJO KURJIANTO, AMAK",
+        "SEPTY MARHAENY, AMKep",
+        "FEBBY HENDRIYANI  S.",
+        "NINA ANDRIYANTI, AMKL",
+        "RIDWANUDIN HARIS, AMKep",
+        "MARICE SINORITA, AMKeb",
+        "T A R P I N, AMRad",
+        "MARYANI, A.Md Kp",
+        "IIS AISAH",
+        "MAD SOLEH",
+        "AGTI NURVITASARI, SKM",
+        "NIDA NURAIDA, AMdG"
+    );
+
+?>
 
 <?php
 $bulan = array(
@@ -46,7 +75,7 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
             <h2><span>Pilihan</span></h2>
             <div class="module-body">
 
-                <p>Tahun
+                Tahun
                     <select id="tahun">
                         <?php for ($i = 0; $i < count($tahun); $i++) : ?>
                             <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini) echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
@@ -111,4 +140,4 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer'); ?>

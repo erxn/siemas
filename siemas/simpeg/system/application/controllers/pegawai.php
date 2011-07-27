@@ -41,5 +41,17 @@ class Pegawai extends Controller {
     function input_struktur_organisasi() {
         $this->load->view('form/input_struktur_organisasi');
     }
+    
+    function laporan_duk() {
+        $this->load->view('laporan/duk');
+    }
+
+    function laporan_biodata_fungsional($id_pegawai = 0) {
+        $this->load->view('laporan/biodata_fungsional');
+    }
+
+    function laporan_skumptk($id_pegawai = 0) {
+        $this->load->view('laporan/skumptk');
+    }
 
 }

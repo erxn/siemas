@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php $this->load->view('header'); ?>
 
 <script type="text/javascript" src="template/jquery.js"></script>
 
@@ -790,4 +790,4 @@
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php $this->load->view('footer'); ?>
