@@ -8,16 +8,16 @@
 Class Data_pasien_model extends Model{
     
     function Data_pasien_model (){
-        Parent::Model;
+        parent::Model();
     }
     
-    function get_semua_data_pasien($id='id_pasien'){                        //buat ngeluarin semua data pasiennnn        
+    function get_semua_data_pasien(){                        //buat ngeluarin semua data pasiennnn        
         $data=array();
-        $kueri=$this->db->query("SELECT tanggal_pendaftaran, KK_id_KK, nama_pasien, jk, tanggal_lahir, status_pelayanan, no_kartu_layana FROM siemas ORDER BY $id" );
+        $kueri=$this->db->query("SELECT * FROM pasien JOIN kk" );
         
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
-                $data[]=row;
+                $data[]=$row;
             }
         }
         $kueri->free_result();

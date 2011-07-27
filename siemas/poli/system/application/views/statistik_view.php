@@ -1,9 +1,25 @@
 <?php $this->load->view('header');?>
+ <div id="subnav">
+    <div class="container_12">
+        <div class="grid_12">
+
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
 
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
+        <script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
 
 
+<script type="text/javascript">
+            $(document).ready(function(){
+                $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
+
+       });
+        </script>
 
 <script>
     $(function() {
@@ -88,17 +104,21 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td style="text-align: center !important">
-                                <a id="datepicker" href="bulanan_penyakit.php" class="tombol-kotak">
+                            <td  style="text-align: center !important">
+                                <div class="tombol-kotak">
+                                <a class="pop"  href="index.php/statistik/grafik_bulanan_penyakit">
                                     <img src="Template_files/bulan.png" width="90" height="80" alt="edit" />
                                     <span>Lihat grafik</span>
                                 </a>
+                                </div>
                             </td>
-                            <td id="datepicker" style="text-align: center !important">
-                                <a id="datepicker1" href="tahunan_penyakit.php" class="tombol-kotak">
+                            <td style="text-align: center !important">
+                                <div class="tombol-kotak">
+                                <a class="pop"  href="index.php/statistik/grafik_tahunan_penyakit" class="tombol-kotak">
                                     <img src="Template_files/tahun.png" width="80" height="80" alt="edit" />
                                     <span>Lihat grafik</span>
                                 </a>
+                                    </div>
                             </td>
                         </tr>
                     </tbody>
@@ -171,17 +191,21 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td style="text-align: center !important">
-                                <a id="datepicker2" href="bulanan_wilayah.php" class="tombol-kotak">
+                            <td style="text-align: center !important" >
+                                <div class="tombol-kotak">
+                                <a class="pop"  href="index.php/statistik/grafik_bulanan_wilayah" >
                                     <img src="Template_files/bulan.png" width="90" height="80" alt="edit" />
                                     <span>Lihat grafik</span>
                                 </a>
+                                    </div>
                             </td>
                             <td style="text-align: center !important">
-                                <a id="datepicker3" href="tahunan_wilayah.php" class="tombol-kotak">
+                                <div class="tombol-kotak">
+                                <a class="pop" href="index.php/statistik/grafik_tahunan_wilayah" >
                                     <img src="Template_files/tahun.png" width="80" height="80" alt="edit" />
                                     <span>Lihat grafik</span>
                                 </a>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

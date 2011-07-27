@@ -81,41 +81,30 @@
                 $('.password').pstrength();
             });
         </script>
+
     </head>
+
     <body>
         <!-- Header -->
         <div id="header">
-            <!-- Header. Status part -->
-            <div id="header-status">
-                <div class="container_12">
-                    <div class="grid_8">
-                        <span id="text-invitation"></span>
-                        <!-- Messages displayed through the thickbox -->
+            
+            
 
-                    </div>
-                    <div class="grid_4">
-                        <a href="" id="logout">
-                            Logout
-                        </a>
-                    </div>
-                </div>
-                <div style="clear:both;"></div>
-            </div> <!-- End #header-status -->
-
-            <img src="Template_files/logo0000.gif" style="position: absolute; top:56px; left:60px" />
-            <img src="Template_files/puskesmas.png" style="position: absolute; top:45px; left:120px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:95px; left:120px" />
-            <img src="Template_files/gigi.png" style="position: absolute; top:40px; right:2px" />
+            <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:60px" />
+            <img src="Template_files/puskesmas.png" style="position: absolute; top:15px; left:120px" />
+            <img src="Template_files/alamat.png" style="position: absolute; top:55px; left:120px" />
+            <img src="Template_files/gigi.png" style="position: absolute; top:10px; right:2px" />
             <!-- Header. Main part -->
             <div id="header-main">
                 <div class="container_12">
                     <div class="grid_12">                       												
                         <ul id="nav">
-                            <li><a href="">Home</a></li>
-                            <li id="current"><a href="#">Antrian</a></li>
-                            <li><a href="#">Pasien</a></li>
-                            <li><a href="#">Statistik</a></li>
-                            <li><a href="#">Laporan</a></li>
+                            <li><a href="index.php/antrian">Antrian</a></li>
+                            <li><a href="index.php/pasien">Pasien</a></li>
+                            <li><a href="index.php/statistik">Statistik</a></li>
+                            <li><a href="index.php/laporan">Laporan</a></li>
+                             <li><a href="index.php/laporan">Logout</a></li>
+
                         </ul>
 
                     </div><!-- End. .grid_12-->
@@ -126,3 +115,4 @@
             <!-- Sub navigation -->
 
         </div> <!-- End #header -->
+       
