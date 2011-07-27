@@ -1,13 +1,9 @@
-<?php include 'header.php';?>
+<?php $this->load->view('header');?>
 <!-- SUBNAV -->
 <div id="subnav">
     <div class="container_12">
         <div class="grid_12">
-            <ul>
-                <li><a href="">Antrian Poli</a></li>
-                <li><a href="">Pasien Baru</a></li>
-
-            </ul>
+           
         </div>
         <div style="clear: both;"></div>
     </div>

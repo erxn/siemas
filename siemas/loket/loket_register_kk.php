@@ -179,7 +179,7 @@
                     <div class="module">
                         <h2><span>Kepala Keluarga (KK)</span></h2>
                         <div class="module-body">
-                            <form action="loket_kk_sukses_1.php">
+                            <form action="loket_kk_sukses.php">
                                 <table class="noborder" style="width: 98%">
                                     <strong>PENDAFTARAN KK BARU</strong>
                                     <tr>
