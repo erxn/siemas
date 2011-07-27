@@ -18,13 +18,16 @@
     <div style="clear: both;"></div>
 </div>
 <!-- END SUBNAV -->
-
-<div>
-    <div class="grid_6" style="width: 98%">
         <div class="module">
-            <h2><span>Data Pasien</span></h2>
             <div class="module-body">
-                <h4>Cari Pasien</h4>
+                <div>
+                    <div  class="tabs">
+                        <ul>
+                            <li><a href="#tabs-a">Data Pasien</a></li>
+                        </ul>
+                        <br/>
+                        <div id="tabs-a">
+                            <h4>Cari Pasien</h4>
                 <table class="noborder" style="width: 50%">
                     <tr>
                         <td>No. Index</td>
@@ -56,14 +59,6 @@
                             </div></td>
                     </tr>
                 </table>
-                <div>
-                    <div  class="tabs" style="margin-top:20px">
-                        <ul>
-                            <li><a href="#tabs-a">Data Pasien</a></li>
-                        </ul>
-                        <br/>
-                        <div id="tabs-a">
-                            
                                 <table id="myTable" class="tablesorter" style="width: 98%" >
                                     <thead>
                                         <tr>
@@ -82,7 +77,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="align-center">1</td>
-                                            <td><a href="">10-04-2010</a></td>
+                                            <td>10-04-2010</td>
                                             <td>M-1234</td>
                                             <td><a class="popup" href="index.php/pasien/profil_kk">Dimas Putera</a></td>
                                             <td><a class="popup" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
@@ -253,5 +248,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
