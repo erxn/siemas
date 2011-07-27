@@ -20,11 +20,26 @@ class Model_obat {
         return $result;
     }
 
+    public function history_bt($BT){
+
+        $result = $this->db->results("SELECT DISTINCT(no_sbkk),tanggal FROM history_obat WHERE tanggal LIKE '$BT%' ORDER BY tanggal",'array');
+
+        return $result;
+    }
+
+
     public function ambil_narkotik(){
 
         $result = $this->db->results("SELECT * FROM obat WHERE narkotik='1'");
 
         return $result;
+    }
+
+    public function tambah_resep($date,$id_obat,$jumlah,$id_pasien){
+
+        $result = $this->db->results("SELECT * FROM obat WHERE narkotik='1'");
+
+
     }
 
     public function tambah($sbkk,$isi,$kadaluarsa,$batch){

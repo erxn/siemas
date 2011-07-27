@@ -4,9 +4,9 @@ class Controller_tambah_obat extends Panada {
     
     public function __construct(){
         parent::__construct();
-		$this->db = new library_db();
 		$this->session = new Library_session();
                 $this->obat = new Model_obat();
+                $this->date = new Model_history();
     }
     
     public function index(){
@@ -30,7 +30,7 @@ class Controller_tambah_obat extends Panada {
             else{
                 foreach ($list as $list){
                     if(isset ($year[$n]) && isset ($month[$n]) && isset ($day[$n]))
-                        {$kadaluarsa[$n]=$year[$n].'-'.$month[$n].'-'.$day[$n];}
+                        {$kadaluarsa[$n]=$this->date->gabung($day[$n], $month[$n], $year[$n]);}
                         else {$kadaluarsa[$n]= NULL;}
                     $n++;
                     }

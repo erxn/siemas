@@ -4,8 +4,9 @@ class Controller_laporan extends Panada {
     
     public function __construct(){
         parent::__construct();
-		$this->db = new library_db();
 		$this->session = new Library_session();
+                $this->date = new Model_history();
+                $this->obat = new Model_obat();
     }
     
     public function index(){
@@ -37,6 +38,21 @@ class Controller_laporan extends Panada {
 	public function pemasukan(){
         $views['page_title']    = 'Laporan Pemasukan Obat - Apotek';
         $views['tanggal'] = date('d-m-Y');
+        $views['hasil'] = NULL;
+         if($_POST){
+            if(isset ($_POST['bulan']) && isset ($_POST['tahun'])){
+                $BT = $this->date->gabung2($_POST['bulan'], $_POST['tahun']);
+                $hasil = $this->obat->history_bt($BT);
+                if(isset ($hasil)){
+                    $views['hasil'] = $hasil;
+                }   else{
+                        $views['alert'] = 'Hasil pencarian pada bulan '.$_POST['bulan'].' tahun '.$_POST['tahun'].' tidak ada.';
+                    }
+            }
+            if(isset ($_POST['tanggal'])){
+                $tanggal = $_POST['tanggal'];}
+            
+         }
         $this->view_laporan_pemasukan($views);
     }
 	
