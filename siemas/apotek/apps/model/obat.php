@@ -35,11 +35,31 @@ class Model_obat {
         return $result;
     }
 
-    public function tambah_resep($date,$id_obat,$jumlah,$id_pasien){
+    public function tambah_isi_resep($id_pasien, $tanggal, $id_obat, $jumlah){
+        $id_resep = $this->db->find_var("SELECT id_resep FROM resep WHERE id_pasien='$id_pasien' AND waktu LIKE '$tanggal%'");
+        $n='1';
+        foreach ($id_obat as $result) {
+                if(isset ($result[$n])){
+                $data2['id_obat'] = $id_obat[$n];
+                $data2['id_resep'] = $id_resep;
+                $data2['jumlah_terpakai'] = $jumlah[$n];
+                $query = $this->db->insert('isi_resep',$data2);}
+         //       $query = $this->db->update('obat', $data2, $data3);
 
-        $result = $this->db->results("SELECT * FROM obat WHERE narkotik='1'");
+			$n++;
+		}
+    }
+    
+    public function resep_pasien($tanggal,$id_antrian){
 
-
+        $id_kunjungan = $this->db->find_var("SELECT kunjungan_id_kunjungan FROM antrian WHERE id_antrian='$id_antrian' AND tanggal='$tanggal'");
+        $id_pasien = $this->db->find_var("SELECT pasien_id_pasien FROM kunjungan WHERE id_kunjungan='$id_kunjungan'");
+        $waktu = $tanggal.' '.date('H:i:s');
+        $data['waktu']=$waktu;
+        $data['id_pasien']=$id_pasien;
+        $query = $this->db->insert('resep',$data);
+        return $id_pasien;
+        
     }
 
     public function tambah($sbkk,$isi,$kadaluarsa,$batch){

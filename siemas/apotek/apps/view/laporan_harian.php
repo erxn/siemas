@@ -55,4 +55,4 @@
         </div> <!-- End #footer -->
 	</body>
 </html>
-<!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
+<!-- This document originaly created by R Bagus Dimas Putra r4yv1n@yahoo.com -->

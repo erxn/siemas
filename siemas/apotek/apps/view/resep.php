@@ -43,10 +43,11 @@
                     <div class="grid_12">
 						<div id="resep">
 							<form method="post">
-								Tanggal resep yang akan diinputkan adalah
-								<input id="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
-								<input type="submit" value="ubah">
-							</form>		
+								<form method="POST"
+                        onsubmit="if(document.getElementById('antrian').value == '') {alert('No Antrian Harus Diisi'); return false} " id="form_resep" >Tanggal resep yang akan diinputkan adalah
+                                                                <input id="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
+								
+								
 						</div>
                     </div><!-- End. .grid_12-->
                 </div><!-- End. .container_12 -->
@@ -55,65 +56,76 @@
         </div> <!-- End #header -->
         
 		<div class="container_12">
-
+                    
                     <table>
 					<tr>
 						<td width="75px">
 							<p align="right">no antrian :</p>
 						</td>
-						<td width="100px">
-							<input type="text" maxlength="255" size="30">
+						<td width="300px">
+							<input type="text" class="input_angka" id="antrian" name="antrian"  maxlength="255" size="30">
 						</td>
 					</tr>
+                                        
+                                        <tr>
+                                            <td>
+                                            </td>
+                                            <td>
+						<?php echo $verify; ?></td>
+					</tr>
+                                        
 				</table>
-				<table>
+                    <div class="module" style="width: 473px ;">
+                    <h2><span>Data Obat</span></h2>
+
+                    <div class="module-table-body">
+                            <table><?php $n=1; ?>
+                                        <thead>
 					<tr>
-						<td width="30px">
-							<p align="center">id obat</p>
-						</td>
-						<td width="100px">
-							<p align="center">nama obat</p>
-						</td>
-						<td width="30px">
-							<p align="center">jumlah</p>
-						</td>
+						<th width="25%" class="align-center">
+							id obat
+						</th>
+						<th width="50%" class="align-center">
+							nama obat
+						</th>
+						<th width="25%" class="align-center">
+							jumlah
+						</th>
+					</tr>
+                                        </thead>
+					<tr>
+                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <?php $n++; ?>
+                                        </tr>
+					<tr>
+                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <?php $n++; ?>
 					</tr>
 					<tr>
-						<td><input type="text" maxlength="255" size="10"></td>
-						<td><input type="text" maxlength="255" size="30"></td>
-						<td><input type="text" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <?php $n++; ?>
 					</tr>
 					<tr>
-						<td><input type="text" maxlength="255" size="10"></td>
-						<td><input type="text" maxlength="255" size="30"></td>
-						<td><input type="text" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <?php $n++; ?>
 					</tr>
 					<tr>
-						<td><input type="text" maxlength="255" size="10"></td>
-						<td><input type="text" maxlength="255" size="30"></td>
-						<td><input type="text" maxlength="255" size="10"></td>
+                                            <td></td>
+                                            <td class="align-center"><input class="submit-green" type="submit" value="Benar"</td>
+                                            <td></td>
 					</tr>
-					<tr>
-						<td><input type="text" maxlength="255" size="10"></td>
-						<td><input type="text" maxlength="255" size="30"></td>
-						<td><input type="text" maxlength="255" size="10"></td>
-					</tr>
-					<tr>
-						<td><input type="text" maxlength="255" size="10"></td>
-						<td><input type="text" maxlength="255" size="30"></td>
-						<td><input type="text" maxlength="255" size="10"></td>
-					</tr>
-					<tr>
-						<td><input type="text" maxlength="255" size="10"></td>
-						<td><input type="text" maxlength="255" size="30"></td>
-						<td><input type="text" maxlength="255" size="10"></td>
-					</tr>
-					<tr>
-						<td><input type="text" maxlength="255" size="10"></td>
-						<td><input type="text" maxlength="255" size="30"></td>
-						<td><input type="text" maxlength="255" size="10"></td>
-					</tr>
+
 				</table>
+                                 </div></div>
+                    </form>
 
                         <div style="clear: both;"></div>
 						
@@ -124,12 +136,30 @@
         <div id="footer">
         	<div class="container_12">
             	<div class="grid_12">
-                	<!-- You can change the copyright line for your own -->
                 	<p>&copy; 2011. Siemas.</p>
         		</div>
             </div>
             <div style="clear:both;"></div>
         </div> <!-- End #footer -->
-	</body>
+
+        <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('#form_obat').validity(function(){
+
+           $('.input_angka').match('number');
+
+        });
+
+        $.validity.setup({ outputMode:"modal" });
+
+
+    });
+
+
+</script>
+</body>
 </html>
-<!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
+<!-- This document originaly created by R Bagus Dimas Putra r4yv1n@yahoo.com -->
+
