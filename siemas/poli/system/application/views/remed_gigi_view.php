@@ -1,9 +1,9 @@
 <?php $this->load->view('header');?>
-<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
-<script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
+
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
-
+<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
+<script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -57,40 +57,40 @@
                     <strong></strong>
                     <tr  class="odd">
                         <td>Tanggal Pendaftaran:</td>
-                        <td style="width: 50%">  20-09-2011 </td>
+                        <td style="width: 50%"><?php echo $dr['tanggal_pendaftarann']; ?> </td>
                     </tr>
                     <tr>
                         <td>Nama Pasien:</td>
-                        <td style="width: 50%">Meri MArlina</td>
+                        <td style="width: 50%"><?php echo $dr['nama_pasien']?></td>
                     </tr>
                     <tr  class="odd">
                         <td>Jenis Kelamin:</td>
-                        <td style="width: 50%">P</td>
+                        <td style="width: 50%"><?php echo $dr['jk']?></td>
 
                     </tr>
 
                     <tr>
                         <td>Tanggal Lahir</td>
-                        <td>19-02-1990</td>
+                        <td><?php  echo $dr['tanggal_lahit']?></td>
 
                     </tr>
                     <tr class="odd">
-                        <td >Status Dalam Keluarga:</td>
-                        <td>Istri</td>
+                        <td >Umur</td>
+                        <td>umur</td>
 
                     </tr>
                     <tr>
                         <td >Status Dalam Keluarga:</td>
-                        <td>Istri</td>
+                        <td><?php echo $dr['status_dalam_keluarga'];?></td>
 
                     </tr>
                     <tr class="odd">
                         <td>Status PElayanan</td>
-                        <td>Askes</td>
+                        <td><?php echo $dr['status_pelayanan'];?></td>
                     </tr>
                     <tr>
                         <td>No Kartu</td>
-                        <td>090998989</td>
+                        <td><?php echo $dr['no_kartu_layanan'];?></td>
                     </tr>
                 </table>
             </form>
@@ -117,7 +117,7 @@
 
                 <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
                 <tr>
-                    
+
                     <td><input type="submit" class="submit-green" value="Cari "></td>
                 </tr>
 
@@ -135,35 +135,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="align-center">1</td>
-                        <td><a href="data_akhir_tabel.php" class="pop">20-08-2009</a></td>
-                        <td>Sariawan</td>
-                        <td>Bolong gigi</td>
-                        <td>Karies, Cabut Gigi</td>
-                        <td>AMoksilin</td>
-                        <td>Perlu tindakan cepatttttt!!</td>
-                    </tr>
-                    <tr class="odd">
-                        <td class="align-center">2</td>
-                        <td><a href="#" class="pop">20-08-2009</a></td>
-                        <td>Sariawan</td>
-                        <td>Bolong gigi</td>
-                        <td>Karies, Cabut Gigi</td>
-                        <td>AMoksilin</td>
-                        <td>Perlu tindakan cepatttttt!!</td>
-                    </tr>
-                    <tr>
-                        <td class="align-center">3</td>
-                        <td><a href="#" class="pop">20-08-2009</a></td>
-                        <td>Sariawan</td>
-                        <td>Bolong gigi</td>
-                        <td>Karies, Cabut Gigi</td>
-                        <td>AMoksilin</td>
-                        <td>Perlu tindakan cepatttttt!!</td>
-                    </tr>
+                  
+                             <?php foreach($remed_pasien as $rp){?>
 
+                    <tr>
+                        <td class="align-center">no</td>
+                        <td><a href="index.php/pasien/data_remed_poli_lain" class="pop"><?php echo $rp['tanggal_kunjungan']; ?></a></td>
+                        <td><?php echo $rp['anamnesis'];?></td>
+                        <td><?php echo $rp['diagnosa'];?></td>
+                        <td><?php echo $rp['layanan'];?></td>
+                        <td><?php echo $rp['resep_obat'];?></td>
+                        <td><?php echo $rp['keterangan'];?></td>
+                    </tr>
+                   
                 </tbody>
+                <?php } ?>
             </table>
 
             <div class="pager" id="pager">
@@ -249,7 +235,7 @@
 
                         <td></td>
                         <td>
-                            <a class="pop" href="index.php/rekam_medik_gigi/data_diagnosis_dokter">             <!--index.php/namacontroller/nama fungsi-->
+                            <a class="pop" href="index.php/pasien/data_diagnosis_dokter">             <!--index.php/namacontroller/nama fungsi-->
                                 <input type="submit" class="submit-green" value="Lihat Hasil Diagnosis ">
                             </a>
                         </td>

@@ -40,7 +40,7 @@
 |
 */
 
-$route['default_controller'] = "data_pasien";
+$route['default_controller'] = "antrian";
 $route['scaffolding_trigger'] = "";
 
 

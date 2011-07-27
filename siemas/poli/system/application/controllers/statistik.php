@@ -11,6 +11,22 @@ class Statistik extends Controller{
     function index(){
         $this->load->view('statistik_view');
     }
+
+    function grafik_bulanan_penyakit(){
+        $this->load->view('grafik_bulanan_penyakit_view');
+    }
+
+    function grafik_bulanan_wilayah(){
+        $this->load->view('grafik_bulanan_wilayah_view');
+    }
+
+    function grafik_tahunan_penyakit(){
+        $this->load->view('grafik_tahunan_penyakit_view');
+    }
+
+    function grafik_tahunan_wilayah(){
+        $this->load->view('grafik_tahunan_wilayah_view');
+    }
 }
 
 ?>

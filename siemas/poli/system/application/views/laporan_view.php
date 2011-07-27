@@ -1,4 +1,12 @@
 <?php $this->load->view('header')?>
+ <div id="subnav">
+    <div class="container_12">
+        <div class="grid_12">
+
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
 
  <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />

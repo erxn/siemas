@@ -10,21 +10,20 @@ Class Rekam_medik_model extends Model{
         parent::Model();
     }
     
-    function get_remed_pasien_gigi_model($id){               //buat nampilin data pasien per id,,buat di input pelayanan,,,biar si dokter langsung input
+    function get_remed_pasien_gigi(){               //buat nampilin data pasien per id,,buat di input pelayanan,,,biar si dokter langsung input
         $data="";
-        $kueri=$this->db->query("FROM remed_poli_gigi
-JOIN remed_poli_gigi_has_layanan
+        $kueri=$this->db->query("SELECT * FROM remed_poli_gigi
+JOIN remed_gigi_layanan
   ON remed_poli_gigi.id_remed_gigi
-   = remed_poli_gigi_has_layanan.remed_poli_gigi_id_remed_gigi
+   = remed_gigi_layanan.id_remed_gigi
 JOIN layanan
-  ON remed_poli_gigi_has_layanan.layanan_id_layanan
-   = layanan.id_layanan
-WHERE layanan.id_layanan=$id ");
+  ON remed_gigi_layanan.id_layanan
+   = layanan.id_layanan");
         
         if($kueri->num_rows()>0){
             $data=$kueri->row();
         }
-        $kueeri->free_result();
+        $kueri->free_result();
         return $data;
     }
     
@@ -63,7 +62,20 @@ WHERE layanan.id_layanan=$id ");
         $kueeri->free_result();
         return $data;
     }
-    
+
+    function data_pasien_remed(){
+         $data=array();
+        $kueri=$this->db->query("SELECT * FROM pasien" );
+
+        if($kueri->num_rows()>0){
+            foreach ($kueri->result_array()as $row){
+                $data[]=$row;
+            }
+        }
+        $kueri->free_result();
+        return $data;
+    }
+
     function masuk_remed_pasien_model($data){                           //dokter inputin data pelayanan yg dibutuhkan
         
         $kueri=$this->db->insert('remed_poli_gigi',$data);
