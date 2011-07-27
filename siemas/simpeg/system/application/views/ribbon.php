@@ -197,15 +197,15 @@
                 <ul>
                     <li id="groupPegawai_ribbon-msofficeTabLaporan">
                         <div>
-                            <button href="laporan/duk.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar urut kepangkatan pegawai">
+                            <button href="index.php/pegawai/laporan_duk" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar urut kepangkatan pegawai">
                                 <span class="ui-icon msoffice-icon-agenda-32x32"></span>
                                 <span class="ui-button-label">Daftar Kepangkatan</span>
                             </button>
-                            <button href="laporan/biodata_fungsional.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat biodata fungsional dari pegawai">
+                            <button href="index.php/pegawai/laporan_biodata_fungsional" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat biodata fungsional dari pegawai">
                                 <span class="ui-icon msoffice-icon-biodata-32x32"></span>
                                 <span class="ui-button-label">Biodata Fungsional</span>
                             </button>
-                            <button href="laporan/skumptk.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat Surat Keterangan Untuk Mendapatkan Tunjangan Keluarga (SKUM PTK)">
+                            <button href="index.php/pegawai/laporan_skumptk" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat Surat Keterangan Untuk Mendapatkan Tunjangan Keluarga (SKUM PTK)">
                                 <span class="ui-icon msoffice-icon-signed-32x32"></span>
                                 <span class="ui-button-label">SKUM PTK</span>
                             </button>
@@ -214,11 +214,11 @@
                     </li>
                     <li id="groupAbsensi_ribbon-msofficeTabLaporan">
                         <div>
-                            <button href="laporan/rekap_absensi.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi absensi bulanan">
+                            <button href="index.php/absensi/rekap_absensi" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi absensi bulanan">
                                 <span class="ui-icon msoffice-icon-rekapabsen-32x32"></span>
                                 <span class="ui-button-label">Rekap Absensi</span>
                             </button>
-                            <button href="laporan/rekap_jam_efek.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi jam kerja efektif bulanan">
+                            <button href="index.php/absensi/rekap_jam_efek" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat rekapitulasi jam kerja efektif bulanan">
                                 <span class="ui-icon msoffice-icon-rekapabsenjam-32x32"></span>
                                 <span class="ui-button-label">Rekap Jam Kerja Efektif</span>
                             </button>
@@ -227,15 +227,15 @@
                     </li>
                     <li id="groupPenilaian_ribbon-msofficeTabLaporan">
                         <div>
-                            <button href="laporan/nilai_dp3.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar nilai DP3 (Daftar Penilaian Pelaksanaan Pekerjaan)">
+                            <button href="index.php/penilaian/laporan_nilai_dp3" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar nilai DP3 (Daftar Penilaian Pelaksanaan Pekerjaan)">
                                 <span class="ui-icon msoffice-icon-rekapdp3-32x32"></span>
                                 <span class="ui-button-label">Daftar Nilai&nbsp;DP3</span>
                             </button>
-                            <button href="laporan/nilai_tpp.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar nilai TPP (Tambahan Perbaikan Penghasilan)">
+                            <button href="index.php/penilaian/laporan_nilai_tpp" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar nilai TPP (Tambahan Perbaikan Penghasilan)">
                                 <span class="ui-icon msoffice-icon-rekaptpp-32x32"></span>
                                 <span class="ui-button-label">Daftar Nilai&nbsp;TPP</span>
                             </button>
-                            <button href="laporan/rekap_tunjangan.php" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar pembayaran Tambahan Tunjangan Penghasilan (TTP)">
+                            <button href="index.php/penilaian/rekap_tunjangan" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat daftar pembayaran Tambahan Tunjangan Penghasilan (TTP)">
                                 <span class="ui-icon msoffice-icon-rekaptunjangan-32x32"></span>
                                 <span class="ui-button-label">Pembayaran Tunjangan</span>
                             </button>
