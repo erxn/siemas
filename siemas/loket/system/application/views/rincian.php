@@ -4,13 +4,19 @@
             <h2><span>RINCIAN BIAYA</span></h2>
             <div class="module-body">
                 <table class="noborder">
+                    <tr class="odd">
+                        <td style="width: 30% ">Tgl Pendaftaran</td>
+                        <td style="width: 1%">:</td>
+                        <td style="width: ">24 Januari 2011</td>
+                        <td></td>
+                    </tr>
                     <tr>
                         <td>Nama Pasien</td>
                         <td>:</td>
                         <td>Annisa Anastasia</td>
                         <td></td>
                     </tr>
-                    <tr>
+                    <tr class="odd">
                         <td>Umur</td>
                         <td>:</td>
                         <td>19 th</td>
@@ -20,6 +26,12 @@
                         <td>Alamat</td>
                         <td>:</td>
                         <td>Cibogor</td>
+                        <td></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>Status Pelayanan</td>
+                        <td>:</td>
+                        <td>Umum</td>
                         <td></td>
                     </tr>
                     <tr>
@@ -52,6 +64,10 @@
                             <td class="align-center">1</td>
                             <td><a href="">Cek Gula Darah</a></td>
                             <td>Rp 60.000,-</td>
+                        </tr>
+                        <tr class="odd">
+                            <td colspan="2" align="right"><b>Total</b></td>
+                            <td><span style="color:#1981ec;font-weight: bold">Rp 60.000,-</span></td>
                         </tr>
                     </tbody>
                 </table>

@@ -18,16 +18,10 @@
     <div style="clear: both;"></div>
 </div>
 <!-- END SUBNAV -->
-<div class="module">
-    <div class="module-body">
-        <div>
-            <div  class="tabs">
-                <ul>
-                    <li><h3>Data Pasien</h3></li>
-                </ul>
-                <br/>
-                <div id="tabs-a">
-                    <h4>Cari Pasien</h4>
+   <div class="grid_6" style="width: 98%">
+        <div class="module">
+            <h2><span>DATA PASIEN</span></h2>
+            <div class="module-body">
                     <table class="noborder" style="width: 50%">
                         <tr>
                             <td>No. Index</td>
@@ -240,12 +234,10 @@
                             </div>
                         </form>
                     </div>
-
-                    <div style="clear: both"></div>
-
-                    <div style="clear: both"></div>
-                </div>
             </div>
         </div>
-    </div>
-</div>
+   </div>
+                    
+
+                    <div style="clear: both"></div>
+    
