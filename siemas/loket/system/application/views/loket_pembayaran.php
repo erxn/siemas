@@ -1,4 +1,18 @@
-<?php include 'header.php';?>
+<?php $this->load->view('header');?>
+<!-- SUBNAV -->
+<div id="subnav">
+    <div class="container_12">
+        <div class="grid_12">
+
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<!-- END SUBNAV -->
+<script>
+    
+</script>
+<br/>
         <div class="container_12">
             <div>
                 <div class="grid_6" style="width: 98%">
@@ -50,75 +64,38 @@
 
                                     <tr>
                                         <td><div align="center">1</div></td>
-                                        <td><a href="">Meri Marlina</a></td>
+                                        <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
                                         <td>19 tahun</td>
                                         <td>Cibogor</td>
                                         <td>Gigi</td>
                                         <td width="35"><div align="right">Rp</div></td>
                                         <td width="61"><div align="right">15.000 </div></td>
                                         <td align="center">
-                                            <a id="test" href="rincian.php">
+                                            <a class="popup" id="test" href="index.php/pembayaran/rincian">
                                                 Rincian
                                             </a>
                                         </td>
-                                        </td>
-                                        <td><form id="form1" name="form1" method="post" action="">
-                                                <input type="checkbox" name="checkbox" id="checkbox" /> Lunas
-                                            </form>
+                                        <td>
+                                            <img src="Template_files/tick-cir.gif"/>
+                                            Lunas
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><div align="center">1</div></td>
-                                        <td><a href="">Meri Marlina</a></td>
+                                        <td><div align="center">2</div></td>
+                                        <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
                                         <td>19 tahun</td>
                                         <td>Cibogor</td>
                                         <td>Gigi</td>
                                         <td width="35"><div align="right">Rp</div></td>
                                         <td width="61"><div align="right">15.000 </div></td>
                                         <td align="center">
-                                            <a id="test" href="rincian.php">
+                                            <a class="popup" id="test" href="index.php/pembayaran/rincian">
                                                 Rincian
                                             </a>
                                         </td>
-                                        <td><form id="form1" name="form1" method="post" action="">
-                                                <input type="checkbox" name="checkbox" id="checkbox" /> Lunas
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><div align="center">1</div></td>
-                                        <td><a href="">Meri Marlina</a></td>
-                                        <td>19 tahun</td>
-                                        <td>Cibogor</td>
-                                        <td>Gigi</td>
-                                        <td width="35"><div align="right">Rp</div></td>
-                                        <td width="61"><div align="right">15.000 </div></td>
-                                        <td align="center">
-                                            <a id="test" href="rincian.php">
-                                                Rincian
-                                            </a>
-                                        </td>
-                                        <td><form id="form1" name="form1" method="post" action="">
-                                                <input type="checkbox" name="checkbox" id="checkbox" /> Lunas
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><div align="center">1</div></td>
-                                        <td><a href="">Meri Marlina</a></td>
-                                        <td>19 tahun</td>
-                                        <td>Cibogor</td>
-                                        <td>Gigi</td>
-                                        <td width="35"><div align="right">Rp</div></td>
-                                        <td width="61"><div align="right">15.000 </div></td>
-                                        <td align="center">
-                                            <a id="test" href="rincian.php">
-                                                Rincian
-                                            </a>
-                                        </td>
-                                        <td><form id="form1" name="form1" method="post" action="">
-                                                <input type="checkbox" name="checkbox" id="checkbox" /> Lunas
-                                            </form>
+                                        <td>
+                                            <img src="Template_files/cross-on.gif"/>
+                                            Lunas
                                         </td>
                                     </tr>
                                 </table>
