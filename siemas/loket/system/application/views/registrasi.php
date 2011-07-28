@@ -9,7 +9,7 @@
     </div>
 </div>
 <!-- END SUBNAV -->
-
+<br/>
 
 <!-- ISI -->
 
@@ -50,7 +50,7 @@
                     <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
                     <div class="float-left">
 
-                        <a class="tambah" href="index.php/kk/register_kk">
+                        <a class="tambah" href="index.php/pasien/registrasi_pasien_baru">
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
                     </div>
@@ -78,30 +78,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="even">
-                                <td class="align-center">2</td>
-                                <td><a href="">Meri Marlina</a></td>
-                                <td>19 th</td>
-                                <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                <td><a href="">Dimas Putera</a></td>
-                                <td align="center">
-                                    <a class="popup" id="test" href="reg_kunjungan.php">
-                                        <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="even">
-                                <td class="align-center">3</td>
-                                <td><a href="">Meri Marlina</a></td>
-                                <td>19 th</td>
-                                <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                <td><a href="">Dimas Putera</a></td>
-                                <td align="center">
-                                    <a id="test" href="reg_kunjungan.php">
-                                        <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/>
-                                    </a>
-                                </td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                     <div id="pager" class="pager">
@@ -161,6 +138,7 @@
                 <div id="tabs-a">
                     <div style="width: 100%">
                         <h4 align="right">Total Pasien: 5 orang</h4>
+                        
                         <table id="myTable" class="tablesorter" style="width: 100%">
                             <thead>
                                 <tr>

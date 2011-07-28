@@ -118,9 +118,9 @@
     <body>
         <div class="module">
             <h2><span>REGISTRASI PASIEN</span></h2>
-        </div>
+        
                 <h5>CARI KK</h5>
-                <table>
+                <table class="noborder">
                     <tr>
                         <td>Nama</td>
                         <td>:</td>
@@ -140,11 +140,9 @@
                     </tr>
                 </table>
                      </div>
-               
-         </div>
          <div style=";border: 1px black solid ">
             <h5>HASIL PENCARIAN KK</h5>
-            <table width="500" border="1">
+            <table >
                 <tr>
                     <td width="28"><strong>No.</strong></td>
                     <td width="138"><div align="center"><strong>Nama</strong> <strong>KK</strong></div></td>
