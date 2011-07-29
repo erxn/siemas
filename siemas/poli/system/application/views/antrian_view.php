@@ -12,7 +12,7 @@
 <div class="container_12" >
  <h3 style="margin-left: 20px">Antrian Poli gigi</h3>
  <div style=" margin-left: 550px; margin-top: 10px; width: 99%">
-        <a href="index.php/pasien/rekam_medik_pasien" class="kotak"><img src="Template_files/femaleG.png" border="0"/><br/>1 Deasy</a>
+        <a href="index.php/pasien/data_pasien_remed/2" class="kotak"><img src="Template_files/femaleG.png" border="0"/><br/>1 Deasy</a>
     </div>
 
 

@@ -112,7 +112,4 @@
                 </div><!-- End. .container_12 -->
             </div> <!-- End #header-main -->
             <div style="clear: both;"></div>
-            <!-- Sub navigation -->
-
-        </div> <!-- End #header -->
-       
+        
