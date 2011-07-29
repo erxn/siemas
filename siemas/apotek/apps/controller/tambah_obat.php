@@ -12,6 +12,7 @@ class Controller_tambah_obat extends Panada {
     public function index(){
         
         $views['page_title']    = 'Tambah Obat - Apotek';
+        $views['tanggal'] = date('d-m-Y');
         $views['error']    = NULL;
         $list = $this->obat->ambil();
         $views['list'] = $list;

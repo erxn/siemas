@@ -13,6 +13,7 @@ class Controller_resep extends Panada {
         $views['tanggal'] = date('d-m-Y');
         $views['page_title']    = 'Resep - Apotek';
         $views['verify']    = NULL;
+        $views['list_nama_obat'] = $this->obat->ambil_nama_obat();
         $n='1';
         if($_POST){
             $tanggal2 = $_POST['tanggal'];

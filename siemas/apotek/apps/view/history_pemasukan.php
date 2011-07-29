@@ -7,8 +7,8 @@
 
                             <li><a href="<?php echo $this->base_url?>index.php/history/Kadaluarsa">Kadaluarsa</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
-                            <li id="current"><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
+                            <li id="current"><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
 
                         </ul>
 
@@ -85,21 +85,21 @@
 					</tr>
 					</table>
 					</form>
-                    <?php if(isset($hasil)) {   ?>
+                    <?php if($hasil) {   ?>
                         <div class="module" style="width: 333px ;">
                         <div class="module-table-body">
                         <table id="myTable" class="tablesorter" >
                         	<thead>
                                 <tr>
-                                    <th style="width:40%">no antrian</th>
-                                    <th style="width:60%">nama</th>
+                                    <th style="width:40%">Tanggal</th>
+                                    <th style="width:60%">No SBKK</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($hasil as $hasil) { ?>
                                 <tr>
-                                    <td><?php echo $hasil['id_antrian'] ; ?></td>
-                                    <td><?php echo $hasil['nama_pasien'] ; ?></td>
+                                    <td><?php echo $hasil['tanggal'] ; ?></td>
+                                    <td><?php echo $hasil['no_sbkk'] ; ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -107,6 +107,7 @@
                     <?php } else if(isset ($alert)) { ?>
                                 <?php echo $alert; ?>
                     <?php } ?>
+					
 
 
                         <div style="clear: both;"></div>

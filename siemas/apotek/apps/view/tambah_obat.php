@@ -49,7 +49,14 @@
                 </td>
                 <td width="120px">
                     <input type="text" maxlength="255" name="no_sbkk" id="sbkk">
-                    <?php                    echo $error ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p align="right">Tanggal :</p>
+                </td>
+                <td>
+                    <input type="text" maxlength="255" name="tanggal" class="tanggal" value="<?php echo $tanggal; ?>">
                 </td>
             </tr>
         </table>
@@ -79,13 +86,8 @@
                                 <td><?php echo $list->satuan_obat; ?></td>
                                 <td><input  class="input_angka" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
                                            ></td>
-                                <td><input  type="text"  id="field_1_<?php echo $n - 1 ?>"name="day[<?php echo $n ?>]" maxlength="2" size="2px" value="HH" onfocus="if(this.value=='HH'){this.value=''}" onblur="if(this.value==''){this.value='HH'}"
-                                             >
-                                    - <input  type="text"  id="field_2_<?php echo $n - 1 ?>"  name="month[<?php echo $n ?>]" maxlength="2" size="2px" value="BB" onfocus="if(this.value=='BB'){this.value=''}" onblur="if(this.value==''){this.value='BB'}"
-                                             >
-                                    - <input  type="text" id="field_3_<?php echo $n - 1 ?>" name="year[<?php echo $n ?>]" maxlength="4" size="4px" value="TTTT" onfocus="if(this.value=='TTTT'){this.value=''}" onblur="if(this.value==''){this.value='TTTT'}"
-                                             ></td>
-                                <td><input type="text"  id="field_4_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
+                                <td><input type="text" name="date" class="tanggal" value="<?php echo $tanggal; ?>"></td>
+                                <td><input type="text"  id="field_1_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
                             </tr>
 <?php $n++;
                         } ?>
@@ -142,6 +144,11 @@
         $('#form_obat').validity(function(){
 
            $('.input_angka').match('number');
+           $( "#tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
 
         });
 
