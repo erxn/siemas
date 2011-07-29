@@ -20,40 +20,46 @@
             <div class="module">
                 <h2><span>Pendaftaran Pasien</span></h2>
                 <div class="module-body">
-                    <form>
+                    <form id="cari_pasien" action="index.php/pasien/cari_pasien">
                         <table id="form_cari" class="noborder" style="width: 80%;">
                             <tr>
                                 <td style="width: 30%;">ID Pasien</td>
                                 <td style="width: 10%;">:</td>
-                                <td style="width: 20%;"><input type="text" class="input-medium"/></td>
+                                <td style="width: 20%;"><input name="id_pasien" type="text" class="input-medium"/></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><i><b><center>atau</center></b></i></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
-                                <td><input type="text" class="input-medium" /></td>
+                                <td><input nama="nama_pasien"type="text" class="input-medium" /></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Umur</td>
                                 <td>:</td>
-                                <td><input type="text" class="input-medium" /></td>
+                                <td><input name="umur_pasien" type="text" class="input-medium" /></td>
                                 <td><div align="right">
-                                        <input class="submit-green" type="submit" value="Cari" />
-                                    </div></td>
+                                        <input name="cari" class="submit-green" type="submit" value="Cari" />
+                                    </div>
+                                </td>
                             </tr>
-
                         </table>
                     </form>
                     <hr style="width: 100%; border: 1px solid #cccccc"/>
                     <br/>
-                    <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
+                    
                     <div class="float-left">
 
                         <a class="tambah" href="index.php/kk/registrasi_kk">
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
                     </div>
+                    <div id="hasil_cari_kk" style="display: none">
+                    <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
                     <table id="myTable" class="tablesorter" style="width: 100%;">
                         <thead>
                             <tr>
@@ -98,7 +104,8 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                    </div>
+                    </div>
             </div>
 
         </div>

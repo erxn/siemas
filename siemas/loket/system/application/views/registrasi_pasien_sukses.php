@@ -100,7 +100,7 @@
                 </tr>
                 <tr class="odd">
                     <td><h5>Poli Tujuan</h5></td>
-                    <td><h5>POLI UMUM</h5></td>
+                    <td><h5><?php echo $poli;?></h5></td>
                 </tr>
             </table>
             
