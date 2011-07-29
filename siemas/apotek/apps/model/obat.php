@@ -13,6 +13,13 @@ class Model_obat {
         return $result;
     }
 
+    public function ambil_nama_obat(){
+
+        $result = $this->db->results("SELECT nbk_obat FROM obat");
+
+        return $result;
+    }
+
     public function jumlah(){
 
         $result = $this->db->get_var("SELECT COUNT(*) FROM obat");
@@ -27,11 +34,24 @@ class Model_obat {
         return $result;
     }
 
-    public function history_resep($BT){
+    public function history_resep($tanggal){
 
-        $result = $this->db->results("SELECT DISTINCT(no_sbkk),tanggal FROM history_obat WHERE tanggal LIKE '$BT%' ORDER BY tanggal",'array');
+        $result = $this->db->results("SELECT DISTINCT(id_pasien),id_antrian FROM resep WHERE waktu LIKE '$tanggal%'");
+        $data = $this->history_resep_nama($result, $tanggal);
+        return $data;
+    }
 
-        return $result;
+     public function history_resep_nama($antrian, $tanggal){
+        $n='1';
+        foreach ($antrian as $antrian){
+            $data[$n]['id_pasien'] = $antrian->id_pasien ;
+            $data[$n]['id_antrian'] = $antrian->id_antrian ;
+            $data[$n]['tanggal'] = $tanggal;
+            $data[$n]['nama_pasien'] = $this->db->find_var("SELECT nama_pasien FROM pasien WHERE id_pasien = '$antrian->id_pasien'");
+        
+            $n++;
+        }
+        return $data;
     }
 
 
@@ -46,12 +66,16 @@ class Model_obat {
         $id_resep = $this->db->find_var("SELECT id_resep FROM resep WHERE id_pasien='$id_pasien' AND waktu LIKE '$tanggal%'");
         $n='1';
         foreach ($id_obat as $result) {
-                if(isset ($result[$n])){
+                if($id_obat[$n]){
                 $data2['id_obat'] = $id_obat[$n];
                 $data2['id_resep'] = $id_resep;
                 $data2['jumlah_terpakai'] = $jumlah[$n];
+                $stok = $this->db->find_var("SELECT stok_obat FROM obat WHERE id_obat='$id_obat[$n]'");
+                $total = $stok - $jumlah[$n];
+                $data['stok_obat'] = $total;
+                $data3['id_obat'] = $id_obat[$n];
                 $query = $this->db->insert('isi_resep',$data2);}
-         //       $query = $this->db->update('obat', $data2, $data3);
+                $query = $this->db->update('obat', $data, $data3);
 
 			$n++;
 		}
@@ -59,8 +83,8 @@ class Model_obat {
     
     public function resep_pasien($tanggal,$id_antrian){
 
-        $id_kunjungan = $this->db->find_var("SELECT kunjungan_id_kunjungan FROM antrian WHERE id_antrian='$id_antrian' AND tanggal='$tanggal'");
-        $id_pasien = $this->db->find_var("SELECT pasien_id_pasien FROM kunjungan WHERE id_kunjungan='$id_kunjungan'");
+        $id_kunjungan = $this->db->find_var("SELECT id_kunjungan FROM antrian WHERE id_antrian='$id_antrian' AND tanggal_kunjungan='$tanggal'");
+        $id_pasien = $this->db->find_var("SELECT id_pasien FROM kunjungan WHERE id_kunjungan='$id_kunjungan'");
         $waktu = $tanggal.' '.date('H:i:s');
         $data['waktu']=$waktu;
         $data['id_pasien']=$id_pasien;

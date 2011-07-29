@@ -25,7 +25,9 @@
         
         <!-- Thickbox stylesheet -->
         <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>Template_files/thickbox.css" media="screen" />
-
+        
+        <!-- UI 1.8.14 stylesheet -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>css/ui-lightness/jquery-ui-1.8.14.custom.css" media="screen" />
         
 
         <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
@@ -39,12 +41,12 @@
         <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>js/jquery.validity.css" media="screen" />
         
 		<!-- JQuery engine script-->
-		<script type="text/javascript" src="<?php echo $this->base_url?>Template_files/jquery-1.js"></script>
+		<script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery-1.5.1.min.js"></script>
         
 		<!-- JQuery WYSIWYG plugin script -->
 		<script type="text/javascript" src="<?php echo $this->base_url?>Template_files/jquery00.js"></script>
         
-        <!-- JQuery tablesorter plugin script-->
+                <!-- JQuery tablesorter plugin script-->
 		<script type="text/javascript" src="<?php echo $this->base_url?>Template_files/jquery01.js"></script>
         
 		<!-- JQuery pager plugin script for tablesorter tables -->
@@ -63,6 +65,10 @@
                 <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.js"></script>
                 <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.pack.js"></script>
 
+                <!-- JQuery UI 
+                -->
+                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery-ui-1.8.14.custom.min.js"></script>
+                
 
 
         <!-- Initiate WYIWYG text area -->
@@ -123,6 +129,18 @@
 			$('.password').pstrength();
 			});
         </script>
+
+        <script type="text/javascript">
+            $(function() {
+                $( ".tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
+            });
+        </script>
+
+        
 	</head>
 	<body>
     	<!-- Header -->

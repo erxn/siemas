@@ -28,7 +28,7 @@
 							Pilih tanggal :
 						</td>
 						<td width="100px">
-							<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal" id="tanggal">
+							<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal" class="tanggal">
 						</td>
 						<td> &nbsp &nbsp &nbsp
 							<input type="submit" class="submit-green" value="PILIH">

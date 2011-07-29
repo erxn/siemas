@@ -27,7 +27,7 @@
 							<p align="right">Tanggal :</p>
 						</td>
 						<td width="120px">
-							<input id="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
+							<input class="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
 						</td>
 					</tr>
 

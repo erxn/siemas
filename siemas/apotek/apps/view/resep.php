@@ -1,21 +1,5 @@
 <?php $this->view_header();?>
 
-<!-- Date Picker stylesheet -->
-                <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>js/jquery-ui/css/redmond/jquery-ui-1.7.3.custom.css" media="screen" />
-        <!-- JQuery Date Picker Script -->
-                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery-ui/js/jquery-1.3.2.min.js"></script>
-                <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery-ui/js/jquery-ui-1.7.3.custom.min.js"></script>
-
-        <script type="text/javascript">
-            $(function() {
-                $( "#tanggal" ).datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'dd-mm-yy'
-                });
-            });
-</script>
-
 <!-- Header. Main part -->
 			
             <div id="header-main">
@@ -61,7 +45,7 @@
 							<form method="post">
 								<form method="POST"
                         onsubmit="if(document.getElementById('antrian').value == '') {alert('No Antrian Harus Diisi'); return false} " id="form_resep" >Tanggal resep yang akan diinputkan adalah
-                                                                <input id="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
+                                                                <input class="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
 								
 								
 						</div>
@@ -95,49 +79,56 @@
                     <h2><span>Data Obat</span></h2>
 
                     <div class="module-table-body">
-                            <table><?php $n=1; ?>
-                                        <thead>
+                            <table id="resep"><?php $n=1; ?>
+                                 <thead>
 					<tr>
-						<th width="25%" class="align-center">
+						<th width="23%" class="align-center">
 							id obat
 						</th>
 						<th width="50%" class="align-center">
 							nama obat
 						</th>
-						<th width="25%" class="align-center">
+						<th width="27%" class="align-center">
 							jumlah
 						</th>
 					</tr>
-                                        </thead>
+                                  </thead>
+
+                                  <tbody>
 					<tr>
                                             <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
                                         </tr>
 					<tr>
                                             <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
 					</tr>
 					<tr>
                                             <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
 					</tr>
 					<tr>
                                             <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
 					</tr>
+                                  </tbody>
+                                  <tfoot>
 					<tr>
                                             <td></td>
                                             <td class="align-center"><input class="submit-green" type="submit" value="Benar"</td>
-                                            <td></td>
+                                            <td><a href="#" class="button" onclick="tabelFleksibel(); return false;">
+                    <span><img src="<?php echo $this->base_url?>template_files/plus-sma.gif" width="12" height="9" alt="" style="padding:10px 0 0 0;"/> Tambah data</span>
+                </a></td>
 					</tr>
+                                  </tfoot>
 
 				</table>
                                  </div></div>
@@ -159,22 +150,26 @@
         </div> <!-- End #footer -->
 
         <script type="text/javascript">
-
-    $(document).ready(function(){
-
-        $('#form_obat').validity(function(){
-
-           $('.input_angka').match('number');
-
+        $(document).ready(function()
+            {$("input#autocomplete").autocomplete({
+			source: [
+                <?php if(isset($list_nama_obat)){ foreach ($list_nama_obat as $list_nama_obat) { ?>
+			"<?php echo $list_nama_obat->nbk_obat; ?>",
+                        <?php } } ?>
+                        "obat"
+		]
+            });
         });
 
-        $.validity.setup({ outputMode:"modal" });
-
-
-    });
+        function tabelFleksibel() {
+        $('#resep tbody>tr:last').clone(true).insertAfter('#resep tbody>tr:last');
+        $('#resep tbody>tr:last input').val('');
+        $('#resep tbody>tr:last input').first().focus();
+    }
 
 
 </script>
+
 </body>
 </html>
 <!-- This document originaly created by R Bagus Dimas Putra r4yv1n@yahoo.com -->

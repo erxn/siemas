@@ -4,7 +4,8 @@ class Controller_history extends Panada {
 
     public function __construct(){
         parent::__construct();
-		$this->db = new library_db();
+		$this->obat = new Model_obat();
+                $this->date = new Model_history();
 		$this->session = new Library_session();
     }
 
@@ -28,10 +29,39 @@ class Controller_history extends Panada {
                     }
             }
             if(isset ($_POST['tanggal'])){
-                $tanggal = $_POST['tanggal'];}
+                $tanggal = $this->date->reverse($_POST['tanggal']);
+                $hasil = $this->obat->history_resep($tanggal);
+                if(isset ($hasil)){
+                    $views['hasil'] = $hasil;
+                }   else{
+                        $views['alert'] = 'Hasil pencarian pada bulan '.$_POST['tanggal'].' tidak ada.';
+                }
+
+         }
 
          }
 
         $this->view_history_resep($views);
+    }
+
+    public function tambah_obat(){
+        $views['page_title']    = 'History Pemasukan Obat - Apotek';
+        $views['tanggal'] = date('d-m-Y');
+        $views['hasil'] = NULL;
+         if($_POST){
+            if(isset ($_POST['bulan']) && isset ($_POST['tahun'])){
+                $BT = $this->date->gabung2($_POST['bulan'], $_POST['tahun']);
+                $hasil = $this->obat->history_bt($BT);
+                if(isset ($hasil)){
+                    $views['hasil'] = $hasil;
+                }   else{
+                        $views['alert'] = 'Hasil pencarian pada bulan '.$_POST['bulan'].' tahun '.$_POST['tahun'].' tidak ada.';
+                    }
+            }
+            if(isset ($_POST['tanggal'])){
+                $tanggal = $_POST['tanggal'];}
+
+         }
+        $this->view_history_pemasukan($views);
     }
 }
