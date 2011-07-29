@@ -21,7 +21,7 @@
                             <strong>PENDAFTARAN KK BARU</strong>
                             <tr>
                                 <td style="width: 5%">Tgl. Pendaftaran</td>
-                                <td style="width: 15%"><input id="datepicker" type="text" class="input-medium" name="tanggal_pendaftaran"/></td>
+                                <td style="width: 15%"><input id="datepicker" type="text" class="input-medium" name="tanggal_pendaftaran" value="hari ini"/></td>
                             </tr>
                             <tr class="odd">
                                 <td>Nama KK</td>
@@ -30,8 +30,8 @@
                             <tr>
                                 <td>Jenis Kelamin</td>
                                 <td>
-                                    <input type="radio" name="jk_kk" value="L"/>Laki-laki
-                                    <input type="radio" name="jk_kk" value="P" />Perempuan
+                                    <input type="radio" name="jk_kk" value="Laki-laki"/>Laki-laki
+                                    <input type="radio" name="jk_kk" value="Perempuan" />Perempuan
                                 </td>
                             </tr>
                             <tr class="odd">

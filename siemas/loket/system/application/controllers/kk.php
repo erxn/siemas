@@ -22,6 +22,7 @@ class Kk extends Controller {
                     'kelurahan_kk'              => $this->input->post('kelurahan_kk'),
                     'kota_kab_kk'               => $this->input->post('kab_kota_kk'),
                     'status_wil_luar'          => $this->input->post('status_wil_kk')
+                    
             );
 
             $id_kk_yang_baru = $this->M_kk->insert_data_kk($data);
@@ -31,7 +32,6 @@ class Kk extends Controller {
                 
             }
         }
-
         $this->load->view('registrasi_kk');
     }
 

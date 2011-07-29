@@ -33,7 +33,24 @@ class M_pasien extends Model {
         }
 
     }
-    function lihat_profil_pasien($id_pasien){
-        
+    function lihat_profil_pasien($id_kk, $id_pasien){
+        $data = array();
+        $q = $this->db->query("SELECT pasien.*, kk.* FROM pasien JOIN kk USING(id_kk) WHERE pasien.id_pasien = $id_pasien AND pasien.id_kk = $id_kk");
+
+        if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function tambah_id_pasien($id_kk){
+        $jumlah = $this->db->query("SELECT COUNT(id_kk) FROM pasien WHERE id_kk =  $id_kk");
+        echo jumlah;
     }
 }
