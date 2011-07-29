@@ -4,22 +4,19 @@ function ganti_format_tanggal($tanggal) {
     return date("Y-m-d", strtotime($tanggal));
 }
 
-function ganti_format_tanggal_lagi($tanggal) {
-    DATE_FORMAT($tanggal, '%d-%m-%Y');
-}
-
 function date2Ind($str) {
     setlocale (LC_TIME, 'id_ID');
     $date = strftime( "%A, %d %B %Y", strtotime($str));
 }
-    function tgl_indo($tgl) {
+
+function tgl_indo($tgl) {
         $tanggal = substr($tgl,8,2);
         $bulan    = getBulan(substr($tgl,5,2));
         $tahun    = substr($tgl,0,4);
         return $tanggal." ".$bulan." ".$tahun;
     }
 
-    function getBulan($bln) {
+function getBulan($bln) {
         switch ($bln) {
             case 1:
                 return "Januari";
@@ -58,5 +55,22 @@ function date2Ind($str) {
                 return "Desember";
                 break;
         }
+}
+
+function hitUmur($tgllahir) {
+        $tgl = explode("-", $tgllahir);
+       // memecah $tgllahir yang tadinya YYYY-MM-DD menjadi array
+      // $tgl[0] = tahun (YYYY)
+     //  $tgl[a] = bulan (MM)
+    // $tgl[2] = hari (DD)
+
+        $umur = date("Y") - $tgl[0];  //ini untuk ngitung umurnya
+
+        if(($tgl[1] > date("m")) || ($tgl[1] == date("m") && date("d") < $tgl[2])) //ngecek apakah tgl lahir dan bulannya belum lewat?
+        {
+
+                $umur -= 1;
+        }
+        return $umur;
 }
 

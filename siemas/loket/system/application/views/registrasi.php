@@ -50,7 +50,7 @@
                     <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
                     <div class="float-left">
 
-                        <a class="tambah" href="index.php/pasien/registrasi_pasien_baru">
+                        <a class="tambah" href="index.php/kk/registrasi_kk">
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
                     </div>
