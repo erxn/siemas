@@ -25,7 +25,7 @@
     <div class="container_12">
         <div class="grid_12">
             <ul>
-                <li><a href="index.php/pasien/rekam_medik_pasien">Medical Record</a></li>
+                <li><a href="index.php/pasien/data_pasien_remed/2">Medical Record</a></li>
                 <li><a href="index.php/pasien">Data Pasien</a></li>
             </ul>
 
@@ -105,9 +105,8 @@
                     <th style="width:10%"><?php echo $p['status_pelayanan'];?></th>
                     <th style="width:10%"><?php echo $p['no_kartu_layanan'];?></th>
                 </tr>
-
+                    <?php }?>
             </tbody>
-            <?php }?>
         </table>
 
         <div class="pager" id="pager">
