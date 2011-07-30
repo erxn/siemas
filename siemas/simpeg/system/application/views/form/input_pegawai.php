@@ -1,34 +1,5 @@
 <?php
 $this->load->view('header');
-
-$pegawai = array(
-    "",
-    "Dr. ILHAM CHAIDIR",
-    "Dr. YOHANA MARI YUSTINI",
-    "Drg. MELLYAWATI",
-    "Dr. DINDIN A. SETIAWATY",
-    "Dr. LINA RUFLINA",
-    "Drg. SITI MILYARNI REMIKA, MM",
-    "ROSMIATI",
-    "SADIYAH, AMKG",
-    "Drg. KARINA AMALIA",
-    "SUGIHARYATI, AMKeb",
-    "HUSNA",
-    "ENENG SURTININGSIH, AMKep",
-    "ENDAH PURASANTI, AMKeb",
-    "DWIJO KURJIANTO, AMAK",
-    "SEPTY MARHAENY, AMKep",
-    "FEBBY HENDRIYANI  S.",
-    "NINA ANDRIYANTI, AMKL",
-    "RIDWANUDIN HARIS, AMKep",
-    "MARICE SINORITA, AMKeb",
-    "T A R P I N, AMRad",
-    "MARYANI, A.Md Kp",
-    "IIS AISAH",
-    "MAD SOLEH",
-    "AGTI NURVITASARI, SKM",
-    "NIDA NURAIDA, AMdG"
-);
 ?>
 
 <script type="text/javascript" src="template/jquery.js"></script>
@@ -55,6 +26,13 @@ $pegawai = array(
 
     <div id="page">
         <div class="grid_6" style="width: 48%">
+            
+            <?php if(isset($saved)) : ?>
+            <div class="notification n-success">
+                Data pegawai baru sudah disimpan
+            </div>
+            <?php endif; ?>
+
             <div class="module">
                 <h2><span>Data diri</span></h2>
                 <div class="module-body">
@@ -118,7 +96,7 @@ $pegawai = array(
                             </tr>
                             <tr>
                                 <td><label>Pas foto</label></td>
-                                <td><input type="file" name="userfile" class="input-long"/><br/>(maksimal 500 KB)</td>
+                                <td><input type="file" name="userfile" class="input-long"/><br/>(maksimal 500 KB, gambar harus tipe JPG / PNG / GIF)</td>
                             </tr>
                         </tbody>
                     </table>
@@ -298,11 +276,9 @@ $pegawai = array(
                                     <!-- Harus di-PHP-in  -->
                                     <select name="id_atasan" class="input-full">
                                         <option value="0">-</option>
-                                        <?php
-                                        for ($j = 1; $j < count($pegawai); $j++) {
-
-                                            echo "<option>{$pegawai[$j]}</option>";
-                                        } ?>
+                                        <?php foreach($daftar_pegawai as $p) : ?>
+                                        <option value="<?php echo $p['id_pegawai']; ?>"><?php echo $p['nama']; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </td>
                                 <td></td>
