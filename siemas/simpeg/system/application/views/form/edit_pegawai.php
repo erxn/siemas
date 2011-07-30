@@ -137,14 +137,18 @@ $this->load->view('header');
                             <tr>
                                 <td>Pendidikan</td>
                                 <td width="20%">Tahun ijazah</td>
+                                <td width="2%"></td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if(count($data_pendidikan) > 0) : foreach($data_pendidikan as $data) : ?>
-                            <tr>
+                            <tr id="t_pendidikan<?php echo $data['id_pendidikan'] ?>">
                                 <td><input type="text" name="pendidikan[]" maxlength="255" class="input-full" value="<?php echo $data['pendidikan'] ?>"/>
                                 <input type="hidden" name="id_pendidikan[]" value="<?php echo $data['id_pendidikan'] ?>"/></td>
                                 <td><input type="text" name="tahun_pendidikan[]" maxlength="4" class="input-full" value="<?php echo $data['tahun_ijazah'] ?>"/></td>
+                                <td>
+                                    <input type="button" value="Hapus" onclick="hapusPendidikan(<?php echo $data['id_pendidikan'] ?>)"/>
+                                </td>
                             </tr>
                             <?php endforeach; else : ?>
                             <tr>
@@ -157,6 +161,7 @@ $this->load->view('header');
                     <a href="#" class="button" onclick="tambahPendidikan(); return false;" >
                         <span><img src="template/plus-sma.gif" width="12" height="9" alt="" /> Tambah data pendidikan</span>
                     </a>
+                    <input type="hidden" name="pendidikan_del" id="pendidikan_del"/>
 
                 </div>
             </div>
@@ -169,14 +174,18 @@ $this->load->view('header');
                             <tr>
                                 <td>Pelatihan</td>
                                 <td width="20%">Tahun</td>
+                                <td width="2%"></td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if(count($data_pelatihan) > 0) : foreach($data_pelatihan as $data) : ?>
-                            <tr>
+                            <tr id="t_pelatihan<?php echo $data['id_pelatihan'] ?>">
                                 <td><input type="text" name="pelatihan[]" maxlength="255" class="input-full" value="<?php echo $data['pelatihan'] ?>"/>
                                 <input type="hidden" name="id_pelatihan[]" value="<?php echo $data['id_pelatihan'] ?>"/></td>
                                 <td><input type="text" name="tahun_pelatihan[]" maxlength="4" class="input-full" value="<?php echo $data['tahun'] ?>"/></td>
+                                <td>
+                                    <input type="button" value="Hapus" onclick="hapusPelatihan(<?php echo $data['id_pelatihan'] ?>)"/>
+                                </td>
                             </tr>
                             <?php endforeach; else : ?>
                             <tr>
@@ -189,6 +198,8 @@ $this->load->view('header');
                     <a href="#" class="button" onclick="tambahPelatihan(); return false;" >
                         <span><img src="template/plus-sma.gif" width="12" height="9" alt="" /> Tambah data pelatihan</span>
                     </a>
+                    <input type="hidden" name="pelatihan_del" id="pelatihan_del"/>
+
                 </div>
             </div>
         </div>
@@ -207,11 +218,12 @@ $this->load->view('header');
                                 <th>Pekerjaan</th>
                                 <th>Dapat tunjangan?</th>
                                 <th>Keterangan</th>
+                                <th width="2%"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if(count($data_tanggungan) > 0) : $i = 1; foreach($data_tanggungan as $data) : ?>
-                            <tr>
+                            <tr id="t_tanggungan<?php echo $data['id_tanggungan'] ?>">
                                 <td><?php echo $i++; ?></td>
                                 <td><input type="text" name="tanggungan_nama[]" maxlength="255" class="input-long" value="<?php echo $data['nama']; ?>"/></td>
                                 <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long" value="<?php echo format_tanggal_tampilan($data['tanggal_lahir']); ?>"/></td>
@@ -225,6 +237,9 @@ $this->load->view('header');
                                 </td>
                                 <td><input type="text" name="tanggungan_keterangan[]" maxlength="255" class="input-long" value="<?php echo $data['keterangan']; ?>"/>
                                 <input type="hidden" name="tanggungan_id[]" value="<?php echo $data['id_tanggungan'] ?>"/></td>
+                                <td>
+                                    <input type="button" value="Hapus" onclick="hapusTanggungan(<?php echo $data['id_tanggungan'] ?>)"/>
+                                </td>
                             </tr>
                             <?php endforeach; else : ?>
                             <tr>
@@ -247,6 +262,8 @@ $this->load->view('header');
                     <a href="#" class="button" onclick="tambahTanggungan(); return false;" style="margin: 5px 0px 20px 20px">
                         <span><img src="template/plus-sma.gif" width="12" height="9" alt="" /> Tambah data tanggungan</span>
                     </a>
+                    <input type="hidden" name="tanggungan_del" id="tanggungan_del"/>
+
                 </div>
             </div>
         </div>
@@ -347,12 +364,14 @@ $this->load->view('header');
 
     function tambahPendidikan() {
         $('#tabel_pendidikan tbody>tr:last').clone(true).insertAfter('#tabel_pendidikan tbody>tr:last');
+        $('#tabel_pendidikan tbody>tr:last input[type=button]').remove();
         $('#tabel_pendidikan tbody>tr:last input').val('');
         $('#tabel_pendidikan tbody>tr:last input').first().focus();
     }
 
     function tambahPelatihan() {
         $('#tabel_pelatihan tbody>tr:last').clone(true).insertAfter('#tabel_pelatihan tbody>tr:last');
+        $('#tabel_pelatihan tbody>tr:last input[type=button]').remove();
         $('#tabel_pelatihan tbody>tr:last input').val('');
         $('#tabel_pelatihan tbody>tr:last input').first().focus();
     }
@@ -362,9 +381,43 @@ $this->load->view('header');
         i++
 
         $('#tabel_tanggungan tbody>tr:last').clone(true).insertAfter('#tabel_tanggungan tbody>tr:last');
+        $('#tabel_tanggungan tbody>tr:last input[type=button]').remove();
         $('#tabel_tanggungan tbody>tr:last input').val('');
         $('#tabel_tanggungan tbody>tr:last input').first().focus();
         $('#tabel_tanggungan tbody>tr:last td').first().text(i);
+
+    }
+
+    function hapusPendidikan(id) {
+
+        if(confirm('Hapus data ini? Data yang sudah dihapus tidak dapat dikembalikan')) {
+
+            $('#t_pendidikan' + id).fadeOut('fast', function(){$(this).remove()});
+            $('#pendidikan_del').val($('#pendidikan_del').val() + ',' + id);
+
+        }
+
+    }
+
+    function hapusPelatihan(id) {
+
+        if(confirm('Hapus data ini? Data yang sudah dihapus tidak dapat dikembalikan')) {
+
+            $('#t_pelatihan' + id).fadeOut('fast', function(){$(this).remove()});
+            $('#pelatihan_del').val($('#pelatihan_del').val() + ',' + id);
+
+        }
+
+    }
+
+    function hapusTanggungan(id) {
+
+        if(confirm('Hapus data ini? Data yang sudah dihapus tidak dapat dikembalikan')) {
+
+            $('#t_tanggungan' + id).fadeOut('fast', function(){$(this).remove()});
+            $('#tanggungan_del').val($('#tanggungan_del').val() + ',' + id);
+
+        }
 
     }
 

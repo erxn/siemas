@@ -4,7 +4,7 @@
 
         <base href="http://localhost/siemas/simpeg/"/>
 
-        <title>Magic Admin. Advanced, Beautiful and Customizable Admin Template.</title>
+        <title>Simpeg</title>
 
         <!-- CSS Reset -->
         <link rel="stylesheet" type="text/css" href="template/reset000.css" media="screen" />

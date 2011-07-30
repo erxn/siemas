@@ -142,10 +142,25 @@ class Pegawai_model extends Model {
         $this->db->where('id_pegawai', $id);
         $this->db->update('pegawai', $data);
     }
+    
+    function update_data_pendidikan($id, $data) {
+        $this->db->where('id_pendidikan', $id);
+        $this->db->update('pendidikan', $data);
+    }
 
+    function update_data_pelatihan($id, $data) {
+        $this->db->where('id_pelatihan', $id);
+        $this->db->update('pelatihan', $data);
+    }
 
+    function update_data_tanggungan($id, $data) {
+        $this->db->where('id_tanggungan', $id);
+        $this->db->update('tanggungan', $data);
+    }
 
-
+    function hapus_data($tabel, $id) {
+        return $this->db->query("DELETE FROM $tabel WHERE id_{$tabel} = $id");
+    }
 
 
     function get_jabatan_terakhir($id_pegawai) {
