@@ -15,18 +15,22 @@ class Pegawai extends Controller {
 
         if ($this->input->post('submit')) {
 
-            $config['upload_path'] = './foto/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = '500';
+            if ($_FILES AND $_FILES['userfile']['name']) {
 
-            $this->load->library('upload', $config);
+                $config['upload_path'] = './foto/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = '500';
 
-            if (!$this->upload->do_upload()) {
-                echo $this->upload->display_errors();
-                exit;
-            } else {
-                $foto = $this->upload->data();
-            }
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()) {
+                    echo $this->upload->display_errors();
+                    exit;
+                } else {
+                    $foto = $this->upload->data();
+                }
+            } else
+                $foto['file_name'] = "";
 
             // proses data pokok
             $data = array(
@@ -59,11 +63,13 @@ class Pegawai extends Controller {
 
             if (implode("", $data_pendidikan) != "") {
                 for ($i = 0; $i < count($data_pendidikan); $i++) {
-                    $this->pegawai->insert_data_pendidikan(array(
-                        'tahun_ijazah' => $tahun_pendidikan[$i],
-                        'pendidikan' => $data_pendidikan[$i],
-                        'id_pegawai' => $id_pegawai_baru
-                    ));
+                    if ($data_pendidikan[$i] != "") {
+                        $this->pegawai->insert_data_pendidikan(array(
+                            'tahun_ijazah' => $tahun_pendidikan[$i],
+                            'pendidikan' => $data_pendidikan[$i],
+                            'id_pegawai' => $id_pegawai_baru
+                        ));
+                    }
                 }
             }
 
@@ -73,11 +79,13 @@ class Pegawai extends Controller {
 
             if (implode("", $data_pelatihan) != "") {
                 for ($i = 0; $i < count($data_pelatihan); $i++) {
-                    $this->pegawai->insert_data_pelatihan(array(
-                        'tahun' => $tahun_pendidikan[$i],
-                        'pelatihan' => $data_pendidikan[$i],
-                        'id_pegawai' => $id_pegawai_baru
-                    ));
+                    if ($data_pelatihan[$i] != "") {
+                        $this->pegawai->insert_data_pelatihan(array(
+                            'tahun' => $tahun_pelatihan[$i],
+                            'pelatihan' => $data_pelatihan[$i],
+                            'id_pegawai' => $id_pegawai_baru
+                        ));
+                    }
                 }
             }
 
@@ -91,15 +99,17 @@ class Pegawai extends Controller {
 
             if (implode("", $nama_tanggungan) != "") {
                 for ($i = 0; $i < count($nama_tanggungan); $i++) {
-                    $this->pegawai->insert_data_tanggungan(array(
-                        'nama' => $nama_tanggungan[$i],
-                        'tanggal_lahir' => format_tanggal_database($lahir_tanggungan[$i]),
-                        'tanggal_nikah' => format_tanggal_database($nikah_tanggungan[$i]),
-                        'pekerjaan' => $pekerjaan_tanggungan[$i],
-                        'dapat_tunjangan' => $dapat_tunjangan_tanggungan[$i],
-                        'keterangan' => $keterangan_tanggungan[$i],
-                        'id_pegawai' => $id_pegawai_baru
-                    ));
+                    if ($nama_tanggungan[$i] != "") {
+                        $this->pegawai->insert_data_tanggungan(array(
+                            'nama' => $nama_tanggungan[$i],
+                            'tanggal_lahir' => format_tanggal_database($lahir_tanggungan[$i]),
+                            'tanggal_nikah' => format_tanggal_database($nikah_tanggungan[$i]),
+                            'pekerjaan' => $pekerjaan_tanggungan[$i],
+                            'dapat_tunjangan' => $dapat_tunjangan_tanggungan[$i],
+                            'keterangan' => $keterangan_tanggungan[$i],
+                            'id_pegawai' => $id_pegawai_baru
+                        ));
+                    }
                 }
             }
 
@@ -124,17 +134,94 @@ class Pegawai extends Controller {
                 'gaji' => $this->input->post('gaji'),
                 'id_pegawai' => $id_pegawai_baru
             ));
+            
+            redirect('pegawai/input_sukses/' . $id_pegawai_baru);
         }
 
-        $this->load->view('form/input_pegawai');
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->view('form/input_pegawai', $data);
+    }
+
+    function input_sukses($id) {
+
+        $data['data_pegawai'] = $this->pegawai->get_pegawai_by_id($id);
+        $data['data_pelatihan'] = $this->pegawai->get_pelatihan_pegawai($id);
+        $data['data_pendidikan'] = $this->pegawai->get_pendidikan_pegawai($id);
+        $data['data_tanggungan'] = $this->pegawai->get_tanggungan_pegawai($id);
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $data['jabatan'] = $this->pegawai->get_jabatan_terakhir($id);
+        $data['pangkat'] = $this->pegawai->get_pangkat_terakhir($id);
+        $data['gaji'] = $this->pegawai->get_gaji_terakhir($id);
+
+        $this->load->view('form/input_pegawai_sukses', $data);
+
     }
 
     function edit_pegawai_pilih() {
-        $this->load->view('form/edit_pegawai_pilih');
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->view('form/edit_pegawai_pilih', $data);
     }
 
     function edit_pegawai($id = 0) {
-        $this->load->view('form/edit_pegawai');
+
+        if ($this->input->post('submit')) {
+
+            if ($_FILES AND $_FILES['userfile']['name']) {
+
+                $config['upload_path'] = './foto/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = '500';
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload()) {
+                    echo $this->upload->display_errors();
+                    exit;
+                } else {
+                    $foto = $this->upload->data();
+                    unlink("foto/" . $this->input->post('foto_sekarang'));
+                }
+            } else
+                $foto['file_name'] = $this->input->post('foto_sekarang');
+
+            // proses data pokok
+            $data = array(
+                'nip' => $this->input->post('nip'),
+                'nama' => $this->input->post('nama'),
+                'tempat_lahir' => $this->input->post('tempat_lahir'),
+                'tanggal_lahir' => format_tanggal_database($this->input->post('tanggal_lahir')),
+                'alamat' => $this->input->post('alamat'),
+                'jk' => $this->input->post('jk'),
+                'agama' => $this->input->post('agama'),
+                'gol_darah' => $this->input->post('gol_darah'),
+                'telepon' => $this->input->post('telepon'),
+                'status' => $this->input->post('status'),
+                'tanggal_masuk' => format_tanggal_database($this->input->post('tanggal_masuk')),
+                'pasfoto' => $foto['file_name'],
+                'kenaikan_YAD' => format_tanggal_database($this->input->post('kenaikan_yad')),
+                'status_kepegawaian' => $this->input->post('status_kepegawaian'),
+                'sumber_gaji' => $this->input->post('sumber_gaji'),
+                'bp_pemda' => $this->input->post('bp_pemda'),
+                'aktif' => 1
+            );
+
+            if ($this->input->post('id_atasan') != 0) $data['id_atasan'] = $this->input->post('id_atasan');
+            $this->pegawai->update_data_pokok($id, $data);
+
+            $data['updated'] = true;
+
+        }
+
+        $data['data_pegawai'] = $this->pegawai->get_pegawai_by_id($id);
+        $data['data_pelatihan'] = $this->pegawai->get_pelatihan_pegawai($id);
+        $data['data_pendidikan'] = $this->pegawai->get_pendidikan_pegawai($id);
+        $data['data_tanggungan'] = $this->pegawai->get_tanggungan_pegawai($id);
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->view('form/edit_pegawai', $data);
     }
 
     function input_perubahan_gaji() {
