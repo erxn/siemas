@@ -1,0 +1,26 @@
+.calendar td {
+    
+    border: 1px solid #CCCCCC;
+    font-size: 20px;
+
+}
+
+td.today {
+
+    background-color: #F9E497 !important;
+    border: 1px solid #FFCB4F !important;
+
+}
+
+td.libur a {
+    color: red !important;
+}
+
+.calendar a {
+    display: block;
+    text-align: center;
+}
+
+.calendar a:hover {
+    background-color: #F9E497;
+}
