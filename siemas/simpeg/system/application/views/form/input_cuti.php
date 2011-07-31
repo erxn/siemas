@@ -1,47 +1,25 @@
-<?php $this->load->view('header');
+<?php $this->load->view('header'); ?>
 
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
-
+<form action="" method="post">
 
 <div class="belowribbon">
     <h1>
         Input cuti pegawai
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <?php if(!isset($saved)) : ?>
+        <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <?php endif; ?>
     </h1>
 </div>
 
 <div id="page">
 
     <div class="grid_6" style="width: 48%">
+
+        <?php if(isset($saved)) : ?>
+        <div class="notification n-success">
+            Data telah disimpan
+        </div>
+        <?php else : ?>
 
         <div class="module">
             <h2><span>Masukkan data cuti</span></h2>
@@ -51,12 +29,13 @@ $pegawai = array(
                         <tr>
                             <td>Pilih pegawai</td>
                             <td>
-                                <select name="sel_pegawai" class="input-long">
+                                <select name="sel_pegawai" class="input-long" onchange="load_cuti($(this).val())">
                                     <option value="0">-</option>
                                     <?php
-                                    for ($j = 1; $j < count($pegawai); $j++) {
+                                    foreach ($daftar_pegawai as $pegawai) {
 
-                                        echo "<option>{$pegawai[$j]}</option>";
+                                        echo "<option value='{$pegawai['id_pegawai']}'>{$pegawai['nama']}</option>";
+                                        
                                     } ?>
                                 </select>
                             </td>
@@ -73,11 +52,11 @@ $pegawai = array(
                             <td>Keperluan</td>
                             <td>
                                 <select name="keperluan" class="input-long">
-                                    <option>Cuti tahunan</option>
-                                    <option>Cuti besar</option>
-                                    <option>Cuti sakit</option>
-                                    <option>Cuti bersalin</option>
-                                    <option>Cuti karena alasan penting</option>
+                                    <option value="Cuti tahunan">Cuti tahunan</option>
+                                    <option value="Cuti besar">Cuti besar</option>
+                                    <option value="Cuti sakit">Cuti sakit</option>
+                                    <option value="Cuti bersalin">Cuti bersalin</option>
+                                    <option value="Cuti karena alasan penting">Cuti karena alasan penting</option>
                                 </select>
                             </td>
                         </tr>
@@ -94,62 +73,27 @@ $pegawai = array(
 
             </div>
         </div>
+
+        <?php endif; ?>
     </div>
 
     <div class="grid_6" style="width: 48%">
 
-        <div class="module">
-            <h2><span>Data cuti pegawai ini</span></h2>
-            <div class="module-table-body">
-                <table width="100%">
-                    <thead>
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Keperluan</th>
-                            <th>Keterangan</th>
-                            <th>Alamat</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="cuti_done">
-                            <td>12 Januari 2011</td>
-                            <td>Cuti tahunan</td>
-                            <td></td>
-                            <td>Bogor</td>
-                            <td>
-                                <a href="#">Hapus</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>24 Agustus 2011</td>
-                            <td>Cuti tahunan</td>
-                            <td></td>
-                            <td>Bogor</td>
-                            <td>
-                                <a href="#">Hapus</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>25 Agustus 2011</td>
-                            <td>Cuti tahunan</td>
-                            <td></td>
-                            <td>Bogor</td>
-                            <td>
-                                <a href="#">Hapus</a>
-                            </td>
-                        </tr>
-                </table>
-            </div>
+        <?php if(!isset($saved)) : ?>
+        <div class="module" style="display: none" id="list_cuti">
+
         </div>
+        <?php endif; ?>
     </div>
 </div>
+    
+</form>
 
 <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.7.3.custom.min.js"></script>
 <script type="text/javascript">
     $(function() {
         var dates = $( "#from, #to" ).datepicker({
-            defaultDate: "+1w",
+//            defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 3,
             onSelect: function( selectedDate ) {
@@ -164,6 +108,18 @@ $pegawai = array(
             dateFormat: 'dd-mm-yy'
         });
     });
+
+    function load_cuti(id) {
+
+        if(id == 0) $('#list_cuti').fadeOut();
+        else {
+            $('#list_cuti').fadeOut(function(){
+                $(this).load('index.php/cuti/list_cuti/' + id, function(){$(this).fadeIn()});
+            });
+            
+        }
+
+    }
 </script>
 
 

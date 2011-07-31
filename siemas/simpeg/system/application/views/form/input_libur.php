@@ -161,7 +161,7 @@ EOS;
                     return ob_get_clean();
                 }
 
-                $tahun = array(intval(date('Y')) - 2, intval(date('Y')) - 1, intval(date('Y')));
+                $tahun = array(intval(date('Y')) - 4, intval(date('Y')) - 3, intval(date('Y')) - 2, intval(date('Y')) - 1, intval(date('Y')));
 
                 ?>
 

@@ -238,5 +238,23 @@ class Absensi_model extends Model {
         $this->db->query("DELETE FROM tanggal_libur WHERE id_tanggal_libur = $id");
     }
 
+    function is_libur_pkm($tahun, $bulan, $tanggal) {
+        return in_array($tanggal, $this->get_libur_pkm_all($tahun, $bulan));
+    }
+
+    function is_libur_bp($tahun, $bulan, $tanggal) {
+        return in_array($tanggal, $this->get_libur_bp_all($tahun, $bulan));
+    }
+
+    function sudah_diisi_absen($tahun, $bulan, $tanggal) {
+        
+        
+        
+    }
+
+
+    function get_absensi($tahun, $bulan, $tanggal) {
+     
+    }
 
 }

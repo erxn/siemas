@@ -307,7 +307,7 @@
                 
                 if(c == false) return false;
 
-                if(url != current && c == true) {
+                if(c == true) {
                     $('#page_content').attr({src: url});
                     form_changed = false;
                 }

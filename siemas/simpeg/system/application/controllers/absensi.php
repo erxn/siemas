@@ -5,18 +5,44 @@ class Absensi extends Controller {
     function Absensi() {
         parent::Controller();
         $this->load->model('Absensi_model', 'absensi');
+        $this->load->model('Pegawai_model', 'pegawai');
     }
 
     function index() {
         $this->isi_absensi();
     }
 
-    function pilih_tanggal_absensi($tanggal = 0) {
-        $this->load->view('form/input_absensi_lama');
+    function pilih_tanggal_absensi($tahun = 0, $bulan = 0) {
+
+        if ($bulan == 0 || $tahun == 0) {
+            $data['bulan_ini'] = intval(date("n"));
+            $data['tahun_ini'] = intval(date("Y"));
+        } else {
+            $data['bulan_ini'] = $bulan;
+            $data['tahun_ini'] = $tahun;
+        }
+
+        $this->load->view('form/input_absensi_lama', $data);
     }
 
-    function isi_absensi($tanggal = 0) {
-        $this->load->view('form/input_absensi');
+    function isi_absensi($tahun = 0, $bulan = 0, $tanggal = 0) {
+
+        $data = array();
+
+        if ($bulan == 0 || $tahun == 0) {
+            $data['bulan'] = intval(date("n"));
+            $data['tahun'] = intval(date("Y"));
+            $data['tanggal'] = intval(date("d"));
+        } else {
+            $data['bulan'] = $bulan;
+            $data['tahun'] = $tahun;
+            $data['tanggal'] = $tanggal;
+        }
+
+        $data['pegawai_pkm'] = $this->pegawai->get_semua_pegawai_pkm();
+        $data['pegawai_bp'] = $this->pegawai->get_semua_pegawai_bpp();
+
+        $this->load->view('form/input_absensi', $data);
     }
 
     function jam_kerja() {
