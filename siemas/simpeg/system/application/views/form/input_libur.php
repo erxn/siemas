@@ -1,6 +1,7 @@
 <?php $this->load->view('header'); ?>
 
 <script type="text/javascript" src="jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="template/calendar.css"/>
 
 <div class="belowribbon">
     <h1>
@@ -31,9 +32,7 @@
                     "Desember"
                 );
 
-                $bulan_ini = intval(date("n"));
-
-                function getCalendar($month, $year) {
+                function getCalendar($month, $year, $holidays) {
                     // Use the PHP time() function to find out the timestamp for the current time
                     $current_time = time();
 
@@ -132,25 +131,27 @@
 
                     // Build the heading portion of the calendar table
                     echo <<<EOS
-	<table id="calendar" width="100%" border="1">
-	<tr class="daynames">
-		<th>Minggu</th>
-                <th>Senin</th>
-                <th>Selasa</th>
-                <th>Rabu</th>
-                <th>Kamis</th>
-                <th>Jumat</th>
-                <th>Sabtu</th>
-	</tr>
+                        <table class="calendar" width="100%" border="1">
+                        <tr class="daynames">
+                                <th>Minggu</th>
+                                <th>Senin</th>
+                                <th>Selasa</th>
+                                <th>Rabu</th>
+                                <th>Kamis</th>
+                                <th>Jumat</th>
+                                <th>Sabtu</th>
+                        </tr>
 EOS;
 
                     foreach ($weeks AS $week) {
                         echo '<tr class="week">';
                         foreach ($week as $day) {
                             if ($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time))
-                                echo '<td class="today"><a href="#" onclick="inputLibur(this); return false;">' . $day . '</a></td>';
+                                echo '<td class="today"><a href="#">' . $day . '</a></td>';
+                            else if(in_array($day, $holidays))
+                                echo '<td class="libur"><a href="#">' . $day . '</a></td>';
                             else
-                                echo '<td class="days"><a href="#" onclick="inputLibur(this); return false;">' . $day . '</a></td>';
+                                echo '<td class="days"><a href="#">' . $day . '</a></td>';
                         }
                         echo '</tr>';
                     }
@@ -160,8 +161,8 @@ EOS;
                     return ob_get_clean();
                 }
 
-                $tahun_ini = intval(date("Y"));
-                $tahun = array($tahun_ini - 2, $tahun_ini - 1, $tahun_ini);
+                $tahun = array(intval(date('Y')) - 2, intval(date('Y')) - 1, intval(date('Y')));
+
                 ?>
 
                 <p>Tahun
@@ -178,40 +179,42 @@ EOS;
                                         echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
                                 <?php endfor; ?>
                         </select>
-                        <input type="button" value="Tampilkan" class="submit-green"/>
+                        <input type="button" value="Tampilkan" class="submit-green" onclick="window.location = 'index.php/absensi/input_libur/' + $('#tahun').val() + '/' + $('#bulan').val()"/>
                     </p>
 
-                    <div class="notification n-information">
+<!--                    <div class="notification n-information">
                         Klik pada tanggal libur Puskesmas, baik libur nasional maupun libur-libur lainnya
-                    </div>
+                    </div>-->
 
-                    <table width="100%" border="0" style="border: none">
+                    <table width="100%" border="0" style="border: none" id="pkm">
                         <tr style="border: none">
                             <td style="padding-right: 20px; border: none" width="75%">
                                 <h4>Puskesmas Bogor Tengah</h4>
-                                <?php echo getCalendar($bulan_ini, intval(date("Y"))); ?>
+                                <?php echo getCalendar($bulan_ini, $tahun_ini, $tanggal_libur_pkm_all); ?>
                             </td>
                             <td style="border: none" width="25%">
                                 <h4>Libur bulan <?php echo $bulan[$bulan_ini]; ?> (PKM Bogor Tengah)</h4>
                                 <ul class="bullets">
-                                    <li>Libur nasional 1 (12 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
-                                    <li>Libur nasional 2 (29 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
+                                    <?php foreach($libur_pkm as $libur) : ?>
+                                    <li><?php echo date("j F Y", strtotime($libur['tanggal'])); ?> - <?php echo $libur['keterangan']; ?> - <input type="button" value="Hapus" onclick="hapus(<?php echo $libur['id_tanggal_libur']; ?>)"/></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </td>
                         </tr>
                     </table>
 
-                    <table width="100%" border="0" style="border: none">
+                    <table width="100%" border="0" style="border: none" id="bp">
                         <tr style="border: none">
                             <td style="padding-right: 20px; border: none" width="75%">
                                 <h4>BP Pemda</h4>
-                                <?php echo getCalendar($bulan_ini, intval(date("Y"))); ?>
+                                <?php echo getCalendar($bulan_ini, $tahun_ini, $tanggal_libur_bp_all); ?>
                             </td>
                             <td style="border: none" width="25%">
                                 <h4>Libur bulan <?php echo $bulan[$bulan_ini]; ?> (BP Pemda)</h4>
                                 <ul class="bullets">
-                                    <li>Libur nasional 1 (12 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
-                                    <li>Libur nasional 2 (29 Juli) &middot; <a href="#" title="Hapus libur ini">Hapus</a></li>
+                                    <?php foreach($libur_bp as $libur) : ?>
+                                    <li><?php echo date("j F Y", strtotime($libur['tanggal'])); ?> - <?php echo $libur['keterangan']; ?> - <input type="button" value="Hapus" onclick="hapus(<?php echo $libur['id_tanggal_libur']; ?>)"/></li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </td>
                         </tr>
@@ -224,15 +227,30 @@ EOS;
     </div>
 
     <div id="popup_libur" class="inline_popup">
-        <h4 id="tanggal_libur"></h4>
-        <input type="text" class="input-long" style="width: 200px;" id="keterangan_libur"/>
-        <input type="submit" value="Simpan" class="submit-green" style="margin: 0px"/>
-        <input type="button" value="Batal" class="submit-gray" style="margin: 0px" onclick="$('#popup_libur').fadeOut()"/>
+        <form action="" method="post" onsubmit="if($('#keterangan_libur').val() == '') return false;">
+            <h4 id="tanggal_libur"></h4>
+            <input type="hidden" value="0" id="bp_pemda" name="bp_pemda"/>
+            <input type="hidden" id="tanggal" name="tanggal"/>
+            <input type="text" class="input-long" style="width: 200px;" id="keterangan_libur" name="keterangan"/>
+            <input type="submit" value="Simpan" class="submit-green" style="margin: 0px" name="submit"/>
+            <input type="button" value="Batal" class="submit-gray" style="margin: 0px" onclick="$('#popup_libur').fadeOut()"/>
+        </form>
     </div>
 
     <script type="text/javascript">
 
-        function inputLibur(t) {
+        $(document).ready(function(){
+            $('#pkm table.calendar a').click(function(){
+                inputLibur($(this), 0);
+                return false;
+            });
+            $('#bp table.calendar a').click(function(){
+                inputLibur($(this), 1);
+                return false;
+            });
+        });
+
+        function inputLibur(t, bp) {
 
             var tanggal = $(t).text();
             var bulan   = document.getElementById('bulan').options[$('#bulan').val() - 1].innerHTML;
@@ -240,13 +258,22 @@ EOS;
 
             $('#popup_libur').fadeOut('fast', function(){
 
+                if(bp == 1) $('#bp_pemda').val("1");
+                else $('#bp_pemda').val("0");
+
                 $('#tanggal_libur').text(tanggal + " " + bulan + " " + tahun + " adalah libur:");
+                $('#tanggal').val(tahun + "-" + $('#bulan').val() + "-" + tanggal);
                 $(this).css({left: $(t).offset().left + 'px', top: $(t).offset().top + 25 + 'px'}).fadeIn()
 
             });
 
             $('#keterangan_libur').focus();
 
+        }
+
+        function hapus(id) {
+            if(confirm('Hapus data ini?'))
+                window.location = 'index.php/absensi/hapus_libur/' + id + '/' + <?php echo $tahun_ini ?> + '/' + <?php echo $bulan_ini ?>;
         }
 
     </script>

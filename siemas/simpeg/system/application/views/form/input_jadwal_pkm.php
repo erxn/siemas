@@ -2,211 +2,134 @@
 
 <script type="text/javascript" src="jquery.js"></script>
 
-<div class="belowribbon">
-    <h1>
-        Input jam kerja
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
-    </h1>
-</div>
+<form action="" method="post" id="form">
 
-<div id="page">
+    <?php if(count($jadwal_pkm) == 0 || count($jadwal_bp) == 0) : ?>
+    <script type="text/javascript">
 
-    <div class="grid_6" style="width: 48%">
-        <div class="module">
-            <h2><span>Puskesmas Bogor Tengah</span></h2>
-            <div class="module-table-body">
+    $(document).ready(function(){
+        $('#submit').click();
+    });
 
-                <table width="100%">
-                    <thead>
-                        <tr>
-                            <th width="30%">Hari</th>
-                            <th width="20%">Buka?</th>
-                            <th width="25%">Jam buka</th>
-                            <th width="25%">Jam tutup</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Senin</td>
-                            <td>
-                                <select name="senin_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="senin_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="senin_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Selasa</td>
-                            <td>
-                                <select name="selasa_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="selasa_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="selasa_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Rabu</td>
-                            <td>
-                                <select name="rabu_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="rabu_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="rabu_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Kamis</td>
-                            <td>
-                                <select name="kamis_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="kamis_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="kamis_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Jum'at</td>
-                            <td>
-                                <select name="jumat_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="jumat_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="jumat_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Sabtu</td>
-                            <td>
-                                <select name="sabtu_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="sabtu_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="sabtu_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Minggu</td>
-                            <td>
-                                <select name="minggu_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0" selected="selected">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="minggu_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="minggu_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    </script>
+    <?php endif; ?>
+
+    <div class="belowribbon">
+        <h1>
+            Input jam kerja
+            <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px" id="submit"/>
+        </h1>
     </div>
 
-    <div class="grid_6" style="width: 48%">
-        <div class="module">
-            <h2><span>BP Pemda</span></h2>
-            <div class="module-table-body">
+    <div id="page">
 
-                <table width="100%">
-                    <thead>
-                        <tr>
-                            <th width="30%">Hari</th>
-                            <th width="20%">Buka?</th>
-                            <th width="25%">Jam buka</th>
-                            <th width="25%">Jam tutup</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Senin</td>
-                            <td>
-                                <select name="senin_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="senin_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="senin_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Selasa</td>
-                            <td>
-                                <select name="selasa_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="selasa_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="selasa_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Rabu</td>
-                            <td>
-                                <select name="rabu_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="rabu_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="rabu_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Kamis</td>
-                            <td>
-                                <select name="kamis_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="kamis_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="kamis_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Jum'at</td>
-                            <td>
-                                <select name="jumat_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="jumat_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="jumat_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Sabtu</td>
-                            <td>
-                                <select name="sabtu_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="sabtu_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="sabtu_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                        <tr>
-                            <td>Minggu</td>
-                            <td>
-                                <select name="minggu_buka" class="input-long">
-                                    <option value="1">Buka</option>
-                                    <option value="0" selected="selected">Tutup</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="minggu_mulai" maxlength="5" class="input-long"/></td>
-                            <td><input type="text" name="minggu_selesai" maxlength="5" class="input-long"/></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="grid_6" style="width: 48%">
+            <div class="module">
+                <h2><span>Puskesmas Bogor Tengah</span></h2>
+                <div class="module-table-body">
+
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th width="30%">Hari</th>
+                                <th width="20%">Buka?</th>
+                                <th width="25%">Jam buka</th>
+                                <th width="25%">Jam tutup</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($jadwal_pkm as $j) : ?>
+                            <tr>
+                                <td><?php echo ucfirst($j['hari']); ?></td>
+                                <td>
+                                    <select name="<?php echo $j['hari'] ?>_buka" id="<?php echo $j['hari'] ?>_buka" class="input-long" onchange="aaaaa('<?php echo $j['hari'] ?>')">
+                                        <option value="1" <?php if($j['buka'] == 1) echo "selected" ?>>Buka</option>
+                                        <option value="0" <?php if($j['buka'] == 0) echo "selected" ?>>Tutup</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" name="<?php echo $j['hari'] ?>_mulai" maxlength="5" class="input-long" id="<?php echo $j['hari'] ?>_mulai" value="<?php echo date("H:i", strtotime($j['jam_mulai'])) ?>" <?php if($j['buka'] == 0) echo "style='display:none'" ?>/></td>
+                                <td><input type="text" name="<?php echo $j['hari'] ?>_selesai" maxlength="5" class="input-long" id="<?php echo $j['hari'] ?>_selesai" value="<?php echo date("H:i", strtotime($j['jam_selesai'])) ?>" <?php if($j['buka'] == 0) echo "style='display:none'" ?>/></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div align="center">
+                        <strong>
+                            Keterangan: Jam ditulis dengan pemisah titik dua, misalnya 07:30
+                        </strong>
+                    </div>
+                    <br/>
+                </div>
             </div>
         </div>
+
+        <div class="grid_6" style="width: 48%">
+            <div class="module">
+                <h2><span>BP Pemda</span></h2>
+                <div class="module-table-body">
+
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th width="30%">Hari</th>
+                                <th width="20%">Buka?</th>
+                                <th width="25%">Jam buka</th>
+                                <th width="25%">Jam tutup</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($jadwal_bp as $j) : ?>
+                            <tr>
+                                <td><?php echo ucfirst($j['hari']); ?></td>
+                                <td>
+                                    <select name="<?php echo $j['hari'] ?>_buka_bp" id="<?php echo $j['hari'] ?>_buka_bp" class="input-long" onchange="bbbbb('<?php echo $j['hari'] ?>')">
+                                        <option value="1" <?php if($j['buka'] == 1) echo "selected" ?>>Buka</option>
+                                        <option value="0" <?php if($j['buka'] == 0) echo "selected" ?>>Tutup</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" name="<?php echo $j['hari'] ?>_mulai_bp" maxlength="5" class="input-long" id="<?php echo $j['hari'] ?>_mulai_bp" value="<?php echo date("H:i", strtotime($j['jam_mulai'])) ?>" <?php if($j['buka'] == 0) echo "style='display:none'" ?>/></td>
+                                <td><input type="text" name="<?php echo $j['hari'] ?>_selesai_bp" maxlength="5" class="input-long" id="<?php echo $j['hari'] ?>_selesai_bp" value="<?php echo date("H:i", strtotime($j['jam_selesai'])) ?>" <?php if($j['buka'] == 0) echo "style='display:none'" ?>/></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div align="center">
+                        <strong>
+                            Keterangan: Jam ditulis dengan pemisah titik dua, misalnya 07:30
+                        </strong>
+                    </div>
+                    <br/>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 
-</div>
+</form>
+
+<script type="text/javascript">
+
+function aaaaa(hari) {
+    if($('#' + hari + '_buka').val() == '1') {
+        $('#' + hari + '_mulai').fadeIn();
+        $('#' + hari + '_selesai').fadeIn();
+    } else {
+        $('#' + hari + '_mulai').fadeOut();
+        $('#' + hari + '_selesai').fadeOut();
+    }
+}
+
+function bbbbb(hari) {
+    if($('#' + hari + '_buka_bp').val() == '1') {
+        $('#' + hari + '_mulai_bp').fadeIn();
+        $('#' + hari + '_selesai_bp').fadeIn();
+    } else {
+        $('#' + hari + '_mulai_bp').fadeOut();
+        $('#' + hari + '_selesai_bp').fadeOut();
+    }
+}
+
+</script>
 
 <?php $this->load->view('footer'); ?>
