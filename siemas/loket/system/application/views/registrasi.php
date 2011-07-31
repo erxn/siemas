@@ -20,12 +20,12 @@
             <div class="module">
                 <h2><span>Pendaftaran Pasien</span></h2>
                 <div class="module-body">
-                    <form id="cari_pasien" action="index.php/pasien/cari_pasien">
+                    <form id="cari_pasien" action="index.php/registrasi">
                         <table id="form_cari" class="noborder" style="width: 80%;">
                             <tr>
                                 <td style="width: 30%;">ID Pasien</td>
                                 <td style="width: 10%;">:</td>
-                                <td style="width: 20%;"><input name="id_pasien" type="text" class="input-medium"/></td>
+                                <td style="width: 20%;"><input name="kode_pasien" type="text" class="input-medium"/></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -58,8 +58,9 @@
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
                     </div>
-                    <div id="hasil_cari_kk" style="display: none">
+                    <div id="hasil_cari_kk">
                     <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
+                    <br/>
                     <table id="myTable" class="tablesorter" style="width: 100%;">
                         <thead>
                             <tr>
@@ -72,9 +73,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach ($hasil_cari_pasien as $pasien){?>
                             <tr class="even">
                                 <td class="align-center">1</td>
-                                <td><a class="popup" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
+                                <td><a class="popup" href="index.php/pasien/profil_pasien"><?php echo "annisa";?></a></td>
                                 <td>19 th</td>
                                 <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
                                 <td><a class="popup" href="index.php/kk/profil_kk">Dimas Putera</a></td>
@@ -84,7 +86,7 @@
                                     </a>
                                 </td>
                             </tr>
-                           
+                            <?php }?>
                         </tbody>
                     </table>
                     <div id="pager" class="pager">

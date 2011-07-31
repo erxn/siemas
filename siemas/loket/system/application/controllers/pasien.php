@@ -37,7 +37,6 @@ class Pasien extends Controller {
 
                     'tanggal_pendaftaran'          => ganti_format_tanggal($this->input->post('tanggal_pendaftaran')),
                     'nama_pasien'                   => $this->input->post('nama_pasien'),
-                    'umur'                          => $umur,
                     'jk_pasien'                     => $this->input->post('jk_pasien'),
                     'tanggal_lahir'                => $this->input->post('tahun_pasien')."-".$this->input->post('bulan_pasien')."-".$this->input->post('tanggal_lahir'),
                     'status_dalam_keluarga'       => $this->input->post('status_keluarga'),
