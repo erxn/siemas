@@ -1,6 +1,6 @@
 <?php $this->load->view('header'); ?>
 
-<script type="text/javascript" src="jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="template/calendar.css"/>
 
 <div class="belowribbon">
     <h1>
@@ -31,10 +31,36 @@
                     "Desember"
                 );
 
-                $bulan_ini = intval(date("n"));
+                $tahun = array(intval(date('Y')) - 4, intval(date('Y')) - 3, intval(date('Y')) - 2, intval(date('Y')) - 1, intval(date('Y')));
 
-                function getCalendar($month, $year) {
-                    // Use the PHP time() function to find out the timestamp for the current time
+                ?>
+
+                <p>Tahun
+                    <select id="tahun">
+                        <?php for ($i = 0; $i < count($tahun); $i++) : ?>
+                            <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini)
+                                echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
+                                <?php endfor; ?>
+                    </select>
+                    Bulan
+                    <select id="bulan">
+                        <?php for ($i = 1; $i <= 12; $i++) : ?>
+                                    <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini)
+                                        echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                                <?php endfor; ?>
+                        </select>
+                        <input type="button" value="Tampilkan" class="submit-green" onclick="window.location = 'index.php/absensi/pilih_tanggal_absensi/' + $('#tahun').val() + '/' + $('#bulan').val()"/>
+                    </p>
+
+                <p>
+                    Klik pada tanggal yang akan diinput absensi
+                </p>
+
+                <?php
+
+                    $month = $bulan_ini;
+                    $year  = $tahun_ini;
+
                     $current_time = time();
 
                     // Get the first day of the month
@@ -132,7 +158,7 @@
 
                     // Build the heading portion of the calendar table
                     echo <<<EOS
-	<table id="calendar" width="100%" border="1">
+	<table class="calendar" width="100%" border="1">
 	<tr class="daynames">
 		<th>Minggu</th>
                 <th>Senin</th>
@@ -148,43 +174,16 @@ EOS;
                         echo '<tr class="week">';
                         foreach ($week as $day) {
                             if ($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time))
-                                echo '<td class="today"><a href="#">' . $day . '</a></td>';
+                                echo "<td class='today'><a href='index.php/absensi/isi_absensi/$year/$month/$day'>$day</a></td>";
                             else
-                                echo '<td class="days"><a href="#">' . $day . '</a></td>';
+                                echo "<td class='days'><a href='index.php/absensi/isi_absensi/$year/$month/$day'>$day</a></td>";
                         }
                         echo '</tr>';
                     }
 
                     echo '</table>';
 
-                    return ob_get_clean();
-                }
-
-                $tahun_ini = intval(date("Y"));
-                $tahun = array($tahun_ini - 2, $tahun_ini - 1, $tahun_ini);
-
                 ?>
-
-                <p>Tahun
-                    <select id="tahun">
-                        <?php for ($i = 0; $i < count($tahun); $i++) : ?>
-                            <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini) echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
-                        <?php endfor; ?>
-                    </select>
-                   Bulan
-                    <select id="bulan">
-                        <?php for ($i = 1; $i <= 12; $i++) : ?>
-                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini) echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
-                        <?php endfor; ?>
-                    </select>
-                   <input type="button" value="Tampilkan" class="submit-green"/>
-                </p>
-
-                <p>
-                    Klik pada tanggal yang akan diinput absensi
-                </p>
-
-                <?php echo getCalendar($bulan_ini, intval(date("Y"))); ?>
 
             </div>
         </div>

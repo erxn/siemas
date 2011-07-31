@@ -112,6 +112,10 @@
             $(function() {
                 $('.password').pstrength();
             });
+
+            $(document).ready(function(){
+                parent.form_changed = false;
+            });
         </script>
     </head>
     <body style="">
