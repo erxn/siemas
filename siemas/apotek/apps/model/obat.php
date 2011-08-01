@@ -15,7 +15,7 @@ class Model_obat {
 
     public function ambil_nama_obat(){
 
-        $result = $this->db->results("SELECT nbk_obat FROM obat");
+        $result = $this->db->results("SELECT nbk_obat, id_obat FROM obat");
 
         return $result;
     }
