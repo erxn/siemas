@@ -1,4 +1,7 @@
 <?php $this->load->view('header');?>
+<script>
+    
+    </script>
 <!-- SUBNAV -->
 <div id="subnav">
     <div class="container_12">
@@ -20,12 +23,12 @@
             <div class="module">
                 <h2><span>Pendaftaran Pasien</span></h2>
                 <div class="module-body">
-                    <form id="cari_pasien" action="index.php/registrasi">
+                    <form id="cari_pasien" action="index.php/registrasi/index" method="post">
                         <table id="form_cari" class="noborder" style="width: 80%;">
                             <tr>
                                 <td style="width: 30%;">ID Pasien</td>
                                 <td style="width: 10%;">:</td>
-                                <td style="width: 20%;"><input name="kode_pasien" type="text" class="input-medium"/></td>
+                                <td style="width: 20%;"><input name="kode_pasien" type="text" class="input-medium" placeholder="ID Pasien"/></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -35,15 +38,15 @@
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
-                                <td><input nama="nama_pasien"type="text" class="input-medium" /></td>
+                                <td><input name="nama_pasien"type="text" class="input-medium" placeholder="Nama Pasien"/></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Umur</td>
                                 <td>:</td>
-                                <td><input name="umur_pasien" type="text" class="input-medium" /></td>
+                                <td><input name="umur_pasien" type="text" class="input-medium" placeholder="Umur Pasien"/></td>
                                 <td><div align="right">
-                                        <input name="cari" class="submit-green" type="submit" value="Cari" />
+                                        <input name="cari" class="submit-green" type="submit" value="Cari" onClick=""/>
                                     </div>
                                 </td>
                             </tr>
@@ -58,7 +61,7 @@
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
                     </div>
-                    <div id="hasil_cari_kk">
+                    <div id="hasil_cari_kk" >
                     <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
                     <br/>
                     <table id="myTable" class="tablesorter" style="width: 100%;">
@@ -73,20 +76,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($hasil_cari_pasien as $pasien){?>
+                            <?php $i=1; if(isset($hasil_cari_pasien)) { foreach ($hasil_cari_pasien as $hasil) {?>
                             <tr class="even">
-                                <td class="align-center">1</td>
-                                <td><a class="popup" href="index.php/pasien/profil_pasien"><?php echo "annisa";?></a></td>
-                                <td>19 th</td>
-                                <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                <td><a class="popup" href="index.php/kk/profil_kk">Dimas Putera</a></td>
+                                <td class="align-center"><?php echo $i++; ?></td>
+                                <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a></td>
+                                <td><?php echo $hasil['umur']." th";?></td>
+                                <td><?php echo $hasil['alamat_kk'];?></td>
+                                <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk'];?>"><?php echo $hasil['nama_kk'];?></a></td>
                                 <td align="center">
                                     <a class="popup" id="test" href="index.php/pasien/registrasi_kunjungan">
                                         <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/>
                                     </a>
                                 </td>
                             </tr>
-                            <?php }?>
+                           <?php  }} else { ?>
+                            <tr>
+                                <td></td>
+                            </tr>
+                           <?php } ?>
                         </tbody>
                     </table>
                     <div id="pager" class="pager">
@@ -107,7 +114,7 @@
                         </form>
                     </div>
                     </div>
-                    </div>
+                </div>
             </div>
 
         </div>
@@ -117,6 +124,14 @@
 
 
 <!-- KANAN -->
+<link type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
+
+    <script>
+        $(function() {
+            $( "#tabs1" ).tabs();
+            $( "#tabs" ).tabs();
+        });
+    </script>
 <div>
     <div class="grid_6" style="width: 45%">
         <div class="module">
@@ -517,21 +532,12 @@
 
 
 
-<div class="module" style="float: left; width: 40%">
 
-    <link type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
-
-    <script>
-        $(function() {
-            $( "#tabs1" ).tabs();
-            $( "#tabs" ).tabs();
-        });
-    </script>
+    
 
 
 
     <!-- End demo -->
-</div>
 
 </body>
 </html>
