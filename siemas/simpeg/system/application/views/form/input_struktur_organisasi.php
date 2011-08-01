@@ -1,40 +1,11 @@
-<?php $this->load->view('header');
+<?php $this->load->view('header'); ?>
 
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<form action="" method="post">
 
 <div class="belowribbon">
     <h1>
         Input struktur organisasi
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
     </h1>
 </div>
 
@@ -45,15 +16,14 @@ $pegawai = array(
             <h2><span>Masukkan kepala Puskesmas</span></h2>
             <div class="module-body">
                 <p>Kepala Puskesmas: 
-                    <select name="kepala" class="input-long" style="width: 300px">
+                    <select name="kepala" class="input-long">
                         <option value="0">-</option>
                         <?php
-                        for ($j = 1; $j < count($pegawai); $j++) {
+                        foreach ($daftar_pegawai as $pegawai) {
 
-                            if ($j != $i)
-                                echo "<option>{$pegawai[$j]}</option>";
-                        }
-                        ?>
+                            echo "<option value='{$pegawai['id_pegawai']}'>{$pegawai['nama']}</option>";
+
+                        } ?>
                     </select>
                 </p>
             </div>
@@ -69,38 +39,36 @@ $pegawai = array(
                             <th>NIP</th>
                             <th>Nama</th>
                             <th>Jabatan</th>
-                            <th>Atasan</th>
+                            <th>Atasan langsung</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai); $i++) : ?>
-                            <tr <?php if ($i % 2 == 0)
-                                echo 'class="even"' ?>>
+                        <?php $i = 1; foreach ($daftar_pegawai as $pegawai) : ?>
+                            <tr <?php if ($i % 2 == 0) echo 'class="even"' ?>>
                                 <td><?php echo $i; ?></td>
-                                <td>123456789678</td>
-                                <td><?php echo $pegawai[$i]; ?></td>
-                                <td>Dokter</td>
+                                <td><?php echo $pegawai['nip']; ?></td>
+                                <td><?php echo $pegawai['nama']; ?></td>
+                                <td><?php $j = $this->pegawai->get_jabatan_terakhir($pegawai['id_pegawai']); echo $j['jabatan'] ?></td>
                                 <td>
                                     <select name="atasan[]" class="input-long">
                                         <option value="0">-</option>
-                                    <?php
-                                    for ($j = 1; $j < count($pegawai); $j++) {
+                                        <?php $j = 1; foreach ($daftar_pegawai as $pegawai_atasan) : ?>
+                                            <?php if ($j != $i) : ?>
+                                                <option value="<?php echo $pegawai_atasan['id_pegawai']; ?>" <?php if($j == $pegawai['id_atasan']) echo "selected" ?>><?php echo $pegawai_atasan['nama']; ?></option>
+                                            <?php endif; ?>
+                                        <?php $j++; endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                        <?php $i++; endforeach; ?>
+                    </tbody>
+                </table>
 
-                                        if ($j != $i)
-                                            echo "<option>{$pegawai[$j]}</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <?php endfor; ?>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
             </div>
+        </div>
+    </div>
+</div>
 
+</form>
 
 <?php $this->load->view('footer'); ?>

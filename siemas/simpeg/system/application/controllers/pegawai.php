@@ -427,12 +427,36 @@ class Pegawai extends Controller {
         else echo "0";
     }
 
-    function input_kenaikan_yad() {
-        $this->load->view('form/input_kenaikan_yad');
+    function input_kenaikan_yad($id_pegawai = 0) {
+
+        $data = array();
+
+        if($this->input->post('submit')) {
+
+            $tanggal_yad = format_tanggal_database($this->input->post('tanggal_yad'));
+            $this->gaji->set_kenaikan_gaji_yad($id_pegawai, $tanggal_yad);
+
+            $data['updated'] = true;
+
+        }
+
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+        $data['id_pegawai'] = $id_pegawai;
+
+        if($id_pegawai != 0) {
+            $data['kenaikan_yad'] = $this->gaji->get_kenaikan_gaji_yad($id_pegawai);
+        }
+
+        $this->load->view('form/input_kenaikan_yad', $data);
     }
 
     function input_struktur_organisasi() {
-        $this->load->view('form/input_struktur_organisasi');
+
+        $data = array();
+
+
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+        $this->load->view('form/input_struktur_organisasi', $data);
     }
 
     function laporan_duk() {

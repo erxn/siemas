@@ -30,4 +30,21 @@ class Gaji_model extends Model {
         return $this->db->query("DELETE FROM {$this->tabel} WHERE id_{$this->tabel} = $id");
     }
 
+    function get_kenaikan_gaji_yad($id_pegawai) {
+        $data = array();
+        $q = $this->db->query("SELECT kenaikan_YAD FROM pegawai WHERE id_pegawai = $id_pegawai");
+
+        if ($q->num_rows() > 0) {
+            $data = $q->row_array();
+        }
+
+        $q->free_result();
+        return $data['kenaikan_YAD'];
+    }
+
+    function set_kenaikan_gaji_yad($id_pegawai, $kenaikan_yad) {
+        $this->db->where('id_pegawai', $id_pegawai);
+        $this->db->update('pegawai', array('kenaikan_YAD' => $kenaikan_yad));
+    }
+
 }
