@@ -4,21 +4,30 @@ class Registrasi extends Controller {
 
     function __construct() {
         parent::Controller();
+        $this->load->model('M_pasien');
     }
 
     function index() {
         $data = array();
 
         if($this->input->post('cari')) {
-            $id_pasien = $this->input->post("kode_pasien");
+            $kode_pasien = $this->input->post("kode_pasien");
             $nama_pasien = $this->input->post("nama_pasien");
-            $umut_pasien = $this->input->post("umur_pasien");
+            $umur_pasien = $this->input->post("umur_pasien");
 
-            $data['hasil_cari_pasien'] = $this->M_pasien->cari_pasien($id_pasien,$nama_pasien,$umur_pasien);
-       
-            }
-            $this->load->view('registrasi', $data);
-        
+//            echo $kode_pasien." ".$nama_pasien." ".$umur_pasien;
+//            exit;
+
+            $pasien = $this->M_pasien->cari_pasien($kode_pasien,$nama_pasien,$umur_pasien);
+
+//            print_r($pasien);
+//            exit;
+
+            $data['hasil_cari_pasien'] = $pasien;
+        }
+        $this->load->view('registrasi', $data);
+
+
     }
-    
+
 }
