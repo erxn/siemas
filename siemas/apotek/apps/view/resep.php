@@ -96,26 +96,26 @@
 
                                   <tbody>
 					<tr>
-                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
                                         </tr>
 					<tr>
-                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
 					</tr>
 					<tr>
-                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
 					</tr>
 					<tr>
-                                            <td class="align-center"><input type="text" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" id="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <?php $n++; ?>
 					</tr>
@@ -150,23 +150,45 @@
         </div> <!-- End #footer -->
 
         <script type="text/javascript">
+
+            function tabelFleksibel() {
+                $('#resep tbody>tr:last').clone(true).insertAfter('#resep tbody>tr:last');
+                $('#resep tbody>tr:last input').val('');
+                $('#resep tbody>tr:last input').first().focus();
+            }
+
+            var arrayObat = new Array();
+                <?php if(isset($list_nama_obat)){ foreach ($list_nama_obat as $list) { ?>
+                    arrayObat[<?php echo $list->id_obat; ?>] = "<?php echo $list->nbk_obat; ?>";
+                <?php } } ?>
+
+            $('.ido').keyup(function(){
+
+              var id_obat = $(this).val();
+              $(this).parent('td').next().find('input').val(arrayObat[id_obat]);
+
+            })
+
+
         $(document).ready(function()
-            {$("input#autocomplete").autocomplete({
+            {$("input.autocomplete").autocomplete({
 			source: [
-                <?php if(isset($list_nama_obat)){ foreach ($list_nama_obat as $list_nama_obat) { ?>
-			"<?php echo $list_nama_obat->nbk_obat; ?>",
+                        <?php if(isset($list_nama_obat)){ foreach ($list_nama_obat as $list) { ?>
+			{"value":"<?php echo $list->nbk_obat; ?>","id":"<?php echo $list->id_obat; ?>"},
                         <?php } } ?>
-                        "obat"
-		]
+                        {}
+                        ],
+                	select: function( event, ui ) {
+				var nama_obat = ui.item.value;
+                                var id_obat = ui.item.id;
+
+                                $(this).parent('td').prev().find('input').val(id_obat);
+                        },
+                        delay: 0
             });
         });
 
-        function tabelFleksibel() {
-        $('#resep tbody>tr:last').clone(true).insertAfter('#resep tbody>tr:last');
-        $('#resep tbody>tr:last input').val('');
-        $('#resep tbody>tr:last input').first().focus();
-    }
-
+        
 
 </script>
 
