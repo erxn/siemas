@@ -73,4 +73,36 @@ class Pasien extends Controller {
 
     }
 
+    function cari_pasien(){
+        $data = array();
+        $kode_pasien = $this->input->post('kode_pasien');
+        $nama_pasien = $this->input->post('nama_pasien');
+        $umur_pasien = $this->input->post('umur_pasien');
+        $alamat = $this->input->post('alamat_pasien');
+
+
+
+        if($this->input->post('submit')) {
+        
+        $hasil_cari = $this->M_pasien->cari_pasien($kode_pasien,$nama_pasien,$umur_pasien,$alamat);
+        $data['hasil_cari_pasien'] = $hasil_cari;
+        }
+        $this->load->view('data_pasien', $data);
+       
+    }
+
+       function cari_pasien_auto(){
+        $kode_pasien = $this->input->post('kode_pasien');
+        $nama_pasien = $this->input->post('nama_pasien');
+        $umur_pasien = $this->input->post('umur_pasien');
+        $alamat = $this->input->post('alamat_pasien');
+
+        if($this->input->post('submit')) {
+
+        $hasil_cari = $this->M_pasien->cari_pasien($kode_pasien,$nama_pasien,$umur_pasien,$alamat);
+        $data['hasil_cari_pasien'] = $hasil_cari;
+
+        $this->load->view('data_pasien', $data);
+       }
+    }
 }
