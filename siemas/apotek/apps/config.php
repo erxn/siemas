@@ -3,7 +3,9 @@
 /**
  * EN: Website base url.
  */
-$CONFIG['base_url']                         = 'http://localhost/siemas/apotek/'; /* Change this with your application domain and/or path. */
+$root = "http://".$_SERVER['HTTP_HOST'];
+$root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+$CONFIG['base_url']                         = $root; /* Change this with your application domain and/or path. */
 $CONFIG['index_file']                       = ''; /* Remove this index.php if you wish an url without "index.php" */
 
 /**

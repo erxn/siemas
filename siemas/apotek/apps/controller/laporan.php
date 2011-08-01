@@ -4,6 +4,7 @@ class Controller_laporan extends Panada {
     
     public function __construct(){
         parent::__construct();
+                $this->excel = new Library_PHPExcel();
 		$this->session = new Library_session();
                 $this->date = new Model_history();
                 $this->obat = new Model_obat();
