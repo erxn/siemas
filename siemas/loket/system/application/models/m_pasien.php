@@ -51,7 +51,7 @@ class M_pasien extends Model {
         return $jumlah[0]['jumlah'];
     }
 
-    function cari_pasien($kode_pasien,$nama_pasien,$umur_pasien) {
+    function cari_pasien($kode_pasien,$nama_pasien,$umur_pasien,$alamat="") {
 
         $data = array();
         if($kode_pasien != '') {
@@ -68,10 +68,19 @@ class M_pasien extends Model {
 
         }
         else if($nama_pasien != '' && $umur_pasien != '') {
+            if($alamat == ''){
             $q = $this->db->query("SELECT pasien.*, kk.*, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
                                  FROM pasien JOIN kk USING(id_kk)
                                  WHERE extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) BETWEEN $umur_pasien-1 and $umur_pasien+1
                                  AND nama_pasien LIKE '%$nama_pasien%'");
+            }
+            else {
+                $q = $this->db->query("SELECT pasien.*, kk.*, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
+                                 FROM pasien JOIN kk USING(id_kk)
+                                 WHERE extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) BETWEEN $umur_pasien-1 and $umur_pasien+1
+                                 AND nama_pasien LIKE '%$nama_pasien%'
+                                 AND alamat_kk LIKE '%$alamat_pasien%'");
+            }
 
             if($q->num_rows() > 0) {
                 foreach ($q->result_array() as $row) {
@@ -83,6 +92,9 @@ class M_pasien extends Model {
             return $data;
         }
 
-        //$q = $this->db->query("SELECT COUNT(id_pasien) FROM pasien WHERE id_pasien = $id_pasien");
     }
+    
+
+
+
 }

@@ -62,7 +62,7 @@
                         </a>
                     </div>
                     <div id="hasil_cari_kk" >
-                    <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
+                        <h4  class="float-right">Hasil Pencarian: <?php if(isset($hasil_cari_pasien)) echo count($hasil_cari_pasien) ?> orang</h4>
                     <br/>
                     <table id="myTable" class="tablesorter" style="width: 100%;">
                         <thead>
