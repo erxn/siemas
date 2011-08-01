@@ -5,6 +5,9 @@ class Pegawai extends Controller {
     function Pegawai() {
         parent::Controller();
         $this->load->model("Pegawai_model", 'pegawai');
+        $this->load->model("Gaji_model", 'gaji');
+        $this->load->model("Jabatan_model", 'jabatan');
+        $this->load->model("Pangkat_model", 'pangkat');
     }
 
     function index() {
@@ -325,15 +328,103 @@ class Pegawai extends Controller {
     }
 
     function input_perubahan_gaji() {
-        $this->load->view('form/input_perubahan_gaji');
+
+        $data = array();
+
+        if ($this->input->post('submit')) {
+            $insert = array(
+                'TMT' => format_tanggal_database($this->input->post('tmt')),
+                'gaji' => $this->input->post('gaji'),
+                'id_pegawai' => $this->input->post('sel_pegawai')
+            );
+
+            $this->gaji->insert($insert);
+            $data['saved'] = true;
+        }
+
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->view('form/input_perubahan_gaji', $data);
     }
 
     function input_perubahan_jabatan() {
-        $this->load->view('form/input_perubahan_jabatan');
+
+        $data = array();
+
+        if ($this->input->post('submit')) {
+            $insert = array(
+                'TMT' => format_tanggal_database($this->input->post('tmt')),
+                'jabatan' => $this->input->post('jabatan'),
+                'id_pegawai' => $this->input->post('sel_pegawai')
+            );
+
+            $this->jabatan->insert($insert);
+            $data['saved'] = true;
+        }
+
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->view('form/input_perubahan_jabatan', $data);
     }
 
     function input_perubahan_pangkat() {
-        $this->load->view('form/input_perubahan_pangkat');
+
+        $data = array();
+
+        if ($this->input->post('submit')) {
+            $insert = array(
+                'TMT' => format_tanggal_database($this->input->post('tmt')),
+                'pangkat' => $this->input->post('pangkat'),
+                'golongan' => $this->input->post('gol_ruang'),
+                'id_pegawai' => $this->input->post('sel_pegawai')
+            );
+
+            $this->pangkat->insert($insert);
+            $data['saved'] = true;
+        }
+        
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->view('form/input_perubahan_pangkat', $data);
+    }
+
+    function list_gaji($id_pegawai) {
+        $data = array();
+        
+        $data['daftar_gaji'] = $this->gaji->get_by_id_pegawai($id_pegawai);
+        $this->load->view('form/list_gaji', $data);
+    }
+
+    function list_jabatan($id_pegawai) {
+        $data = array();
+        
+        $data['daftar_jabatan'] = $this->jabatan->get_by_id_pegawai($id_pegawai);
+        $this->load->view('form/list_jabatan', $data);
+    }
+
+    function list_pangkat($id_pegawai) {
+        $data = array();
+
+        $data['daftar_pangkat'] = $this->pangkat->get_by_id_pegawai($id_pegawai);
+        $this->load->view('form/list_pangkat', $data);
+    }
+
+    function hapus_gaji($id) {
+        // via AJAX
+        if($this->gaji->hapus($id)) echo "1";
+        else echo "0";
+    }
+
+    function hapus_jabatan($id) {
+        // via AJAX
+        if($this->jabatan->hapus($id)) echo "1";
+        else echo "0";
+    }
+    
+    function hapus_pangkat($id) {
+        // via AJAX
+        if($this->pangkat->hapus($id)) echo "1";
+        else echo "0";
     }
 
     function input_kenaikan_yad() {

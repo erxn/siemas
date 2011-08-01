@@ -114,9 +114,20 @@
         if(id == 0) $('#list_cuti').fadeOut();
         else {
             $('#list_cuti').fadeOut(function(){
-                $(this).load('index.php/cuti/list_cuti/' + id, function(){$(this).fadeIn()});
+                $(this).load('index.php/cuti/list_cuti/' + id, function(){$(this).fadeIn('fast')});
             });
             
+        }
+    }
+
+    function hapus(id) {
+
+        if(confirm("Hapus data cuti ini? Data yang dihapus tidak dapat dikembalikan")) {
+            $.get('index.php/cuti/hapus_cuti/' + id, function(data){
+                if(data == '1') {
+                    $('#t_' + id).fadeOut(function(){$(this).remove()});
+                }
+            });
         }
 
     }

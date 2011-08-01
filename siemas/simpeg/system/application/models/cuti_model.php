@@ -24,4 +24,8 @@ class Cuti_model extends Model {
         return $data;
     }
 
+    function hapus_cuti($id) {
+        return $this->db->query("DELETE FROM cuti WHERE id_cuti = $id");
+    }
+
 }
