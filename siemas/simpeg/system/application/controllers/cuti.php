@@ -40,4 +40,10 @@ class Cuti extends Controller {
         $this->load->view('form/list_cuti', $data);
     }
 
+    function hapus_cuti($id) {
+        // via AJAX
+        if($this->cuti->hapus_cuti($id)) echo "1";
+        else echo "0";
+    }
+
 }

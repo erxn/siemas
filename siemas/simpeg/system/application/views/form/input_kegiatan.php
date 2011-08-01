@@ -1,142 +1,113 @@
-<?php $this->load->view('header');
+<?php $this->load->view('header'); ?>
 
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
+<form action="" method="post">
 
-?>
+    <div class="belowribbon">
+        <h1>
+            Input kegiatan luar Puskesmas
+            <?php if(!isset($saved)) : ?>
+            <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+            <?php endif; ?>
+        </h1>
+    </div>
 
+    <div id="page">
 
-<div class="belowribbon">
-    <h1>
-        Input kegiatan luar Puskesmas
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
-    </h1>
-</div>
-
-<div id="page">
-
-    <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.7.3.custom.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $( ".datepicker" ).datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'dd-mm-yy'
+        <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.7.3.custom.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $( ".datepicker" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'dd-mm-yy'
+                });
             });
-        });
-    </script>
+
+            function load_kegiatan(id) {
+
+                if(id == 0) $('#list_kegiatan').fadeOut();
+                else {
+                    $('#list_kegiatan').fadeOut(function(){
+                        $(this).load('index.php/kegiatan/list_kegiatan/' + id, function(){$(this).fadeIn('fast')});
+                    });
+
+                }
+            }
+
+            function hapus(id) {
+
+                if(confirm("Hapus data ini? Data yang dihapus tidak dapat dikembalikan")) {
+                    $.get('index.php/kegiatan/hapus_kegiatan/' + id, function(data){
+                        if(data == '1') {
+                            $('#t_' + id).fadeOut(function(){$(this).remove()});
+                        }
+                    });
+                }
+
+            }
+        </script>
 
 
-    <div class="grid_6" style="width: 48%">
+        <div class="grid_6" style="width: 48%">
 
-        <div class="module">
-            <h2><span>Masukkan data kegiatan</span></h2>
-            <div class="module-body">
-                <table width="100%" class="noborder">
-                    <tbody>
-                        <tr>
-                            <td>Pilih pegawai</td>
-                            <td>
+            <?php if(isset($saved)) : ?>
+            <div class="notification n-success">
+                Data telah disimpan
+            </div>
+            <?php else : ?>
 
-                                <select name="sel_pegawai" class="input-long">
-                                    <option value="0">-</option>
-                                    <?php
-                                    for ($j = 1; $j < count($pegawai); $j++) {
+            <div class="module">
+                <h2><span>Masukkan data kegiatan</span></h2>
+                <div class="module-body">
+                    <table width="100%" class="noborder">
+                        <tbody>
+                            <tr>
+                                <td>Pilih pegawai</td>
+                                <td>
+                                    <select name="sel_pegawai" class="input-long" onchange="load_kegiatan($(this).val())">
+                                        <option value="0">-</option>
+                                        <?php
+                                        foreach ($daftar_pegawai as $pegawai) {
 
-                                        echo "<option>{$pegawai[$j]}</option>";
-                                    } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Tanggal</td>
-                            <td><input type="text" name="tanggal_kegiatan" maxlength="255" class="datepicker input-medium"/></td>
-                        </tr>
-                        <tr>
-                            <td>Lokasi</td>
-                            <td><input type="text" name="lokasi_kegiatan" maxlength="255" class="input-medium"/></td>
-                        </tr>
-                        <tr>
-                            <td>Kegiatan</td>
-                            <td><textarea cols="35" rows="3" name="kegiatan"></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
+                                            echo "<option value='{$pegawai['id_pegawai']}'>{$pegawai['nama']}</option>";
+
+                                        } ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal</td>
+                                <td><input type="text" name="tanggal_kegiatan" maxlength="255" class="datepicker input-medium"/></td>
+                            </tr>
+                            <tr>
+                                <td>Lokasi</td>
+                                <td><input type="text" name="lokasi_kegiatan" maxlength="255" class="input-medium"/></td>
+                            </tr>
+                            <tr>
+                                <td>Kegiatan</td>
+                                <td><textarea cols="35" rows="3" name="kegiatan"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <?php endif; ?>
+            
+        </div>
+
+        <div class="grid_6" style="width: 48%">
+            
+            <?php if(!isset($saved)) : ?>
+            <div class="module" style="display: none" id="list_kegiatan">
 
             </div>
+            <?php endif; ?>
         </div>
+
     </div>
 
-    <div class="grid_6" style="width: 48%">
-
-        <div class="module">
-            <h2><span>Data kegiatan pegawai ini</span></h2>
-            <div class="module-table-body">
-                <table width="100%">
-                    <thead>
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Lokasi</th>
-                            <th>Kegiatan</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="cuti_done">
-                            <td>12 Januari 2011</td>
-                            <td>Bogor Tengah</td>
-                            <td>Posyandu</td>
-                            <td>
-                                <a href="#">Hapus</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>24 Agustus 2011</td>
-                            <td>Darmaga</td>
-                            <td>Posyandu</td>
-                            <td>
-                                <a href="#">Hapus</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>25 Agustus 2011</td>
-                            <td>SMA 1 Bogor</td>
-                            <td>Penyuluhan</td>
-                            <td>
-                                <a href="#">Hapus</a>
-                            </td>
-                        </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-
-</div>
+</form>
 
 <?php $this->load->view('footer'); ?>

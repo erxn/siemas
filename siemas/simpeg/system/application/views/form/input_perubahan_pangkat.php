@@ -1,40 +1,13 @@
-<?php $this->load->view('header');
+<?php $this->load->view('header'); ?>
 
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<form action="" method="post">
 
 <div class="belowribbon">
     <h1>
         Input perubahan pangkat dan golongan
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <?php if(!isset($saved)) : ?>
+        <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <?php endif; ?>
     </h1>
 </div>
 
@@ -53,6 +26,12 @@ $pegawai = array(
 
     <div class="grid_6" style="width: 48%">
 
+        <?php if(isset($saved)) : ?>
+        <div class="notification n-success">
+            Data telah disimpan
+        </div>
+        <?php else : ?>
+
         <div class="module">
             <h2><span>Masukkan data perubahan pangkat dan golongan</span></h2>
             <div class="module-body">
@@ -61,17 +40,18 @@ $pegawai = array(
                         <tr>
                             <td width="30%">Pilih pegawai</td>
                             <td>
-                                <select name="sel_pegawai">
+                                <select name="sel_pegawai" class="input-long" onchange="load_pangkat($(this).val())">
                                     <option value="0">-</option>
                                     <?php
-                                    for ($j = 1; $j < count($pegawai); $j++) {
+                                    foreach ($daftar_pegawai as $pegawai) {
 
-                                        echo "<option>{$pegawai[$j]}</option>";
+                                        echo "<option value='{$pegawai['id_pegawai']}'>{$pegawai['nama']}</option>";
+
                                     } ?>
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="riwayat" style="display: none">
                             <td>Riwayat pangkat</td>
                             <td>
                                 <table border="1">
@@ -150,7 +130,38 @@ $pegawai = array(
 
             </div>
         </div>
+
+        <?php endif; ?>
     </div>
 </div>
+
+</form>
+
+<script type="text/javascript">
+
+    function load_pangkat(id) {
+
+        if(id == 0) $('#riwayat').fadeOut();
+        else {
+            $('#riwayat').fadeOut(function(){
+                $(this).load('index.php/pegawai/list_pangkat/' + id, function(){$(this).fadeIn('fast')});
+            });
+
+        }
+    }
+
+    function hapus(id) {
+
+        if(confirm("Hapus data ini? Data yang dihapus tidak dapat dikembalikan")) {
+            $.get('index.php/pegawai/hapus_pangkat/' + id, function(data){
+                if(data == '1') {
+                    $('#t_' + id).fadeOut(function(){$(this).remove()});
+                }
+            });
+        }
+
+    }
+
+</script>
 
 <?php $this->load->view('footer'); ?>
