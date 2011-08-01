@@ -1,40 +1,11 @@
-<?php $this->load->view('header');
+<?php $this->load->view('header'); ?>
 
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<form action="" method="post">
 
 <div class="belowribbon">
     <h1>
         Input tanggal kenaikan gaji YAD
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
     </h1>
 </div>
 
@@ -53,6 +24,12 @@ $pegawai = array(
 
     <div class="grid_6" style="width: 48%">
 
+        <?php if(isset($updated)) : ?>
+        <div class="notification n-success">
+            Data disimpan
+        </div>
+        <?php endif; ?>
+
         <div class="module">
             <h2><span>Masukkan data</span></h2>
             <div class="module-body">
@@ -61,19 +38,19 @@ $pegawai = array(
                         <tr>
                             <td>Pilih pegawai</td>
                             <td>
-                                <select name="sel_pegawai" class="input-long">
+                                <select name="sel_pegawai" class="input-long" onchange="load_kenaikan_yad($(this).val())">
                                     <option value="0">-</option>
-                                    <?php
-                                    for ($j = 1; $j < count($pegawai); $j++) {
+                                    <?php foreach ($daftar_pegawai as $pegawai) { ?>
 
-                                        echo "<option>{$pegawai[$j]}</option>";
-                                    } ?>
+                                    <option value='<?php echo $pegawai['id_pegawai']; ?>' <?php if($pegawai['id_pegawai'] == $id_pegawai) echo 'selected'; ?>><?php echo $pegawai['nama']; ?></option>
+
+                                    <?php } ?>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Kenaikan gaji YAD</td>
-                            <td><input type="text" name="tanggal_yad" maxlength="255" class="datepicker input-medium"/></td>
+                            <td><input type="text" name="tanggal_yad" maxlength="255" class="datepicker input-medium" value="<?php if(isset($kenaikan_yad)) echo format_tanggal_tampilan ($kenaikan_yad); ?>"/></td>
                         </tr>
                     </tbody>
                 </table>
@@ -82,5 +59,17 @@ $pegawai = array(
         </div>
     </div>
 </div>
+
+</form>
+
+<script type="text/javascript">
+
+function load_kenaikan_yad(id) {
+
+    window.location = 'index.php/pegawai/input_kenaikan_yad/' + id;
+
+}
+
+</script>
 
 <?php $this->load->view('footer'); ?>
