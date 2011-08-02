@@ -6,9 +6,37 @@ class Pegawai_model extends Model {
         parent::Model();
     }
 
-    function get_semua_pegawai($order = 'id_pegawai') {
+    function get_kepala_puskesmas() {
         $data = array();
-        $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 ORDER BY $order");
+        $q = $this->db->query("SELECT * FROM pegawai WHERE id_atasan IS NULL LIMIT 1");
+
+        if($q->num_rows() > 0)
+        {
+            $data = $q->row_array();
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function set_kepala_puskesmas($id_pegawai) {
+        // set
+        $this->db->query("UPDATE pegawai SET id_atasan = NULL WHERE id_pegawai = {$id_pegawai}");
+        // update all others
+        $this->db->query("UPDATE pegawai SET id_atasan = {$id_pegawai} WHERE id_pegawai != {$id_pegawai}");
+    }
+
+    function set_atasan($id_pegawai, $id_atasan) {
+        $this->db->query("UPDATE pegawai SET id_atasan = {$id_atasan} WHERE id_pegawai = {$id_pegawai}");
+    }
+
+    function get_semua_pegawai($order = 'id_pegawai', $kecuali_kepala = false) {
+        $data = array();
+
+        if($kecuali_kepala == true)
+            $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 AND id_atasan IS NOT NULL ORDER BY $order");
+        else
+            $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 ORDER BY $order");
 
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
