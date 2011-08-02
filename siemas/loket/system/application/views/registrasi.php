@@ -1,7 +1,15 @@
 <?php $this->load->view('header');?>
-<script>
-    
-    </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".popup_reg_kunjungan").colorbox({initialHeight: "900px", initialWidth: "900px", width: "65%", height: "85%", onComplete: function(){
+                $( "#datepicker" ).datepicker({
+                    changeMonth: true,
+                    changeYear: true
+                });
+            }
+        });
+    });
+</script>
 <!-- SUBNAV -->
 <div id="subnav">
     <div class="container_12">
@@ -84,7 +92,7 @@
                                 <td><?php echo $hasil['alamat_kk'];?></td>
                                 <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk'];?>"><?php echo $hasil['nama_kk'];?></a></td>
                                 <td align="center">
-                                    <a class="popup" id="test" href="index.php/pasien/registrasi_kunjungan">
+                                    <a class="popup_reg_kunjungan" id="test" href="index.php/pasien/registrasi_kunjungan">
                                         <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/>
                                     </a>
                                 </td>

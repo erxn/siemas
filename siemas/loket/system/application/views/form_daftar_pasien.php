@@ -55,7 +55,7 @@
                                     <option value="umum">Umum</option>
                                     <option value="askes">Askes</option>
                                     <option value="jamkesmas">Jamkesmas</option>
-                                    <option value="lain-lain">Lain-lain</option>
+                                    <option value="lain-lain">GR</option>
                                 </select>
                             </td>
                         </tr>

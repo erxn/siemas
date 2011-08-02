@@ -19,6 +19,8 @@
                     <div class="module">
                         <h2><span>PEMBAYARAN</span></h2>
                         <div class="module-body">
+                            <h4>Cari Pasien </h4>
+                            <form name="cari_pasien_pembayaran" method="post" action="">
                             <table class="noborder" style="width: 28%">
                                 <tr>
                                     <td width="137">Nama</td>
@@ -28,14 +30,14 @@
                                 <tr>
                                     <td>Poli</td>
                                     <td>:</td>
-                                    <td><form>
+                                    <td>
                                             <select>
                                                 <option>GIGI</option>
                                                 <option>KIA</option>
                                                 <option>LAB</option>
                                                 <option>RADIOLOGI</option>
                                             </select>
-                                        </form>    </td>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>&nbsp;</td>
@@ -47,7 +49,8 @@
                                     </td>
                                 </tr>
                             </table>
-                            <div>
+                            </form>
+                                llllllk <div>
                                 <p>Total Pasien: <strong>5 orang</strong></p>
                                 <table id="myTable" class="tablesorter" style="width: 80%;">
                                     <thead>
@@ -55,28 +58,27 @@
                                             <th class="header" style="width: 1%;">No</th>
                                             <th class="header" style="width: 12%;">Nama</th>
                                             <th class="header" style="width: 7%;">Umur</th>
-                                            <th class="header" style="width: 13%;">Alamat</th>
+                                            <th class="header" style="width: 10%;">Alamat</th>
                                             <th class="header" style="width: 8%;">Poli</th>
-                                            <th class="header" style="width: 9%;" colspan="3">Total Harga</th>
-                                            <th class="header" style="width: 3%;">Status Pembayaran</th>
+                                            <th class="header" style="width: 3%;">Total Harga</th>
+                                            <th class="header" style="width: 5%;">Status Pembayaran</th>
+
                                         </tr>
                                     </thead>
 
                                     <tr>
                                         <td><div align="center">1</div></td>
-                                        <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
-                                        <td>19 tahun</td>
-                                        <td>Cibogor</td>
+                                        <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Dimas Putera</a></td>
+                                        <td>21 tahun</td>
+                                        <td>Pabaton</td>
                                         <td>Gigi</td>
-                                        <td width="35"><div align="right">Rp</div></td>
-                                        <td width="61"><div align="right">15.000 </div></td>
                                         <td align="center">
                                             <a class="popup" id="test" href="index.php/pembayaran/rincian">
-                                                Rincian
+                                                Tambah Pembayaran
                                             </a>
                                         </td>
                                         <td>
-                                            <img src="Template_files/tick-cir.gif"/>
+                                            <img src="Template_files/tick-on.gif"/>
                                             Lunas
                                         </td>
                                     </tr>
@@ -86,8 +88,6 @@
                                         <td>19 tahun</td>
                                         <td>Cibogor</td>
                                         <td>Gigi</td>
-                                        <td width="35"><div align="right">Rp</div></td>
-                                        <td width="61"><div align="right">15.000 </div></td>
                                         <td align="center">
                                             <a class="popup" id="test" href="index.php/pembayaran/rincian">
                                                 Rincian
@@ -95,7 +95,7 @@
                                         </td>
                                         <td>
                                             <img src="Template_files/cross-on.gif"/>
-                                            Lunas
+                                            Belum Lunas
                                         </td>
                                     </tr>
                                 </table>
