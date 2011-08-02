@@ -1,35 +1,6 @@
-<?php $this->load->view('header');
+<?php $this->load->view('header'); ?>
 
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<form action="" method="post">
 
 <script type="text/javascript">
 
@@ -105,12 +76,12 @@ function funcKeyDown(evt, cur_x, cur_y) {
 <div class="belowribbon">
     <h1>
         Input tunjangan
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
     </h1>
 </div>
 
 <?php
-$bulan = array(
+$nama_bulan = array(
     "",
     "Januari",
     "Februari",
@@ -126,24 +97,29 @@ $bulan = array(
     "Desember"
 );
 
-$bulan_ini = intval(date("n"));
-
 ?>
 
 <div id="page">
 
     <div style="margin: 0px 1%">
+
+        <?php if(isset($saved)) : ?>
+        <div class="notification n-success">
+            Data telah disimpan
+        </div>
+        <?php endif; ?>
+
         <div class="module">
             <h2><span>
                     Tahun&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="tahun" value="<?php echo date("Y"); ?>" class="input-short" style="width: 70px"/>
+                    <input type="text" name="tahun" id="tahun" value="<?php echo $tahun; ?>" class="input-short" style="width: 70px"/>
                     Bulan&nbsp;&nbsp;&nbsp;
-                    <select name="bulan">
+                    <select name="bulan" id="bulan">
                         <?php for ($i = 1; $i <= 12; $i++) : ?>
-                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini) echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan) echo 'selected="selected"'; ?>><?php echo $nama_bulan[$i]; ?></option>
                         <?php endfor; ?>
                     </select>
-                    <input type="button" value="Tampilkan" class="submit-green" style="font-size: 11px; height: 23px; overflow: hidden; vertical-align: top"/>
+                    <input type="button" value="Tampilkan" class="submit-green" style="font-size: 11px; height: 23px; overflow: hidden; vertical-align: top" onclick="window.location = 'index.php/penilaian/input_tunjangan/' + $('#bulan').val() + '/' + $('#tahun').val()"/>
                 </span></h2>
             <div class="module-table-body">
                 <table width="100%">
@@ -158,24 +134,27 @@ $bulan_ini = intval(date("n"));
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai); $i++) : ?>
+                        <?php $i = 0; foreach ($daftar_tunjangan as $data) : ?>
                             <tr <?php if($i%2 == 0) echo 'class="even"' ?>>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $pegawai[$i]; ?></td>
-                                <td>Dokter</td>
-                                <td>III</td>
-                                <td><input class="number input-long" type="text" value="0" maxlength="255" id="field_0_<?php echo $i-1 ?>" name="tunjangan[]"/></td>
-                                <td><input class="number input-long" type="text" value="0" maxlength="255" id="field_1_<?php echo $i-1 ?>" name="pph[]"/></td>
+                                <td>
+                                    <input type="hidden" name="id_pegawai[]" value="<?php echo $data['id_pegawai'] ?>"/>
+                                    <?php echo $i+1; ?>
+                                </td>
+                                <td><?php echo $data['nama']; ?></td>
+                                <td><?php $j = $this->pegawai->get_jabatan_terakhir($data['id_pegawai']); echo $j['jabatan'] ?></td>
+                                <td><?php $g = $this->pegawai->get_pangkat_terakhir($data['id_pegawai']); echo $g['golongan'] ?></td>
+                                <td><input type="text" maxlength="255" value="<?php echo intval($data['tunjangan']) ?>" id="field_0_<?php echo $i-1 ?>" name="tunjangan[]" class="number input-long"/></td>
+                                <td><input type="text" maxlength="255" value="<?php echo intval($data['pph21']) ?>"     id="field_1_<?php echo $i-1 ?>" name="pph21[]"     class="number input-long"/></td>
                             </tr>
-                        <?php endfor; ?>
-                        </tbody>
-                    </table>
+                        <?php $i++; endforeach; ?>
+                    </tbody>
+                </table>
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 
-
+</form>
 
 <?php $this->load->view('footer'); ?>

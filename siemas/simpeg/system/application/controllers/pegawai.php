@@ -454,8 +454,30 @@ class Pegawai extends Controller {
 
         $data = array();
 
+        if($this->input->post('update_kepala')) {
 
-        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+            $id_kepala_baru = $this->input->post('kepala');
+            $this->pegawai->set_kepala_puskesmas($id_kepala_baru);
+
+        }
+
+        if($this->input->post('submit')) {
+
+            $id_pegawai = $this->input->post('id_pegawai');
+            $atasan     = $this->input->post('atasan');
+
+            for ($i = 0; $i < count($id_pegawai); $i++) {
+                $this->pegawai->set_atasan($id_pegawai[$i], $atasan[$i]);
+            }
+
+            $data['saved'] = true;
+
+        }
+
+        $data['kepala_puskes'] = $this->pegawai->get_kepala_puskesmas();
+        $data['daftar_pegawai_all'] = $this->pegawai->get_semua_pegawai();
+        $data['daftar_pegawai_kecuali_kepala'] = $this->pegawai->get_semua_pegawai('id_pegawai', true);
+
         $this->load->view('form/input_struktur_organisasi', $data);
     }
 

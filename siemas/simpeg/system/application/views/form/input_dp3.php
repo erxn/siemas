@@ -1,51 +1,29 @@
-<?php $this->load->view('header');
+<?php $this->load->view('header'); ?>
 
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<form action="" method="post">
 
 <div class="belowribbon">
     <h1>
         Input penilaian DP3
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
     </h1>
 </div>
 
 <div id="page">
 
     <div style="margin: 0px 1%">
+
+        <?php if(isset($saved)) : ?>
+        <div class="notification n-success">
+            Data telah disimpan
+        </div>
+        <?php endif; ?>
+
         <div class="module">
             <h2>
                 <span>Tahun&nbsp;&nbsp;&nbsp;
-                    <input type="text" name="tahun" value="<?php echo date("Y"); ?>" class="input-short" style="width: 70px"/>
-                    <input type="button" value="Tampilkan" class="submit-green" style="font-size: 11px; height: 23px; overflow: hidden; vertical-align: top"/>
+                    <input type="text" name="tahun" id="tahun" value="<?php echo $tahun; ?>" class="input-short" style="width: 70px"/>
+                    <input type="button" value="Tampilkan" class="submit-green" style="font-size: 11px; height: 23px; overflow: hidden; vertical-align: top" onclick="window.location = 'index.php/penilaian/input_dp3/' + $('#tahun').val()"/>
                 </span>
             </h2>
             <div class="module-table-body">
@@ -65,26 +43,31 @@ $pegawai = array(
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai); $i++) : ?>
+                        <?php $i = 0; foreach ($daftar_nilai as $data) : ?>
                             <tr <?php if($i%2 == 0) echo 'class="even"' ?>>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $pegawai[$i]; ?></td>
-                                <td><input type="text" value="" maxlength="3" id="field_0_<?php echo $i-1 ?>" name="kesetiaan[]"    size="5" class="number input-full" style="width: 60px"/></td>
-                                <td><input type="text" value="" maxlength="3" id="field_1_<?php echo $i-1 ?>" name="prestasi[]"     size="5" class="number input-full" style="width: 60px"/></td>
-                                <td><input type="text" value="" maxlength="3" id="field_2_<?php echo $i-1 ?>" name="tanggung_jawab[]" size="5" class="number input-full" style="width: 60px"/></td>
-                                <td><input type="text" value="" maxlength="3" id="field_3_<?php echo $i-1 ?>" name="ketaatan[]"     size="5" class="number input-full" style="width: 60px"/></td>
-                                <td><input type="text" value="" maxlength="3" id="field_4_<?php echo $i-1 ?>" name="kejujuran[]"    size="5" class="number input-full" style="width: 60px"/></td>
-                                <td><input type="text" value="" maxlength="3" id="field_5_<?php echo $i-1 ?>" name="kerjasama[]"    size="5" class="number input-full" style="width: 60px"/></td>
-                                <td><input type="text" value="" maxlength="3" id="field_6_<?php echo $i-1 ?>" name="prakarsa[]"     size="5" class="number input-full" style="width: 60px"/></td>
-                                <td><input type="text" value="" maxlength="3" id="field_7_<?php echo $i-1 ?>" name="kepemimpinan[]" size="5" class="number input-full" style="width: 60px"/></td>
+                                <td>
+                                    <input type="hidden" name="id_pegawai[]" value="<?php echo $data['id_pegawai'] ?>"/>
+                                    <?php echo $i; ?>
+                                </td>
+                                <td><?php echo $data['nama']; ?></td>
+                                <td><input type="text" value="<?php echo $data['kesetiaan'] ?>" maxlength="3" id="field_0_<?php echo $i-1 ?>" name="kesetiaan[]"    size="5" class="number input-full" style="width: 60px"/></td>
+                                <td><input type="text" value="<?php echo $data['prestasi_kerja'] ?>" maxlength="3" id="field_1_<?php echo $i-1 ?>" name="prestasi[]"     size="5" class="number input-full" style="width: 60px"/></td>
+                                <td><input type="text" value="<?php echo $data['tanggung_jawab'] ?>" maxlength="3" id="field_2_<?php echo $i-1 ?>" name="tanggung_jawab[]" size="5" class="number input-full" style="width: 60px"/></td>
+                                <td><input type="text" value="<?php echo $data['ketaatan'] ?>" maxlength="3" id="field_3_<?php echo $i-1 ?>" name="ketaatan[]"     size="5" class="number input-full" style="width: 60px"/></td>
+                                <td><input type="text" value="<?php echo $data['kejujuran'] ?>" maxlength="3" id="field_4_<?php echo $i-1 ?>" name="kejujuran[]"    size="5" class="number input-full" style="width: 60px"/></td>
+                                <td><input type="text" value="<?php echo $data['kerjasama'] ?>" maxlength="3" id="field_5_<?php echo $i-1 ?>" name="kerjasama[]"    size="5" class="number input-full" style="width: 60px"/></td>
+                                <td><input type="text" value="<?php echo $data['prakarsa'] ?>" maxlength="3" id="field_6_<?php echo $i-1 ?>" name="prakarsa[]"     size="5" class="number input-full" style="width: 60px"/></td>
+                                <td><input type="text" value="<?php echo $data['kepemimpinan'] ?>" maxlength="3" id="field_7_<?php echo $i-1 ?>" name="kepemimpinan[]" size="5" class="number input-full" style="width: 60px"/></td>
                             </tr>
-                        <?php endfor; ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php $i++; endforeach; ?>
+                    </tbody>
+                </table>
             </div>
-        </div>    
+        </div>
     </div>
+</div>
+
+</form>
 
 <script type="text/javascript" src="js/keyhandler.js"></script>
 
