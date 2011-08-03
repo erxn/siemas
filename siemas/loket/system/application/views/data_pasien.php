@@ -9,16 +9,26 @@
     });
 </script>
 <script type="text/javascript">
-        $(document).ready(function()
-            {$("input.autocomplete").autocomplete({
-			source: [
-                <?php if(isset($hasil_cari_pasien)){ foreach ($hasil_cari_pasien as $data_pasien) { ?>
-			"<?php echo $data_pasien['nama_pasien']; ?>",
-                        <?php } } ?>
-                        ""
-		]
-            });
-        });
+
+$(document).ready(function() {
+	$(function() {
+		$( "#nama-autocomplete" ).autocomplete({
+			source: function(request, response) {
+				$.ajax({ url: "index.php/autocomplete/nama_pasien",
+				data: { term: $("#nama-autocomplete").val()},
+				dataType: "json",
+				type: "POST",
+				success: function(data){
+					response(data);
+				}
+			});
+		},
+		minLength: 2
+		});
+	});
+});
+
+
 </script>
 <!-- SUBNAV -->
 <div id="subnav">
@@ -48,7 +58,7 @@
                     <tr>
                         <td>Nama</td>
                         <td>:</td>
-                        <td><input name="nama_pasien" type="text" class="input-medium autocomplete" placeholder="Nama Pasien"/></td>
+                        <td><input name="nama_pasien" type="text" class="input-medium" placeholder="Nama Pasien" id="nama-autocomplete"/></td>
                         <td>&nbsp;</td>
                         <td>Umur</td>
                         <td>:</td>
