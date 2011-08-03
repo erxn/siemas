@@ -5,7 +5,7 @@
             <div class="module-body">
                 <table class="noborder">
                     <tr class="odd">
-                        <td style="width: 30% ">Tgl Pendaftaran</td>
+                        <td style="width: 30% ">Tgl</td>
                         <td style="width: 1%">:</td>
                         <td style="width: ">24 Januari 2011</td>
                         <td></td>
@@ -45,29 +45,37 @@
                     <thead>
                         <tr>
                             <th class="header" style="width: 10%;">No.</th>
-                            <th class="header" style="width: 50%;">Pelayanan</th>
-                            <th class="header" style="width: 30%;">Harga</th>
+                            <th class="header" style="width: 30%;">Poli</th>
+                            <th class="header" style="width: 30%;">Pelayanan</th>
+                            <th class="header" style="width: 50%;">Harga</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="even">
                             <td class="align-center">1</td>
-                            <td><a href="">Tambal Gigi</a></td>
+                            <td><select name="poli">
+                                    <option value="gigi">GIGI</option>
+                                    <option value="kia">KIA</option>
+                                    <option value="umum">Umum</option>
+                                    <option value="lab">Laboratorium</option>
+                                    <option value="radiologi">Radiologi</option>
+                                </select>
+                            </td>
+                            <td><Input type="text" name="pelayanan1" class="input-medium"/></td>
                             <td>Rp 60.000,-</td>
                         </tr>
                         <tr class="even">
                             <td class="align-center">1</td>
-                            <td><a href="">USG</a></td>
-                            <td>Rp 60.000,-</td>
-                        </tr>
-                        <tr class="even">
-                            <td class="align-center">1</td>
-                            <td><a href="">Cek Gula Darah</a></td>
-                            <td>Rp 60.000,-</td>
-                        </tr>
-                        <tr class="odd">
-                            <td colspan="2" align="right"><b>Total</b></td>
-                            <td><span style="color:#1981ec;font-weight: bold">Rp 60.000,-</span></td>
+                            <td><select name="poli">
+                                    <option value="gigi">GIGI</option>
+                                    <option value="kia">KIA</option>
+                                    <option value="umum">Umum</option>
+                                    <option value="lab">Laboratorium</option>
+                                    <option value="radiologi">Radiologi</option>
+                                </select>
+                            </td>
+                            <td><input type="text" name="pelayanan1" class="input-medium"/></td>
+                            <td>Rp<input type="text" name="harga1" style="width: 80%" class="input-medium" value="10000"/></td>
                         </tr>
                     </tbody>
                 </table>
