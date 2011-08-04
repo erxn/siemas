@@ -2,16 +2,29 @@
 
 <script type="text/javascript" src="jquery.js"></script>
 
+<?php if(!($this->absensi->is_libur_pkm($tahun, $bulan, $tanggal) && $this->absensi->is_libur_bp($tahun, $bulan, $tanggal))) : ?>
+<form action="" method="post">
+<?php endif; ?>
+    
 <div class="belowribbon">
     <h1>
-        Input absensi (<?php echo "$tanggal - $bulan - $tahun"; ?>)
-        <input type="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        Input absensi (<?php echo tampilan_tanggal_indonesia("$tanggal-$bulan-$tahun", true); ?>)
+        <?php if(!($this->absensi->is_libur_pkm($tahun, $bulan, $tanggal) && $this->absensi->is_libur_bp($tahun, $bulan, $tanggal))) : ?>
+        <input type="submit" name="submit" class="submit-green" value="Simpan" style="margin-left: 10px"/>
+        <?php endif; ?>
     </h1>
 </div>
 
 <div id="page">
 
     <div style="margin: 0px 1%">
+
+        <?php if(isset($saved)) : ?>
+        <div class="notification n-success">
+            Data telah disimpan
+        </div>
+        <?php endif; ?>
+
         <div class="module">
             <h2><span>Puskesmas Bogor Tengah</span></h2>
             <div class="module-table-body">
@@ -19,32 +32,39 @@
                     <?php if(!$this->absensi->is_libur_pkm($tahun, $bulan, $tanggal)) : ?>
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>
-                                <input type="checkbox" id="ck_all" title="Klik jika seluruhnya hadir" onchange="$('.ck_absen').attr('checked', this.checked)"/>
-                                <label for="ck_all" style="display: inline" title="Klik jika seluruhnya hadir">Hadir semuanya</label>
-                            </th>
-                            <th>Jam hadir</th>
+                            <th width="5%">No</th>
+                            <th width="20%">NIP</th>
+                            <th width="35%">Nama</th>
+                            <th width="20%">Hadir?</th>
+                            <th width="20%">Jam hadir</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai_pkm); $i++) : ?>
+                        <?php $i = 0; foreach ($absensi_pkm as $data) : ?>
                             <tr <?php if ($i % 2 == 0)
                                 echo 'class="even"' ?>>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $pegawai_pkm[$i]['nip']; ?></td>
-                                    <td><?php echo $pegawai_pkm[$i]['nama']; ?></td>
                                     <td>
-                                        <input type="checkbox" name="hadir[]" id="ck<?php echo $i ?>" class="ck_absen"/>
-                                        <label for="ck<?php echo $i ?>" style="display: inline">Hadir</label>
+                                        <input type="hidden" name="id_pegawai[<?php echo $data['id_pegawai']; ?>]" value="<?php echo $data['id_pegawai']; ?>"/>
+                                        <input type="hidden" name="id_absensi[<?php echo $data['id_pegawai']; ?>]" value="<?php echo $data['id_absensi']; ?>"/>
+                                        <?php echo $i+1; ?>
+                                    </td>
+                                    <td><?php echo $data['nip']; ?></td>
+                                    <td><?php echo $data['nama']; ?></td>
+                                    <td>
+                                        <input id="ck<?php echo $i ?>" type="checkbox" name="hadir[<?php echo $data['id_pegawai']; ?>]" class="ck_absen" <?php if($data['hadir'] == 1) echo "checked='checked'" ?>/>
+                                        <label for="ck<?php echo $i ?>" style="display: inline" class="chk_label<?php if($data['hadir'] == 1) echo " LabelSelected" ?>" unselectable="on">Hadir</label>
                                     </td>
                                     <td>
-                                        <input type="text" id="field_0_<?php echo $i ?>" value="07.30" class="input-short" style="width: 70px; text-align: center"/>
+                                        <input type="text" id="field_0_<?php echo $i ?>" name="jam_hadir[<?php echo $data['id_pegawai']; ?>]" value="<?php if($data['jam_hadir'] != "") echo date("H:i", strtotime($data['jam_hadir'])); else echo "07:30" ?>" class="input-short" style="width: 70px; text-align: center"/>
                                     </td>
                                 </tr>
-                        <?php endfor; ?>
+                        <?php $i++; endforeach; ?>
+                    </tbody>
+                    <?php else : ?>
+                    <tbody>
+                        <tr>
+                            <td colspan="5"><em>Puskesmas libur pada tanggal ini</em></td>
+                        </tr>
                     </tbody>
                     <?php endif; ?>
                 </table>
@@ -58,32 +78,39 @@
                     <?php if(!$this->absensi->is_libur_bp($tahun, $bulan, $tanggal)) : ?>
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>
-                                <input type="checkbox" id="ck_all2" title="Klik jika seluruhnya hadir" onchange="$('.ck_absen2').attr('checked', this.checked)"/>
-                                <label for="ck_all2" style="display: inline" title="Klik jika seluruhnya hadir">Hadir semuanya</label>
-                            </th>
-                            <th>Jam hadir</th>
+                            <th width="5%">No</th>
+                            <th width="20%">NIP</th>
+                            <th width="35%">Nama</th>
+                            <th width="20%">Hadir?</th>
+                            <th width="20%">Jam hadir</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai_bp); $i++) : if($i == 4) break; ?>
-                                <tr <?php if ($i % 2 == 0)
-                                    echo 'class="even"' ?>>
-                                    <td><?php echo $i; ?></td>
-                                    <td><?php echo $pegawai_bp[$i]['nip']; ?></td>
-                                    <td><?php echo $pegawai_bp[$i]['nama']; ?></td>
+                        <?php foreach ($absensi_bp as $data) : ?>
+                            <tr <?php if ($i % 2 == 0)
+                                echo 'class="even"' ?>>
                                     <td>
-                                        <input type="checkbox" name="hadir[]" id="ck<?php echo $i ?>" class="ck_absen2"/>
-                                        <label for="ck<?php echo $i ?>" style="display: inline">Hadir</label>
+                                        <input type="hidden" name="id_pegawai[<?php echo $data['id_pegawai']; ?>]" value="<?php echo $data['id_pegawai']; ?>"/>
+                                        <input type="hidden" name="id_absensi[<?php echo $data['id_pegawai']; ?>]" value="<?php echo $data['id_absensi']; ?>"/>
+                                        <?php echo $i+1; ?>
+                                    </td>
+                                    <td><?php echo $data['nip']; ?></td>
+                                    <td><?php echo $data['nama']; ?></td>
+                                    <td>
+                                        <input id="ck<?php echo $i ?>" type="checkbox" name="hadir[<?php echo $data['id_pegawai']; ?>]" class="ck_absen" <?php if($data['hadir'] == 1) echo "checked='checked'" ?>/>
+                                        <label for="ck<?php echo $i ?>" style="display: inline" class="chk_label<?php if($data['hadir'] == 1) echo " LabelSelected" ?>" unselectable="on">Hadir</label>
                                     </td>
                                     <td>
-                                        <input type="text" id="field_0_<?php echo $i ?>" value="07.30" class="input-short" style="width: 70px; text-align: center"/>
+                                        <input type="text" id="field_0_<?php echo $i ?>" name="jam_hadir[<?php echo $data['id_pegawai']; ?>]" value="<?php if($data['jam_hadir'] != "") echo date("H:i", strtotime($data['jam_hadir'])); else echo "07:30" ?>" class="input-short" style="width: 70px; text-align: center"/>
                                     </td>
                                 </tr>
-                        <?php endfor; ?>
+                        <?php $i++; endforeach; ?>
+                    </tbody>
+                    <?php else : ?>
+                    <tbody>
+                        <tr>
+                            <td colspan="5"><em>BP Pemda libur pada tanggal ini</em></td>
+                        </tr>
                     </tbody>
                     <?php endif; ?>
                 </table>
@@ -94,6 +121,20 @@
 
 </div>
 
+</form>
+
 <script type="text/javascript" src="js/keyhandler.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".ck_absen").change(function(){
+		if($(this).is(":checked")){
+			$(this).next("label").addClass("LabelSelected");
+		}else{
+			$(this).next("label").removeClass("LabelSelected");
+		}
+	});
+});
+</script>
 
 <?php $this->load->view('footer'); ?>

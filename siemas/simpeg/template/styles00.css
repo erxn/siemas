@@ -865,3 +865,28 @@ a.dashboard-module span {
 .sidebar-content {
     margin: 10px;
 }
+
+.ck_absen{
+        display: none;
+}
+.chk_label{
+        background: url("UnCheck.png") no-repeat;
+        padding-left: 30px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin: 5px;
+        height: 28px;
+        width: 150px;
+        display: block;
+        cursor: pointer;
+       -moz-user-select:'none',
+       -webkit-user-select:'none',
+       user-select:'none'
+}
+.chk_label:hover{
+        text-decoration: underline;
+        font-weight: bold;
+}
+.LabelSelected{
+        background: url("Check.png") no-repeat;
+}

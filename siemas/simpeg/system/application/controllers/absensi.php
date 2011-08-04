@@ -39,8 +39,29 @@ class Absensi extends Controller {
             $data['tanggal'] = $tanggal;
         }
 
-        $data['pegawai_pkm'] = $this->pegawai->get_semua_pegawai_pkm();
-        $data['pegawai_bp'] = $this->pegawai->get_semua_pegawai_bpp();
+        if ($this->input->post('submit')) {
+
+            $id_pegawai = $this->input->post('id_pegawai');
+            $id_absensi = $this->input->post('id_absensi');
+            $hadir = $this->input->post('hadir');
+            $jam_hadir = $this->input->post('jam_hadir');
+
+            foreach ($id_pegawai as $id) {
+                $this->absensi->insert_absensi(array(
+                    'id_absensi' => $id_absensi[$id],
+                    'tanggal' => format_tanggal_database("{$data['tanggal']}-{$data['bulan']}-{$data['tahun']}"),
+                    'hadir' => isset($hadir[$id]) ? 1 : 0,
+                    'jam_hadir' => ($jam_hadir[$id] == "") ? "07:30" : $jam_hadir[$id],
+                    'id_pegawai' => $id_pegawai[$id]
+                    )
+                );
+            }
+
+            $data['saved'] = true;
+        }
+
+        $data['absensi_pkm'] = $this->absensi->get_absensi($data['tahun'], $data['bulan'], $data['tanggal'], 0);
+        $data['absensi_bp'] = $this->absensi->get_absensi($data['tahun'], $data['bulan'], $data['tanggal'], 1);
 
         $this->load->view('form/input_absensi', $data);
     }
@@ -83,7 +104,7 @@ class Absensi extends Controller {
 
     function input_libur($tahun = 0, $bulan = 0) {
 
-        if($this->input->post('submit')) {
+        if ($this->input->post('submit')) {
             $data = array(
                 'tanggal' => $this->input->post('tanggal'),
                 'keterangan' => $this->input->post('keterangan'),
@@ -91,7 +112,6 @@ class Absensi extends Controller {
             );
 
             $this->absensi->insert_libur($data);
-
         }
 
         $data = array();
@@ -117,7 +137,6 @@ class Absensi extends Controller {
 
         $this->absensi->hapus_libur($id);
         redirect("absensi/input_libur/$tahun/$bulan");
-
     }
 
     function rekap_absensi($bulan = 0, $tahun = 0) {
