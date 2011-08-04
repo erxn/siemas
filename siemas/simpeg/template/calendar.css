@@ -24,3 +24,15 @@ td.libur a {
 .calendar a:hover {
     background-color: #F9E497;
 }
+.absensi td a {
+    padding: 6px 0;
+}
+
+.absensi .sudah-diabsen {
+    background: #b6ff8b url('dialog-ok-apply.png') 5px 5px no-repeat;
+}
+
+.absensi .today {
+    background-color: transparent !important;
+    border-width: 4px !important;
+}

@@ -22,6 +22,9 @@ class Absensi extends Controller {
             $data['tahun_ini'] = $tahun;
         }
 
+        $data['tanggal_libur_pkm_all'] = $this->absensi->get_libur_pkm_all($data['tahun_ini'], $data['bulan_ini']);
+        $data['tanggal_libur_bp_all'] = $this->absensi->get_libur_bp_all($data['tahun_ini'], $data['bulan_ini']);
+
         $this->load->view('form/input_absensi_lama', $data);
     }
 

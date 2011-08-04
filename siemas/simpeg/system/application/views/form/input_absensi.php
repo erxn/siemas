@@ -29,7 +29,7 @@
             <h2><span>Puskesmas Bogor Tengah</span></h2>
             <div class="module-table-body">
                 <table width="100%">
-                    <?php if(!$this->absensi->is_libur_pkm($tahun, $bulan, $tanggal)) : ?>
+                    <?php $i = 0; if(!$this->absensi->is_libur_pkm($tahun, $bulan, $tanggal)) : ?>
                     <thead>
                         <tr>
                             <th width="5%">No</th>
@@ -40,7 +40,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 0; foreach ($absensi_pkm as $data) : ?>
+                        <?php foreach ($absensi_pkm as $data) : ?>
                             <tr <?php if ($i % 2 == 0)
                                 echo 'class="even"' ?>>
                                     <td>

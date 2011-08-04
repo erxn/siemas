@@ -281,4 +281,13 @@ class Absensi_model extends Model {
 
     }
 
+    function sudah_diinput_absensi($tahun, $bulan, $tanggal) {
+
+        $tanggal = date("Y-m-d", strtotime("$tahun-$bulan-$tanggal"));
+        $jumlah_absensi = $this->db->where('tanggal', $tanggal)->from('absensi')->count_all_results();
+
+        return $jumlah_absensi > 0;
+
+    }
+
 }
