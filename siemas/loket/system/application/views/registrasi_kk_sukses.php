@@ -32,7 +32,7 @@
                             <tr>
                                 
                                 <td  style="width: 25%;" >Tgl. Pendaftaran</td>
-                                <td><?php echo tgl_indo($kk['tanggal_pendaftaran'])?></td>
+                                <td><?php echo tgl_indo($kk[0]['tanggal_pendaftaran'])?></td>
                             </tr>
                             <tr  class="odd">
                                 <td>Nama KK</td>
