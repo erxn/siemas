@@ -144,7 +144,7 @@ class Absensi_model extends Model {
 
         $hari_libur = $this->get_hari_libur_rutin_pkm();
         for ($d = 1; $d <= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun); $d++) {
-            if(in_array(date("D", strtotime("{$tahun}-{$bulan}-{$d}")), $hari_libur)) {
+            if (in_array(date("D", strtotime("{$tahun}-{$bulan}-{$d}")), $hari_libur)) {
                 $tanggal_libur[] = $d;
             }
         }
@@ -158,7 +158,7 @@ class Absensi_model extends Model {
 
         $hari_libur = $this->get_hari_libur_rutin_bp();
         for ($d = 1; $d <= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun); $d++) {
-            if(in_array(date("D", strtotime("{$tahun}-{$bulan}-{$d}")), $hari_libur)) {
+            if (in_array(date("D", strtotime("{$tahun}-{$bulan}-{$d}")), $hari_libur)) {
                 $tanggal_libur[] = $d;
             }
         }
@@ -246,15 +246,39 @@ class Absensi_model extends Model {
         return in_array($tanggal, $this->get_libur_bp_all($tahun, $bulan));
     }
 
-    function sudah_diisi_absen($tahun, $bulan, $tanggal) {
-        
-        
-        
+    function get_absensi($tahun, $bulan, $tanggal, $bp = 0) {
+        $data = array();
+        $tanggal = date("Y-m-d", strtotime("$tahun-$bulan-$tanggal"));
+
+        $q = $this->db->query("SELECT pegawai.id_pegawai,
+                                      pegawai.nama,
+                                      pegawai.nip,
+                                      absensi.id_absensi,
+                                      absensi.hadir,
+                                      absensi.jam_hadir
+                               FROM pegawai LEFT JOIN absensi
+                               ON   pegawai.id_pegawai = absensi.id_pegawai AND absensi.tanggal = '$tanggal'
+                               WHERE pegawai.bp_pemda = $bp AND pegawai.aktif = 1 ORDER BY pegawai.id_pegawai");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
     }
 
+    function insert_absensi($data) {
 
-    function get_absensi($tahun, $bulan, $tanggal) {
-     
+        $this->db->query("REPLACE INTO absensi (id_absensi, tanggal, hadir, jam_hadir, id_pegawai)
+                          VALUES ('{$data['id_absensi']}',
+                                  '{$data['tanggal']}',
+                                  '{$data['hadir']}',
+                                  '{$data['jam_hadir']}',
+                                  '{$data['id_pegawai']}')");
+
     }
 
 }
