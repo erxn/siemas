@@ -12,13 +12,44 @@
 <br/>
 <div class="container_12">
     <div>
+        <div class="grid_6" style="width: 47%">
+            <div class="module">
+                <h2><span>Cari Kepala Keluarga (KK)</span></h2>
+                <div class="module-body">
+                  <form id="cari_pasien" action="index.php/registrasi/index" method="post">
+                        <table id="form_cari" class="noborder" style="width: 80%;">
+                            <tr>
+                                <td colspan="2"><i><b><center>atau</center></b></i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Nama KK</td>
+                                <td>:</td>
+                                <td><input name="nama_kk" type="text" class="input-medium" placeholder="Nama Kepala Keluarga"/></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td><input name="alamat_kk" type="text" class="input-medium" placeholder="Alamat"/></td>
+                                <td><div align="right">
+                                        <input name="cari" class="submit-green" type="submit" value="Cari"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="grid_6" style="width: 49%">
             <div class="module">
-                <h2><span>Kepala Keluarga (KK)</span></h2>
+                <h2><span>Pendaftaran Kepala Keluarga (KK)</span></h2>
                 <div class="module-body">
                     <form action="" method="post">
                         <table class="noborder" style="width: 98%">
-                            <strong>PENDAFTARAN KK BARU</strong>
+                            <strong>Masukkan Identitas KK</strong>
                             <tr>
                                 <td style="width: 5%">Tgl. Pendaftaran</td>
                                 <td style="width: 15%"><input id="datepicker" type="text" class="input-medium" name="tanggal_pendaftaran" value="hari ini"/></td>

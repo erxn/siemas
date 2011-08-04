@@ -30,6 +30,13 @@ h2 {
 	letter-spacing: -1px;
 	}
 
+h2#total_harga{
+        font-size: 20px;
+        background: none;
+        float: right;
+        margin-right: 15px;
+        font-family: 'courier new';
+}
 h3 {
 	font-size: 18px;
 	}

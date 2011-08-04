@@ -11,8 +11,10 @@ class Autocomplete extends Controller {
 
     }
 
-    function nama_pasien($nama) {
+    function nama_pasien() {
 
+        $nama = $this->input->post('term');
+        
         $daftar_pasien = $this->M_autocomplete->get_pasien_by_nama($nama);
         $array_autocomplete = array();
 
@@ -20,7 +22,7 @@ class Autocomplete extends Controller {
             $array_autocomplete[] = $pasien['nama_pasien'];
         }
 
-        return json_encode($array_autocomplete);
+        echo json_encode($array_autocomplete);
     }
 
 }

@@ -33,7 +33,9 @@ class M_pasien extends Model {
     }
     function lihat_profil_pasien($id_kk, $id_pasien) {
         $data = array();
-        $q = $this->db->query("SELECT pasien.*, kk.* FROM pasien JOIN kk USING(id_kk) WHERE pasien.id_pasien = $id_pasien AND pasien.id_kk = $id_kk");
+        $q = $this->db->query("SELECT pasien.*, kk.*, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
+                              FROM pasien JOIN kk USING(id_kk)
+                              WHERE pasien.id_pasien = $id_pasien AND pasien.id_kk = $id_kk");
 
         if($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {

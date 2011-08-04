@@ -41,6 +41,7 @@
                         <td></td>
                     </tr>
                 </table>
+                <h2 id="total_harga" align="right">TOTAL: Rp 15.000,-</h2>
                 <table id="myTable" class="tablesorter" style="width: 100%">
                     <thead>
                         <tr>
@@ -53,35 +54,21 @@
                     <tbody>
                         <tr class="even">
                             <td class="align-center">1</td>
-                            <td><select name="poli">
-                                    <option value="gigi">GIGI</option>
-                                    <option value="kia">KIA</option>
-                                    <option value="umum">Umum</option>
-                                    <option value="lab">Laboratorium</option>
-                                    <option value="radiologi">Radiologi</option>
-                                </select>
+                            <td>GIGI
                             </td>
-                            <td><Input type="text" name="pelayanan1" class="input-medium"/></td>
+                            <td>Tambal Amalgam</td>
                             <td>Rp 60.000,-</td>
                         </tr>
-                        <tr class="even">
+                        <tr class="odd">
                             <td class="align-center">1</td>
-                            <td><select name="poli">
-                                    <option value="gigi">GIGI</option>
-                                    <option value="kia">KIA</option>
-                                    <option value="umum">Umum</option>
-                                    <option value="lab">Laboratorium</option>
-                                    <option value="radiologi">Radiologi</option>
-                                </select>
+                            <td>GIGI
                             </td>
-                            <td><input type="text" name="pelayanan1" class="input-medium"/></td>
-                            <td>Rp<input type="text" name="harga1" style="width: 80%" class="input-medium" value="10000"/></td>
+                            <td>Tambal Amalgam</td>
+                            <td>Rp 60.000,-</td>
                         </tr>
                     </tbody>
                 </table>
-                <div align="right">
-                    <input class="submit-green" type="submit" value="LUNAS" />
-                </div>
+                
             </div>
         </div>
     </div>
