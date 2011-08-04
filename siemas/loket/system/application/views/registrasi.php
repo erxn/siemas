@@ -10,6 +10,9 @@
         });
     });
 </script>
+<script type="text/javascript">
+    $("#hasil_cari_kk").slideDown();
+</script>
 <!-- SUBNAV -->
 <div id="subnav">
     <div class="container_12">
@@ -54,7 +57,7 @@
                                 <td>:</td>
                                 <td><input name="umur_pasien" type="text" class="input-medium" placeholder="Umur Pasien"/></td>
                                 <td><div align="right">
-                                        <input name="cari" class="submit-green" type="submit" value="Cari" onClick=""/>
+                                        <input name="cari" class="submit-green" type="submit" value="Cari"/>
                                     </div>
                                 </td>
                             </tr>
@@ -69,7 +72,8 @@
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
                     </div>
-                    <div id="hasil_cari_kk" >
+                    <?php $i=1; if(isset($hasil_cari_pasien)) {?>
+                    <div id="hasil_cari_kk">
                         <h4  class="float-right">Hasil Pencarian: <?php if(isset($hasil_cari_pasien)) echo count($hasil_cari_pasien) ?> orang</h4>
                     <br/>
                     <table id="myTable" class="tablesorter" style="width: 100%;">
@@ -84,15 +88,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1; if(isset($hasil_cari_pasien)) { foreach ($hasil_cari_pasien as $hasil) {?>
+                            <?php foreach ($hasil_cari_pasien as $hasil) {?>
                             <tr class="even">
                                 <td class="align-center"><?php echo $i++; ?></td>
-                                <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a></td>
+                                <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a></td>
                                 <td><?php echo $hasil['umur']." th";?></td>
                                 <td><?php echo $hasil['alamat_kk'];?></td>
                                 <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk'];?>"><?php echo $hasil['nama_kk'];?></a></td>
                                 <td align="center">
-                                    <a class="popup_reg_kunjungan" id="test" href="index.php/pasien/registrasi_kunjungan">
+                                    <a class="popup_reg_kunjungan" id="test" href="index.php/pasien/registrasi_kunjungan/<?php echo $hasil['id_pasien'];?>">
                                         <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/>
                                     </a>
                                 </td>
@@ -104,6 +108,7 @@
                            <?php } ?>
                         </tbody>
                     </table>
+                    <!--
                     <div id="pager" class="pager">
                         <form action="">
                             <div>
@@ -121,8 +126,9 @@
                             </div>
                         </form>
                     </div>
+                    -->
                     </div>
-                </div>
+                    </div>
             </div>
 
         </div>

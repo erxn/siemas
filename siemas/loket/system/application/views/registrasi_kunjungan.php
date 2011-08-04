@@ -5,7 +5,7 @@
             <form name="reg_kunjungan" method="post" action="#">
                 <table class="noborder">
                     <tr class="odd">
-                        <td style="width: 30%">Tgl. Pendaftaran</td>
+                        <td style="width: 25%">Tgl. Pendaftaran</td>
                         <td style="width: 68%"><input id="datepicker" type="text" class="input-medium" value="hari ini"/></td>
                     </tr>
                     <tr>

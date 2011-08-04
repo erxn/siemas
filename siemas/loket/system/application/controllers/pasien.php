@@ -12,8 +12,11 @@ class Pasien extends Controller {
         $this->load->view('data_pasien');
     }
 
-    function profil_pasien() {
-        $this->load->view('profil_pasien');
+    function profil_pasien($id_kk,$kode_pasien) {
+        $data_pasien = $this->M_pasien->lihat_profil_pasien($id_kk,$kode_pasien);
+        $data['pasien'] = $data_pasien;
+        $this->load->view('profil_pasien',$data);
+
     }
 
     function registrasi_kunjungan() {

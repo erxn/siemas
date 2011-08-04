@@ -9,123 +9,100 @@
     <div style="clear: both;"></div>
 </div>
 <!-- END SUBNAV -->
-<script>
 
-</script>
 <br/>
-        <div class="container_12">
-            <div>
-                <div class="grid_6" style="width: 98%">
-                    <div class="module">
-                        <h2><span>PEMBAYARAN</span></h2>
-                        <div class="module-body">
-                            <h4>Cari Pasien </h4>
-                            <form name="cari_pasien_pembayaran" method="post" action="">
-                            <table class="noborder" style="width: 28%">
+<div class="container_12">
+    <div>
+        <div class="grid_6" style="width: 98%">
+            <div class="module">
+                <h2><span>PEMBAYARAN</span></h2>
+                <div class="module-body">
+                    <table class="noborder">
+                        <tr class="odd">
+                            <td style="width: 15% ">Tgl</td>
+                            <td style="width: 3%">:</td>
+                            <td style="width:40% ">24 Januari 2011</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Nama Pasien</td>
+                            <td>:</td>
+                            <td>Annisa Anastasia</td>
+                            <td></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Umur</td>
+                            <td>:</td>
+                            <td>19 th</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>:</td>
+                            <td>Cibogor</td>
+                            <td></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Status Pelayanan</td>
+                            <td>:</td>
+                            <td>Umum</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <form method="post" action="index.php/pembayaran">
+                    <div style="width: 60%">
+                        <h2 id="total_harga" align="right">TOTAL: Rp 15.000,-</h2>
+                        <br/>
+                        <table id="myTable" class="tablesorter" style="width: 100%">
+                            <thead>
                                 <tr>
-                                    <td width="137">Nama</td>
-                                    <td width="16">:</td>
-                                    <td width="216"><input type="text" class="input-medium"/></td>
+                                    <th class="header" style="width: 5%;">No.</th>
+                                    <th class="header" style="width: 15%;">Poli</th>
+                                    <th class="header" style="width: 30%;">Pelayanan</th>
+                                    <th class="header" style="width: 25%;">Harga</th>
                                 </tr>
-                                <tr>
-                                    <td>Poli</td>
-                                    <td>:</td>
-                                    <td>
-                                            <select>
-                                                <option>GIGI</option>
-                                                <option>KIA</option>
-                                                <option>LAB</option>
-                                                <option>RADIOLOGI</option>
-                                            </select>
+                            </thead>
+                            <tbody>
+                                <tr class="even">
+                                    <td class="align-center">1</td>
+                                    <td>GIGI
                                     </td>
+                                    <td>Tambal Amalgam</td>
+                                    <td>Rp 60.000,-</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="align-center">2</td>
+                                    <td><select name="poli">
+                                            <option value="gigi">GIGI</option>
+                                            <option value="kia">KIA</option>
+                                            <option value="umum">Umum</option>
+                                            <option value="lab">Laboratorium</option>
+                                            <option value="radiologi">Radiologi</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" style="width: 80%" name="pelayanan1" class="input-medium"/></td>
+                                    <td>Rp <input type="text" name="harga1"  class="input-medium" value="10000"/></td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>
-                                        <div align="right">
-                                            <input class="submit-green" type="submit" value="Cari" />
-                                        </div>
-                                    </td>
+                                    <td colspan="4" align="right"><a href="#">Tambah</a></td>
                                 </tr>
-                            </table>
-                            </form>
-                                llllllk <div>
-                                <p>Total Pasien: <strong>5 orang</strong></p>
-                                <table id="myTable" class="tablesorter" style="width: 80%;">
-                                    <thead>
-                                        <tr>
-                                            <th class="header" style="width: 1%;">No</th>
-                                            <th class="header" style="width: 12%;">Nama</th>
-                                            <th class="header" style="width: 7%;">Umur</th>
-                                            <th class="header" style="width: 10%;">Alamat</th>
-                                            <th class="header" style="width: 8%;">Poli</th>
-                                            <th class="header" style="width: 3%;">Total Harga</th>
-                                            <th class="header" style="width: 5%;">Status Pembayaran</th>
-
-                                        </tr>
-                                    </thead>
-
-                                    <tr>
-                                        <td><div align="center">1</div></td>
-                                        <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Dimas Putera</a></td>
-                                        <td>21 tahun</td>
-                                        <td>Pabaton</td>
-                                        <td>Gigi</td>
-                                        <td align="center">
-                                            <a class="popup" id="test" href="index.php/pembayaran/rincian">
-                                                Tambah Pembayaran
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <img src="Template_files/tick-on.gif"/>
-                                            Lunas
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><div align="center">2</div></td>
-                                        <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
-                                        <td>19 tahun</td>
-                                        <td>Cibogor</td>
-                                        <td>Gigi</td>
-                                        <td align="center">
-                                            <a class="popup" id="test" href="index.php/pembayaran/rincian">
-                                                Rincian
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <img src="Template_files/cross-on.gif"/>
-                                            Belum Lunas
-                                        </td>
-                                    </tr>
-                                </table>
-                                <div id="pager" class="pager">
-                                    <form action="">
-                                        <div>
-                                            <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                            <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                            <input type="text" class="pagedisplay input-short align-center"/>
-                                            <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                            <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                            <select class="pagesize input-short align-center">
-                                                <option selected="selected" value="10">10</option>
-                                                <option value="20">20</option>
-                                                <option value="30">30</option>
-                                                <option value="40">40</option>
-                                            </select>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                            </tbody>
+                        </table>
+                        <div align="right">
+                            <input align="right" class="submit-green" type="submit" value="LUNAS" />
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </body>
-</html>
-
-
-
+    </div>
+</div>
 
 

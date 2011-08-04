@@ -19,7 +19,7 @@ class M_kk extends Model {
 
     function lihat_profil_kk($id_kk){
         $data = array();
-        $q = $this->db->query("SELECT * FROM kk WHERE id_kk= $id_kk");
+        $q = $this->db->query("SELECT kk.*,pasien.* FROM kk JOIN pasien USING (id_kk) WHERE pasien.id_kk= $id_kk");
 
         if($q->num_rows() > 0)
         {
@@ -32,4 +32,5 @@ class M_kk extends Model {
         $q->free_result();
         return $data;
     }
+
 }

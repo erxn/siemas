@@ -4,12 +4,17 @@ class Kk extends Controller {
     function __construct() {
         parent::Controller();
         $this->load->model('M_kk');
+        $this->load->model('M_pasien');
     }
 
     function profil_kk($id_kk) {
-        $this->load->view('profil_kk_popup');
+        $data_kk = $this->M_kk->lihat_profil_kk($id_kk);
+        $data['kk'] = $data_kk;
+        $this->load->view('profil_kk_popup',$data);
     }
 
+    
+    
     function registrasi_kk() {
         if($this->input->post('submit')) {
 
