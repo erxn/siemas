@@ -79,7 +79,7 @@
                             <strong>Masukkan Identitas KK</strong>
                             <tr>
                                 <td style="width: 5%">Tgl. Pendaftaran</td>
-                                <td style="width: 15%"><input id="datepicker" type="text" class="input-medium" name="tanggal_pendaftaran" value="hari ini"/></td>
+                                <td style="width: 15%"><input id="datepicker" type="text" class="input-medium" name="tanggal_pendaftaran" value="<?php echo date("d-m-Y") ?>"/></td>
                             </tr>
                             <tr class="odd">
                                 <td>Nama KK</td>

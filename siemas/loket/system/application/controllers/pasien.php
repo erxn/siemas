@@ -72,6 +72,7 @@ class Pasien extends Controller {
 
         $pasien_baru = $this->M_pasien->lihat_profil_pasien($id_kk, $id_pasien_baru);
         $data['pasien'] = $pasien_baru;
+        $data['poli'] = $poli;
         $this->load->view('registrasi_pasien_sukses', $data);
 
     }

@@ -9,7 +9,7 @@
                         </tr>
                         <tr>
                             <td>Tgl. Pendaftaran</td>
-                            <td style="width: 65%"><input name="tanggal_pendaftaran" id="datepicker" type="text" class="input-medium"/></td>
+                            <td style="width: 65%"><input name="tanggal_pendaftaran" id="datepicker" type="text" class="input-medium" value="<?php echo date("d-m-Y"); ?>"/></td>
                         </tr>
                         <tr class="odd">
                             <td>Nama Pasien</td>
@@ -51,7 +51,7 @@
                         <tr class="odd">
                             <td>Status Pelayanan</td>
                             <td>
-                                <select name="status_pelayanan">
+                                <select name="status_pelayanan" onchange="if($(this).val() == 'askes' || $(this).val() == 'jamkesmas') $('#nomer_kartu').show(); else $('#nomer_kartu').hide()">
                                     <option value="umum">Umum</option>
                                     <option value="askes">Askes</option>
                                     <option value="jamkesmas">Jamkesmas</option>
@@ -59,7 +59,7 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <tr id="nomer_kartu" style="display: none">
                             <td>No. Kartu</td>
                             <td><input name="no_kartu" class="input-medium" type="text"></td>
                         </tr>

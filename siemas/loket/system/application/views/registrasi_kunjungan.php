@@ -6,7 +6,7 @@
                 <table class="noborder">
                     <tr class="odd">
                         <td style="width: 25%">Tgl. Pendaftaran</td>
-                        <td style="width: 68%"><input id="datepicker" type="text" class="input-medium" value="hari ini"/></td>
+                        <td style="width: 68%"><input id="datepicker" type="text" class="input-medium" value="<?php echo date("d-m-Y") ?>"/></td>
                     </tr>
                     <tr>
                         <td>ID Pasien</td>
@@ -44,7 +44,8 @@
                                 &nbsp;&nbsp;&nbsp;
                                 <input type="radio" name="radio" id="radio2" value="radio">
                                 Tidak Bawa
-                            </form>              </td>
+                            </form>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2">
