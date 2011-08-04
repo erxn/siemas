@@ -10,18 +10,13 @@
 </div>
 <!-- END SUBNAV -->
 <br/>
-<div class="container_12">
     <div>
         <div class="grid_6" style="width: 47%">
             <div class="module">
                 <h2><span>Cari Kepala Keluarga (KK)</span></h2>
                 <div class="module-body">
-                  <form id="cari_pasien" action="index.php/registrasi/index" method="post">
+                  <form id="cari_pasien" action="index.php/kk/registrasi_kk" method="post">
                         <table id="form_cari" class="noborder" style="width: 80%;">
-                            <tr>
-                                <td colspan="2"><i><b><center>atau</center></b></i></td>
-                                <td></td>
-                            </tr>
                             <tr>
                                 <td>Nama KK</td>
                                 <td>:</td>
@@ -39,6 +34,38 @@
                             </tr>
                         </table>
                     </form>
+                    <div id="hasil_cari_kk">
+                        <h4  class="float-right">Hasil Pencarian: 5 orang</h4>
+                    <br/>
+                    <table id="myTable" class="tablesorter" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th class="header" style="width: 1%;">No</th>
+                                <th class="header" style="width: 8%;">KK</th>
+                                <th class="header" style="width: 1%;">JK</th>
+                                <th class="header" style="width: 13%;">Alamat</th>
+                                <th class="header" style="width: 8%;">Anggota</th>
+                                <th class="header" style="width: 8%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr class="even">
+                                <td class="align-center">1</td>
+                                <td><a class="popup" href="index.php/pasien/profil_kk/">Dimas</a></td>
+                                <td><?php //echo $hasil['jk_kk']."?>L</td>
+                                <td><?php //echo $hasil['alamat_kk'];?>Cibogor</td>
+                                <td>Annisa, Adnan, Meri</td>
+                                <td><input type="submit" name="tambah_anggota" value="Tambah Anggota"/></td>
+                            </tr>
+                           <?php  //}} else { ?>
+                            <tr>
+                                <td></td>
+                            </tr>
+                           <?php // } ?>
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,6 +140,5 @@
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
