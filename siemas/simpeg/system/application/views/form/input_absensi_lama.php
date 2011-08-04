@@ -35,7 +35,13 @@
 
                 ?>
 
-                <p>Tahun
+
+                <div style="float: right; text-align: right">
+                    Klik pada tanggal yang akan diinput absensi.<br/>
+                    Keterangan: <img src="template/dialog-ok-apply.png" alt="" style="vertical-align: middle"/> : absensi sudah diisi
+                </div>
+
+                <div>Tahun
                     <select id="tahun">
                         <?php for ($i = 0; $i < count($tahun); $i++) : ?>
                             <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini)
@@ -50,11 +56,10 @@
                                 <?php endfor; ?>
                         </select>
                         <input type="button" value="Tampilkan" class="submit-green" onclick="window.location = 'index.php/absensi/pilih_tanggal_absensi/' + $('#tahun').val() + '/' + $('#bulan').val()"/>
-                    </p>
+                </div>
 
-                <p>
-                    Klik pada tanggal yang akan diinput absensi
-                </p>
+                <br style="clear: both"/>
+                <br/>
 
                 <?php
 
@@ -153,12 +158,9 @@
                     // so we will array_chunk it into 7 days.
                     $weeks = array_chunk($new_count, 7);
 
-                    // Start the output buffer so we can output our calendar nicely
-                    ob_start();
-
                     // Build the heading portion of the calendar table
                     echo <<<EOS
-	<table class="calendar" width="100%" border="1">
+	<table class="calendar absensi" width="100%" border="1">
 	<tr class="daynames">
 		<th>Minggu</th>
                 <th>Senin</th>
@@ -170,13 +172,27 @@
 	</tr>
 EOS;
 
+                    $liburs = array_intersect($tanggal_libur_pkm_all, $tanggal_libur_bp_all);
+
                     foreach ($weeks AS $week) {
                         echo '<tr class="week">';
                         foreach ($week as $day) {
-                            if ($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time))
-                                echo "<td class='today'><a href='index.php/absensi/isi_absensi/$year/$month/$day'>$day</a></td>";
-                            else
-                                echo "<td class='days'><a href='index.php/absensi/isi_absensi/$year/$month/$day'>$day</a></td>";
+                            if ($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time)) {
+                                $class = "today";
+                            } else {
+                                $class = "days";
+                            }
+                            if ($this->absensi->sudah_diinput_absensi($year, $month, $day)) {
+                                $class .= " sudah-diabsen";
+                            }
+                            if (in_array($day, $liburs)) {
+                                $class .= " libur";
+                            }
+                            echo "<td class='$class'>";
+                            echo "<a href='index.php/absensi/isi_absensi/$year/$month/$day'>";
+                            echo $day;
+                            echo "</a></td>";
+
                         }
                         echo '</tr>';
                     }
