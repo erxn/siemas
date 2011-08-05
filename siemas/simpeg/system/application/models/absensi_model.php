@@ -290,4 +290,23 @@ class Absensi_model extends Model {
 
     }
 
+    function get_pegawai_tidak_hadir($tahun, $bulan, $tanggal) {
+        $data = array();
+        $tanggal = date("Y-m-d", strtotime("$tahun-$bulan-$tanggal"));
+
+        $q = $this->db->query("SELECT pegawai.id_pegawai, pegawai.nama
+                               FROM absensi JOIN pegawai USING (id_pegawai)
+                               WHERE absensi.hadir = 0
+                               AND   absensi.tanggal = '$tanggal'");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
 }

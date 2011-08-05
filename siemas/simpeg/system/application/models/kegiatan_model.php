@@ -28,4 +28,22 @@ class Kegiatan_model extends Model {
         return $this->db->query("DELETE FROM kegiatan WHERE id_kegiatan = $id");
     }
 
+    function get_kegiatan_by_tanggal($tahun, $bulan, $tanggal) {
+        $data = array();
+        $tanggal = date("Y-m-d", strtotime("$tahun-$bulan-$tanggal"));
+
+        $q = $this->db->query("SELECT kegiatan.*, pegawai.nama FROM kegiatan JOIN pegawai USING (id_pegawai)
+                               WHERE tanggal = '$tanggal' ORDER BY tanggal");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
 }

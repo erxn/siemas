@@ -16,7 +16,7 @@ function format_tanggal_tampilan($tanggal) {
         return date("d-m-Y", strtotime($tanggal));
 }
 
-function tampilan_tanggal_indonesia($tanggal, $pake_hari = true) {
+function tampilan_tanggal_indonesia($tanggal, $pake_hari = true, $pake_tahun = true) {
 
     // input: yy-mm-dd
 
@@ -25,13 +25,16 @@ function tampilan_tanggal_indonesia($tanggal, $pake_hari = true) {
 
     $d = strtotime($tanggal);
 
+    $date_string = date('j', $d) . " " . $namaBulan[(date('n', $d)-1)];
+
     if($pake_hari)
-        $sekarang = $namaHari[date('N', $d)] . ", " . date('j', $d) . " " . $namaBulan[(date('n', $d)-1)] . " " . date('Y', $d);
-    else
-        $sekarang = date('j', $d) . " " . $namaBulan[(date('n', $d)-1)] . " " . date('Y', $d);
+        $date_string = $namaHari[date('N', $d)] . ", " . $date_string;
 
-    return $sekarang;
+    if($pake_tahun)
+        $date_string = $date_string . " " . date("Y");
 
+    return $date_string;
+    
 }
 
 function format_rupiah($uang) {
