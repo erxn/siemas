@@ -14,12 +14,11 @@
             <div class="module-body">
                 <table class="noborder" width="100%">
                     <tr>
-                        <td align="left"><h4><a href="#" title="Bulan kemarin">&laquo; 28 Juli</a></h4></td>
-                        <td align="center"><h3>Senin, 29 Juli</h3></td>
-                        <td align="right"><h4><a href="#" title="Bulan depan">30 Juli &raquo;</a></h4></td>
+                        <td align="left"><h4><a href="#" title="Bulan kemarin">&laquo; <?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("yesterday")), false, false); ?></a></h4></td>
+                        <td align="center"><h3><?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("today")), true, false); ?></h3></td>
+                        <td align="right"><h4><a href="#" title="Bulan depan"><?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("tomorrow")), false, false); ?> &raquo;</a></h4></td>
                     </tr>
                 </table>
-
             </div>
         </div>
     </div>
@@ -28,21 +27,41 @@
         <div class="module">
             <h2><span>Kehadiran hari ini</span></h2>
             <div class="module-body">
+
+                <h4>Absensi</h4>
+                <?php if(!$this->absensi->sudah_diinput_absensi(date("Y"), date("m"), date("d"))) : ?>
                 <div class="notification n-information">
                     Absensi hari ini belum diisi
                 </div>
+                <?php else : ?>
                 <p>Pegawai yang tidak hadir pada hari ini:</p>
                 <ul class="bullets">
-                    <li>Alif Kurniawan</li>
-                    <li>Arief Hidayatulloh</li>
+                    <?php if(count($pegawai_absen) > 0) : foreach ($pegawai_absen as $pegawai) : ?>
+                    <li><?php echo $pegawai['nama']; ?></li>
+                    <?php endforeach; else : ?>
+                    <li>Tidak ada</li>
+                    <?php endif; ?>
                 </ul>
+                <?php endif; ?>
+
+                <h4>Cuti</h4>
                 <p>Pegawai yang cuti pada hari ini:</p>
                 <ul class="bullets">
-                    <li>Dimas Putra <strong>(30 Juli - 12 Agustus)</strong></li>
+                    <?php if(count($pegawai_cuti) > 0) : foreach ($pegawai_cuti as $pegawai) : ?>
+                    <li><?php echo $pegawai['nama']; ?> (<b><?php echo tampilan_tanggal_indonesia($pegawai['tanggal_mulai']) ?> - <?php echo tampilan_tanggal_indonesia($pegawai['tanggal_selesai']) ?></b>)</li>
+                    <?php endforeach; else : ?>
+                    <li>Tidak ada</li>
+                    <?php endif; ?>
                 </ul>
+
+                <h4>Kegiatan luar</h4>
                 <p>Kegiatan luar Puskesmas pada hari ini:</p>
                 <ul class="bullets">
+                    <?php if(count($pegawai_kegiatan) > 0) : foreach ($pegawai_kegiatan as $pegawai) : ?>
+                    <li><?php echo $pegawai['nama']; ?> (<?php echo $pegawai['kegiatan'] ?> di <?php echo $pegawai['lokasi']; ?>)</li>
+                    <?php endforeach; else : ?>
                     <li>Tidak ada</li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

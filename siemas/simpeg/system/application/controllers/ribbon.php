@@ -2,15 +2,23 @@
 
 class Ribbon extends Controller {
 
-    function Home()
+    function Ribbon()
     {
         parent::Controller();
+        $this->load->model("Absensi_model", "absensi");
     }
 
 
     function index()
     {
-        $this->load->view("ribbon");
+        $data = array();
+
+        $absensi = $this->absensi->get_jadwal_pkm();
+        $hari_ini = date("N");
+
+        $data['jam_kerja'] = $absensi[$hari_ini - 1];
+
+        $this->load->view("ribbon", $data);
     }
 
 

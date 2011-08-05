@@ -78,19 +78,35 @@
                                 <span class="ui-button-label">Beranda</span>
                             </button>
 
+                            <?php if($jam_kerja['buka'] == '1') : ?>
                             <table style="margin: 0px 20px 0px 10px; float: left">
                                 <tr>
-                                    <td colspan="2"><strong>Senin, 18 Juli 2011</strong></td>
+                                    <td colspan="2"><strong><?php echo tampilan_tanggal_indonesia(date("d-m-Y")) ?></strong></td>
                                 </tr>
                                 <tr>
                                     <td>Jam Buka</td>
-                                    <td>: 07.30</td>
+                                    <td>: <?php echo date("H:i", strtotime($jam_kerja['jam_mulai'])) ?></td>
                                 </tr>
                                 <tr>
                                     <td>Jam Tutup</td>
-                                    <td>: 14.30</td>
+                                    <td>: <?php echo date("H:i", strtotime($jam_kerja['jam_selesai'])) ?></td>
                                 </tr>
                             </table>
+                            <?php else : ?>
+                            <table style="margin: 0px 20px 0px 10px; float: left">
+                                <tr>
+                                    <td colspan="2"><strong><?php echo tampilan_tanggal_indonesia(date("d-m-Y")) ?></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Jam Buka</td>
+                                    <td>: (Libur)</td>
+                                </tr>
+                                <tr>
+                                    <td>Jam Tutup</td>
+                                    <td>: (Libur)</td>
+                                </tr>
+                            </table>
+                            <?php endif; ?>
 
                             <button href="index.php/home/hari_ini" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat detail hari ini">
                                 <span class="ui-icon msoffice-icon-magnifier-32x32"></span>
