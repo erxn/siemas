@@ -44,7 +44,7 @@
 
 
 <h2 style="margin-left: 30px ; margin-top: 20px">Rekam Medik Pasien</h2>
-<div class="grid_6" style="width: 45%; margin-left:20px; margin-top: 30px ">
+<div class="grid_6" style="width: 40%; margin-left:20px; margin-top: 30px ">
     <div  id="tabs2">
         <ul>
             <li><a href="#tabs-a">Data Pasien</a></li>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr  class="odd">
                         <td>Jenis Kelamin:</td>
-                        <td style="width: 50%"><?php echo $data_pasien[0]['jk'];?></td>
+                        <td style="width: 50%"><?php echo $data_pasien[0]['jk_pasien'];?></td>
 
                     </tr>
 
@@ -100,7 +100,7 @@
 </div>
 
 
-<div class="module" style="width: 50% ;margin-right: 15px ">
+<div class="module" style="width: 55% ;margin-right: 15px ">
     <div  id="tabs">
         <ul>
             <li><a href="#tabs-a">Poli Gigi</a></li>
@@ -122,7 +122,7 @@
                 </tr>
 
             </div>
-            <table id="">
+            <table id="" style="width:50%">
                 <thead>
                     <tr>
                         <th style="width:5%">No</th>
@@ -140,8 +140,8 @@
                          foreach ($remed_gigi as $rg)
         { ?>
                     <tr>
-                        <td class="align-center">no</td>
-                        <td><a href="index.php/pasien/data_remed_poli_lain" class="pop"><?php echo $rg['tanggal_kunjungan_gigi']; ?></a></td>
+                        <td>no</td>
+                        <td><?php echo $rg['tanggal_kunjungan_gigi']; ?></td>
                         <td><?php echo $rg['anamnesis'];?></td>
                         <td><?php echo $rg['diagnosis'];?></td>
                        <td><?php echo  $rg['nama_layanan'];?>, <?php echo $rg['nama_penyakit'];?></td>
@@ -164,7 +164,7 @@
                 </tr>
 
             </div>
-            <table id="">
+             <table id="" style="width:50%">
                 <thead>
                     <tr>
                         <th style="width:5%">No</th>
@@ -183,7 +183,7 @@
         { ?>
                     <tr>
                         <td class="align-center">no</td>
-                        <td><a href="index.php/pasien/data_remed_poli_lain" class="pop"><?php echo $rk['tanggal_kunjungan_kia']; ?></a></td>
+                        <td><?php echo $rk['tanggal_kunjungan_kia']; ?></a></td>
                         <td><?php echo $rk['anamnesis'];?></td>
                         <td><?php echo $rk['diagnosa'];?></td>
                        <td><?php echo  $rk['nama_layanan'];?>, <?php echo $rk['nama_penyakit'];?></td>
@@ -224,7 +224,7 @@
         { ?>
                     <tr>
                         <td class="align-center">no</td>
-                        <td><a href="index.php/pasien/data_remed_poli_lain" class="pop"><?php echo $ru['tanggal_kunjungan_umum']; ?></a></td>
+                        <td><?php echo $ru['tanggal_kunjungan_umum']; ?></a></td>
                         <td><?php echo $ru['anamnesis'];?></td>
                         <td><?php echo $ru['diagnosa'];?></td>
                        <td><?php echo  $ru['nama_layanan'];?>, <?php echo $ru['nama_penyakit'];?></td>
@@ -258,85 +258,70 @@
 
 
 
-<form action="index.php/pasien/insert_diagnosis_dokter" method="post">
-    <div class="module" style="float: left; margin-left:15px; margin-top: 30px; width: 45%">
+<form action="" method="post">
+    <div class="module" style="float: left; margin-left:15px; margin-top: 30px; width: 40%">
         <div>
 
             <div id="tabs1">
                 <ul>
-                    <li><a href="#tabs1-1">Anamnesis</a></li>
-                    <li><a href="#tabs2-2">Diagnosa</a></li>
-                    <li><a href="#tabs3-3">Layanan</a></li>
-                    <li><a href="#tabs4-4">Keterangan</a></li>
+                    <li><a href="#tabs1-1">Diagnosis Dokter</a></li>
                 </ul>
                 <div id="tabs1-1">
                     <table class="noborder" style="width:100%">
                         <tr>
                             <td>Anamnesis:</td>
+                            <td> </td>
                             <td><textarea name="n_anamnesis" rows="5" cols="40" input=""></textarea></td>
                         </tr>
                     </table>
-                </div>
-                <div id="tabs2-2">
                     <table class="noborder" style="width:100%">
                         <tr>
                             <td>Diagnosa:</td>
+                            <td>  </td>
                             <td><textarea name="n_diagnosa" rows="5" cols="40"></textarea></td>
                         </tr>
                     </table>
-                </div>
-                <div id="tabs3-3">
 
                     <table class="noborder" style="width:100%">
                         <tr>
                             <td>Penyakit:</td>
                             <td> <select name="n_penyakit">
-                                    <option value="0">Karies gigi</option>
-                                    <option value="1">Penyakit pulpa & Jaringan Periapikal</option>
-                                    <option value="2">Penyakit Gusi & Periodontal</option>
-                                    <option value="3">Penyakit dentofasial(inaloklusi)</option>
-                                    <option value="4">Gangguan gigi & jaringan penunjang lain</option>
-                                </select></td>
+                                    <?php foreach ($data_peny as $dp) {?>
+                                    <option value="<?php echo $dp['id_penyakit'];?>"><?php echo $dp['nama_penyakit'];?></option>
+                                    <?php } ?>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Layanan:</td>
-                            <td> <select name="n_layanan">
-                                    <option value="0">Tumpatan gigi tetap</option>
-                                    <option value="1">Tumpatan gigi sulung</option>
-                                    <option value="2">Pencabutan gigi tetap</option>
-                                    <option value="3">Pencabutan gigi sulung</option>
-                                    <option value="4">Tumpatan sementara gigi tetap </option>
-                                    <option value="5">Tumpatan sementara gigi sulung</option>
-                                    <option value="6">Pengobatan pulpa</option>
-                                    <option value="7">Pengobatan periode</option>
-                                    <option value="8">Pengobatan abses</option>
-                                    <option value="9">Skelling</option>
-                                    <option value="10">Lain-lain</option>
-                                </select></td>
-                        </tr>
+                            <td>Layanan Gigi:</td>
+                            <td>
+                                <select name="n_layanan">
+                                    <?php  foreach ($data_lay as $dl) { ?>
+                                    <option value="<?php echo $dl['id_layanan']; ?>"><?php echo $dl['nama_layanan'];?></option>
+                                    <?php } ?>
+                                </select>
+                                
+                                </td>
+                         </tr>
                     </table>
 
                 </div>
 
-                <div id="tabs4-4">
                     <table class="noborder" style="width:100%">
                         <tr>
                             <td>Keterangan:</td>
+                       
                             <td><textarea name="n_ket" rows="5" cols="40"></textarea></td>
                         </tr>
 
                         <tr>
-
                             <td></td>
-                            <td>
-                                <!--index.php/namacontroller/nama fungsi-->
-                                <input name="submit"  type="submit" class="submit-green" value="Lihat Hasil Diagnosis ">
-
-                            </td>
+                            <td><input name="submit"  type="submit" class="submit-green" value="Lihat Hasil Diagnosis "></td>
+                                
+                          
                         </tr>
                     </table>
 
-                </div>
 
             </div>
 

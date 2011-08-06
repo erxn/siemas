@@ -5,7 +5,7 @@ Class Rekam_medik_model extends Model{
         parent::Model();
     }
     
-    function get_remed_pasien_gigi(){               //buat nampilin data remed pasien per id,,buat di input pelayanan,,,biar si dokter langsung input...yg tabel itu lho
+    function get_remed_pasien_gigi($id_pasien){               //buat nampilin data remed pasien per id,,buat di input pelayanan,,,biar si dokter langsung input...yg tabel itu lho
         $data=array();
         $q=$this->db->query  ("SELECT * FROM layanan
             JOIN remed_gigi_layanan
@@ -16,7 +16,7 @@ Class Rekam_medik_model extends Model{
                 ON remed_poli_gigi.id_remed_gigi=penyakit_remed_gigi.id_remed_gigi
             JOIN penyakit
                 ON penyakit_remed_gigi.id_penyakit=penyakit.id_penyakit
-                               ");
+            WHERE remed_poli_gigi.id_pasien=$id_pasien ");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -30,15 +30,14 @@ Class Rekam_medik_model extends Model{
     }
 
 
-    function get_kunj_pasien(){
+    function get_kunj_pasien($id_pasien){
         $data=array();
         $q=$this->db->query  ("SELECT * FROM pasien
             JOIN remed_poli_gigi
             ON pasien.id_pasien = remed_poli_gigi.id_pasien
             JOIN kunjungan
-           
-               ON  remed_poli_gigi.id_kunjungan=kunjungan.id_kunjungan
-            ");
+                ON  remed_poli_gigi.id_kunjungan=kunjungan.id_kunjungan
+            WHERE remed_poli_gigi.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -51,7 +50,7 @@ Class Rekam_medik_model extends Model{
         return $data;
     }
 
-    function get_remed_pasien_kia(){               //buat nampilin tabel remed pasien yg KIA
+    function get_remed_pasien_kia($id_pasien){               //buat nampilin tabel remed pasien yg KIA
         $data=array();
         $q=$this->db->query  ("SELECT * FROM layanan
             JOIN layanan_remed_kia
@@ -62,7 +61,7 @@ Class Rekam_medik_model extends Model{
                 ON remed_poli_kia.id_remed_kia=penyakit_remed_kia.id_remed_kia
             JOIN penyakit
                 ON penyakit_remed_kia.id_penyakit=penyakit.id_penyakit
-                               ");
+             WHERE remed_poli_kia.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -76,7 +75,7 @@ Class Rekam_medik_model extends Model{
     }
 
 
-    function get_remed_pasien_umum(){               //buat nampilin tabel remed pasien yg KIA
+    function get_remed_pasien_umum($id_pasien){               //buat nampilin tabel remed pasien yg KIA
         $data=array();
         $q=$this->db->query  ("SELECT * FROM layanan
             JOIN remedi_umum_layanan
@@ -87,8 +86,7 @@ Class Rekam_medik_model extends Model{
                 ON remed_poli_umum.id_remed_umum=penyakit_remed_umum.id_remed_umum
             JOIN penyakit
                 ON penyakit_remed_umum.id_penyakit=penyakit.id_penyakit
-
-                               ");
+            WHERE remed_poli_umum.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -101,12 +99,9 @@ Class Rekam_medik_model extends Model{
         return $data;
     }
 
-    
-    
-
-    function data_pasien_remed(){                               //buat nampilin data pasien di database di tampilan remed
+    function data_pasien_remed($id_pasien){                               //buat nampilin data pasien di database di tampilan remed
          $data=array();
-        $q=$this->db->query("SELECT * FROM pasien" );
+        $q=$this->db->query("SELECT * FROM pasien WHERE id_pasien=$id_pasien" );
 
         if($q->num_rows()>0){
             foreach ($q->result_array()as $row){
@@ -117,16 +112,45 @@ Class Rekam_medik_model extends Model{
         return $data;
     }
 
-     function insert_diagnosis($data1){          //buat masukin data diagnosa dokterr
-      $insert= $this->db->insert('remed_poli_gigi',$data1);
+    
+     function get_layanan(){
+      $data=array();
+        $q=$this->db->query  ("SELECT * FROM layanan");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
 
+        $q->free_result();
+        return $data;
+    }
+     
+     function get_penyakit(){
+      $data=array();
+        $q=$this->db->query  ("SELECT * FROM penyakit");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+ function insert_diagnosis($data1){          //buat masukin data diagnosa dokterr
+      $insert= $this->db->insert('remed_poli_gigi',$data1);
       if($insert){
           return $this->db->insert_id();
       }else{
           return 0;
       }
     }
-
+    
     function insert_layanan($data2){
         $insert=$this->db->insert('remed_gigi_layanan',$data2);
 
@@ -136,6 +160,8 @@ Class Rekam_medik_model extends Model{
             return 0;
         }
         }
+
+
 
         function insert_penyakit($data3){
         $insert=$this->db->insert('penyakit_remed_gigi',$data3);
@@ -153,7 +179,7 @@ Class Rekam_medik_model extends Model{
 
     function get_id_pasien_by_kunjungan($id_kunjungan) {                                    //ngambil id_pasien berdasarkan kunjungan
         $data=array();
-        $q=$this->db->query  ("SELECT id_pasien FROM kunjungan where id_kunjungan=$id_kunjungan  ");
+        $q=$this->db->query  ("SELECT id_pasien FROM kunjungan where id_kunjungan=$id_kunjungan");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)

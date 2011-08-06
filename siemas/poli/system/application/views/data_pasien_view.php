@@ -71,7 +71,7 @@
                     </div></td>
             </tr>
         </table>
-        <table id="myTable" class="tablesorter" style="width: 98%" >
+        <table id="myTable" class="table-gw" style="width: 98%" >
 
             <thead>
                 <tr>
@@ -85,27 +85,26 @@
                     <th style="width:20%">Alamat</th>
                     <th style="width:10%">Status Pelayan</th>
                     <th style="width:10%">No Kartu</th>
+                    
                 </tr>
             </thead>
 
 
             <tbody>
 
-        <?php foreach ($pasien as $p)
-        { ?>
+                <?php foreach ($pasien as $p) { ?>
                 <tr>
                     <th style="width:2%"><?php echo "no" ?></th>
                     <th style="width:10%"><?php echo $p['tanggal_pendaftaran'];?></th>
                     <th style="width:8%"><?php echo $p['id_pasien'];?></th>
-                    <th style="width:10%"><?php echo $p['nama_KK'];?></th>
+                    <th style="width:10%"><?php echo $p['nama_kk'];?></th>
                     <th style="width:10%"><?php echo $p['nama_pasien'];?></th>
-                    <th style="width:2%"><?php echo $p['jk'];?></th>
+                    <th style="width:2%"><?php echo $p['jk_pasien'];?></th>
                     <th style="width:8%"><?php echo $p['tanggal_lahir'];?></th>
-                    <th style="width:20%"><?php echo $p['Alamat'];?></th>
                     <th style="width:10%"><?php echo $p['status_pelayanan'];?></th>
                     <th style="width:10%"><?php echo $p['no_kartu_layanan'];?></th>
                 </tr>
-                    <?php }?>
+    <?php }?>
             </tbody>
         </table>
 
@@ -113,7 +112,7 @@
             <form action="">
                 <div>
 
-<img class="first" src="Template_files/arrow-st.gif" alt="first"/>
+                    <img class="first" src="Template_files/arrow-st.gif" alt="first"/>
                     <img class="prev" src="Template_files/arrow-18.gif" alt="prev"/>
                     <input type="text" class="pagedisplay input-short align-center"/>
                     <img class="next" src="Template_files/arrow000.gif" alt="next"/>
@@ -131,4 +130,4 @@
         <div style="clear: both"></div>
 
     </div>
-     </div>
+</div>
