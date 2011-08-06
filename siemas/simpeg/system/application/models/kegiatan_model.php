@@ -46,4 +46,22 @@ class Kegiatan_model extends Model {
 
     }
 
+    function get_kegiatan_by_bulan($tahun, $bulan) {
+        $data = array();
+
+        $q = $this->db->query("SELECT kegiatan.*, pegawai.nama FROM kegiatan JOIN pegawai USING (id_pegawai)
+                               WHERE year(tanggal) = '$tahun' AND month(tanggal) = '$bulan' ORDER BY tanggal");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
+
 }

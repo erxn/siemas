@@ -46,4 +46,22 @@ class Cuti_model extends Model {
 
     }
 
+    function get_cuti_by_bulan($tahun, $bulan) {
+        $data = array();
+        $tanggal = date("Y-m-d", strtotime("$tahun-$bulan-01"));
+
+        $q = $this->db->query("SELECT cuti.*, pegawai.nama FROM cuti JOIN pegawai USING (id_pegawai)
+                               WHERE tanggal_mulai <= '$tanggal' AND tanggal_selesai >= '$tanggal' ORDER BY tanggal_mulai");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
 }
