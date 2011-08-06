@@ -45,14 +45,14 @@
                         <table>
                             <tr>
                                 <td>
-                                    <a href="" class="dashboard-module">
+                                    <a href="index.php/laporan/lap_ht" class="dashboard-module">
                                         <img src="Template_files/lap_tindakan.png" width="64" height="64" alt="edit" />
                                         <span>Laporan Tindakan</span>
                                     </a>
                                 </td>
 
                                 <td>
-                                    <a href="#" class="dashboard-module">
+                                    <a href="index.php/laporan/lap_hp" class="dashboard-module">
                                         <img src="Template_files/lap_penyakit.png" width="64" height="64" alt="edit" />
                                         <span>Laporan Penyakit</span>
                                     </a>

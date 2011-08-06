@@ -111,5 +111,5 @@
                     <div style="clear: both;"></div>
                 </div><!-- End. .container_12 -->
             </div> <!-- End #header-main -->
-            <div style="clear: both;"></div>
+            </html>
         
