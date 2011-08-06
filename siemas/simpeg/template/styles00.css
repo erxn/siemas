@@ -890,3 +890,7 @@ a.dashboard-module span {
 .LabelSelected{
         background: url("Check.png") no-repeat;
 }
+
+.gray {
+    color: #AAAAAA;
+}

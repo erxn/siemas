@@ -10,26 +10,43 @@
 
     <div class="grid_6" style="width: 48%">
         <div class="module">
-            <h2><span>Informasi</span></h2>
+            <h2><span>&nbsp;</span></h2>
             <div class="module-body">
                 <table class="noborder" width="100%">
                     <tr>
-                        <td align="left"><h4><a href="#" title="Bulan kemarin">&laquo; <?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("yesterday")), false, false); ?></a></h4></td>
-                        <td align="center"><h3><?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("today")), true, false); ?></h3></td>
-                        <td align="right"><h4><a href="#" title="Bulan depan"><?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("tomorrow")), false, false); ?> &raquo;</a></h4></td>
+                        <td align="left">
+                            <h4>
+                                <a href="index.php/home/hari_ini/<?php echo date("Y/m/d", strtotime("yesterday", strtotime("$tahun-$bulan-$tanggal"))); ?>" title="Kemarin">
+                                    &laquo; <?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("yesterday", strtotime("$tahun-$bulan-$tanggal"))), false, false); ?>
+                                </a>
+                            </h4>
+                        </td>
+                        <td align="center">
+                            <h3>
+                                    <?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("today", strtotime("$tahun-$bulan-$tanggal"))), true, false); ?>
+                            </h3>
+                        </td>
+                        <td align="right">
+                            <h4>
+                                <a href="index.php/home/hari_ini/<?php echo date("Y/m/d", strtotime("tomorrow", strtotime("$tahun-$bulan-$tanggal"))); ?>" title="Besok">
+                                    <?php echo tampilan_tanggal_indonesia(date("d-m-Y", strtotime("tomorrow", strtotime("$tahun-$bulan-$tanggal"))), false, false); ?> &raquo;
+                                </a>
+                            </h4>
+                        </td>
                     </tr>
                 </table>
+                
             </div>
         </div>
     </div>
 
     <div class="grid_6" style="width: 48%">
         <div class="module">
-            <h2><span>Kehadiran hari ini</span></h2>
+            <h2><span>Informasi</span></h2>
             <div class="module-body">
-
+                
                 <h4>Absensi</h4>
-                <?php if(!$this->absensi->sudah_diinput_absensi(date("Y"), date("m"), date("d"))) : ?>
+                <?php if(!$this->absensi->sudah_diinput_absensi($tahun, $bulan, $tanggal)) : ?>
                 <div class="notification n-information">
                     Absensi hari ini belum diisi
                 </div>
@@ -63,9 +80,11 @@
                     <li>Tidak ada</li>
                     <?php endif; ?>
                 </ul>
+
             </div>
         </div>
     </div>
+
 
 </div>
 
