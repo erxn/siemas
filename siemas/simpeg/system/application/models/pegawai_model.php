@@ -244,4 +244,18 @@ class Pegawai_model extends Model {
         return $data;
     }
 
+    function get_kenaikan_gaji_by_tanggal($tahun, $bulan, $tanggal) {
+        $data = array();
+        $q = $this->db->query("SELECT id_pegawai, nama, kenaikan_YAD FROM `pegawai` WHERE year(kenaikan_YAD) = '$tahun' AND month(kenaikan_YAD) = '$bulan' AND day(kenaikan_YAD) = '$tanggal'");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
 }

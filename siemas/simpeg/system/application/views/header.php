@@ -114,7 +114,31 @@
             });
 
             $(document).ready(function(){
-                parent.form_changed = false;
+               parent.form_changed = false;
+
+               // anti enter
+               textboxes = $("input:text");
+
+               if ($.browser.mozilla) {
+                  $(textboxes).keypress(checkForEnter);
+               } else {
+                  $(textboxes).keydown(checkForEnter);
+               }
+
+               function checkForEnter(event) {
+                  if (event.keyCode == 13) {
+                     currentTextboxNumber = textboxes.index(this);
+
+                     if (textboxes[currentTextboxNumber + 1] != null) {
+                       nextTextbox = textboxes[currentTextboxNumber + 1];
+                       nextTextbox.select();
+                  }
+
+                     event.preventDefault();
+                     return false;
+                  }
+               }
+               
             });
         </script>
     </head>

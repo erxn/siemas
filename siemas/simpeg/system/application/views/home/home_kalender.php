@@ -1,5 +1,7 @@
 <?php $this->load->view('header') ?>
 
+<link rel="stylesheet" type="text/css" href="template/calendar.css"/>
+
 <div class="belowribbon">
     <h1>
         Kalender bulan ini
@@ -55,143 +57,177 @@ $nama_bulan = array(
                     </tr>
                 </table>
 
-<?php
+                    <?php
 
-$year = $tahun;
-$month = $bulan;
+                    $year = $tahun;
+                    $month = $bulan;
 
-$current_time = time();
+                    $current_time = time();
 
-// Get the first day of the month
-$month_start = mktime(0, 0, 0, $month, 1, $year);
+                    // Get the first day of the month
+                    $month_start = mktime(0, 0, 0, $month, 1, $year);
 
-// Get the name of the month
-$month_name = date('F', $month_start);
+                    // Get the name of the month
+                    $month_name = date('F', $month_start);
 
-// Figure out which day of the week the month starts on.
-$first_day = date('D', $month_start);
+                    // Figure out which day of the week the month starts on.
+                    $first_day = date('D', $month_start);
 
-// Assign an offset to decide which number of day of the week the month starts on.
-switch ($first_day) {
-    case "Sun":
-        $offset = 0;
-        break;
-    case "Mon":
-        $offset = 1;
-        break;
-    case "Tue":
-        $offset = 2;
-        break;
-    case "Wed":
-        $offset = 3;
-        break;
-    case "Thu":
-        $offset = 4;
-        break;
-    case "Fri":
-        $offset = 5;
-        break;
-    case "Sat":
-        $offset = 6;
-        break;
-}
+                    // Assign an offset to decide which number of day of the week the month starts on.
+                    switch ($first_day) {
+                        case "Sun":
+                            $offset = 0;
+                            break;
+                        case "Mon":
+                            $offset = 1;
+                            break;
+                        case "Tue":
+                            $offset = 2;
+                            break;
+                        case "Wed":
+                            $offset = 3;
+                            break;
+                        case "Thu":
+                            $offset = 4;
+                            break;
+                        case "Fri":
+                            $offset = 5;
+                            break;
+                        case "Sat":
+                            $offset = 6;
+                            break;
+                    }
 
-// determine how many days were in last month.
-//	Note: The cal_days_in_month() function returns the number of days in a month for the specified year and calendar.
-//  Gregorian Calendar: http://en.wikipedia.org/wiki/Gregorian_calendar
-//  Define this using the constant: CAL_GREGORIAN
-if ($month == 1)
-    $num_days_last = cal_days_in_month(CAL_GREGORIAN, 12, ($year - 1));
-else
-    $num_days_last = cal_days_in_month(CAL_GREGORIAN, ($month - 1), $year);
+                    // determine how many days were in last month.
+                    //	Note: The cal_days_in_month() function returns the number of days in a month for the specified year and calendar.
+                    //  Gregorian Calendar: http://en.wikipedia.org/wiki/Gregorian_calendar
+                    //  Define this using the constant: CAL_GREGORIAN
+                    if ($month == 1)
+                        $num_days_last = cal_days_in_month(CAL_GREGORIAN, 12, ($year - 1));
+                    else
+                        $num_days_last = cal_days_in_month(CAL_GREGORIAN, ($month - 1), $year);
 
-// determine how many days are in the this month.
-$num_days_current = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+                    // determine how many days are in the this month.
+                    $num_days_current = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
-// Count through the days of the current month -- building an array
-for ($i = 0; $i < $num_days_current; $i++) {
-    $num_days_array[] = $i + 1;
-}
+                    // Count through the days of the current month -- building an array
+                    for ($i = 0; $i < $num_days_current; $i++) {
+                        $num_days_array[] = $i + 1;
+                    }
 
-// Count through the days of last month -- building an array
-for ($i = 0; $i < $num_days_last; $i++) {
-    $num_days_last_array[] = '';
-}
+                    // Count through the days of last month -- building an array
+                    for ($i = 0; $i < $num_days_last; $i++) {
+                        $num_days_last_array[] = '';
+                    }
 
-if ($offset > 0) {
-    $offset_correction = array_slice($num_days_last_array, -$offset, $offset);
-    $new_count = array_merge($offset_correction, $num_days_array);
-    $offset_count = count($offset_correction);
-} else {
-    $new_count = $num_days_array;
-}
+                    if ($offset > 0) {
+                        $offset_correction = array_slice($num_days_last_array, -$offset, $offset);
+                        $new_count = array_merge($offset_correction, $num_days_array);
+                        $offset_count = count($offset_correction);
+                    } else {
+                        $new_count = $num_days_array;
+                    }
 
-// How many days do we now have?
-$current_num = count($new_count);
+                    // How many days do we now have?
+                    $current_num = count($new_count);
 
-// Our display is to be 35 cells so if we have less than that we need to dip into next month
-if ($current_num > 35) {
-    $num_weeks = 6;
-    $outset = (42 - $current_num);
-} else if ($current_num < 35) {
-    $num_weeks = 5;
-    $outset = (35 - $current_num);
-}
-if ($current_num == 35) {
-    $num_weeks = 5;
-    $outset = 0;
-}
+                    // Our display is to be 35 cells so if we have less than that we need to dip into next month
+                    if ($current_num > 35) {
+                        $num_weeks = 6;
+                        $outset = (42 - $current_num);
+                    } else if ($current_num < 35) {
+                        $num_weeks = 5;
+                        $outset = (35 - $current_num);
+                    }
+                    if ($current_num == 35) {
+                        $num_weeks = 5;
+                        $outset = 0;
+                    }
 
-// Outset Correction
-for ($i = 1; $i <= $outset; $i++) {
-    $new_count[] = '';
-}
+                    // Outset Correction
+                    for ($i = 1; $i <= $outset; $i++) {
+                        $new_count[] = '';
+                    }
 
-// Now let's "chunk" the $new_count array
-// into weeks. Each week has 7 days
-// so we will array_chunk it into 7 days.
-$weeks = array_chunk($new_count, 7);
-
-// Start the output buffer so we can output our calendar nicely
-ob_start();
+                    // Now let's "chunk" the $new_count array
+                    // into weeks. Each week has 7 days
+                    // so we will array_chunk it into 7 days.
+                    $weeks = array_chunk($new_count, 7);
 
 // Build the heading portion of the calendar table
 echo <<<EOS
-	<table id="calendar" width="100%" border="1">
+	<table class="event-calendar" width="100%" border="1">
 	<tr class="daynames">
-		<th>Minggu</th>
-                <th>Senin</th>
-                <th>Selasa</th>
-                <th>Rabu</th>
-                <th>Kamis</th>
-                <th>Jumat</th>
-                <th>Sabtu</th>
+		<th width="14%">Minggu</th>
+                <th width="14%">Senin</th>
+                <th width="14%">Selasa</th>
+                <th width="14%">Rabu</th>
+                <th width="14%">Kamis</th>
+                <th width="14%">Jumat</th>
+                <th width="14%">Sabtu</th>
 	</tr>
 EOS;
 
-foreach ($weeks AS $week) {
-    echo '<tr class="week">';
-    foreach ($week as $day) {
-        if ($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time))
-            echo '<td class="today"><a href="#" onclick="inputLibur(this); return false;">' . $day . '</a></td>';
-        else
-            echo '<td class="days"><a href="#" onclick="inputLibur(this); return false;">' . $day . '</a></td>';
-    }
-    echo '</tr>';
-}
+                    foreach ($weeks AS $week) {
+                        echo '<tr class="week">';
+                        foreach ($week as $day) {
+                            if ($day == date('d', $current_time) && $month == date('m', $current_time) && $year == date('Y', $current_time)) {
+                                $class = "today";
+                            } else {
+                                $class = "days";
+                            }
+                            if (in_array($day, $tanggal_libur_pkm_all) && in_array($day, $tanggal_libur_bp_all)) {
+                                $class .= " libur-all";
+                            } else if (in_array($day, $tanggal_libur_pkm_all)) {
+                                $class .= " libur-pkm";
+                            } else if (in_array($day, $tanggal_libur_bp_all)) {
+                                $class .= " libur-bp";
+                            }
+                            $content = $this->event->get_event_tanggal($year, $month, $day);
+                            if (count($content) > 0) {
+                                $class .= " has-event";
+                            }
+                            echo "<td class='$class'>";
+                            echo "<div class='date'>$day</div>";
+                            if(isset($content) && count($content) > 0) {
+                                echo '<ul class="event">';
+                                foreach($content as $c) {
+                                    echo "<li>";
+                                    echo $c;
+                                    echo "</li>";
+                                }
+                                echo '</ul>';
+                            }
+                            echo "</td>";
 
-echo '</table>';
-?>
+                        }
+                        echo '</tr>';
+                    }
 
+                    echo '</table>';
+                    ?>
+
+                <div>
+                    Keterangan:
+                    <div class="legend-libur-pkm">&nbsp;</div> =
+                    Libur Puskesmas,
+                    <div class="legend-libur-bp">&nbsp;</div> = 
+                    Libur BP Pemda,
+                    <div class="legend-libur-all">&nbsp;</div> = 
+                    Libur Puskesmas dan BP Pemda
+                </div>
+
+<!--                <br/>
+                <div class="notification n-information">
+                Jangan lupa untuk menginput hari-hari libur bulan ini
+                </div>-->
 
             </div>
         </div>
     </div>
 
     <div class="grid_6" style="width: 28%">
-        <div class="notification n-information">
-            Jangan lupa untuk menginput hari-hari libur bulan ini
-        </div>
+
         <div class="module">
             <h2><span>Event-event bulan ini</span></h2>
             <div class="module-table-body">
@@ -202,7 +238,7 @@ echo '</table>';
                     <?php if(count($libur_pkm) > 0) : foreach($libur_pkm as $libur) : ?>
                     <tr>
                         <td><?php echo $libur['keterangan']; ?></td>
-                        <td width="40%"><?php echo date("d", strtotime($libur['tanggal'])); ?> <?php echo $nama_bulan[date("n", strtotime($libur['tanggal']))]; ?></td>
+                        <td width="40%"><?php echo date("j", strtotime($libur['tanggal'])); ?> <?php echo $nama_bulan[date("n", strtotime($libur['tanggal']))]; ?></td>
                     </tr>
                     <?php endforeach; else : ?>
                     <tr>
@@ -218,7 +254,7 @@ echo '</table>';
                     <?php if(count($libur_bp) > 0) : foreach($libur_bp as $libur) : ?>
                     <tr>
                         <td><?php echo $libur['keterangan']; ?></td>
-                        <td width="40%"><?php echo date("d", strtotime($libur['tanggal'])); ?> <?php echo $nama_bulan[date("n", strtotime($libur['tanggal']))]; ?></td>
+                        <td width="40%"><?php echo date("j", strtotime($libur['tanggal'])); ?> <?php echo $nama_bulan[date("n", strtotime($libur['tanggal']))]; ?></td>
                     </tr>
                     <?php endforeach; else : ?>
                     <tr>
@@ -234,7 +270,7 @@ echo '</table>';
                     <?php if(count($kegiatan) > 0) : foreach($kegiatan as $k) : ?>
                     <tr>
                         <td><?php echo $k['kegiatan']; ?> di <?php echo $k['lokasi']; ?></td>
-                        <td width="40%"><?php echo date("d", strtotime($k['tanggal'])); ?> <?php echo $nama_bulan[date("n", strtotime($k['tanggal']))]; ?></td>
+                        <td width="40%"><?php echo date("j", strtotime($k['tanggal'])); ?> <?php echo $nama_bulan[date("n", strtotime($k['tanggal']))]; ?></td>
                     </tr>
                     <?php endforeach; else : ?>
                     <tr>
@@ -251,8 +287,8 @@ echo '</table>';
                     <tr>
                         <td><?php echo $c['nama']; ?></td>
                         <td width="40%">
-                            <?php echo date("d", strtotime($c['tanggal_mulai'])); ?> <?php echo $nama_bulan[date("n", strtotime($c['tanggal_mulai']))]; ?> -
-                            <?php echo date("d", strtotime($c['tanggal_selesai'])); ?> <?php echo $nama_bulan[date("n", strtotime($c['tanggal_selesai']))]; ?>
+                            <?php echo date("j", strtotime($c['tanggal_mulai'])); ?> <?php echo $nama_bulan[date("n", strtotime($c['tanggal_mulai']))]; ?> -
+                            <?php echo date("j", strtotime($c['tanggal_selesai'])); ?> <?php echo $nama_bulan[date("n", strtotime($c['tanggal_selesai']))]; ?>
                         </td>
                     </tr>
                     <?php endforeach; else : ?>
@@ -270,7 +306,7 @@ echo '</table>';
                     <tr>
                         <td><?php echo $k['nama']; ?></td>
                         <td width="40%">
-                            <?php echo date("d", strtotime($k['kenaikan_YAD'])); ?> <?php echo $nama_bulan[date("n", strtotime($k['kenaikan_YAD']))]; ?> -
+                            <?php echo date("j", strtotime($k['kenaikan_YAD'])); ?> <?php echo $nama_bulan[date("n", strtotime($k['kenaikan_YAD']))]; ?>
                         </td>
                     </tr>
                     <?php endforeach; else : ?>

@@ -36,3 +36,61 @@ td.libur a {
     background-color: transparent !important;
     border-width: 4px !important;
 }
+
+.event-calendar td {
+    height: 70px;
+}
+
+.event-calendar .date {
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+}
+
+.legend-libur-all {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.legend-libur-pkm {
+    width: 10px;
+    height: 10px;
+    background-color: orange;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.legend-libur-bp {
+    width: 10px;
+    height: 10px;
+    background-color: #00be00;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.event-calendar .libur-all .date {
+    color: red;
+}
+
+.event-calendar .libur-pkm .date {
+    color: orange;
+}
+
+.event-calendar .libur-bp .date {
+    color: #00be00
+}
+
+.event-calendar .event {
+    list-style: disc;
+    font-size: 10px;
+    margin-left: 15px;
+}
+
+.has-event .date {
+    border-bottom: 1px dashed #CCCCCC;
+}

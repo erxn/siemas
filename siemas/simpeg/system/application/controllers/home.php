@@ -9,6 +9,7 @@ class Home extends Controller {
         $this->load->model("Cuti_model", "cuti");
         $this->load->model("Kegiatan_model", "kegiatan");
         $this->load->model("Pegawai_model", "pegawai");
+        $this->load->model("Event_model", "event");
     }
 
 
@@ -54,6 +55,9 @@ class Home extends Controller {
         $data['kegiatan']  = $this->kegiatan->get_kegiatan_by_bulan($data['tahun'], $data['bulan']);
         $data['cuti']      = $this->cuti->get_cuti_by_bulan($data['tahun'], $data['bulan']);
         $data['kenaikan']  = $this->pegawai->get_kenaikan_gaji($data['tahun'], $data['bulan']);
+
+        $data['tanggal_libur_pkm_all'] = $this->absensi->get_libur_pkm_all($data['tahun'], $data['bulan']);
+        $data['tanggal_libur_bp_all']  = $this->absensi->get_libur_bp_all($data['tahun'], $data['bulan']);
 
         $this->load->view("home/home_kalender", $data);
     }
