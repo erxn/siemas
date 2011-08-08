@@ -16,6 +16,7 @@ class Controller_history extends Panada {
     }
     public function resep(){
         $views['tanggal'] = date('d-m-Y');
+        $this->date->cek_history_harian(date('Y-m-d'));
         $views['page_title'] = 'History Resep - Apotek';
         $views['hasil'] = NULL;
          if($_POST){
@@ -45,6 +46,7 @@ class Controller_history extends Panada {
     }
 
     public function tambah_obat(){
+        $this->date->cek_history_harian(date('Y-m-d'));
         $views['page_title']    = 'History Pemasukan Obat - Apotek';
         $views['tanggal'] = date('d-m-Y');
         $views['hasil'] = NULL;

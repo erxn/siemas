@@ -7,9 +7,11 @@ class Controller_obat extends Panada {
 		$this->db = new library_db();
 		$this->session = new Library_session();
                 $this->obat = new Model_obat();
+                $this->date = new Model_history();
     }
 
     public function index(){
+        $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Obat - Apotek';
         $list = $this->obat->ambil();
@@ -20,6 +22,7 @@ class Controller_obat extends Panada {
     }
 
     public function pemakaian_obat(){
+        $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Pemakaian Obat - Apotek';
         $this->view_pemakaian_obat($views);
@@ -32,6 +35,7 @@ class Controller_obat extends Panada {
     }
 
     public function pemakaian_narkotik(){
+        $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Pemakaian Narkotik - Apotek';
         $list = $this->obat->ambil_narkotik();

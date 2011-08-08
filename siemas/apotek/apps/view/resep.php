@@ -95,30 +95,13 @@
                                   </thead>
 
                                   <tbody>
-					<tr>
+                                      <?php for($n=1; $n<=50; $n++){ ?>
+					<tr id="tr_<?php echo $n; ?>" <?php if($n > 6) echo 'style="display:none"' ?>>
                                             <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
                                             <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <?php $n++; ?>
                                         </tr>
-					<tr>
-                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
-                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <?php $n++; ?>
-					</tr>
-					<tr>
-                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
-                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <?php $n++; ?>
-					</tr>
-					<tr>
-                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
-                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <?php $n++; ?>
-					</tr>
+                                      <?php } ?>
                                   </tbody>
                                   <tfoot>
 					<tr>
@@ -151,10 +134,13 @@
 
         <script type="text/javascript">
 
+            var x = 7;
+
             function tabelFleksibel() {
-                $('#resep tbody>tr:last').clone(true).insertAfter('#resep tbody>tr:last');
-                $('#resep tbody>tr:last input').val('');
-                $('#resep tbody>tr:last input').first().focus();
+
+                $('#tr_' + x).fadeIn();
+                x++;
+
             }
 
             var arrayObat = new Array();
@@ -169,23 +155,27 @@
 
             })
 
+            function aktifinAutokomplit() {
+                $(".autocomplete").autocomplete({
+                            source: [
+                            <?php if(isset($list_nama_obat)){ foreach ($list_nama_obat as $list) { ?>
+                            {"value":"<?php echo $list->nbk_obat; ?>","id":"<?php echo $list->id_obat; ?>"},
+                            <?php } } ?>
+                            {}
+                            ],
+                            select: function( event, ui ) {
+                                    var nama_obat = ui.item.value;
+                                    var id_obat = ui.item.id;
 
-        $(document).ready(function()
-            {$("input.autocomplete").autocomplete({
-			source: [
-                        <?php if(isset($list_nama_obat)){ foreach ($list_nama_obat as $list) { ?>
-			{"value":"<?php echo $list->nbk_obat; ?>","id":"<?php echo $list->id_obat; ?>"},
-                        <?php } } ?>
-                        {}
-                        ],
-                	select: function( event, ui ) {
-				var nama_obat = ui.item.value;
-                                var id_obat = ui.item.id;
+                                    $(this).parent('td').prev().find('input').val(id_obat);
+                            },
+                            delay: 0
+                });
+            }
 
-                                $(this).parent('td').prev().find('input').val(id_obat);
-                        },
-                        delay: 0
-            });
+
+        $(document).ready(function(){
+            aktifinAutokomplit();
         });
 
         

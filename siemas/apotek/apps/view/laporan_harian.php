@@ -21,7 +21,8 @@
         
 		<div class="container_12">
 		
-					<form method="post" onsubmit="if(document.getElementById('tanggal').value != '') return confirm('Apakah anda yakin ingin membuat laporan tanggal ' + document.getElementById('tanggal').value + '?'); else return false;">
+					<form method="post" onsubmit="if(document.getElementById('tanggal').value != '') return confirm('Apakah anda yakin ingin membuat laporan tanggal ' + document.getElementById('tanggal').value + '?');
+                                            else return false;">
                     <table>
 					<tr>
 						<td width="100px">
@@ -29,6 +30,7 @@
 						</td>
 						<td width="100px">
 							<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal" class="tanggal">
+                                                        
 						</td>
 						<td> &nbsp &nbsp &nbsp
 							<input type="submit" class="submit-green" value="PILIH">
