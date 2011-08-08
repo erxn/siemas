@@ -1,5 +1,5 @@
 <?php $this->view_header();?>
-
+                
 <!-- Header. Main part -->
 
             <div id="header-main">

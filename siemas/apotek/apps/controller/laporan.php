@@ -4,7 +4,8 @@ class Controller_laporan extends Panada {
     
     public function __construct(){
         parent::__construct();
-                $this->excel = new Library_PHPExcel();
+                $this->excel = new Model_laporan();
+
 		$this->session = new Library_session();
                 $this->date = new Model_history();
                 $this->obat = new Model_obat();
@@ -17,11 +18,18 @@ class Controller_laporan extends Panada {
 	
 	public function harian(){
         $views['page_title']    = 'Laporan Harian - Apotek';
+        $views['base_url']    = $this->base_url;
 		$views['tanggal'] = date('d-m-Y');
 		$views['date']=NULL;
+                $views['base_awal']=$this->date->dasar_url($this->base_url);
+                    
 		if($_POST){
 			$tanggal=$_POST['tanggal'];
 			$views['date']=$tanggal;
+                        $tanggal2 = $this->date->reverse($tanggal);
+                        $data_harian = $this->excel->harian($tanggal2);
+                        $this->session->set('data_harian',$data_harian);
+                        $this->redirect('index.php/excel/harian/');
 			}
         $this->view_laporan_harian($views);
     }

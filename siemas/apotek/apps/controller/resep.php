@@ -10,6 +10,7 @@ class Controller_resep extends Panada {
     }
     
     public function index(){
+        $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title']    = 'Resep - Apotek';
         $views['verify']    = NULL;

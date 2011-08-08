@@ -10,7 +10,7 @@ class Controller_tambah_obat extends Panada {
     }
     
     public function index(){
-        
+        $this->date->cek_history_harian(date('Y-m-d'));
         $views['page_title']    = 'Tambah Obat - Apotek';
         $views['tanggal'] = date('d-m-Y');
         $views['error']    = NULL;
