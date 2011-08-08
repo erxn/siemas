@@ -94,3 +94,10 @@ td.libur a {
 .has-event .date {
     border-bottom: 1px dashed #CCCCCC;
 }
+
+.calendar span.unavailable {
+    display: block;
+    text-align: center;
+    padding: 6px 0;
+    color: #AAA;
+}

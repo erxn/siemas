@@ -189,9 +189,16 @@ EOS;
                                 $class .= " libur";
                             }
                             echo "<td class='$class'>";
-                            echo "<a href='index.php/absensi/isi_absensi/$year/$month/$day'>";
-                            echo $day;
-                            echo "</a></td>";
+                            if (strtotime("today") >= strtotime("$year-$month-$day")) {
+                                echo "<a href='index.php/absensi/isi_absensi/$year/$month/$day'>";
+                                echo $day;
+                                echo "</a>";
+                            } else {
+                                echo "<span class='unavailable'>";
+                                echo $day;
+                                echo "</span>";
+                            }
+                            echo "</td>";
 
                         }
                         echo '</tr>';

@@ -258,4 +258,25 @@ class Pegawai_model extends Model {
         return $data;
     }
 
+//                    SELECT pegawai.*, j1.TMT as TMT_jabatan, j1.jabatan, p1.TMT as TMT_pangkat, p1.pangkat, p1.golongan
+//                    FROM pegawai
+//                         LEFT JOIN jabatan j1 USING (id_pegawai)
+//                         LEFT JOIN pangkat_golongan p1 USING (id_pegawai)
+//                    WHERE
+//                    (j1.TMT IS NULL
+//                        OR j1.TMT = (
+//                            SELECT MAX(j2.TMT)
+//                            FROM jabatan j2
+//                            WHERE j2.id_pegawai = pegawai.id_pegawai
+//                        )
+//                    )
+//                    AND
+//                    (p1.TMT IS NULL
+//                        OR p1.TMT = (
+//                            SELECT MAX(p2.TMT)
+//                            FROM pangkat_golongan p2
+//                            WHERE p2.id_pegawai = pegawai.id_pegawai
+//                        )
+//                    )
+
 }
