@@ -275,7 +275,7 @@ $this->load->view('header');
                                 <td>
                                     <!-- Harus di-PHP-in  -->
                                     <select name="id_atasan" class="input-full">
-                                        <option value="0">-</option>
+<!--                                        <option value="0">-</option>-->
                                         <?php foreach($daftar_pegawai as $p) : ?>
                                         <option value="<?php echo $p['id_pegawai']; ?>"><?php echo $p['nama']; ?></option>
                                         <?php endforeach; ?>
@@ -296,7 +296,6 @@ $this->load->view('header');
 
         var pangkat = new Array();
 
-        pangkat['-'] = "";
         pangkat['I / a'] = "Juru Muda";
         pangkat['I / b'] = "Juru Muda Tingkat 1";
         pangkat['I / c'] = "Juru";

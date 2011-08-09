@@ -18,8 +18,10 @@ class Penilaian_model extends Model {
                                       nilai_dp3.kerjasama,
                                       nilai_dp3.prakarsa,
                                       nilai_dp3.kepemimpinan
-                               FROM pegawai LEFT JOIN nilai_dp3 USING (id_pegawai)
-                               WHERE nilai_dp3.tahun = $tahun AND pegawai.aktif = 1 ORDER BY pegawai.id_pegawai");
+                               FROM pegawai LEFT JOIN nilai_dp3
+                                     ON pegawai.id_pegawai = nilai_dp3.id_pegawai
+                                     AND nilai_dp3.tahun = $tahun
+                               WHERE pegawai.aktif = 1 AND pegawai.id_atasan IS NOT NULL ORDER BY pegawai.rank_struktural, pegawai.id_pegawai");
 
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
@@ -43,11 +45,13 @@ class Penilaian_model extends Model {
                                       tunjangan.bulan,
                                       tunjangan.tunjangan,
                                       tunjangan.pph21
-                               FROM pegawai LEFT JOIN tunjangan ON pegawai.id_pegawai = tunjangan.pegawai_id_pegawai
-                               WHERE tunjangan.tahun = $tahun
-                                      AND tunjangan.bulan = $bulan
-                                      AND pegawai.aktif = 1
-                               ORDER BY pegawai.id_pegawai");
+                               FROM pegawai
+                               LEFT JOIN tunjangan
+                               ON pegawai.id_pegawai = tunjangan.pegawai_id_pegawai
+                                  AND tunjangan.tahun = $tahun
+                                  AND tunjangan.bulan = $bulan
+                               WHERE pegawai.aktif = 1
+                               ORDER BY pegawai.rank_struktural, pegawai.id_pegawai");
 
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
