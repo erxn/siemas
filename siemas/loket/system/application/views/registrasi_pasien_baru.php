@@ -48,7 +48,7 @@
                             <th class="header" style="width: 8%;">Nama KK</th>
                             <th class="header" style="width: 13%;">Alamat</th>
                             <th class="header" style="width: 10%;">Anggota KK</th>
-                            <th class="header" style="width: 5%;"">Pilih</th>
+                            <th class="header" style="width: 5%;">Pilih</th>
                         </tr>
                     </thead>
                     <tbody>

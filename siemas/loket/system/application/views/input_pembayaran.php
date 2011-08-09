@@ -19,27 +19,27 @@
                 <div class="module-body">
                     <table class="noborder">
                         <tr class="odd">
-                            <td style="width: 15% ">Tgl</td>
+                            <td style="width: 15% ">Tgl Kunjungan</td>
                             <td style="width: 3%">:</td>
-                            <td style="width:40% ">24 Januari 2011</td>
+                            <td style="width:40% "><?php echo tgl_indo($kunjungan[0]['tanggal_kunjungan'])?></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Nama Pasien</td>
                             <td>:</td>
-                            <td>Annisa Anastasia</td>
+                            <td><?php echo $pasien[0]['nama_pasien']?></td>
                             <td></td>
                         </tr>
                         <tr class="odd">
                             <td>Umur</td>
                             <td>:</td>
-                            <td>19 th</td>
+                            <td><?php echo $pasien[0]['umur']?> tahun</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
                             <td>:</td>
-                            <td>Cibogor</td>
+                            <td><?php echo $pasien[0]['alamat_kk'].", Kel. ".$pasien[0]['kelurahan_kk']." Kec. ".$pasien[0]['kecamatan_kk'].", Kab/Kota ".$pasien[0]['kota_kab_kk']?></td>
                             <td></td>
                         </tr>
                         <tr class="odd">
@@ -57,7 +57,7 @@
                     </table>
                     <form method="post" action="index.php/pembayaran">
                     <div style="width: 60%">
-                        <h2 id="total_harga" align="right">TOTAL: Rp 15.000,-</h2>
+                        <h2 id="total_harga" align="right">TOTAL: Rp <?php  echo number_format($kunjungan[0]['total_harga']) ?></h2>
                         <br/>
                         <table id="myTable" class="tablesorter" style="width: 100%">
                             <thead>
@@ -95,7 +95,7 @@
                             </tbody>
                         </table>
                         <div align="right">
-                            <input align="right" class="submit-green" type="submit" value="LUNAS" />
+                            <input name="submit" align="right" class="submit-green" type="submit" value="LUNAS" />
                         </div>
                     </div>
                     </form>

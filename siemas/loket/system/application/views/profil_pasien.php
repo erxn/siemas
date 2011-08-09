@@ -4,9 +4,9 @@
         <h2><span>Profil Pasien</span></h2>
         <div class="module-body">
             <table class="noborder">
-                <tr>
-                    <td style="width: 25%">ID Pasien</td>
-                    <td style="width: 40%"><?php echo $pasien[0]['kode_pasien'];?></td>
+                <tr class="odd">
+                    <td style="width: 5%">ID Pasien</td>
+                    <td style="width: 15%"><?php echo $pasien[0]['kode_pasien'];?></td>
                 </tr>
                 <tr>
                     <td>Nama Kepala Keluarga</td>
@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td><?php echo $pasien[0]['alamat_kk'];?></td>
+                    <td><?php echo $pasien[0]['alamat_kk'].", Kel. ".$pasien[0]['kelurahan_kk']." Kec. ".$pasien[0]['kecamatan_kk'].", Kab/Kota ".$pasien[0]['kota_kab_kk']?></td>
                 </tr>
                 <tr class="odd">
                     <td>Status Pelayanan</td>
@@ -36,6 +36,19 @@
                     <td>No. Kartu</td>
                     <td><?php echo $pasien[0]['no_kartu_layanan'];?></td>
                 </tr>
+                <?php if(isset($x)) {?>
+                <tr class="odd">
+                    <td>&nbsp;</td>
+                    <td><form name="form1" method="post" action="">
+                            <input type="radio" name="radio" id="radio" value="radio">
+                            Bawa kartu
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="radio" id="radio2" value="radio">
+                            Tidak Bawa
+                        </form>
+                    </td>
+                </tr>
+                <?php }?>
             </table>
         </div>
     </div>

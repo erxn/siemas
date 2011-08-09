@@ -13,7 +13,11 @@ class Kk extends Controller {
         $this->load->view('profil_kk_popup',$data);
     }
 
-    
+    function profil_pasien_kk($id_kk){
+        $data_kk = $this->M_kk->lihat_profil_kk($id_kk);
+        $data['kk'] = $data_kk;
+        $this->load->view('registrasi_pasien_kk',$data);
+    }
     
     function registrasi_kk() {
         if($this->input->post('submit')) {
@@ -41,11 +45,29 @@ class Kk extends Controller {
     }
 
     function registrasi_kk_sukses($id_kk_yang_baru) {
-
         $kk_baru = $this->M_kk->lihat_profil_kk($id_kk_yang_baru);
         $data['kk'] = $kk_baru;
         $this->load->view('registrasi_kk_sukses', $data);
+    }
+
+    function cari_kk(){
+        $data = array();
+        $nama_kk = $this->input->post('nama_kk');
+        $alamat_kk = $this->input->post('alamat_kk');
+        if($this->input->post('cari')) {
+
+        $hasil_cari = $this->M_kk->cari_kk($nama_kk,$alamat_kk);
+
+        $data['hasil_cari_kk'] = $hasil_cari;
+        
+        }
+        $this->load->view('registrasi_kk', $data);
 
     }
-    
+
+    function tambah_anggota($id_kk){
+        $profil_kk = $this->M_kk->lihat_profil_kk($id_kk);
+        $data['kk'] = $profil_kk;
+        $this->load->view('registrasi_pasien_kk', $data);
+    }
 }
