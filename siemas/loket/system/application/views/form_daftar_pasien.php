@@ -1,12 +1,12 @@
  <div id="daftar_pasien">
                 <div class="module-body">
                     <h4>Masukkan Identitas Pasien</h4><br/>
-                    <form action="index.php/pasien/registrasi_pasien_baru/<?php echo $kk[0]['id_kk']?>" method="post" id="pasien_baru">
+                    <form action="index.php/pasien/registrasi_pasien_baru/<?php echo $kk[0]['id_kk']."/".$status?>" method="post" id="pasien_baru">
                     <table class="noborder">
-                        <tr>
+                        <!--<tr>
                             <td>ID KK</td>
                             <td><strong><input name="id_kk" type="hidden" value="<?php echo $kk[0]['id_kk']?>"><?php echo $kk[0]['id_kk']?></strong></td>
-                        </tr>
+                        </tr>-->
                         <tr>
                             <td>Tgl. Pendaftaran</td>
                             <td style="width: 65%"><input name="tanggal_pendaftaran" id="datepicker" type="text" class="input-medium" value="<?php echo date("d-m-Y"); ?>"/></td>
@@ -38,13 +38,13 @@
                             <td>Status dlm Keluarga</td>
                             <td>
                                 <select name="status_keluarga">
-                                    <option value="00">Kepala Keluarga</option>
-                                    <option value="01">Ibu</option>
-                                    <option value="02">Anak</option>
-                                    <option value="03">Keponakan</option>
-                                    <option value="04">Kakek</option>
-                                    <option value="05">Nenek</option>
-                                    <option value="06">Tinggal Sementara</option>
+                                    <option value="Kepala Keluarga">Kepala Keluarga</option>
+                                    <option value="Ibu">Ibu</option>
+                                    <option value="Anak">Anak</option>
+                                    <option value="Keponakan">Keponakan</option>
+                                    <option value="Kakek">Kakek</option>
+                                    <option value="Nenek">Nenek</option>
+                                    <option value="Tinggal Sementara">Tinggal Sementara</option>
                                 </select>
                             </td>
                         </tr>

@@ -13,6 +13,29 @@
 <script type="text/javascript">
     $("#hasil_cari_kk").slideDown();
 </script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$(function() {
+		$( "#nama-autocomplete" ).autocomplete({
+			source: function(request, response) {
+				$.ajax({ url: "index.php/autocomplete/nama_pasien",
+				data: { term: $("#nama-autocomplete").val()},
+				dataType: "json",
+				type: "POST",
+				success: function(data){
+					response(data);
+				}
+			});
+		},
+		minLength: 1,
+                delay: 100
+		});
+	});
+});
+
+
+</script>
 <!-- SUBNAV -->
 <div id="subnav">
     <div class="container_12">
@@ -49,7 +72,7 @@
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
-                                <td><input name="nama_pasien"type="text" class="input-medium" placeholder="Nama Pasien"/></td>
+                                <td><input name="nama_pasien"type="text" class="input-medium" placeholder="Nama Pasien" id="nama-autocomplete"/></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -64,14 +87,13 @@
                         </table>
                     </form>
                     <hr style="width: 100%; border: 1px solid #cccccc"/>
-                    <br/>
                     
                     <div class="float-left">
 
                         <a class="tambah" href="index.php/kk/registrasi_kk">
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
-                    </div>
+                    </div><br/><br/>
                     <?php $i=1; if(isset($hasil_cari_pasien)) {?>
                     <div id="hasil_cari_kk">
                         <h4  class="float-right">Hasil Pencarian: <?php if(isset($hasil_cari_pasien)) echo count($hasil_cari_pasien) ?> orang</h4>
@@ -93,10 +115,10 @@
                                 <td class="align-center"><?php echo $i++; ?></td>
                                 <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a></td>
                                 <td><?php echo $hasil['umur']." th";?></td>
-                                <td><?php echo $hasil['alamat_kk'];?></td>
+                                <td><?php echo $hasil['alamat_kk'].", Kel. ".$hasil['kelurahan_kk']." Kec. ".$hasil['kecamatan_kk'].", Kab/Kota ".$hasil['kota_kab_kk']?></td>
                                 <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk'];?>"><?php echo $hasil['nama_kk'];?></a></td>
                                 <td align="center">
-                                    <a class="popup_reg_kunjungan" id="test" href="index.php/pasien/registrasi_kunjungan/<?php echo $hasil['id_pasien'];?>">
+                                    <a class="popup_reg_kunjungan" id="test" href="index.php/pasien/registrasi_kunjungan/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>">
                                         <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/>
                                     </a>
                                 </td>
@@ -174,360 +196,19 @@
 
                 <!-- Example table -->
                 <div id="tabs-a">
-                    <div style="width: 100%">
-                        <h4 align="right">Total Pasien: 5 orang</h4>
-                        
-                        <table id="myTable" class="tablesorter" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th class="header" style="width: 1%;">No</th>
-                                    <th class="header" style="width: 13%;">Nama</th>
-                                    <th class="header" style="width: 1%;">Umur</th>
-                                    <th class="header" style="width: 10%;">Alamat</th>
-                                    <th class="header" style="width: 10%;">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a class="popup" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Antri</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Sedang diperiksa</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Antri</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id="pager" class="pager">
-                            <form action="">
-                                <div>
-                                    <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                    <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                    <input type="text" class="pagedisplay input-short align-center"/>
-                                    <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                    <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                    <select class="pagesize input-short align-center">
-                                        <option selected="selected" value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div id="tabs-b">
-                    <div style="width: 100%">
-                        <h4 align="right">Total Pasien: 5 orang</h4>
-                        <table id="myTable" class="tablesorter" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th class="header" style="width: 1%;">No</th>
-                                    <th class="header" style="width: 12%;">Nama</th>
-                                    <th class="header" style="width: 1%;">Umur</th>
-                                    <th class="header" style="width: 22%;">Alamat</th>
-                                    <th class="header" style="width: 8%;">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Antri</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Sedang diperiksa</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Antri</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id="pager" class="pager">
-                            <form action="">
-                                <div>
-                                    <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                    <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                    <input type="text" class="pagedisplay input-short align-center"/>
-                                    <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                    <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                    <select class="pagesize input-short align-center">
-                                        <option selected="selected" value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div id="tabs-c">
-                    <div style="width: 100%">
-                        <h4 align="right">Total Pasien: 5 orang</h4>
-                        <table id="myTable" class="tablesorter" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th class="header" style="width: 1%;">No</th>
-                                    <th class="header" style="width: 12%;">Nama</th>
-                                    <th class="header" style="width: 1%;">Umur</th>
-                                    <th class="header" style="width: 22%;">Alamat</th>
-                                    <th class="header" style="width: 8%;">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Sedang diperiksa</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id="pager" class="pager">
-                            <form action="">
-                                <div>
-                                    <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                    <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                    <input type="text" class="pagedisplay input-short align-center"/>
-                                    <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                    <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                    <select class="pagesize input-short align-center">
-                                        <option selected="selected" value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div id="tabs-d">
-                    <div style="width: 100%">
-                        <h4 align="right">Total Pasien: 5 orang</h4>
-                        <table id="myTable" class="tablesorter" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th class="header" style="width: 1%;">No</th>
-                                    <th class="header" style="width: 12%;">Nama</th>
-                                    <th class="header" style="width: 1%;">Umur</th>
-                                    <th class="header" style="width: 22%;">Alamat</th>
-                                    <th class="header" style="width: 8%;">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Sedang diperiksa</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id="pager" class="pager">
-                            <form action="">
-                                <div>
-                                    <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                    <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                    <input type="text" class="pagedisplay input-short align-center"/>
-                                    <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                    <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                    <select class="pagesize input-short align-center">
-                                        <option selected="selected" value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div id="tabs-e">
-                    <div style="width: 100%">
-                        <h4 align="right">Total Pasien: 5 orang</h4>
-                        <table id="myTable" class="tablesorter" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th class="header" style="width: 1%;">No</th>
-                                    <th class="header" style="width: 12%;">Nama</th>
-                                    <th class="header" style="width: 1%;">Umur</th>
-                                    <th class="header" style="width: 22%;">Alamat</th>
-                                    <th class="header" style="width: 8%;">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Sedang diperiksa</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-center">1</td>
-                                    <td><a href="">Meri Marlina</a></td>
-                                    <td>19 th</td>
-                                    <td>Jl. Bara IV No.13 Cibogor, Bogor Tengah</td>
-                                    <td>Antri</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div id="pager" class="pager">
-                            <form action="">
-                                <div>
-                                    <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                    <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                    <input type="text" class="pagedisplay input-short align-center"/>
-                                    <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                    <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                    <select class="pagesize input-short align-center">
-                                        <option selected="selected" value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                 </div>
 
 

@@ -21,18 +21,10 @@
             <div class="module">
                 <h2><span>Kepala Keluarga (KK)</span></h2>
                 <div class="module-body">
-                    <div>
-                        <span class="notification n-success" style="height: 5px">PENDAFTARAN KK BERHASIL</span>
-                    </div>
                     <table class="noborder" style="width: 100%">
                         <tbody>
-                            <tr class="odd">
-                                <td colspan="2"><strong>Profil KK</strong></td>
-                            </tr>
                             <tr>
-                                
-                                <td  style="width: 25%;" >Tgl. Pendaftaran</td>
-                                <td><?php echo tgl_indo($kk[0]['tanggal_pendaftaran']) ?></td>
+                                <td colspan="2"><strong>Profil KK</strong></td>
                             </tr>
                             <tr  class="odd">
                                 <td>Nama KK</td>
@@ -44,13 +36,34 @@
                             </tr>
                             <tr class="odd">
                                 <td>Alamat</td>
-                                <td><?php echo $kk[0]['alamat_kk']." Kec. ".$kk[0]['kecamatan_kk'].", Kel. ".$kk[0]['kelurahan_kk'].", Kab/Kota ".$kk[0]['kota_kab_kk']?></td>
+                                <td><?php echo $kk[0]['alamat_kk'].",<br/>Kel. ".$kk[0]['kelurahan_kk']." Kec. ".$kk[0]['kecamatan_kk']."<br>".$kk[0]['kota_kab_kk']?></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
 
+                        </tbody>
+                    </table>
+                    <h4>Daftar Anggota Keluarga</h4>
+                    <table id="myTable" class="tablesorter">
+                        <thead>
+                            <tr>
+                                <th style="width:2%">No</th>
+                                <th style="width:10%">Nama Anggota</th>
+                                <th style="width:10%">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i=1; foreach ($kk as $anggota) {
+                                    if($i%2==0) $x="odd";
+                                else $x ="even"; ?>
+                            <tr class="<?php echo $x;?>">
+                                <td><?php echo $i++; ?></td>
+                                <td><a href="#"><?php echo $anggota['nama_pasien'] ?></a></td>
+                                <td><?php echo $anggota['status_dalam_keluarga'] ?></td>
+                            </tr>
+                            <?php }?>
                         </tbody>
                     </table>
                 </div>
@@ -61,13 +74,13 @@
         <div class="grid_6" style="width: 48%">
             <div class="module">
                 <h2><span>Anggota Keluarga</span></h2>
-                
-               <?php $this->load->view('form_daftar_pasien',array('status' => "kk_baru"))?>
+
+               <?php $this->load->view('form_daftar_pasien', array('status' => "kk_lama"));?>
             </div>
 
 
         </div>
-        
+
     </div>
 </div>
 </body>

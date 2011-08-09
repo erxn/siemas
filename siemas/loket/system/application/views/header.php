@@ -151,12 +151,12 @@
                         <img src="Template_files/puskesmas.png" style="position: absolute; top:45px; left:120px" />
                         <img src="Template_files/alamat.png" style="position: absolute; top:95px; left:120px" />
                         <ul id="nav">
-                            <li  id="current"><a href="index.php">Home</a></li>
+                            <li id="<?php echo "current"?>"><a href="index.php">Home</a></li>
                             <li><a href="index.php/registrasi">Registrasi</a></li>
                             <li><a href="index.php/pembayaran">Pembayaran</a></li>
                             <li><a href="index.php/pasien">Data Pasien</a></li>
                             <li><a href="statistik.php">Statistik</a></li>
-                            <li><a href="laporan.php">Laporan</a></li>
+                            <li><a href="index.php/c_laporan">Laporan</a></li>
                         </ul>
                     </div>
                 </div>

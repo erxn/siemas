@@ -31,6 +31,7 @@ class M_pasien extends Model {
         }
 
     }
+    
     function lihat_profil_pasien($id_kk, $id_pasien) {
         $data = array();
         $q = $this->db->query("SELECT pasien.*, kk.*, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
@@ -95,8 +96,4 @@ class M_pasien extends Model {
         }
 
     }
-    
-
-
-
 }

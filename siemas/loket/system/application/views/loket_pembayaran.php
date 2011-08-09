@@ -23,13 +23,13 @@
                             <tr>
                                 <td width="137">Nama</td>
                                 <td width="16">:</td>
-                                <td width="216"><input type="text" class="input-medium"/></td>
+                                <td width="216"><input name="nama" type="text" class="input-medium"/></td>
                             </tr>
                             <tr>
                                 <td>Poli</td>
                                 <td>:</td>
                                 <td>
-                                    <select>
+                                    <select namw="poli">
                                         <option>GIGI</option>
                                         <option>KIA</option>
                                         <option>LAB</option>
@@ -42,7 +42,7 @@
                                 <td>&nbsp;</td>
                                 <td>
                                     <div align="right">
-                                        <input class="submit-green" type="submit" value="Cari" />
+                                        <input name="cari" class="submit-green" type="submit" value="Cari" />
                                     </div>
                                 </td>
                             </tr>
@@ -64,41 +64,36 @@
                                 </tr>
                             </thead>
                             <tbody>
+                               
+                                <?php $i=1; foreach($pembayaran as $p){ ?>
                                 <tr>
-                                    <td><div align="center">1</div></td>
-                                    <td align="center">Gigi</td>
-                                    <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Dimas Putera</a></td>
-                                    <td align="center">21 th</td>
-                                    <td>Pabaton</td>
+                                    <td><div align="center"><?php echo $i++?></div></td>
+                                    <td align="center"><?php echo $p['nama_poli']?></td>
+                                    <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien/<?php echo $p['id_kk']."/".$p['id_pasien']?>"><?php echo $p['nama_pasien']?></a></td>
+                                    <td align="center"><?php echo $p['umur']?> tahun</td>
+                                    <td><?php echo $p['idkunjungan']?></td>
                                     <td colspan="2">
                                         <div  align="center">
-                                        <a class="button" href="index.php/pembayaran/input_pembayaran">
+                                            <?php if($p['status_pembayaran'] == "Belum Lunas"){?>
+                                        <a class="button" href="index.php/pembayaran/input_pembayaran/<?php echo $p['idkunjungan']?>">
                                             <span><img width="15" height="15" src="Template_files/tambah.png" alt="Tambah"/> Data Pembayaran</span>
                                         </a>
+                                            <?php } else if($p['status_pembayaran'] == "Lunas") { ?>
+                                            <a class="popup" href="index.php/pembayaran/rincian">Rincian</a>
+                                            <?php }?>
                                         </div>
                                     </td>
-                                    <td>
-                                        <img src="Template_files/cross-on.gif"/>
-                                        Belum Lunas
+                                    <td><?php if($p['status_pembayaran'] == "Lunas"){?>
+                                        <img src="Template_files/tick-on.gif" alt="Lunas"/>
+                                            Lunas
+                                        <?php } else if($p['status_pembayaran'] == "Belum Lunas") {?>
+                                            <img src="Template_files/cross-on.gif" alt="Belum Lunas"/>
+                                            Belum Lunas
+                                         <?php }?>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td align="center">2</td>
-                                    <td align="center">Gigi</td>
-                                    <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
-                                    <td align="center">19 th</td>
-                                    <td>Cibogor</td>
-                                    <td>Rp 15.000,-</td>
-                                    <td align="center">
-                                        <a class="popup" id="test" href="index.php/pembayaran/rincian">
-                                            Rincian
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <img src="Template_files/tick-on.gif"/>
-                                        Lunas
-                                    </td>
-                                </tr>
+                                <?php }?>
+                                
                             </tbody>
                         </table>
                         <div id="pager" class="pager">

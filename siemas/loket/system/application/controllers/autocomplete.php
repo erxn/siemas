@@ -25,5 +25,19 @@ class Autocomplete extends Controller {
         echo json_encode($array_autocomplete);
     }
 
+    function nama_kk() {
+
+        $nama = $this->input->post('term');
+
+        $daftar_kk = $this->M_autocomplete->get_kk_by_nama($nama);
+        $array_autocomplete = array();
+
+        foreach ($daftar_kk as $kk) {
+            $array_autocomplete[] = $kk['nama_kk'];
+        }
+
+        echo json_encode($array_autocomplete);
+    }
+
 }
 
