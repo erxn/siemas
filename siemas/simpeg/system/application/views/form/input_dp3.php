@@ -47,7 +47,7 @@
                             <tr <?php if($i%2 == 0) echo 'class="even"' ?>>
                                 <td>
                                     <input type="hidden" name="id_pegawai[]" value="<?php echo $data['id_pegawai'] ?>"/>
-                                    <?php echo $i; ?>
+                                    <?php echo $i + 1; ?>
                                 </td>
                                 <td><?php echo $data['nama']; ?></td>
                                 <td><input type="text" value="<?php echo $data['kesetiaan'] ?>" maxlength="3" id="field_0_<?php echo $i-1 ?>" name="kesetiaan[]"    size="5" class="number input-full" style="width: 60px"/></td>

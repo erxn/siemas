@@ -258,7 +258,7 @@ class Absensi_model extends Model {
                                       absensi.jam_hadir
                                FROM pegawai LEFT JOIN absensi
                                ON   pegawai.id_pegawai = absensi.id_pegawai AND absensi.tanggal = '$tanggal'
-                               WHERE pegawai.bp_pemda = $bp AND pegawai.aktif = 1 ORDER BY pegawai.id_pegawai");
+                               WHERE pegawai.bp_pemda = $bp AND pegawai.aktif = 1 ORDER BY pegawai.rank_struktural, pegawai.id_pegawai");
 
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {

@@ -57,8 +57,10 @@ class Pegawai extends Controller {
             );
 
             if ($this->input->post('id_atasan') != 0)
-                $data['id_atasan'] = $this->input->post('id_atasan');
+                $data['id_atasan'] = $this->input->post('id_atasan');  
             $id_pegawai_baru = $this->pegawai->insert_data_pokok($data);
+
+            $this->pegawai->set_atasan($id_pegawai_baru, $data['id_atasan']);
 
             // proses data pendidikan
             $data_pendidikan = $this->input->post('pendidikan');
@@ -480,6 +482,8 @@ class Pegawai extends Controller {
 
         $this->load->view('form/input_struktur_organisasi', $data);
     }
+
+    // LAPORAN-LAPORAN
 
     function laporan_duk() {
         $this->load->view('laporan/duk');

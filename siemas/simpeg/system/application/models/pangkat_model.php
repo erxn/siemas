@@ -6,10 +6,12 @@ class Pangkat_model extends Model {
 
     function  __construct() {
         parent::Model();
+        $this->load->model("Pegawai_model", "pegawai");
     }
 
     function insert($data) {
         $this->db->insert($this->tabel, $data);
+        $this->pegawai->update_rank_pangkat($data['id_pegawai']);
     }
 
     function get_by_id_pegawai($id_pegawai) {

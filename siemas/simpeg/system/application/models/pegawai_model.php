@@ -28,15 +28,19 @@ class Pegawai_model extends Model {
 
     function set_atasan($id_pegawai, $id_atasan) {
         $this->db->query("UPDATE pegawai SET id_atasan = {$id_atasan} WHERE id_pegawai = {$id_pegawai}");
+
+        // update rank struktural
+        $rank = $this->get_rank_struktural($id_pegawai);
+        $this->db->query("UPDATE pegawai SET rank_struktural = {$rank} WHERE id_pegawai = {$id_pegawai}");
     }
 
     function get_semua_pegawai($order = 'id_pegawai', $kecuali_kepala = false) {
         $data = array();
 
         if($kecuali_kepala == true)
-            $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 AND id_atasan IS NOT NULL ORDER BY $order");
+            $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 AND id_atasan IS NOT NULL ORDER BY rank_struktural, id_pegawai");
         else
-            $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 ORDER BY $order");
+            $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 ORDER BY rank_struktural, id_pegawai");
 
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
@@ -50,7 +54,7 @@ class Pegawai_model extends Model {
 
     function get_semua_pegawai_pkm($order = 'id_pegawai') {
         $data = array();
-        $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 AND bp_pemda = 0 ORDER BY $order");
+        $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 AND bp_pemda = 0 ORDER BY rank_struktural, id_pegawai");
 
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
@@ -64,7 +68,7 @@ class Pegawai_model extends Model {
 
     function get_semua_pegawai_bpp($order = 'id_pegawai') {
         $data = array();
-        $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 AND bp_pemda = 1 ORDER BY $order");
+        $q = $this->db->query("SELECT * FROM pegawai WHERE aktif = 1 AND bp_pemda = 1 ORDER BY rank_struktural, id_pegawai");
 
         if ($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
@@ -156,6 +160,7 @@ class Pegawai_model extends Model {
 
     function insert_pangkat_golongan($data) {
         $this->db->insert('pangkat_golongan', $data);
+        $this->update_rank_pangkat($data['id_pegawai']);
     }
 
     function insert_jabatan($data) {
@@ -278,5 +283,56 @@ class Pegawai_model extends Model {
 //                            WHERE p2.id_pegawai = pegawai.id_pegawai
 //                        )
 //                    )
+
+    function get_rank_struktural($id_pegawai) {
+
+        $rank = 0;
+
+        $saya = $this->get_pegawai_by_id($id_pegawai);
+        $id_atasan_saya = $saya['id_atasan'];
+
+        while($id_atasan_saya != '') {
+
+            $atasan_saya = $this->get_pegawai_by_id($id_atasan_saya);
+            $id_atasan_dari_atasan_saya = $atasan_saya['id_atasan'];
+
+            $id_atasan_saya = $id_atasan_dari_atasan_saya;
+
+            $rank++;
+
+        }
+
+        return $rank;
+
+    }
+
+    function update_rank_pangkat($id_pegawai) {
+
+        $g = $this->pegawai->get_pangkat_terakhir($id_pegawai);
+
+        $urutan_golongan = array(
+            '-' => 0,
+            'I / a' => 1,
+            'I / b' => 2,
+            'I / c' => 3,
+            'I / d' => 4,
+            'II / a' => 5,
+            'II / b' => 6,
+            'II / c' => 7,
+            'II / d' => 8,
+            'III / a' => 9,
+            'III / b' => 10,
+            'III / c' => 11,
+            'III / d' => 12,
+            'IV / a' => 13,
+            'IV / b' => 14,
+            'IV / c' => 15,
+            'IV / d' => 16,
+            'IV / e' => 17
+        );
+
+        $this->db->query("UPDATE pegawai SET rank_pangkat = '{$urutan_golongan[$g['golongan']]}' WHERE id_pegawai = {$id_pegawai}");
+
+    }
 
 }
