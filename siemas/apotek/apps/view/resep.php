@@ -38,17 +38,19 @@
             </div> <!-- End #header-main -->
             <div style="clear: both;"></div>
             <!-- Sub navigation -->
+
+            <form method="POST"
+                        onsubmit="if(document.getElementById('antrian').value == '') {alert('No Antrian Harus Diisi'); return false} " id="form_resep" >
             <div id="subnav">
                 <div class="container_12">
                     <div class="grid_12">
-						<div id="resep">
-							<form method="post">
-								<form method="POST"
-                        onsubmit="if(document.getElementById('antrian').value == '') {alert('No Antrian Harus Diisi'); return false} " id="form_resep" >Tanggal resep yang akan diinputkan adalah
-                                                                <input class="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
+						
+                        
+                    <div id="resep">
+                         Tanggal resep yang akan diinputkan adalah
+                           <input class="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
 								
-								
-						</div>
+                    </div>
                     </div><!-- End. .grid_12-->
                 </div><!-- End. .container_12 -->
                 <div style="clear: both;"></div>
@@ -60,7 +62,7 @@
                     <table>
 					<tr>
 						<td width="75px">
-							<p align="right">no antrian :</p>
+							<p align="right">no kunjungan :</p>
 						</td>
 						<td width="300px">
 							<input type="text" class="input_angka" id="antrian" name="antrian"  maxlength="255" size="30">
@@ -78,7 +80,7 @@
                     <div class="module" style="width: 473px ;">
                     <h2><span>Data Obat</span></h2>
 
-                    <div class="module-table-body">
+                        <div class="module-table-body">
                             <table id="resep"><?php $n=1; ?>
                                  <thead>
 					<tr>
@@ -114,13 +116,14 @@
                                   </tfoot>
 
 				</table>
-                                 </div></div>
-                    </form>
+                            </div>
+                    </div>
 
                         <div style="clear: both;"></div>
 						
 			</div> <!-- End .grid_12 -->
-           
+        </form>
+
            
         <!-- Footer -->
         <div id="footer">
