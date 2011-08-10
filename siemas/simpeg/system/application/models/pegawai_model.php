@@ -263,26 +263,56 @@ class Pegawai_model extends Model {
         return $data;
     }
 
-//                    SELECT pegawai.*, j1.TMT as TMT_jabatan, j1.jabatan, p1.TMT as TMT_pangkat, p1.pangkat, p1.golongan
-//                    FROM pegawai
-//                         LEFT JOIN jabatan j1 USING (id_pegawai)
-//                         LEFT JOIN pangkat_golongan p1 USING (id_pegawai)
-//                    WHERE
-//                    (j1.TMT IS NULL
-//                        OR j1.TMT = (
-//                            SELECT MAX(j2.TMT)
-//                            FROM jabatan j2
-//                            WHERE j2.id_pegawai = pegawai.id_pegawai
-//                        )
-//                    )
-//                    AND
-//                    (p1.TMT IS NULL
-//                        OR p1.TMT = (
-//                            SELECT MAX(p2.TMT)
-//                            FROM pangkat_golongan p2
-//                            WHERE p2.id_pegawai = pegawai.id_pegawai
-//                        )
-//                    )
+    function get_duk($order_by = 'rank_struktural') {
+
+        // STR_TO_DATE(SUBSTRING(nip, 9, 6), '%Y%m')
+
+        $groupwise_maximum_query = "
+                    SELECT pegawai.*, j1.TMT as TMT_jabatan, j1.jabatan, p1.TMT as TMT_pangkat, p1.pangkat, p1.golongan, pd1.pendidikan, pd1.tahun_ijazah,
+                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))), '%Y')+0 AS masa_kerja_tahun,
+                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))), '%m')+0 AS masa_kerja_bulan
+                    FROM pegawai
+                         LEFT JOIN jabatan j1 USING (id_pegawai)
+                         LEFT JOIN pangkat_golongan p1 USING (id_pegawai)
+                         LEFT JOIN pendidikan pd1 USING (id_pegawai)
+                    WHERE
+                    (j1.TMT IS NULL
+                        OR j1.TMT = (
+                            SELECT MAX(j2.TMT)
+                            FROM jabatan j2
+                            WHERE j2.id_pegawai = pegawai.id_pegawai
+                        )
+                    )
+                    AND
+                    (p1.TMT IS NULL
+                        OR p1.TMT = (
+                            SELECT MAX(p2.TMT)
+                            FROM pangkat_golongan p2
+                            WHERE p2.id_pegawai = pegawai.id_pegawai
+                        )
+                    )
+                    AND
+                    (pd1.tahun_ijazah IS NULL
+                        OR pd1.tahun_ijazah = (
+                            SELECT MAX(pd2.tahun_ijazah)
+                            FROM pendidikan pd2
+                            WHERE pd2.id_pegawai = pegawai.id_pegawai
+                        )
+                    )
+                    ORDER BY pegawai.{$order_by}";
+
+        $q = $this->db->query($groupwise_maximum_query);
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+     
+    }
 
     function get_rank_struktural($id_pegawai) {
 
