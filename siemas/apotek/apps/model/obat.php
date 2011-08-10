@@ -80,6 +80,25 @@ class Model_obat {
 			$n++;
 		}
     }
+
+    public function tambah_isi_pemakaian($intern, $tanggal, $id_obat, $jumlah, $keterangan){
+        $id_resep = $this->db->find_var("SELECT id_resep FROM resep WHERE id_pasien='$id_pasien' AND waktu LIKE '$tanggal%'");
+        $n='1';
+        foreach ($id_obat as $result) {
+                if($id_obat[$n]){
+                $data2['id_obat'] = $id_obat[$n];
+                $data2['id_resep'] = $id_resep;
+                $data2['jumlah_terpakai'] = $jumlah[$n];
+                $stok = $this->db->find_var("SELECT stok_obat FROM obat WHERE id_obat='$id_obat[$n]'");
+                $total = $stok - $jumlah[$n];
+                $data['stok_obat'] = $total;
+                $data3['id_obat'] = $id_obat[$n];
+                $query = $this->db->insert('isi_resep',$data2);}
+                $query = $this->db->update('obat', $data, $data3);
+
+			$n++;
+		}
+    }
     
     public function resep_pasien($tanggal,$id_antrian){
 
