@@ -486,7 +486,39 @@ class Pegawai extends Controller {
     // LAPORAN-LAPORAN
 
     function laporan_duk() {
-        $this->load->view('laporan/duk');
+
+        $data = array();
+        
+        $data['list'] = $this->pegawai->get_duk();
+
+        if($this->input->post('filter')) {
+            $cols = array(
+                "",
+                $this->input->post('pangkat'),
+                $this->input->post('masa_kerja'),
+                $this->input->post('pendidikan'),
+                $this->input->post('ttl'),
+                $this->input->post('jabatan'),
+                $this->input->post('kenaikan_gaji'),
+                $this->input->post('unit_kerja')
+            );
+
+            $urut = $this->input->post('urut');
+
+            if($urut == 1) {
+                unset($data['list']);
+                $data['list'] = $this->pegawai->get_duk('rank_pangkat');
+            }
+            
+        } else {
+            $cols = array("", 1, 1, 1, 1, 1, 1, 0);
+            $urut = 0;
+        }
+
+        $data['kolom'] = $cols;
+        $data['urut']  = $urut;
+
+        $this->load->view('laporan/duk', $data);
     }
 
     function laporan_biodata_fungsional($id_pegawai = 0) {
