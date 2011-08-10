@@ -29,14 +29,30 @@ class Controller_laporan extends Panada {
                         $tanggal2 = $this->date->reverse($tanggal);
                         $data_harian = $this->excel->harian($tanggal2);
                         $this->session->set('data_harian',$data_harian);
+                        $this->session->set('tanggal_harian',$tanggal);
                         $this->redirect('index.php/excel/harian/');
 			}
         $this->view_laporan_harian($views);
     }
 	
 	public function bulanan(){
-        $views['page_title']    = 'Laporan Bulanan - Apotek';
-        $this->view_laporan_bulanan($views);
+            $views['page_title']    = 'Laporan Bulanan - Apotek';
+            
+            if($_POST){
+		$bulan=$_POST['bulan'];
+                $tahun=$_POST['tahun'];
+                if($bulan<10)
+                    {$TB = $tahun.'-0'.$bulan;}
+                    else{$TB = $tahun.'-'.$bulan;}
+                $n=1;
+                $data_bulanan = $this->excel->bulanan($TB);
+                $this->session->set('data_bulanan',$data_bulanan);
+                $this->session->set('bulan_bulanan',$bulan);
+                $this->session->set('tahun_bulanan',$tahun);
+                $this->redirect('index.php/excel/bulanan/');
+            }
+
+            $this->view_laporan_bulanan($views);
     }
 	
 	public function tahunan(){
