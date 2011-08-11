@@ -42,12 +42,7 @@
                 </div>
 
                 <div>Tahun
-                    <select id="tahun">
-                        <?php for ($i = 0; $i < count($tahun); $i++) : ?>
-                            <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini)
-                                echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
-                                <?php endfor; ?>
-                    </select>
+                    <input type="text" name="tahun" id="tahun" value="<?php echo $tahun_ini; ?>" class="input-short" style="width: 70px"/>
                     Bulan
                     <select id="bulan">
                         <?php for ($i = 1; $i <= 12; $i++) : ?>

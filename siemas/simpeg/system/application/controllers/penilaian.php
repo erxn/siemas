@@ -163,8 +163,22 @@ class Penilaian extends Controller {
         $this->load->view('form/input_rumus_tpp', $data);
     }
 
-    function laporan_nilai_dp3($tahun = 0, $tahun2 = 0) {
-        $this->load->view('laporan/nilai_dp3');
+    function laporan_nilai_dp3($tahun = 0, $tahun_2 = 0) {
+        $data = array();
+
+        if($tahun == 0) {
+            $data['tahun_1'] = date("Y");
+        } else {
+            $data['tahun_1'] = $tahun;
+        }
+
+        $data['tahun_2'] = $tahun_2;
+
+        $data['daftar_nilai_1'] = $this->penilaian->get_nilai_dp3($data['tahun_1']);
+        $data['daftar_nilai_2'] = $this->penilaian->get_nilai_dp3($data['tahun_2']);
+
+        $data['list_tahun'] = $this->penilaian->get_tahun_dp3();
+        $this->load->view('laporan/nilai_dp3', $data);
     }
 
     function laporan_nilai_tpp($bulan = 0, $tahun = 0) {
