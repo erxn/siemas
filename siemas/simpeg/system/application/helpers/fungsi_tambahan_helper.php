@@ -31,7 +31,7 @@ function tampilan_tanggal_indonesia($tanggal, $pake_hari = true, $pake_tahun = t
         $date_string = $namaHari[date('N', $d)] . ", " . $date_string;
 
     if($pake_tahun)
-        $date_string = $date_string . " " . date("Y");
+        $date_string = $date_string . " " . date("Y", $d);
 
     return $date_string;
     
