@@ -522,11 +522,39 @@ class Pegawai extends Controller {
     }
 
     function laporan_biodata_fungsional($id_pegawai = 0) {
-        $this->load->view('laporan/biodata_fungsional');
+        $data = array();
+
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        if($id_pegawai != 0) {
+
+            $data['biodata'] = $this->pegawai->get_pegawai_by_id($id_pegawai);
+            $data['pendidikan'] = $this->pegawai->get_pendidikan_pegawai($id_pegawai);
+            $data['pelatihan'] = $this->pegawai->get_pelatihan_pegawai($id_pegawai);
+            $data['jabatan'] = $this->jabatan->get_by_id_pegawai($id_pegawai);
+
+        }
+
+        $data['id_pegawai'] = $id_pegawai;
+
+        $this->load->view('laporan/biodata_fungsional', $data);
     }
 
     function laporan_skumptk($id_pegawai = 0) {
-        $this->load->view('laporan/skumptk');
+        $data = array();
+
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        if($id_pegawai != 0) {
+
+            $data['biodata'] = $this->pegawai->get_pegawai_by_id($id_pegawai);
+            $data['data_tanggungan'] = $this->pegawai->get_tanggungan_pegawai($id_pegawai);
+
+        }
+
+        $data['id_pegawai'] = $id_pegawai;
+
+        $this->load->view('laporan/skumptk', $data);
     }
 
 }

@@ -1,35 +1,4 @@
-<?php $this->load->view('header');
-
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<?php $this->load->view('header'); ?>
 
 <div class="belowribbon">
     <h1>
@@ -44,15 +13,16 @@ $pegawai = array(
         <div class="module">
             <h2><span>Daftar pegawai</span></h2>
             <div class="module-body">
-                <p>Klik nama pegawai untuk melihat biodatanya</p>
                 <p id="list_filter_header">Cari pegawai: </p>
 
                 <ul class="bullets" id="list_filter">
-                    <?php
-                    for ($j = 1; $j < count($pegawai); $j++) {
-
-                        echo "<li><a href='forms/edit_pegawai.php'>{$pegawai[$j]}</a></li>";
-                    } ?>
+                    <?php foreach($daftar_pegawai as $p) : ?>
+                        <?php if($id_pegawai == $p['id_pegawai']) : ?>
+                        <li><strong><?php echo $p['nama']; ?></strong></li>
+                        <?php else : ?>
+                        <li><a href="index.php/pegawai/laporan_biodata_fungsional/<?php echo $p['id_pegawai']; ?>"><?php echo $p['nama']; ?> &raquo;</a></li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>
@@ -64,6 +34,15 @@ $pegawai = array(
         <div class="module">
             <h2><span>Biodata</span></h2>
             <div class="module-body">
+                <?php if(isset($biodata)) : ?>
+
+                <center>
+                    <h3>BIODATA JABATAN FUNGSIONAL<br/>PUSKESMAS BOGOR TENGAH</h3>
+                    <h4>TAHUN <?php echo date("Y"); ?></h4>
+                </center>
+
+                <hr/>
+
                 <table border="0" width="100%" class="noborder">
                     <tbody>
                         <tr>
@@ -71,7 +50,7 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>drg. Mellyawati</span></td>
+                            <td align="left"><span><?php echo $biodata['nama']; ?></span></td>
                         </tr>
 
                         <tr>
@@ -79,7 +58,7 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>19570207 198403 2 002</span></td>
+                            <td align="left"><span><?php echo $biodata['nip']; ?></span></td>
                         </tr>
 
                         <tr>
@@ -87,7 +66,7 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>Magelang, 7 Februari 1957</span></td>
+                            <td align="left"><span><?php echo $biodata['tempat_lahir']; ?>, <?php echo tampilan_tanggal_indonesia($biodata['tanggal_lahir'], false, true); ?></span></td>
                         </tr>
 
                         <tr>
@@ -95,7 +74,7 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>Pembina Utama Muda / IV C</span></td>
+                            <td align="left"><span><?php $g = $this->pegawai->get_pangkat_terakhir($biodata['id_pegawai']); echo $g['pangkat'] . ' / ' . str_replace(" / ", " ", $g['golongan']) ?></span></td>
                         </tr>
 
                         <tr>
@@ -103,7 +82,7 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>PNS Daerah</span></td>
+                            <td align="left"><span><?php echo $biodata['status_kepegawaian']; ?></span></td>
                         </tr>
 
                         <tr>
@@ -111,7 +90,7 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>DIPA Daerah</span></td>
+                            <td align="left"><span><?php echo $biodata['sumber_gaji']; ?></span></td>
                         </tr>
 
                         <tr>
@@ -119,7 +98,7 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>Dokter Gigi Madya</span></td>
+                            <td align="left"><span><?php $j = $this->pegawai->get_jabatan_terakhir($biodata['id_pegawai']); echo $j['jabatan'] ?></span></td>
                         </tr>
 
                         <tr>
@@ -175,7 +154,11 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>Dokter Gigi</span></td>
+                            <td align="left">
+                                <?php if(count($jabatan) > 0) : foreach ($jabatan as $j) : ?>
+                                    • <?php echo $j['jabatan'] . ' (TMT ' . format_tanggal_tampilan($j['TMT']) . ')'; ?><br/>
+                                <?php endforeach; else : echo "-"; endif; ?>
+                            </td>
                         </tr>
 
                         <tr>
@@ -183,15 +166,11 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left">S1 Fakultas Kedokteran Gigi UPDMD Moestopo</td>
-                        </tr>
-
-                        <tr>
-                            <td height="20" align="left"><span><br /></span></td>
-
-                            <td align="left"><strong><span><br /></span></strong></td>
-
-                            <td align="left"><span>Tahun 1982</span></td>
+                            <td align="left">
+                                <?php if(count($pendidikan) > 0) : foreach ($pendidikan as $p) : ?>
+                                    • <?php echo $p['pendidikan'] . ' Tahun ' . $p['tahun_ijazah']; ?><br/>
+                                <?php endforeach; else : echo "-"; endif; ?>
+                            </td>
                         </tr>
 
                         <tr>
@@ -199,11 +178,19 @@ $pegawai = array(
 
                             <td align="left"><strong><span>:</span></strong></td>
 
-                            <td align="left"><span>* Paltihan Teknis Fungsional Dokter Gigi</span></td>
+                            <td align="left">
+                                <?php if(count($pelatihan) > 0) : foreach ($pelatihan as $p) : ?>
+                                    • <?php echo $p['pelatihan'] . ' Tahun ' . $p['tahun']; ?><br/>
+                                <?php endforeach; else : echo "-"; endif; ?>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-
+                <?php else : ?>
+                <p>
+                    Pilih salah satu pegawai di samping
+                </p>
+                <?php endif; ?>
             </div>
 
         </div>
