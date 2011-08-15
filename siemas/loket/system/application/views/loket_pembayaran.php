@@ -79,7 +79,7 @@
                                             <span><img width="15" height="15" src="Template_files/tambah.png" alt="Tambah"/> Data Pembayaran</span>
                                         </a>
                                             <?php } else if($p['status_pembayaran'] == "Lunas") { ?>
-                                            <a class="popup" href="index.php/pembayaran/rincian">Rincian</a>
+                                            <a href="index.php/pembayaran/rincian/<?php echo $p['idkunjungan']?>/rincian">Rincian</a>
                                             <?php }?>
                                         </div>
                                     </td>

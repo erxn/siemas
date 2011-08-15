@@ -3,10 +3,10 @@
                     <h4>Masukkan Identitas Pasien</h4><br/>
                     <form action="index.php/pasien/registrasi_pasien_baru/<?php echo $kk[0]['id_kk']."/".$status?>" method="post" id="pasien_baru">
                     <table class="noborder">
-                        <!--<tr>
+                        <tr>
                             <td>ID KK</td>
-                            <td><strong><input name="id_kk" type="hidden" value="<?php echo $kk[0]['id_kk']?>"><?php echo $kk[0]['id_kk']?></strong></td>
-                        </tr>-->
+                            <td><strong><input name="id_kk" type="hidden" value="<?php echo $kk[0]['id_kk']?>"></strong></td>
+                        </tr>
                         <tr>
                             <td>Tgl. Pendaftaran</td>
                             <td style="width: 65%"><input name="tanggal_pendaftaran" id="datepicker" type="text" class="input-medium" value="<?php echo date("d-m-Y"); ?>"/></td>

@@ -23,7 +23,7 @@ class Kk extends Controller {
         if($this->input->post('submit')) {
 
             $data = array(
-                    'tanggal_pendaftaran'      => ganti_format_tanggal($this->input->post('tanggal_pendaftaran')),
+                    'tanggal_pendaftaran'  => ganti_format_tanggal($this->input->post('tanggal_pendaftaran')),
                     'nama_kk'                    => $this->input->post('nama_kk'),
                     'jk_kk'                      => $this->input->post('jk_kk'),
                     'alamat_kk'                 => $this->input->post('alamat_kk'),

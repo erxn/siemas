@@ -128,10 +128,12 @@ $(document).ready(function() {
                             </tr>
                         </table>
                     </form>
-                    <div id="hasil_cari_kk">
-                        <h4  class="float-right">Hasil Pencarian: <?php if(isset($hasil_cari_kk)) { echo count($hasil_cari_kk) ?> orang</h4>
                     <br/>
-                    <table id="myTable" class="tablesorter" style="width: 100%;">
+                    <?php if(isset($hasil_cari_kk)) {  ?>
+                    <div id="hasil_cari_kk">
+                        <h4  class="float-left">Hasil Pencarian: <?php echo count($hasil_cari_kk)?> orang</h4>
+                    <br/>
+                    <table style="width: 100%;">
                         <thead>
                             <tr>
                                 <th class="header" style="width: 1%;">No</th>
@@ -139,7 +141,7 @@ $(document).ready(function() {
                                 <th class="header" style="width: 1%;">JK</th>
                                 <th class="header" style="width: 10%;">Alamat</th>
                                 <th class="header" style="width: 8%;">Anggota</th>
-                                <th class="header" style="width: 3%;"></th>
+                                <th class="header" style="width: 3%;">Tambah</th>
                             </tr>
                         </thead>
                         <tbody>

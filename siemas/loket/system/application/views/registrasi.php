@@ -176,9 +176,9 @@ $(document).ready(function() {
 
             <div id="tabs">
                 <ul>
-                    <li><a href="#tabs-a">Poli Gigi</a></li>
-                    <li><a href="#tabs-b">Poli KIA</a></li>
-                    <li><a href="#tabs-c">Poli Umum</a></li>
+                    <li><a href="#tabs-a">Poli Umum</a></li>
+                    <li><a href="#tabs-b">Poli Gigi</a></li>
+                    <li><a href="#tabs-c">Poli KIA</a></li>
                     <li><a href="#tabs-d">Lab</a></li>
                     <li><a href="#tabs-e">Radiologi</a></li>
                 </ul>
@@ -196,19 +196,19 @@ $(document).ready(function() {
 
                 <!-- Example table -->
                 <div id="tabs-a">
-                    
+                    <?php $this->load->view('poli_umum');?>
                 </div>
                 <div id="tabs-b">
-                    
+                    <?php $this->load->view('poli_gigi');?>
                 </div>
                 <div id="tabs-c">
-                    
+                    <?php $this->load->view('poli_kia');?>
                 </div>
                 <div id="tabs-d">
-                    
+                    <?php $this->load->view('poli_lab');?>
                 </div>
                 <div id="tabs-e">
-                    
+                    <?php $this->load->view('poli_radiologi');?>
                 </div>
 
 

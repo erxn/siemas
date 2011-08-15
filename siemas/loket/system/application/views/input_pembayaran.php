@@ -10,6 +10,20 @@
 </div>
 <!-- END SUBNAV -->
 
+<script type="text/javascript">
+
+
+        var x = 6;
+
+        function tambahPembayaran() {
+
+        $('#tr_'+x).fadeIn();
+        x++;
+
+        }
+
+</script>
+
 <br/>
 <div class="container_12">
     <div>
@@ -17,17 +31,17 @@
             <div class="module">
                 <h2><span>PEMBAYARAN</span></h2>
                 <div class="module-body">
-                    <table class="noborder">
+                    <table class="noborder" style="font-size: 16px">
                         <tr class="odd">
-                            <td style="width: 15% ">Tgl Kunjungan</td>
+                            <td style="width: 20% ">Tgl Kunjungan</td>
                             <td style="width: 3%">:</td>
-                            <td style="width:40% "><?php echo tgl_indo($kunjungan[0]['tanggal_kunjungan'])?></td>
+                            <td style="width:60% "><?php echo tgl_indo($kunjungan[0]['tanggal_kunjungan'])?></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td>Nama Pasien</td>
                             <td>:</td>
-                            <td><?php echo $pasien[0]['nama_pasien']?></td>
+                            <td><b><?php echo $pasien[0]['nama_pasien']?></b></td>
                             <td></td>
                         </tr>
                         <tr class="odd">
@@ -55,45 +69,38 @@
                             <td></td>
                         </tr>
                     </table>
-                    <form method="post" action="index.php/pembayaran">
-                    <div style="width: 60%">
+                    <form method="post" action="">
+                    <div style="width: 70%">
                         <h2 id="total_harga" align="right">TOTAL: Rp <?php  echo number_format($kunjungan[0]['total_harga']) ?></h2>
                         <br/>
-                        <table id="myTable" class="tablesorter" style="width: 100%">
+                        <table  style="width: 100%" >
                             <thead>
-                                <tr>
+                                <tr style="font-size: 16px !important">
                                     <th class="header" style="width: 5%;">No.</th>
                                     <th class="header" style="width: 15%;">Poli</th>
-                                    <th class="header" style="width: 30%;">Pelayanan</th>
-                                    <th class="header" style="width: 25%;">Harga</th>
+                                    <th class="header" style="width: 40%;">Pelayanan</th>
+                                    <th class="header" style="width: 30%;">Harga</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="even">
-                                    <td class="align-center">1</td>
-                                    <td>GIGI
-                                    </td>
-                                    <td>Tambal Amalgam</td>
-                                    <td>Rp 60.000,-</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="align-center">2</td>
-                                    <td><select name="poli">
-                                            <option value="gigi">GIGI</option>
-                                            <option value="kia">KIA</option>
-                                            <option value="umum">Umum</option>
-                                            <option value="lab">Laboratorium</option>
-                                            <option value="radiologi">Radiologi</option>
+                                <?php for($i=1; $i<=20; $i++) : ?>
+                                <tr class=" <?if($i%2==0) echo "odd"; else echo "even";?>" id="tr_<?php echo $i ?>"  <?php if($i>5) echo "style = 'display: none'"?>>
+                                    <td class="align-center"><?php echo $i ?></td>
+                                    <td><select name="poli[]">
+                                            <option value="GIGI">GIGI</option>
+                                            <option value="KIA">KIA</option>
+                                            <option value="UMUM">Umum</option>
+                                            <option value="LAB">Laboratorium</option>
+                                            <option value="RADIOLOGI">Radiologi</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" style="width: 80%" name="pelayanan1" class="input-medium"/></td>
-                                    <td>Rp <input type="text" name="harga1"  class="input-medium" value="10000"/></td>
+                                    <td><input type="text" style="width: 80%" name="pelayanan[]" class="input-medium autocomplete"/></td>
+                                    <td>Rp <input type="text" name="harga[]"  class="input-medium" value=""/></td>
                                 </tr>
-                                <tr>
-                                    <td colspan="4" align="right"><a href="#">Tambah</a></td>
-                                </tr>
+                                <?php endfor; ?>
                             </tbody>
                         </table>
+                        <input type="button" onclick="tambahPembayaran(); return false;" value="Tambah"/>
                         <div align="right">
                             <input name="submit" align="right" class="submit-green" type="submit" value="LUNAS" />
                         </div>
@@ -105,4 +112,27 @@
     </div>
 </div>
 
+<script type="text/javascript">
 
+$(document).ready(function()
+            {$("input.autocomplete").autocomplete({
+			source: [
+                        <?php if(isset($daftar_layanan)){ foreach ($daftar_layanan as $list) { ?>
+			{"value":"<?php echo $list['nama_layanan']; ?>","id":"<?php echo $list['harga']; ?>"},
+                        <?php } } ?>
+                        {}
+                        ],
+                	select: function( event, ui ) {
+				var nama_obat = ui.item.value;
+                                var id_obat = ui.item.id;
+
+                                $(this).parent('td').next().find('input').val(id_obat);
+                        },
+                        delay: 0
+            });
+        });
+
+
+
+
+</script>
