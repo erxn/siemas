@@ -56,6 +56,12 @@ class M_pasien extends Model {
 
     function cari_pasien($kode_pasien,$nama_pasien,$umur_pasien,$alamat="") {
 
+        $where = "WHERE 1 ";
+
+        if($nama_pasien != "") $where .= " AND nama_pasien LIKE '%$nama_pasien%'";
+        if($umur_pasien != "") $where .= " AND extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) BETWEEN $umur_pasien-1 and $umur_pasien+1";
+        if($alamat != "") $where .= "AND alamat_kk LIKE '%$alamat_pasien%'";
+
         $data = array();
         if($kode_pasien != '') {
             $q = $this->db->query("SELECT pasien.*, kk.*, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
@@ -70,20 +76,11 @@ class M_pasien extends Model {
             return $data;
 
         }
-        else if($nama_pasien != '' && $umur_pasien != '') {
-            if($alamat == ''){
+        else {
+
             $q = $this->db->query("SELECT pasien.*, kk.*, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
-                                 FROM pasien JOIN kk USING(id_kk)
-                                 WHERE extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) BETWEEN $umur_pasien-1 and $umur_pasien+1
-                                 AND nama_pasien LIKE '%$nama_pasien%'");
-            }
-            else {
-                $q = $this->db->query("SELECT pasien.*, kk.*, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
-                                 FROM pasien JOIN kk USING(id_kk)
-                                 WHERE extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) BETWEEN $umur_pasien-1 and $umur_pasien+1
-                                 AND nama_pasien LIKE '%$nama_pasien%'
-                                 AND alamat_kk LIKE '%$alamat_pasien%'");
-            }
+                                 FROM pasien JOIN kk USING(id_kk) $where");
+
 
             if($q->num_rows() > 0) {
                 foreach ($q->result_array() as $row) {

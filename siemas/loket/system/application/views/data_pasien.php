@@ -79,7 +79,7 @@ $(document).ready(function() {
                 </table>
             </form>
             <hr/><br/>
-            <table id="myTable" class="tablesorter" style="width: 99%" >
+            <table style="width: 99%" >
                 <thead>
                     <tr>
                         <th style="width:2%">No</th>
@@ -96,7 +96,7 @@ $(document).ready(function() {
                 </thead>
                 <tbody>
                     <?php $i=1; if(isset($hasil_cari_pasien)) { foreach ($hasil_cari_pasien as $hasil) {?>
-                    <tr>
+                    <tr class="<?if($i%2==0) echo "odd"; else echo "even";?>">
                         <td class="align-center"><?php echo $i++; ?></td>
                         <td>10-04-2010</td>
                         <td><?php echo $hasil['kode_pasien'];?></td>

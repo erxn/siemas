@@ -92,6 +92,7 @@ class Pasien extends Controller {
         $this->load->view('registrasi_pasien_kk_sukses', $data);
     }
 
+
     function cari_pasien(){
         $data = array();
         $kode_pasien = $this->input->post('kode_pasien');
@@ -107,7 +108,6 @@ class Pasien extends Controller {
         $this->load->view('data_pasien', $data);
        
     }
-
 
     
 }
