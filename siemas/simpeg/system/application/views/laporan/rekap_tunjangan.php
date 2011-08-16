@@ -1,38 +1,7 @@
-<?php $this->load->view('header');
-
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<?php $this->load->view('header'); ?>
 
 <?php
-$bulan = array(
+$nama_bulan = array(
     "",
     "Januari",
     "Februari",
@@ -47,16 +16,6 @@ $bulan = array(
     "November",
     "Desember"
 );
-
-$bulan_ini = intval(date("n"));
-
-$tahun_ini = intval(date("Y"));
-$tahun = array($tahun_ini - 2, $tahun_ini - 1, $tahun_ini);
-
-$jumlah_hari_bulan_ini = cal_days_in_month(CAL_GREGORIAN, $bulan_ini, $tahun_ini);
-
-$tanggal_libur_bulan_ini = array(3,10,17,24,31);
-$tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
 
 ?>
 
@@ -74,21 +33,19 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
         <div class="module">
             <h2><span>Pilihan</span></h2>
             <div class="module-body">
-
-                Tahun
-                    <select id="tahun">
-                        <?php for ($i = 0; $i < count($tahun); $i++) : ?>
-                            <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini) echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
-                        <?php endfor; ?>
+                    Tahun&nbsp;&nbsp;&nbsp;
+                    <select name="tahun" id="tahun">
+                        <?php foreach($list_tahun as $t) : ?>
+                        <option value='<?php echo $t['tahun']; ?>' <?php if($t['tahun'] == $tahun) echo "selected='selected'"; ?>><?php echo $t['tahun']; ?></option>
+                        <?php endforeach; ?>
                     </select>
-                   Bulan
-                    <select id="bulan">
+                    Bulan&nbsp;&nbsp;&nbsp;
+                    <select name="bulan" id="bulan">
                         <?php for ($i = 1; $i <= 12; $i++) : ?>
-                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini) echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan) echo 'selected="selected"'; ?>><?php echo $nama_bulan[$i]; ?></option>
                         <?php endfor; ?>
                     </select>
-                   <input type="button" value="Tampilkan" class="submit-green"/>
-
+                    <input type="button" value="Tampilkan" class="submit-green" style="font-size: 11px; height: 23px; overflow: hidden; vertical-align: top" onclick="window.location = 'index.php/penilaian/rekap_tunjangan/' + $('#bulan').val() + '/' + $('#tahun').val()"/>
             </div>
         </div>
 
@@ -99,26 +56,29 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
                 <table width="100%">
                     <thead>
                         <tr>
-                            <th style="width: 10px;">No</th>
-                            <th style="width: 150px">Nama</th>
-                            <th style="width: 150px">Jabatan</th>
-                            <th style="width: 20px">Gol</th>
-                            <th>Nilai</th>
-                            <th>Jumlah tunjangan</th>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>Golongan</th>
+                            <th>Nilai TPP</th>
+                            <th>Tunjangan</th>
                             <th>PPh 21</th>
                             <th>Jumlah diterima</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai); $i++) : ?>
+                        <?php $i = 0; foreach ($daftar_tunjangan as $data) : ?>
                             <tr <?php if($i%2 == 0) echo 'class="even"' ?>>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $pegawai[$i]; ?></td>
-                                <td>Dokter</td>
-
+                                <td><?php echo $i+1; ?></td>
+                                <td><?php echo $data['nama']; ?></td>
+                                <td><?php $j = $this->pegawai->get_jabatan_terakhir($data['id_pegawai']); echo $j['jabatan'] ?></td>
+                                <td><?php $g = $this->pegawai->get_pangkat_terakhir($data['id_pegawai']); echo $g['golongan'] ?></td>
+                                <td>...</td>
+                                <td align="right"><?php echo format_rupiah(intval($data['tunjangan'])) ?></td>
+                                <td align="right"><?php echo format_rupiah(intval($data['pph21'])) ?></td>
+                                <td align="right"><?php echo format_rupiah(intval($data['tunjangan']) - intval($data['pph21'])) ?></td>
                             </tr>
-                        <?php endfor; ?>
+                        <?php $i++; endforeach; ?>
                     </tbody>
                 </table>
             </div>

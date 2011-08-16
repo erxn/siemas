@@ -118,15 +118,17 @@
                         </tr>
 
                         <tr>
+                            <?php $mkg = $this->pegawai->get_masa_kerja_golongan($biodata['id_pegawai']); ?>
                             <td height="20" align="left"><span>Masa kerja golongan</span></td>
                             <td align="left"><strong><span>:</span></strong></td>
-                            <td align="left"><span></span></td>
+                            <td align="left"><span><?php echo $mkg['masa_kerja_tahun'] . " Tahun " . $mkg['masa_kerja_bulan'] . " Bulan"; ?></span></td>
                         </tr>
 
                         <tr>
+                            <?php $mks = $this->pegawai->get_masa_kerja_keseluruhan($biodata['id_pegawai']); ?>
                             <td height="20" align="left"><span>Masa kerja keseluruhan</span></td>
                             <td align="left"><strong><span>:</span></strong></td>
-                            <td align="left"><span></span></td>
+                            <td align="left"><span><?php echo $mks['masa_kerja_tahun'] . " Tahun " . $mks['masa_kerja_bulan'] . " Bulan"; ?></span></td>
                         </tr>
 
 
