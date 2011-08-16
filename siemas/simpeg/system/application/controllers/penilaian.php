@@ -186,7 +186,20 @@ class Penilaian extends Controller {
     }
 
     function rekap_tunjangan($bulan = 0, $tahun = 0) {
-        $this->load->view('laporan/rekap_tunjangan');
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+        
+        $data['daftar_tunjangan'] = $this->penilaian->get_tunjangan($data['tahun'], $data['bulan']);
+
+        $data['list_tahun'] = $this->penilaian->get_tahun_tunjangan();
+        $this->load->view('laporan/rekap_tunjangan', $data);
     }
 
 }

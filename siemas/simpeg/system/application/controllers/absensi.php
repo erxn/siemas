@@ -143,7 +143,60 @@ class Absensi extends Controller {
     }
 
     function rekap_absensi($bulan = 0, $tahun = 0) {
-        $this->load->view('laporan/rekap_absensi');
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $data['bulan'], $data['tahun']);
+        
+        $data_pegawai_pkm = $this->pegawai->get_semua_pegawai_pkm();
+        $absensi_pkm = array();
+        foreach ($data_pegawai_pkm as $p) {
+
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+            
+            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                $row['hadir_' . $i] = $absensi[$i-1]['hadir'];
+            }
+
+            $absensi_pkm[] = $row;
+
+            unset($row);
+        }
+
+        $data_pegawai_bp = $this->pegawai->get_semua_pegawai_bpp();
+        $absensi_bp = array();
+        foreach ($data_pegawai_bp as $p) {
+
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+
+            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                $row['hadir_' . $i] = $absensi[$i-1]['hadir'];
+            }
+
+            $absensi_bp[] = $row;
+
+        }
+
+
+        $data['absensi_pkm'] = $absensi_pkm;
+        $data['absensi_bp']  = $absensi_bp;
+
+        $data['jumlah_hari_bulan_ini'] = $jumlah_hari_satu_bulan;
+
+        $data['tanggal_libur_pkm'] = $this->absensi->get_libur_pkm_all($data['tahun'], $data['bulan']);
+        $data['tanggal_libur_bp'] = $this->absensi->get_libur_bp_all($data['tahun'], $data['bulan']);
+
+        $data['list_tahun'] = $this->absensi->get_tahun_absensi();
+        $this->load->view('laporan/rekap_absensi', $data);
     }
 
     function rekap_jam_efek($bulan = 0, $tahun = 0) {

@@ -309,4 +309,61 @@ class Absensi_model extends Model {
         return $data;
     }
 
+    function get_tahun_absensi() {
+        $data = array();
+        $q = $this->db->query("SELECT DISTINCT year(tanggal) AS tahun FROM absensi ORDER BY year(tanggal)");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function get_absensi_bulanan_by_pegawai($id_pegawai, $bulan, $tahun) {
+
+        $data = array();
+        $q = $this->db->query("SELECT day(tanggal) AS tanggal, hadir
+                               FROM absensi
+                               WHERE month(tanggal) = $bulan
+                               AND year(tanggal) = $tahun
+                               AND id_pegawai = $id_pegawai
+                               ORDER BY tanggal");
+        
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+
+        // isi yang kosong
+
+        $min = 1;
+        $max = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+
+        $column1 = array();
+        foreach ($data as $row) $column1[] = $row['tanggal'];
+
+        $column2 = array();
+        for ($i = $min; $i <= $max; $i++) $column2[] = $i;
+
+        $emptys = array_merge(array_diff($column1, $column2), array_diff($column2, $column1));
+        $empty_arr = array();
+
+        foreach ($emptys as $e) {
+                $empty_arr[] = array('tanggal' => $e, 'hadir' => 0);
+        }
+
+        $res = array_merge($data, $empty_arr);
+        sort($res);
+
+        return $res;
+
+    }
+
 }

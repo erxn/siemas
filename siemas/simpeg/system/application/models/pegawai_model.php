@@ -270,7 +270,7 @@ class Pegawai_model extends Model {
         $groupwise_maximum_query = "
                     SELECT pegawai.*, j1.TMT as TMT_jabatan, j1.jabatan, p1.TMT as TMT_pangkat, p1.pangkat, p1.golongan, pd1.pendidikan, pd1.tahun_ijazah,
                          DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))), '%Y')+0 AS masa_kerja_tahun,
-                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))), '%m')+0 AS masa_kerja_bulan
+                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))), '%m')-1 AS masa_kerja_bulan
                     FROM pegawai
                          LEFT JOIN jabatan j1 USING (id_pegawai)
                          LEFT JOIN pangkat_golongan p1 USING (id_pegawai)
@@ -362,6 +362,46 @@ class Pegawai_model extends Model {
         );
 
         $this->db->query("UPDATE pegawai SET rank_pangkat = '{$urutan_golongan[$g['golongan']]}' WHERE id_pegawai = {$id_pegawai}");
+
+    }
+
+    function get_masa_kerja_golongan($id_pegawai) {
+
+        $query = "SELECT
+                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), MAX(TMT))), '%Y')+0 AS masa_kerja_tahun,
+                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), MAX(TMT))), '%m')-1 AS masa_kerja_bulan
+                  FROM `pangkat_golongan` WHERE id_pegawai = {$id_pegawai}";
+        
+        $data = array();
+        $q = $this->db->query($query);
+
+        if($q->num_rows() > 0)
+        {
+            $data = $q->row_array();
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
+    function get_masa_kerja_keseluruhan($id_pegawai) {
+
+        $query = "SELECT
+                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(nip, 9, 6), '01'), '%Y%m%d'))), '%Y')+0 AS masa_kerja_tahun,
+                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(nip, 9, 6), '01'), '%Y%m%d'))), '%m')-1 AS masa_kerja_bulan
+                  FROM `pegawai` WHERE id_pegawai = {$id_pegawai}";
+
+        $data = array();
+        $q = $this->db->query($query);
+
+        if($q->num_rows() > 0)
+        {
+            $data = $q->row_array();
+        }
+
+        $q->free_result();
+        return $data;
 
     }
 
