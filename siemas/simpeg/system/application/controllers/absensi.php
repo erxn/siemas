@@ -200,7 +200,74 @@ class Absensi extends Controller {
     }
 
     function rekap_jam_efek($bulan = 0, $tahun = 0) {
-        $this->load->view('laporan/rekap_jam_efek');
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $data['bulan'], $data['tahun']);
+
+        $data_pegawai_pkm = $this->pegawai->get_semua_pegawai_pkm();
+        $jam_efek_pkm = array();
+        foreach ($data_pegawai_pkm as $p) {
+
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+
+            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
+            $jumlah  = 0;
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                if ($absensi[$i-1]['hadir'] == '1') {
+                    $row['jam_efek_' . $i] = $this->absensi->get_jam_efek(date("D", strtotime("{$data['tahun']}-{$data['bulan']}-{$i}")), 0);
+                } else {
+                    $row['jam_efek_' . $i] = 0;
+                }
+                $jumlah += $row['jam_efek_' . $i];
+            }
+
+            $row['jumlah'] = $jumlah;
+            $jam_efek_pkm[] = $row;
+
+            unset($row);
+        }
+
+        $data_pegawai_bp = $this->pegawai->get_semua_pegawai_bpp();
+        $jam_efek_bp = array();
+        foreach ($data_pegawai_bp as $p) {
+
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+
+            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
+            $jumlah  = 0;
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                if ($absensi[$i-1]['hadir'] == '1') {
+                    $row['jam_efek_' . $i] = $this->absensi->get_jam_efek(date("D", strtotime("{$data['tahun']}-{$data['bulan']}-{$i}")), 1);
+                } else {
+                    $row['jam_efek_' . $i] = 0;
+                }
+                $jumlah += $row['jam_efek_' . $i];
+            }
+
+            $row['jumlah'] = $jumlah;
+            $jam_efek_bp[] = $row;
+
+        }
+
+        $data['jam_efek_pkm'] = $jam_efek_pkm;
+        $data['jam_efek_bp']  = $jam_efek_bp;
+
+        $data['jumlah_hari_bulan_ini'] = $jumlah_hari_satu_bulan;
+
+        $data['tanggal_libur_pkm'] = $this->absensi->get_libur_pkm_all($data['tahun'], $data['bulan']);
+        $data['tanggal_libur_bp'] = $this->absensi->get_libur_bp_all($data['tahun'], $data['bulan']);
+
+        $data['list_tahun'] = $this->absensi->get_tahun_absensi();
+        
+        $this->load->view('laporan/rekap_jam_efek', $data);
     }
 
 }
