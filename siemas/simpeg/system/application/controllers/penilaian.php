@@ -7,6 +7,7 @@ class Penilaian extends Controller {
         parent::Controller();
         $this->load->model("Penilaian_model", "penilaian");
         $this->load->model("Pegawai_model", "pegawai");
+        $this->load->model("Absensi_model", "absensi");
     }
 
     function index()
@@ -182,7 +183,21 @@ class Penilaian extends Controller {
     }
 
     function laporan_nilai_tpp($bulan = 0, $tahun = 0) {
-        $this->load->view('laporan/nilai_tpp');
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $data['tpp_pkm'] = $this->penilaian->get_data_tpp_pkm($data['tahun'], $data['bulan']);
+        $data['tpp_bp']  = $this->penilaian->get_data_tpp_bp($data['tahun'], $data['bulan']);
+        
+        $data['list_tahun'] = $this->absensi->get_tahun_absensi();
+        $this->load->view('laporan/nilai_tpp', $data);
     }
 
     function rekap_tunjangan($bulan = 0, $tahun = 0) {
