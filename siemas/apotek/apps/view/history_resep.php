@@ -86,20 +86,23 @@
 					</table>
 					</form>
                     <?php if(isset($hasil)) {   ?>
-                        <div class="module" style="width: 333px ;">
+                        <div class="module" style="width: 377px ;">
                         <div class="module-table-body">
                         <table id="myTable" class="tablesorter" >
                         	<thead>
                                 <tr>
-                                    <th style="width:40%">no antrian</th>
-                                    <th style="width:60%">nama</th>
+                                    <th style="width:30%">no kunjungan</th>
+                                    <th style="width:50%">nama</th>
+                                    <th style="width:20%"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($hasil as $hasil) { ?>
                                 <tr>
-                                    <td><?php echo $hasil['id_antrian'] ; ?></td>
+                                    <td><?php echo $hasil['no_kunjungan'] ; ?></td>
                                     <td><?php echo $hasil['nama_pasien'] ; ?></td>
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/history/isi_resep/<?php echo $hasil['id_pasien'] ; ?>/<?php echo $hasil['tanggal'] ; ?>">
+                                            <input type="submit" value="Lihat Resep" /></a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
@@ -124,6 +127,17 @@
             <div style="clear:both;"></div>
         </div> <!-- End #footer -->
 	</body>
+<script type="text/javascript">
+            $(document).ready(function(){
+                $(".popup").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                        $( "#datepicker" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                    }
+                });
+            });
+        </script>
 </html>
 <!-- This document originaly created by R Bagus Dimas Putra r4yv1n@yahoo.com -->
 

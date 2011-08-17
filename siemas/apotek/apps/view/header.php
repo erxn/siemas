@@ -28,7 +28,9 @@
         
         <!-- UI 1.8.14 stylesheet -->
         <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>css/ui-lightness/jquery-ui-1.8.14.custom.css" media="screen" />
-        
+
+        <!-- Pop up stylesheet -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>Template_files/colorbox.css" media="screen"/>
 
         <!-- Themes. Below are several color themes. Uncomment the line of your choice to switch to different color. All styles commented out means blue theme. -->
         <link rel="stylesheet" type="text/css" href="<?php echo $this->base_url?>Template_files/theme-bl.css" media="screen" />
@@ -65,10 +67,11 @@
                 <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.js"></script>
                 <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery.validity.pack.js"></script>
 
-                <!-- JQuery UI 
-                -->
+                <!-- JQuery UI -->
                 <script language="JavaScript" type="text/javascript" src="<?php echo $this->base_url?>js/jquery-ui-1.8.14.custom.min.js"></script>
-                
+
+                <!-- JQuery Pop Up -->
+                <script type="text/javascript" src="<?php echo $this->base_url?>js/jquery.colorbox-min.js"></script>
 
 
         <!-- Initiate WYIWYG text area -->
