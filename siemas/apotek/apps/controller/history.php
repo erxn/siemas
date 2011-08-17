@@ -14,6 +14,13 @@ class Controller_history extends Panada {
         $views['page_title'] = 'History - Apotek';
         $this->view_history($views);
     }
+
+    public function isi_resep($id_pasien,$tanggal){
+        $views['tanggal'] = date('d-m-Y');
+        $views['isi'] = $this->obat->history_isi_resep($id_pasien, $tanggal);
+        $this->view_isi_history_resep($views);
+    }
+
     public function resep(){
         $views['tanggal'] = date('d-m-Y');
         $this->date->cek_history_harian(date('Y-m-d'));

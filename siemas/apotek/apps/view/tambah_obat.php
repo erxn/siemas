@@ -99,12 +99,12 @@
                         </tr>
                     </tbody>
                 </table>
-                </form>
+                
 
                 <div style="clear: both"></div>
             </div> <!-- End .module-table-body -->
         </div> <!-- End .module -->
-
+        </form>
 </div> <!-- End .grid_12 -->
 
 

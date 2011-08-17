@@ -41,11 +41,10 @@
 
 		<div class="container_12">
 
+                    <?php $this->view_isi_statistik();?>
 
-
-                
-
-			</div> <!-- End .grid_12 -->
+                    <div style="clear: both;"></div>
+		</div> <!-- End .grid_12 -->
 
 
         <!-- Footer -->

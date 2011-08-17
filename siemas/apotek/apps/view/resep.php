@@ -40,7 +40,7 @@
             <!-- Sub navigation -->
 
             <form method="POST"
-                        onsubmit="if(document.getElementById('antrian').value == '') {alert('No Antrian Harus Diisi'); return false} " id="form_resep" >
+                        onsubmit="if(document.getElementById('kunjungan').value == '') {alert('No kunjungan Harus Diisi'); return false} " id="form_resep" >
             <div id="subnav">
                 <div class="container_12">
                     <div class="grid_12">
@@ -61,11 +61,11 @@
                     
                     <table>
 					<tr>
-						<td width="75px">
-							<p align="right">no kunjungan :</p>
+						<td width="100px">
+							<p align="left" style="margin-bottom: 5px;">no kunjungan :</p>
 						</td>
 						<td width="300px">
-							<input type="text" class="input_angka" id="antrian" name="antrian"  maxlength="255" size="30">
+							<input type="text" class="input_angka" id="kunjungan" name="kunjungan"  maxlength="255" size="30">
 						</td>
 					</tr>
                                         

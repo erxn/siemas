@@ -19,12 +19,12 @@ class Controller_resep extends Panada {
         if($_POST){
             $tanggal2 = $_POST['tanggal'];
             $tanggal = $this->date->reverse($tanggal2);
-            $id_antrian = $_POST['antrian'];
+            $no_kunjungan = $_POST['kunjungan'];
             $id_obat = $_POST['id_obat'];
             $jumlah = $_POST['jumlah'];
-            $id_pasien = $this->obat->resep_pasien($tanggal, $id_antrian);
+            $id_pasien = $this->obat->resep_pasien($tanggal, $no_kunjungan);
             $this->obat->tambah_isi_resep($id_pasien, $tanggal, $id_obat, $jumlah);
-            $views['verify']='Resep dengan id antrian '.$id_antrian.' berhasil dimasukan.';
+            $views['verify']='Resep dengan id antrian '.$no_kunjungan.' berhasil dimasukan.';
         }
 
         $this->view_resep($views);

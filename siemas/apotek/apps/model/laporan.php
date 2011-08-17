@@ -97,8 +97,8 @@ class Model_laporan {
                     }
                 } else {$resep = 0;}
                 //Ambil nilai obat yang terpakai dari pemakaian intern dan kegiatan lainnya
-                $intern1 = $this->db->results("SELECT isi_obat_intern.jumlah_terpakai as jumlah FROM pemakaian_intern JOIN isi_obat_intern USING(id_pemakainan_intern)
-                        WHERE isi_obat_intern.id_obat = '$list->id_obat' AND pemakaian_intern.waktu LIKE '$tanggal%'");
+                $intern1 = $this->db->results("SELECT isi_obat_intern.jumlah_terpakai as jumlah FROM pemakainan_intern JOIN isi_obat_intern USING(id_pemakainan_intern)
+                        WHERE isi_obat_intern.id_obat = '$list->id_obat' AND pemakainan_intern.waktu LIKE '$tanggal%'");
                 if($intern1){
                     $intern = 0;
                     foreach($intern1 as $intern2){

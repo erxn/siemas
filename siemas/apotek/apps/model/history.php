@@ -6,32 +6,9 @@ class Model_history {
         $this->db = new library_db();
     }
 
-    public function gabung($dd,$mm,$yy){
+    public function cek_habis(){
 
-        $result = $yy.'-'.$mm.'-'.$dd;
-
-        return $result;
-    }
-
-    public function gabung2($mm,$yy){
-
-        $result = $yy.'-'.$mm;
-
-        return $result;
-    }
-
-    public function dasar_url($base){
-
-        $base_awal=explode("/", $base);
-        $result = $base_awal[0].'//'.$base_awal[2].'/'.$base_awal[3].'/';
-
-        return $result;
-    }
-
-    public function reverse($date){
-
-        $reverse = explode("-", $date);
-            $result = $reverse[2].'-'.$reverse[1].'-'.$reverse[0];
+        $result = $this->db->results("SELECT nbk_obat,stok_obat FROM obat WHERE stok_obat <= '10'");
 
         return $result;
     }
@@ -49,6 +26,43 @@ class Model_history {
             }
         }
 
+    }
+
+    public function cek_jumlah_habis(){
+
+        $result = $this->db->find_var("SELECT COUNT(*) FROM obat WHERE stok_obat <= '10'");
+
+        return $result;
+    }
+
+    public function dasar_url($base){
+
+        $base_awal=explode("/", $base);
+        $result = $base_awal[0].'//'.$base_awal[2].'/'.$base_awal[3].'/';
+
+        return $result;
+    }
+
+    public function gabung($dd,$mm,$yy){
+
+        $result = $yy.'-'.$mm.'-'.$dd;
+
+        return $result;
+    }
+
+    public function gabung2($mm,$yy){
+
+        $result = $yy.'-'.$mm;
+
+        return $result;
+    }
+
+    public function reverse($date){
+
+        $reverse = explode("-", $date);
+            $result = $reverse[2].'-'.$reverse[1].'-'.$reverse[0];
+
+        return $result;
     }
 
 }

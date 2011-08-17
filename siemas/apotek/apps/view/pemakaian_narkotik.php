@@ -3,8 +3,8 @@
             <div id="subnav">
                 <div class="container_12">
                     <div class="grid_12">
-                        <ul style="margin-left: 50px;">
-
+                        <ul style="margin-left: 0px;">
+                            <li><a href="<?php echo $this->base_url?>index.php/obat/tambah_jenis_obat">Tambah Jenis Obat</a></li>
                             <li id="current"><a href="<?php echo $this->base_url?>index.php/obat/pemakaian_narkotik">Pemakaian Narkotik</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/obat/Kadaluarsa">Kadaluarsa</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/obat/pemakaian_obat">Pemakaian Obat</a></li>
@@ -76,9 +76,8 @@
                         <div style="clear: both"></div>
                      </div> <!-- End .module-table-body -->
                 </div> <!-- End .module -->
-
-
-			</div> <!-- End .grid_12 -->
+                <div style="clear: both;"></div>
+		</div> <!-- End .grid_12 -->
 
 
         <!-- Footer -->
