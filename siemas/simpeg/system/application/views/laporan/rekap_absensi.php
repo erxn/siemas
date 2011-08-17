@@ -23,9 +23,6 @@ $nama_bulan = array(
     "Desember"
 );
 
-$tanggal_libur_bulan_ini = array(3,10,17,24,31);
-$tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
-
 ?>
 
 <div id="page">
@@ -65,6 +62,7 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
         <div class="module">
             <h2><span>Daftar absensi</span></h2>
             <div class="module-table-body">
+
                 <table width="100%">
                     <thead>
                         <tr>
@@ -89,7 +87,7 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
 
                                     if(in_array($j, $tanggal_libur_pkm)) {
 
-                                        echo "<td style='background-color: #eeeeee'>";
+                                        echo "<td style='background-color: #eeeeee !important'>";
                                         echo "</td>\n";
 
                                     } else {
@@ -130,7 +128,7 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
 
                                     if(in_array($j, $tanggal_libur_bp)) {
 
-                                        echo "<td style='background-color: #eeeeee'>";
+                                        echo "<td style='background-color: #eeeeee !important'>";
                                         echo "</td>\n";
 
                                     } else {
@@ -147,8 +145,6 @@ $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
                             </tr>
                         <?php $i++; endforeach; ?>
                     </tbody>
-
-
                 </table>
 
             </div>

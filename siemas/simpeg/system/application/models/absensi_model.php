@@ -366,4 +366,53 @@ class Absensi_model extends Model {
 
     }
 
+    function get_jam_efek_all() {
+
+        $data = array();
+        $q = $this->db->query("SELECT hour(timediff(jam_selesai, jam_mulai)) + (minute(timediff(jam_selesai, jam_mulai)) / 60) AS jam_efek FROM `jadwal_puskesmas`");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row['jam_efek'];
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
+    function get_jam_efek($hari, $bp) {
+
+        $jam_efek_all = $this->get_jam_efek_all();
+        $shift = $bp;
+
+        switch ($hari) {
+            case "Sun":
+                $offset = 12;
+                break;
+            case "Mon":
+                $offset = 0;
+                break;
+            case "Tue":
+                $offset = 2;
+                break;
+            case "Wed":
+                $offset = 4;
+                break;
+            case "Thu":
+                $offset = 6;
+                break;
+            case "Fri":
+                $offset = 8;
+                break;
+            case "Sat":
+                $offset = 10;
+                break;
+        }
+
+        return $jam_efek_all[$offset + $shift];
+        
+    }
+
 }

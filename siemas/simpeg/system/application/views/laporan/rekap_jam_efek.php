@@ -1,35 +1,4 @@
-<?php $this->load->view('header');
-
-$pegawai = array(
-        "",
-        "Dr. ILHAM CHAIDIR",
-        "Dr. YOHANA MARI YUSTINI",
-        "Drg. MELLYAWATI",
-        "Dr. DINDIN A. SETIAWATY",
-        "Dr. LINA RUFLINA",
-        "Drg. SITI MILYARNI REMIKA, MM",
-        "ROSMIATI",
-        "SADIYAH, AMKG",
-        "Drg. KARINA AMALIA",
-        "SUGIHARYATI, AMKeb",
-        "HUSNA",
-        "ENENG SURTININGSIH, AMKep",
-        "ENDAH PURASANTI, AMKeb",
-        "DWIJO KURJIANTO, AMAK",
-        "SEPTY MARHAENY, AMKep",
-        "FEBBY HENDRIYANI  S.",
-        "NINA ANDRIYANTI, AMKL",
-        "RIDWANUDIN HARIS, AMKep",
-        "MARICE SINORITA, AMKeb",
-        "T A R P I N, AMRad",
-        "MARYANI, A.Md Kp",
-        "IIS AISAH",
-        "MAD SOLEH",
-        "AGTI NURVITASARI, SKM",
-        "NIDA NURAIDA, AMdG"
-    );
-
-?>
+<?php $this->load->view('header'); ?>
 
 <div class="belowribbon">
     <h1>
@@ -37,34 +6,24 @@ $pegawai = array(
     </h1>
 </div>
 
-                <?php
-                $bulan = array(
-                    "",
-                    "Januari",
-                    "Februari",
-                    "Maret",
-                    "April",
-                    "Mei",
-                    "Juni",
-                    "Juli",
-                    "Agustus",
-                    "September",
-                    "Oktober",
-                    "November",
-                    "Desember"
-                );
+<?php
+$nama_bulan = array(
+    "",
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+);
 
-                $bulan_ini = intval(date("n"));
-
-                $tahun_ini = intval(date("Y"));
-                $tahun = array($tahun_ini - 2, $tahun_ini - 1, $tahun_ini);
-
-                $jumlah_hari_bulan_ini = cal_days_in_month(CAL_GREGORIAN, $bulan_ini, $tahun_ini);
-
-                $tanggal_libur_bulan_ini = array(3,10,17,24,31);
-                $tanggal_libur_bp_pemda_bulan_ini = array(3,10,17,24,31,2,9,16,23,30);
-
-                ?>
+?>
 
 <div id="page">
 
@@ -72,23 +31,19 @@ $pegawai = array(
         <div class="module">
             <h2><span>Pilih bulan</span></h2>
             <div class="module-body">
-
-                <p>Tahun
-                    <select id="tahun">
-                        <?php for ($i = 0; $i < count($tahun); $i++) : ?>
-                            <option value="<?php echo $tahun[$i]; ?>" <?php if ($tahun[$i] == $tahun_ini) echo 'selected="selected"'; ?>><?php echo $tahun[$i]; ?></option>
-                        <?php endfor; ?>
+                    Tahun&nbsp;&nbsp;&nbsp;
+                    <select name="tahun" id="tahun">
+                        <?php foreach($list_tahun as $t) : ?>
+                        <option value='<?php echo $t['tahun']; ?>' <?php if($t['tahun'] == $tahun) echo "selected='selected'"; ?>><?php echo $t['tahun']; ?></option>
+                        <?php endforeach; ?>
                     </select>
-                   Bulan
-                    <select id="bulan">
+                    Bulan&nbsp;&nbsp;&nbsp;
+                    <select name="bulan" id="bulan">
                         <?php for ($i = 1; $i <= 12; $i++) : ?>
-                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan_ini) echo 'selected="selected"'; ?>><?php echo $bulan[$i]; ?></option>
+                            <option value="<?php echo $i; ?>" <?php if ($i == $bulan) echo 'selected="selected"'; ?>><?php echo $nama_bulan[$i]; ?></option>
                         <?php endfor; ?>
                     </select>
-                   <input type="button" value="Tampilkan" class="submit-green"/>
-                </p>
-                
-
+                    <input type="button" value="Tampilkan" class="submit-green" style="font-size: 11px; height: 23px; overflow: hidden; vertical-align: top" onclick="window.location = 'index.php/absensi/rekap_jam_efek/' + $('#bulan').val() + '/' + $('#tahun').val()"/>
             </div>
         </div>
     </div>
@@ -107,10 +62,11 @@ $pegawai = array(
         <div class="module">
             <h2><span>Daftar jam kerja efektif</span></h2>
             <div class="module-table-body">
+
                 <table width="100%">
                     <thead>
                         <tr>
-                            <th colspan="<?php echo $jumlah_hari_bulan_ini + 4 ?>"><h4>Puskesmas Bogor Tengah</h4></th>
+                            <th colspan="<?php echo $jumlah_hari_bulan_ini + 3 ?>"><h4>Puskesmas Bogor Tengah</h4></th>
                         </tr>
                         <tr>
                             <th style="width: 10px;">No</th>
@@ -120,41 +76,39 @@ $pegawai = array(
                                 echo "<th style=\"width: 10px;\">$j</th>\n";
 
                             } ?>
-                            <th style="width: 18px">Jumlah</th>
-                            <th style="width: 18px">Rataan</th>
+                            <th style="width: 20px">Jumlah</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai); $i++) : ?>
+                        <?php $i = 0; foreach ($jam_efek_pkm as $a) : ?>
                             <tr <?php if($i%2 == 0) echo 'class="even"' ?>>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $pegawai[$i]; ?></td>
+                                <td><?php echo $i + 1; ?></td>
+                                <td><?php echo $a['nama']; ?></td>
                                 <?php for($j = 1; $j <= $jumlah_hari_bulan_ini; $j++) {
 
-                                    if(in_array($j, $tanggal_libur_bulan_ini)) {
+                                    if(in_array($j, $tanggal_libur_pkm)) {
 
-                                        echo "<td style='background-color: #eeeeee'>";
+                                        echo "<td style='background-color: #eeeeee !important'>";
                                         echo "</td>\n";
 
                                     } else {
 
                                         echo "<td>";
-                                        echo "6.5";
+                                        echo round($a['jam_efek_' . $j], 1);
                                         echo "</td>\n";
 
                                     }
 
                                 } ?>
-                                <td>150</td>
-                                <td>135</td>
+                                <td><?php echo $a['jumlah']; ?></td>
 
                             </tr>
-                        <?php endfor; ?>
+                        <?php $i++; endforeach; ?>
                     </tbody>
 
                     <thead>
                         <tr>
-                            <th colspan="<?php echo $jumlah_hari_bulan_ini + 4 ?>"><h4>BP Pemda</h4></th>
+                            <th colspan="<?php echo $jumlah_hari_bulan_ini + 3 ?>"><h4>BP Pemda</h4></th>
                         </tr>
                         <tr>
                             <th style="width: 10px;">No</th>
@@ -165,41 +119,38 @@ $pegawai = array(
 
                             } ?>
                             <th>Jumlah</th>
-                            <th>Rataan</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 1; $i < count($pegawai); $i++) : if($i == 4) break; ?>
+                        <?php $i = 0; foreach ($jam_efek_bp as $a) : ?>
                             <tr <?php if($i%2 == 0) echo 'class="even"' ?>>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $pegawai[$i]; ?></td>
+                                <td><?php echo $i + 1; ?></td>
+                                <td><?php echo $a['nama']; ?></td>
                                 <?php for($j = 1; $j <= $jumlah_hari_bulan_ini; $j++) {
 
-                                    if(in_array($j, $tanggal_libur_bp_pemda_bulan_ini)) {
+                                    if(in_array($j, $tanggal_libur_bp)) {
 
-                                        echo "<td style='background-color: #eeeeee'>";
+                                        echo "<td style='background-color: #eeeeee !important'>";
                                         echo "</td>\n";
 
                                     } else {
 
                                         echo "<td>";
-                                        echo "8.5";
+                                        echo round($a['jam_efek_' . $j], 1);
                                         echo "</td>\n";
 
                                     }
 
                                 } ?>
-                                <td>150</td>
-                                <td>135</td>
+                                <td><?php echo $a['jumlah']; ?></td>
+
                             </tr>
-                        <?php endfor; ?>
-                        </tbody>
+                        <?php $i++; endforeach; ?>
+                    </tbody>
+                </table>
 
-
-                    </table>
-
-                </div>
             </div>
+        </div>
 
 
     </div>
