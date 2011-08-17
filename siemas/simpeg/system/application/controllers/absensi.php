@@ -154,41 +154,9 @@ class Absensi extends Controller {
         }
 
         $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $data['bulan'], $data['tahun']);
-        
-        $data_pegawai_pkm = $this->pegawai->get_semua_pegawai_pkm();
-        $absensi_pkm = array();
-        foreach ($data_pegawai_pkm as $p) {
 
-            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
-            
-            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
-            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
-                $row['hadir_' . $i] = $absensi[$i-1]['hadir'];
-            }
-
-            $absensi_pkm[] = $row;
-
-            unset($row);
-        }
-
-        $data_pegawai_bp = $this->pegawai->get_semua_pegawai_bpp();
-        $absensi_bp = array();
-        foreach ($data_pegawai_bp as $p) {
-
-            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
-
-            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
-            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
-                $row['hadir_' . $i] = $absensi[$i-1]['hadir'];
-            }
-
-            $absensi_bp[] = $row;
-
-        }
-
-
-        $data['absensi_pkm'] = $absensi_pkm;
-        $data['absensi_bp']  = $absensi_bp;
+        $data['absensi_pkm'] = $this->absensi->get_data_absensi_pkm($data['tahun'], $data['bulan']);
+        $data['absensi_bp']  = $this->absensi->get_data_absensi_bp($data['tahun'], $data['bulan']);
 
         $data['jumlah_hari_bulan_ini'] = $jumlah_hari_satu_bulan;
 
@@ -212,53 +180,8 @@ class Absensi extends Controller {
 
         $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $data['bulan'], $data['tahun']);
 
-        $data_pegawai_pkm = $this->pegawai->get_semua_pegawai_pkm();
-        $jam_efek_pkm = array();
-        foreach ($data_pegawai_pkm as $p) {
-
-            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
-
-            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
-            $jumlah  = 0;
-            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
-                if ($absensi[$i-1]['hadir'] == '1') {
-                    $row['jam_efek_' . $i] = $this->absensi->get_jam_efek(date("D", strtotime("{$data['tahun']}-{$data['bulan']}-{$i}")), 0);
-                } else {
-                    $row['jam_efek_' . $i] = 0;
-                }
-                $jumlah += $row['jam_efek_' . $i];
-            }
-
-            $row['jumlah'] = $jumlah;
-            $jam_efek_pkm[] = $row;
-
-            unset($row);
-        }
-
-        $data_pegawai_bp = $this->pegawai->get_semua_pegawai_bpp();
-        $jam_efek_bp = array();
-        foreach ($data_pegawai_bp as $p) {
-
-            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
-
-            $absensi = $this->absensi->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $data['bulan'], $data['tahun']);
-            $jumlah  = 0;
-            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
-                if ($absensi[$i-1]['hadir'] == '1') {
-                    $row['jam_efek_' . $i] = $this->absensi->get_jam_efek(date("D", strtotime("{$data['tahun']}-{$data['bulan']}-{$i}")), 1);
-                } else {
-                    $row['jam_efek_' . $i] = 0;
-                }
-                $jumlah += $row['jam_efek_' . $i];
-            }
-
-            $row['jumlah'] = $jumlah;
-            $jam_efek_bp[] = $row;
-
-        }
-
-        $data['jam_efek_pkm'] = $jam_efek_pkm;
-        $data['jam_efek_bp']  = $jam_efek_bp;
+        $data['jam_efek_pkm'] = $this->absensi->get_data_jam_efek_pkm($data['tahun'], $data['bulan']);
+        $data['jam_efek_bp']  = $this->absensi->get_data_jam_efek_bp($data['tahun'], $data['bulan']);
 
         $data['jumlah_hari_bulan_ini'] = $jumlah_hari_satu_bulan;
 
@@ -268,6 +191,14 @@ class Absensi extends Controller {
         $data['list_tahun'] = $this->absensi->get_tahun_absensi();
         
         $this->load->view('laporan/rekap_jam_efek', $data);
+    }
+
+    function test() {
+
+        echo $this->absensi->get_jam_efek_ideal_pkm(2011, 8);
+        echo "<br/>";
+        echo $this->absensi->get_jam_efek_ideal_bp(2011, 8);
+
     }
 
 }

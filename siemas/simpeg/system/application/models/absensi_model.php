@@ -4,6 +4,7 @@ class Absensi_model extends Model {
 
     function __construct() {
         parent::Model();
+        $this->load->model("Pegawai_model", "pegawai");
     }
 
     function get_jadwal_pkm() {
@@ -366,6 +367,60 @@ class Absensi_model extends Model {
 
     }
 
+    function get_data_absensi_pkm($tahun, $bulan) {
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+
+        $data_pegawai_pkm = $this->pegawai->get_semua_pegawai_pkm();
+        $absensi_pkm = array();
+        
+        foreach ($data_pegawai_pkm as $p) {
+            $jumlah = 0;
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+
+            $absensi = $this->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $bulan, $tahun);
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                $row['hadir_' . $i] = $absensi[$i-1]['hadir'];
+                $jumlah += $row['hadir_' . $i];
+            }
+            $row['jumlah'] = $jumlah;
+
+            $absensi_pkm[] = $row;
+
+            unset($row);
+        }
+
+        return $absensi_pkm;
+
+    }
+
+    function get_data_absensi_bp($tahun, $bulan) {
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+
+        $data_pegawai_bp = $this->pegawai->get_semua_pegawai_bpp();
+        $absensi_bp = array();
+        
+        foreach ($data_pegawai_bp as $p) {
+
+            $jumlah = 0;
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+
+            $absensi = $this->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $bulan, $tahun);
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                $row['hadir_' . $i] = $absensi[$i-1]['hadir'];
+                $jumlah += $row['hadir_' . $i];
+            }
+            $row['jumlah'] = $jumlah;
+            
+            $absensi_bp[] = $row;
+
+        }
+
+        return $absensi_bp;
+
+    }
+
     function get_jam_efek_all() {
 
         $data = array();
@@ -413,6 +468,107 @@ class Absensi_model extends Model {
 
         return $jam_efek_all[$offset + $shift];
         
+    }
+
+    function get_data_jam_efek_pkm($tahun, $bulan) {
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+
+        $data_pegawai_pkm = $this->pegawai->get_semua_pegawai_pkm();
+        $jam_efek_pkm = array();
+        foreach ($data_pegawai_pkm as $p) {
+
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+
+            $absensi = $this->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $bulan, $tahun);
+            $jumlah  = 0;
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                if ($absensi[$i-1]['hadir'] == '1') {
+                    $row['jam_efek_' . $i] = $this->get_jam_efek(date("D", strtotime("{$tahun}-{$bulan}-{$i}")), 0);
+                } else {
+                    $row['jam_efek_' . $i] = 0;
+                }
+                $jumlah += $row['jam_efek_' . $i];
+            }
+
+            $row['jumlah'] = $jumlah;
+            $jam_efek_pkm[] = $row;
+
+            unset($row);
+
+        }
+
+        return $jam_efek_pkm;
+
+    }
+
+    function get_data_jam_efek_bp($tahun, $bulan) {
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+
+        $data_pegawai_bp = $this->pegawai->get_semua_pegawai_bpp();
+        $jam_efek_bp = array();
+        foreach ($data_pegawai_bp as $p) {
+
+            $row = array('id_pegawai' => $p['id_pegawai'], 'nama' => $p['nama']);
+
+            $absensi = $this->get_absensi_bulanan_by_pegawai($p['id_pegawai'], $bulan, $tahun);
+            $jumlah  = 0;
+            for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+                if ($absensi[$i-1]['hadir'] == '1') {
+                    $row['jam_efek_' . $i] = $this->absensi->get_jam_efek(date("D", strtotime("{$tahun}-{$bulan}-{$i}")), 1);
+                } else {
+                    $row['jam_efek_' . $i] = 0;
+                }
+                $jumlah += $row['jam_efek_' . $i];
+            }
+
+            $row['jumlah'] = $jumlah;
+            $jam_efek_bp[] = $row;
+        }
+
+        return $jam_efek_bp;
+
+    }
+
+    function get_kehadiran_ideal_pkm($tahun, $bulan) {
+        return cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun) - count($this->get_libur_pkm_all($tahun, $bulan));
+    }
+
+    function get_kehadiran_ideal_bp($tahun, $bulan) {
+        return cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun) - count($this->get_libur_bp_all($tahun, $bulan));
+    }
+
+    function get_jam_efek_ideal_pkm($tahun, $bulan) {
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+        $tanggal_libur = $this->get_libur_pkm_all($tahun, $bulan);
+
+        $jumlah = 0;
+
+        for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+            $jam_kerja = $this->get_jam_efek(date("D", strtotime("{$tahun}-{$bulan}-{$i}")), 0);
+            if (!in_array($i, $tanggal_libur)) $jumlah += $jam_kerja;
+        }
+
+        return $jumlah;
+
+    }
+
+    function get_jam_efek_ideal_bp($tahun, $bulan) {
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun);
+        $tanggal_libur = $this->get_libur_bp_all($tahun, $bulan);
+
+        $jumlah = 0;
+
+        for ($i = 1; $i <= $jumlah_hari_satu_bulan; $i++) {
+            $jam_kerja = $this->get_jam_efek(date("D", strtotime("{$tahun}-{$bulan}-{$i}")), 1);
+            if (!in_array($i, $tanggal_libur)) $jumlah += $jam_kerja;
+        }
+
+        return $jumlah;
+
     }
 
 }
