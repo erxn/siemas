@@ -25,19 +25,17 @@
     $(function() {
 
         $( "#tabs" ).tabs();
+         $( "#tabs2" ).tabs();
     });
 </script>
 
 <div class="container_12">
-    <div class="grid_12" style=" width: 40%; margin-left:400px; margin-top: 100px ">
+    <div class="grid_12" style=" width: 40%; margin-left:130px; margin-top: 100px ">
 
-        <div  id="tabs">
+        <div  id="tabs" style="margin-left:40px">
             <ul>
                 <li><a href="#tabs-a">Statistik Penyakit</a></li>
-                <li><a href="#tabs-b">Statistik Wilayah</a></li>
             </ul>
-
-
             <div id="tabs-a">
 
                 <table border="0" width="100%" class="noborder" style="text-align: center">
@@ -125,6 +123,12 @@
                 </table>
             </div>
 
+</div>
+        
+        <div  id="tabs2" style=" margin-left: 650px; margin-right:-600px; margin-top: -320px">
+            <ul>
+                <li><a href="#tabs-b">Statistik Wilayah</a></li>
+            </ul>
 
             <div id="tabs-b">
 
