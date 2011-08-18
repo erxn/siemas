@@ -96,96 +96,57 @@
     });
 </script>
 
-<div  class="tabs" style="width:60%; margin-left: 300px; margin-top: 100px;">
+<div  class="tabs" style="width:50%; margin-left: 300px; margin-top: 100px;">
     <ul>
-        <li><a href="#tabs-a">Data REkam MEdik Pasien</a></li>
+        <li><a href="#tabs-a">Rekam Medik TBC</a></li>
     </ul>
-    <div id="tabs-a">		
-                        
+    <div id="tabs-a">
+
                             <table style="width:100%" id="myTable" class="tablesorter" border="1">
-                                <tr class="odd">
-                                    <td style="width:20%"><b>Id KK:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_pasien[0]['id_kk'];?></td>
 
-                                </tr>
-                                <tr>
-                                    <td><b>Id Pasien:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_pasien[0]['id_pasien'];?></td>
-
-                                </tr>
 
                                 <tr class="odd">
                                     <td><b>Nama:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_pasien[0]['nama_pasien'];?></td>
+                                    <td style="width: 50%"><?php echo $data_pasien[0]['nama_pasien'];?></td>
 
                                 </tr>
 
-                                <tr>
-                                    <td><b>Jenis Kelamin:</b></td>
-                                    <td><?php echo $pop_pasien[0]['jk_pasien'];?></td>
-                                </tr>
-                                <tr class="odd">
+                                <tr >
                                     <td><b>Umur:</b></td>
                                     <td>20</td>
                                 </tr>
-                              <tr >
-                                    <td><b>Alamat:</b></td>
-                                    <td><?php echo $pop_pasien[0]['alamat_kk'];?></td>
-                              </tr>
-                                <tr><td>&nbsp;</td>
-                                    <td><table style="width:100%">
-                                            <tr class="odd">
-                                                <td style="width:20%"><b>Kecamatan:</b></td>
-                                                <td><?php echo $pop_pasien[0]['kecamatan_kk'];?></td>
-                                               </tr>
-                                                `<tr>
-                                                <td><b>Keluruhan:</b></td>
-                                                <td><?php echo $pop_pasien[0]['kelurahan_kk'];?></td>
-                                               </tr>
-                                                <tr class="odd">
-                                                <td><b>Kabupaten:</b></td>
-                                                <td><?php echo $pop_pasien[0]['kota_kab_kk'];?></td>
-                                               </tr>
-                                        </table></td>
-                                  
-                                </tr>
 
-                                <tr>
-                                    <td><b>Tanggal Kunjungan:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_tanggal[0]['tanggal_kunjungan_gigi'];?></td>
-                                </tr>
-
-                                 <tr class="odd">
-                                    <td><b>Anamnesis:</b></td>
-                                    <td><?php echo $pop_gigi[0]['anamnesis'];?></td>
-                                </tr>
-
-                                <tr>
-                                    <td><b>Hasil Diagnosa:</b></td>
-                                    <td><?php echo $pop_gigi[0]['diagnosis'];?></td>
-                                </tr>
-
-                                 <tr class="odd">
-                                    <td><b>Penyakit:</b></td>
-                                    <td><?php echo $pop_gigi[0]['nama_penyakit'];?></td>
-                                </tr>
-
-                                <tr>
-                                    <td><b>Tindakan:</b></td>
-                                    <td><?php echo $pop_gigi[0]['nama_layanan'];?></td>
-                                </tr>
 
                                 <tr class="odd">
-                                    <td><b>Keterangan:</b></td>
-                                    <td><?php echo $pop_gigi[0]['keterangan'];?></td>
+                                    <td><b>Alasan periksa lab:</b></td>
+                                    <td style="width: 50%"><?php echo $tbc[0]['alasan_periksa_lab'];?></td>
                                 </tr>
 
                                  <tr>
-                                    <td><b>Harga:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_gigi[0]['harga'];?></td>
+                                    <td><b>Hasil periksa Lab:</b></td>
+                                    <td><?php echo $tbc[0]['hasil_periksa_lab'];?></td>
+                                </tr>
+
+                                <tr  class="odd">
+                                    <td><b>rejimen:</b></td>
+                                    <td><?php echo $tbc[0]['rejimen'];?></td>
+                                </tr>
+
+                                 <tr>
+                                    <td><b>Klasifikasi penyakit:</b></td>
+                                    <td><?php echo $tbc[0]['klasifikasi_penyakit'];?></td>
+                                </tr>
+
+                                <tr  class="odd">
+                                    <td><b>Tipe penderita:</b></td>
+                                    <td><?php echo $tbc[0]['tipe_penderita'];?></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Keterangan:</b></td>
+                                    <td><?php echo $tbc[0]['keterangan'];?></td>
                                 </tr>
 
                             </table>
-                       
+
                     </div> </div>
-         

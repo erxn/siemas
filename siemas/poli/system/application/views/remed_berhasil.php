@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".pop").colorbox({initialHeight: "700px", initialWidth: "700px", width: "70%", height: "100%"})
+        $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
     });
 </script>
 
@@ -54,10 +54,8 @@
     <div style="clear: both;"></div>
 </div>
 
-    
-<div style="text-align: right;"><div style="float: left; margin-top: 15px; margin-left: 20px; font-size: 20pt;">Rekam Medik Pasien:  <?php echo $data_pasien[0]['nama_pasien'];?></div><a href="index.php/pasien/selesai_pemeriksaan" style="text-decoration: none; margin-top: 50px; margin-right: 20px" ><input name="submit"  type="submit" class="but" value="Pemeriksaan Selesai" name="simpan"></a></div>
 
-
+<h2 style="margin-left: 30px ; margin-top: 20px">Rekam Medik Pasien</h2>
 <div class="grid_6" style="width: 40%; margin-left:20px; margin-top: 30px ">
     <div  id="tabs2">
         <ul>
@@ -119,6 +117,7 @@
     <div  id="tabs">
         <ul>
             <li><a href="#tabs-a">Poli Gigi</a></li>
+            <li><a href="#tabs-b">Poli KIA</a></li>
             <li><a href="#tabs-c">Poli Umum</a></li>
             <li><a href="#tabs-d">Lab</a></li>
             <li><a href="#tabs-e">Rontgen</a></li>
@@ -154,9 +153,9 @@
                         foreach ($remed_gigi as $rg) {
                             if($i%2==0) $x="odd";else $x="even";
                             ?>
-                    <tr clas="odd" >
+                    <tr clas="odd">
                         <td><?php echo $i++?></td>
-                        <td ><a class="pop" href="index.php/pasien/remed_poli_gigi_pop/<?php echo $id_pasien;?>/<?php echo $rg['tanggal_kunjungan_gigi']?>"><?php echo tgl_indo($rg['tanggal_kunjungan_gigi']); ?></a></td>
+                        <td><a href="index.php/pasien/remed_poli_gigi_pop/<?php echo $id_pasien;?>/<?php echo $rg['tanggal_kunjungan_gigi']?>"><?php echo tgl_indo($rg['tanggal_kunjungan_gigi']); ?></a></td>
                         <td><?php echo  word_limiter($rg['anamnesis'],5,'...');?></td>
                         <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
                         <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?>, <?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
@@ -191,7 +190,50 @@
 
         </div>
 
-       
+        <div id="tabs-b">
+
+            <div style="padding: 10px;">
+
+                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
+                <tr>
+
+                    <td><input type="submit" class="submit-green" value="Cari "></td>
+                </tr>
+
+            </div>
+            <table id="myTable" class="tablesorter" border="1" style="width:99%">
+                <thead>
+                    <tr>
+                        <th style="width:5%">No</th>
+                        <th style="width:20%">Tanggal Kunjungan</th>
+                        <th style="width:21%">Anamnesis</th>
+                        <th style="width:13%">Diagnosa</th>
+                        <th style="width:13%">Layanan</th>
+                        <th style="width:13%">Ket.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <?php if (count ($remed_kia)>0) {
+                        $i=1;
+                        foreach ($remed_kia as $rk) {
+                            if($i%2==0) $x="odd";else $x="odd"; ?>
+                    <tr clas="<?php echo $x ?>">
+                        <td><?php echo $i++?></td>
+                        <td><?php echo $rk['tanggal_kunjungan_kia']; ?></a></td>
+                        <td><?php echo word_limiter($rk['anamnesis'],5,'...');?></td>
+                        <td><?php echo $rk['diagnosa'];?></td>
+                        <td><?php echo  $rk['nama_layanan'];?>, <?php echo $rk['nama_penyakit'];?></td>
+                        <td><?php echo $rk['keterangan'];?></td>
+                    </tr>
+                            <?php }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+
         <div id="tabs-c">
 
             <div style="padding: 10px;">
@@ -271,6 +313,8 @@
                 <ul>
                     <li><a href="#tabs1-1">Diagnosis Dokter</a></li>
                 </ul>
+                <div class="grid_12" style="margin-top:5%">
+                <span class="notification n-success">Simpan data sukses...</span>
                 <div id="tabs1-1">
                     <table  id="myTable"  class="noborder" style="width:100%">
                         <tr class="odd">
@@ -321,7 +365,7 @@
 
                     <tr>
                         <td></td>
-                        <td><a href="" input name="submit"  type="submit" class="submit-green" value="Simpan" name="simpan"></a></td>
+                        <td><input name="submit"  type="submit" class="submit-green" value="Simpan" name="simpan"></td>
 
 
                     </tr>
@@ -332,6 +376,7 @@
 
         </div>
     </div>
+         </div>
 </form>
 
 
