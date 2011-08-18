@@ -270,7 +270,11 @@ class Pegawai_model extends Model {
         $groupwise_maximum_query = "
                     SELECT pegawai.*, j1.TMT as TMT_jabatan, j1.jabatan, p1.TMT as TMT_pangkat, p1.pangkat, p1.golongan, pd1.pendidikan, pd1.tahun_ijazah,
                          DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))), '%Y')+0 AS masa_kerja_tahun,
-                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))), '%m')-1 AS masa_kerja_bulan
+                         IF(
+                            MONTH(NOW())-MONTH(STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d')) < 0,
+                            MONTH(NOW())-MONTH(STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d')) + 12,
+                            MONTH(NOW())-MONTH(STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))
+                         ) AS masa_kerja_bulan
                     FROM pegawai
                          LEFT JOIN jabatan j1 USING (id_pegawai)
                          LEFT JOIN pangkat_golongan p1 USING (id_pegawai)
@@ -369,7 +373,11 @@ class Pegawai_model extends Model {
 
         $query = "SELECT
                          DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), MAX(TMT))), '%Y')+0 AS masa_kerja_tahun,
-                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), MAX(TMT))), '%m')-1 AS masa_kerja_bulan
+                         IF(
+                            MONTH(NOW())-MONTH(MAX(TMT)) < 0,
+                            MONTH(NOW())-MONTH(MAX(TMT)) + 12,
+                            MONTH(NOW())-MONTH(MAX(TMT))
+                         ) AS masa_kerja_bulan
                   FROM `pangkat_golongan` WHERE id_pegawai = {$id_pegawai}";
         
         $data = array();
@@ -389,7 +397,11 @@ class Pegawai_model extends Model {
 
         $query = "SELECT
                          DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(nip, 9, 6), '01'), '%Y%m%d'))), '%Y')+0 AS masa_kerja_tahun,
-                         DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(CONCAT(SUBSTRING(nip, 9, 6), '01'), '%Y%m%d'))), '%m')-1 AS masa_kerja_bulan
+                         IF(
+                            MONTH(NOW())-MONTH(STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d')) < 0,
+                            MONTH(NOW())-MONTH(STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d')) + 12,
+                            MONTH(NOW())-MONTH(STR_TO_DATE(CONCAT(SUBSTRING(pegawai.nip, 9, 6), '01'), '%Y%m%d'))
+                         ) AS masa_kerja_bulan
                   FROM `pegawai` WHERE id_pegawai = {$id_pegawai}";
 
         $data = array();

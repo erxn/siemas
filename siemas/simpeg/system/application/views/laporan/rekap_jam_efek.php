@@ -23,6 +23,12 @@ $nama_bulan = array(
     "Desember"
 );
 
+$jumlah_harian_pkm = array();
+for ($i=1; $i <= $jumlah_hari_bulan_ini; $i++) $jumlah_harian_pkm[] = 0;
+
+$jumlah_harian_bp = array();
+for ($i=1; $i <= $jumlah_hari_bulan_ini; $i++) $jumlah_harian_bp[] = 0;
+
 ?>
 
 <div id="page">
@@ -52,6 +58,8 @@ $nama_bulan = array(
         <div class="module">
             <h2><span>Dalam grafik</span></h2>
             <div class="module-body">
+
+                <div id="grafik2" style="width: 100%; height: 150px;"></div>
 
             </div>
         </div>
@@ -99,6 +107,8 @@ $nama_bulan = array(
 
                                     }
 
+                                    $jumlah_harian_pkm[$j-1] += $a['jam_efek_' . $j];
+
                                 } ?>
                                 <td><?php echo $a['jumlah']; ?></td>
 
@@ -141,6 +151,8 @@ $nama_bulan = array(
 
                                     }
 
+                                    $jumlah_harian_bp[$j-1] += $a['jam_efek_' . $j];
+
                                 } ?>
                                 <td><?php echo $a['jumlah']; ?></td>
 
@@ -149,11 +161,92 @@ $nama_bulan = array(
                     </tbody>
                 </table>
 
+<?php
+
+array_unshift($jumlah_harian_pkm, 0);
+array_unshift($jumlah_harian_bp, 0);
+
+?>
+                
             </div>
         </div>
 
 
     </div>
 </div>
+
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript">
+
+        var chart2;
+        $(document).ready(function() {
+                chart2 = new Highcharts.Chart({
+
+                        chart: {
+                                renderTo: 'grafik2',
+                                defaultSeriesType: 'column'
+                        },
+                        title: {
+                                text: 'Jumlah jam efektif per hari',
+                                style: {
+                                    fontSize: '11px'
+                                }
+                        },
+                        credits: {
+                                enabled: false
+                        },
+                        yAxis: {
+                                title: {
+                                    text: null
+                                }
+                        },
+                        legend: {
+                                enabled: false
+                        },
+                        tooltip: {
+                                formatter: function() {
+                                        return '<b>Jam efektif: '+ this.y +' jam</b>';
+                                }
+                        },
+                        xAxis: {
+                            min: 1,
+                            allowDecimals: false,
+                            tickInterval: 1
+                        },
+                        plotOptions: {
+                                column: {
+                                        stacking: 'normal'
+                                }
+                        },
+                        colors: [
+                            '#DB843D',
+                            '#89A54E'
+                        ],
+                        legend: {
+                            align: 'right',
+                            verticalAlign: 'top',
+                            floating: true,
+                            borderColor: '#CCC',
+                            borderWidth: 1,
+                            shadow: false,
+                            itemStyle: {
+                                fontSize: '10px'
+                            },
+                            backgroundColor: '#FFFFFF'
+			},
+                        series: [{
+                                name: 'BP Pemda',
+                                data: [<?php echo implode(", ", $jumlah_harian_bp) ?>]
+                        },{
+                                name: 'Puskesmas',
+                                data: [<?php echo implode(", ", $jumlah_harian_pkm) ?>]
+                        }]
+
+                });
+
+        });
+
+</script>
+
 
 <?php $this->load->view('footer'); ?>
