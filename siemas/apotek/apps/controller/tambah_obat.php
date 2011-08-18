@@ -22,20 +22,18 @@ class Controller_tambah_obat extends Panada {
         if($_POST){
             $sbkk = $_POST['no_sbkk'];
             $isi = $_POST['tambah'];
-            $day = $_POST['day'];
-            $month = $_POST['month'];
-            $year = $_POST['year'];
+            $kadaluarsa = $_POST['kadaluarsa'];
             $batch = $_POST['no_batch'];
             if(!$sbkk)
                 $views['error']    = 'NO SBKK harus diisi';
             else{
-                foreach ($list as $list){
-                    if(isset ($year[$n]) && isset ($month[$n]) && isset ($day[$n]))
-                        {$kadaluarsa[$n]=$this->date->gabung($day[$n], $month[$n], $year[$n]);}
-                        else {$kadaluarsa[$n]= NULL;}
+                foreach ($list as $listnya){
+                    if(isset ($kadaluarsa[$n]))
+                        {$kadaluarsa1[$n]=$kadaluarsa[$n];}
+                        else {$kadaluarsa1[$n]= NULL;}
                     $n++;
                     }
-                $this->obat->tambah($sbkk, $isi, $kadaluarsa, $batch);
+                $this->obat->tambah($sbkk, $isi, $kadaluarsa1, $batch);
                 }
         }
 

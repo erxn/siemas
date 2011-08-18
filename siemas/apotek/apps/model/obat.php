@@ -4,6 +4,7 @@ class Model_obat {
     public function __construct(){
 
         $this->db = new library_db();
+        $this->date = new Model_history();
     }
 
     public function ambil(){
@@ -34,6 +35,25 @@ class Model_obat {
         return $result;
     }
 
+    public function history_pemakaian($tanggal){
+
+        $data = $this->db->results("SELECT DISTINCT(poli),waktu FROM pemakainan_intern WHERE waktu = '$tanggal'");
+        return $data;
+    }
+
+    public function history_pemakaian_bt($BT){
+
+        $result = $this->db->results("SELECT DISTINCT(waktu) FROM pemakainan_intern WHERE waktu LIKE '$BT%' ORDER BY waktu");
+        $n=1;
+        foreach ($result as $list){
+            $data[$n]['tanggal'] = $this->date->reverse($list->waktu);
+            $data[$n]['poli'] = $this->db->results("SELECT DISTINCT(poli) FROM pemakainan_intern WHERE waktu = '$list->waktu'");
+        
+            $n++;
+        }
+        return $data;
+    }
+
     public function history_resep($tanggal){
 
         $result = $this->db->results("SELECT DISTINCT(id_pasien) FROM resep WHERE waktu LIKE '$tanggal%'");
@@ -43,6 +63,7 @@ class Model_obat {
 
      public function history_resep_nama($antrian, $tanggal){
         $n='1';
+        if($antrian){
         foreach ($antrian as $antrian){
             $data[$n]['id_pasien'] = $antrian->id_pasien ;
             $data[$n]['no_kunjungan'] = $this->db->find_var("SELECT no_kunjungan FROM kunjungan WHERE id_pasien = '$antrian->id_pasien' AND tanggal_kunjungan='$tanggal'");
@@ -52,6 +73,8 @@ class Model_obat {
             $n++;
         }
         return $data;
+        } else {return NULL;}
+
     }
     
     public function history_isi_resep($id_pasien, $tanggal){
@@ -71,7 +94,7 @@ class Model_obat {
 
     public function jumlah(){
 
-        $result = $this->db->get_var("SELECT COUNT(*) FROM obat");
+        $result = $this->db->find_var("SELECT COUNT(*) FROM obat");
 
         return $result;
     }
@@ -121,18 +144,19 @@ class Model_obat {
     }
 
     public function tambah_isi_pemakaian($intern, $tanggal, $id_obat, $jumlah, $keterangan){
-        $id_resep = $this->db->find_var("SELECT id_resep FROM resep WHERE id_pasien='$id_pasien' AND waktu LIKE '$tanggal%'");
+        $this->tambah_pemakaian($tanggal, $keterangan, $intern);
+        $id_pemakaian = $this->db->find_var("SELECT id_pemakainan_intern FROM pemakainan_intern WHERE poli='$intern' AND waktu = '$tanggal'");
         $n='1';
         foreach ($id_obat as $result) {
                 if($id_obat[$n]){
                 $data2['id_obat'] = $id_obat[$n];
-                $data2['id_resep'] = $id_resep;
+                $data2['id_pemakainan_intern'] = $id_pemakaian;
                 $data2['jumlah_terpakai'] = $jumlah[$n];
                 $stok = $this->db->find_var("SELECT stok_obat FROM obat WHERE id_obat='$id_obat[$n]'");
                 $total = $stok - $jumlah[$n];
                 $data['stok_obat'] = $total;
                 $data3['id_obat'] = $id_obat[$n];
-                $query = $this->db->insert('isi_resep',$data2);}
+                $query = $this->db->insert('isi_obat_intern',$data2);}
                 $query = $this->db->update('obat', $data, $data3);
 
 			$n++;
@@ -156,6 +180,24 @@ class Model_obat {
 
 			$n++;
 		}
+    }
+
+    public function tambah_jenis_obat($nbk_obat, $satuan_obat, $narkotik){
+
+        $data['nbk_obat'] = $nbk_obat;
+        $data['satuan_obat'] = $satuan_obat;
+        $data['narkotik'] = $narkotik;
+        $query = $this->db->insert('obat',$data);;
+
+    }
+
+    public function tambah_pemakaian($waktu, $keterangan, $poli){
+
+        $data['waktu'] = $waktu;
+        $data['keterangan'] = $keterangan;
+        $data['poli'] = $poli;
+        $query = $this->db->insert('pemakainan_intern',$data);;
+
     }
 
 }
