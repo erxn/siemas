@@ -24,5 +24,6 @@
                 <td colspan="4"><em>Tidak ada data</em></td>
             </tr>
             <?php endif; ?>
+        </tbody>
     </table>
 </div>

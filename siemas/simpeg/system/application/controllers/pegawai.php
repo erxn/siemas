@@ -37,7 +37,7 @@ class Pegawai extends Controller {
 
             // proses data pokok
             $data = array(
-                'nip' => $this->input->post('nip'),
+                'nip' => str_replace(" ", "", $this->input->post('nip')),
                 'nama' => $this->input->post('nama'),
                 'tempat_lahir' => $this->input->post('tempat_lahir'),
                 'tanggal_lahir' => format_tanggal_database($this->input->post('tanggal_lahir')),
@@ -194,7 +194,7 @@ class Pegawai extends Controller {
 
             // proses data pokok
             $data = array(
-                'nip' => $this->input->post('nip'),
+                'nip' => str_replace(" ", "", $this->input->post('nip')),
                 'nama' => $this->input->post('nama'),
                 'tempat_lahir' => $this->input->post('tempat_lahir'),
                 'tanggal_lahir' => format_tanggal_database($this->input->post('tanggal_lahir')),

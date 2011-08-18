@@ -258,7 +258,7 @@
                         </div>
                         <h3><span>Penilaian dan Tunjangan</span></h3>
                     </li>
-                    <li id="groupCuti_ribbon-msofficeTabLaporan">
+<!--                    <li id="groupCuti_ribbon-msofficeTabLaporan">
                         <div>
                             <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat laporan cuti pegawai">
                                 <span class="ui-icon msoffice-icon-cuti-32x32"></span>
@@ -266,10 +266,10 @@
                             </button>
                         </div>
                         <h3><span>Cuti</span></h3>
-                    </li>
+                    </li>-->
                     <li id="groupKegiatan_ribbon-msofficeTabLaporan">
                         <div>
-                            <button class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat laporan kegiatan luar Puskesmas">
+                            <button href="index.php/kegiatan/laporan_kegiatan" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Lihat laporan kegiatan luar Puskesmas">
                                 <span class="ui-icon msoffice-icon-kegiatan-32x32"></span>
                                 <span class="ui-button-label">Laporan Kegiatan&nbsp;Luar</span>
                             </button>

@@ -109,7 +109,7 @@ label:hover {
                         <tr>
                             <td><?php echo $i; ?></td>
                             <td><?php echo $pegawai['nama']; ?></td>
-                            <td><?php echo $pegawai['nip']; ?></td>
+                            <td><?php echo format_nip($pegawai['nip']); ?></td>
                             <?php if($kolom[1]) : ?>
                             <td><?php echo $pegawai['pangkat']; ?> - <?php echo $pegawai['golongan']; ?></td>
                             <td><?php echo format_tanggal_tampilan($pegawai['TMT_pangkat']); ?></td>

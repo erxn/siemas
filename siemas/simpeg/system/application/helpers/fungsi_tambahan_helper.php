@@ -43,6 +43,13 @@ function format_rupiah($uang) {
 
 }
 
+function format_nip($nip) {
+
+    $x = $nip; // useless
+    return substr($x, 0, 8) . ' ' . substr($x, 8, 6) . ' ' . substr($x, 14, 1) . ' ' . substr($x, 15);
+
+}
+
 function isi_array_kosong($arr, $min, $max, $isi = 0) {
 
     $column1 = array();

@@ -53,7 +53,7 @@
                                     <?php echo $i; ?>
                                     <input type="hidden" value="<?php echo $pegawai['id_pegawai']; ?>" name="id_pegawai[]"/>
                                 </td>
-                                <td><?php echo $pegawai['nip']; ?></td>
+                                <td><?php echo format_nip($pegawai['nip']); ?></td>
                                 <td><?php echo $pegawai['nama']; ?></td>
                                 <td><?php $j = $this->pegawai->get_jabatan_terakhir($pegawai['id_pegawai']); echo $j['jabatan'] ?></td>
                                 <td>

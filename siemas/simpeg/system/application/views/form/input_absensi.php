@@ -48,7 +48,7 @@
                                         <input type="hidden" name="id_absensi[<?php echo $data['id_pegawai']; ?>]" value="<?php echo $data['id_absensi']; ?>"/>
                                         <?php echo $i+1; ?>
                                     </td>
-                                    <td><?php echo $data['nip']; ?></td>
+                                    <td><?php echo format_nip($data['nip']); ?></td>
                                     <td><?php echo $data['nama']; ?></td>
                                     <td>
                                         <input id="ck<?php echo $i ?>" type="checkbox" name="hadir[<?php echo $data['id_pegawai']; ?>]" class="ck_absen" <?php if($data['hadir'] == 1) echo "checked='checked'" ?>/>
