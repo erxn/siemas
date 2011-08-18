@@ -43,8 +43,7 @@ class Penilaian_model extends Model {
         $data = array();
         $q = $this->db->query("SELECT pegawai.id_pegawai,
                                       pegawai.nama,
-                                      tunjangan.tahun,
-                                      tunjangan.bulan,
+                                      nilai_tpp.tpp,
                                       tunjangan.tunjangan,
                                       tunjangan.pph21
                                FROM pegawai
@@ -52,6 +51,10 @@ class Penilaian_model extends Model {
                                ON pegawai.id_pegawai = tunjangan.pegawai_id_pegawai
                                   AND tunjangan.tahun = $tahun
                                   AND tunjangan.bulan = $bulan
+                               LEFT JOIN nilai_tpp
+                               ON pegawai.id_pegawai = nilai_tpp.pegawai_id_pegawai
+                                  AND nilai_tpp.tahun = $tahun
+                                  AND nilai_tpp.bulan = $bulan
                                WHERE pegawai.aktif = 1
                                ORDER BY pegawai.rank_struktural, pegawai.id_pegawai");
 
@@ -209,6 +212,10 @@ class Penilaian_model extends Model {
 
         return $tpp_bp;
 
+    }
+
+    function insert_tpp($data) {
+        $this->db->insert('nilai_tpp', $data);
     }
 
 }

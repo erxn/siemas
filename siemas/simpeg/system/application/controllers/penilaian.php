@@ -195,6 +195,28 @@ class Penilaian extends Controller {
 
         $data['tpp_pkm'] = $this->penilaian->get_data_tpp_pkm($data['tahun'], $data['bulan']);
         $data['tpp_bp']  = $this->penilaian->get_data_tpp_bp($data['tahun'], $data['bulan']);
+
+        // insert ke DB hasil hitungannya
+
+        $this->db->query("DELETE FROM nilai_tpp WHERE tahun = {$data['tahun']} AND bulan = {$data['bulan']}");
+
+        foreach ($data['tpp_pkm'] as $d) {
+            $this->penilaian->insert_tpp(array(
+                'tahun' => $data['tahun'],
+                'bulan' => $data['bulan'],
+                'tpp'   => $d['jumlah'],
+                'pegawai_id_pegawai' => $d['id_pegawai']
+            ));
+        }
+
+        foreach ($data['tpp_bp'] as $d) {
+            $this->penilaian->insert_tpp(array(
+                'tahun' => $data['tahun'],
+                'bulan' => $data['bulan'],
+                'tpp'   => $d['jumlah'],
+                'pegawai_id_pegawai' => $d['id_pegawai']
+            ));
+        }
         
         $data['list_tahun'] = $this->absensi->get_tahun_absensi();
         $this->load->view('laporan/nilai_tpp', $data);

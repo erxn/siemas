@@ -73,7 +73,7 @@ $nama_bulan = array(
                                 <td><?php echo $data['nama']; ?></td>
                                 <td><?php $j = $this->pegawai->get_jabatan_terakhir($data['id_pegawai']); echo $j['jabatan'] ?></td>
                                 <td><?php $g = $this->pegawai->get_pangkat_terakhir($data['id_pegawai']); echo $g['golongan'] ?></td>
-                                <td>...</td>
+                                <td><?php echo round($data['tpp'], 1); ?></td>
                                 <td align="right"><?php echo format_rupiah(intval($data['tunjangan'])) ?></td>
                                 <td align="right"><?php echo format_rupiah(intval($data['pph21'])) ?></td>
                                 <td align="right"><?php echo format_rupiah(intval($data['tunjangan']) - intval($data['pph21'])) ?></td>
