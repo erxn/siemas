@@ -77,11 +77,8 @@ Class Rekam_medik_model extends Model{
 
     function get_remed_pasien_umum($id_pasien){               //buat nampilin tabel remed pasien yg KIA
         $data=array();
-        $q=$this->db->query  ("SELECT * FROM layanan
-            JOIN remedi_umum_layanan
-                ON  layanan.id_layanan = remedi_umum_layanan.id_layanan
-            JOIN remed_poli_umum
-                ON remedi_umum_layanan.id_remed_umum=remed_poli_umum.id_remed_umum
+        $q=$this->db->query  ("SELECT * FROM 
+             remed_poli_umum
             JOIN penyakit_remed_umum
                 ON remed_poli_umum.id_remed_umum=penyakit_remed_umum.id_remed_umum
             JOIN penyakit
@@ -192,5 +189,158 @@ Class Rekam_medik_model extends Model{
         return $data;
 
     }
+
+    function get_tgl_kunj($tgl_kunjungan){               //buat nampilin data remed pasien per id,,buat di input pelayanan,,,biar si dokter langsung input...yg tabel itu lho
+        $data=array();
+        $q=$this->db->query  ("SELECT * FROM layanan
+            JOIN remed_gigi_layanan
+                ON  layanan.id_layanan = remed_gigi_layanan.id_layanan
+            JOIN remed_poli_gigi
+                ON remed_gigi_layanan.id_remed_gigi=remed_poli_gigi.id_remed_gigi
+            JOIN penyakit_remed_gigi
+                ON remed_poli_gigi.id_remed_gigi=penyakit_remed_gigi.id_remed_gigi
+            JOIN penyakit
+                ON penyakit_remed_gigi.id_penyakit=penyakit.id_penyakit
+            WHERE remed_poli_gigi.tanggal_kunjungan_gigi=$tgl_kunjungan");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function remed_poli_lain_pasien($id_pasien){
+            $data=array();
+        $q=$this->db->query  ("SELECT * FROM pasien JOIN kk WHERE id_pasien=$id_pasien");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function nyari_tanggal($tanggal_kunjungan_gigi){
+
+         $data=array();
+        $q=$this->db->query  ("SELECT * FROM remed_poli_gigi WHERE tanggal_kunjungan_gigi='$tanggal_kunjungan_gigi'");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
+    
+function nyari_tanggal_u($tanggal_kunjungan_umum){
+
+         $data=array();
+        $q=$this->db->query  ("SELECT * FROM remed_poli_umum WHERE tanggal_kunjungan_umum='$tanggal_kunjungan_umum'");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
+    function nyari_tanggal_k($tanggal_kunjungan_kia){
+
+         $data=array();
+        $q=$this->db->query  ("SELECT * FROM remed_poli_kia WHERE tanggal_kunjungan_kia='$tanggal_kunjungan_kia'");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
+
+    function remed_poli_umum_tbc($id_pasien){
+            $data=array();
+        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN tbc WHERE id_pasien=$id_pasien");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function remed_poli_umum_ispa($id_pasien){
+            $data=array();
+        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN ispa WHERE id_pasien=$id_pasien");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function remed_poli_umum_campak($id_pasien){
+            $data=array();
+        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN campak WHERE id_pasien=$id_pasien");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function remed_poli_umum_diare($id_pasien){
+            $data=array();
+        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN diare WHERE id_pasien=$id_pasien");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
 }
 ?>
