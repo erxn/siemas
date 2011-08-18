@@ -325,6 +325,6 @@ class Controller_excel extends Panada {
         $objWriter = PHPEXCEL_IOFactory::createWriter($objPHPExcel, "Excel5");
         $objWriter->save("php://output");
         }
-    //$this->redirect('index.php/laporan/bulanan/');
+    $this->redirect('index.php/laporan/bulanan/');
     }
 }

@@ -20,7 +20,7 @@
         </div> <!-- End #header -->
 
 		<div class="container_12">
-
+                        <form method="POST">
                         <table>
 					<tr>
 						<td width="100px">
@@ -37,7 +37,7 @@
 						</td>
 						<td>
                                                     <select name="unit_layanan" style="width:150px;">
-                                                        <option selected="selected">Pilih Unit</option>
+                                                        <option value="" selected="selected">Pilih Unit</option>
                                                         <option value="umum">Umum</option>
                                                         <option value="gigi">Gigi</option>
                                                         <option value="kia">KIA</option>
@@ -94,7 +94,7 @@
                                                 </a></td>
 					</tr>
                                   </tfoot>
-
+                                  </form>
 				</table>
                             </div>
                     </div>

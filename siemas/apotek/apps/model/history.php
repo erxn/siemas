@@ -8,7 +8,7 @@ class Model_history {
 
     public function cek_habis(){
 
-        $result = $this->db->results("SELECT nbk_obat,stok_obat FROM obat WHERE stok_obat <= '10'");
+        $result = $this->db->results("SELECT * FROM obat WHERE stok_obat <= '10'");
 
         return $result;
     }

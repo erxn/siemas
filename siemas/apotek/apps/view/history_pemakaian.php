@@ -6,8 +6,8 @@
                         <ul style="margin-left: 50px;">
 
                             <li><a href="<?php echo $this->base_url?>index.php/history/Kadaluarsa">Kadaluarsa</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
-                            <li id="current"><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
+                            <li id="current"><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
 
                         </ul>
@@ -69,30 +69,78 @@
 
 					</form>
 
-
-                    <?php if($hasil) {   ?>
-                        <div class="module" style="width: 333px ;">
-                        <div class="module-table-body">
-                        <table id="myTable" class="tablesorter" >
+                                        <br /> <br />
+                            <form method="post" onsubmit="if(document.getElementById('tanggal').value != '') return confirm('Apakah anda yakin ingin membuat laporan tanggal ' + document.getElementById('tanggal').value + '?'); else return false;">
+                    <table>
+					<tr>
+						<td width="100px">
+						<p style="font-size:13px;">Pilih tanggal :</p>
+						</td>
+						<td width="100px">
+							<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal" class="tanggal">
+						</td>
+						<td> &nbsp &nbsp &nbsp
+							<input type="submit" class="submit-green" value="PILIH">
+						</td>
+					</tr>
+					</table>
+					</form>
+                    <?php if(isset($hasil)) {   ?>
+                        <?php echo $alert; ?>
+                        <br />
+                        <br />
+                        <table >
                         	<thead>
                                 <tr>
-                                    <th style="width:40%">Tanggal</th>
-                                    <th style="width:60%">No SBKK</th>
+                                    <th style="width:137px">unit pelayanan</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($hasil as $hasil) { ?>
+                                <?php foreach ($hasil as $hasilnya) { ?>
                                 <tr>
-                                    <td><?php echo $hasil['tanggal'] ; ?></td>
-                                    <td><?php echo $hasil['no_sbkk'] ; ?></td>
+                                    <td><?php echo $hasilnya->poli ; ?></td>
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/history/isi_resep/">
+                                            <input type="submit" value="Lihat Obat" /></a></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>
-                        </table></div></div>
+                        </table>
                     <?php } else if(isset ($alert)) { ?>
                                 <?php echo $alert; ?>
                     <?php } ?>
-					
+
+
+
+                    <?php if(isset($hasil2)) {   ?>
+                        <?php echo $alert2; ?>
+                        <br />
+                        <br />
+                        <?php foreach ($hasil2 as $hasilnya) { ?>
+                        <?php echo $hasilnya['tanggal']; ?>
+                        <br />
+                        <table >
+                        	<thead>
+                                <tr>
+                                    <th style="width:137px">unit pelayanan</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($hasilnya['poli'] as $list) { ?>
+                                <tr>
+                                    <td><?php echo $list->poli ; ?></td>
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/history/isi_resep/">
+                                            <input type="submit" value="Lihat Obat" /></a></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                        <br /><br />
+                        <?php } ?>
+                    <?php } else if(isset ($alert2)) { ?>
+                                <?php echo $alert2; ?>
+                    <?php } ?>
 
 
                         <div style="clear: both;"></div>
@@ -110,6 +158,17 @@
             <div style="clear:both;"></div>
         </div> <!-- End #footer -->
 	</body>
+<script type="text/javascript">
+            $(document).ready(function(){
+                $(".popup").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                        $( "#datepicker" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                    }
+                });
+            });
+        </script>
 </html>
 <!-- This document originaly created by R Bagus Dimas Putra r4yv1n@yahoo.com -->
 

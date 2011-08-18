@@ -86,7 +86,7 @@
                                 <td><?php echo $list->satuan_obat; ?></td>
                                 <td><input  class="input_angka" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
                                            ></td>
-                                <td><input type="text" name="date" class="tanggal" value="<?php echo $tanggal; ?>"></td>
+                                <td><input type="text" name="kadaluarsa" class="tanggal" value="<?php echo $tanggal; ?>"></td>
                                 <td><input type="text"  id="field_1_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
                             </tr>
 <?php $n++;
@@ -105,6 +105,7 @@
             </div> <!-- End .module-table-body -->
         </div> <!-- End .module -->
         </form>
+    <div style="clear: both"></div>
 </div> <!-- End .grid_12 -->
 
 

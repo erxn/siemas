@@ -50,9 +50,8 @@ class Controller_obat extends Panada {
             $id_obat = $_POST['id_obat'];
             $jumlah = $_POST['jumlah'];
             $keterangan = $_POST['keterangan'];
-            $id_pasien = $this->obat->resep_pasien($tanggal, $id_antrian);
             $this->obat->tambah_isi_pemakaian($intern, $tanggal, $id_obat, $jumlah, $keterangan);
-            $views['verify']='Resep dengan id antrian '.$id_antrian.' berhasil dimasukan.';
+            $views['verify']='pemakaian obat pada unit layanan '.$intern.' berhasil dimasukan.';
         }
         $this->view_pemakaian_obat($views);
     }
@@ -61,15 +60,11 @@ class Controller_obat extends Panada {
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Tambah Jenis Obat - Apotek';
         if($_POST){
-            $tanggal2 = $_POST['tanggal'];
-            $tanggal = $this->date->reverse($tanggal2);
-            $intern = $_POST['unit_layanan'];
-            $id_obat = $_POST['id_obat'];
-            $jumlah = $_POST['jumlah'];
-            $keterangan = $_POST['keterangan'];
-            $id_pasien = $this->obat->resep_pasien($tanggal, $id_antrian);
-            $this->obat->tambah_isi_pemakaian($intern, $tanggal, $id_obat, $jumlah, $keterangan);
-            $views['verify']='Resep dengan id antrian '.$id_antrian.' berhasil dimasukan.';
+            $nbk_obat = $_POST['nbk_obat'];
+            $satuan_obat = $_POST['satuan_obat'];
+            $narkotik = $_POST['narkotik'];
+            $this->obat->tambah_jenis_obat($nbk_obat, $satuan_obat, $narkotik);
+            $views['verify']='Resep dengan id antrian '.$nbk_obat.' berhasil dimasukan.';
         }
         $this->view_tambah_jenis_obat($views);
     }
