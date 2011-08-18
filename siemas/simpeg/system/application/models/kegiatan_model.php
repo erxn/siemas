@@ -63,5 +63,35 @@ class Kegiatan_model extends Model {
 
     }
 
+    function get_kegiatan_by_bulan_and_pegawai($tahun, $bulan, $id_pegawai) {
+        $data = array();
+
+        $q = $this->db->query("SELECT kegiatan.*, pegawai.nama FROM kegiatan JOIN pegawai USING (id_pegawai)
+                               WHERE year(tanggal) = '$tahun' AND month(tanggal) = '$bulan' AND kegiatan.id_pegawai = $id_pegawai ORDER BY tanggal");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+
+    }
+
+    function get_tahun_kegiatan() {
+        $data = array();
+        $q = $this->db->query("SELECT DISTINCT YEAR(tanggal) AS tahun FROM kegiatan ORDER BY YEAR(tanggal)");
+
+        if ($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
 
 }

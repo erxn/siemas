@@ -44,4 +44,25 @@ class Kegiatan extends Controller {
         else echo "0";
     }
 
+    function laporan_kegiatan($bulan = 0, $tahun = 0, $id_pegawai = 0) {
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $data['id_pegawai'] = $id_pegawai;
+
+        $data['daftar_kegiatan'] = $this->kegiatan->get_kegiatan_by_bulan_and_pegawai($data['tahun'], $data['bulan'], $data['id_pegawai']);
+
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+        $data['list_tahun'] = $this->kegiatan->get_tahun_kegiatan();
+        
+        $this->load->view('laporan/rekap_kegiatan', $data);
+    }
+
 }

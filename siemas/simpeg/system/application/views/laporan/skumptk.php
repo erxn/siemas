@@ -54,7 +54,7 @@
                         <tr>
                             <td height="20" align="left"><span>NIP</span></td>
                             <td align="left"><strong><span>:</span></strong></td>
-                            <td align="left"><span><?php echo $biodata['nip']; ?></span></td>
+                            <td align="left"><span><?php echo format_nip($biodata['nip']); ?></span></td>
                         </tr>
 
                         <tr>
