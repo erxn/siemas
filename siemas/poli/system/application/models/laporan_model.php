@@ -10,7 +10,7 @@ Class Laporan_model extends Model{
         parent::Model();
     }
 
-    function layanan_harian($tanggal, $bulan, $tahun){
+    function layanan_bulanan($tanggal, $bulan, $tahun){
          $data=array();
 
          $tgl = date("Y-m-d", strtotime("$tahun-$bulan-$tanggal"));
@@ -54,7 +54,7 @@ Class Laporan_model extends Model{
 
     function layanan(){
          $data=array();
-        $kueri=$this->db->query("SELECT * FROM layanan" );
+        $kueri=$this->db->query("SELECT * FROM layanan WHERE keterangan='GIGI'" );
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
                 $data[]=$row;
