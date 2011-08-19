@@ -109,10 +109,27 @@ Class Rekam_medik_model extends Model{
         return $data;
     }
 
+    function lab($id_pasien){
+
+        $data=array();
+        $q=$this->db->query("SELECT *
+                                FROM pemeriksaan_lab
+                                JOIN remed_umum_lab as a USING(id_pemeriksaan_lab)
+                                JOIN remed_poli_umum as b USING(id_remed_umum)
+                                WHERE b.id_pasien=$id_pasien" );
+
+        if($q->num_rows()>0){
+            foreach ($q->result_array()as $row){
+                $data[]=$row;
+            }
+        }
+        $q->free_result();
+        return $data;
+    }
     
      function get_layanan(){
       $data=array();
-        $q=$this->db->query  ("SELECT * FROM layanan");
+        $q=$this->db->query  ("SELECT * FROM layanan WHERE keterangan='GIGI'");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
