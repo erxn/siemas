@@ -47,16 +47,16 @@
                             type: 'pie',
                             name: 'Browser share',
                             data: [
-                                ['Karies Gigi',   45.0],
-                                ['Penyakit Pulpa & Jaringan Periapikal',       26.8],
+                                ['Karies Gigi',  <?php echo $data1/$total*100; ?> ],
+                                ['Penyakit Pulpa & Jaringan Periapikal',     <?php echo $data2/$total*100;?> ],
                                 {
                                     name: 'Penyakit Gusi & Periodontal',    
-                                    y: 12.8,
+                                    y: <?php echo $data3/$total*100; ?>,
                                     sliced: true,
                                     selected: true
                                 },
-                                ['Peny Dentofasiak & Inaloklusi',    8.5],
-                                ['Gangguan Gusi & Jaringan Penunjang Lainnya',     6.2]
+                                ['Peny Dentofasiak & Inaloklusi',    <?php echo $data4/$total*100; ?> ],
+                                ['Gangguan Gusi & Jaringan Penunjang Lainnya',     <?php echo $data5/$total*100; ?>]
 							
                             ]
                         }]
@@ -69,6 +69,5 @@
     <!-- 3. Add the container -->
     <div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
 
-</body>
 </html>
 <!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
