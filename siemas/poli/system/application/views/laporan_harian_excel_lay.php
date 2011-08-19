@@ -154,7 +154,7 @@ $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
         for ($k = 1; $k <= 31; $k++) {                  //k loopoing tanggal
            
  
-            $data = $this->lap->layanan_harian($k, 8, 2011);
+            $data = $this->lap->layanan_bulanan($k, 8, 2011);
 
             $l = 7;
 
@@ -172,7 +172,7 @@ $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
 
  //       $objPHPExcel->getActiveSheet()->getStyle('A6:F' . ($i-1))->applyFromArray($styleThinBlackBorderOutline);
 
-        $objPHPExcel->getActiveSheet()->setTitle('Harian');
+        $objPHPExcel->getActiveSheet()->setTitle('bulanan layanan');
 
         // Set active sheet index to the first sheet, so Excel opens this as the first sheet
         $objPHPExcel->setActiveSheetIndex(0);

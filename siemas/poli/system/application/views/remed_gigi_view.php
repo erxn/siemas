@@ -256,6 +256,36 @@
             </table>
         </div>
 
+         <div id="tabs-d">
+
+            <div style="padding: 10px;">
+
+                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
+                <tr>
+
+                    <td><input type="submit" class="submit-green" value="Cari "></td>
+                </tr>
+
+            </div>
+            <table id="myTable" class="tablesorter" border="1">
+                <thead>
+                    <tr>
+                        <th style="width:5%">No</th>
+                        <th style="width:18%">Tanggal Pemeriksaan</th>
+                        <th style="width:21%">Jenis Pemeriksaan</th>
+                        <th style="width:17%">hasil Pemeriksaan</th>
+                        <th style="width:13%">Pemeriksaan Khusus</th>
+                        <th style="width:13%">Ket.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                   
+                </tbody>
+            </table>
+        </div>
+
         <br/>
         <br/>
     </div>
@@ -264,7 +294,7 @@
 
 
 <form action="" method="post">
-    <div class="module" style="float: left; margin-left:15px; margin-top: 30px; width: 40%">
+    <div class="module" style="float:left; margin-left:15px; margin-top: 30px; width: 40%">
         <div>
 
             <div id="tabs1">

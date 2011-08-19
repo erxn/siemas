@@ -210,27 +210,27 @@ $objPHPExcel->getActiveSheet()->getStyle('D6:AM6')->applyFromArray($styleThinBla
 $l = 9;
 for ($i = 1; $i <= 31; $i++) {
 
-    $data2 = $this->lap->get_data_laporan_bulanan_penyakit($i,8,2011, 1, 4, 4);
+    $data2 = $this->lap->get_data_laporan_bulanan_penyakit($i,8,2011, 1, 4, 2);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $l, $data2['a']);
      $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $l, $data2['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $l, $data2['c']);
      $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $l, $data2['d']);
 
 
-    $data3 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 5, 9, 4);
+    $data3 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 5, 9, 2);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6, $l, $data3['a']);
      $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7, $l, $data3['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8, $l, $data3['c']);
      $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9, $l, $data3['d']);
 
 
-      $data4 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 10, 14, 4);
+      $data4 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 10, 14, 2);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10, $l, $data4['a']);
      $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11, $l, $data4['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12, $l, $data4['c']);
      $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13, $l, $data4['d']);
 
-     $data5 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 15, 19, 4);
+     $data5 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 15, 19, 2);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14, $l, $data5['a']);
      $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15, $l, $data5['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16, $l, $data5['c']);
@@ -363,6 +363,62 @@ $objPHPExcel->getActiveSheet()->getStyle('D47:AM47')->applyFromArray($styleThinB
 //FUNGSI INTI
 
 
+$l = 50;
+for ($i = 1; $i <= 31; $i++) {
+
+    $data12 = $this->lap->get_data_laporan_bulanan_penyakit($i,8,2011, 1, 4, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $l, $data12['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $l, $data12['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $l, $data12['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $l, $data12['d']);
+
+
+    $data13 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 5, 9, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6, $l, $data13['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7, $l, $data13['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8, $l, $data13['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9, $l, $data13['d']);
+
+
+      $data14 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 10, 14, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10, $l, $data14['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11, $l, $data14['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12, $l, $data14['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13, $l, $data14['d']);
+
+     $data15 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 15, 19, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14, $l, $data15['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15, $l, $data15['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16, $l, $data15['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(17, $l, $data15['d']);
+
+     $data16 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 20, 44, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(18, $l, $data16['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(19, $l, $data16['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(20, $l, $data16['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(21, $l, $data16['d']);
+
+     $data17 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 45, 54, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(22, $l, $data17['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(23, $l, $data17['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(24, $l, $data17['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(25, $l, $data17['d']);
+
+     $data18 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 60, 69, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(26, $l, $data18['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(27, $l, $data18['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(28, $l, $data18['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(29, $l, $data18['d']);
+
+     $data19 = $this->lap->get_data_laporan_bulanan_penyakit($i, 8, 2011, 70, 150, 3);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(30, $l, $data19['a']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(31, $l, $data19['b']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(32, $l, $data19['c']);
+     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(33, $l, $data19['d']);
+
+     $l++;
+
+}
 
 
 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C87:M87')->setCellValueByColumnAndRow(2, 87, "Nama penyakit: Penyakit Gusi & Periodontal(04)");
