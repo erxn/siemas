@@ -14,6 +14,8 @@ class Controller_obat extends Panada {
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Obat - Apotek';
+        $views['verify'] = $this->session->get('verify_update');
+        $this->session->remove('verify_update');
         $list = $this->obat->ambil();
         $views['list'] = $list;
         $views['jumlah'] = $this->obat->jumlah();
@@ -67,5 +69,21 @@ class Controller_obat extends Panada {
             $views['verify']='Resep dengan id antrian '.$nbk_obat.' berhasil dimasukan.';
         }
         $this->view_tambah_jenis_obat($views);
+    }
+
+    public function update($id){
+        $views['tanggal'] = date('d-m-Y');
+        $views['page_title'] = 'Obat - Apotek';
+        $views['daftar'] = $this->obat->ambil_obat($id);
+        if($_POST){
+            $nbk_obat = $_POST['nbk_obat'];
+            $satuan_obat = $_POST['satuan_obat'];
+            $stok_obat = $_POST['stok_obat'];
+            $this->obat->update_jenis_obat($id, $nbk_obat, $satuan_obat, $stok_obat);
+            $verify='Obat dengan ID '.$id.' berhasil di Update.';
+            $this->session->set('verify_update',$verify);
+            $this->redirect('index.php/obat');
+        }
+        $this->view_obat_update($views);
     }
 }

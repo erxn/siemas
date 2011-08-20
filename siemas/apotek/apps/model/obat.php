@@ -14,6 +14,13 @@ class Model_obat {
         return $result;
     }
 
+    public function ambil_obat($id){
+
+        $result = $this->db->row("SELECT * FROM obat WHERE id_obat='$id'");
+
+        return $result;
+    }
+
     public function ambil_nama_obat(){
 
         $result = $this->db->results("SELECT nbk_obat, id_obat FROM obat");
@@ -45,11 +52,15 @@ class Model_obat {
 
         $result = $this->db->results("SELECT DISTINCT(waktu) FROM pemakainan_intern WHERE waktu LIKE '$BT%' ORDER BY waktu");
         $n=1;
-        foreach ($result as $list){
-            $data[$n]['tanggal'] = $this->date->reverse($list->waktu);
-            $data[$n]['poli'] = $this->db->results("SELECT DISTINCT(poli) FROM pemakainan_intern WHERE waktu = '$list->waktu'");
-        
-            $n++;
+        $data = NULL;
+        if($result){
+            foreach ($result as $list){
+                $data[$n]['tanggal'] = $this->date->reverse($list->waktu);
+                $data[$n]['tanggal2'] = $list->waktu;
+                $data[$n]['poli'] = $this->db->results("SELECT DISTINCT(poli) FROM pemakainan_intern WHERE waktu = '$list->waktu'");
+
+                $n++;
+            }
         }
         return $data;
     }
@@ -88,6 +99,29 @@ class Model_obat {
             $data[$n]['jumlah'] = $daftar->jumlah_terpakai;
         
             $n++;
+        }
+        return $data;
+    }
+
+    public function history_isi_pemakaian($poli, $tanggal){
+        $id_pemakaian = $this->db->results("SELECT id_pemakainan_intern as id FROM pemakainan_intern WHERE poli = '$poli' AND waktu = '$tanggal'");
+        $x=1;
+        foreach ($id_pemakaian as $id){
+            $daftar_obat = $this->db->results("SELECT id_obat,jumlah_terpakai FROM isi_obat_intern WHERE id_pemakainan_intern = '$id->id'");
+            $n='1';
+            $a = 'id_obat'.$x;
+            $b = 'nbk_obat'.$x;
+            $c = 'satuan_obat'.$x;
+            $d = 'jumlah'.$x;
+            if(isset($daftar_obat)){
+            foreach ($daftar_obat as $daftar){
+                $data[$n][$a] = $daftar->id_obat;
+                $data[$n][$b] = $this->db->find_var("SELECT nbk_obat FROM obat WHERE id_obat = '$daftar->id_obat'");
+                $data[$n][$c] = $this->db->find_var("SELECT satuan_obat FROM obat WHERE id_obat = '$daftar->id_obat'");
+                $data[$n][$d] = $daftar->jumlah_terpakai;
+
+                $n++;
+            }$x++;}
         }
         return $data;
     }
@@ -197,6 +231,15 @@ class Model_obat {
         $data['keterangan'] = $keterangan;
         $data['poli'] = $poli;
         $query = $this->db->insert('pemakainan_intern',$data);;
+
+    }
+
+        public function update_jenis_obat($id, $nbk_obat, $satuan_obat, $stok_obat){
+        $data2['id_obat']=$id;
+        $data['nbk_obat'] = $nbk_obat;
+        $data['satuan_obat'] = $satuan_obat;
+        $data['stok_obat'] = $stok_obat;
+        $query = $this->db->update('obat',$data,$data2);;
 
     }
 

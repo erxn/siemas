@@ -2,6 +2,22 @@
 
 class Controller_history extends Panada {
 
+    var $nama_bulan = array(
+            "",
+            'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+    );
+    
     public function __construct(){
         parent::__construct();
 		$this->obat = new Model_obat();
@@ -15,10 +31,11 @@ class Controller_history extends Panada {
         $this->view_history($views);
     }
 
-    public function isi_pemakaian($id_pasien,$tanggal){
+    public function isi_pemakaian($poli,$tanggal){
         $views['tanggal'] = date('d-m-Y');
-        $views['isi'] = $this->obat->history_isi_resep($id_pasien, $tanggal);
-        $this->view_isi_history_resep($views);
+        $poli2 = str_replace("_", " ", $poli);
+        $views['isi'] = $this->obat->history_isi_pemakaian($poli2, $tanggal);
+        $this->view_isi_history_pemakaian($views);
     }
 
     public function isi_resep($id_pasien,$tanggal){
@@ -32,15 +49,18 @@ class Controller_history extends Panada {
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['page_title'] = 'History Resep - Apotek';
         $views['hasil'] = NULL;
+
+        
+
          if($_POST){
             if(isset ($_POST['bulan']) && isset ($_POST['tahun'])){
                 $BT = $this->date->gabung2($_POST['bulan'], $_POST['tahun']);
                 $hasil = $this->obat->history_pemakaian_bt($BT);
                 if(isset ($hasil)){
                     $views['hasil2'] = $hasil;
-                    $views['alert2'] = 'Hasil pencarian pada bulan '.$_POST['bulan'].' tahun '.$_POST['tahun'].' adalah :';
+                    $views['alert2'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[intval($_POST['bulan'])].' tahun '.$_POST['tahun'].' adalah :';
                 }   else{
-                        $views['alert2'] = 'Hasil pencarian pada bulan '.$_POST['bulan'].' tahun '.$_POST['tahun'].' tidak ada.';
+                        $views['alert2'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[intval($_POST['bulan'])].' tahun '.$_POST['tahun'].' tidak ada.';
                     }
             }
             if(isset ($_POST['tanggal'])){
@@ -48,6 +68,7 @@ class Controller_history extends Panada {
                 $hasil = $this->obat->history_pemakaian($tanggal);
                 if(isset ($hasil)){
                     $views['hasil'] = $hasil;
+                    $views['tanggal2'] = $tanggal;
                     $views['alert'] = 'Hasil pencarian pada tanggal '.$_POST['tanggal'].' adalah :';
                 }   else{
                         $views['alert'] = 'Hasil pencarian pada tanggal '.$_POST['tanggal'].' tidak ada.';
