@@ -20,6 +20,31 @@
     });
 </script>
 
+<script type="text/javascript">
+    function load_tabel_antri() {
+        $('#div-antri').load("index.php/antrian/tabel_antri/1");
+    }
+
+    function load_tabel_diperiksa() {
+        $('#div-diperiksa').load("index.php/antrian/tabel_diperiksa/1");
+    }
+
+    function load_tabel_tunda() {
+        $('#div-tunda').load("index.php/antrian/tabel_tunda/1");
+    }
+
+    $(document).ready(function(){
+        load_tabel_antri();
+        load_tabel_diperiksa();
+        load_tabel_tunda();
+
+        setInterval("load_tabel_antri()", 3000);
+        setInterval("load_tabel_diperiksa()", 3000);
+        setInterval("load_tabel_tunda()", 3000);
+
+    });
+</script>
+
 
 <div id="subnav">
     <div class="container_12">
@@ -42,31 +67,44 @@
     </ul>
     <div id="tabs-a" >
 
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-tunda"></div>
 
-        <div class="module" style="background:none; float: none; margin-left: 10px; height:1000px">
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-antri">
 
-            <table id="myTable" class="tablesorter" border="8" style=" margin-top: 50px;width:90%">
-                <thead>
-                    <tr>
-                        <th style="width:10%">No. Kunjungan</th>
-                        <th style="width:21%">Nama Pasien</th>
-                        <th style="width:13%">Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-            <?php for ($i=1; $i<=count($a)-1; $i++){?>
-                    <tr class="odd">
-                        <td class="align-center"><?php echo $a[$i]['no_kunjungan']?></td>
-                        <td><a style=" text-decoration:none" href="index.php/pasien/data_pasien_remed/<?php echo $a[$i]['id_kunjungan'];?>"><?php echo $a[$i]['nama_pasien']; ?></a></td>
-                        <td><?php echo  $a[$i]['status'];?></td>
-                    </tr>
-                        <?php }?>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+function periksa(id) {
+    
+    $.get('index.php/antrian/periksa/' + id);
+    load_tabel_antri();
+   load_tabel_diperiksa();
+    load_tabel_tunda();
+
+}
+
+function lewati(id) {
+
+    $.get('index.php/antrian/lewati/' + id);
+    load_tabel_antri();
+    load_tabel_diperiksa();
+    load_tabel_tunda();
+    
+}
+
+function selesai(id) {
+    
+    $.get('index.php/antrian/selesai/' + id);
+    load_tabel_antri();
+    load_tabel_diperiksa();
+    load_tabel_tunda();
+
+}
+
+</script>
 
 
 <div  class="tabs" style="margin-right: 50px; margin-top: 50px;  float:right; width: 45%">
@@ -76,27 +114,8 @@
     <div id="tabs-b" >
 
 
-        <div class="module" style="background:none; float: none; margin-left: 10px; height:1000px">
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-diperiksa">
 
-            <table id="myTable" class="tablesorter" border="8" style=" margin-top: 50px;width:90%">
-                <thead>
-                    <tr>
-                        <th style="width:10%">No. Kunjungan</th>
-                        <th style="width:21%">Nama Pasien</th>
-                        <th style="width:13%">Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr class="odd">
-                        <?php for ($i=0; $i<=count($s)-1; $i++){?>
-                        <td class="align-center"><?php echo $s[$i]['no_kunjungan']?></td>
-                        <td><a style=" text-decoration:none" href="" class="pop"><?php echo $s[$i]['nama_pasien']; ?></a></td>
-                        <td><?php echo  $s[$i]['status'];?></td>
-                    </tr>
-                    <?php }?>
-                </tbody>
-            </table>
         </div>
        
      </div>

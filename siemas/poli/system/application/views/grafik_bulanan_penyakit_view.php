@@ -4,7 +4,7 @@
          <base href="http://localhost/siemas/poli/" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
         <title>Puskesmas Bogor Tengah</title>
-
+a
         
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/highcharts.js"></script>
