@@ -57,7 +57,7 @@ class M_kunjungan extends Model {
     }
 
     function get_pasien_baru_by_tgl_wil($tgl,$wil){
-        $q = $this->db->query("SELECT count(*)
+        $q = $this->db->query("SELECT count(*) as jumlah
                                 FROM kunjungan
                                 JOIN pasien USING (id_pasien)
                                 JOIN kk USING (id_kk)

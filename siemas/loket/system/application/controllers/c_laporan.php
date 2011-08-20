@@ -32,7 +32,7 @@ class C_laporan extends Controller {
 
         $laporan = array();
         
-        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, $bln, $thn); $i++) {
+        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, intval($bln), intval($thn)); $i++) {
 
             $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
 
@@ -114,22 +114,22 @@ class C_laporan extends Controller {
 
         $laporan = array();
 
-        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, $bln, $thn); $i++) {
+        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, intval($bln), intval($thn)); $i++) {
 
             $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
-
+            
             /*Kunjungan Lama*/
             $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,"Pabaton");
-                echo $kunj_lama_pabaton;exit;
+                //echo $kunj_lama_pabaton;exit;
              $laporan[] = array(
 
                 'lama_pab' => $kunj_lama_pabaton
                 );
-             
+
              $data['laporan'] = $laporan;
 
         }
-        print_r($data);exit;
+        //print_r($data);exit;
         $this->load->view('rekapitulasi_kunjungan',$data);
     }
 }
