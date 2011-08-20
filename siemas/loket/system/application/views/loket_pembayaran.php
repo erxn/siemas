@@ -9,9 +9,19 @@
     <div style="clear: both;"></div>
 </div>
 <!-- END SUBNAV -->
+<script type="text/javascript">
 
+    function load_pembayaran() {
+        $('#pembayaran').load("index.php/pembayaran/data_pembayaran");
+        setTimeout("load_pembayaran()", 1000);
+    }
+    $(document).ready(function(){
+        load_pembayaran();
+
+    });
+</script>
 <br/>
-<div class="container_12">
+
     <div>
         <div class="grid_6" style="width: 98%">
             <div class="module">
@@ -48,77 +58,71 @@
                             </tr>
                         </table>
                     </form>
+                    <a class="button float-left" align="left" href="index.php/pembayaran" ><span>Perbaharui Data</span></a>
+                    <br/>
                     <div>
-                        <p>Total Pasien: <strong>5 orang</strong></p>
-                        <table id="myTable" class="tablesorter" style="width: 85%;">
+                        <h4  class="float-right" style="margin-right: 100px">Total: <?php echo count($pembayaran) ?> orang</h4>
+                        <br/>
+                        <table  class="tablesorter" style="width: 85%;">
                             <thead>
                                 <tr>
                                     <th class="header" style="width: 1%;">No</th>
                                     <th class="header" style="width: 5%;">Poli</th>
+                                    <th class="header" style="width: 3%;">No. Kunjungan</th>
                                     <th class="header" style="width: 10%;">Nama</th>
                                     <th class="header" style="width: 4%;">Umur</th>
                                     <th class="header" style="width: 10%;">Alamat</th>
-                                    <th colspan="2" class="header" style="width: 10%;">Total Harga</th>
+                                    <th colspan="3" class="header" style="width: 10%;">Total Harga</th>
                                     <th class="header" style="width: 10%;">Status Pembayaran</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                               
-                                <?php $i=1; foreach($pembayaran as $p){ ?>
-                                <tr>
+
+                                <?php $i=1;
+foreach($pembayaran as $p) { ?>
+                                <tr class="<?php if($i%2==0)echo "odd";else echo "even"?>">
                                     <td><div align="center"><?php echo $i++?></div></td>
-                                    <td align="center"><?php echo $p['nama_poli']?></td>
+                                    <td><?php echo $p['nama_poli']?></td>
+                                    <td align="center"><?php echo $p['no_kunjungan']?></td>
                                     <td><a class="popup" id="profil_pasien" href="index.php/pasien/profil_pasien/<?php echo $p['id_kk']."/".$p['id_pasien']?>"><?php echo $p['nama_pasien']?></a></td>
                                     <td align="center"><?php echo $p['umur']?> tahun</td>
-                                    <td><?php echo $p['idkunjungan']?></td>
-                                    <td colspan="2">
-                                        <div  align="center">
-                                            <?php if($p['status_pembayaran'] == "Belum Lunas"){?>
-                                        <a class="button" href="index.php/pembayaran/input_pembayaran/<?php echo $p['idkunjungan']?>">
-                                            <span><img width="15" height="15" src="Template_files/tambah.png" alt="Tambah"/> Data Pembayaran</span>
-                                        </a>
-                                            <?php } else if($p['status_pembayaran'] == "Lunas") { ?>
-                                            <a href="index.php/pembayaran/rincian/<?php echo $p['idkunjungan']?>/rincian">Rincian</a>
-                                            <?php }?>
+                                    <td><?php echo $p['kecamatan_kk']?></td>
+                                    
+    <?php if($p['status_pembayaran'] == "Belum Lunas") {?>
+                                    <td colspan="3">
+                                        <div >
+                                            <a align="right" class="button" href="index.php/pembayaran/input_pembayaran/<?php echo $p['idkunjungan']?>">
+                                                <span><img width="15" height="15" src="Template_files/tambah.png" alt="Tambah"/> Data Pembayaran</span>
+                                            </a>
                                         </div>
                                     </td>
-                                    <td><?php if($p['status_pembayaran'] == "Lunas"){?>
+        <?php } else if($p['status_pembayaran'] == "Lunas") { ?>
+                                    <td class="noborder" style="width:1%">Rp </td>
+                                    <td width="2%"><div  align="right"><?php echo number_format($p['total']);?></div></td>&nbsp;&nbsp;&nbsp;
+                                    <td width="2%"><a class="button" href="index.php/pembayaran/rincian/<?php echo $p['idkunjungan']?>/rincian"><span>Rincian</span></a></td>
+        <?php }?>                       
+                                        
+                                    <td><?php if($p['status_pembayaran'] == "Lunas") {?>
                                         <img src="Template_files/tick-on.gif" alt="Lunas"/>
-                                            Lunas
-                                        <?php } else if($p['status_pembayaran'] == "Belum Lunas") {?>
-                                            <img src="Template_files/cross-on.gif" alt="Belum Lunas"/>
-                                            Belum Lunas
-                                         <?php }?>
+                                        Lunas
+        <?php } else if($p['status_pembayaran'] == "Belum Lunas") {?>
+                                        <img src="Template_files/cross-on.gif" alt="Belum Lunas"/>
+                                        Belum Lunas
+        <?php }?>
                                     </td>
                                 </tr>
-                                <?php }?>
-                                
+    <?php }?>
+
                             </tbody>
                         </table>
-                        <div id="pager" class="pager">
-                            <form action="">
-                                <div>
-                                    <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-                                    <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-                                    <input type="text" class="pagedisplay input-short align-center"/>
-                                    <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-                                    <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-                                    <select class="pagesize input-short align-center">
-                                        <option selected="selected" value="10">10</option>
-                                        <option value="20">20</option>
-                                        <option value="30">30</option>
-                                        <option value="40">40</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 </body>
 </html>
 

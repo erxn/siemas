@@ -13,14 +13,115 @@ class C_laporan extends Controller {
     }
 
     function rekapitulasi_setoran(){
-        $this->load->view('rekapitulasi_setoran');
+        /*tahun yang ada di database*/
+        $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
+        $data['tahun'] = $list_thn;
+
+
+        if($this->input->post('pilih')){
+            /*bulan dan tahun yang dipilih*/
+            $bln = $this->input->post('bulan_kunjungan');
+            $thn = $this->input->post('tahun_kunjungan');
+
+        } else {
+
+            $bln = date("m");
+            $thn = date("Y");
+
+        }
+
+        $laporan = array();
+        
+        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, $bln, $thn); $i++) {
+
+            $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
+
+            /*Untuk RONTGEN*/
+            $x_ray_gigi = $this->M_pembayaran->get_total_by_layanan($tgl, "x-ray");
+            $thorax = $this->M_pembayaran->get_total_by_layanan($tgl,"thorax");
+            $rontgen = $x_ray_gigi + $thorax;
+            
+
+            /*Untuk USG*/
+            $usg = $this->M_pembayaran->get_total_by_layanan($tgl,"usg");
+            
+
+            /*untuk EKG*/
+            $ekg = $this->M_pembayaran->get_total_by_layanan($tgl,"ekg");
+            
+
+            /*untuk karcis umum*/
+            $umum = $this->M_pembayaran->total_karcis_umum($tgl);
+
+            /*untuk laboratorium*/
+            $labor = $this->M_pembayaran->total_harga_by_poli($tgl,4);
+
+            /*untuk haji*/
+            $haji = $this->M_pembayaran->get_total_by_layanan($tgl,"haji");
+
+            /*untuk haji*/
+            $catin = $this->M_pembayaran->get_total_by_layanan($tgl,"catin");
+
+            /*mantuox*/
+            $mantuox = $this->M_pembayaran->get_total_by_layanan($tgl,"mantuox");
+            
+            $laporan[] = array(
+
+                'umum' => $umum,
+                'labor' => $labor,
+                'rontgen' => $rontgen,
+                'usg' => $usg,
+                'ekg' => $ekg,
+                'haji'  => $haji,
+                'catin'  => $catin,
+                'mantuox' => $mantuox,
+                'bulan' => $bln,
+                'tahun' => $thn
+
+
+            );
+
+            $data['laporan'] = $laporan;
+            
+
+       }
+        $this->load->view('rekapitulasi_setoran', $data);
+        
     }
 
     function laporan_kunjungan_bulanan(){
+
         $this->load->view('laporan_kunjungan_bulanan');
     }
 
     function lb_4(){
         $this->load->view('lb_4');
+    }
+
+    function rekapitulasi_kunjungan(){
+        /*tahun yang ada di database*/
+        $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
+        $data['tahun'] = $list_thn;
+
+
+        if($this->input->post('pilih')){
+            /*bulan dan tahun yang dipilih*/
+            $bln = $this->input->post('bulan_kunjungan');
+            $thn = $this->input->post('tahun_kunjungan');
+
+        } else {
+
+            $bln = date("m");
+            $thn = date("Y");
+        }
+
+        $laporan = array();
+
+        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, $bln, $thn); $i++) {
+
+            $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
+        }
+        
+        $this->load->view('rekapitulasi_kunjungan',$data);
     }
 }

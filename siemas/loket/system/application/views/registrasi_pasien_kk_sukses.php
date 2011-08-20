@@ -26,7 +26,7 @@
                             <tr class="odd">
                                 <td colspan="2"><strong>Profil KK</strong></td>
                             </tr>
-                            <tr  class="odd">
+                            <tr class="odd">
                                 <td>Nama KK</td>
                                 <td><span style="color: #24cc57; font-weight: bold"><?php echo $kk[0]['nama_kk']?></span></td>
                             </tr>
@@ -55,15 +55,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1; foreach ($kk as $anggota) {
-                                    if($i%2==0) $x="odd";
-                                else $x ="even"; ?>
+                            <?php $i=1;
+                            foreach ($kk as $anggota) {
+                                if($i%2==0) $x="odd";
+    else $x ="even"; ?>
                             <tr class="<?php echo $x;?>">
                                 <td><?php echo $i++; ?></td>
                                 <td><a href="#"><?php echo $anggota['nama_pasien'] ?></a></td>
                                 <td><?php echo $anggota['status_dalam_keluarga'] ?></td>
                             </tr>
-                            <?php }?>
+    <?php }?>
                         </tbody>
                     </table>
                 </div>
@@ -72,64 +73,63 @@
         </div>
 
         <div class="grid_6" style="width: 48%">
-    <div class="module">
-        <h2><span>Profil Pasien</span></h2>
-        <div class="module-body">
-            <div>
-                <span class="notification n-success" style="height: 5px">PENDAFTARAN PASIEN BERHASIL</span>
+            <div class="module">
+                <h2><span>Profil Pasien</span></h2>
+                <div class="module-body">
+                    <div>
+                        <span class="notification n-success" style="height: 5px">PENDAFTARAN PASIEN BERHASIL</span>
+                    </div>
+                    <table class="noborder" style="width: 100%">
+                        <tr class="odd">
+                            <td style="width: 40%">ID Pasien</td>
+                            <td><?php echo $pasien[0]['kode_pasien']?></td>
+                        </tr>
+                        <tr>
+                            <td>Nama Kepala Keluarga</td>
+                            <td><?php echo $kk[0]['nama_kk']?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Nama Pasien</td>
+                            <td><span style="color: #2ba234; font-weight: bold"><?php echo $pasien[0]['nama_pasien']?></span></td>
+                        </tr>
+                        <tr class="">
+                            <td>Status dlm Keluarga</td>
+                            <td><?php echo $pasien[0]['status_dalam_keluarga']?></td>
+                        </tr>
+                        <tr>
+                            <td>Jenis Kelamin</td>
+                            <td><?php echo $pasien[0]['jk_pasien']?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Tanggal Lahir</td>
+                            <td><?php echo tgl_indo($pasien[0]['tanggal_lahir'])?> <span style="color: #2ba234"> ( <?php echo hitUmur($pasien[0]['tanggal_lahir'])?> tahun )</span></td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td><?php echo $kk[0]['alamat_kk']." Kec. ".$kk[0]['kecamatan_kk'].", Kel. ".$kk[0]['kelurahan_kk'].", Kab/Kota ".$kk[0]['kota_kab_kk']?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Status Pelayanan</td>
+                            <td><?php echo $pasien[0]['status_pelayanan']?></td>
+                        </tr>
+                        <tr>
+                            <td>No. Kartu</td>
+                            <td><?php echo $pasien[0]['no_kartu_layanan']?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td><h5>Poli Tujuan</h5></td>
+                            <td><h5><?php echo ucfirst($poli);?></h5></td>
+                        </tr>
+                    </table>
+
+
+                </div>
             </div>
-            <table class="noborder" style="width: 100%">
-                <tr class="odd">
-                    <td style="width: 40%">ID Pasien</td>
-                    <td><?php echo $pasien[0]['kode_pasien']?></td>
-                </tr>
-                <tr>
-                    <td>Nama Kepala Keluarga</td>
-                    <td><?php echo $kk[0]['nama_kk']?></td>
-                </tr>
-                <tr class="odd">
-                    <td>Nama Pasien</td>
-                    <td><span style="color: #2ba234; font-weight: bold"><?php echo $pasien[0]['nama_pasien']?></span></td>
-                </tr>
-                <tr class="">
-                    <td>Status dlm Keluarga</td>
-                    <td><?php echo $pasien[0]['status_dalam_keluarga']?></td>
-                </tr>
-                <tr>
-                    <td>Jenis Kelamin</td>
-                    <td><?php echo $pasien[0]['jk_pasien']?></td>
-                </tr>
-                <tr class="odd">
-                    <td>Tanggal Lahir</td>
-                    <td><?php echo tgl_indo($pasien[0]['tanggal_lahir'])?> <span style="color: #2ba234"> ( <?php echo hitUmur($pasien[0]['tanggal_lahir'])?> tahun )</span></td>
-                </tr>
-                <tr>
-                    <td>Alamat</td>
-                    <td><?php echo $kk[0]['alamat_kk']." Kec. ".$kk[0]['kecamatan_kk'].", Kel. ".$kk[0]['kelurahan_kk'].", Kab/Kota ".$kk[0]['kota_kab_kk']?></td>
-                </tr>
-                <tr class="odd">
-                    <td>Status Pelayanan</td>
-                    <td><?php echo $pasien[0]['status_pelayanan']?></td>
-                </tr>
-                <tr>
-                    <td>No. Kartu</td>
-                    <td><?php echo $pasien[0]['no_kartu_layanan']?></td>
-                </tr>
-                <tr class="odd">
-                    <td><h5>Poli Tujuan</h5></td>
-                    <td><h5><?php echo ucfirst($poli);?></h5></td>
-                </tr>
-            </table>
-
-
-        </div>
-    </div>
-</div>
-
-
         </div>
 
+
     </div>
+
 </div>
 </body>
 </html>

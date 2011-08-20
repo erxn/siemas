@@ -70,15 +70,15 @@
                         </tr>
                     </table>
                     <form method="post" action="">
-                    <div style="width: 70%">
+                    <div style="width: 80%">
                         <h2 id="total_harga" align="right">TOTAL: Rp <?php  echo number_format($kunjungan[0]['total_harga']) ?></h2>
                         <br/>
                         <table  style="width: 100%" >
                             <thead>
                                 <tr style="font-size: 16px !important">
                                     <th class="header" style="width: 5%;">No.</th>
+                                    <th class="header" style="width: 50%;">Pelayanan</th>
                                     <th class="header" style="width: 15%;">Poli</th>
-                                    <th class="header" style="width: 40%;">Pelayanan</th>
                                     <th class="header" style="width: 30%;">Harga</th>
                                 </tr>
                             </thead>
@@ -86,15 +86,16 @@
                                 <?php for($i=1; $i<=20; $i++) : ?>
                                 <tr class=" <?if($i%2==0) echo "odd"; else echo "even";?>" id="tr_<?php echo $i ?>"  <?php if($i>5) echo "style = 'display: none'"?>>
                                     <td class="align-center"><?php echo $i ?></td>
+                                    <td><input type="text" style="width: 90%" name="pelayanan[]" class="input-medium autocomplete"/></td>
                                     <td><select name="poli[]">
                                             <option value="GIGI">GIGI</option>
                                             <option value="KIA">KIA</option>
                                             <option value="UMUM">Umum</option>
                                             <option value="LAB">Laboratorium</option>
                                             <option value="RADIOLOGI">Radiologi</option>
+                                            <option value="Lain-lain">Lain-lain</option>
                                         </select>
                                     </td>
-                                    <td><input type="text" style="width: 80%" name="pelayanan[]" class="input-medium autocomplete"/></td>
                                     <td>Rp <input type="text" name="harga[]"  class="input-medium" value=""/></td>
                                 </tr>
                                 <?php endfor; ?>
@@ -126,7 +127,7 @@ $(document).ready(function()
 				var nama_obat = ui.item.value;
                                 var id_obat = ui.item.id;
 
-                                $(this).parent('td').next().find('input').val(id_obat);
+                                $(this).parent('td').next().next().find('input').val(id_obat);
                         },
                         delay: 0
             });

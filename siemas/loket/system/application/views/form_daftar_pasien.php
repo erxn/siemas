@@ -4,7 +4,7 @@
                     <form action="index.php/pasien/registrasi_pasien_baru/<?php echo $kk[0]['id_kk']."/".$status?>" method="post" id="pasien_baru">
                     <table class="noborder">
                         <tr>
-                            <td>ID KK</td>
+                            <td></td>
                             <td><strong><input name="id_kk" type="hidden" value="<?php echo $kk[0]['id_kk']?>"></strong></td>
                         </tr>
                         <tr>

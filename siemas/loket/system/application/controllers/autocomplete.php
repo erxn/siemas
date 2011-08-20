@@ -39,5 +39,19 @@ class Autocomplete extends Controller {
         echo json_encode($array_autocomplete);
     }
 
+    function kode_pasien() {
+
+        $kode = $this->input->post('term');
+
+        $daftar_kode= $this->M_autocomplete->get_kode_pasien($kode);
+        $array_autocomplete = array();
+
+        foreach ($daftar_kode as $kode) {
+            $array_autocomplete[] = $kode['kode_pasien'];
+        }
+
+        echo json_encode($array_autocomplete);
+    }
+
 }
 
