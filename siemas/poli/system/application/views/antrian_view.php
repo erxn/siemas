@@ -25,7 +25,8 @@
     <div class="container_12">
         <div class="grid_12">
             <ul>
-
+                <li><a href="">Isi Rekam Medik</a></li>
+                <li><a href="#">Antrian</a></li>
             </ul>
 
         </div>
@@ -33,90 +34,70 @@
     <div style="clear: both;"></div>
 </div>
 
-<div  class="tabs" style="margin-right: 150px; margin-left: 150px">
+
+
+<div  class="tabs" style="margin-left: 50px; margin-top: 50px; float:left; width: 45%">
     <ul>
-        <li><a href="#tabs-a">Antrian Poli Gigi</a></li>
+        <li><a href="#tabs-a">Antri</a></li>
     </ul>
     <div id="tabs-a" >
 
-        <?php if (count($a)<=5) {?>
-        <div class="container_12"  style="">
-            <div style="margin-top: 80px; margin-left: 200px">
 
-                <?php for($i=0;$i<=count($a)-1;$i++) {?>
-                <a style=" text-decoration:none" href="index.php/pasien/data_pasien_remed/<?php echo $a[$i]['id_kunjungan'];?>"
-                    <?php if ($a[$i]['status']=='ANTRI') {?>
-                                class="kotak">
-                    <?php } else if($a[$i]['status']=='SEDANG DIPROSES') { ?>
-                                class="periksa">
-                    <?php } else {?>
-                                class="selesai">
-                    <?php }?>
-                        <?php if ($a[$i]['jk_pasien']=='Laki-laki') {?>
-                            <img src="Template_files/male.gif" border="0"/>
-                        <?php } else { ?>
-                            <img src="Template_files/femaleK.png" border="0"/>
-                        <?php } echo $a[$i]['no_kunjungan'];?>
+        <div class="module" style="background:none; float: none; margin-left: 10px; height:1000px">
 
-                        <?php echo $a[$i]['nama_pasien'];?></a>
-                <?php } ?>
-            </div> <!-- End .container_12 -->
+            <table id="myTable" class="tablesorter" border="8" style=" margin-top: 50px;width:90%">
+                <thead>
+                    <tr>
+                        <th style="width:10%">No. Kunjungan</th>
+                        <th style="width:21%">Nama Pasien</th>
+                        <th style="width:13%">Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+            <?php for ($i=1; $i<=count($a)-1; $i++){?>
+                    <tr class="odd">
+                        <td class="align-center"><?php echo $a[$i]['no_kunjungan']?></td>
+                        <td><a style=" text-decoration:none" href="index.php/pasien/data_pasien_remed/<?php echo $a[$i]['id_kunjungan'];?>"><?php echo $a[$i]['nama_pasien']; ?></a></td>
+                        <td><?php echo  $a[$i]['status'];?></td>
+                    </tr>
+                        <?php }?>
+                </tbody>
+            </table>
         </div>
+    </div>
+</div>
 
-        <br />
-        <br />
-        <br />
 
-        <?php } else {?>
+<div  class="tabs" style="margin-right: 50px; margin-top: 50px;  float:right; width: 45%">
+    <ul>
+        <li><a href="#tabs-b">Sedang Diperiksa</a></li>
+    </ul>
+    <div id="tabs-b" >
 
-        <div class="container_12" style="margin-top: 80px; margin-left: 150px ; width:100%">
-          
-                <?php for($i=0;$i<=5-1;$i++) {?>
-                <a  style=" text-decoration:none" href="index.php/pasien/data_pasien_remed/<?php echo $a[$i]['id_kunjungan'];?>"
-                    <?php if ($a[$i]['status']=='ANTRI') {?>
-                                class="kotak">
-                    <?php } else if($a[$i]['status']=='SEDANG DIPROSES') { ?>
-                                class="periksa">
-                    <?php } else {?>
-                                class="selesai">
+
+        <div class="module" style="background:none; float: none; margin-left: 10px; height:1000px">
+
+            <table id="myTable" class="tablesorter" border="8" style=" margin-top: 50px;width:90%">
+                <thead>
+                    <tr>
+                        <th style="width:10%">No. Kunjungan</th>
+                        <th style="width:21%">Nama Pasien</th>
+                        <th style="width:13%">Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="odd">
+                        <?php for ($i=0; $i<=count($s)-1; $i++){?>
+                        <td class="align-center"><?php echo $s[$i]['no_kunjungan']?></td>
+                        <td><a style=" text-decoration:none" href="" class="pop"><?php echo $s[$i]['nama_pasien']; ?></a></td>
+                        <td><?php echo  $s[$i]['status'];?></td>
+                    </tr>
                     <?php }?>
-                        <?php if ($a[$i]['jk_pasien']=='Laki-laki') {?>
-                            <img src="Template_files/male.gif" border="0"/>
-                        <?php } else { ?>
-                            <img src="Template_files/femaleK.png" border="0"/>
-                        <?php } echo $a[$i]['no_kunjungan'];?>
-
-                        <?php echo $a[$i]['nama_pasien'];?></a>
-                <?php } ?>
-            </div> <!-- End .container_12 -->
-      
-
-        <br />
-        <br />
-        <br />
-        <div class="module" style="background:none; float: none; margin-left: 100px">
-
-            <table id="myTable" class="tablesorter" border="8" style=" margin-left: 5%;width:60%">
-                    <thead>
-                        <tr>
-                            <th style="width:10%">No. Kunjungan</th>
-                            <th style="width:21%">Nama Pasien</th>
-                            <th style="width:13%">Status</th>
-                        </tr>
-                    </thead>
-
-                     <tbody>
-                    <?php for ($i=5; $i<=count($a)-1; $i++) {?>
-
-                        <tr class="odd">
-                            <td class="align-center"><?php echo $a[$i]['no_kunjungan']?></td>
-                            <td><a style=" text-decoration:none" href="" class="pop"><?php echo $a[$i]['nama_pasien']; ?></a></td>
-                         <td><?php echo  $a[$i]['status'];?></td>
-                        </tr>
-                   <?php }?>
-                         </tbody>
-                </table>
-    </div>
-             </div>
-    </div>
-<?php }?>
+                </tbody>
+            </table>
+        </div>
+       
+     </div>
+</div>

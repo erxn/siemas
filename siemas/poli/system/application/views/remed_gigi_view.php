@@ -55,7 +55,7 @@
 </div>
 
     
-<div style="text-align: right;"><div style="float: left; margin-top: 15px; margin-left: 20px; font-size: 20pt;">Rekam Medik Pasien:  <?php echo $data_pasien[0]['nama_pasien'];?></div><a href="index.php/pasien/selesai_pemeriksaan" style="text-decoration: none; margin-top: 50px; margin-right: 20px" ><input name="submit"  type="submit" class="but" value="Pemeriksaan Selesai" name="simpan"></a></div>
+<div style="text-align: right;"><div style="float: left; margin-top: 15px; margin-left: 20px; font-size: 20pt;">Rekam Medik Pasien:      <?php echo $data_pasien[0]['nama_pasien'];?></div><a href="index.php/pasien/selesai_pemeriksaan" style="text-decoration: none; margin-top: 50px; margin-right: 20px" ><input name="submit"  type="submit" class="but" value="Pemeriksaan Selesai" name="simpan"></a></div>
 
 
 <div class="grid_6" style="width: 40%; margin-left:20px; margin-top: 30px ">
@@ -116,7 +116,7 @@
 
 <div class="module" style="width: 55% ;margin-right: 15px ">
 
-    <div  id="tabs">
+    <div  id="tabs" style="height:1000px">
         <ul>
             <li><a href="#tabs-a">Poli Gigi</a></li>
             <li><a href="#tabs-c">Poli Umum</a></li>
@@ -168,24 +168,23 @@
                 </tbody>
             </table>
 
-            <div class="pager" id="pager">
-                <form action="">
-                    <div>
-
-                        <img class="first" src="Template_files/arrow-st.gif" alt="first"/>
-                        <img class="prev" src="Template_files/arrow-18.gif" alt="prev"/>
-                        <input type="text" class="pagedisplay input-short align-center"/>
-                        <img class="next" src="Template_files/arrow000.gif" alt="next"/>
-                        <img class="last" src="Template_files/arrow-su.gif" alt="last"/>
-                        <select class="pagesize input-medium align-center">
-                            <option value="10" selected="selected">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
+             <div class="pager" id="pager">
+                            <form action="">
+                                <div>
+                                <img class="first" src="Template_files/arrow-st.gif" alt="first"/>
+                                <img class="prev" src="Template_files/arrow-18.gif" alt="prev"/>
+                                <input type="text" class="pagedisplay input-short align-center"/>
+                                <img class="next" src="Template_files/arrow000.gif" alt="next"/>
+                                <img class="last" src="Template_files/arrow-su.gif" alt="last"/>
+                                <select class="pagesize input-short align-center">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="40">40</option>
+                                </select>
+                                </div>
+                            </form>
+                        </div>
 
             <div style="clear: both"></div>
 
@@ -351,8 +350,8 @@
 
                     <tr>
                         <td></td>
-                        <td><a href="" input name="submit"  type="submit" class="submit-green" value="Simpan" name="simpan"></a></td>
-
+                         
+                        <td><a style="text-decoration: none" href=""><input name="submit"  type="submit" class="submit-green" value="Simpan" name="simpan"></a></td>
 
                     </tr>
                 </table>

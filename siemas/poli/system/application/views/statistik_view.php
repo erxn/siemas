@@ -38,6 +38,20 @@
             </ul>
             <div id="tabs-a">
 
+                <script type="text/javascript">
+
+                function update_href_bulanan_penyakit() {
+
+                    var link = "index.php/statistik/grafik_bulanan_penyakit";
+                    var bln = $('#bulan_peny').val();
+                    var thn = $('#tahun_peny').val();
+
+                    $('#btn_bulanan_penyakit').attr({'href': link + '/' + bln + '/' + thn});
+
+                }
+
+                </script>
+
                 <table border="0" width="100%" class="noborder" style="text-align: center">
                     <tbody>
                         <tr>
@@ -46,7 +60,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select>
+                                <select name="bulan_peny" id="bulan_peny" onchange="update_href_bulanan_penyakit()">
                                     <option value="0">Pilih bulan:</option>
                                     <option value="1">Januari</option>
                                     <option value="2">Februari</option>
@@ -64,7 +78,7 @@
                                 </select>
                             </td>
                             <td>
-                                <select>
+                                <select name="tahun_penyakit">
                                     <option value="0">Pilih tahun:</option>
                                     <option value="1">2000</option>
                                     <option value="2">2001</option>
@@ -83,20 +97,20 @@
                         </tr>
                         <tr>
                             <td>
-                                <select>
+                                <select name="tahun_peny" id="tahun_peny" style="margin-bottom:10px;" onchange="update_href_bulanan_penyakit()">
                                     <option value="0">Pilih tahun:</option>
-                                    <option value="1">2000</option>
-                                    <option value="2">2001</option>
-                                    <option value="3">2002</option>
-                                    <option value="4">2003</option>
-                                    <option value="5">2004</option>
-                                    <option value="6">2005</option>
-                                    <option value="7">2006</option>
-                                    <option value="8">2007</option>
-                                    <option value="9">2008</option>
-                                    <option value="10">2009</option>
-                                    <option value="11">2010</option>
-                                    <option value="12">2011</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
                                 </select>
                             </td>
                             <td></td>
@@ -104,7 +118,7 @@
                         <tr>
                             <td  style="text-align: center !important">
                                 <div class="tombol-kotak">
-                                <a class="pop"  href="index.php/statistik/grafik_bulanan_penyakit">
+                                    <a class="pop" href="index.php/statistik/grafik_bulanan_penyakit/" id="btn_bulanan_penyakit">
                                     <img src="Template_files/bulan.png" width="90" height="80" alt="edit" />
                                     <span>Lihat grafik</span>
                                 </a>
@@ -140,7 +154,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select>
+                                <select name="bulan_wilayah">
                                     <option value="0">Pilih bulan:</option>
                                     <option value="1">Januari</option>
                                     <option value="2">Februari</option>
@@ -157,7 +171,7 @@
                                 </select>
                             </td>
                             <td>
-                                <select>
+                                <select name="tahun_wil"  style="margin-bottom:10px;">
                                     <option value="0">Pilih tahun:</option>
                                     <option value="1">2000</option>
                                     <option value="2">2001</option>
@@ -176,7 +190,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <select>
+                                <select name="tahun_wilayah">
                                     <option value="0">Pilih tahun:</option>
                                     <option value="1">2000</option>
                                     <option value="2">2001</option>

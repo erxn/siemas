@@ -31,14 +31,14 @@
 <table border="0">
     <tbody>
         <tr>
-            <td><div  class="tabs"  style="margin:70px; margin-left:300px">
+            <td><div  class="tabs"  style="margin:70px; margin-left:270px;width:500px">
                     <ul>
                         <li><a href="#tabs-2">Laporan Bulanan</a></li>
                     </ul>
                     <div id="tabs-2">
                       <table>
                             <tr>
-                            <select>
+                            <select style="margin-left:100px; margin-bottom: 30px">
                                 <option value="0">Pilih bulan:</option>
                                 <option value="1">Januari</option>
                                 <option value="2">Februari</option>
@@ -57,7 +57,7 @@
                             </tr>
 
                             <tr>
-                            <select>
+                            <select style="margin-left:10px;">
                                 <option value="0">Pilih tahun:</option>
                                 <option value="1">2000</option>
                                 <option value="2">2001</option>
@@ -76,7 +76,7 @@
                        
                             <tr>
                                 <td>
-                                    <a style="text-decoration:none" href="index.php/laporan/bulanan_layanan" class="dashboard-module">
+                                    <a style="text-decoration:none; margin-left:50px " href="index.php/laporan/bulanan_layanan" class="dashboard-module">
                                         <img src="Template_files/lap_bul_tindakan.png" width="64" height="64" alt="edit" />
                                         <span>Laporan Tindakan</span>
                                     </a>
@@ -84,7 +84,7 @@
 
                             
                                 <td>
-                                    <a style="text-decoration:none" href="index.php/laporan/bulanan_penyakit" class="dashboard-module">
+                                    <a style="text-decoration:none; margin-left:30px" href="index.php/laporan/bulanan_penyakit" class="dashboard-module">
                                         <img src="Template_files/lap_bul_penyakit.png" width="64" height="64" alt="edit" />
                                         <span>Laporan Penyakit</span>
                                     </a>
@@ -100,15 +100,15 @@
                 </div>
             </td>
             <td>
-                <div  class="tabs"  style="width:100%">
+                <div  class="tabs"  style="width:300px">
                     <ul>
                         <li><a href="#tabs-4">Laporan Tahunan</a></li>
                     </ul>
 
                     <div id="tabs-4">
                         <table>
-                           <tr>
-                                <select>
+                            <tr>
+                                <select style="margin-left: 60px;margin-bottom: 30px">
                                     <option value="0">Masukkan Tahun:</option>
                                     <option value="1">2000</option>
                                     <option value="2">2001</option>
@@ -126,7 +126,7 @@
                            </tr>
                             <tr>
                                 <td >
-                                    <a style="text-decoration:none" href="index.php/laporan/tahunan" class="dashboard-module">
+                                    <a style="text-decoration:none; margin-left: 60px" href="index.php/laporan/tahunan" class="dashboard-module">
                                         <img src="Template_files/reportorium.png" width="64" height="64" alt="edit" />
                                         <span>Laporan Tindakan & Penyakit Gigi</span>
                                     </a>
