@@ -18,11 +18,21 @@ class Antrian extends Controller{
     }
 
      function antri($id_poli){
-        $ant=$this->antrian->tabel_antrian($id_poli);
+        $ant=$this->antrian->tabel_antrian_a($id_poli);
         $data['a']=$ant;
+
+        $ant=$this->antrian->tabel_antrian_sp($id_poli);
+        $data['s']=$ant;
         $this->load->view('antrian_view',$data);
     }
 
+
+
+    function isi_remed_hari_ini($id_poli){
+        $antrian=$this->antrian->tabel_antrian_selesai($id_poli);
+        $data1['selesai']=$antrian;
+        $this->load->view('isi_remed',$data1);
+    }
 }
 
 ?>
