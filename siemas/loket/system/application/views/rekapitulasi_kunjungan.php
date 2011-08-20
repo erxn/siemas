@@ -3,7 +3,7 @@
 <?php $this->load->view('subnav_laporan');?>
 <!-- END SUBNAV -->
 
-<?php print_r($laporan);exit;?>
+<?php //print_r($laporan);exit;?>
 <br/>
 <div>
     <div class="grid_6" style="width: 98%">
