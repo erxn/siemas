@@ -21,10 +21,7 @@
 
 		<div class="container_12">
 
-                   <form method="post"
-                                              onsubmit="if((document.getElementById('bulan').value != 'Pilih Bulan')&&(document.getElementById('tahun').value != 'Pilih tahun'))
-                                                        return confirm('Apakah anda yakin ingin membuat laporan bulan ' + document.getElementById('bulan').value
-                                                        + ' tahun ' + document.getElementById('tahun').value + '?'); else return false;">
+                   <form method="post">
                                 <table>
 					<tr>
 						<td width="120px">
