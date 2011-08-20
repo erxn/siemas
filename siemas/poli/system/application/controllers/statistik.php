@@ -13,16 +13,18 @@ class Statistik extends Controller{
         $this->load->view('statistik_view');
     }
 
-    function grafik_bulanan_penyakit(){
-        $data1 = $this->stat->bulanan_penyakit(8, 2011, 2);
+    function grafik_bulanan_penyakit($bulan, $tahun){
+//        $bulan=$this->input->post('bulan_peny');
+//        $tahun=$this->input->post('tahun_peny');
+        $data1 = $this->stat->bulanan_penyakit($bulan, $tahun, 2);
         $data['data1']=$data1;
-        $data2 = $this->stat->bulanan_penyakit(8, 2011, 3);
+        $data2 = $this->stat->bulanan_penyakit($bulan, $tahun, 3);
          $data['data2']=$data2;
-        $data3 = $this->stat->bulanan_penyakit(8, 2011, 4);
+        $data3 = $this->stat->bulanan_penyakit($bulan,$tahun, 4);
          $data['data3']=$data3;
-        $data4 = $this->stat->bulanan_penyakit(8, 2011, 5);
+        $data4 = $this->stat->bulanan_penyakit($bulan, $tahun, 5);
          $data['data4']=$data4;
-        $data5 = $this->stat->bulanan_penyakit(8, 2011, 6);
+        $data5 = $this->stat->bulanan_penyakit($bulan, $tahun, 6);
          $data['data5']=$data5;
 
          $total=$data1+$data2+$data3+$data4+$data5;
