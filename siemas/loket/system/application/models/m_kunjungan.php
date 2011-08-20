@@ -64,6 +64,9 @@ class M_kunjungan extends Model {
                                 WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND tanggal_kunjungan = '2011-08-11'
                                 AND kecamatan_kk LIKE '%$wil%'");
+    $jumlah_kunjungan = $q->result_array();
+    return $jumlah_kunjungan[0]['jumlah'];
+
     }
     
 }
