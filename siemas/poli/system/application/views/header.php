@@ -84,7 +84,6 @@
 
     </head>
 
-    <body>
         <!-- Header -->
         <div id="header">
             
@@ -99,7 +98,7 @@
                 <div class="container_12">
                     <div class="grid_12">                       												
                         <ul id="nav">
-                            <li><a href="index.php/antrian">Antrian</a></li>
+                            <li><a href="index.php/antrian/antri/1">Antrian</a></li>
                             <li><a href="index.php/pasien">Pasien</a></li>
                             <li><a href="index.php/statistik">Statistik</a></li>
                             <li><a href="index.php/laporan">Laporan</a></li>
@@ -111,5 +110,6 @@
                     <div style="clear: both;"></div>
                 </div><!-- End. .container_12 -->
             </div> <!-- End #header-main -->
+            </div>
             </html>
         
