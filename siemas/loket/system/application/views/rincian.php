@@ -12,7 +12,7 @@
 <br/>
 
 <div>
-    <div class="grid_6" style="width: 78%">
+    <div class="grid_6" style="width: 98%">
         <div class="module">
             <h2><span>RINCIAN BIAYA</span></h2>
             <div class="module-body">
@@ -20,7 +20,7 @@
                     <tr class="odd">
                         <td style="width: 25% ">Tgl Kunjungan</td>
                         <td style="width: 3%">:</td>
-                        <td style="width: 40"><?php //echo tgl_indo($rincian[0]['tanggal_kunjungan'])?></td>
+                        <td style="width: 40"><?php echo tgl_indo($rincian[0]['tanggal_kunjungan'])?></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -29,19 +29,26 @@
                         <td><b><?php echo $pasien[0]['nama_pasien']?></b></td>
                         <td></td>
                     </tr>
-                    <tr class="odd">
+                    <tr  class="odd">
+                        <td>No. Kunjungan</td>
+                        <td>:</td>
+                        <td><?php echo $rincian[0]['no_kunjungan']?></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
                         <td>Umur</td>
                         <td>:</td>
                         <td><?php echo $pasien[0]['umur']. " tahun"?></td>
                         <td></td>
                     </tr>
-                    <tr>
+                    <tr  class="odd">
                         <td>Alamat</td>
                         <td>:</td>
                         <td>Cibogor</td>
                         <td></td>
                     </tr>
-                    <tr class="odd">
+                    <tr>
                         <td>Status Pelayanan</td>
                         <td>:</td>
                         <td>Umum</td>

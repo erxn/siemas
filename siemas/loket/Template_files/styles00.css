@@ -375,9 +375,10 @@ div.module table.tr {
 
 div.module table th {
         
-	background-color: #eeeeee;
+	background-color: #E6EEEE;
 	color: #444444;
-	padding: 5px;
+	padding: 3px;
+        font-size: 11px;
 	text-align: center;
 	border-right: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
@@ -385,10 +386,14 @@ div.module table th {
 	
 div.module table td {
 	background-color: #ffffff;
-	padding: 5px;;
+	padding: 3px;;
 	border-right: 1px solid #d9d9d9;
 	}
 
+div.module table td.font_kecil {
+        font-size: 12px;
+        text-align: right;
+}
 div.module table tr.odd td { /* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
 	background-color: #f1f5fa;
 	}

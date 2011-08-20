@@ -74,6 +74,7 @@ class Pembayaran extends Controller {
             redirect('pembayaran/rincian/'.$id_kunjungan."/Lunas");
         }
     }
+
     function rincian($id_kunjungan,$status) {
         $id = $this->M_kunjungan->get_pasien_by_kunjungan($id_kunjungan);
         $id_kk = $id[0]['id_kk'];
@@ -83,19 +84,18 @@ class Pembayaran extends Controller {
         $data['pasien'] = $data_pasien;
 
         $rinci = $this->M_pembayaran->get_rincian($id_kunjungan);
-
+        //print_r($rinci);exit;
         $data['rincian'] = $rinci;
         $tot = $this->M_pembayaran->total_harga($id_kunjungan);
         $data['total'] = $tot;
 
         if($status=="Lunas")
-            $data['status'] = "Lunas";
+           $data['status'] = "Lunas";
         else $data['status'] = "rinci" ;
         $this->load->view('rincian',$data);
         
     }
 
     
-
-
+    
 }

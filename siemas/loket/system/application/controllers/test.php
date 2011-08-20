@@ -21,5 +21,9 @@ class Test extends Controller {
         $this->load->view("test", $data);
     }
 
+    function poli_umum(){
+        $this->load->view("poli_umum");
+    }
+
 
 }

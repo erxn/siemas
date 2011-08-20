@@ -107,8 +107,8 @@
                     <td><h5><?php echo ucfirst($poli);?></h5></td>
                 </tr>
             </table>
-            
-            
+            <br/>
+            No. Kunjungan: <?php echo $kunjungan[0]['no_kunjungan']?>
         </div>
     </div>
 </div>

@@ -23,7 +23,7 @@
     
     
     <a href="#"   class="kotak"><img src="images/loket_pen.png" border="0"/> Lap. Kunjungan Harian</a>
-    <a href="#"   class="kotak"><img src="images/loket_pen.png" border="0"/> Radiologi</a>
+    <a href="index.php/c_laporan/rekapitulasi_kunjungan" class="kotak"><img src="images/loket_pen.png" border="0"/> Rekapitulasi Kunjungan</a>
 </div>
 
 <script type="text/javascript">

@@ -1,5 +1,18 @@
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".popup").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                        $( "#datepicker" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                    }
+                });
+            });
+        </script>
 <div style="width: 100%">
-<h4 align="right">Total Pasien: 5 orang</h4> 
+
+<h4  class="float-right">Total: <?php echo count($antri_gigi) ?> orang</h4>
+<br/>
 <table id="myTable" class="tablesorter" style="width: 100%">
     <thead>
         <tr>
@@ -11,60 +24,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td class="align-center">1</td>
-            <td><a class="popup" href="index.php/pasien/profil_pasien">Meri Marlina</a></td>
-            <td>19 th</td>
-            <td>Cibogor</td>
-            <td>Antri</td>
+        
+        <?php $i=1;foreach($antri_gigi as $gigi){?>
+        <tr class="<?php if($i%2==0) echo "odd"; else echo "even"?>">
+            <td class="align-center"><?php echo $i++?></td>
+            <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $gigi['id_kk']."/".$gigi['id_pasien']?>"><?php echo $gigi['nama']?></a></td>
+            <td><?php echo $gigi['umur']." th"?></td>
+            <td><?php echo $gigi['kecamatan_kk'];?></td>
+            <td><?php echo $gigi['status']?></td>
         </tr>
-        <tr class="odd">
-            <td class="align-center">1</td>
-            <td><a href="">Meri Marlina</a></td>
-            <td>19 th</td>
-            <td>Cibogor</td>
-            <td>Antri</td>
-        </tr>
+            <?php }?>
+        
 
-        <tr>
-            <td class="align-center">1</td>
-            <td><a href="">Meri Marlina</a></td>
-            <td>19 th</td>
-            <td>Cibogor</td>
-            <td>Antri</td>
-        </tr>
-        <tr class="odd">
-            <td class="align-center">1</td>
-            <td><a href="">Meri Marlina</a></td>
-            <td>19 th</td>
-            <td>Cibogor</td>
-            <td>Sedang diperiksa</td>
-        </tr>
-        <tr>
-            <td class="align-center">1</td>
-            <td><a href="">Meri Marlina</a></td>
-            <td>19 th</td>
-            <td>Cibogor</td>
-            <td>Antri</td>
-        </tr>
     </tbody>
 </table>
-<div id="pager" class="pager">
-    <form action="">
-        <div>
-            <img alt="first" src="Template_files/arrow-st.gif" class="first"/>
-            <img alt="prev" src="Template_files/arrow-18.gif" class="prev"/>
-            <input type="text" class="pagedisplay input-short align-center"/>
-            <img alt="next" src="Template_files/arrow000.gif" class="next"/>
-            <img alt="last" src="Template_files/arrow-su.gif" class="last"/>
-            <select class="pagesize input-short align-center">
-                <option selected="selected" value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-            </select>
-        </div>
-    </form>
-</div>
-
 </div>

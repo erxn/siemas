@@ -39,12 +39,14 @@
                 <?php if(isset($x)) {?>
                 <tr class="odd">
                     <td>&nbsp;</td>
-                    <td><form name="form1" method="post" action="">
-                            <input type="radio" name="radio" id="radio" value="radio">
+                    <td><form name="status_kartu" id="pasien_lama" method="post" action="index.php/pasien/registrasi_pasien_lama/<?php echo $pasien[0]['id_pasien'] ?>">
+                            <input type="radio" name="status_kartu"  value="Y">
                             Bawa kartu
                             &nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="radio" id="radio2" value="radio">
+                            <input type="radio" name="status_kartu"  value="T" checked="checked">
                             Tidak Bawa
+
+                            <input type="hidden" id="poli" name="poli" value=""/>
                         </form>
                     </td>
                 </tr>
