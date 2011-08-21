@@ -32,15 +32,20 @@
     function load_tabel_tunda() {
         $('#div-tunda').load("index.php/antrian/tabel_tunda/1");
     }
+    function load_tabel_selesai() {
+        $('#div-selesai').load("index.php/antrian/tabel_selesai/1");
+    }
 
     $(document).ready(function(){
         load_tabel_antri();
         load_tabel_diperiksa();
         load_tabel_tunda();
+        load_tabel_selesai();
 
         setInterval("load_tabel_antri()", 3000);
         setInterval("load_tabel_diperiksa()", 3000);
         setInterval("load_tabel_tunda()", 3000);
+         setInterval("load_tabel_selesai()", 3000);
 
     });
 </script>
@@ -115,6 +120,10 @@ function selesai(id) {
 
 
         <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-diperiksa">
+
+        </div>
+
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-selesai">
 
         </div>
        
