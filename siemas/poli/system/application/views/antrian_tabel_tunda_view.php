@@ -5,9 +5,8 @@
 <table>
     <thead>
         <tr>
-            <th style="width:5%">No. Kunj.</th>
-            <th style="width:21%">Nama Pasien</th>
-            <th style="width:13%">Tindakan</th>
+            <th style="width:75px">No. Kunj.</th>
+            <th colspan="2">Nama Pasien</th>
         </tr>
     </thead>
 
@@ -15,13 +14,13 @@
         <?php for ($i=0; $i<=count($t)-1; $i++) {?>
         <tr <?php if($i%2!=0) echo 'class="odd"' ?>>
             <td class="align-center"><?php echo $t[$i]['no_kunjungan']?></td>
-            <td>
+            <td style="border-right: none">
                 <a style=" text-decoration:none" href="" class="pop"><?php echo $t[$i]['nama_pasien']; ?></a>
                 <br/>
                 <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $t[$i]['jk_pasien'] . ', ' . $t[$i]['umur'] . ' th'; ?></small>
             </td>
-            <td>
-                <a href="#" onclick="periksa(<?php echo $t[$i]['id_antrian'] ?>); return false">Periksa</a>
+            <td valign="middle" align="right">
+                <a href="#" style="text-decoration: none" onclick="periksa(<?php echo $t[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-green">Periksa</a>
             </td>
 
         </tr>
