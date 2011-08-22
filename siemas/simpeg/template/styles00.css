@@ -323,7 +323,7 @@ div.module h2 {
     /* FONT PROPERTIES */
     text-decoration: none;
     color: #444444;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     font-size:12px;
     font-weight:bold;
     width: 100%;
@@ -416,7 +416,7 @@ a.button {
     /* FONT PROPERTIES */
     text-decoration: none;
     color: #444444;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     font-size:12px;
 }
 
@@ -448,7 +448,7 @@ div.module a.button {
     /* FONT PROPERTIES */
     text-decoration: none;
     color: #444444;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     font-size:12px;
 }
 
@@ -543,7 +543,7 @@ textarea:focus {
 }
 
 
-input.submit-green { 
+.submit-green { 
     background: url(submit-g.gif) top left repeat-x;
     border: 0;
     border-top: 1px solid #6bd091;
@@ -559,11 +559,11 @@ input.submit-green {
     -webkit-border-radius: 3px;
 }
 
-input.submit-green-hover { 
+.submit-green-hover { 
     background-image: url(submit-h.gif);
 }
 
-input.submit-gray { 
+.submit-gray { 
     background: url(submit-h.gif) top left repeat-x;
     border: 0;
     border-top: 1px solid #cccccc;
@@ -577,7 +577,7 @@ input.submit-gray {
     cursor: pointer;
 }
 
-input.submit-gray-hover { 
+.submit-gray-hover { 
     background-image: url(submit-i.gif);
 }
 
@@ -893,4 +893,16 @@ a.dashboard-module span {
 
 .gray {
     color: #AAAAAA;
+}
+
+.xls-button {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+    margin-top: 3px;
+}
+
+.xls-button img {
+    margin-top: 5px;
+    vertical-align: top;
 }
