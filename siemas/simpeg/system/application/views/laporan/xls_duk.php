@@ -129,7 +129,7 @@ $i=9; foreach ($list as $pegawai) :
     $xls->getActiveSheet()->setCellValue("A$i", $i-8);
     $xls->getActiveSheet()->setCellValue("B$i", $pegawai['nama']);
     $xls->getActiveSheet()->setCellValue("C$i", format_nip($pegawai['nip']));
-    $xls->getActiveSheet()->setCellValue("D$i", $pegawai['pangkat'] . '-' . $pegawai['golongan']);
+    $xls->getActiveSheet()->setCellValue("D$i", $pegawai['pangkat'] . ' - ' . $pegawai['golongan']);
     $xls->getActiveSheet()->setCellValue("E$i", format_tanggal_tampilan($pegawai['TMT_pangkat']));
     $xls->getActiveSheet()->setCellValue("F$i", $pegawai['masa_kerja_tahun']);
     $xls->getActiveSheet()->setCellValue("G$i", $pegawai['masa_kerja_bulan']);

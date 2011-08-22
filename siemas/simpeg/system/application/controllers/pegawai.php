@@ -575,6 +575,13 @@ class Pegawai extends Controller {
 
         $this->load->view('laporan/xls_duk', $data);
     }
-    
+
+    function laporan_biodata_fungsional_xls() {
+        $data = array();
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->plugin('phpexcel');
+        $this->load->view('laporan/xls_biodata_fungsional', $data);
+    }
 
 }
