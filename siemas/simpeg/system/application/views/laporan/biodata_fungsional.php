@@ -3,6 +3,10 @@
 <div class="belowribbon">
     <h1>
         Biodata fungsional
+        <a href="index.php/pegawai/laporan_biodata_fungsional_xls" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+            <img src="template/ms-excel.png" alt=""/>
+            Simpan ke Excel
+        </a>
     </h1>
 </div>
 
