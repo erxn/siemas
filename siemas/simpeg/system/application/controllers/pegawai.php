@@ -557,4 +557,24 @@ class Pegawai extends Controller {
         $this->load->view('laporan/skumptk', $data);
     }
 
+    // LAPORAN : XLS
+
+    function laporan_duk_xls($urut) {
+
+        $data = array();
+
+        if($urut == 1) {
+            $data['list'] = $this->pegawai->get_duk('rank_pangkat');
+        } else {
+            $data['list'] = $this->pegawai->get_duk();
+        }
+
+        $data['urut']  = $urut;
+
+        $this->load->plugin('phpexcel');
+
+        $this->load->view('laporan/xls_duk', $data);
+    }
+    
+
 }
