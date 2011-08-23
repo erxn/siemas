@@ -117,13 +117,67 @@ class C_laporan extends Controller {
         for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, intval($bln), intval($thn)); $i++) {
 
             $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
-            
-            /*Kunjungan Lama*/
-            $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,"Pabaton");
-                //echo $kunj_lama_pabaton;exit;
-             $laporan[] = array(
+            $wil1 = "pabaton";          $stat1 = "Luar wilayah";
+            $wil2 = "cibogor";          $stat2 = "Luar Kota";
+            $gigi=1; $umum=2; $kia=3; $lab=4; $radio=4; $rujukan=5;
 
-                'lama_pab' => $kunj_lama_pabaton
+            /*Kunjungan Lama*/
+            $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil1);
+            $kunj_lama_cibogor = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil2);
+            $kunj_lama_LW = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat1);
+            $kunj_lama_LKot = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat2);
+            
+            /*Kunjungan Baru*/
+            $kunj_baru_pabaton = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil1);
+            $kunj_baru_cibogor = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil2);
+            $kunj_baru_LW = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat1);
+            $kunj_baru_LKot = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat2);
+
+            $kunj_umum_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$umum,$tgl);
+            $kunj_umum_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$umum,$tgl);
+            $kunj_umum_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$umum,$tgl);
+            $kunj_umum_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$umum,$tgl);
+
+
+            $kunj_gigi_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$gigi,$tgl);
+            $kunj_gigi_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$gigi,$tgl);
+            $kunj_gigi_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$gigi,$tgl);
+            $kunj_gigi_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$gigi,$tgl);
+
+            $kunj_kia_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$kia,$tgl);
+            $kunj_kia_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$kia,$tgl);
+            $kunj_kia_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$kia,$tgl);
+            $kunj_kia_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$kia,$tgl);
+            
+            $laporan[] = array(
+
+                'lama_pab' => $kunj_lama_pabaton,
+                'lama_cib' => $kunj_lama_cibogor,
+                'lama_LW' => $kunj_lama_LW,
+                'lama_LKot' => $kunj_lama_LKot,
+
+                'baru_pab' => $kunj_baru_pabaton,
+                'baru_cib' => $kunj_baru_cibogor,
+                'baru_LW' => $kunj_baru_LW,
+                'baru_LKot' => $kunj_baru_LKot,
+
+                'umum_pab' => $kunj_umum_pabaton,
+                'umum_cib' => $kunj_umum_cibogor,
+                'umum_LW' => $kunj_umum_LW,
+                'umum_LKot' => $kunj_umum_LKot,
+
+                'gigi_pab' => $kunj_gigi_pabaton,
+                'gigi_cib' => $kunj_gigi_cibogor,
+                'gigi_LW' => $kunj_gigi_LW,
+                'gigi_LKot' => $kunj_gigi_LKot,
+
+                'kia_pab' => $kunj_kia_pabaton,
+                'kia_cib' => $kunj_kia_cibogor,
+                'kia_LW' => $kunj_kia_LW,
+                'kia_LKot' => $kunj_kia_LKot,
+
+                'bulan' => $bln,
+                'tahun' => $thn
                 );
 
              $data['laporan'] = $laporan;
@@ -131,5 +185,107 @@ class C_laporan extends Controller {
         }
         //print_r($data);exit;
         $this->load->view('rekapitulasi_kunjungan',$data);
+    }
+
+    function rekap_poli(){
+        $this->load->view('rekap_kunjungan_by_poli');
+    }
+
+
+    function rekap_status_askes_poli(){
+    /*semuanya pasien yang pake ASKES. Rekapan berdasarkan poli tujuan dan jenis layanan*/
+        $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
+        $data['tahun'] = $list_thn;
+
+        if($this->input->post('pilih')){
+            /*bulan dan tahun yang dipilih*/
+            $bln = $this->input->post('bulan_kunjungan');
+            $thn = $this->input->post('tahun_kunjungan');
+
+        } else {
+
+            $bln = date("m");
+            $thn = date("Y");
+        }
+
+        $laporan = array();
+
+        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, intval($bln), intval($thn)); $i++) {
+
+            $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
+            $pab = "pabaton";          $lw = "Luar wilayah";
+            $cib = "cibogor";          $lk = "Luar Kota";
+
+            $askes = "Askes"; $jamkesmas = "Jamkesmas";  $GR="Lain-lain";
+            $gigi=1; $umum=2; $kia=3; $lab=4; $radio=4; $rujukan=5;
+
+            /*seluruh kunjungan ASKES*/
+            $kunjungan_askes = $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$askes,$cib)+
+                               $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$askes,$pab);
+            
+            /*pasien ASKES + poli UMUM*/
+            $kunj_umum_pabaton = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$pab,$askes,$umum);
+            $kunj_umum_cibogor = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$cib,$askes,$umum);
+
+            /*pasien ASKES + poli GIGI*/
+            $kunj_gigi_pabaton = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$pab,$askes,$gigi);
+            $kunj_gigi_cibogor = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$cib,$askes,$gigi);
+            $kunj_gigi_LW = $this->M_kunjungan->get_kunjungan_layanan_status($tgl,$lw,$askes,$gigi);
+            $kunj_gigi_LKot = $this->M_kunjungan->get_kunjungan_layanan_status($tgl,$lk,$askes,$gigi);
+
+            /*pasien ASKES + poli KIA*/
+            $kunj_kia_pabaton = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$pab,$askes,$kia);
+            $kunj_kia_cibogor = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$cib,$askes,$kia);
+            $kunj_kia_LW = $this->M_kunjungan->get_kunjungan_layanan_status($tgl,$lw,$askes,$kia);
+            $kunj_kia_LKot = $this->M_kunjungan->get_kunjungan_layanan_status($tgl,$lk,$askes,$kia);
+
+            /*pasien ASKES + rujukan*/
+            $rujukan = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$pab,$askes,$rujukan)+
+                       $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$cib,$askes,$rujukan);
+
+            /*jamkesmas + lokasi*/
+            $jam_pab = $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$pab,$jamkesmas);
+            $jam_cib = $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$cib,$jamkesmas);
+            $gr =  $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$GR,$cib)+
+                               $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$GR,$pab);
+            $laporan[] = array(
+                'askes' => $kunjungan_askes,
+                'umum_pab' => $kunj_umum_pabaton,
+                'umum_cib' => $kunj_umum_cibogor,
+
+                'gigi_pab' => $kunj_gigi_pabaton,
+                'gigi_cib' => $kunj_gigi_cibogor,
+                'gigi_LW' => $kunj_gigi_LW,
+                'gigi_LKot' => $kunj_gigi_LKot,
+
+                'kia_pab' => $kunj_kia_pabaton,
+                'kia_cib' => $kunj_kia_cibogor,
+                'kia_LW' => $kunj_kia_LW,
+                'kia_LKot' => $kunj_kia_LKot,
+
+                'rujuk' => $rujukan,
+                'jam_pab' => $jam_pab,
+                'jam_cib' => $jam_cib,
+                'gr' => $gr,
+//
+//                'gigi_pab' => $kunj_gigi_pabaton,
+//                'gigi_cib' => $kunj_gigi_cibogor,
+//                'gigi_LW' => $kunj_gigi_LW,
+//                'gigi_LKot' => $kunj_gigi_LKot,
+//
+//                'kia_pab' => $kunj_kia_pabaton,
+//                'kia_cib' => $kunj_kia_cibogor,
+//                'kia_LW' => $kunj_kia_LW,
+//                'kia_LKot' => $kunj_kia_LKot,
+//
+                'bulan' => $bln,
+                'tahun' => $thn
+                );
+
+             $data['laporan'] = $laporan;
+
+        }
+        
+        $this->load->view('rekap_kunjungan_by_status_layanan',$data);
     }
 }

@@ -11,28 +11,33 @@
 </script>
 <div style="width: 100%">
     <h4 align="right">Total Pasien: <?php echo count($antri_lab) ?> orang</h4>
-    <table id="myTable" class="tablesorter" style="width: 100%">
-        <thead>
-            <tr>
-                <th class="header" style="width: 1%;">No</th>
-                <th class="header" style="width: 15%;">Nama</th>
-                <th class="header" style="width: 1%;">Umur</th>
-                <th class="header" style="width: 12%;">Alamat</th>
-                <th class="header" style="width: 8%;">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i=1;foreach($antri_lab as $lab){?>
-            <tr class="<?php if($i%2==0) echo "odd"; else echo "even"?>">
-                <td class="align-center"><?php echo $i++?></td>
-                <td><a href=""><?php echo $lab['nama']?></a></td>
-                <td><?php echo $lab['umur']." th"?></td>
-                <td><?php echo $lab['kecamatan_kk'];?></td>
-                <td><?php echo $lab['status']?></td>
-            </tr>
+   <table style="width: 100%">
+    <thead>
+        <tr>
+            <th class="header" style="width: 1%;">No</th>
+            <th class="header" style="width: 10%;">Nama</th>
+            <th class="header" style="width: 7%;">Alamat</th>
+            <th class="header" style="width: 2%;">Pelayanan</th>
+            <th class="header" style="width: 5%;">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <?php $i=1;foreach($antri_lab as $lab){?>
+        <tr class="<?php if($i%2==0) echo "odd";?>">
+            <td class="align-center"><?php echo $i++?></td>
+            <td><a style="font-size: 15px !important;" class="popup" href="index.php/pasien/profil_pasien/<?php echo $lab['id_kk']."/".$lab['id_pasien']?>"><?php echo $lab['nama']?></a>
+                <br/>
+                <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $lab['jk_pasien'] . ', ' . $lab['umur'] . ' th'; ?></small>
+            </td>
+            <td><?php echo $lab['kelurahan_kk'];?></td>
+            <td class="align-center"><?php echo $lab['status_pelayanan']?></td>
+            <td class="align-center"><small style="font-size: 12px; color: #777777; font-weight: normal"><?php echo $lab['status']?></small></td>
+        </tr>
             <?php }?>
 
-        </tbody>
-    </table>
+
+    </tbody>
+</table>
 
 </div>

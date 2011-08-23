@@ -108,7 +108,7 @@
                 </tr>
             </table>
             <br/>
-            No. Kunjungan: <?php echo $kunjungan[0]['no_kunjungan']?>
+            No. Kunjungan: <?php echo $kunjungan['no_kunjungan']?>
         </div>
     </div>
 </div>

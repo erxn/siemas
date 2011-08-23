@@ -100,8 +100,8 @@ $(document).ready(function() {
                         <td class="align-center"><?php echo $i++; ?></td>
                         <td>10-04-2010</td>
                         <td><?php echo $hasil['kode_pasien'];?></td>
-                        <td><a class="popup" href="index.php/kk/profil_kk"><?php echo $hasil['nama_kk'];?></a></td>
-                        <td><a class="popup" href="index.php/pasien/profil_pasien"><?php echo $hasil['nama_pasien'];?></a></td>
+                        <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk']."/".$hasil['id_pasien']?>"><?php echo $hasil['nama_kk'];?></a></td>
+                        <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a></td>
                         <td><?php echo $hasil['jk_pasien'];?></td>
                         <td>20-05-1991</td>
                         <td><?php echo $hasil['alamat_kk'];?></td>
@@ -116,23 +116,6 @@ $(document).ready(function() {
                 </tbody>
             </table>
 
-            <div class="pager" id="pager">
-                <form action="">
-                    <div>
-                        <img class="first" src="Template_files/arrow-st.gif" alt="first"/>
-                        <img class="prev" src="Template_files/arrow-18.gif" alt="prev"/>
-                        <input type="text" class="pagedisplay input-short align-center"/>
-                        <img class="next" src="Template_files/arrow000.gif" alt="next"/>
-                        <img class="last" src="Template_files/arrow-su.gif" alt="last"/>
-                        <select class="pagesize input-short align-center">
-                            <option value="10" selected="selected">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 </div>

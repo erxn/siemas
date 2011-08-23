@@ -12,183 +12,221 @@
     });
 </script>
 
-<div class="container_12">
-    <div class="grid_12" style=" width: 40%; margin-left:400px; margin-top: 100px ">
+<!-- SUBNAV -->
+<div id="subnav">
+    <div class="container_12">
+        <div class="grid_12">
 
-        <div  id="tabs">
-            <ul>
-                <li><a href="#tabs-a">Statistik Penyakit</a></li>
-                <li><a href="#tabs-b">Statistik Wilayah</a></li>
-            </ul>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<!-- END SUBNAV -->
 
+<?php
 
-            <div id="tabs-a">
+// perhitungannya di sini ajah
 
-                <table border="0" width="100%" class="noborder" style="text-align: center">
-                    <tbody>
-                        <tr>
-                            <td>BULANAN</td>
-                            <td>TAHUNAN</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select>
-                                    <option value="0">Pilih bulan:</option>
-                                    <option value="1">Januari</option>
-                                    <option value="2">Februari</option>
-                                    <option value="3">Maret</option>
-                                    <option value="4">April</option>
-                                    <option value="5">Mei</option>
-                                    <option value="6">Juni</option>
-                                    <option value="7">Juli</option>
-                                    <option value="8">Agustus</option>
-                                    <option value="9">September</option>
-                                    <option value="10">Oktober</option>
-                                    <option value="11">November</option>
-                                    <option value="12">Desember</option>
+$jumlah_kunjungan_lama = $laporan['lama_pab'] + $laporan['lama_cib'] + $laporan['lama_LW'] + $laporan['lama_LKot'];
+$jumlah_kunjungan_baru = $laporan['baru_pab'] + $laporan['baru_cib'] + $laporan['baru_LW'] + $laporan['baru_LKot'];
 
-                                </select>
-                            </td>
-                            <td>
-                                <select>
-                                    <option value="0">Pilih tahun:</option>
-                                    <option value="1">2000</option>
-                                    <option value="2">2001</option>
-                                    <option value="3">2002</option>
-                                    <option value="4">2003</option>
-                                    <option value="5">2004</option>
-                                    <option value="6">2005</option>
-                                    <option value="7">2006</option>
-                                    <option value="8">2007</option>
-                                    <option value="9">2008</option>
-                                    <option value="10">2009</option>
-                                    <option value="11">2010</option>
-                                    <option value="12">2011</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select>
-                                    <option value="0">Pilih tahun:</option>
-                                    <option value="1">2000</option>
-                                    <option value="2">2001</option>
-                                    <option value="3">2002</option>
-                                    <option value="4">2003</option>
-                                    <option value="5">2004</option>
-                                    <option value="6">2005</option>
-                                    <option value="7">2006</option>
-                                    <option value="8">2007</option>
-                                    <option value="9">2008</option>
-                                    <option value="10">2009</option>
-                                    <option value="11">2010</option>
-                                    <option value="12">2011</option>
-                                </select>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center !important">
-                                <a id="datepicker" href="bulanan_penyakit.php" class="tombol-kotak">
-                                    <img src="Template_files/bulan.png" width="90" height="80" alt="edit" />
-                                    <span>Lihat grafik</span>
-                                </a>
-                            </td>
-                            <td id="datepicker" style="text-align: center !important">
-                                <a id="datepicker1" href="tahunan_penyakit.php" class="tombol-kotak">
-                                    <img src="Template_files/tahun.png" width="80" height="80" alt="edit" />
-                                    <span>Lihat grafik</span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+$jumlah_kunjungan_pab = $laporan['lama_pab'] + $laporan['baru_pab'] + $laporan['umum_pab'] + $laporan['gigi_pab'] + $laporan['kia_pab'];
+$jumlah_kunjungan_cib = $laporan['lama_cib'] + $laporan['baru_cib'] + $laporan['umum_cib'] + $laporan['gigi_cib'] + $laporan['kia_cib'];
+$jumlah_kunjungan_LW = $laporan['lama_LW'] + $laporan['baru_LW'] + $laporan['umum_LW'] + $laporan['gigi_LW'] + $laporan['kia_LW'];
+$jumlah_kunjungan_LKot = $laporan['lama_LKot'] + $laporan['baru_LKot'] + $laporan['umum_LKot'] + $laporan['gigi_LKot'] + $laporan['kia_LKot'];
+
+$jumlah_kunjungan_umum = $laporan['umum_pab'] + $laporan['umum_cib'] + $laporan['umum_LW'] + $laporan['umum_LKot'];
+$jumlah_kunjungan_gigi = $laporan['gigi_pab'] + $laporan['gigi_cib'] + $laporan['gigi_LW'] + $laporan['gigi_LKot'];
+$jumlah_kunjungan_kia = $laporan['kia_pab'] + $laporan['kia_cib'] + $laporan['kia_LW'] + $laporan['kia_LKot'];
 
 
-            <div id="tabs-b">
+?>
 
-                <table border="0" width="100%" class="noborder" style="text-align: center">
-                    <tbody>
-                        <tr>
-                            <td>BULANAN</td>
-                            <td>TAHUNAN</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select>
-                                    <option value="0">Pilih bulan:</option>
-                                    <option value="1">Januari</option>
-                                    <option value="2">Februari</option>
-                                    <option value="3">Maret</option>
-                                    <option value="4">April</option>
-                                    <option value="5">Mei</option>
-                                    <option value="6">Juni</option>
-                                    <option value="7">Juli</option>
-                                    <option value="8">Agustus</option>
-                                    <option value="9">September</option>
-                                    <option value="10">Oktober</option>
-                                    <option value="11">November</option>
-                                    <option value="12">Desember</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select>
-                                    <option value="0">Pilih tahun:</option>
-                                    <option value="1">2000</option>
-                                    <option value="2">2001</option>
-                                    <option value="3">2002</option>
-                                    <option value="4">2003</option>
-                                    <option value="5">2004</option>
-                                    <option value="6">2005</option>
-                                    <option value="7">2006</option>
-                                    <option value="8">2007</option>
-                                    <option value="9">2008</option>
-                                    <option value="10">2009</option>
-                                    <option value="11">2010</option>
-                                    <option value="12">2011</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select>
-                                    <option value="0">Pilih tahun:</option>
-                                    <option value="1">2000</option>
-                                    <option value="2">2001</option>
-                                    <option value="3">2002</option>
-                                    <option value="4">2003</option>
-                                    <option value="5">2004</option>
-                                    <option value="6">2005</option>
-                                    <option value="7">2006</option>
-                                    <option value="8">2007</option>
-                                    <option value="9">2008</option>
-                                    <option value="10">2009</option>
-                                    <option value="11">2010</option>
-                                    <option value="12">2011</option>
-                                </select>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center !important">
-                                <a id="datepicker2" href="bulanan_wilayah.php" class="tombol-kotak">
-                                    <img src="Template_files/bulan.png" width="90" height="80" alt="edit" />
-                                    <span>Lihat grafik</span>
-                                </a>
-                            </td>
-                            <td style="text-align: center !important">
-                                <a id="datepicker3" href="tahunan_wilayah.php" class="tombol-kotak">
-                                    <img src="Template_files/tahun.png" width="80" height="80" alt="edit" />
-                                    <span>Lihat grafik</span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript">
+
+var chart1, chart2;
+$(document).ready(function() {
+   chart1 = new Highcharts.Chart({
+      chart: {
+         renderTo: 'grafik1',
+         defaultSeriesType: 'bar'
+      },
+      title: {
+         text: 'Grafik jumlah kunjungan'
+      },
+      subtitle: {
+         text: 'Berdasarkan status pasien'
+      },
+      xAxis: {
+         categories: ['Pasien lama', 'Pasien baru'],
+         title: {
+            text: null
+         }
+      },
+      yAxis: {
+         min: 0,
+         title: {
+            text: 'Jumlah kunjungan',
+            align: 'high'
+         }
+      },
+      tooltip: {
+         formatter: function() {
+            return ''+
+                this.series.name +': '+ this.y +' orang';
+         }
+      },
+      plotOptions: {
+         bar: {
+            dataLabels: {
+               enabled: true
+            }
+         }
+      },
+      legend: {
+          enabled: false
+      },
+      credits: {
+         enabled: false
+      },
+           series: [{
+         name: 'Jumlah',
+         data: [<?php echo $jumlah_kunjungan_lama ?>, <?php echo $jumlah_kunjungan_baru ?>]
+      }]
+   });
+
+   chart2 = new Highcharts.Chart({
+      chart: {
+         renderTo: 'grafik2',
+         defaultSeriesType: 'bar'
+      },
+      title: {
+         text: 'Grafik jumlah kunjungan'
+      },
+      subtitle: {
+         text: 'Berdasarkan wilayah'
+      },
+      xAxis: {
+         categories: ['Pabaton', 'Cibogor', 'Luar wilayah', 'Luar kota'],
+         title: {
+            text: null
+         }
+      },
+      yAxis: {
+         min: 0,
+         title: {
+            text: 'Jumlah kunjungan',
+            align: 'high'
+         }
+      },
+      tooltip: {
+         formatter: function() {
+            return ''+
+                this.series.name +': '+ this.y +' orang';
+         }
+      },
+      plotOptions: {
+         bar: {
+            dataLabels: {
+               enabled: true
+            }
+         }
+      },
+      legend: {
+          enabled: false
+      },
+      credits: {
+         enabled: false
+      },
+           series: [{
+         name: 'Jumlah',
+         data: [<?php echo $jumlah_kunjungan_pab ?>, <?php echo $jumlah_kunjungan_cib ?>, <?php echo $jumlah_kunjungan_LW ?>, <?php echo $jumlah_kunjungan_LKot ?>]
+      }]
+   });
+
+   chart3 = new Highcharts.Chart({
+      chart: {
+         renderTo: 'grafik3',
+         defaultSeriesType: 'bar'
+      },
+      title: {
+         text: 'Grafik jumlah kunjungan'
+      },
+      subtitle: {
+         text: 'Berdasarkan poli tujuan'
+      },
+      xAxis: {
+         categories: ['Poli Umum', 'Poli Gigi', 'Poli KIA'],
+         title: {
+            text: null
+         }
+      },
+      yAxis: {
+         min: 0,
+         title: {
+            text: 'Jumlah kunjungan',
+            align: 'high'
+         }
+      },
+      tooltip: {
+         formatter: function() {
+            return ''+
+                this.series.name +': '+ this.y +' orang';
+         }
+      },
+      plotOptions: {
+         bar: {
+            dataLabels: {
+               enabled: true
+            }
+         }
+      },
+      legend: {
+          enabled: false
+      },
+      credits: {
+         enabled: false
+      },
+           series: [{
+         name: 'Jumlah',
+         data: [<?php echo $jumlah_kunjungan_umum ?>, <?php echo $jumlah_kunjungan_gigi ?>, <?php echo $jumlah_kunjungan_kia ?>]
+      }]
+   });
 
 
-            </div>
+});
+
+</script>
+
+
+<div class="grid_6" style="width: 98%">
+    <div class="module">
+        <h2><span>STATISTIK HARIAN</span></h2>
+        <div class="module-body">
+            <form action="" method="post">
+
+                Pilih tanggal:
+                <input type="text" id="datepicker" name="tgl_statistik" class="input-medium" value="<?php echo $tgl ?>"/>
+                <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
+
+            </form>
+            <br/>
+            <hr/>
+
+            <div style="width: 48%; float: left; height: 300px;" id="grafik1"></div>
+            <div style="width: 48%; float: left; height: 300px;" id="grafik2"></div>
+
+            <div style="clear: both"></div>
+            <br/>
+
+            <div style="width: 48%; float: left; height: 300px;" id="grafik3"></div>
+
+            <pre>
+            <?php //print_r($laporan) ?>
+            </pre>
         </div>
     </div>
 </div>
+
+

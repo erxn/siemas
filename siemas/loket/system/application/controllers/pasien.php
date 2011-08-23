@@ -144,6 +144,7 @@ class Pasien extends Controller {
         $hasil_cari = $this->M_pasien->cari_pasien($kode_pasien,$nama_pasien,$umur_pasien,$alamat);
         $data['hasil_cari_pasien'] = $hasil_cari;
         }
+        
         $this->load->view('data_pasien', $data);
         }
 
