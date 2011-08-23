@@ -42,26 +42,18 @@ class Pasien extends Controller {
         $id_pasien_yang_sedang_diperiksa = $id_pasien_yang_sedang_diperiksa[0]['id_pasien'];
         if($this->input->post('submit')) {
 
-             if($this->input->post('submit')) {
-
-            // insert ke tabel remed_poli_umum
-
-            $data1 = array(
+            // insert ke tabel remed_poli_gigi
+            $umum = array(
                     'tanggal_kunjungan_umum' =>date("Y-m-d"),
                     'anamnesis'      =>$this->input->post('n_anamnesis'),
                     'diagnosa'      =>$this->input->post('n_diagnosa'),
                     'penyakit_umum' =>$this->input->post('n_penyakit'),
-                    'keterangan'    =>$this->input->post('n_ket'),
-                    'id_kunjungan'  => $id_kunjungan, //sementara
-                    'id_pasien' => $id_pasien );
-            $id_remed=$this->remed->insert_umum($data1);
-            $data1['diagnosa'] = $id_remed;
+                    'keterangan'    =>$this->input->post('n_keterangan'),
+                    'id_kunjungan'  => $id_kunjungan,
+                    'id_pasien' => $id_pasien_yang_sedang_diperiksa );
+            $id_remed=$this->remed->insert_umum($umum);
 
-
-            redirect('pasien/pasien_remed_berhasil');
-
-        }
-         
+   
         }
         $data_kunj_pasien=$this->remed->get_kunj_pasien($id_pasien_yang_sedang_diperiksa);
         $remed['data_kunj']=$data_kunj_pasien;

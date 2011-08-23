@@ -96,19 +96,90 @@ class Antrian extends Controller {
 
         if($this->input->post('submit')) {
 
+            // insert tabel tbc kalo ada
+
+            if($this->input->post('is_tbc') == '1') {
+
+                $data_tbc = array(
+                        'alasan_periksa_lab'      =>$this->input->post('n_alasan_periksa'),
+                        'hasil_periksa_lab'      =>$this->input->post('n_hasil_periksa'),
+                        'rejimen' =>$this->input->post('n_rejimen'),
+                        'klasifikasi_penyakit'=>$this->input->post('n_paru'),
+                        'tipe_penderita'=>$this->input->post('tipe_penderita')
+                );
+                $id_tbc = $this->remed->insert_tbc($data_tbc);
+
+            } else {
+
+                $id_tbc = null;
+
+            }
+
+            // insert tabel diare kalo ada
+
+            if($this->input->post('is_diare') == '1') {
+
+                $data_diare = array(
+                    'etiologi_diare'  =>$this->input->post('n_etiologi_diare'),
+                    'keadaan_umum'      =>$this->input->post('n_keadaan_umum'),
+                    'keadaan_mata' =>$this->input->post('n_mata'),
+                    'keadaan_air_mata'=>$this->input->post('air_mata'),
+                    'keadaan_mulut'=>$this->input->post('n_mulut'),
+                    'rasa_haus'=>$this->input->post('n_haus'),
+                    'turgor'=>$this->input->post('n_turgor'),
+                    'derajat_dehidrasi'=>$this->input->post('n_dehidrasi'),
+                    'pemeriksaan_lab_khorela'=>$this->input->post('n_lab'),
+                    'pemakaian'=>$this->input->post('n_pemakaian'),
+                    'keterangan'=>$this->input->post('n_keterangan')
+                );
+                $id_diare = $this->remed->insert_diare($data_diare);
+
+            } else {
+
+                $id_diare = null;
+
+            }
+
+            // insert tabel ispa kalo ada
+
+            if($this->input->post('is_ispa') == '1') {
+
+                $data_ispa = array(
+                        'frek_nafas'      =>$this->input->post('n_frekuensi_napas'),
+                        'klasifikasi'      =>$this->input->post('n_klasifikasi'),
+                        'tindak_lanjut' =>$this->input->post('tindak'),
+                        'antibiotik'=>$this->input->post('antibiotik'),
+                        'kondisi_kunjungan_ulang'=>$this->input->post('n_kunjungan_ulang'),
+                        'keterangan'=>$this->input->post('n_keterangan')
+                );
+                $id_ispa = $this->remed->insert_ispa($data_ispa);
+
+            } else {
+
+                $id_ispa = null;
+
+            }
+
+
             // insert ke tabel remed_poli_umum
 
             $data1 = array(
                     'tanggal_kunjungan_umum' =>date("Y-m-d"),
                     'anamnesis'      =>$this->input->post('n_anamnesis'),
-                    'diagnosa'      =>$this->input->post('n_diagnosa'),
+                    'diagnosa'      =>$this->input->post('n_diagnosis'),
                     'penyakit_umum' =>$this->input->post('n_penyakit'),
-                    'keterangan'    =>$this->input->post('n_ket'),
-                    'id_kunjungan'  => $id_kunjungan, //sementara
-                    'id_pasien' => $id_pasien );
+                    'keterangan'    =>$this->input->post('n_keterangan'),
+                    'id_kunjungan'  => $id_kunjungan,
+                    'id_pasien' => $id_pasien,
+                    'id_diare' => $id_diare,
+                    'id_tbc' => $id_tbc,
+                    'id_ispa' => $id_ispa
+            );
             $id_remed=$this->remed->insert_umum($data1);
             $data1['diagnosa'] = $id_remed;
 
+
+            
             // update ke TERISI
             $this->antrian->ubah_status($id_antrian, 'TERISI');
 
@@ -118,6 +189,7 @@ class Antrian extends Controller {
        
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
         $remed['data_pasien']=$data_pasien_remed;
+        
         $this->load->view('isi_remed_umum',$remed);
     }
 
