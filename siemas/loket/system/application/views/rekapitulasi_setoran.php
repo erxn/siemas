@@ -20,14 +20,14 @@
                                 <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
                                 <select name="bulan_kunjungan" style="width: 100%">
                                     <?php for($i=1;$i<=12;$i++) {?>
-                                    <option  value="<?php echo $i; ?>"><?php echo $bulan[$i]; ?></option>
+                                    <option  value="<?php echo $i; ?>" <?php if($laporan[0]['bulan'] == $i) echo 'selected="selected"' ?>><?php echo $bulan[$i]; ?></option>
                                         <?php } ?>
                                 </select>
                             </td>
                             <td>
                                 <select name="tahun_kunjungan" style="width: 100%">
                                     <?php foreach($tahun as $thn) {?>
-                                    <option value="<?php echo $thn['tahun'];?>"><?php echo $thn['tahun'];?></option>
+                                    <option value="<?php echo $thn['tahun'];?>" <?php if($laporan[0]['tahun'] == $thn) echo 'selected="selected"' ?>><?php echo $thn['tahun'];?></option>
                                         <?php }?>
                                 </select>
                             </td>
@@ -73,7 +73,7 @@
                     </thead>
                     <?php $umum=0; $labor=0; $radio=0; $ekg=0; $haji=0; $usg=0; $catin=0;$mantuox=0;
                           $i=1;foreach($laporan as $lap){
-                                $jumlah = array_sum($lap);
+                                $jumlah = $lap['umum']+$lap['labor']+$lap['rontgen']+$lap['ekg']+$lap['haji']+$lap['usg']+$lap['catin']+$lap['mantuox'];
                    ?>
 
 

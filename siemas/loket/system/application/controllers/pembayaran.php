@@ -21,6 +21,8 @@ class Pembayaran extends Controller {
         }
         $pembayaran = $this->M_pembayaran->data_pembayaran($tanggal);
         $data['pembayaran'] = $pembayaran;
+        
+        //if($this->input->post(''))
 
         $this->load->view('loket_pembayaran',$data);
     }

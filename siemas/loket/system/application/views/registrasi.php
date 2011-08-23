@@ -103,8 +103,6 @@
     </div>
 </div>
 <!-- END SUBNAV -->
-<br/>
-
 <!-- ISI -->
 
 <div>
@@ -151,37 +149,40 @@
                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> Pasien Baru
                         </a>
                     </div><br/><br/>
-                    <?php $i=1;
+                    <?php 
 if(isset($hasil_cari_pasien)) {?>
                     <div id="hasil_cari_kk">
-                        <h4  class="float-right">Hasil Pencarian: <?php if(isset($hasil_cari_pasien)) echo count($hasil_cari_pasien) ?> orang</h4>
+                        <h3  class="float-right">Hasil Pencarian: <?php if(isset($hasil_cari_pasien)) echo count($hasil_cari_pasien) ?> orang</h3>
                         <br/>
-                        <table id="myTable" class="tablesorter" style="width: 100%;">
+                        <table style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th class="header" style="width: 1%;">No</th>
-                                    <th class="header" style="width: 8%;">Nama</th>
-                                    <th class="header" style="width: 1%;">Umur</th>
-                                    <th class="header" style="width: 13%;">Alamat</th>
-                                    <th class="header" style="width: 8%;">KK</th>
-                                    <th class="header" style="width: 3%;">Antrian</th>
+                                    <th style="width: 1%;">No</th>
+                                    <th style="width: 5%;">Pasien</th>
+                                    <th style="width: 10%;">KK</th>
+                                    <th style="width: 2%;">Antrian</th>
                                 </tr>
                             </thead>
+
                             <tbody>
-    <?php foreach ($hasil_cari_pasien as $hasil) {?>
-                                <tr class="even">
+                            <?php $i=1;  foreach ($hasil_cari_pasien as $hasil) {?>
+                                <tr class="<?php if($i%2==0) echo "odd"?>">
                                     <td class="align-center"><?php echo $i++; ?></td>
-                                    <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a></td>
-                                    <td><?php echo $hasil['umur']." th";?></td>
-                                    <td><?php echo $hasil['alamat_kk'].", Kel. ".$hasil['kelurahan_kk']." Kec. ".$hasil['kecamatan_kk'].", Kab/Kota ".$hasil['kota_kab_kk']?></td>
-                                    <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk'];?>"><?php echo $hasil['nama_kk'];?></a></td>
-                                    <td align="center">
+                                    <td><a style="font-size: 15px !important" class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>"><?php echo " ".$hasil['nama_pasien'];?></a>
+                                        <br/>
+                                        <small style="font-size: 11px; color: #777777; font-weight: normal"><?php echo $hasil['jk_pasien'] . ', ' . $hasil['umur']." th"; ?></small>
+                                    </td>
+                                    <td><a style="font-size: 15px !important" class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk'];?>"><?php echo $hasil['nama_kk'];?></a>
+                                        <br/>
+                                        <small style="font-size: 11px; color: #777777; font-weight: normal"><?php echo $hasil['alamat_kk'].", Kel. ".$hasil['kelurahan_kk']."<br/> Kec. ".$hasil['kecamatan_kk'].", Kab/Kota ".$hasil['kota_kab_kk']?></small>
+                                    </td>
+                                    <td align="center" style="padding: 10px;">
                                         <a class="popup_reg_kunjungan" id="test" href="index.php/pasien/registrasi_kunjungan/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>">
                                             <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/>
                                         </a>
                                     </td>
                                 </tr>
-        <?php  }
+                        <?php  }
 }
 else { ?>
                                 <tr>

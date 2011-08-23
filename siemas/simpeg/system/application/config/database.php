@@ -39,7 +39,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "root";
-$db['default']['password'] = "G64080008";
+$db['default']['password'] = "";
 $db['default']['database'] = "siemas_simpeg";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";

@@ -11,9 +11,7 @@
 |	http://example.com/
 |
 */
-$path = ltrim(str_replace(rtrim($_SERVER['DOCUMENT_ROOT'], '/'), '', rtrim(FCPATH, '/')) . '/', '/');
-$protocol = (isset($_SERVER['HTTPS'])) ? 'https://' : 'http://';
-$config['base_url'] = $protocol . $_SERVER['HTTP_HOST'] . '/' . $path;
+$config['base_url'] = "http://localhost/siemas/simpeg/";
 
 /*
 |--------------------------------------------------------------------------

@@ -128,7 +128,7 @@
     </head>
     <body>
         <div id="header">
-            <div id="header-status">
+<!--            <div id="header-status">
                 <div class="container_12">
                     <div class="grid_8">
                         <span id="text-invitation"></span>
@@ -142,20 +142,20 @@
                     </div>
                 </div>
                 <div style="clear:both;"></div>
-            </div>
+            </div> -->
             <!-- Header. Main part -->
             <div id="header-main">
                 <div class="container_12">
                     <div class="grid_12">
-                        <img src="Template_files/logo0000.gif"/>
-                        <img src="Template_files/puskesmas.png" style="position: absolute; top:45px; left:120px" />
-                        <img src="Template_files/alamat.png" style="position: absolute; top:95px; left:120px" />
+                        <img src="Template_files/logo0000.gif"  style="position: absolute; top:10px; left:20px"/>
+                        <img src="Template_files/puskesmas.png" style="position: absolute; top:10px; left:90px" />
+                        <img src="Template_files/alamat.png" style="position: absolute; top:50px; left:90px" />
                         <ul id="nav">
                             <li id="<?php if($this->uri->segment(1)== "") echo "current"?>"><a href="index.php">Home</a></li>
                             <li id="<?php if(($this->uri->segment(1)== "registrasi")||($this->uri->segment(2)=="registrasi_pasien_sukses")) echo "current"?>"><a href="index.php/registrasi">Registrasi</a></li>
                             <li id="<?php if($this->uri->segment(1)== "pembayaran") echo "current"?>"><a href="index.php/pembayaran">Pembayaran</a></li>
                             <li id="<?php if($this->uri->segment(1)== "pasien") echo "current"?>"><a href="index.php/pasien">Data Pasien</a></li>
-                            <li id="<?php if($this->uri->segment(1)== "statistik") echo "current"?>"><a href="statistik.php">Statistik</a></li>
+                            <li id="<?php if($this->uri->segment(1)== "statistik") echo "current"?>"><a href="index.php/statistik">Statistik</a></li>
                             <li id="<?php if($this->uri->segment(1)== "c_laporan") echo "current"?>"><a href="index.php/c_laporan">Laporan</a></li>
                         </ul>
                     </div>

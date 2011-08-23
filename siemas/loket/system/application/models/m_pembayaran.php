@@ -18,7 +18,7 @@ class M_pembayaran extends Model {
                                 JOIN kk USING (id_kk)
                                 WHERE kunjungan.tanggal_kunjungan = '$tanggal'
                                 AND antrian.status = 'SELESAI'
-                                ORDER BY status_pembayaran DESC");
+                                ORDER BY status_pembayaran DESC, no_kunjungan ASC");
         if($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
                 $data[] = $row;

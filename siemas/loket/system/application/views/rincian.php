@@ -63,7 +63,8 @@
                 </table>
                 <?php if($status == "Lunas"){?>
                 <div>
-                    <span class="notification n-success" style="height: 5px; width: 78%">PEMBAYARAN LUNAS</span>
+                    <span class="notification n-success" style="height: 10px; width: 78%">PEMBAYARAN LUNAS. <a href="index.php/pembayaran">Kembali ke menu Pembayaran</a>
+                    </span>
                 </div>
                 <?php }?>
                 <h2 id="total_harga" align="right"  style="width: 70%; float: none !important">Total: Rp <?php  echo number_format($total[0]['total_harga'])?> </h2>

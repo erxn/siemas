@@ -10,7 +10,7 @@ class M_antrian extends Model {
     function get_antrian($id_poli){
          $data = array();
          $now = date("Y-m-d");
-         $q = $this->db->query("SELECT pasien.nama_pasien as nama,pasien.id_pasien, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur,
+         $q = $this->db->query("SELECT pasien.nama_pasien as nama,pasien.jk_pasien, pasien.status_pelayanan,pasien.id_pasien, extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur,
                             kk.alamat_kk,kk.id_kk, kk.kecamatan_kk,kelurahan_kk,kota_kab_kk, antrian.*
                             FROM antrian
                             JOIN kunjungan using (id_kunjungan)

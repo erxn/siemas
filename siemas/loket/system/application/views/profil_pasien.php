@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td><?php echo $pasien[0]['alamat_kk'].", Kel. ".$pasien[0]['kelurahan_kk']." Kec. ".$pasien[0]['kecamatan_kk'].", Kab/Kota ".$pasien[0]['kota_kab_kk']?></td>
+                    <td><?php echo $pasien[0]['alamat_kk'].", Kel. ".$pasien[0]['kelurahan_kk']."<br/>Kec. ".$pasien[0]['kecamatan_kk'].", Kab/Kota ".$pasien[0]['kota_kab_kk']?></td>
                 </tr>
                 <tr class="odd">
                     <td>Status Pelayanan</td>

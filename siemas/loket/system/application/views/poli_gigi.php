@@ -11,27 +11,30 @@
         </script>
 <div style="width: 100%">
 
-<h4  class="float-right">Total: <?php echo count($antri_gigi) ?> orang</h4>
+<h4  class="float-right">Total pasien: <?php echo count($antri_gigi) ?> orang</h4>
 <br/>
-<table id="myTable" class="tablesorter" style="width: 100%">
+<table style="width: 100%">
     <thead>
         <tr>
             <th class="header" style="width: 1%;">No</th>
-            <th class="header" style="width: 13%;">Nama</th>
-            <th class="header" style="width: 1%;">Umur</th>
-            <th class="header" style="width: 10%;">Alamat</th>
-            <th class="header" style="width: 10%;">Status</th>
+            <th class="header" style="width: 10%;">Nama</th>
+            <th class="header" style="width: 7%;">Alamat</th>
+            <th class="header" style="width: 2%;">Pelayanan</th>
+            <th class="header" style="width: 5%;">Status</th>
         </tr>
     </thead>
     <tbody>
         
         <?php $i=1;foreach($antri_gigi as $gigi){?>
-        <tr class="<?php if($i%2==0) echo "odd"; else echo "even"?>">
+        <tr class="<?php if($i%2==0) echo "odd";?>">
             <td class="align-center"><?php echo $i++?></td>
-            <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $gigi['id_kk']."/".$gigi['id_pasien']?>"><?php echo $gigi['nama']?></a></td>
-            <td><?php echo $gigi['umur']." th"?></td>
+            <td><a style="font-size: 15px !important;" class="popup" href="index.php/pasien/profil_pasien/<?php echo $gigi['id_kk']."/".$gigi['id_pasien']?>"><?php echo $gigi['nama']?></a>
+                <br/>
+                <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $gigi['jk_pasien'] . ', ' . $gigi['umur'] . ' th'; ?></small>
+            </td>
             <td><?php echo $gigi['kecamatan_kk'];?></td>
-            <td><?php echo $gigi['status']?></td>
+            <td class="align-center"><?php echo $gigi['status_pelayanan']?></td>
+            <td class="align-center"><small style="font-size: 12px; color: #777777; font-weight: normal"><?php echo $gigi['status']?></small></td>
         </tr>
             <?php }?>
         
