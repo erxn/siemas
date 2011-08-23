@@ -5,7 +5,6 @@
                         <th style="width:10%">No. Kunjungan</th>
                         <th style="width:30%">Nama Pasien</th>
                         <th style="width:30%">Status</th>
-                        <th style="width:8%"></th>
                     </tr>
                 </thead>
 
@@ -18,11 +17,9 @@
                 <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $selesai[$i]['jk_pasien'] . ', ' . $selesai[$i]['umur'] . ' th'; ?></small>
             </td>
             <td valign="middle" align="center">
-                <a href="http://localhost/siemas/poli/index.php/antrian/isi_remed_hari_ini/<?php echo $selesai[$i]['id_pasien'];?>/<?php echo $selesai[$i]['id_kunjungan'];?>/<?php echo $selesai[$i]['id_antrian'];?>" style="text-decoration: none" onclick="t(<?php echo $selesai[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-blue">Isi rekam medik</a>
+                <a href="http://localhost/siemas/poli/index.php/antrian/isi_remed_hari_ini/<?php echo $selesai[$i]['id_pasien'];?>/<?php echo $selesai[$i]['id_kunjungan'];?>/<?php echo $selesai[$i]['id_antrian'];?>/<?php echo $selesai[$i]['tanggal_kunjungan']?>" style="text-decoration: none" onclick="t(<?php echo $selesai[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-blue">Isi rekam medik</a>
               </td>
-              <td align="center">
-                  <a href=""><img src="Template_files/tick-cir.gif" width="16" height="16" alt="published" /></a>
-              </td>
+             
         </tr>
             <?php }?>
                 </tbody>
