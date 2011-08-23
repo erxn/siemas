@@ -2,7 +2,7 @@
 /* -------------------- Basic HTML tags -------------------- */
 
 body {
-	font: 12px/1.5 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font: 13px/1.5 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	color: #444444;
 	background-color: #f6f6f6;
 	}
@@ -30,6 +30,13 @@ h2 {
 	letter-spacing: -1px;
 	}
 
+h2#total_harga{
+        font-size: 20px;
+        background: none;
+        float: right;
+        margin-right: 15px;
+        font-family: 'courier new';
+}
 h3 {
 	font-size: 18px;
 	}
@@ -85,7 +92,8 @@ a:visited {
 	}
 
 a:hover, a:active { 
-	text-decoration: underline; 
+	text-decoration: none;
+        font-weight: bold;
 	}
 
 h1 a, h1 a:visited, h2 a, h2 a:visited, h3 a, h3 a:visited, h4 a, h4 a:visited, h5 a, h5 a:visited, h6 a, h6 a:visited { 
@@ -96,9 +104,19 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 	color:#0063be; 
 	}
 
+a.tambah {
+          text-decoration: none;
+          font-weight: bold;
+          color: #3bd746;
+          font-size: 14px;
+}
 
-
-
+a.tambah:hover{
+          text-decoration: none;
+          font-weight: bold;
+          color: #0063be;
+          font-size: 14px;
+}
 /* --------------------  Custom general classes -------------------- */
 
 .align-left    { text-align: left; }
@@ -111,7 +129,7 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 	
 .float-left    { float: left; }
 	
-.float-right   { float: right; }
+.float-right   { float: right; margin-bottom: 5px; }
 
 .bottom-spacing { margin-bottom: 20px; }
 
@@ -123,7 +141,7 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 
 
 #header { 
-	margin-bottom: 20px; 
+	margin-bottom: 20px;
 	}
 
 #header-status {
@@ -143,7 +161,7 @@ h1 a:hover, h1 a:active, h2 a:hover, h2 a:active, h3 a:hover, h3 a:active, h4 a:
 	float: left; 
 	background: url(mail-q-b.jpg) top left no-repeat; 
 	color: #6dc6e7; 
-	padding: 9px 0 11px 0; 
+	padding: 2px 0 11px 0;
 	text-decoration: none; 
 	margin-left: 10px;
 	}
@@ -316,7 +334,7 @@ div.module div.module-table-body {
 
 div.module h2 { 
     /* Sliding right image */
-    background: url('module-h.gif') no-repeat scroll top left; 
+    background: url('module-h.gif') no-repeat scroll top left;
 	display: block;
 	float: left;
 	height: 32px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
@@ -335,7 +353,7 @@ div.module h2 {
 
 div.module h2 span { 
 	/* Background left image */ 
-	background: url('module-i.gif') no-repeat top right; 
+	background: url('module-i.gif') no-repeat top right;
 	display: block;
 	line-height: 20px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
 	padding: 7px 0 5px 18px;
@@ -343,7 +361,7 @@ div.module h2 span {
 	}
 
 div.module table {
-	width: 70%;
+	width: 90%;
 	margin: 0 0 10px 0;
 	border-left: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
@@ -356,23 +374,33 @@ div.module table.tr {
 	}
 
 div.module table th {
-	background-color: #eeeeee;
+        
+	background-color: #E6EEEE;
 	color: #444444;
-	padding: 5px;
-	text-align: left;
+	padding: 3px;
+        font-size: 11px;
+	text-align: center;
 	border-right: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
 	}
 	
 div.module table td {
 	background-color: #ffffff;
-	padding: 5px;;
+	padding: 3px;;
 	border-right: 1px solid #d9d9d9;
 	}
 
+div.module table td.font_kecil {
+        font-size: 12px;
+        text-align: right;
+}
 div.module table tr.odd td { /* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
 	background-color: #f1f5fa;
 	}
+
+.noborder, .noborder tr, .noborder td {
+            border: none !important;
+}
 	
 .table-apply {
 	width: 40%; float: right; text-align: right; margin-right: 10px;
@@ -434,7 +462,7 @@ a.button:hover span{
 /* button inside a module box */
 div.module a.button {
     /* Sliding right image */
-    background: transparent url(button-s.gif) no-repeat scroll top right; 
+    background: transparent url(button-r.gif) no-repeat scroll top right;
 	display: block;
 	float: left;
 	height: 26px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
@@ -447,7 +475,7 @@ div.module a.button {
 	}
 	
 div.module a.button span {
-	background: transparent url(button-m.gif) no-repeat top left; 
+	background: transparent url(button-l.gif) no-repeat top left;
 	display: block;
 	line-height: 15px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
 	padding: 4px 0 7px 10px;
@@ -499,11 +527,11 @@ textarea {
 	}
 	
 .input-short { 
-	width: 13%
+	width: 25% 
 	}
 	
 .input-medium { 
-	width: 50% 
+	width: 150px;
 	}
 	
 .input-long { 
@@ -540,7 +568,7 @@ input.submit-green {
 	color: #ffffff; 
 	font-size: 14px; 
 	padding: 2px 12px; 
-	margin: 0px 10px 0 0;
+	margin: 0px 0px 0 0;
 	cursor: pointer;
 	}
 
@@ -781,3 +809,22 @@ a.dashboard-module span {
  #id kepala_tabel {
     border: 0px;
 }
+
+
+/* buat home loket*/
+            .kotak{
+                width: 200px;
+                padding: 8px;
+                display: inline-block;
+                margin: 5px;
+                -moz-border-radius: 10px;
+                -moz-box-shadow: 1px 3px 10px #666666;
+                text-decoration: none;
+                font-size: 17px;
+                background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE);
+            }
+            .kotak:hover {
+                background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+                font-weight: bold;
+                text-decoration: none;
+            }
