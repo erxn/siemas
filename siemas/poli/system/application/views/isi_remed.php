@@ -1,4 +1,4 @@
-<?php $this->load->view('header');?>
+e<?php $this->load->view('header');?>
 
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
@@ -76,7 +76,7 @@
     
   
 </script>
-<div  class="tabs" style="float:right;  margin-top: 20px; margin-right: 30px; width:45%">
+<div  class="tabs" style="float:right;  margin-right: 10px; width:45%">
     <ul>
         <li><a href="#tabs-a">Isi Rekam Medik Hari Ini</a></li>
     </ul>
@@ -141,7 +141,7 @@
             </ul>
             <div id="tabs1-1" style="">
                 <form action="" method="post">
-                <table  id="myTable" style="width:100%; margin-left: 30px">
+                <table  id="myTable" style="width:100%; margin-left: 30px ; margin-top: 5px">
 
 
             <tr class="odd">

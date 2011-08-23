@@ -1,4 +1,4 @@
-<h3>Jumlah pasien hari ini: <?php  echo count($terisi); ?> orang</h3>
+<h3>Jumlah pasien yang telah diisi: <?php  echo count($terisi); ?> orang</h3>
 <table id="myTable" class="tablesorter" border="8" style=" margin-top: 5px;width:100%">
                 <thead>
                     <tr>
