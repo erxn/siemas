@@ -105,7 +105,7 @@
                 </ul>
 <div id="tabs-1">
     <form action="" method="post">
-                    <table  id="myTable"  class="noborder" style="width:100%">
+                    <table  class="noborder" style="width:100%">
                         <tr class="odd">
                             <td>Alasan Periksa Lab::</td>
                             <td><textarea name="n_alasan_periksa" rows="5" cols="40"></textarea></td>
