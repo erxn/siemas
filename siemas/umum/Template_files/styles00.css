@@ -819,7 +819,8 @@ form.login {
 
  .kotak {
 		
-        width:7%;
+        width:110px;
+        height:110px;
         padding: 8px;
         display: inline-block;
        margin: 5px;
@@ -834,7 +835,8 @@ form.login {
 
      .periksa {
 
-        width:7%;
+         width:110px;
+        height:110px;
         padding: 8px;
         display: inline-block;
        margin: 5px;
@@ -849,7 +851,8 @@ form.login {
 
     .selesai {
 
-        width:7%;
+         width:110px;
+        height:110px;
         padding: 8px;
         display: inline-block;
        margin: 5px;
@@ -861,3 +864,67 @@ form.login {
     .selesai:hover {
         background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
     }
+
+
+    .but {
+
+        width:13%;
+        padding: 8px;
+        display: inline-block;
+       margin: 5px;
+       cursor: pointer;
+        -moz-border-radius: 5px;
+        -moz-box-shadow: 1px 3px 5px #666666;
+        text-decoration: none;
+        color:#1c6aac;
+        font: 16px/1.5 "Lucida Sans Unicode","Lucida Grande",sans-serif;
+        font-weight: bold;
+        background: -moz-linear-gradient(top, #b0dde7, #EEEEEE);
+    }
+    .but:hover {
+        background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+    }
+
+
+
+    .gplus-green  {
+    background-image: -moz-linear-gradient(center top , #3D9400, #398A00);
+    border: 1px solid #29691D;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.gplus-green:hover, .gplus-red:hover, .gplus-blue:hover  {
+    opacity: 0.9;
+    -moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    font-weight: normal !important;
+}
+
+.gplus-red {
+    background-image: -moz-linear-gradient(center top , #DD4B39, #D14836);
+    border: 1px solid #B0281A;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.gplus-blue {
+    background-image: -moz-linear-gradient(center top , #4D90FE, #4787ED);
+    border: 1px solid #2F5BB7;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-gplus {
+    -moz-border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: normal;
+    height: 27px;
+    line-height: 37px;
+    margin: 3px;
+    margin-top: 10px;
+    outline: 0 none;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+}

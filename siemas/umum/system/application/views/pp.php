@@ -31,12 +31,12 @@
 
 
 
-    <div class="grid_7" style=" margin:110px; margin-left: 300px">
+    <div class="grid_7" style=" margin:110px">
 
 
         <div  class="tabs">
             <ul>
-                <li><a href="#tabs-1">Statistik P2M</a></li>
+                <li><a href="#tabs-1">Laporan Harian</a></li>
             </ul>
             <div id="tabs-1">
                  <table border="0" width="100%" class="noborder" style="text-align: center">
@@ -133,7 +133,7 @@
         <div class="grid_7" style=" margin:110px">
             <div  class="tabs">
                 <ul>
-                    <li><a href="#tabs-2">Statistik Wilayah</a></li>
+                    <li><a href="#tabs-2">Laporan Bulanan</a></li>
                 </ul>
 
 

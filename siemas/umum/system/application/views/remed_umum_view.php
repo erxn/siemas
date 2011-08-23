@@ -43,7 +43,7 @@
 </div>
 
 
-<h2 style="margin-left: 30px ; margin-top: 20px">Rekam Medik Pasien</h2>
+<div style="text-align: right;"><div style="float: left; margin-top: 15px; margin-left: 20px; font-size: 20pt;">Rekam Medik Pasien:  <?php echo $data_pasien[0]['nama_pasien'];?></div><a href="index.php/pasien/selesai_pemeriksaan" style="text-decoration: none; margin-top: 50px; margin-right: 20px" ><input name="submit"  type="submit" class="but" value="Pemeriksaan Selesai" name="simpan"></a></div>
 <div class="grid_6" style="width: 45%; margin-left:20px; margin-top: 30px ">
     <div  id="tabs2">
         <ul>
@@ -104,7 +104,6 @@
     <div  id="tabs">
         <ul>
             <li><a href="#tabs-a">Poli Gigi</a></li>
-            <li><a href="#tabs-b">Poli KIA</a></li>
             <li><a href="#tabs-c">Poli Umum</a></li>
             <li><a href="#tabs-d">Lab</a></li>
             <li><a href="#tabs-e">Rontgen</a></li>
@@ -112,7 +111,7 @@
         </ul>
 
         <div id="tabs-a">
-            <a href="">
+           
                 <div style="padding: 10px;">
 
                     <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
@@ -136,10 +135,13 @@
                     <tbody>
 
 
-                        <?php if (count ($remed_gigi)>0) {
-                            foreach ($remed_gigi as $rg) { ?>
-                        <tr>
-                            <td class="align-center">no</td>
+                         <?php if (count ($remed_gigi)>0) {
+                        $i=1;
+                        foreach ($remed_gigi as $rg) {
+                            if($i%2==0) $x="odd";else $x="even";
+                            ?>
+                    <tr clas="odd" >
+                        <td><?php echo $i++?></td>
                             <td><a href="index.php/pasien/data_remed_poli_lain" class="pop"><?php echo $rg['tanggal_kunjungan_gigi']; ?></a></td>
                             <td><?php echo $rg['anamnesis'];?></td>
                             <td><?php echo $rg['diagnosis'];?></td>
@@ -151,51 +153,10 @@
                         ?>
                     </tbody>
                 </table>
-            </a>
+    
         </div>
 
-        <div id="tabs-b">
-
-            <div style="padding: 10px;">
-
-                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
-                <tr>
-
-                    <td><input type="submit" class="submit-green" value="Cari "></td>
-                </tr>
-
-            </div>
-            <table id="">
-                <thead>
-                    <tr>
-                        <th style="width:5%">No</th>
-                        <th style="width:20%">Tanggal Kunjungan</th>
-                        <th style="width:21%">Anamnesis</th>
-                        <th style="width:13%">Diagnosa</th>
-                        <th style="width:13%">Layanan</th>
-                        <th style="width:13%">Ket.</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-
-                    <?php if (count ($remed_kia)>0) {
-                        foreach ($remed_kia as $rk) { ?>
-                    <tr>
-                        <td class="align-center">no</td>
-                        <td><a href="index.php/pasien/data_remed_poli_lain" class="pop"><?php echo $rk['tanggal_kunjungan_kia']; ?></a></td>
-                        <td><?php echo $rk['anamnesis'];?></td>
-                        <td><?php echo $rk['diagnosa'];?></td>
-                        <td><?php echo  $rk['nama_layanan'];?>, <?php echo $rk['nama_penyakit'];?></td>
-                        <td><?php echo $rk['keterangan'];?></td>
-                    </tr>
-                            <?php }
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
+     
         <div id="tabs-c">
 
             <div style="padding: 10px;">
@@ -261,21 +222,18 @@
 
 
 
-<form action="index.php/pasien/insert_diagnosis_dokter" method="post">
+<form action="" method="post">
     <div class="module" style="float: left; margin-left:15px; margin-top: 30px; width: 45%">
         <div>
 
             <div id="tabs1">
                 <ul>
                     <li><a href="#tabs1-1">Umum</a></li>
-                    <li><a href="#tabs2-2">TBC</a></li>
-                    <li><a href="#tabs3-3">Diare</a></li>
-                    <li><a href="#tabs4-4">ISPA</a></li>
-                    <li><a href="#tabs5-5">Campak</a></li>
                 </ul>
                 <div id="tabs1-1">
-                    <table class="noborder" style="width:100%">
-                        <tr>
+                   <table  id="myTable"  class="noborder" style="width:100%">
+
+                       <tr class="odd">
                             <td>Anamnesis:</td>
                             <td><textarea name="n_anamnesis" rows="5" cols="40" input=""></textarea></td>
                         </tr>
@@ -283,7 +241,7 @@
                             <td>Diagnosis:</td>
                             <td><textarea name="n_diagnosis" rows="5" cols="40" input=""></textarea></td>
                         </tr>
-                        <tr>
+                        <tr class="odd">
                             <td>Penyakit:</td>
                             <td><textarea name="n_penyakit" rows="5" cols="40" input=""></textarea></td>
                         </tr>
@@ -292,141 +250,22 @@
                             <td><textarea name="n_keterangan" rows="5" cols="40" input=""></textarea></td>
                         </tr>
                         <tr> <td></td>
-                            <td>
-                                <!--index.php/namacontroller/nama fungsi-->
-                                <input name="submit"  type="submit" class="submit-green" value="Lihat Hasil Diagnosis ">
-
-                            </td>
-                        </tr>
+                    <td>
+                        <!--index.php/namacontroller/nama fungsi-->
+                        <input name="submit"  type="submit" class="submit-green" value="Simpan">
+                    </td>
+                    <td valign="middle" align="right">
+                        <a class="pop" href="index.php/antrian/tbc/<?php echo $data_pasien[0]['id_pasien'];?>" style="text-decoration: none"  class="btn-gplus gplus-blue">Tbc</a>
+                    </td>
+                    <td valign="middle" align="right">
+                        <a class="pop" href="index.php/antrian/diare/<?php echo $data_pasien[0]['id_pasien'];?>" style="text-decoration: none" class="btn-gplus gplus-blue">Diare</a>
+                    </td>
+                    <td valign="middle" align="right">
+                        <a class="pop" href="index.php/antrian/ispa/<?php echo $data_pasien[0]['id_pasien'];?>" style="text-decoration: none" class="btn-gplus gplus-blue">Ispa</a>
+                    </td>
+                </tr>
                     </table>
                 </div>
-                <div id="tabs2-2">
-                    <table class="noborder" style="width:100%">
-                        <tr>
-                            <td>Diagnosa:</td>
-                            <td><textarea name="n_diagnosa" rows="5" cols="40"></textarea></td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="tabs3-3">
-
-                    <table class="noborder" style="width:100%">
-                        <tr>
-                            <td>Etiologi Diare:</td>
-                            <td><textarea name="n_eti_diare" rows="5" cols="40"></textarea></td>
-                       </tr>
-                        <tr>
-                            <td>Keadaan Umum:</td>
-                            <td> <select name="n_keadaan_umum">
-                                    <option value="baik">Baik</option>
-                                    <option value="gelisah">Gelisah</option>
-                                    <option value="lesu">Lesu</option>
-                                     </select></td>
-                        </tr>
-                        <tr>
-                            <td>Mata:</td>
-                            <td> <select name="n_mata">
-                                    <option value="normal">Normal</option>
-                                    <option value="cekung">Cekung</option>
-                                    <option value="sangat_cekung">Sangat Cekung</option>
-                                     </select></td>
-                        </tr>
-                        <tr>
-                            <td>Air Mata:</td>
-                            <td>  <input type="radio" name="group1" value="ada">Ada<br>
-                        <input type="radio" name="group1" value="tidak_ada" checked>Tidak Ada<br>
-                        
-                        </tr>
-                        <tr>
-                            <td>Mulut:</td>
-                            <td> <select name="n_mulut">
-                                    <option value="basah">Basah</option>
-                                    <option value="kering">Kering</option>
-                                    <option value="sangat_kering">Sangat Kering</option>
-                                 </select></td>
-                        </tr>
-                        <tr>
-                            <td>Rasa Haus:</td>
-                            <td> <select name="n_haus">
-                                    <option value="bisa_minum">Bisa Minum</option>
-                                    <option value="haus">Haus</option>
-                                    <option value="malas_minum">Malas Minum</option>
-                                 </select></td>
-                        </tr>
-                        <tr>
-                            <td>Turgor:</td>
-                            <td> <select name="n_turgor">
-                                    <option value="0">Cepat kembali</option>
-                                    <option value="1">Kembali lambat </option>
-                                    <option value="2">Kembali sangat lambat</option>
-                                 </select></td>
-                        </tr>
-                        <tr>
-                            <td>Derajat dehidrasi:</td>
-                            <td> <select name="n_dehisrasi">
-                                    <option value="tanpa">Tanpa</option>
-                                    <option value="sedang">Sedang</option>
-                                    <option value="berat">Berat</option>
-                                 </select></td>
-                        </tr>
-                    </table>
-
-                </div>
-
-                <div id="tabs4-4">
-                    <table class="noborder" style="width:100%">
-                        <tr>
-                            <td>Frekuensi Napas:</td>
-                            <td><textarea name="n_ket" rows="5" cols="40"></textarea></td>
-                        </tr>
-
-                        <tr>
-                            <td>Klasifikasi:</td>
-                            <td> <select name="n_layanan">
-                                    <option value="bp">Bukan Pneumonia</option>
-                                    <option value="p">Pneumonia</option>
-                                    <option value="pb">Pneumonia Berat</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Tindak Lanjut:</td>
-                            <td> <input type="radio" name="group1" value="rawat_jalan">Rawat Jalan<br>
-                        <input type="radio" name="group1" value="rujuk" checked>Rujuk<br>
-                       
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Antibiotika:</td>
-                            <td> <input type="radio" name="group1" value="ya">Ya<br>
-                        <input type="radio" name="group1" value="tidak" checked>Tidak<br>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Kondisi saat kunjungan ulang:</td>
-                            <td> <select name="n_layanan">
-                                    <option value="membaik">Membaik</option>
-                                    <option value="tetap">Tetap</option>
-                                    <option value="memburuk">Memburuk</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Keterangan:</td>
-                            <td><textarea name="n_ket" rows="5" cols="40"></textarea></td>
-                        </tr>
-                        <tr> <td></td>
-                            <td>
-                                <!--index.php/namacontroller/nama fungsi-->
-                                <input name="submit"  type="submit" class="submit-green" value="Lihat Hasil Diagnosis ">
-
-                            </td>
-                        </tr>
-                    </table>
-
-                </div>
-
             </div>
 
         </div>
