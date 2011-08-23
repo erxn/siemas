@@ -230,7 +230,8 @@
                 <ul>
                     <li><a href="#tabs1-1">Umum</a></li>
                 </ul>
-                <div id="tabs1-1">
+                <div id="tabs1-1" >
+                    <form method="post" action="">
                    <table  id="myTable"  class="noborder" style="width:100%">
 
                        <tr class="odd">
@@ -239,7 +240,7 @@
                         </tr>
                         <tr>
                             <td>Diagnosis:</td>
-                            <td><textarea name="n_diagnosis" rows="5" cols="40" input=""></textarea></td>
+                            <td><textarea name="n_diagnosa" rows="5" cols="40" input=""></textarea></td>
                         </tr>
                         <tr class="odd">
                             <td>Penyakit:</td>
@@ -264,6 +265,7 @@
                         <a class="pop" href="index.php/antrian/ispa/<?php echo $data_pasien[0]['id_pasien'];?>" style="text-decoration: none" class="btn-gplus gplus-blue">Ispa</a>
                     </td>
                 </tr>
+                    </form>
                     </table>
                 </div>
             </div>
