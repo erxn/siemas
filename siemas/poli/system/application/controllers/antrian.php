@@ -80,7 +80,7 @@ class Antrian extends Controller {
 
             // insert ke tabel remed_poli_gigi
             $data1 = array(
-                    'tanggal_kunjungan_gigi' => $this->input->post('n_tgl'),
+                    'tanggal_kunjungan_gigi' => date("Y-m-d"),
                     'anamnesis'      =>$this->input->post('n_anamnesis'),
                     'diagnosis'      =>$this->input->post('n_diagnosa'),
                     'keterangan'    =>$this->input->post('n_ket'),
