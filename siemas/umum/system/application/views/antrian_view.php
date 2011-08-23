@@ -20,12 +20,43 @@
     });
 </script>
 
+<script type="text/javascript">
+    function load_tabel_antri() {
+        $('#div-antri').load("index.php/antrian/tabel_antri/2");
+    }
+
+    function load_tabel_periksa() {
+        $('#div-periksa').load("index.php/antrian/tabel_periksa/2");
+    }
+
+    function load_tabel_tunda() {
+        $('#div-tunda').load("index.php/antrian/tabel_tunda/2");
+    }
+    function load_tabel_selesai() {
+        $('#div-selesai').load("index.php/antrian/tabel_selesai/2");
+    }
+
+    $(document).ready(function(){
+        load_tabel_antri();
+        load_tabel_periksa();
+        load_tabel_tunda();
+        load_tabel_selesai();
+
+        setInterval("load_tabel_antri()", 3000);
+        setInterval("load_tabel_periksa()", 3000);
+        setInterval("load_tabel_tunda()", 3000);
+         setInterval("load_tabel_selesai()", 3000);
+
+    });
+</script>
+
 
 <div id="subnav">
     <div class="container_12">
         <div class="grid_12">
             <ul>
-
+                <li><a href="">Isi Rekam Medik</a></li>
+                <li><a href="#">Antrian</a></li>
             </ul>
 
         </div>
@@ -33,61 +64,68 @@
     <div style="clear: both;"></div>
 </div>
 
-<div  class="tabs" style="margin-right: 20px; margin-left: 20px">
+
+
+<div  class="tabs" style="margin-left: 50px; margin-top: 50px; float:left; width: 45%">
     <ul>
-        <li><a href="#tabs-a">Antrian Poli Gigi</a></li>
+        <li><a href="#tabs-a">Antri</a></li>
     </ul>
     <div id="tabs-a" >
 
-        <?php if (count($a)<=5) {?>
-        <div class="container_12" >
-            <div style="margin-top: 50px; margin-left: 50px ">
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-tunda"></div>
 
-                <?php for($i=0;$i<=count($a)-1;$i++) {?>
-                <a href="index.php/pasien/data_pasien_remed/<?php echo $a[$i]['id_kunjungan'];?>"
-                    <?php if ($a[$i]['status']=='ANTRI') {?>
-                                class="kotak">
-                    <?php } else if($a[$i]['status']=='SEDANG DIPROSES') { ?>
-                                class="periksa">
-                    <?php } else {?>
-                                class="selesai">
-                    <?php }?>
-                        <?php if ($a[$i]['jk_pasien']=='Laki-laki') {?>
-                            <img src="Template_files/male.gif" border="0"/>
-                        <?php } else { ?>
-                            <img src="Template_files/femaleK.png" border="0"/>
-                        <?php } echo $a[$i]['no_kunjungan'];?>
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-antri">
 
-                        <?php echo $a[$i]['nama_pasien'];?></a>
-                <?php } ?>
-            </div> <!-- End .container_12 -->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+function periksa(id) {
+
+    $.get('index.php/antrian/periksa/' + id);
+    load_tabel_antri();
+   load_tabel_periksa();
+    load_tabel_tunda();
+
+}
+
+function lewati(id) {
+
+    $.get('index.php/antrian/lewati/' + id);
+    load_tabel_antri();
+    load_tabel_periksa();
+    load_tabel_tunda();
+
+}
+
+function selesai(id) {
+
+    $.get('index.php/antrian/selesai/' + id);
+    load_tabel_antri();
+    load_tabel_periksa();
+    load_tabel_tunda();
+
+}
+
+</script>
+
+
+<div  class="tabs" style="margin-right: 50px; margin-top: 50px;  float:right; width: 45%">
+    <ul>
+        <li><a href="#tabs-b">Sedang Diperiksa</a></li>
+    </ul>
+    <div id="tabs-b" >
+
+
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-periksa">
+
         </div>
 
-        <br />
-        <br />
-        <br />
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-selesai">
 
-        <?php } else {?>
+        </div>
 
-        <div class="module-table-body">
-            <table id="myTable" class="tablesorter" border="1" style="width:70%">
-                    <thead>
-                        <tr class="odd">
-                            <th style="width:20%">No. Kunjungan</th>
-                            <th style="width:21%">Nama Pasien</th>
-                            <th style="width:13%">Status</th>
-                        </tr>
-                    </thead>
-
-                     <tbody>
-                    <?php for ($i=5; $i<=count($a)-1; $i++) {?>
-                        <tr class="odd">
-                            <td class="align-center"><?php echo $a[$i]['no_kunjungan']?></td>
-                            <td><a href="" class="pop"><?php echo $a[$i]['nama_pasien']; ?></a></td>
-                         <td><?php echo  $a[$i]['status'];?></td>
-                        </tr>
-                   <?php }?>
-                         </tbody>
-                </table>
-    </div>
-<?php }?>
+     </div>
+</div>

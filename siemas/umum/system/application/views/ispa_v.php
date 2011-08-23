@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -57,22 +59,22 @@
 
         <!-- Initiate tablesorter script -->
         <script type="text/javascript">
-            $(document).ready(function() { 
-                $("#myTable") 
+            $(document).ready(function() {
+                $("#myTable")
                 .tablesorter({
                     // zebra coloring
                     widgets: ['zebra'],
-                    // pass the headers argument and assing a object 
-                    headers: { 
-                        // assign the sixth column (we start counting zero) 
-                        6: { 
-                            // disable it by setting the property sorter to false 
-                            sorter: false 
-                        } 
+                    // pass the headers argument and assing a object
+                    headers: {
+                        // assign the sixth column (we start counting zero)
+                        6: {
+                            // disable it by setting the property sorter to false
+                            sorter: false
+                        }
                     }
-                }) 
-                .tablesorterPager({container: $("#pager")}); 
-            }); 
+                })
+                .tablesorterPager({container: $("#pager")});
+            });
         </script>
 
         <!-- Initiate password strength script -->
@@ -84,31 +86,73 @@
 
     </head>
 
-        <!-- Header -->
-        <div id="header">
-            
-            
+    <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
 
-            <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:50px" />
-            <img src="Template_files/puskesmas.png" style="position: absolute; top:0px; left:120px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:55px; left:120px" />
-            <img src="Template_files/umum.png" style="position: absolute; top:5px; right:2px" />
-            <!-- Header. Main part -->
-            <div id="header-main">
-                <div class="container_12">
-                    <div class="grid_12">                       												
-                        <ul id="nav">
-                            <li><a href="index.php/antrian/antri/2">Antrian</a></li>
-                            <li><a href="index.php/pasien/">Pasien</a></li>
-                            <li><a href="index.php/statistik">Statistik</a></li>
-                            <li><a href="index.php/laporan">Laporan</a></li>
-                             <li><a href="">Logout</a></li>
+<script>
+    $(function() {
 
-                        </ul>
+        $( ".tabs" ).tabs();
+    });
+</script>
+<div  class="tabs" style=" margin-left: 400px; margin-top: 90px;  width:45%">
+    <ul>
+        <li><a href="#tabs-1">TBC</a></li>
+    </ul>
+    <div id="tabs-1">
+        <form action="" method="post">
+        <table  id="myTable"  class="noborder" style="width:100%">
+            <tr class="odd">
+                <td>Frekuensi Napas:</td>
+                <td><textarea name="n_frekuensi_napas" rows="5" cols="40"></textarea></td>
+            </tr>
 
-                    </div><!-- End. .grid_12-->
-                    <div style="clear: both;"></div>
-                </div><!-- End. .container_12 -->
-            </div> <!-- End #header-main -->
-            </html>
-        
+            <tr>
+                <td>Klasifikasi:</td>
+                <td> <select name="n_klasifikasi">
+                        <option value="bp">Bukan Pneumonia</option>
+                        <option value="p">Pneumonia</option>
+                        <option value="pb">Pneumonia Berat</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr class="odd">
+                <td>Tindak Lanjut:</td>
+                <td> <input type="radio" name="tindak" value="rawat jalan" />Rawat Jalan<br />
+                    <input type="radio" name="tindak" value="rujuk" checked />Rujuk<br />
+
+                </td>
+            </tr>
+            <tr>
+                <td>Antibiotika:</td>
+                <td> <input type="radio" name="antibiotik" value="ya" />Ya<br />
+                    <input type="radio" name="antibiotik" value="tidak" checked />Tidak<br />
+                </td>
+            </tr>
+            <tr class="odd">
+                <td>Kondisi saat kunjungan ulang:</td>
+                <td> <select name="n_kunjungan_ulang">
+                        <option value="membaik">Membaik</option>
+                        <option value="tetap">Tetap</option>
+                        <option value="memburuk">Memburuk</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Keterangan:</td>
+                <td><textarea name="n_keterangan" rows="5" cols="40"></textarea></td>
+            </tr>
+            <tr> <td></td>
+                <td>
+                    <!--index.php/namacontroller/nama fungsi-->
+                    <input name="submit"  type="submit" class="submit-green" value="Simpan" />
+
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+
+</div>
+</html>
