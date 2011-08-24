@@ -50,7 +50,7 @@ label:hover {
                     <input id="c6" type="checkbox" name="kenaikan_gaji"     <?php if($kolom[6]) echo 'checked="checked"'; ?>/>
                         <label for="c6" style="display: inline">Kenaikan gaji</label>
                     <input id="c7" type="checkbox" name="unit_kerja"        <?php if($kolom[7]) echo 'checked="checked"'; ?>/>
-                        <label for="c7" style="display: inline">Unit kerja</label> |
+                        <label for="c7" style="display: inline">Unit kerja</label><br/><br/>
                     <strong>Urutkan berdasarkan:</strong>
                     <select name="urut">
                         <option value="0">Jabatan (struktural)</option>
