@@ -584,4 +584,12 @@ class Pegawai extends Controller {
         $this->load->view('laporan/xls_biodata_fungsional', $data);
     }
 
+    function laporan_skumptk_xls() {
+        $data = array();
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $this->load->plugin('phpexcel');
+        $this->load->view('laporan/xls_skumptk', $data);
+    }
+
 }
