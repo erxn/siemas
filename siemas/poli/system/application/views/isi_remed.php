@@ -2,11 +2,43 @@ e<?php $this->load->view('header');?>
 
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
+<script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
+
+<script type="text/javascript" src="js/jquery.uitablefilter.js"></script>
+
+
+<script>
+    $(function() {
+        $( ".datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'd MM yy',
+            monthNames: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+        });
+    });
+    $(function() {
+        var theTable = $('#t_gigi')
+
+        $("#b_gigi").click(function() {
+            $.uiTableFilter( theTable, $('#d_gigi').val());
+        })
+    });
+
+
+</script>
 
 <script>
     $(function() {
 
         $( ".tabs" ).tabs();
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
+
     });
 </script>
 
@@ -133,13 +165,18 @@ e<?php $this->load->view('header');?>
         </div>
         
 
+    </div>
         </div>
 
-        <div id="tabs1">
-            <ul>
-                <li><a href="#tabs1-1">Diagnosis Dokter</a></li>
-            </ul>
-            <div id="tabs1-1" style="">
+       <div  class="tabs" style="float:right;  margin-right: 10px; width:45%">
+    <ul>
+        <li><a href="#tabs-a">Diagnosis Dokter</a></li>
+        <li><a href="#tabs-b">Poli Gigi</a></li>
+        <li><a href="#tabs-c">Poli Umum</a></li>
+        <li><a href="#tabs-d">Lab</a></li>
+        <li><a href="#tabs-e">Rontgen</a></li>
+    </ul>
+            <div id="tabs-a" style="">
                 <form action="" method="post">
                 <table  id="myTable" style="width:100%; margin-left: 30px ; margin-top: 5px">
 
@@ -190,7 +227,157 @@ e<?php $this->load->view('header');?>
                 </table>
                 </form>
             </div>
+
+             <div id="tabs-b">
+            <div style="padding: 10px; width:100%">
+
+                <div>
+                    <form method="post" action="">
+                        <input id="d_gigi" placeholder="Cari tanggal" name="n_tgl" type="text" class="input-long datepicker" style="vertical-align: top;"/>
+                        <input type="button" class="submit-green" value="Cari " name="cari" id="b_gigi" />
+                    </form>
+                </div>
+
+
+            </div>
+         <div class="module" style="background:none">
+            <table id="t_gigi"   style="width:99%">
+                <thead>
+                    <tr >
+                        <th style="width:5%">No</th>
+                        <th style="width:20%">Tanggal Kunjungan</th>
+                        <th style="width:21%">Anamnesis</th>
+                        <th style="width:13%">Diagnosa</th>
+                        <th style="width:13%">Layanan</th>
+                        <th style="width:13%">Ket.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count ($remed_gigi)>0) {
+                        $i=1;
+                        foreach ($remed_gigi as $rg) {
+                            if($i%2==0) $x="odd";else $x="even";
+                            ?>
+                    <tr class="<?php echo $x ?>" >
+                        <td><?php echo $i++?></td>
+                        <td ><a class="pop" href="index.php/pasien/remed_poli_gigi_pop/<?php echo $id_pasien;?>/<?php echo $rg['tanggal_kunjungan_gigi']?>"><?php echo tgl_indo($rg['tanggal_kunjungan_gigi']); ?></a></td>
+                        <td><?php echo  word_limiter($rg['anamnesis'],5,'...');?></td>
+                        <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
+                        <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?>, <?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
+                        <td><?php echo word_limiter($rg['keterangan'],5,'...');?></td>
+                    </tr>
+                            <?php }
+                    }
+                    ?>
+                </tbody>
+            </table>
+         </div>
+
+
+            <div style="clear: both"></div>
+
         </div>
-    </div>
+
+
+        <div id="tabs-c">
+
+            <div style="padding: 10px;">
+
+                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
+                <tr>
+
+                    <td><input type="submit" class="submit-green" value="Cari "></td>
+                </tr>
+
+            </div>
+             <div class="module" style="background:none">
+            <table id="myTable" class="tablesorter" border="1">
+                <thead>
+                    <tr>
+                        <th style="width:5%">No</th>
+                        <th style="width:18%">Tanggal Kunjungan</th>
+                        <th style="width:21%">Anamnesis</th>
+                        <th style="width:17%">Diagnosa</th>
+                        <th style="width:13%">Penyakit</th>
+                        <th style="width:13%">P2M</th>
+                        <th style="width:13%">Ket.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <?php if (count ($remed_umum)>0) {
+                        $i=1;
+                        foreach ($remed_umum as $ru) {
+                            if($i%2==0) $x="odd";else $x="even";
+                            ?>
+                    <tr clas="<?php echo $x ?>">
+                        <td><?php echo $i++?></td>
+                        <td><a href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
+                       <td><?php echo word_limiter($ru['anamnesis'],5,'...');?></td>
+                        <td><?php echo word_limiter($ru['diagnosa'],5,'...');?></td>
+                        <td><?php echo word_limiter($ru['nama_penyakit'],5,'...');?></td>
+                        <td><a href="">
+                                    <?php
+                                    if($campak!==0) {
+                                        echo 'campak';
+                                    }
+                                    else if($ispa!==0) {
+                                        echo 'ispa';
+                                    }
+                                    else if($tbc!==0) {
+                                        echo 'tbc';
+                                    }
+                                    else if($diare!==0) {
+                                        echo 'diare';
+                                    }
+
+                                    ?>
+                            </a>
+                        </td>
+                        <td><?php echo word_limiter($ru['keterangan'],5,'...');?></td>
+                    </tr>
+                            <?php }
+                    }
+                    ?>
+                </tbody>
+            </table>
+                 </div>
+        </div>
+
+         <div id="tabs-d">
+
+            <div style="padding: 10px;">
+
+                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
+                <tr>
+
+                    <td><input type="submit" class="submit-green" value="Cari "></td>
+                </tr>
+
+            </div>
+              <div class="module" style="background:none">
+            <table id="myTable" class="tablesorter" border="1">
+                <thead>
+                    <tr>
+                        <th style="width:5%">No</th>
+                        <th style="width:18%">Tanggal Pemeriksaan</th>
+                        <th style="width:21%">Jenis Pemeriksaan</th>
+                        <th style="width:17%">hasil Pemeriksaan</th>
+                        <th style="width:13%">Pemeriksaan Khusus</th>
+                        <th style="width:13%">Ket.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+                </tbody>
+            </table>
+                </div>
+        </div>
+</div>
+
+        </div>
 
         <?php } ?>

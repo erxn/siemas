@@ -52,6 +52,19 @@
 
                 </script>
 
+                 <script type="text/javascript">
+
+                function update_href_tahunan_penyakit() {
+
+                    var link = "index.php/statistik/grafik_tahunan_penyakit";
+                    var tahun = $('#tahun_p').val();
+
+                    $('#btn_tahun_penyakit').attr({'href': link + '/' + thn});
+
+                }
+
+                </script>
+
                 <table border="0" width="100%" class="noborder" style="text-align: center">
                     <tbody>
                         <tr>
@@ -126,7 +139,7 @@
                             </td>
                             <td style="text-align: center !important">
                                 <div class="tombol-kotak">
-                                <a class="pop"  href="index.php/statistik/grafik_tahunan_penyakit" class="tombol-kotak">
+                                <a class="pop"  href="index.php/statistik/grafik_tahunan_penyakit" id="btn_bulanan_penyakit">
                                     <img src="Template_files/tahun.png" width="80" height="80" alt="edit" />
                                     <span>Lihat grafik</span>
                                 </a>

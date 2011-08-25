@@ -59,7 +59,7 @@
 					tooltip: {
 						formatter: function() {
 							return ''+
-								this.x +': '+ this.y +' mm';
+								this.x +': '+ this.y +' orang';
 						}
 					},
 					plotOptions: {
@@ -70,22 +70,22 @@
 					},
 				        series: [{
 						name: 'Karies Gigi',
-						data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+						data: [<?php echo $data1;?>, <?php echo $data6;?>, <?php echo $data11;?>, <?php echo $data16;?>, <?php echo $data21;?>, <?php echo $data26;?>, <?php echo $data31;?>, <?php echo $data36;?>, <?php echo $data41;?>, <?php echo $data46;?>, <?php echo $data51;?>, <?php echo $data56;?>]
 				
 					}, {
 						name: 'Penyakit Pulpa & Jaringan Periapikal',
-						data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+						data: [<?php echo $data2;?>, <?php echo $data7;?>, <?php echo $data12;?>, <?php echo $data17;?>, <?php echo $data22;?>, <?php echo $data27;?>, <?php echo $data32;?>, <?php echo $data37;?>, <?php echo $data42;?>, <?php echo $data47;?>, <?php echo $data52;?>, <?php echo $data57;?>]
 				
 					}, {
 						name: 'Penyakit Gusi dan Periodontal',
-						data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+						data: [<?php echo $data3;?>, <?php echo $data8;?>, <?php echo $data13;?>, <?php echo $data18;?>, <?php echo $data23;?>, <?php echo $data28;?>, <?php echo $data33;?>, <?php echo $data38;?>, <?php echo $data43;?>, <?php echo $data48;?>, <?php echo $data53;?>, <?php echo $data58;?>]
 				
 					}, {
 						name: 'Peny dentofasial & inaloklusi',
-						data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+						data: [<?php echo $data4;?>, <?php echo $data9;?>, <?php echo $data14;?>, <?php echo $data19;?>, <?php echo $data24;?>, <?php echo $data29;?>, <?php echo $data34;?>, <?php echo $data39;?>, <?php echo $data44;?>, <?php echo $data49;?>, <?php echo $data54;?>, <?php echo $data59;?>]
 					}, {
 						name: 'Gangguan Gusi dan jaringan Penunjang Lain',
-						data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+						data: [<?php echo $data5;?>, <?php echo $data10;?>, <?php echo $data15;?>, <?php echo $data20;?>, <?php echo $data25;?>, <?php echo $data30;?>, <?php echo $data35;?>,<?php echo $data40;?>, <?php echo $data45;?>, <?php echo $data50;?>, <?php echo $data55;?>, <?php echo $data60;?>]
 				
 					}]
 				});
