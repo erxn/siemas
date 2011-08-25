@@ -18,7 +18,7 @@
                 <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $s[$i]['jk_pasien'] . ', ' . $s[$i]['umur'] . ' th'; ?></small>
             </td>
             <td valign="middle" align="right">
-                <a href="#" style="text-decoration: none" onclick="selesai(<?php echo $s[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-blue">Selesai</a>
+                <a href="index.php/antrian/isi_remed_hari_ini" style="text-decoration: none" onclick="selesai(<?php echo $s[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-blue">Selesai</a>
             </td>
 
         </tr>

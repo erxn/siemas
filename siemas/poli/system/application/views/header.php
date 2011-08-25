@@ -99,7 +99,6 @@
                     <div class="grid_12">                       												
                         <ul id="nav">
                             <li><a href="index.php/antrian/antri/1">Antrian</a></li>
-                            <li><a href="index.php/pasien">Pasien</a></li>
                             <li><a href="index.php/statistik">Statistik</a></li>
                             <li><a href="index.php/laporan">Laporan</a></li>
                              <li><a href="index.php/laporan">Logout</a></li>
