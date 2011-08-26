@@ -11,57 +11,21 @@ class Pemeriksaan extends Controller {
     }
 
     function index() {
-    $this->load->view('permohonan_analisa');
+    
         
     }
 
-    function input_pemeriksaan($id_kunjungan) {
+    function permohonan_analisa($id_kunjungan) {
         $id = $this->M_kunjungan->get_pasien_by_kunjungan($id_kunjungan);
         $id_kk = $id[0]['id_kk'];
         $id_pasien = $id[0]['id_pasien'];
-
+        
         $data_pasien = $this->M_pasien->lihat_profil_pasien($id_kk, $id_pasien);
         $data['pasien'] = $data_pasien;
         $data['kunjungan'] = $id;
-
-        $data['daftar_layanan'] = $this->M_pembayaran->get_layanan();
-
-        $this->load->view('input_pembayaran',$data);
-
-        if($this->input->post('submit')) {
-
-            $layanans = $this->input->post('pelayanan');
-            $polis = $this->input->post('poli');
-            $hargas = $this->input->post('harga');
-
-            for($i=0; $i < count($layanans); $i++) {
-
-                if ($layanans[$i] != "") {
-
-                    $p = $this->M_pembayaran->get_id_by_layanan($layanans[$i]);
-
-                    $id_layanan = $p[0]['id_layanan'];
-                    $pelayanan = array(
-                            'id_kunjungan' => $id_kunjungan,
-                            'id_layanan'     => $id_layanan,
-                            'harga_layanan'  => $hargas[$i],
-                            'poli'              => $polis[$i]
-                    );
-
-                    $this->M_pembayaran->tambah_layanan($pelayanan);
-
-                    $tot = $this->M_pembayaran->total_harga($id_kunjungan);
-
-                    $lunas_bayar = array(
-                            'total_harga' => $tot[0]['total_harga'],
-                            'status_pembayaran' => "Lunas"
-                    );
-                    $this->M_pembayaran->insert_total($lunas_bayar,$id_kunjungan);
-                }
-            }
-
-            redirect('pembayaran/rincian/'.$id_kunjungan."/Lunas");
-        }
+        $data['layanan'] = $this->M_pembayaran->get_layanan_by_pasien($id_kunjungan);
+        
+        $this->load->view('permohonan_analisa',$data);
     }
 
 

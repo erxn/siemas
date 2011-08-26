@@ -29,6 +29,8 @@ class M_pembayaran extends Model {
         return $data;
     }
 
+
+    /*************** LAYANAN *****************************************/
     function get_id_by_layanan($layanan) {
         $data = array();
         $q = $this->db->query("SELECT id_layanan FROM layanan
@@ -58,6 +60,67 @@ class M_pembayaran extends Model {
         return $data;
     }
 
+        function get_layanan_poli($poli){
+        $data = array();
+        $q = $this->db->query("SELECT * FROM layanan
+                                WHERE poli LIKE '%$poli%'
+                            ORDER BY nama_layanan ASC");
+        if($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function get_layanan_poli_lunas($poli){
+        $now = date('Y-m-d');
+        $data = array();
+        $q = $this->db->query("SELECT DISTINCT 
+                                      kunjungan.no_kunjungan,pasien.*,kk.*,kunjungan_has_layanan.id_kunjungan,
+                                      extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
+                                FROM
+                                `kunjungan_has_layanan`
+                                JOIN kunjungan USING (id_kunjungan)
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE status_pembayaran = 'Lunas'
+                                AND poli LIKE '$poli%'
+                                AND tanggal_kunjungan = '$now'");
+        if($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function get_layanan_by_pasien($id_kunjungan){
+        $now = date('Y-m-d');
+        $data = array();
+        $q = $this->db->query("SELECT kunjungan_has_layanan.id_kunjungan,kunjungan_has_layanan.id_layanan,layanan.nama_layanan
+                    FROM
+                    layanan
+                    JOIN `kunjungan_has_layanan` USING (id_layanan)
+                    JOIN kunjungan USING (id_kunjungan)
+                    JOIN pasien USING (id_pasien)
+                    WHERE
+                    kunjungan.id_kunjungan = $id_kunjungan");
+        if($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    /*****************************/
 
     function get_rincian($id_kunjungan) {
         $data = array();
@@ -144,6 +207,4 @@ class M_pembayaran extends Model {
         $total = $jum*3000;
         return $total;
     }
-
-    
 }
