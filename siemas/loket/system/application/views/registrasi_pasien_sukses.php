@@ -24,6 +24,7 @@
                     <div>
                         <span class="notification n-success" style="height: 5px">PENDAFTARAN KK BERHASIL</span>
                     </div>
+                    
                     <table class="noborder" style="width: 100%">
                         <tbody>
                             <tr class="odd">

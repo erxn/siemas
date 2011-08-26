@@ -114,13 +114,13 @@ $(document).ready(function() {
                             <tr>
                                 <td>Nama KK</td>
                                 <td>:</td>
-                                <td><input name="nama_kk" type="text" class="input-medium" placeholder="Nama Kepala Keluarga" id="nama-autocomplete"/></td>
+                                <td><input name="nama_kk" type="text" class="input-medium" placeholder="Nama Kepala Keluarga" id="nama-autocomplete" value="<?php echo $this->input->post('nama_kk') ?>"/></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
                                 <td>:</td>
-                                <td><input name="alamat_kk" type="text" class="input-medium" placeholder="Alamat"/></td>
+                                <td><input name="alamat_kk" type="text" class="input-medium" placeholder="Alamat" value="<?php echo $this->input->post('alamat_kk') ?>"/></td>
                                 <td><div align="right">
                                         <input name="cari" class="submit-green" type="submit" value="Cari"/>
                                     </div>

@@ -23,7 +23,13 @@ class Pasien extends Controller {
 
     function registrasi_kunjungan($id_kk,$id_pasien) {
         $data_pasien = $this->M_pasien->lihat_profil_pasien($id_kk,$id_pasien);
+
+        $now = date("Y-m-d");
+        $jumlah_kunjungan = $this->M_kunjungan->tambah_no_kunjungan($now);
+        $no_kunjungan = $jumlah_kunjungan+1;
+
         $data['pasien'] = $data_pasien;
+        $data['no_kunjungan'] = $no_kunjungan;
         $this->load->view('registrasi_kunjungan',$data);
     }
 

@@ -29,6 +29,28 @@ class M_pembayaran extends Model {
         return $data;
     }
 
+    function data_pembayaran_pasien($tanggal, $nama) {
+        $data = array();
+        $q = $this->db->query("SELECT antrian.id_antrian,antrian.status,antrian.id_kunjungan AS idkunjungan,antrian.id_poli,kunjungan.no_kunjungan,kunjungan.id_pasien,kunjungan.tanggal_kunjungan,kunjungan.total_harga as total,kunjungan.status_pembayaran,poli.*,pasien.*,kk.*,extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) AS umur
+                                FROM poli
+                                JOIN antrian USING (id_poli)
+                                JOIN kunjungan USING (id_kunjungan)
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE kunjungan.tanggal_kunjungan = '$tanggal'
+                                AND antrian.status = 'SELESAI'
+                                AND pasien.nama_pasien LIKE '%$nama%'
+                                ORDER BY status_pembayaran DESC, no_kunjungan ASC");
+        if($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
     function get_id_by_layanan($layanan) {
         $data = array();
         $q = $this->db->query("SELECT id_layanan FROM layanan
@@ -44,11 +66,24 @@ class M_pembayaran extends Model {
 
     }
 
-
-
     function get_layanan() {
         $data = array();
         $q = $this->db->query("SELECT * FROM layanan
+                            ORDER BY nama_layanan ASC");
+        if($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
+    function get_layanan_poli($poli){
+        $data = array();
+        $q = $this->db->query("SELECT * FROM layanan
+                                WHERE poli LIKE '%$poli%'
                             ORDER BY nama_layanan ASC");
         if($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {

@@ -19,7 +19,14 @@ class Pembayaran extends Controller {
         if($tanggal == 0) {
             $tanggal = date("Y-m-d");
         }
-        $pembayaran = $this->M_pembayaran->data_pembayaran($tanggal);
+
+        if($this->input->post('cari')) {
+            $nama = $this->input->post('nama');
+            $pembayaran = $this->M_pembayaran->data_pembayaran_pasien($tanggal, $nama);
+        } else {
+            $pembayaran = $this->M_pembayaran->data_pembayaran($tanggal);
+        }
+
         $data['pembayaran'] = $pembayaran;
         
         //if($this->input->post(''))
@@ -84,13 +91,13 @@ class Pembayaran extends Controller {
 
         $data_pasien = $this->M_pasien->lihat_profil_pasien($id_kk, $id_pasien);
         $data['pasien'] = $data_pasien;
-
+        
         $rinci = $this->M_pembayaran->get_rincian($id_kunjungan);
-        //print_r($rinci);exit;
+        
         $data['rincian'] = $rinci;
         $tot = $this->M_pembayaran->total_harga($id_kunjungan);
         $data['total'] = $tot;
-
+        //print_r($data);exit;
         if($status=="Lunas")
            $data['status'] = "Lunas";
         else $data['status'] = "rinci" ;

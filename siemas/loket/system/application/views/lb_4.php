@@ -10,9 +10,40 @@
         <div class="module">
             <h2><span>Laporan Kunjungan</span></h2>
             <div class="module-body">
+<form method="post" action="index.php/c_laporan/lb_4">
+                    <table class="noborder" style="width: 35%">
+                        <tr>
+                            <td>Pilih Bulan/Tahun</td>
+                            <td>:</td>
+                            <td>
+                                <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
+                                <select name="bulan_kunjungan" style="width: 100%">
+                                    <?php for($i=1;$i<=12;$i++) {?>
+                                    <option  value="<?php echo $i; ?>" <?php if($laporan[0]['bulan'] == $i) echo 'selected="selected"' ?>><?php echo $bulan[$i]; ?></option>
+                                        <?php } ?>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="tahun_kunjungan" style="width: 100%">
+                                    <?php foreach($tahun as $thn) {?>
+                                    <option value="<?php echo $thn['tahun'];?>" <?php if($laporan[0]['tahun'] == $thn) echo 'selected="selected"' ?>><?php echo $thn['tahun'];?></option>
+                                        <?php }?>
+                                </select>
+                            </td>
+                            <td>
+                                <div align="right">
+                                    <input type="submit" value="Pilih" class="submit-green" name="pilih">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                <hr/>
+                <?php $nama_bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember")
 
+                        ?>
                 <h3 align="center"><strong>LAPORAN BULANAN PEMBERANTASAN PENCEGAHAN PENYAKIT</strong></h3>
-                <h4 align="center"><strong>BULAN MEI 2011</strong></h4>
+                <h3 align="center"><strong>BULAN: <?php echo $nama_bulan[intval($laporan[0]['bulan'])]." ".$laporan[0]['tahun']?></strong></h3>
                 <br/>
                 <table height="317" class="tablesorter" id="myTable" style="width: 100%; font-size: 15px;">
                     <thead>

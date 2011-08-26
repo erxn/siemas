@@ -45,13 +45,13 @@
                     <tr  class="odd">
                         <td>Alamat</td>
                         <td>:</td>
-                        <td>Cibogor</td>
+                        <td><?php echo $pasien[0]['kelurahan_kk']?></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>Status Pelayanan</td>
                         <td>:</td>
-                        <td>Umum</td>
+                        <td><?php echo $pasien[0]['status_pelayanan']?></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -68,7 +68,7 @@
                 </div>
                 <?php }?>
                 <h2 id="total_harga" align="right"  style="width: 70%; float: none !important">Total: Rp <?php  echo number_format($total[0]['total_harga'])?> </h2>
-
+<a href="index.php/pembayaran">Kembali ke menu Pembayaran</a>
                 <table style="width: 70%">
                     <thead>
                         <tr>

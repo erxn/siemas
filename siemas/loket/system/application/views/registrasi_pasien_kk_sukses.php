@@ -23,7 +23,7 @@
                 <div class="module-body">
                     <table class="noborder" style="width: 100%">
                         <tbody>
-                            <tr class="odd">
+                            <tr>
                                 <td colspan="2"><strong>Profil KK</strong></td>
                             </tr>
                             <tr class="odd">
@@ -76,8 +76,9 @@
             <div class="module">
                 <h2><span>Profil Pasien</span></h2>
                 <div class="module-body">
+                    
                     <div>
-                        <span class="notification n-success" style="height: 5px">PENDAFTARAN PASIEN BERHASIL</span>
+                        <span class="notification n-success" style="height: 5px">PENDAFTARAN PASIEN BERHASIL. &nbsp;<a href="index.php/registrasi">Kembali ke pendaftaran.</a></span>
                     </div>
                     <table class="noborder" style="width: 100%">
                         <tr class="odd">
@@ -118,7 +119,14 @@
                         </tr>
                         <tr class="odd">
                             <td><h5>Poli Tujuan</h5></td>
-                            <td><h5><?php echo ucfirst($poli);?></h5></td>
+                            <td><h5><?php echo strtoupper(ucfirst($poli));?></h5>
+                            <div style="width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
+                        <small style="font-size: 11px">No. Kunjungan</small>
+                            <h3 style="color: #2BA234">12</h3>
+                        </div></td>
+                        </tr>
+                        <tr>
+                            <td></td>
                         </tr>
                     </table>
 

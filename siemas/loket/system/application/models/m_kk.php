@@ -33,15 +33,20 @@ class M_kk extends Model {
 
     function cari_kk($nama_kk,$alamat_kk) {
 
-        $data = array();
-        if($nama_kk && $alamat_kk) {
-            $q = $this->db->query("SELECT *
-                                 FROM kk
-                                 WHERE kk.nama_kk = '$nama_kk' AND (kk.alamat_kk LIKE '%$alamat_kk%'
+        $where = "WHERE 1 ";
+
+        if($nama_kk != "") $where .= " AND kk.nama_kk LIKE '%$nama_kk%'";
+        if($alamat_kk != "") $where .= "AND (kk.alamat_kk LIKE '%$alamat_kk%'
                                                                   OR kk.kecamatan_kk LIKE '%$alamat_kk%'
                                                                   OR kk.kelurahan_kk LIKE '%$alamat_kk%'
-                                                                  OR kk.kota_kab_kk LIKE '%$alamat_kk%')
-                    "
+                                                                  OR kk.kota_kab_kk LIKE '%$alamat_kk%') ";
+
+
+        $data = array();
+        if($nama_kk || $alamat_kk) {
+            $q = $this->db->query("SELECT *
+                                 FROM kk
+                                 $where"
             );
 
             if($q->num_rows() > 0) {

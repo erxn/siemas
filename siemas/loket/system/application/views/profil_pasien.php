@@ -3,10 +3,10 @@
     <div class="module">
         <h2><span>Profil Pasien</span></h2>
         <div class="module-body">
-            <table class="noborder">
+            <table class="noborder" style="width: 100% !important">
                 <tr class="odd">
-                    <td style="width: 5%">ID Pasien</td>
-                    <td style="width: 15%"><?php echo $pasien[0]['kode_pasien'];?></td>
+                    <td style="width: 25%">ID Pasien</td>
+                    <td style="width: 75%"><?php echo $pasien[0]['kode_pasien'];?></td>
                 </tr>
                 <tr>
                     <td>Nama Kepala Keluarga</td>
@@ -37,14 +37,18 @@
                     <td><?php echo $pasien[0]['no_kartu_layanan'];?></td>
                 </tr>
                 <?php if(isset($x)) {?>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
                 <tr class="odd">
                     <td>&nbsp;</td>
-                    <td><form name="status_kartu" id="pasien_lama" method="post" action="index.php/pasien/registrasi_pasien_lama/<?php echo $pasien[0]['id_pasien'] ?>">
-                            <input type="radio" name="status_kartu"  value="Y">
-                            Bawa kartu
+                    <td>
+                        <form name="status_kartu" id="pasien_lama" method="post" action="index.php/pasien/registrasi_pasien_lama/<?php echo $pasien[0]['id_pasien'] ?>">
+                            <input type="radio" name="status_kartu"  value="Y" id="kartu_Y">
+                            <label for="kartu_Y" style="display: inline !important" class="btn-gplus gplus-green">Bawa kartu</label>
                             &nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="status_kartu"  value="T" checked="checked">
-                            Tidak Bawa
+                            <input type="radio" name="status_kartu"  value="T" checked="checked" id="kartu_T">
+                            <label for="kartu_T" style="display: inline !important" class="btn-gplus gplus-red">Tidak Bawa</label>
 
                             <input type="hidden" id="poli" name="poli" value=""/>
                         </form>

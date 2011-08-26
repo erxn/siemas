@@ -60,7 +60,10 @@ class M_pasien extends Model {
 
         if($nama_pasien != "") $where .= " AND nama_pasien LIKE '%$nama_pasien%'";
         if($umur_pasien != "") $where .= " AND extract(YEAR FROM from_days(datediff(curdate(), tanggal_lahir))) BETWEEN $umur_pasien-1 and $umur_pasien+1";
-        if($alamat != "") $where .= "AND alamat_kk LIKE '%$alamat_pasien%'";
+        if($alamat != "") $where .= "AND (kk.alamat_kk LIKE '%$alamat_pasien%'
+                                                                  OR kk.kecamatan_kk LIKE '%$alamat_pasien%'
+                                                                  OR kk.kelurahan_kk LIKE '%$alamat_pasien%'
+                                                                  OR kk.kota_kab_kk LIKE '%$alamat_pasien%') ";
 
         $data = array();
         if($kode_pasien != '') {

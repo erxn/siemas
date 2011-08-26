@@ -828,3 +828,44 @@ a.dashboard-module span {
                 font-weight: bold;
                 text-decoration: none;
             }
+
+.gplus-green  {
+    background-image: -moz-linear-gradient(center top , #3D9400, #398A00);
+    border: 1px solid #29691D;
+    color: #FFFFFF;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.gplus-green:hover, .gplus-red:hover, .gplus-blue:hover  {
+    opacity: 0.9;
+    -moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+}
+
+.gplus-red {
+    background-image: -moz-linear-gradient(center top , #DD4B39, #D14836);
+    border: 1px solid #B0281A;
+    color: #FFFFFF;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.gplus-blue {
+    background-image: -moz-linear-gradient(center top , #4D90FE, #4787ED);
+    border: 1px solid #2F5BB7;
+    color: #FFFFFF;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-gplus {
+    -moz-border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    margin: 3px;
+    min-width: 54px;
+    outline: 0 none;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+}
