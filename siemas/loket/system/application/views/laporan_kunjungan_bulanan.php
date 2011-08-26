@@ -10,8 +10,40 @@
         <div class="module">
             <h2><span>Laporan Kunjungan</span></h2>
             <div class="module-body">
+                 <form method="post" action="index.php/c_laporan/laporan_kunjungan_bulanan">
+                    <table class="noborder" style="width: 35%">
+                        <tr>
+                            <td>Pilih Bulan/Tahun</td>
+                            <td>:</td>
+                            <td>
+                                <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
+                                <select name="bulan_kunjungan" style="width: 100%">
+                                    <?php for($i=1;$i<=12;$i++) {?>
+                                    <option  value="<?php echo $i; ?>" <?php if($laporan[0]['bulan'] == $i) echo 'selected="selected"' ?>><?php echo $bulan[$i]; ?></option>
+                                        <?php } ?>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="tahun_kunjungan" style="width: 100%">
+                                    <?php foreach($tahun as $thn) {?>
+                                    <option value="<?php echo $thn['tahun'];?>" <?php if($laporan[0]['tahun'] == $thn) echo 'selected="selected"' ?>><?php echo $thn['tahun'];?></option>
+                                        <?php }?>
+                                </select>
+                            </td>
+                            <td>
+                                <div align="right">
+                                    <input type="submit" value="Pilih" class="submit-green" name="pilih">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    </form>
+                <hr/>
+                <?php $nama_bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember")
+
+                        ?>
                 <h3 align="center"><strong>LAPORAN KUNJUNGAN PUSKESMAS BOGOR TENGAH</strong></h3>
-                <h4 align="center"><strong>BULAN JULI 2011</strong></h4>
+                <h3 align="center"><strong>BULAN: <?php echo $nama_bulan[intval($laporan[0]['bulan'])]." ".$laporan[0]['tahun']?></strong></h3>
                 <br/>
                 <table width="82%" height="317" class="tablesorter" id="myTable" style="width: 71%; font-size: 15px;">
                     <thead>
@@ -28,24 +60,24 @@
                     </thead>
                     <tr>
                         <td>BP Umum</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['umum_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_bayar']?></td>
                     </tr>
                     <tr>
                         <td>BP Gigi</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['gigi_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_bayar']?></td>
                     </tr>
                     <tr>
                         <td>KIA</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['kia_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_bayar']?></td>
                     </tr>
                     <tr>
                         <td>Laboratorium</td>
@@ -63,17 +95,17 @@
                     </tr>
                     <tr>
                         <td>Haji</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['haji_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['haji_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['haji_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['haji_bayar']?></td>
                     </tr>
                     <tr>
                         <td> EKG</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['ekg_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['ekg_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['ekg_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['ekg_bayar']?></td>
                     </tr>
                     <tr>
                         <td>Spesialis anak</td>
@@ -91,10 +123,10 @@
                     </tr>
                     <tr>
                         <td>Rontgen</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_bayar']?></td>
                     </tr>
                     <tr>
                         <td>Rontgen Gigi</td>

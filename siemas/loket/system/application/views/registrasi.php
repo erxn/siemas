@@ -117,8 +117,10 @@
                             <tr>
                                 <td style="width: 30%;">ID Pasien</td>
                                 <td style="width: 10%;">:</td>
-                                <td style="width: 20%;"><input id="kode-pasien" name="kode_pasien" type="text" class="input-medium" placeholder="ID Pasien"/></td>
-                                <td></td>
+                                <td style="width: 20%;"><input id="kode-pasien" value="<?php echo $this->input->post('kode_pasien')?>" name="kode_pasien" type="text" class="input-medium" placeholder="ID Pasien"/></td>
+                                <td><div align="right">
+                                        <input name="cari" class="submit-green" type="submit" value="Cari"/>
+                                    </div></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><i><b><center>atau</center></b></i></td>
@@ -127,13 +129,13 @@
                             <tr>
                                 <td>Nama</td>
                                 <td>:</td>
-                                <td><input name="nama_pasien"type="text" class="input-medium" placeholder="Nama Pasien" id="nama-autocomplete"/></td>
+                                <td><input value="<?php echo $this->input->post('nama_pasien')?>" name="nama_pasien"type="text" class="input-medium" placeholder="Nama Pasien" id="nama-autocomplete"/></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td>Umur</td>
                                 <td>:</td>
-                                <td><input name="umur_pasien" type="text" class="input-medium" placeholder="Umur Pasien"/></td>
+                                <td><input value="<?php echo $this->input->post('umur_pasien')?>" name="umur_pasien" type="text" class="input-medium" placeholder="Umur Pasien"/></td>
                                 <td><div align="right">
                                         <input name="cari" class="submit-green" type="submit" value="Cari"/>
                                     </div>

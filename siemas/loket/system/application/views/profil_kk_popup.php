@@ -40,7 +40,7 @@
                                 else $x ="even"; ?>
                             <tr class="<?php echo $x;?>">
                                 <td><?php echo $i++; ?></td>
-                                <td><a href="#"><?php echo $anggota['nama_pasien'] ?></a></td>
+                                <td style="color: #0063BE"><?php echo $anggota['nama_pasien'] ?></td>
                                 <td><?php echo $anggota['status_dalam_keluarga'] ?></td>
                             </tr>
                             <?php }?>

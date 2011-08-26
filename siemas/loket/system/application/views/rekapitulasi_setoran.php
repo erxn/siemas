@@ -71,7 +71,7 @@
                             <th style="font-size: 15px;" class="header" width="90"><div align="center"><strong>MANTUOX</strong></div></th>
                         </tr>
                     </thead>
-                    <?php $umum=0; $labor=0; $radio=0; $ekg=0; $haji=0; $usg=0; $catin=0;$mantuox=0;
+                    <?php $umum=0; $labor=0; $radio=0; $ekg=0; $haji=0; $usg=0; $catin=0;$mantuox=0;$jum=0;
                           $i=1;foreach($laporan as $lap){
                                 $jumlah = $lap['umum']+$lap['labor']+$lap['rontgen']+$lap['ekg']+$lap['haji']+$lap['usg']+$lap['catin']+$lap['mantuox'];
                    ?>
@@ -103,6 +103,7 @@
                           $usg  += $lap['usg'];
                           $catin += $lap['catin'];
                           $mantuox += $lap['mantuox'];
+                          $jum += $jumlah;
                     }?>
                     <tr class="header">
                         <th class="header" style="font-size: 15px; text-align: right !important"><b>Jumlah</b></th>
@@ -110,16 +111,16 @@
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($labor) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($radio) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($ekg) ?></th>
-                        <th class="header" style="font-size: 15px; text-align: right !important"style="font-size: 15px; text-align: right !important"><?php //echo number_format($usg) ?></th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"style="font-size: 15px; text-align: right !important"><?php echo number_format($haji) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
                         <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
                         <th class="header" style="font-size: 15px; text-align: right !important"></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($usg) ?></th>
+                        <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($catin) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($mantuox) ?></th>
-                        <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
-                        <th class="header" style="font-size: 15px;" align="right">&nbsp;</th>
+                        <th class="header" style="font-size: 15px;" align="right"><?php echo number_format($jum) ?></th>
                         <th class="header" style="font-size: 15px;" align="right">&nbsp;</th>
                     </tr>
                 </table>

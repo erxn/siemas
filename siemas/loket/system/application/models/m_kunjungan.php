@@ -190,5 +190,44 @@ class M_kunjungan extends Model {
         return $jumlah_kunjungan[0]['jumlah'];
     }
 
-    
+    function get_kunjungan_poli_st_layan($bln,$thn,$poli,$status){
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM antrian
+                                JOIN kunjungan USING (id_kunjungan)
+                                JOIN pasien USING (id_pasien)
+                                WHERE id_poli = $poli
+                                AND status_pelayanan = '$status'
+                                AND MONTH(tanggal_kunjungan) = '$bln'
+                                AND YEAR(tanggal_kunjungan) = '$thn'");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    function get_kunjungan_layanan($bln,$thn,$layanan,$status){
+        $q = $this->db->query("SELECT COUNT(*) as jumlah
+                                FROM pasien
+                                JOIN kunjungan ON pasien.id_pasien = kunjungan.id_pasien
+                                JOIN kunjungan_has_layanan ON kunjungan_has_layanan.id_kunjungan = kunjungan.id_kunjungan
+                                JOIN layanan ON kunjungan_has_layanan.id_layanan = layanan.id_layanan
+                                WHERE MONTH(tanggal_kunjungan) = '$bln'
+                                AND YEAR(tanggal_kunjungan) = '$thn'
+                                AND status_pelayanan LIKE '%$status%'
+                                AND nama_layanan LIKE '%$layanan%'");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    function get_kunjungan_jamkesmas($bln,$thn,$wil,$status){
+         $q = $this->db->query("SELECT kunjungan.tanggal_kunjungan,pasien.status_pelayanan, kk.kelurahan_kk,kunjungan.id_kunjungan
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE
+                                MONTH(tanggal_kunjungan) = '$bln'
+                                AND YEAR(tanggal_kunjungan) = '$thn'
+                                AND status_pelayanan = '$status'
+                                AND kelurahan_kk LIKE '$pab'");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
 }

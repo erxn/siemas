@@ -86,13 +86,123 @@ class C_laporan extends Controller {
         
     }
 
-    function laporan_kunjungan_bulanan(){
+    function lb_4(){
 
-        $this->load->view('laporan_kunjungan_bulanan');
+        $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
+        $data['tahun'] = $list_thn;
+
+        if($this->input->post('pilih')){
+            /*bulan dan tahun yang dipilih*/
+            $bln = $this->input->post('bulan_kunjungan');
+            $thn = $this->input->post('tahun_kunjungan');
+
+        } else {
+
+            $bln = date("m");
+            $thn = date("Y");
+        }
+
+        $laporan = array();
+        $gigi = 1; $umum = 2; $kia=3;
+        $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
+        $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'radiologi';
+
+        $laporan[] = array(
+
+                'bulan' => $bln,
+                'tahun' => $thn
+                );
+        $data['laporan'] = $laporan;
+        
+        $this->load->view('lb_4', $data);
     }
 
-    function lb_4(){
-        $this->load->view('lb_4');
+    function laporan_kunjungan_bulanan(){
+        $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
+        $data['tahun'] = $list_thn;
+
+        if($this->input->post('pilih')){
+            /*bulan dan tahun yang dipilih*/
+            $bln = $this->input->post('bulan_kunjungan');
+            $thn = $this->input->post('tahun_kunjungan');
+
+        } else {
+
+            $bln = date("m");
+            $thn = date("Y");
+        }
+
+        $laporan = array();
+        $gigi = 1; $umum = 2; $kia=3;
+        $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
+        $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'radiologi';
+
+        $umum_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askes);
+        $umum_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin);
+        $umum_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$gr);
+        $umum_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar);
+
+        $gigi_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askes);
+        $gigi_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askeskin);
+        $gigi_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$gr);
+        $gigi_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$bayar);
+
+        $kia_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askes);
+        $kia_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askeskin);
+        $kia_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$gr);
+        $kia_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar);
+
+        $ekg_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$askes);
+        $ekg_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$askeskin);
+        $ekg_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$gr);
+        $ekg_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$bayar);
+
+        $haji_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$askes);
+        $haji_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$askeskin);
+        $haji_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$gr);
+        $haji_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$bayar);
+
+        $rontgen_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$askes);
+        $rontgen_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$askeskin);
+        $rontgen_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$gr);
+        $rontgen_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$bayar);
+
+        $laporan[] = array(
+                'umum_askes' => $umum_askes,
+                'umum_askeskin' => $umum_askeskin,
+                'umum_gr' => $umum_gr,
+                'umum_bayar' => $umum_bayar,
+
+                'gigi_askes' => $gigi_askes,
+                'gigi_askeskin' => $gigi_askeskin,
+                'gigi_gr' => $gigi_gr,
+                'gigi_bayar' => $gigi_bayar,
+
+                'kia_askes' => $kia_askes,
+                'kia_askeskin' => $kia_askeskin,
+                'kia_gr' => $kia_gr,
+                'kia_bayar' => $kia_bayar,
+
+                'ekg_askes' => $ekg_askes,
+                'ekg_askeskin' => $ekg_askeskin,
+                'ekg_gr' => $ekg_gr,
+                'ekg_bayar' => $ekg_bayar,
+
+                'haji_askes' => $haji_askes,
+                'haji_askeskin' => $haji_askeskin,
+                'haji_gr' => $haji_gr,
+                'haji_bayar' => $haji_bayar,
+
+                'rontgen_askes' => $rontgen_askes,
+                'rontgen_askeskin' => $rontgen_askeskin,
+                'rontgen_gr' => $rontgen_gr,
+                'rontgen_bayar' => $rontgen_bayar,
+
+                'bulan' => $bln,
+                'tahun' => $thn
+                );
+        $data['laporan'] = $laporan;
+        $this->load->view('laporan_kunjungan_bulanan',$data);
     }
 
     function rekapitulasi_kunjungan(){

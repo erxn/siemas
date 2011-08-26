@@ -48,38 +48,23 @@
             <h2><span>PEMBAYARAN</span></h2>
             <div class="module-body">
                 <h4>Cari Pasien </h4>
-                <form name="cari_pasien_pembayaran" method="post" action="">
+                <form method="post" action="">
                     <table class="noborder" style="width: 28%">
                         <tr>
                             <td width="137">Nama</td>
                             <td width="16">:</td>
                             <td width="216"><input id="nama-autocomplete" name="nama" type="text" class="input-medium" value="<?php if(isset($_POST['nama'])) echo $_POST['nama'] ?>"/></td>
-                        </tr>
-                        <tr>
-                            <td>Poli</td>
-                            <td>:</td>
-                            <td>
-                                <select name="poli">
-                                    <option>GIGI</option>
-                                    <option>KIA</option>
-                                    <option>LAB</option>
-                                    <option>RADIOLOGI</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div align="right">
-                                    <input name="cari" class="submit-green" type="submit" value="Cari" />
-                                </div>
-                            </td>
+                            <td><input name="cari" class="submit-green" type="submit" value="Cari" /></td>
+                            <?php if($this->input->post('cari')) { ?>
+                            <td><input class="submit-green" type="button" value="Tampilkan semua" onclick="location.href = 'index.php/pembayaran'" /></td>
+                            <?php } ?>
                         </tr>
                     </table>
                 </form>
-                <a class="button float-left" align="left" href="index.php/pembayaran" ><span>Perbaharui Data</span></a>
                 <br/>
+                <hr/>
+                <br/>
+                <a class="button float-left" align="left" href="index.php/pembayaran" ><span>Perbaharui Data</span></a>
                 <div>
                     <h3  class="float-right" style="margin-right: 2%">Total: <?php echo count($pembayaran) ?> orang</h3>
                     <br/>
