@@ -73,17 +73,17 @@
                     <tr>
                         <td><div align="center">1</div></td>
                         <td>KUNJUNGAN PUSKESMAS</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['kunj_gakin_pab']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_ngakin_pab']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_gakin_cib']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_ngakin_cib']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_gakin_lw']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_ngakin_lw']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_gakin_lk']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_ngakin_lk']?></td>
+                        <td align="center">&nbsp;</td>
+                        <td align="center">&nbsp;</td>
+                        <td align="center">&nbsp;</td>
                     </tr>
                     <tr>
                         <td><div align="center">2</div></td>
@@ -118,7 +118,7 @@
                     <tr>
                         <td><div align="center">4</div></td>
                         <td>Kunjungan Lama</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['kunj_lama_pab']?></td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>

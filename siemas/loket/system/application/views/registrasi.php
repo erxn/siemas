@@ -1,7 +1,7 @@
 <?php $this->load->view('header');?>
 <script type="text/javascript">
     $(document).ready(function(){
-        $(".popup_reg_kunjungan").colorbox({initialHeight: "900px", initialWidth: "900px", width: "65%", height: "90%", onComplete: function(){
+        $(".popup_reg_kunjungan").colorbox({initialHeight: "900px", initialWidth: "900px", width: "75%", height: "90%", onComplete: function(){
                 $( "#datepicker" ).datepicker({
                     changeMonth: true,
                     changeYear: true

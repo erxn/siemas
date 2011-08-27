@@ -41,7 +41,6 @@ class C_laporan extends Controller {
             $thorax = $this->M_pembayaran->get_total_by_layanan($tgl,"thorax");
             $rontgen = $x_ray_gigi + $thorax;
             
-
             /*Untuk USG*/
             $usg = $this->M_pembayaran->get_total_by_layanan($tgl,"usg");
             
@@ -62,6 +61,17 @@ class C_laporan extends Controller {
             /*untuk haji*/
             $catin = $this->M_pembayaran->get_total_by_layanan($tgl,"catin");
 
+            /*untuk RB -- bersalin?*/
+            $rb = $this->M_pembayaran->get_total_by_layanan($tgl,"persalinan normal");
+
+            /*untuk Spesialis Anak*/
+            $anak = $this->M_kunjungan->get_kunjungan_poli($tgl,7);
+            $anak *= 20000;
+
+            /*untuk Spesialis Penyakit Dalam*/
+            $dalam = $this->M_kunjungan->get_kunjungan_poli($tgl,8);
+            $dalam *= 20000;
+
             /*mantuox*/
             $mantuox = $this->M_pembayaran->get_total_by_layanan($tgl,"mantuox");
             
@@ -73,6 +83,9 @@ class C_laporan extends Controller {
                 'usg' => $usg,
                 'ekg' => $ekg,
                 'haji'  => $haji,
+                'rb' => $rb,
+                'anak' => $anak,
+                'dalam' => $dalam,
                 'catin'  => $catin,
                 'mantuox' => $mantuox,
                 'bulan' => $bln,
@@ -101,14 +114,38 @@ class C_laporan extends Controller {
             $bln = date("m");
             $thn = date("Y");
         }
-
+        
         $laporan = array();
         $gigi = 1; $umum = 2; $kia=3;
+        $pab = 'pabaton'; $cib='cibogor'; $lw='luar wilayah'; $lk='luar kota';
         $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
         $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'radiologi';
 
-        $laporan[] = array(
+        $kunj_gakin_pabaton = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$pab,$askeskin,0);
+        $kunj_ngakin_pabaton = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$pab,$bayar,0);
+        $kunj_gakin_cibogor = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$cib,$askeskin,0);
+        $kunj_ngakin_cibogor = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$cib,$bayar,0);
 
+        $kunj_gakin_lw = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$askeskin,$lw);
+        $kunj_ngakin_lw = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lw);
+        $kunj_gakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$askeskin,$lk);
+        $kunj_ngakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lk);
+
+        $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_lama_jam($bln,$thn,$pab,'Jamkesmas');
+
+        //echo $kunj_gakin_pabaton;exit;
+        $laporan[] = array(
+                'kunj_gakin_pab' => $kunj_gakin_pabaton,
+                'kunj_ngakin_pab' => $kunj_gakin_pabaton,
+                'kunj_gakin_cib' => $kunj_gakin_cibogor,
+                'kunj_ngakin_cib' => $kunj_gakin_cibogor,
+
+                'kunj_gakin_lw' => $kunj_gakin_lw,
+                'kunj_ngakin_lw' => $kunj_gakin_lw,
+                'kunj_gakin_lk' => $kunj_gakin_lk,
+                'kunj_ngakin_lk' => $kunj_gakin_lk,
+
+                'kunj_lama_pab' => $kunj_lama_pabaton,
                 'bulan' => $bln,
                 'tahun' => $thn
                 );
@@ -133,8 +170,9 @@ class C_laporan extends Controller {
         }
 
         $laporan = array();
-        $gigi = 1; $umum = 2; $kia=3;
+        $gigi = 1; $umum = 2; $kia=3; $anak=7; $dalam=8;
         $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
+
         $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'radiologi';
 
         $umum_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askes);
@@ -156,6 +194,16 @@ class C_laporan extends Controller {
         $ekg_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$askeskin);
         $ekg_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$gr);
         $ekg_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$bayar);
+
+        $anak_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$askes);
+        $anak_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$askeskin);
+        $anak_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$gr);
+        $anak_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$bayar);
+
+        $dalam_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$askes);
+        $dalam_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$askeskin);
+        $dalam_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$gr);
+        $dalam_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$bayar);
 
         $haji_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$askes);
         $haji_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$askeskin);
@@ -187,6 +235,16 @@ class C_laporan extends Controller {
                 'ekg_askeskin' => $ekg_askeskin,
                 'ekg_gr' => $ekg_gr,
                 'ekg_bayar' => $ekg_bayar,
+
+                'anak_askes' => $anak_askes,
+                'anak_askeskin' => $anak_askeskin,
+                'anak_gr' => $anak_gr,
+                'anak_bayar' => $anak_bayar,
+
+                'dalam_askes' => $dalam_askes,
+                'dalam_askeskin' => $dalam_askeskin,
+                'dalam_gr' => $dalam_gr,
+                'dalam_bayar' => $dalam_bayar,
 
                 'haji_askes' => $haji_askes,
                 'haji_askeskin' => $haji_askeskin,
@@ -232,32 +290,32 @@ class C_laporan extends Controller {
             $gigi=1; $umum=2; $kia=3; $lab=4; $radio=4; $rujukan=5;
 
             /*Kunjungan Lama*/
-            $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil1);
-            $kunj_lama_cibogor = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil2);
-            $kunj_lama_LW = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat1);
-            $kunj_lama_LKot = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat2);
+            $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil1,'Umum');
+            $kunj_lama_cibogor = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil2,'Umum');
+            $kunj_lama_LW = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat1,'Umum');
+            $kunj_lama_LKot = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat2,'Umum');
             
             /*Kunjungan Baru*/
-            $kunj_baru_pabaton = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil1);
-            $kunj_baru_cibogor = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil2);
-            $kunj_baru_LW = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat1);
-            $kunj_baru_LKot = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat2);
+            $kunj_baru_pabaton = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil1,'Umum');
+            $kunj_baru_cibogor = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil2,'Umum');
+            $kunj_baru_LW = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat1,'Umum');
+            $kunj_baru_LKot = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat2,'Umum');
 
-            $kunj_umum_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$umum,$tgl);
-            $kunj_umum_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$umum,$tgl);
-            $kunj_umum_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$umum,$tgl);
-            $kunj_umum_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$umum,$tgl);
+            $kunj_umum_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$umum,$tgl,'Umum');
+            $kunj_umum_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$umum,$tgl,'Umum');
+            $kunj_umum_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$umum,$tgl,'Umum');
+            $kunj_umum_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$umum,$tgl,'Umum');
 
 
-            $kunj_gigi_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$gigi,$tgl);
-            $kunj_gigi_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$gigi,$tgl);
-            $kunj_gigi_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$gigi,$tgl);
-            $kunj_gigi_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$gigi,$tgl);
+            $kunj_gigi_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$gigi,$tgl,'Umum');
+            $kunj_gigi_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$gigi,$tgl,'Umum');
+            $kunj_gigi_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$gigi,$tgl,'Umum');
+            $kunj_gigi_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$gigi,$tgl,'Umum');
 
-            $kunj_kia_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$kia,$tgl);
-            $kunj_kia_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$kia,$tgl);
-            $kunj_kia_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$kia,$tgl);
-            $kunj_kia_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$kia,$tgl);
+            $kunj_kia_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$kia,$tgl,'Umum');
+            $kunj_kia_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$kia,$tgl,'Umum');
+            $kunj_kia_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$kia,$tgl,'Umum');
+            $kunj_kia_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$kia,$tgl,'Umum');
             
             $laporan[] = array(
 
