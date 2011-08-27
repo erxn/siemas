@@ -71,9 +71,9 @@
                             <th style="font-size: 15px;" class="header" width="90"><div align="center"><strong>MANTUOX</strong></div></th>
                         </tr>
                     </thead>
-                    <?php $umum=0; $labor=0; $radio=0; $ekg=0; $haji=0; $usg=0; $catin=0;$mantuox=0;$jum=0;
+                    <?php $umum=0; $labor=0; $radio=0; $ekg=0; $haji=0; $rb=0;$anak=0; $dalam=0;$usg=0; $catin=0;$mantuox=0;$jum=0;
                           $i=1;foreach($laporan as $lap){
-                                $jumlah = $lap['umum']+$lap['labor']+$lap['rontgen']+$lap['ekg']+$lap['haji']+$lap['usg']+$lap['catin']+$lap['mantuox'];
+                                $jumlah = $lap['umum']+$lap['labor']+$lap['rontgen']+$lap['ekg']+$lap['haji']+$lap['rb']+$lap['anak']+$lap['dalam']+$lap['usg']+$lap['catin']+$lap['mantuox'];
                    ?>
 
 
@@ -84,9 +84,9 @@
                         <td class="font_kecil"><?php echo number_format($lap['rontgen']);?></td>
                         <td class="font_kecil"><?php echo number_format($lap['ekg'])?></td>
                         <td class="font_kecil"><?php echo number_format($lap['haji'])?></td>
-                        <td class="font_kecil">549,000</td>
-                        <td class="font_kecil">549,000</td>
-                        <td class="font_kecil"></td>
+                        <td class="font_kecil"><?php echo number_format($lap['rb'])?></td>
+                        <td class="font_kecil"><?php echo number_format($lap['anak'])?></td>
+                        <td class="font_kecil"><?php echo number_format($lap['dalam'])?></td>
                         <td class="font_kecil"><?php echo number_format($lap['usg'])?></td>
                         <td class="font_kecil">549,000</td>
                         <td class="font_kecil"><?php echo number_format($lap['catin'])?></td>
@@ -100,6 +100,9 @@
                           $radio  += $lap['rontgen'];
                           $ekg  += $lap['ekg'];
                           $haji  += $lap['haji'];
+                          $rb  += $lap['rb'];
+                          $anak  += $lap['anak'];
+                          $dalam  += $lap['dalam'];
                           $usg  += $lap['usg'];
                           $catin += $lap['catin'];
                           $mantuox += $lap['mantuox'];
@@ -111,10 +114,10 @@
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($labor) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($radio) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($ekg) ?></th>
-                        <th class="header" style="font-size: 15px; text-align: right !important"style="font-size: 15px; text-align: right !important"><?php echo number_format($haji) ?></th>
-                        <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
-                        <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
-                        <th class="header" style="font-size: 15px; text-align: right !important"></th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($haji) ?></th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($rb) ?></th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($anak) ?></th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($dalam) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($usg) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($catin) ?></th>

@@ -64,7 +64,7 @@
         <h2><span>Profil Pasien</span></h2>
         <div class="module-body">
             <div>
-                <span class="notification n-success" style="height: 5px">PENDAFTARAN PASIEN BERHASIL</span>
+                <span class="notification n-success" style="height: 5px">PENDAFTARAN PASIEN BERHASIL&nbsp;<a href="index.php/registrasi">Kembali ke pendaftaran.</a></span>
             </div>
             <table class="noborder" style="width: 100%">
                 <tr class="odd">
@@ -105,11 +105,15 @@
                 </tr>
                 <tr class="odd">
                     <td><h5>Poli Tujuan</h5></td>
-                    <td><h5><?php echo ucfirst($poli);?></h5></td>
+                    <td><h5><?php echo strtoupper(ucfirst($poli));?></h5>
+                    <div style="font-size: 11px;width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
+                    <small>No. Kunjungan</small>
+                    <h1 style="color: #2BA234"><?php echo $kunjungan['no_kunjungan']; ?></h1>
+                </div></td>
                 </tr>
             </table>
-            <br/>
-            No. Kunjungan: <?php echo $kunjungan['no_kunjungan']?>
+                
+            
         </div>
     </div>
 </div>

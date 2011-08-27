@@ -8,7 +8,7 @@
 <div>
     <div class="grid_6" style="width: 98%">
         <div class="module">
-            <h2><span>Rekapitulasi Kunjungan: Pelayanan</span></h2>
+            <h2><span>Rekapitulasi Kunjungan: UMUM</span></h2>
             <div class="module-body">
                 <div>
                     <form method="post" action="index.php/c_laporan/rekapitulasi_kunjungan">
@@ -39,7 +39,7 @@
                         </tr>
                     </table>
                     </form>
-                    <div align="right" style="font-size: 14px;"><a href="index.php/c_laporan/rekap_status_askes_poli">Rekap Berdasarkan Status Pelayanan</a></div>
+                    <div align="right" style="font-size: 14px;"><a href="index.php/c_laporan/rekap_status_askes_poli">Rekap Pasien Askes</a></div>
                         <hr/>
                 </div>
                 <?php $nama_bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember")

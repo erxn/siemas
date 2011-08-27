@@ -109,17 +109,17 @@
                     </tr>
                     <tr>
                         <td>Spesialis anak</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['anak_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['anak_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['anak_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['anak_bayar']?></td>
                     </tr>
                     <tr>
                         <td>Spesialis Dalam</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['dalam_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['dalam_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['dalam_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['dalam_bayar']?></td>
                     </tr>
                     <tr>
                         <td>Rontgen</td>

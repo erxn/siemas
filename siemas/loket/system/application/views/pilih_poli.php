@@ -19,8 +19,11 @@
     <a href="#" onclick="tambah_antrian('Umum'); return false;" class="kotak"><img src="images/umum.png" border="0"/><br/>Poli Umum</a>
     <a href="#" onclick="tambah_antrian('Gigi'); return false;" class="kotak"><img src="images/gigi.png" border="0"/><br/>Poli Gigi</a>
     <a href="#" onclick="tambah_antrian('Kia'); return false;" class="kotak"><img src="images/kia.png" border="0"/><br/>Poli KIA</a>
-    <a href="#" onclick="tambah_antrian('Laboratorium'); return false;" class="kotak"><img src="images/lab.png" border="0"/><br/>Laboratorium</a>
+    <a href="#" onclick="tambah_antrian('Spesialis Anak'); return false;" class="kotak"><img src="images/lab.png" border="0"/><br/>Sps. Anak</a>
+    <a href="#" onclick="tambah_antrian('Spesialis Penyakit Dalam'); return false;" class="kotak"><img src="images/lab.png" border="0"/><br/>Sps. Peny. Dalam</a>
+  <!--  <a href="#" onclick="tambah_antrian('Laboratorium'); return false;" class="kotak"><img src="images/lab.png" border="0"/><br/>Laboratorium</a> -->
     <a href="#" onclick="tambah_antrian('Radio'); return false;" class="kotak"><img src="images/radiologi.jpg" border="0"/><br/>Radiologi</a>
+     <?php if($status =="Askes"){?><a  href="#" onclick="tambah_antrian('Rujukan'); return false;" class="kotak"><img src="images/radiologi.jpg" border="0"/><br/>Rujukan</a><?php }?>
 </div>
 
 <script type="text/javascript">
