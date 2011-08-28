@@ -72,5 +72,6 @@ class Laporan extends Controller{
     }
 
    
+    
 }
 ?>

@@ -121,8 +121,8 @@ class Pasien extends Controller {
         $data['pop_tanggal']=$pop_tanggal;
        $pop_gigi=$this->remed->get_remed_pasien_gigi($id_pasien);
         $data['pop_gigi']=$pop_gigi;
-        
-        $this->load->view('data_remed_poli_lain_view',$data);
+
+        $this->load->view('data_remed_poli_gigi_view',$data);
 
     }
 
@@ -136,7 +136,19 @@ class Pasien extends Controller {
        $pop_u=$this->remed->get_remed_pasien_umum($id_pasien);
         $data['pop_umum']=$pop_u;
 
-        $this->load->view('data_remed_poli_lain_view',$data);
+           $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien);
+        $remed['tbc']=$remed_tbc;
+
+        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien);
+        $remed['ispa']=$remed_ispa;
+
+        $remed_campak=$this->remed->remed_poli_umum_campak($id_pasien);
+        $remed['campak']=$remed_tbc;
+
+        $remed_diare=$this->remed->remed_poli_umum_diare($id_pasien);
+        $remed['diare']=$remed_diare;
+        
+        $this->load->view('data_remed_poli_umum_view',$data);
 
     }
 
@@ -150,7 +162,7 @@ class Pasien extends Controller {
        $pop_k=$this->remed->get_remed_pasien_kia($id_pasien);
         $data['pop_kia']=$pop_k;
 
-        $this->load->view('data_remed_poli_lain_view',$data);
+        $this->load->view('data_remed_poli_kia_view',$data);
 
     }
     function tabel_tbc($id_pasien){
