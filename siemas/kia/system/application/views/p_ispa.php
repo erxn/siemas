@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <base href="http://localhost/siemas/kia/" />
+        <base href="http://localhost/siemas/poli/" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
         <title>Puskesmas Bogor Tengah</title>
 
@@ -57,22 +57,22 @@
 
         <!-- Initiate tablesorter script -->
         <script type="text/javascript">
-            $(document).ready(function() { 
-                $("#myTable") 
+            $(document).ready(function() {
+                $("#myTable")
                 .tablesorter({
                     // zebra coloring
                     widgets: ['zebra'],
-                    // pass the headers argument and assing a object 
-                    headers: { 
-                        // assign the sixth column (we start counting zero) 
-                        6: { 
-                            // disable it by setting the property sorter to false 
-                            sorter: false 
-                        } 
+                    // pass the headers argument and assing a object
+                    headers: {
+                        // assign the sixth column (we start counting zero)
+                        6: {
+                            // disable it by setting the property sorter to false
+                            sorter: false
+                        }
                     }
-                }) 
-                .tablesorterPager({container: $("#pager")}); 
-            }); 
+                })
+                .tablesorterPager({container: $("#pager")});
+            });
         </script>
 
         <!-- Initiate password strength script -->
@@ -84,31 +84,69 @@
 
     </head>
 
-    <body>
-        <!-- Header -->
-        <div id="header">
-            
-            
 
-            <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:30px" />
-            <img src="Template_files/puskesmas.png" style="position: absolute; top:2px; left:90px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:37px; left:95px" />
-            <img src="Template_files/kia.png" style="position: absolute; top:10px; right:2px" />
-            <!-- Header. Main part -->
-            <div id="header-main">
-                <div class="container_12">
-                    <div class="grid_12">                       												
-                        <ul id="nav">
-                            <li><a href="index.php/antrian/antri/3">Antrian</a></li>
-                            <li><a href="index.php/stat">Statistik</a></li>
-                            <li><a href="index.php/laporan">Laporan</a></li>
-                             <li><a href="index.php/">Logout</a></li>
+<script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
 
-                        </ul>
 
-                    </div><!-- End. .grid_12-->
-                    <div style="clear: both;"></div>
-                </div><!-- End. .container_12 -->
-            </div> <!-- End #header-main -->
-            </html>
-        
+<script>
+    $(function() {
+
+        $( ".tabs" ).tabs();
+    });
+</script>
+
+<div  class="tabs" style="width:50%; margin-left: 300px; margin-top: 100px;">
+    <ul>
+        <li><a href="#tabs-a">Rekam Medik ISPA</a></li>
+    </ul>
+    <div id="tabs-a">
+
+                            <table style="width:100%" id="myTable" class="tablesorter" border="1">
+
+
+                                <tr class="odd">
+                                    <td><b>Nama:</b></td>
+                                    <td style="width: 50%"><?php echo $data_pasien[0]['nama_pasien'];?></td>
+
+                                </tr>
+
+                                <tr >
+                                    <td><b>Umur:</b></td>
+                                    <td>20</td>
+                                </tr>
+
+
+                                <tr class="odd">
+                                    <td><b>Klasifikasi:</b></td>
+                                    <td style="width: 50%"><?php echo $ispa[0]['klasifikasi'];?></td>
+                                </tr>
+
+                                 <tr>
+                                    <td><b>Frekuensi Napas:</b></td>
+                                    <td><?php echo $ispa[0]['frek_nafas'];?></td>
+                                </tr>
+
+                                <tr  class="odd">
+                                    <td><b>Antibiotik:</b></td>
+                                    <td><?php echo $ispa[0]['antibiotik'];?></td>
+                                </tr>
+
+                                 <tr>
+                                    <td><b>Kondisi kunjungan ulang:</b></td>
+                                    <td><?php echo $ispa[0]['kondisi_kunjungan_ulang'];?></td>
+                                </tr>
+
+                                <tr  class="odd">
+                                    <td><b>Tindak lanjut:</b></td>
+                                    <td><?php echo $ispa[0]['tindak_lanjut'];?></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>Keterangan:</b></td>
+                                    <td><?php echo $ispa[0]['keterangan'];?></td>
+                                </tr>
+
+                            </table>
+
+                    </div> </div>

@@ -22,18 +22,18 @@
 
 <script type="text/javascript">
     function load_tabel_antri() {
-        $('#div-antri').load("index.php/antrian/tabel_antri/3");
+        $('#div-antri').load("index.php/antrian/tabel_antri/2");
     }
 
     function load_tabel_periksa() {
-        $('#div-periksa').load("index.php/antrian/tabel_periksa/3");
+        $('#div-periksa').load("index.php/antrian/tabel_periksa/2");
     }
 
     function load_tabel_tunda() {
-        $('#div-tunda').load("index.php/antrian/tabel_tunda/3");
+        $('#div-tunda').load("index.php/antrian/tabel_tunda/2");
     }
     function load_tabel_selesai() {
-        $('#div-selesai').load("index.php/antrian/tabel_selesai/3");
+        $('#div-selesai').load("index.php/antrian/tabel_selesai/2");
     }
 
     $(document).ready(function(){
@@ -56,7 +56,7 @@
         <div class="grid_12">
             <ul>
                 <li><a href="index.php/antrian/isi_remed_hari_ini">Isi Rekam Medik</a></li>
-                <li><a href="index.php/antrian/antri/3">Antrian</a></li>
+                <li><a href="index.php/antrian/antri/2">Antrian</a></li>
             </ul>
 
         </div>
