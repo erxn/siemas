@@ -78,11 +78,8 @@ Class Rekam_medik_model extends Model{
     function get_remed_pasien_umum($id_pasien){               //buat nampilin tabel remed pasien yg KIA
         $data=array();
         $q=$this->db->query  ("SELECT * FROM
-             remed_poli_umum
-            JOIN penyakit_remed_umum
-                ON remed_poli_umum.id_remed_umum=penyakit_remed_umum.id_remed_umum
-            JOIN penyakit
-                ON penyakit_remed_umum.id_penyakit=penyakit.id_penyakit
+             pasien
+                JOIN remed_poli_umum USING (id_pasien)
             WHERE remed_poli_umum.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {

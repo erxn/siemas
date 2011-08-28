@@ -31,7 +31,7 @@
 
 
 
-    <div class="grid_7" style=" margin:110px">
+    <div class="grid_7" style=" margin:70px; margin-left: 300px">
 
 
         <div  class="tabs">

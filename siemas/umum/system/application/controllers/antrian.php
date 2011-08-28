@@ -183,16 +183,77 @@ class Antrian extends Controller {
             // update ke TERISI
             $this->antrian->ubah_status($id_antrian, 'TERISI');
 
-            redirect('antrian/isi_remed_hari_ini');
+            redirect('antrian/isi_remed_hari_ini/');
 
         }
        
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
         $remed['data_pasien']=$data_pasien_remed;
-        
+
+        $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien);
+        $remed['remed_gigi']=$remed_pasien;
+
+        $remed_kia=$this->remed->get_remed_pasien_kia($id_pasien);
+        $remed['remed_kia']=$remed_kia;
+
+        $remed_umum=$this->remed->get_remed_pasien_umum($id_pasien);
+        $remed['remed_umum']=$remed_umum;
+
+        $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien);
+        $remed['tbc']=$remed_tbc;
+
+        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien);
+        $remed['ispa']=$remed_ispa;
+
+        $remed_campak=$this->remed->remed_poli_umum_campak($id_pasien);
+        $remed['campak']=$remed_campak;
+
+        $remed_diare=$this->remed->remed_poli_umum_diare($id_pasien);
+        $remed['diare']=$remed_diare;
+
+        $data_lay=$this->remed->get_layanan($id_pasien);
+        $remed['data_lay']=$data_lay;
+
+        $lab=$this->remed->lab($id_pasien);
+        $lab['lab']=$lab;
+
+        $remed['id_pasien']=$id_pasien;
+
+        $data_peny=$this->remed->get_penyakit($id_pasien);
+        $remed['data_peny']=$data_peny;
         $this->load->view('isi_remed_umum',$remed);
     }
 
+    function pop_tbc($id_pasien){
+        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+        $remed['data_pasien']=$data_pasien_remed;
+
+
+        $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien);
+        $remed['tbc']=$remed_tbc;
+        $this->load->view('p_tbc',$remed);
+    }
+
+
+    function pop_ispa($id_pasien){
+        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+        $remed['data_pasien']=$data_pasien_remed;
+
+
+        $remed_ispa=$this->remed->remed_poli_umum_tbc($id_pasien);
+        $remed['ispa']=$remed_ispa;
+        $this->load->view('p_ispa',$remed);
+    }
+
+   function pop_diare($id_pasien){
+        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+        $remed['data_pasien']=$data_pasien_remed;
+
+
+        $remed_diare=$this->remed->remed_poli_umum_tbc($id_pasien);
+        $remed['diare']=$remed_diare;
+        $this->load->view('p_diare',$remed);
+    }
 
     function tbc($id_pasien) {
 

@@ -31,7 +31,7 @@
 
 
 
-    <div class="grid_7" style=" margin:110px; margin-left: 300px">
+    <div class="grid_7" style=" margin:70px; margin-left: 200px">
 
 
         <div  class="tabs">
@@ -130,7 +130,7 @@
 
 
 
-        <div class="grid_7" style=" margin:110px">
+        <div class="grid_7" style=" margin:70px">
             <div  class="tabs">
                 <ul>
                     <li><a href="#tabs-2">Statistik Wilayah</a></li>
