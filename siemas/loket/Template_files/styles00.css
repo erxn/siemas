@@ -229,7 +229,7 @@ a#logout:active {
 #subnav ul a, 
 #subnav ul a:visited { 
 	display:block;
-	float: left;
+	float: right;
 	color:#0063be; 
 	font-size: 14px; 
 	padding: 9px 0 0 0;

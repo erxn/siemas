@@ -27,18 +27,28 @@
 
 // perhitungannya di sini ajah
 
-$jumlah_kunjungan_lama = $laporan['lama_pab'] + $laporan['lama_cib'] + $laporan['lama_LW'] + $laporan['lama_LKot'];
+$jumlah_kunjungan_lama = @$laporan['lama_pab'] + $laporan['lama_cib'] + $laporan['lama_LW'] + $laporan['lama_LKot'];
 $jumlah_kunjungan_baru = $laporan['baru_pab'] + $laporan['baru_cib'] + $laporan['baru_LW'] + $laporan['baru_LKot'];
 
-$jumlah_kunjungan_pab = $laporan['lama_pab'] + $laporan['baru_pab'] + $laporan['umum_pab'] + $laporan['gigi_pab'] + $laporan['kia_pab'];
-$jumlah_kunjungan_cib = $laporan['lama_cib'] + $laporan['baru_cib'] + $laporan['umum_cib'] + $laporan['gigi_cib'] + $laporan['kia_cib'];
-$jumlah_kunjungan_LW = $laporan['lama_LW'] + $laporan['baru_LW'] + $laporan['umum_LW'] + $laporan['gigi_LW'] + $laporan['kia_LW'];
-$jumlah_kunjungan_LKot = $laporan['lama_LKot'] + $laporan['baru_LKot'] + $laporan['umum_LKot'] + $laporan['gigi_LKot'] + $laporan['kia_LKot'];
+$jumlah_kunjungan_pab = $laporan['lama_pab'] + $laporan['baru_pab'];
+$jumlah_kunjungan_cib = $laporan['lama_cib'] + $laporan['baru_cib'];
+$jumlah_kunjungan_LW = $laporan['lama_LW'] + $laporan['baru_LW'];
+$jumlah_kunjungan_LKot = $laporan['lama_LKot'] + $laporan['baru_LKot'];
 
-$jumlah_kunjungan_umum = $laporan['umum_pab'] + $laporan['umum_cib'] + $laporan['umum_LW'] + $laporan['umum_LKot'];
+$jumlah_kunjungan_pumum = $laporan['umum_pab'] + $laporan['umum_cib'] + $laporan['umum_LW'] + $laporan['umum_LKot'];
 $jumlah_kunjungan_gigi = $laporan['gigi_pab'] + $laporan['gigi_cib'] + $laporan['gigi_LW'] + $laporan['gigi_LKot'];
 $jumlah_kunjungan_kia = $laporan['kia_pab'] + $laporan['kia_cib'] + $laporan['kia_LW'] + $laporan['kia_LKot'];
 
+$jumlah_kunjungan_radio = $laporan['radio_pab'] + $laporan['radio_cib'] + $laporan['radio_LW'] + $laporan['radio_LKot'];
+$jumlah_kunjungan_anak = $laporan['anak_pab'] + $laporan['anak_cib'] + $laporan['anak_LW'] + $laporan['anak_LKot'];
+$jumlah_kunjungan_dalam = $laporan['dalam_pab'] + $laporan['dalam_cib'] + $laporan['dalam_LW'] + $laporan['dalam_LKot'];
+
+$jumlah_kunjungan_rujuk = $laporan['rujuk_pab'] + $laporan['rujuk_cib'] + $laporan['rujuk_LW'] + $laporan['rujuk_LKot'];
+
+$jumlah_kunjungan_askes = $laporan['askes'];
+$jumlah_kunjungan_jamkesmas = $laporan['jamkesmas'];
+$jumlah_kunjungan_umum = $laporan['umum'];
+$jumlah_kunjungan_lain = $laporan['lain'];
 
 ?>
 
@@ -157,7 +167,7 @@ $(document).ready(function() {
          text: 'Berdasarkan poli tujuan'
       },
       xAxis: {
-         categories: ['Poli Umum', 'Poli Gigi', 'Poli KIA'],
+         categories: ['Poli Umum', 'Poli Gigi', 'Poli KIA','Sp. Anak','Sp. Peny. Dalam','Radiologi','Rujukan'],
          title: {
             text: null
          }
@@ -190,10 +200,58 @@ $(document).ready(function() {
       },
            series: [{
          name: 'Jumlah',
-         data: [<?php echo $jumlah_kunjungan_umum ?>, <?php echo $jumlah_kunjungan_gigi ?>, <?php echo $jumlah_kunjungan_kia ?>]
+         data: [<?php echo $jumlah_kunjungan_pumum ?>, <?php echo $jumlah_kunjungan_gigi ?>, <?php echo $jumlah_kunjungan_kia ?>,<?php echo $jumlah_kunjungan_anak ?>,<?php echo $jumlah_kunjungan_dalam ?>,<?php echo $jumlah_kunjungan_radio ?>,<?php echo $jumlah_kunjungan_rujuk ?>]
       }]
    });
 
+   chart4 = new Highcharts.Chart({
+      chart: {
+         renderTo: 'grafik4',
+         defaultSeriesType: 'bar'
+      },
+      title: {
+         text: 'Grafik jumlah kunjungan'
+      },
+      subtitle: {
+         text: 'Berdasarkan status Pelayanans'
+      },
+      xAxis: {
+         categories: ['ASKES', 'JAMKESMAS', 'UMUM', 'GR'],
+         title: {
+            text: null
+         }
+      },
+      yAxis: {
+         min: 0,
+         title: {
+            text: 'Jumlah kunjungan',
+            align: 'high'
+         }
+      },
+      tooltip: {
+         formatter: function() {
+            return ''+
+                this.series.name +': '+ this.y +' orang';
+         }
+      },
+      plotOptions: {
+         bar: {
+            dataLabels: {
+               enabled: true
+            }
+         }
+      },
+      legend: {
+          enabled: false
+      },
+      credits: {
+         enabled: false
+      },
+           series: [{
+         name: 'Jumlah',
+         data: [<?php echo $jumlah_kunjungan_askes ?>, <?php echo $jumlah_kunjungan_jamkesmas ?>, <?php echo $jumlah_kunjungan_umum ?>, <?php echo $jumlah_kunjungan_lain ?>]
+      }]
+   });
 
 });
 
@@ -221,7 +279,9 @@ $(document).ready(function() {
             <br/>
 
             <div style="width: 48%; float: left; height: 300px;" id="grafik3"></div>
+            <br/>
 
+            <div style="width: 48%; float: left; height: 300px;" id="grafik4"></div>
             <pre>
             <?php //print_r($laporan) ?>
             </pre>

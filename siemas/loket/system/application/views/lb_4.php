@@ -2,15 +2,13 @@
 <!-- SUBNAV -->
 <?php $this->load->view('subnav_laporan');?>
 <!-- END SUBNAV -->
-
-
-<br/>
+<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Rekapitulasi Kunjungan</a> > JAMKESMAS</div>
 <div>
     <div class="grid_6" style="width: 98%">
         <div class="module">
-            <h2><span>Laporan Kunjungan</span></h2>
+            <h2><span>Laporan Kunjungan: JAMKESMAS</span></h2>
             <div class="module-body">
-<form method="post" action="index.php/c_laporan/lb_4">
+<form method="post" action="">
                     <table class="noborder" style="width: 35%">
                         <tr>
                             <td>Pilih Bulan/Tahun</td>
@@ -118,8 +116,8 @@
                     <tr>
                         <td><div align="center">4</div></td>
                         <td>Kunjungan Lama</td>
-                        <td align="center"><?php echo $laporan[0]['kunj_lama_pab']?></td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['kunj_lama_g_pab']?></td>
+                        <td align="center"><?php echo $laporan[0]['kunj_lama_ng_pab']?></td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
@@ -133,32 +131,36 @@
                     <tr>
                         <td><div align="center">5</div></td>
                         <td>Kunjungan Rawat Jalan Umum</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['umum_pab_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_pab_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_cib_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_cib_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_lw_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_lw_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_lk_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['umum_lk_ngakin']?></td>
+                        <?php $jum_gakin = $laporan[0]['umum_pab_gakin']+$laporan[0]['umum_cib_gakin']+$laporan[0]['umum_lw_gakin']+$laporan[0]['umum_lk_gakin']?>
+                        <td align="center"><?php echo $jum_gakin;?></td>
+                        <?php $jum_ngakin = $laporan[0]['umum_pab_ngakin']+$laporan[0]['umum_cib_ngakin']+$laporan[0]['umum_lw_ngakin']+$laporan[0]['umum_lk_ngakin']?>
+                        <td align="center"><?php echo $jum_ngakin;?></td>
+                        <td align="center"><?php echo $jum_gakin+$jum_ngakin;?></td>
                     </tr>
                     <tr>
                         <td><div align="center">6</div></td>
                         <td>Kunjungan Rawat Jalan KIA</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['kia_pab_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_pab_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_cib_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_cib_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_lw_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_lw_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_lk_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['kia_lk_ngakin']?></td>
+                        <?php $jum_gakin = $laporan[0]['kia_pab_gakin']+$laporan[0]['kia_cib_gakin']+$laporan[0]['kia_lw_gakin']+$laporan[0]['kia_lk_gakin']?>
+                        <td align="center"><?php echo $jum_gakin;?></td>
+                        <?php $jum_ngakin = $laporan[0]['kia_pab_ngakin']+$laporan[0]['kia_cib_ngakin']+$laporan[0]['kia_lw_ngakin']+$laporan[0]['kia_lk_ngakin']?>
+                        <td align="center"><?php echo $jum_ngakin;?></td>
+                        <td align="center"><?php echo $jum_gakin+$jum_ngakin;?></td>
                     </tr>
                     <tr>
                         <td><div align="center">7</div></td>
@@ -178,17 +180,19 @@
                     <tr>
                         <td><div align="center">8</div></td>
                         <td>Kunjungan Rawat Jalan Gigi</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['gigi_pab_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_pab_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_cib_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_cib_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_lw_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_lw_ngakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_lk_gakin']?></td>
+                        <td align="center"><?php echo $laporan[0]['gigi_lk_ngakin']?></td>
+                        <?php $jum_gakin = $laporan[0]['gigi_pab_gakin']+$laporan[0]['gigi_cib_gakin']+$laporan[0]['gigi_lw_gakin']+$laporan[0]['gigi_lk_gakin']?>
+                        <td align="center"><?php echo $jum_gakin;?></td>
+                        <?php $jum_ngakin = $laporan[0]['gigi_pab_ngakin']+$laporan[0]['gigi_cib_ngakin']+$laporan[0]['gigi_lw_ngakin']+$laporan[0]['gigi_lk_ngakin']?>
+                        <td align="center"><?php echo $jum_ngakin;?></td>
+                        <td align="center"><?php echo $jum_gakin+$jum_ngakin;?></td>
                     </tr>
                     <tr>
                         <td><div align="center">9</div></td>

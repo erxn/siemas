@@ -43,7 +43,8 @@ class Pasien extends Controller {
             $data_kunjungan = array(
                     'tanggal_kunjungan'  => $now,
                     'id_pasien'              => $id_pasien,
-                    'no_kunjungan'          => $no_kunjungan
+                    'no_kunjungan'          => $no_kunjungan,
+                    'status_bawa_kartu' => $status_kartu
             );
 
             $id_kunjungan = $this->M_kunjungan->insert_id_kunjungan($data_kunjungan);

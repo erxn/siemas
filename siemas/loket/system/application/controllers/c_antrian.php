@@ -29,6 +29,18 @@ class C_antrian extends Controller {
         $this->load->view('poli_kia',$data);
     }
 
+    function antrian_anak(){
+        $antrian_anak = $this->M_antrian->get_antrian(7);
+        $data['antri_anak'] = $antrian_anak;
+        $this->load->view('poli_anak',$data);
+    }
+
+    function antrian_dalam(){
+        $antrian_dalam = $this->M_antrian->get_antrian(8);
+        $data['antri_dalam'] = $antrian_dalam;
+        $this->load->view('poli_dalam',$data);
+    }
+
     function antrian_lab(){
         $antrian_lab = $this->M_antrian->get_antrian(4);
         $data['antri_lab'] = $antrian_lab;
@@ -40,5 +52,6 @@ class C_antrian extends Controller {
         $data['antri_radio'] = $antrian_radio;
         $this->load->view('poli_radiologi',$data);
     }
+
 
 }
