@@ -233,6 +233,7 @@ class C_laporan extends Controller {
         }
         
         $laporan = array();
+        $lama = 0;
         $gigi = 1; $umum = 2; $kia=3;
         $pab = 'pabaton'; $cib='cibogor'; $lw='luar wilayah'; $lk='luar kota';
         $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
@@ -277,17 +278,26 @@ class C_laporan extends Controller {
         $umum_lw_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar,0,$lw);
         $umum_lk_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin,0,$lk);
         $umum_lk_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar,0,$lk);
-
-        //echo $kunj_gakin_pabaton;exit;
+        
+        for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, intval($bln), intval($thn)); $i++) {
+                    $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
+                    $lama_g_pab = $this->M_kunjungan->get_pasien_lama_jam($tgl,$askeskin,$cib,0);
+                    $lama_ng_pab = $this->M_kunjungan->get_pasien_lama_jam($tgl,$bayar,$cib,0);
+                    $kunjungan[] = array(
+                        'lama_g_pab' => $lama_g_pab,
+                        'lama_ng_pab' => $lama_ng_pab,
+                    );
+                    
+        }
+        
         $laporan[] = array(
+                'lama' => $lama,
                 'kunj_gakin_pab' => $kunj_gakin_pabaton,'kunj_ngakin_pab' => $kunj_ngakin_pabaton,
                 'kunj_gakin_cib' => $kunj_gakin_cibogor,'kunj_ngakin_cib' => $kunj_ngakin_cibogor,
 
                 'kunj_gakin_lw' => $kunj_gakin_lw,'kunj_ngakin_lw' => $kunj_ngakin_lw,
                 'kunj_gakin_lk' => $kunj_gakin_lk,'kunj_ngakin_lk' => $kunj_gakin_lk,
 
-                'kunj_lama_g_pab' => $kunj_lama_gakin_pabaton,'kunj_lama_ng_pab' => $kunj_lama_ngakin_pabaton,
-
                 'kia_pab_gakin' => $kia_pab_gakin,          'kia_pab_ngakin' => $kia_pab_ngakin,
                 'kia_cib_gakin' => $kia_cib_gakin,          'kia_cib_ngakin' => $kia_cib_ngakin,
                 'kia_lw_gakin' => $kia_lw_gakin,            'kia_lw_ngakin' => $kia_lw_ngakin,
@@ -315,11 +325,15 @@ class C_laporan extends Controller {
                 'umum_lw_gakin' => $umum_lw_gakin,      'umum_lw_ngakin' => $umum_lw_ngakin,
                 'umum_lk_gakin' => $umum_lk_gakin,      'umum_lk_ngakin' => $umum_lk_ngakin,
 
+                
                 'bulan' => $bln,
                 'tahun' => $thn
                 );
-        $data['laporan'] = $laporan;
+
         
+        
+        $data['laporan'] = $laporan;
+        print_r($data);exit;
         $this->load->view('lb_4', $data);
     }
   

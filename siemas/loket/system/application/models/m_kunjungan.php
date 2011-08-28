@@ -179,13 +179,16 @@ class M_kunjungan extends Model {
         return $jumlah_kunjungan[0]['jumlah'];
     }
 
-    function get_pasien_lama_jam($bln,$thn,$wil,$status){
-        $q = $this->db->query("SELECT COUNT(tanggal_kunjungan) as jumlah
-                                FROM pasien
-                                JOIN kunjungan
-                                USING (id_pasien)
-                                WHERE pasien.tanggal_pendaftaran = '2011-08-25'
-                                AND status_pelayanan = '$status'");
+    function get_pasien_lama_jam($tgl,$layanan,$wil,$stat){
+            $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE NOT tanggal_kunjungan = pasien.tanggal_pendaftaran
+                                AND tanggal_kunjungan = '$tgl'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                AND status_pelayanan = '$layanan'
+                                ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
     }

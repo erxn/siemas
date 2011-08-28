@@ -116,8 +116,8 @@
                     <tr>
                         <td><div align="center">4</div></td>
                         <td>Kunjungan Lama</td>
-                        <td align="center"><?php echo $laporan[0]['kunj_lama_g_pab']?></td>
-                        <td align="center"><?php echo $laporan[0]['kunj_lama_ng_pab']?></td>
+                        <td align="center"><?php echo $laporan[0]['lama']?></td>
+                        <td align="center"></td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
