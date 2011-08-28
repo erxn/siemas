@@ -11,6 +11,10 @@ class C_laporan extends Controller {
     function index(){
         $this->load->view('laporan');
     }
+    
+    function rekapitulasi_kunjungan(){
+        $this->load->view('rekapitulasi_kunjungan');
+    }
 
     function rekapitulasi_setoran(){
         /*tahun yang ada di database*/
@@ -99,59 +103,8 @@ class C_laporan extends Controller {
         
     }
 
-    function lb_4(){
-
-        $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
-        $data['tahun'] = $list_thn;
-
-        if($this->input->post('pilih')){
-            /*bulan dan tahun yang dipilih*/
-            $bln = $this->input->post('bulan_kunjungan');
-            $thn = $this->input->post('tahun_kunjungan');
-
-        } else {
-
-            $bln = date("m");
-            $thn = date("Y");
-        }
-        
-        $laporan = array();
-        $gigi = 1; $umum = 2; $kia=3;
-        $pab = 'pabaton'; $cib='cibogor'; $lw='luar wilayah'; $lk='luar kota';
-        $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
-        $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'radiologi';
-
-        $kunj_gakin_pabaton = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$pab,$askeskin,0);
-        $kunj_ngakin_pabaton = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$pab,$bayar,0);
-        $kunj_gakin_cibogor = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$cib,$askeskin,0);
-        $kunj_ngakin_cibogor = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$cib,$bayar,0);
-
-        $kunj_gakin_lw = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$askeskin,$lw);
-        $kunj_ngakin_lw = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lw);
-        $kunj_gakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$askeskin,$lk);
-        $kunj_ngakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lk);
-
-        $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_lama_jam($bln,$thn,$pab,'Jamkesmas');
-
-        //echo $kunj_gakin_pabaton;exit;
-        $laporan[] = array(
-                'kunj_gakin_pab' => $kunj_gakin_pabaton,
-                'kunj_ngakin_pab' => $kunj_gakin_pabaton,
-                'kunj_gakin_cib' => $kunj_gakin_cibogor,
-                'kunj_ngakin_cib' => $kunj_gakin_cibogor,
-
-                'kunj_gakin_lw' => $kunj_gakin_lw,
-                'kunj_ngakin_lw' => $kunj_gakin_lw,
-                'kunj_gakin_lk' => $kunj_gakin_lk,
-                'kunj_ngakin_lk' => $kunj_gakin_lk,
-
-                'kunj_lama_pab' => $kunj_lama_pabaton,
-                'bulan' => $bln,
-                'tahun' => $thn
-                );
-        $data['laporan'] = $laporan;
-        
-        $this->load->view('lb_4', $data);
+    function rekap_poli(){
+        $this->load->view('rekap_kunjungan_by_poli');
     }
 
     function laporan_kunjungan_bulanan(){
@@ -263,7 +216,114 @@ class C_laporan extends Controller {
         $this->load->view('laporan_kunjungan_bulanan',$data);
     }
 
-    function rekapitulasi_kunjungan(){
+    function rekap_kunjungan_jamkesmas(){
+
+        $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
+        $data['tahun'] = $list_thn;
+
+        if($this->input->post('pilih')){
+            /*bulan dan tahun yang dipilih*/
+            $bln = $this->input->post('bulan_kunjungan');
+            $thn = $this->input->post('tahun_kunjungan');
+
+        } else {
+
+            $bln = date("m");
+            $thn = date("Y");
+        }
+        
+        $laporan = array();
+        $gigi = 1; $umum = 2; $kia=3;
+        $pab = 'pabaton'; $cib='cibogor'; $lw='luar wilayah'; $lk='luar kota';
+        $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
+        $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'radiologi';
+
+        $kunj_gakin_pabaton = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$pab,$askeskin,0);
+        $kunj_ngakin_pabaton = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$pab,$bayar,0);
+        $kunj_gakin_cibogor = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$cib,$askeskin,0);
+        $kunj_ngakin_cibogor = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,$cib,$bayar,0);
+        
+        $kunj_gakin_lw = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$askeskin,$lw);
+        $kunj_ngakin_lw = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lw);
+        $kunj_gakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$askeskin,$lk);
+        $kunj_ngakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lk);
+
+        $kunj_lama_gakin_pabaton = $this->M_kunjungan->get_pasien_lama_jam($bln,$thn,$pab,$askeskin);
+        $kunj_lama_ngakin_pabaton = $this->M_kunjungan->get_pasien_lama_jam($bln,$thn,$pab,$bayar);
+
+        $kia_pab_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askeskin,$pab,0);
+        $kia_pab_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar,$pab,0);
+        $kia_cib_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askeskin,$cib,0);
+        $kia_cib_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar,$cib,0);
+        $kia_lw_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askeskin,0,$lw);
+        $kia_lw_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar,0,$lw);
+        $kia_lk_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askeskin,0,$lk);
+        $kia_lk_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar,0,$lk);
+
+        $gigi_pab_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askeskin,$pab,0);
+        $gigi_pab_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$bayar,$pab,0);
+        $gigi_cib_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askeskin,$cib,0);
+        $gigi_cib_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$bayar,$cib,0);
+        $gigi_lw_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askeskin,0,$lw);
+        $gigi_lw_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$bayar,0,$lw);
+        $gigi_lk_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askeskin,0,$lk);
+        $gigi_lk_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$bayar,0,$lk);
+
+        $umum_pab_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin,$pab,0);
+        $umum_pab_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar,$pab,0);
+        $umum_cib_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin,$cib,0);
+        $umum_cib_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar,$cib,0);
+        $umum_lw_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin,0,$lw);
+        $umum_lw_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar,0,$lw);
+        $umum_lk_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin,0,$lk);
+        $umum_lk_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar,0,$lk);
+
+        //echo $kunj_gakin_pabaton;exit;
+        $laporan[] = array(
+                'kunj_gakin_pab' => $kunj_gakin_pabaton,'kunj_ngakin_pab' => $kunj_ngakin_pabaton,
+                'kunj_gakin_cib' => $kunj_gakin_cibogor,'kunj_ngakin_cib' => $kunj_ngakin_cibogor,
+
+                'kunj_gakin_lw' => $kunj_gakin_lw,'kunj_ngakin_lw' => $kunj_ngakin_lw,
+                'kunj_gakin_lk' => $kunj_gakin_lk,'kunj_ngakin_lk' => $kunj_gakin_lk,
+
+                'kunj_lama_g_pab' => $kunj_lama_gakin_pabaton,'kunj_lama_ng_pab' => $kunj_lama_ngakin_pabaton,
+
+                'kia_pab_gakin' => $kia_pab_gakin,          'kia_pab_ngakin' => $kia_pab_ngakin,
+                'kia_cib_gakin' => $kia_cib_gakin,          'kia_cib_ngakin' => $kia_cib_ngakin,
+                'kia_lw_gakin' => $kia_lw_gakin,            'kia_lw_ngakin' => $kia_lw_ngakin,
+                'kia_lk_gakin' => $kia_lk_gakin,            'kia_lk_ngakin' => $kia_lk_ngakin,
+                'kia_pab_gakin' => $kia_pab_gakin,          'kia_pab_ngakin' => $kia_pab_ngakin,
+                'kia_cib_gakin' => $kia_cib_gakin,          'kia_cib_ngakin' => $kia_cib_ngakin,
+                'kia_lw_gakin' => $kia_lw_gakin,            'kia_lw_ngakin' => $kia_lw_ngakin,
+                'kia_lk_gakin' => $kia_lk_gakin,            'kia_lk_ngakin' => $kia_lk_ngakin,
+
+                'gigi_pab_gakin' => $gigi_pab_gakin,    'gigi_pab_ngakin' => $gigi_pab_ngakin,
+                'gigi_cib_gakin' => $gigi_cib_gakin,    'gigi_cib_ngakin' => $gigi_cib_ngakin,
+                'gigi_lw_gakin' => $gigi_lw_gakin,      'gigi_lw_ngakin' => $gigi_lw_ngakin,
+                'gigi_lk_gakin' => $gigi_lk_gakin,      'gigi_lk_ngakin' => $gigi_lk_ngakin,
+                'gigi_pab_gakin' => $gigi_pab_gakin,    'gigi_pab_ngakin' => $gigi_pab_ngakin,
+                'gigi_cib_gakin' => $gigi_cib_gakin,    'gigi_cib_ngakin' => $gigi_cib_ngakin,
+                'gigi_lw_gakin' => $gigi_lw_gakin,      'gigi_lw_ngakin' => $gigi_lw_ngakin,
+                'gigi_lk_gakin' => $gigi_lk_gakin,      'gigi_lk_ngakin' => $gigi_lk_ngakin,
+
+                'umum_pab_gakin' => $umum_pab_gakin,    'umum_pab_ngakin' => $umum_pab_ngakin,
+                'umum_cib_gakin' => $umum_cib_gakin,    'umum_cib_ngakin' => $umum_cib_ngakin,
+                'umum_lw_gakin' => $umum_lw_gakin,      'umum_lw_ngakin' => $umum_lw_ngakin,
+                'umum_lk_gakin' => $umum_lk_gakin,      'umum_lk_ngakin' => $umum_lk_ngakin,
+                'umum_pab_gakin' => $umum_pab_gakin,    'umum_pab_ngakin' => $umum_pab_ngakin,
+                'umum_cib_gakin' => $umum_cib_gakin,    'umum_cib_ngakin' => $umum_cib_ngakin,
+                'umum_lw_gakin' => $umum_lw_gakin,      'umum_lw_ngakin' => $umum_lw_ngakin,
+                'umum_lk_gakin' => $umum_lk_gakin,      'umum_lk_ngakin' => $umum_lk_ngakin,
+
+                'bulan' => $bln,
+                'tahun' => $thn
+                );
+        $data['laporan'] = $laporan;
+        
+        $this->load->view('lb_4', $data);
+    }
+  
+    function rekap_kunjungan_umum(){
         /*tahun yang ada di database*/
         $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
         $data['tahun'] = $list_thn;
@@ -290,32 +350,33 @@ class C_laporan extends Controller {
             $gigi=1; $umum=2; $kia=3; $lab=4; $radio=4; $rujukan=5;
 
             /*Kunjungan Lama*/
-            $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil1,'Umum');
-            $kunj_lama_cibogor = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$wil2,'Umum');
-            $kunj_lama_LW = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat1,'Umum');
-            $kunj_lama_LKot = $this->M_kunjungan->get_pasien_lama_by_tgl_wil($tgl,$stat2,'Umum');
+            $kunj_lama_pabaton = $this->M_kunjungan->get_pasien_lama_harian($tgl,$wil1,0,'Umum');
+            $kunj_lama_cibogor = $this->M_kunjungan->get_pasien_lama_harian($tgl,$wil2,0,'Umum');
+            $kunj_lama_LW      = $this->M_kunjungan->get_pasien_lama_harian($tgl,0,$stat1,'Umum');
+            $kunj_lama_LKot    = $this->M_kunjungan->get_pasien_lama_harian($tgl,0,$stat2,'Umum');
             
-            /*Kunjungan Baru*/
-            $kunj_baru_pabaton = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil1,'Umum');
-            $kunj_baru_cibogor = $this->M_kunjungan->get_pasien_baru_by_tgl_wil($tgl,$wil2,'Umum');
-            $kunj_baru_LW = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat1,'Umum');
-            $kunj_baru_LKot = $this->M_kunjungan->get_pasien_baru_by_tgl_status_wil($tgl,$stat2,'Umum');
+            /*Kunjungan Baru UDAH FIX*/
+            $kunj_baru_pabaton = $this->M_kunjungan->get_pasien_baru($tgl,$wil1,0,'Umum');
+            $kunj_baru_cibogor = $this->M_kunjungan->get_pasien_baru($tgl,$wil2,0,'Umum');
+            $kunj_baru_LW =      $this->M_kunjungan->get_pasien_baru($tgl,0,$stat1,'Umum');
+            $kunj_baru_LKot =    $this->M_kunjungan->get_pasien_baru($tgl,0,$stat2,'Umum');
 
-            $kunj_umum_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$umum,$tgl,'Umum');
-            $kunj_umum_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$umum,$tgl,'Umum');
-            $kunj_umum_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$umum,$tgl,'Umum');
-            $kunj_umum_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$umum,$tgl,'Umum');
+            $kunj_umum_pabaton = $this->M_kunjungan->get_poli_wil($tgl,$umum,$wil1,0,'Umum');
+            $kunj_umum_cibogor = $this->M_kunjungan->get_poli_wil($tgl,$umum,$wil2,0,'Umum');
+            $kunj_umum_LW =      $this->M_kunjungan->get_poli_wil($tgl,$umum,0,$stat1,'Umum');
+            $kunj_umum_LKot =    $this->M_kunjungan->get_poli_wil($tgl,$umum,0,$stat2,'Umum');
 
+            
 
-            $kunj_gigi_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$gigi,$tgl,'Umum');
-            $kunj_gigi_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$gigi,$tgl,'Umum');
-            $kunj_gigi_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$gigi,$tgl,'Umum');
-            $kunj_gigi_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$gigi,$tgl,'Umum');
+            $kunj_gigi_pabaton = $this->M_kunjungan->get_poli_wil($tgl,$gigi,$wil1,0,'Umum');
+            $kunj_gigi_cibogor = $this->M_kunjungan->get_poli_wil($tgl,$gigi,$wil2,0,'Umum');
+            $kunj_gigi_LW = $this->M_kunjungan->get_poli_wil($tgl,$gigi,0,$stat1,'Umum');
+            $kunj_gigi_LKot = $this->M_kunjungan->get_poli_wil($tgl,$gigi,0,$stat2,'Umum');
 
-            $kunj_kia_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$kia,$tgl,'Umum');
-            $kunj_kia_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$kia,$tgl,'Umum');
-            $kunj_kia_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$kia,$tgl,'Umum');
-            $kunj_kia_LKot = $this->M_kunjungan->get_kunjungan_poli_status($stat2,$kia,$tgl,'Umum');
+            $kunj_kia_pabaton = $this->M_kunjungan->get_poli_wil($tgl,$kia,$wil1,0,'Umum');
+            $kunj_kia_cibogor = $this->M_kunjungan->get_poli_wil($tgl,$kia,$wil2,0,'Umum');
+            $kunj_kia_LW = $this->M_kunjungan->get_poli_wil($tgl,$kia,0,$stat1,'Umum');
+            $kunj_kia_LKot = $this->M_kunjungan->get_poli_wil($tgl,$kia,0,$stat2,'Umum');
             
             $laporan[] = array(
 
@@ -352,15 +413,10 @@ class C_laporan extends Controller {
 
         }
         //print_r($data);exit;
-        $this->load->view('rekapitulasi_kunjungan',$data);
+        $this->load->view('rekap_kunjungan_umum',$data);
     }
 
-    function rekap_poli(){
-        $this->load->view('rekap_kunjungan_by_poli');
-    }
-
-
-    function rekap_status_askes_poli(){
+    function rekap_kunjungan_askes(){
     /*semuanya pasien yang pake ASKES. Rekapan berdasarkan poli tujuan dan jenis layanan*/
         $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
         $data['tahun'] = $list_thn;
@@ -388,8 +444,7 @@ class C_laporan extends Controller {
             $gigi=1; $umum=2; $kia=3; $lab=4; $radio=4; $rujukan=5;
 
             /*seluruh kunjungan ASKES*/
-            $kunjungan_askes = $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$askes,$cib)+
-                               $this->M_kunjungan->get_kunjungan_layanan_wil($tgl,$askes,$pab);
+            $kunjungan_askes = $this->M_kunjungan->kunjungan_layanan($tgl,$askes);
             
             /*pasien ASKES + poli UMUM*/
             $kunj_umum_pabaton = $this->M_kunjungan->get_kunjungan_layanan_wil_poli($tgl,$pab,$askes,$umum);
@@ -454,6 +509,6 @@ class C_laporan extends Controller {
 
         }
         
-        $this->load->view('rekap_kunjungan_by_status_layanan',$data);
+        $this->load->view('rekap_kunjungan_askes',$data);
     }
 }

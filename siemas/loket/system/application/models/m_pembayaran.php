@@ -95,7 +95,6 @@ class M_pembayaran extends Model {
         return $data;
     }
 
-
     function get_rincian($id_kunjungan) {
         $data = array();
         $q = $this->db->query("SELECT kunjungan_has_layanan.*,kunjungan.id_kunjungan,kunjungan.total_harga,kunjungan.no_kunjungan,kunjungan.tanggal_kunjungan,layanan.nama_layanan
@@ -177,7 +176,7 @@ class M_pembayaran extends Model {
     }
 
     function total_karcis_umum($tgl){
-        $jum = $this->M_kunjungan->get_kunjungan_umum($tgl);
+        $jum = $this->M_kunjungan->kunjungan_layanan($tgl,'Umum');
         $total = $jum*3000;
         return $total;
     }

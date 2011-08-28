@@ -75,13 +75,23 @@
         setTimeout("load_antrian_kia()", 1000);
     }
 
+     function load_antrian_anak() {
+        $('#tabs-d').load("index.php/C_antrian/antrian_anak");
+        setTimeout("load_antrian_anak()", 1000);
+    }
+
+    function load_antrian_dalam() {
+        $('#tabs-e').load("index.php/C_antrian/antrian_dalam");
+        setTimeout("load_antrian_dalam()", 1000);
+    }
+
      function load_antrian_lab() {
-        $('#tabs-d').load("index.php/C_antrian/antrian_lab");
+        $('#tabs-f').load("index.php/C_antrian/antrian_lab");
         setTimeout("load_antrian_lab()", 1000);
     }
 
     function load_antrian_radio() {
-        $('#tabs-e').load("index.php/C_antrian/antrian_radiologi");
+        $('#tabs-g').load("index.php/C_antrian/antrian_radiologi");
         setTimeout("load_antrian_radio()", 1000);
     }
     $(document).ready(function(){
@@ -90,6 +100,8 @@
         load_antrian_kia();
         load_antrian_umum();
         load_antrian_gigi();
+        load_antrian_anak();
+        load_antrian_dalam();
     });
 </script>
 
@@ -104,11 +116,11 @@
 </div>
 <!-- END SUBNAV -->
 <!-- ISI -->
-
+<br/>
 <div>
     <!--KIRI -->
     <div>
-        <div class="grid_6" style="width: 50%">
+        <div class="grid_6" style="width: 47%">
             <div class="module">
                 <h2><span>Pendaftaran Pasien</span></h2>
                 <div class="module-body">
@@ -232,18 +244,20 @@ else { ?>
     });
 </script>
 <div>
-    <div class="grid_6" style="width: 45%">
+    <div class="grid_6" style="width: 48%">
         <div class="module">
             <h2><span>Antrian Sekarang</span></h2>
             <div style="clear: both"></div>
 
             <div id="tabs">
                 <ul>
-                    <li><a href="#tabs-a">Poli Umum</a></li>
-                    <li><a href="#tabs-b">Poli Gigi</a></li>
-                    <li><a href="#tabs-c">Poli KIA</a></li>
-                    <li><a href="#tabs-d">Lab</a></li>
-                    <li><a href="#tabs-e">Radiologi</a></li>
+                    <li><a href="#tabs-a">Umum</a></li>
+                    <li><a href="#tabs-b">Gigi</a></li>
+                    <li><a href="#tabs-c">KIA</a></li>
+                    <li><a href="#tabs-d">Sp.Anak</a></li>
+                    <li><a href="#tabs-e">Sp.Dalam</a></li>
+                    <li><a href="#tabs-f">Lab</a></li>
+                    <li><a href="#tabs-g">Radiologi</a></li>
                 </ul>
                 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
                 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
@@ -271,6 +285,12 @@ else { ?>
 
                 </div>
                 <div id="tabs-e">
+
+                </div>
+                <div id="tabs-f">
+
+                </div>
+                <div id="tabs-g">
 
                 </div>
 

@@ -18,12 +18,10 @@
 
 <div style="border: 0px solid fuchsia; width: 600px; height: auto;padding: 8px; ">
     <a href="index.php/c_laporan/rekapitulasi_setoran"   class="kotak"><img src="images/loket_pen.png" border="0"/> Rekapitulasi Setoran</a>
-    <a href="index.php/c_laporan/lb_4"   class="kotak"><img src="images/loket_pen.png" border="0"/> LB4</a>
+    
     <a href="index.php/c_laporan/laporan_kunjungan_bulanan"  class="kotak"><img src="images/loket_pen.png" border="0"/> Lap. Kunjungan Bulanan</a>
     
-    
-    <a href="#"   class="kotak"><img src="images/loket_pen.png" border="0"/> Lap. Kunjungan Harian</a>
-    <a href="index.php/c_laporan/rekapitulasi_kunjungan" class="kotak"><img src="images/loket_pen.png" border="0"/> Rekapitulasi Kunjungan</a>
+    <a href="index.php/c_laporan/rekapitulasi_kunjungan" class="kotak"><img src="images/loket_pen.png" border="0"/> Lap. Kunjungan Harian</a>
 </div>
 
 <script type="text/javascript">

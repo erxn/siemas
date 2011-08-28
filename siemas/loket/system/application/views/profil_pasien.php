@@ -32,6 +32,7 @@
                     <td>Status Pelayanan</td>
                     <td><?php echo $pasien[0]['status_pelayanan'];?></td>
                 </tr>
+                <?php if($pasien[0]['status_pelayanan'] == 'Askes'){?>
                 <tr>
                     <td>No. Kartu</td>
                     <td><?php echo $pasien[0]['no_kartu_layanan'];?></td>
@@ -40,21 +41,22 @@
                 <tr>
                     <td colspan="2">&nbsp;</td>
                 </tr>
+                
                 <tr class="odd">
                     <td>&nbsp;</td>
                     <td>
                         <form name="status_kartu" id="pasien_lama" method="post" action="index.php/pasien/registrasi_pasien_lama/<?php echo $pasien[0]['id_pasien'] ?>">
-                            <input type="radio" name="status_kartu"  value="Y" id="kartu_Y">
+                            <input type="radio" name="status_kartu"  value="Bawa" id="kartu_Y">
                             <label for="kartu_Y" style="display: inline !important" class="btn-gplus gplus-green">Bawa kartu</label>
                             &nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="status_kartu"  value="T" checked="checked" id="kartu_T">
+                            <input type="radio" name="status_kartu"  value="Tidak" checked="checked" id="kartu_T">
                             <label for="kartu_T" style="display: inline !important" class="btn-gplus gplus-red">Tidak Bawa</label>
 
                             <input type="hidden" id="poli" name="poli" value=""/>
                         </form>
                     </td>
                 </tr>
-                <?php }?>
+                <?php }}?>
             </table>
         </div>
     </div>

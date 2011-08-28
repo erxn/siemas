@@ -1,16 +1,16 @@
 <?php $this->load->view('header');?>
+
 <!-- SUBNAV -->
 <?php $this->load->view('subnav_laporan');?>
 <!-- END SUBNAV -->
-
-<br/>
+<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Rekapitulasi Kunjungan</a> > ASKES</div>
 <div>
     <div class="grid_6" style="width: 98%">
         <div class="module">
             <h2><span>Rekapitulasi Kunjungan: ASKES</span></h2>
             <div class="module-body">
                 <div>
-                    <form method="post" action="index.php/c_laporan/rekap_status_askes_poli">
+                    <form method="post" action="">
                         <table class="noborder" style="width: 35%">
                             <tr>
                                 <td>Pilih Bulan/Tahun</td>
@@ -39,7 +39,7 @@
                         </table>
                     </form>
                     
-                    <div align="right" style="font-size: 14px;"><a href="index.php/c_laporan/rekapitulasi_kunjungan">Rekap Pasien UMUM</a> <b>&nbsp;|&nbsp;</b> <a href="index.php/c_laporan/rekapitulasi_kunjungan"> Rekap Pasien JAMKESMAS</a></div>
+                    <div align="right" style="font-size: 14px;"><a href="index.php/c_laporan/rekap_kunjungan_umum">Rekap Pasien UMUM</a> <b>&nbsp;|&nbsp;</b> <a href="index.php/c_laporan/rekap_kunjungan_jamkesmas"> Rekap Pasien JAMKESMAS</a></div>
                     <hr/>
                 </div>
                 <?php $nama_bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember")

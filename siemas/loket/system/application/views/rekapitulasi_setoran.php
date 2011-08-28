@@ -3,8 +3,7 @@
 <?php $this->load->view('subnav_laporan');?>
 <!-- END SUBNAV -->
 
-
-<br/>
+<div style="font-size: 14px !important;margin-left: 10px;padding: 5px;"><a href="index.php/c_laporan">Laporan</a> > Rekapitulasi Setoran</div>
 <div>
     <div class="grid_6" style="width: 98%">
         <div class="module">

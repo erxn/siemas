@@ -45,16 +45,9 @@ class M_kunjungan extends Model {
         $q->free_result();
         return $data;
     }
+/*_____________________________________________________________________________________________________________*/
+
     
-    function get_kunjungan_umum($tanggal) {
-        $q = $this->db->query("SELECT count(*) as jumlah
-                                FROM kunjungan
-                                JOIN pasien USING (id_pasien)
-                                WHERE status_pelayanan = 'Umum'
-                                AND tanggal_kunjungan = '$tanggal'");
-        $jum_umum = $q->result_array();
-        return $jum_umum[0]['jumlah'];
-    }
 
     function get_kunjungan_poli_wil($wil,$poli,$tgl){
         $q = $this->db->query("SELECT COUNT(*) as jumlah
@@ -80,55 +73,6 @@ class M_kunjungan extends Model {
                                 AND status_wil_luar LIKE '%$stat%'");
         $jum_umum = $q->result_array();
         return $jum_umum[0]['jumlah'];
-    }
-
-    function get_pasien_baru_by_tgl_wil($tgl,$wil) {
-        $q = $this->db->query("SELECT count(*) as jumlah
-                                FROM kunjungan
-                                JOIN pasien USING (id_pasien)
-                                JOIN kk USING (id_kk)
-                                WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
-                                AND tanggal_kunjungan = '$tgl'
-                                AND kelurahan_kk LIKE '%$wil%'");
-        $jumlah_kunjungan = $q->result_array();
-        return $jumlah_kunjungan[0]['jumlah'];
-    }
-
-    function get_pasien_baru_by_tgl_status_wil($tgl,$stat) {
-        $q = $this->db->query("SELECT count(*) as jumlah
-                                FROM kunjungan
-                                JOIN pasien USING (id_pasien)
-                                JOIN kk USING (id_kk)
-                                WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
-                                AND tanggal_kunjungan = '$tgl'
-                                AND status_wil_luar LIKE '%$stat%'");
-        $jumlah_kunjungan = $q->result_array();
-        return $jumlah_kunjungan[0]['jumlah'];
-    }
-
-    function get_pasien_lama_by_tgl_wil($tgl,$wil){
-        $q = $this->db->query("SELECT count(*) as jumlah
-                                FROM
-                                kunjungan
-                                JOIN pasien USING (id_pasien)
-                                JOIN kk USING (id_kk)
-                                WHERE tanggal_kunjungan = '$tgl'
-                                AND NOT tanggal_kunjungan = pasien.tanggal_pendaftaran
-                                AND kelurahan_kk LIKE '%$wil%'");
-        $jumlah_kunjungan = $q->result_array();
-        return $jumlah_kunjungan[0]['jumlah'];
-    }
-
-    function get_pasien_lama_by_tgl_status_wil($tgl,$stat) {
-        $q = $this->db->query("SELECT count(*) as jumlah
-                                FROM kunjungan
-                                JOIN pasien USING (id_pasien)
-                                JOIN kk USING (id_kk)
-                                WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
-                                AND tanggal_kunjungan = '$tgl'
-                                AND status_wil_luar LIKE '%$stat%'");
-        $jumlah_kunjungan = $q->result_array();
-        return $jumlah_kunjungan[0]['jumlah'];
     }
 
     function get_kunjungan_layanan_wil_poli($tgl,$wil,$layanan,$poli) {
@@ -185,17 +129,19 @@ class M_kunjungan extends Model {
                                 AND status_pelayanan LIKE '%$layanan%'
                                 AND kelurahan_kk LIKE '%$wil%'
                                 AND status_bawa_kartu LIKE '%bawa%'
-                                ORDER BY status_pelayanan");
+                                ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
     }
 
-    function get_kunjungan_poli_st_layan($bln,$thn,$poli,$status){
+    function get_kunjungan_poli_st_layan($bln,$thn,$poli,$status,$wil,$luar){
         $q = $this->db->query("SELECT count(*) as jumlah
                                 FROM antrian
                                 JOIN kunjungan USING (id_kunjungan)
                                 JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
                                 WHERE id_poli = $poli
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '%$luar%')
                                 AND status_pelayanan = '$status'
                                 AND MONTH(tanggal_kunjungan) = '$bln'
                                 AND YEAR(tanggal_kunjungan) = '$thn'");
@@ -217,8 +163,8 @@ class M_kunjungan extends Model {
         return $jumlah_kunjungan[0]['jumlah'];
     }
 
+    /**********************                 JAMKESMAS        per bulan              ******************************/
     function get_kunjungan_jamkesmas($bln,$thn,$wil,$status,$luar){
-//        echo $wil." ".$status;exit;
          $q = $this->db->query("SELECT count(*) as jumlah
                                 FROM kunjungan
                                 JOIN pasien USING (id_pasien)
@@ -233,6 +179,108 @@ class M_kunjungan extends Model {
         return $jumlah_kunjungan[0]['jumlah'];
     }
 
+    function get_pasien_lama_jam($bln,$thn,$wil,$status){
+        $q = $this->db->query("SELECT COUNT(tanggal_kunjungan) as jumlah
+                                FROM pasien
+                                JOIN kunjungan
+                                USING (id_pasien)
+                                WHERE pasien.tanggal_pendaftaran = '2011-08-25'
+                                AND status_pelayanan = '$status'");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+
+    /***********************************************************************************************************************/
+    /*pusing dah ama fungsi -.-*/
+    
+    /*INI buat nyari total kunjungan HARIAN untuk per status layanan*/
+    function kunjungan_layanan($tgl,$layanan){
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                WHERE tanggal_kunjungan = '$tgl'
+                                AND
+                                status_pelayanan = '$layanan'");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    /*-----------------------SEMUA PASIEN BARU + LAMA HARI INI ---------------------------------------------------*/
+    function get_pasien_baru_wil_stat($tgl,$wil,$stat){
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
+                                AND tanggal_kunjungan = '$tgl'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                ");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+    
+    function get_pasien_lama_wil_stat($tgl,$wil,$stat){
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE NOT tanggal_kunjungan = pasien.tanggal_pendaftaran
+                                AND tanggal_kunjungan = '$tgl'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                ");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    /*-----------------------------------------------------------------------------------------------------*/
+
+
+    /*KUNJUNGAN HARIAN PASIEN*/
+    function get_pasien_baru($tgl,$wil,$stat,$layanan) {
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
+                                AND tanggal_kunjungan = '$tgl'
+                                AND status_pelayanan = '$layanan'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    function get_pasien_lama_harian($tgl,$wil,$stat,$layanan){
+        
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE NOT kunjungan.tanggal_kunjungan = pasien.tanggal_pendaftaran
+                                AND tanggal_kunjungan = '$tgl'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                AND status_pelayanan = '$layanan'
+                                ");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    /** berdasarkan poli+wilayah*/
+    function get_poli_wil($tgl,$poli,$wil,$stat,$layanan){
+        $q = $this->db->query("SELECT count(*) as jumlah
+                            FROM antrian
+                            JOIN kunjungan USING (id_kunjungan)
+                            JOIN pasien USING (id_pasien)
+                            JOIN kk USING (id_kk)
+                            WHERE id_poli = $poli
+                            AND tanggal_kunjungan = '$tgl'
+                            AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '%$stat%')
+                            AND status_pelayanan = '$layanan'");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    /*berdasarkan poli saja*/
     function get_kunjungan_poli($tgl,$poli){
         $q = $this->db->query("SELECT COUNT(*) as jumlah
                             FROM kunjungan
@@ -241,22 +289,30 @@ class M_kunjungan extends Model {
                             WHERE id_poli = $poli
                             AND tanggal_kunjungan = '$tgl'");
         $jumlah_kunjungan = $q->result_array();
+        
         return $jumlah_kunjungan[0]['jumlah'];
     }
+    
+    /****************************************************************************************************/
 
-    function get_pasien_lama_jam($bln,$thn,$wil,$status){
-        $q = $this->db->query("SELECT count(*) as jumlah
-                                FROM
-                                kunjungan
-                                JOIN pasien USING (id_pasien)
-                                JOIN kk USING (id_kk)
-                                WHERE MONTH(tanggal_kunjungan) = '$bln'
-                                AND YEAR(tanggal_kunjungan) = '$thn'
-                                AND NOT tanggal_kunjungan = pasien.tanggal_pendaftaran
-                                AND kelurahan_kk LIKE '%$wil%'
-                                AND status_pelayanan = '$status'");
-        $jumlah_kunjungan = $q->result_array();
-        return $jumlah_kunjungan[0]['jumlah'];
 
-    }
+
+
+
+
+
+//
+//    function get_pasien_lama_by_tgl_status_wil($tgl,$stat) {
+//        $q = $this->db->query("SELECT count(*) as jumlah
+//                                FROM kunjungan
+//                                JOIN pasien USING (id_pasien)
+//                                JOIN kk USING (id_kk)
+//                                WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
+//                                AND tanggal_kunjungan = '$tgl'
+//                                AND status_wil_luar LIKE '%$stat%'");
+//        $jumlah_kunjungan = $q->result_array();
+//        return $jumlah_kunjungan[0]['jumlah'];
+//    }
+
+
 }
