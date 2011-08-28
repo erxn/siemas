@@ -1,4 +1,4 @@
-e<?php $this->load->view('header');?>
+<?php $this->load->view('header');?>
 
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
@@ -17,12 +17,28 @@ e<?php $this->load->view('header');?>
             monthNames: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
         });
     });
+   
     $(function() {
         var theTable = $('#t_gigi')
 
         $("#b_gigi").click(function() {
             $.uiTableFilter( theTable, $('#d_gigi').val());
         })
+    });
+$(function() {
+        var theTable = $('#t_umum')
+
+        $("#b_umum").click(function() {
+            $.uiTableFilter( theTable, $('#d_umum').val());
+        })
+    });
+    $(function() {
+        var theTable = $('#t_kia')
+
+        $("#b_kia").click(function() {
+            $.uiTableFilter( theTable, $('#d_kia').val());
+        })
+
     });
 
 
@@ -67,13 +83,15 @@ e<?php $this->load->view('header');?>
     <div class="container_12">
         <div class="grid_12">
             <ul>
-
+                <li><a href="index.php/antrian/isi_remed_hari_ini/">Isi Rekam Medik</a></li>
+                <li><a href="index.php/antrian/antri/1">Antrian</a></li>
             </ul>
 
         </div>
     </div>
     <div style="clear: both;"></div>
 </div>
+
 
 <div  class="tabs" style=" float:left; margin-top: 20px;margin-left: 30px; width:45%">
     <ul>
@@ -108,13 +126,14 @@ e<?php $this->load->view('header');?>
     
   
 </script>
-<div  class="tabs" style="float:right;  margin-right: 10px; width:45%">
+<div  class="tabs" style="float:right;  margin-top: 20px;margin-right: 10px; width:47%">
     <ul>
         <li><a href="#tabs-a">Isi Rekam Medik Hari Ini</a></li>
     </ul>
     <div id="tabs-a" >
         <div class="module" style="background:none; float: none">
             <h3>Data Pasien</h3>
+            
 
             <?php if($data_pasien == null) { ?>
 
@@ -125,40 +144,40 @@ e<?php $this->load->view('header');?>
                 <table style="width:90%;" id="myTable"  >
                     <strong></strong>
                     <tr  class="odd">
-                        <td>Tanggal Pendaftaran:</td>
+                        <td><b>Tanggal Pendaftaran:</b>T</td>
                         <td style="width: 50%"><?php echo $data_pasien[0]['tanggal_pendaftaran']; ?> </td>
                     </tr>
                     <tr>
-                        <td>Nama Pasien:</td>
-                        <td style="width: 50%"><?php echo $data_pasien[0]['nama_pasien'];?></td>
+                        <td><b>Nama Pasien:</b></td>
+                        <td style="width: 50%"><b><h3><?php echo $data_pasien[0]['nama_pasien'];?></h3></b></td>
                     </tr>
                     <tr  class="odd">
-                        <td>Jenis Kelamin:</td>
+                        <td><b>Jenis Kelamin:</b></td>
                         <td style="width: 50%"><?php echo $data_pasien[0]['jk_pasien'];?></td>
 
                     </tr>
 
                     <tr>
-                        <td>Tanggal Lahir</td>
+                        <td><b>Tanggal Lahir</b></td>
                         <td><?php  echo $data_pasien[0]['tanggal_lahir'];?></td>
 
                     </tr>
                     <tr class="odd">
-                        <td >Umur</td>
-                        <td>umur</td>
+                        <td ><b>Umur</b></td>
+                        <td><?php  echo $data_pasien[0]['umur'];?></td>
 
                     </tr>
                     <tr>
-                        <td >Status Dalam Keluarga:</td>
+                        <td ><b>Status Dalam Keluarga:</b></td>
                         <td><?php echo $data_pasien[0]['status_dalam_keluarga'];?></td>
 
                     </tr>
                     <tr class="odd">
-                        <td>Status Pelayanan</td>
+                        <td><b>Status Pelayanan</b></td>
                         <td><?php echo $data_pasien[0]['status_pelayanan'];?></td>
                     </tr>
                     <tr>
-                        <td>No Kartu</td>
+                        <td><b>No Kartu</b></td>
                         <td><?php echo $data_pasien[0]['no_kartu_layanan'];?></td>
                     </tr>
                 </table>
@@ -168,17 +187,16 @@ e<?php $this->load->view('header');?>
     </div>
         </div>
 
-       <div  class="tabs" style="float:right;  margin-right: 10px; width:45%">
+       <div  class="tabs" style="float:right; margin-top: 10px; margin-right: 10px; width:47%">
     <ul>
         <li><a href="#tabs-a">Diagnosis Dokter</a></li>
         <li><a href="#tabs-b">Poli Gigi</a></li>
         <li><a href="#tabs-c">Poli Umum</a></li>
-        <li><a href="#tabs-d">Lab</a></li>
-        <li><a href="#tabs-e">Rontgen</a></li>
+        <li><a href="#tabs-d">Poli KIA</a></li>
     </ul>
-            <div id="tabs-a" style="">
+            <div id="tabs-a"  class="module">
                 <form action="" method="post">
-                <table  id="myTable" style="width:100%; margin-left: 30px ; margin-top: 5px">
+                <table  id="t_gigi" style="width:100%; margin-left: 30px ; margin-top: 5px">
 
 
             <tr class="odd">
@@ -245,11 +263,11 @@ e<?php $this->load->view('header');?>
                 <thead>
                     <tr >
                         <th style="width:5%">No</th>
-                        <th style="width:20%">Tanggal Kunjungan</th>
+                        <th style="width:23%">Tanggal Kunjungan</th>
                         <th style="width:21%">Anamnesis</th>
-                        <th style="width:13%">Diagnosa</th>
-                        <th style="width:13%">Layanan</th>
-                        <th style="width:13%">Ket.</th>
+                        <th style="width:17%">Diagnosa</th>
+                        <th style="width:17%">Layanan</th>
+                        <th style="width:17%">Ket.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -276,6 +294,7 @@ e<?php $this->load->view('header');?>
 
             <div style="clear: both"></div>
 
+
         </div>
 
 
@@ -283,24 +302,22 @@ e<?php $this->load->view('header');?>
 
             <div style="padding: 10px;">
 
-                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
-                <tr>
-
-                    <td><input type="submit" class="submit-green" value="Cari "></td>
-                </tr>
-
+                <form method="post" action="">
+                        <input id="d_umum" placeholder="Cari tanggal" name="n_tgl1" type="text" class="input-long datepicker" style="vertical-align: top;"/>
+                        <input type="button" class="submit-green" value="Cari " name="cari" id="b_umum" />
+                    </form>
             </div>
              <div class="module" style="background:none">
-            <table id="myTable" class="tablesorter" border="1">
+            <table id="t_umum" class="tablesorter" border="1">
                 <thead>
                     <tr>
                         <th style="width:5%">No</th>
-                        <th style="width:18%">Tanggal Kunjungan</th>
-                        <th style="width:21%">Anamnesis</th>
-                        <th style="width:17%">Diagnosa</th>
-                        <th style="width:13%">Penyakit</th>
-                        <th style="width:13%">P2M</th>
-                        <th style="width:13%">Ket.</th>
+                        <th style="width:35%">Tanggal Kunjungan</th>
+                        <th style="width:20%">Anamnesis</th>
+                        <th style="width:15%">Diagnosa</th>
+                        <th style="width:10%">Penyakit</th>
+                        <th style="width:10%">P2M</th>
+                        <th style="width:6%">Ket.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -313,10 +330,10 @@ e<?php $this->load->view('header');?>
                             ?>
                     <tr clas="<?php echo $x ?>">
                         <td><?php echo $i++?></td>
-                        <td><a href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
-                       <td><?php echo word_limiter($ru['anamnesis'],5,'...');?></td>
-                        <td><?php echo word_limiter($ru['diagnosa'],5,'...');?></td>
-                        <td><?php echo word_limiter($ru['nama_penyakit'],5,'...');?></td>
+                        <td><a class="pop" href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
+                       <td><?php echo word_limiter($ru['anamnesis'],3,'...');?></td>
+                        <td><?php echo word_limiter($ru['diagnosa'],3,'...');?></td>
+                        <td><?php echo word_limiter($ru['penyakit_umum'],3,'...');?></td>
                         <td><a href="">
                                     <?php
                                     if($campak!==0) {
@@ -346,38 +363,28 @@ e<?php $this->load->view('header');?>
         </div>
 
          <div id="tabs-d">
-
-            <div style="padding: 10px;">
-
-                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
-                <tr>
-
-                    <td><input type="submit" class="submit-green" value="Cari "></td>
-                </tr>
+                <div style="padding: 10px; width:100%">
+                    <form method="post" action="">
+                        <input id="d_kia" placeholder="Cari tanggal" name="n_tgl2" type="text" class="input-long datepicker" style="vertical-align: top;"/>
+                        <input type="button" class="submit-green" value="Cari " name="cari" id="b_kia" />
+                    </form>
 
             </div>
-              <div class="module" style="background:none">
-            <table id="myTable" class="tablesorter" border="1">
+         <div class="module" style="background:none">
+            <table id="t_kia"   style="width:99%">
                 <thead>
-                    <tr>
+                    <tr >
                         <th style="width:5%">No</th>
-                        <th style="width:18%">Tanggal Pemeriksaan</th>
-                        <th style="width:21%">Jenis Pemeriksaan</th>
-                        <th style="width:17%">hasil Pemeriksaan</th>
-                        <th style="width:13%">Pemeriksaan Khusus</th>
+                        <th style="width:20%">Tanggal Kunjungan</th>
+                        <th style="width:21%">Anamnesis</th>
+                        <th style="width:13%">Diagnosa</th>
+                        <th style="width:13%">Layanan</th>
                         <th style="width:13%">Ket.</th>
                     </tr>
                 </thead>
-                <tbody>
-
-
-
-                </tbody>
             </table>
                 </div>
         </div>
 </div>
-
-        </div>
 
         <?php } ?>
