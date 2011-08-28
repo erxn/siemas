@@ -57,22 +57,22 @@
 
         <!-- Initiate tablesorter script -->
         <script type="text/javascript">
-            $(document).ready(function() { 
-                $("#myTable") 
+            $(document).ready(function() {
+                $("#myTable")
                 .tablesorter({
                     // zebra coloring
                     widgets: ['zebra'],
-                    // pass the headers argument and assing a object 
-                    headers: { 
-                        // assign the sixth column (we start counting zero) 
-                        6: { 
-                            // disable it by setting the property sorter to false 
-                            sorter: false 
-                        } 
+                    // pass the headers argument and assing a object
+                    headers: {
+                        // assign the sixth column (we start counting zero)
+                        6: {
+                            // disable it by setting the property sorter to false
+                            sorter: false
+                        }
                     }
-                }) 
-                .tablesorterPager({container: $("#pager")}); 
-            }); 
+                })
+                .tablesorterPager({container: $("#pager")});
+            });
         </script>
 
         <!-- Initiate password strength script -->
@@ -86,22 +86,22 @@
 
         <!-- Header -->
         <div id="header">
-            
-            
 
-            <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:60px" />
-            <img src="Template_files/puskesmas.png" style="position: absolute; top:15px; left:120px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:55px; left:120px" />
+
+
+            <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:30px" />
+            <img src="Template_files/puskesmas.png" style="position: absolute; top:4px; left:85px" />
+            <img src="Template_files/alamat.png" style="position: absolute; top:40px; left:85px" />
             <img src="Template_files/gigi.png" style="position: absolute; top:10px; right:2px" />
             <!-- Header. Main part -->
             <div id="header-main">
                 <div class="container_12">
-                    <div class="grid_12">                       												
+                    <div class="grid_12">
                         <ul id="nav">
-                            <li><a href="index.php/antrian/antri/1">Antrian</a></li>
-                            <li><a href="index.php/statistik">Statistik</a></li>
+                             <li><a href="index.php/antrian/antri/1">Antrian</a></li>
+                            <li><a href="index.php/stat">Statistik</a></li>
                             <li><a href="index.php/laporan">Laporan</a></li>
-                             <li><a href="index.php/laporan">Logout</a></li>
+                             <li><a href="index.php/">Logout</a></li>
 
                         </ul>
 
@@ -109,6 +109,4 @@
                     <div style="clear: both;"></div>
                 </div><!-- End. .container_12 -->
             </div> <!-- End #header-main -->
-            </div>
             </html>
-        

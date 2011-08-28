@@ -96,13 +96,12 @@
     });
 </script>
 
-<div  class="tabs" style="width:60%; margin-left: 300px; margin-top: 100px;">
-    <ul>
-        <li><a href="#tabs-a">Data REkam MEdik Pasien</a></li>
-    </ul>
-    <div id="tabs-a">		
-                        
-                            <table style="width:100%" id="myTable" class="tablesorter" border="1">
+<div class="grid_6" style="width: 98%">
+        <div class="module" style="background: none">
+                        <h2>
+                            <span>Rekam Medik</span>
+                            </h2>
+                            <table style="width:100%" id="myTable"  border="none">
                                 <tr class="odd">
                                     <td style="width:20%"><b>Id KK:</b></td>
                                     <td style="width: 50%"><?php echo $pop_pasien[0]['id_kk'];?></td>
@@ -152,40 +151,48 @@
 
                                 <tr>
                                     <td><b>Tanggal Kunjungan:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_tanggal[0]['tanggal_kunjungan_gigi'];?></td>
+                                    <td style="width: 50%"><?php echo $pop_tanggal_u[0]['tanggal_kunjungan_umum'];?></td>
                                 </tr>
 
                                  <tr class="odd">
                                     <td><b>Anamnesis:</b></td>
-                                    <td><?php echo $pop_gigi[0]['anamnesis'];?></td>
+                                    <td><?php echo $pop_umum[0]['anamnesis'];?></td>
                                 </tr>
 
                                 <tr>
                                     <td><b>Hasil Diagnosa:</b></td>
-                                    <td><?php echo $pop_gigi[0]['diagnosis'];?></td>
+                                    <td><?php echo $pop_umum[0]['diagnosa'];?></td>
                                 </tr>
 
                                  <tr class="odd">
                                     <td><b>Penyakit:</b></td>
-                                    <td><?php echo $pop_gigi[0]['nama_penyakit'];?></td>
+                                    <td><?php echo $pop_umum[0]['penyakit_umum'];?></td>
                                 </tr>
 
-                                <tr>
-                                    <td><b>Tindakan:</b></td>
-                                    <td><?php echo $pop_gigi[0]['nama_layanan'];?></td>
+                                <tr><td>P2M</td>
+                                    <td
+                                     <?php
+                                    if($tbc!==0) {
+                                        echo 'tbc';
+                                    }
+                                    else if($ispa!==0) {
+                                        echo 'ispa';
+                                    }
+                                    else if($tbc!==0) {
+                                        echo 'tbc';
+                                    }
+                                    else if($diare!==0) {
+                                        echo 'diare';
+                                    }
+
+                                    ?></td>
                                 </tr>
 
                                 <tr class="odd">
                                     <td><b>Keterangan:</b></td>
-                                    <td><?php echo $pop_gigi[0]['keterangan'];?></td>
+                                    <td><?php echo $pop_umum[0]['keterangan'];?></td>
                                 </tr>
 
-                                 <tr>
-                                    <td><b>Harga:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_gigi[0]['harga'];?></td>
-                                </tr>
 
                             </table>
-                       
-                    </div> </div>
-         
+        </div></div>
