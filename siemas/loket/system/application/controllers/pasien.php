@@ -54,7 +54,7 @@ class Pasien extends Controller {
             $data_antrian = array(
                 'status'    => "ANTRI",
                 'id_kunjungan' => $id_kunjungan,
-               'id_poli' => $id_poli[0]
+                'id_poli' => $id_poli[0]
             );
 
             $antrian = $this->M_antrian->tambah_antrian($data_antrian);

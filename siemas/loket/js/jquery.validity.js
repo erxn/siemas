@@ -106,7 +106,7 @@
             lessThanOrEqualTo:"#{field} must be less than or equal to #{max}.",
             greaterThan:"#{field} must be greater than #{min}.",
             greaterThanOrEqualTo:"#{field} must be greater than or equal to #{min}.",
-            range:"#{field} must be between #{min} and #{max}.",
+            range:"#{field} #{min} dan #{max}.",
 
             // Value length messages:
             tooLong:"#{field} cannot be longer than #{max} characters.",

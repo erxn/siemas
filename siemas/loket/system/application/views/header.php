@@ -128,22 +128,6 @@
     </head>
     <body>
         <div id="header">
-<!--            <div id="header-status">
-                <div class="container_12">
-                    <div class="grid_8">
-                        <span id="text-invitation"></span>
-                        <!-- Messages displayed through the thickbox -->
-<!--
-                    </div>
-                    <div class="grid_4">
-                        <a href="" id="logout">
-                            Logout
-                        </a>
-                    </div>
-                </div>
-                <div style="clear:both;"></div>
-            </div> -->
-            <!-- Header. Main part -->
             <div id="header-main">
                 <div class="container_12">
                     <div class="grid_12">
@@ -152,7 +136,7 @@
                         <img src="Template_files/alamat.png" style="position: absolute; top:50px; left:90px" />
                         <ul id="nav">
                             <li id="<?php if($this->uri->segment(1)== "") echo "current"?>"><a href="index.php">Home</a></li>
-                            <li id="<?php if(($this->uri->segment(1)== "registrasi")||($this->uri->segment(2)=="registrasi_pasien_sukses")) echo "current"?>"><a href="index.php/registrasi">Registrasi</a></li>
+                            <li id="<?php if(($this->uri->segment(1)== "registrasi_kk")||($this->uri->segment(1)== "registrasi")||($this->uri->segment(2)=="registrasi_pasien_sukses")) echo "current"?>"><a href="index.php/registrasi">Registrasi</a></li>
                             <li id="<?php if($this->uri->segment(1)== "pembayaran") echo "current"?>"><a href="index.php/pembayaran">Pembayaran</a></li>
                             <li id="<?php if($this->uri->segment(1)== "pasien") echo "current"?>"><a href="index.php/pasien">Data Pasien</a></li>
                             <li id="<?php if($this->uri->segment(1)== "statistik") echo "current"?>"><a href="index.php/statistik">Statistik</a></li>
@@ -161,8 +145,7 @@
                     </div>
                 </div>
             </div>
-            
-                        
+       
                         
             
             <div style="clear: both;"></div>
