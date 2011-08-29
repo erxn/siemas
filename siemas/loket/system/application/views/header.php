@@ -133,7 +133,7 @@
                     <div class="grid_8">
                         <span id="text-invitation"></span>
                         <!-- Messages displayed through the thickbox -->
-
+<!--
                     </div>
                     <div class="grid_4">
                         <a href="" id="logout">
