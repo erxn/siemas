@@ -34,26 +34,29 @@ $(document).ready(function() {
 		});
 	});
 
-           $(function() {
-//               $("#form_kk").validity("input:text, select");
-                $("#form_kk").validity(function() {
-                        $("#nama_kk").require();
-});
-            });
+//           $(function() {
+//  $("#form_kk").validity("input:text, select");
+//                $("#form_kk").validity(function() {
+//                        $("#nama_kk").require();
+//});
+//            });
 });
 
 
 </script>
 <script type="text/javascript">
-    // Select all of the forms on the page (in this case the only one)
-    // and call 'validity' on the result.
-    
-//        $(function() {
-////                $("#form_kk").validity("input:text, select");
-//                $("#formkk").validity(function() {
-//                        $("#namakk").require();
-//});
-//            });
+    $(document).ready(function() {
+        $(function() {
+            //              $("#form_kk").validity("input:text, select");
+            $("#form_kk").validity(function() {
+                $("#nama").require();
+                $("#alamat").require();
+                $("#kelurahan").require();
+                $("#kecamatan").require();
+                $("#kota").require();
+            });
+        });
+    });
 </script>
 
 <br/>
@@ -64,7 +67,7 @@ $(document).ready(function() {
             <div class="module">
                 <h2><span>Pendaftaran Kepala Keluarga (KK)</span></h2>
                 <div class="module-body">
-                    <form action="" method="post">
+                    <form id="form_kk" action="" method="post">
                         <table class="noborder" style="width: 98%">
                             <strong>Masukkan Identitas KK</strong>
                             <tr>
@@ -73,7 +76,7 @@ $(document).ready(function() {
                             </tr>
                             <tr class="odd">
                                 <td>Nama KK</td>
-                                <td><input id="nama_kk" style="width: 80%" type="text" name="nama_kk" maxlength="255" size="25" class="input-medium"/></td>
+                                <td><input id="nama" style="width: 80%" type="text" name="nama" maxlength="255" size="25" class="input-medium"/></td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
@@ -85,7 +88,7 @@ $(document).ready(function() {
                             <tr class="odd">
                                 <td>Alamat</td>
                                 <td>
-                                    <textarea cols="26" rows="2" name="alamat_kk"></textarea>
+                                    <textarea id="alamat" cols="26" rows="2" name="alamat"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -95,15 +98,15 @@ $(document).ready(function() {
                                     <table style="width: 100%" class="noborder" >
                                         <tr>
                                             <td>Kelurahan </td>
-                                            <td><input type="text" name="kelurahan_kk" class="input-medium"/></td>
+                                            <td><input id="kelurahan" type="text" name="kelurahan" class="input-medium"/></td>
                                         </tr>
-                                        <tr  class="odd">
+                                        <tr class="odd">
                                             <td width="15%">Kecamatan</td>
-                                            <td><input type="text" name="kecamatan_kk" class="input-medium"/></td>
+                                            <td><input id="kecamatan" type="text" name="kecamatan" class="input-medium"/></td>
                                         </tr>
                                         <tr>
                                             <td>Kab / Kota </td>
-                                            <td><input type="text" name="kab_kota_kk" class="input-medium"/></td>
+                                            <td><input id="kota" type="text" name="kab_kota" class="input-medium"/></td>
                                         </tr>
                                         <tr  class="odd">
                                             <td colspan="2"><i><b>Keterangan Tambahan (diisi bila perlu)</b></i></td>
