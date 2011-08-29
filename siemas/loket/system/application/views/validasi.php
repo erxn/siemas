@@ -1,3 +1,4 @@
+<?php $this->load->view('header')?>
 <link type="text/css" rel="Stylesheet" href="css/validity/jquery.validity.css" />
 
 <script type="text/javascript" src="js/jquery.validity.js">
@@ -11,8 +12,9 @@ $(document).ready(function() {
             });
 });
 </script>
+<br/>
 <form id="validasi" method="post">
-    Nama : <input id="nama" name="nama" type="text"/>
-    Jurusan: <input id="jurusan" name="jurusan" type="text"/>
+    Nama : <input id="nama" name="nama" class="input-medium" type="text"/>
+    Jurusan: <input id="jurusan" name="jurusan"  class="input-medium" type="text"/><br/>
     <input name="submit" type="submit" value="Submit"/>
 </form>
