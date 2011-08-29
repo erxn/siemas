@@ -216,7 +216,7 @@ class C_laporan extends Controller {
         $this->load->view('laporan_kunjungan_bulanan',$data);
     }
 
-    function rekap_kunjungan_jamkesmas(){
+    function rekap_kunjungan_lb4(){
 
         $list_thn = $this->M_kunjungan->get_tahun_kunjungan();
         $data['tahun'] = $list_thn;
@@ -279,19 +279,51 @@ class C_laporan extends Controller {
         $umum_lk_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin,0,$lk);
         $umum_lk_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar,0,$lk);
         
+        $lm_g_pab = 0;      $lm_ng_pab=0;       $lm_g_cib = 0;     $lm_ng_cib=0;
+        $lm_g_LW = 0;       $lm_ng_LW=0;        $lm_g_LK  = 0;     $lm_ng_LK=0;
+        $br_g_pab = 0;    $br_ng_pab=0;     $br_g_cib = 0;   $br_ng_cib=0;
+        $br_g_LW = 0;     $br_ng_LW=0;      $br_g_LK  = 0;   $br_ng_LK=0;
+
         for($i=1;$i<=cal_days_in_month(CAL_GREGORIAN, intval($bln), intval($thn)); $i++) {
-                    $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
-                    $lama_g_pab = $this->M_kunjungan->get_pasien_lama_jam($tgl,$askeskin,$cib,0);
-                    $lama_ng_pab = $this->M_kunjungan->get_pasien_lama_jam($tgl,$bayar,$cib,0);
-                    $kunjungan[] = array(
-                        'lama_g_pab' => $lama_g_pab,
-                        'lama_ng_pab' => $lama_ng_pab,
-                    );
-                    
+            $tgl = date("Y-m-d", strtotime("$thn-$bln-$i"));
+
+            $lama_g_pab = $this->M_kunjungan->get_pasien_lama_jam($tgl,$askeskin,$pab,0);
+            $lama_ng_pab = $this->M_kunjungan->get_pasien_lama_jam($tgl,$bayar,$pab,0);
+            $lama_g_cib = $this->M_kunjungan->get_pasien_lama_jam($tgl,$askeskin,$cib,0);
+            $lama_ng_cib = $this->M_kunjungan->get_pasien_lama_jam($tgl,$bayar,$cib,0);
+
+            $lama_g_LW = $this->M_kunjungan->get_pasien_lama_jam($tgl,$askeskin,$lw,0);
+            $lama_ng_LW = $this->M_kunjungan->get_pasien_lama_jam($tgl,$bayar,$lw,0);
+            $lama_g_LK = $this->M_kunjungan->get_pasien_lama_jam($tgl,$askeskin,$lk,0);
+            $lama_ng_LK = $this->M_kunjungan->get_pasien_lama_jam($tgl,$bayar,$lk,0);
+
+            $baru_g_pab = $this->M_kunjungan->get_pasien_baru_jam($tgl,$askeskin,$pab,0);
+            $baru_ng_pab = $this->M_kunjungan->get_pasien_baru_jam($tgl,$bayar,$pab,0);           
+            $baru_g_cib = $this->M_kunjungan->get_pasien_baru_jam($tgl,$askeskin,$cib,0);
+            $baru_ng_cib = $this->M_kunjungan->get_pasien_baru_jam($tgl,$bayar,$cib,0);
+
+            $baru_g_LW = $this->M_kunjungan->get_pasien_baru_jam($tgl,$askeskin,$lw,0);
+            $baru_ng_LW = $this->M_kunjungan->get_pasien_baru_jam($tgl,$bayar,$lw,0);
+            $baru_g_LK = $this->M_kunjungan->get_pasien_baru_jam($tgl,$askeskin,$lk,0);
+            $baru_ng_LK = $this->M_kunjungan->get_pasien_baru_jam($tgl,$bayar,$lk,0);
+
+            $lm_g_pab+=$lama_g_pab;     $lm_ng_pab+=$lama_ng_pab;         $lm_g_cib+=$lama_g_cib;     $lm_ng_cib+=$lama_ng_cib;
+            $lm_g_LW+=$lama_g_LW;       $lm_ng_LW+=$lama_ng_LW;           $lm_g_LK+=$lama_g_LK;       $lm_ng_LK+=$lama_ng_LK;
+            $br_g_pab+=$baru_g_pab;     $br_ng_pab+=$baru_ng_pab;         $br_g_cib+=$baru_g_cib;     $br_ng_cib+=$baru_ng_cib;
+            $br_g_LW+=$baru_g_LW;       $br_ng_LW+=$baru_ng_LW;           $br_g_LK+=$baru_g_LK;       $br_ng_LK+=$baru_ng_LK;
         }
         
         $laporan[] = array(
-                'lama' => $lama,
+                'lama_g_pab' => $lm_g_pab, 'lama_ng_pab' => $lm_ng_pab,
+                'lama_g_cib' => $lm_g_cib, 'lama_ng_cib' => $lm_ng_cib,
+                'lama_g_LW' => $lm_g_LW, 'lama_ng_LW' => $lm_ng_LW,
+                'lama_g_LK' => $lm_g_LK, 'lama_ng_LK' => $lm_ng_LK,
+
+                'baru_g_pab' => $br_g_pab, 'baru_ng_pab' => $br_ng_pab,
+                'baru_g_cib' => $br_g_cib, 'baru_ng_cib' => $br_ng_cib,
+                'baru_g_LW' => $br_g_LW, 'baru_ng_LW' => $br_ng_LW,
+                'baru_g_LK' => $br_g_LK, 'baru_ng_LK' => $br_ng_LK,
+
                 'kunj_gakin_pab' => $kunj_gakin_pabaton,'kunj_ngakin_pab' => $kunj_ngakin_pabaton,
                 'kunj_gakin_cib' => $kunj_gakin_cibogor,'kunj_ngakin_cib' => $kunj_ngakin_cibogor,
 
@@ -333,7 +365,7 @@ class C_laporan extends Controller {
         
         
         $data['laporan'] = $laporan;
-        print_r($data);exit;
+        
         $this->load->view('lb_4', $data);
     }
   

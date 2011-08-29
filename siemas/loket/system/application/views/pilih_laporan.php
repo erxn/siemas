@@ -20,7 +20,7 @@
     <a href="index.php/c_laporan/rekapitulasi_setoran"   class="kotak"><img src="images/loket_pen.png" border="0"/> Rekapitulasi Setoran</a>
     
     <a href="index.php/c_laporan/laporan_kunjungan_bulanan"  class="kotak"><img src="images/loket_pen.png" border="0"/> Lap. Kunjungan Bulanan</a>
-    
+    <a href="index.php/c_laporan/rekap_kunjungan_lb4"  class="kotak"><img src="images/loket_pen.png" border="0"/> LB4</a>
     <a href="index.php/c_laporan/rekapitulasi_kunjungan" class="kotak"><img src="images/loket_pen.png" border="0"/> Lap. Kunjungan Harian</a>
 </div>
 

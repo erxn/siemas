@@ -4,6 +4,7 @@ class Pasien extends Controller {
 
     function __construct() {
         parent::Controller();
+        $this->load->library(array('table','validation'));
         $this->load->model('M_pasien');
         $this->load->model('M_kk');
         $this->load->model('M_antrian');
@@ -74,6 +75,7 @@ class Pasien extends Controller {
             $no_index = strtoupper(substr($nama_pasien,0,1))."-".str_pad($id_kk, 4, "0", STR_PAD_LEFT)."-".$no_pasien; //biar ada 0002 gitu
             $tanggal = ganti_format_tanggal($this->input->post('tanggal_pendaftaran'));
             $poli = $this->input->post('poli');
+
             
             $data = array(
 

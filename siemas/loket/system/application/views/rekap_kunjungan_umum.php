@@ -4,7 +4,7 @@
 <!-- SUBNAV -->
 <?php $this->load->view('subnav_laporan');?>
 <!-- END SUBNAV -->
-<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Rekapitulasi Kunjungan</a> > UMUM</div>
+<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Rekapitulasi Kunjungan</a> > <a href="index.php/kunjungan/kunjungan_harian_umum">Pasien Umum </a>> Rekapan</div>
 <div>
     <div class="grid_6" style="width: 98%">
         <div class="module">
@@ -39,7 +39,7 @@
                         </tr>
                     </table>
                     </form>
-                    <div align="right" style="font-size: 14px;"><a href="index.php/c_laporan/rekap_kunjungan_askes">Rekap Pasien Askes</a></div>
+                    <div align="right" style="font-size: 14px;"><a href="index.php/kunjungan/kunjungan_harian_umum">Daftar Nama Pasien</a></div>
                         <hr/>
                 </div>
                 <?php $nama_bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember")
