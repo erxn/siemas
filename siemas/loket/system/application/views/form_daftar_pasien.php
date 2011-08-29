@@ -3,20 +3,20 @@
 <script type="text/javascript" src="js/jquery.validity.js"></script>
 
 <script type="text/javascript">
-//    $(document).ready(function() {
-//        $(function() {
-//            //              $("#form_kk").validity("input:text, select");
-//            $("#pasien").validity(function() {
-//                $("#nama").require();
-//                $("#tanggal_lahir").require()
-//                                   .match("number")                    // In the format of a number:
-//                                   .range(1, 31); ;
-//                $("#kelurahan").require();
-//                $("#kecamatan").require();
-//                $("#kota").require();
-//            });
-//        });
-//    });
+    $(document).ready(function() {
+        $(function() {
+            //              $("#form_kk").validity("input:text, select");
+            $("#pasien_baru").validity(function() {
+                $("#nama").require();
+                $("#tanggal_lahir").require()
+                                   .match("number")                    // In the format of a number:
+                                   .range(1, 31); ;
+                $("#kelurahan").require();
+                $("#kecamatan").require();
+                $("#kota").require();
+            });
+        });
+    });
 </script>
 <div id="daftar_pasien">
                 <div class="module-body">
