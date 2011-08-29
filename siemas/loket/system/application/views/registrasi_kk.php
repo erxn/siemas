@@ -41,9 +41,9 @@ $(document).ready(function() {
     // Select all of the forms on the page (in this case the only one)
     // and call 'validity' on the result.
     
-        $(function() {
-                $("#form_kk").require();
-            });
+       $("#form_kk").validity(function() {
+                    $("#nama_kk").require();
+});
 
     
 </script>
