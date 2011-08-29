@@ -33,6 +33,13 @@ $(document).ready(function() {
                 delay: 100
 		});
 	});
+
+           $(function() {
+//               $("#form_kk").validity("input:text, select");
+                $("#form_kk").validity(function() {
+                        $("#nama_kk").require();
+});
+            });
 });
 
 
@@ -41,12 +48,12 @@ $(document).ready(function() {
     // Select all of the forms on the page (in this case the only one)
     // and call 'validity' on the result.
     
-        $(function() {
-//                $("#form_kk").validity("input:text, select");
-                $("#formkk").validity(function() {
-                        $("#namakk").require();
-});
-            });
+//        $(function() {
+////                $("#form_kk").validity("input:text, select");
+//                $("#formkk").validity(function() {
+//                        $("#namakk").require();
+//});
+//            });
 </script>
 
 <br/>
