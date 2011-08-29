@@ -55,6 +55,7 @@ $(document).ready(function() {
                         <td>Alamat</td>
                         <td>:</td>
                         <td><input name="alamat" type="text" class="input-medium" placeholder="Alamat Pasien"/></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>Nama</td>
@@ -64,14 +65,6 @@ $(document).ready(function() {
                         <td>Umur</td>
                         <td>:</td>
                         <td><input name="umur_pasien" type="text" class="input-medium" placeholder="Umur Pasien"/></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
                         <td><div align="right">
                                 <input name="submit" class="submit-green" type="submit" value="Cari" />
                             </div></td>
@@ -83,30 +76,33 @@ $(document).ready(function() {
                 <thead>
                     <tr>
                         <th style="width:2%">No</th>
-                        <th style="width:10%">Tgl Pendaftaran</th>
-                        <th style="width:8%">Id Pasien</th>
-                        <th style="width:13%">Nama KK</th>
+                        <th style="width:8%">Tgl Pendaftaran</th>
+                        <th style="width:7%">Id Pasien</th>
                         <th style="width:13%">Nama Pasien</th>
-                        <th style="width:3%">JK</th>
-                        <th style="width:8%">Umur</th>
+                        <th style="width:8%">Tgl Lahir</th>
+                        <th style="width:11%">Nama KK</th>
                         <th style="width:20%">Alamat</th>
                         <th style="width:10%">Status Pelayan</th>
-                        <th style="width:10%">No Kartu</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i=1; if(isset($hasil_cari_pasien)) { foreach ($hasil_cari_pasien as $hasil) {?>
                     <tr class="<?if($i%2==0) echo "odd"; else echo "even";?>">
                         <td class="align-center"><?php echo $i++; ?></td>
-                        <td>10-04-2010</td>
-                        <td><?php echo $hasil['kode_pasien'];?></td>
+                        <td class="align-center"><?php echo$hasil['tanggal_pendaftaran']?></td>
+                        <td class="align-center"><?php echo $hasil['kode_pasien'];?></td>
+                        <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a>
+                        <br/>
+                        <small style="font-size: 11px; color: #777777; font-weight: normal"><?php echo $hasil['jk_pasien'].", ".$hasil['umur']." th";?></small>
+                        </td>
+                        <td><?php echo $hasil['tanggal_lahir']?></td>
                         <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $hasil['id_kk']."/".$hasil['id_pasien']?>"><?php echo $hasil['nama_kk'];?></a></td>
-                        <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_kk']."/".$hasil['id_pasien'];?>"><?php echo $hasil['nama_pasien'];?></a></td>
-                        <td><?php echo $hasil['jk_pasien'];?></td>
-                        <td>20-05-1991</td>
-                        <td><?php echo $hasil['alamat_kk'];?></td>
-                        <td>Askes</td>
-                        <td>0998889</td>
+                        <td><?php echo $hasil['alamat_kk']." kel. ".$hasil['kelurahan_kk']." Kec. ".$hasil['kecamatan_kk'].", ".$hasil['kota_kab_kk'];?></td>
+                        <td><?php echo $hasil['status_pelayanan'];?><br/>
+                            <small style="font-size: 11px; color: #777777; font-weight: normal"><?php echo $hasil['no_kartu_layanan'];?></small>
+                        </td>
+                        
                     </tr>
                     <?php }}else { ?>
                             <tr>

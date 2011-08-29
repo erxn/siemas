@@ -23,11 +23,11 @@
                 <h2><span>REKAPITULAS KUNJUNGAN</span></h2>
                 <div class="module-body">
                     <div style="width: 800px; height: auto;padding: 8px; text-align: center; margin: 10px auto">
-                        <a href="index.php/c_laporan/rekap_kunjungan_askes" class="kotak">
+                        <a href="index.php/kunjungan/kunjungan_harian_askes" class="kotak">
                             ASKES</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="index.php/c_laporan/rekap_kunjungan_jamkesmas" class="kotak">
+                        <a href="index.php/kunjungan/kunjungan_harian_jam" class="kotak">
                             JAMKESMAS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="index.php/c_laporan/rekap_kunjungan_umum" class="kotak">
+                        <a href="index.php/kunjungan/kunjungan_harian_umum" class="kotak">
                             UMUM</a>
                     </div>
                     <div>

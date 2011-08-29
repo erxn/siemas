@@ -1,4 +1,5 @@
 <?php $this->load->view('header');?>
+
 <!-- SUBNAV -->
 <div id="subnav">
     <div class="container_12">
@@ -9,6 +10,10 @@
     </div>
 </div>
 <!-- END SUBNAV -->
+<link type="text/css" rel="Stylesheet" href="css/validity/jquery.validity.css" />
+
+<script type="text/javascript" src="js/jquery.validity.js">
+</script>
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -32,6 +37,17 @@ $(document).ready(function() {
 
 
 </script>
+<script type="text/javascript">
+    // Select all of the forms on the page (in this case the only one)
+    // and call 'validity' on the result.
+    
+        $(function() {
+                $("#form_kk").validity("input:text, select");
+            });
+
+    
+</script>
+
 <br/>
     <div>
         
@@ -40,7 +56,7 @@ $(document).ready(function() {
             <div class="module">
                 <h2><span>Pendaftaran Kepala Keluarga (KK)</span></h2>
                 <div class="module-body">
-                    <form action="" method="post">
+                    <form id="form_kk" action="" method="post">
                         <table class="noborder" style="width: 98%">
                             <strong>Masukkan Identitas KK</strong>
                             <tr>
