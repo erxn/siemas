@@ -31,7 +31,7 @@ class Kunjungan extends Controller {
         $tgl = date("Y-m-d", strtotime($tgl));
         $data['all'] = $this->M_harian->get_all_harian($tgl);
         
-        $this->load->view('kunjungan_harian',$data);
+        $this->load->view('laporan/kunjungan_harian',$data);
     }
 
     function kunjungan_harian_askes(){
@@ -50,7 +50,7 @@ class Kunjungan extends Controller {
         $tgl = date("Y-m-d", strtotime($tgl));
         $data['askes'] = $this->M_harian->get_layanan_harian($tgl,'Askes','Bawa');
 
-        $this->load->view('kunjungan_harian_askes',$data);
+        $this->load->view('laporan/kunjungan_harian_askes',$data);
     }
 
     function kunjungan_harian_jam(){
@@ -68,7 +68,7 @@ class Kunjungan extends Controller {
 
         $tgl = date("Y-m-d", strtotime($tgl));
         $data['jam'] = $this->M_harian->get_layanan_harian($tgl,'Jamkesmas');        
-        $this->load->view('kunjungan_harian_jamkesmas',$data);
+        $this->load->view('laporan/kunjungan_harian_jamkesmas',$data);
     }
 
         function kunjungan_harian_umum(){
@@ -87,6 +87,6 @@ class Kunjungan extends Controller {
         $tgl = date("Y-m-d", strtotime($tgl));
         $data['umum'] = $this->M_harian->get_umum_harian($tgl,'Umum');
 
-        $this->load->view('kunjungan_harian_umum',$data);
+        $this->load->view('laporan/kunjungan_harian_umum',$data);
     }
 }

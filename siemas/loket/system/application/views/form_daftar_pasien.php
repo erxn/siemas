@@ -3,25 +3,25 @@
 <script type="text/javascript" src="js/jquery.validity.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $(function() {
-            //              $("#form_kk").validity("input:text, select");
-            $("#pasien").validity(function() {
-                $("#nama").require();
-                $("#tanggal_lahir").require()
-                                   .match("number")                    // In the format of a number:
-                                   .range(1, 31); ;
-                $("#kelurahan").require();
-                $("#kecamatan").require();
-                $("#kota").require();
-            });
-        });
-    });
+//    $(document).ready(function() {
+//        $(function() {
+//            //              $("#form_kk").validity("input:text, select");
+//            $("#pasien").validity(function() {
+//                $("#nama").require();
+//                $("#tanggal_lahir").require()
+//                                   .match("number")                    // In the format of a number:
+//                                   .range(1, 31); ;
+//                $("#kelurahan").require();
+//                $("#kecamatan").require();
+//                $("#kota").require();
+//            });
+//        });
+//    });
 </script>
 <div id="daftar_pasien">
                 <div class="module-body">
                     <h4>Masukkan Identitas Pasien</h4><br/>
-                    <form id="pasien" action="index.php/pasien/registrasi_pasien_baru/<?php echo $kk[0]['id_kk']."/".$status?>" method="post" id="pasien_baru">
+                    <form id="pasien_baru" action="index.php/pasien/registrasi_pasien_baru/<?php echo $kk[0]['id_kk']."/".$status?>" method="post" id="pasien_baru">
                     <table class="noborder">
                         <tr>
                             <td></td>
