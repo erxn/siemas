@@ -24,12 +24,12 @@ class Kk extends Controller {
 
             $data = array(
                     'tanggal_pendaftaran'  => ganti_format_tanggal($this->input->post('tanggal_pendaftaran')),
-                    'nama_kk'                    => $this->input->post('nama_kk'),
-                    'jk_kk'                      => $this->input->post('jk_kk'),
-                    'alamat_kk'                 => $this->input->post('alamat_kk'),
-                    'kecamatan_kk'              => $this->input->post('kecamatan_kk'),
-                    'kelurahan_kk'              => $this->input->post('kelurahan_kk'),
-                    'kota_kab_kk'               => $this->input->post('kab_kota_kk'),
+                    'nama_kk'                    => $this->input->post('nama'),
+                    'jk_kk'                      => $this->input->post('jk'),
+                    'alamat_kk'                 => $this->input->post('alamat'),
+                    'kecamatan_kk'              => $this->input->post('kecamatan'),
+                    'kelurahan_kk'              => $this->input->post('kelurahan'),
+                    'kota_kab_kk'               => $this->input->post('kab_kota'),
                     'status_wil_luar'          => $this->input->post('status_wil_kk')
                     
             );

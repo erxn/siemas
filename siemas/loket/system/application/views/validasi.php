@@ -1,16 +1,16 @@
 <?php $this->load->view('header')?>
 <link type="text/css" rel="Stylesheet" href="css/validity/jquery.validity.css" />
 
-<script type="text/javascript" src="js/jquery.validity.js">
-
-$(document).ready(function() {
-           $(function() {
-//              $("#form_kk").validity("input:text, select");
-                $("#validasi").validity(function() {
-                        $("#nama").require();
-});
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(function() {
+            //              $("#form_kk").validity("input:text, select");
+            $("#validasi").validity(function() {
+                $("#nama").require();
             });
-});
+        });
+    });
 </script>
 <br/>
 <form id="validasi" method="post">
