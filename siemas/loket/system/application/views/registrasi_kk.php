@@ -41,11 +41,12 @@ $(document).ready(function() {
     // Select all of the forms on the page (in this case the only one)
     // and call 'validity' on the result.
     
-       $("#form_kk").validity(function() {
-                    $("#nama_kk").require();
+        $(function() {
+//                $("#form_kk").validity("input:text, select");
+                $("#formkk").validity(function() {
+                        $("#namakk").require();
 });
-
-    
+            });
 </script>
 
 <br/>
@@ -56,7 +57,7 @@ $(document).ready(function() {
             <div class="module">
                 <h2><span>Pendaftaran Kepala Keluarga (KK)</span></h2>
                 <div class="module-body">
-                    <form id="form_kk" action="" method="post">
+                    <form action="" method="post">
                         <table class="noborder" style="width: 98%">
                             <strong>Masukkan Identitas KK</strong>
                             <tr>
@@ -65,7 +66,7 @@ $(document).ready(function() {
                             </tr>
                             <tr class="odd">
                                 <td>Nama KK</td>
-                                <td><input style="width: 80%" type="text" name="nama_kk" maxlength="255" size="25" class="input-medium"/></td>
+                                <td><input id="nama_kk" style="width: 80%" type="text" name="nama_kk" maxlength="255" size="25" class="input-medium"/></td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
