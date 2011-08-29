@@ -41,8 +41,8 @@ $(document).ready(function() {
     // Select all of the forms on the page (in this case the only one)
     // and call 'validity' on the result.
     
-        $(function() {
-                $("#form_kk").validity("input:text, select");
+       $("#form_kk").validity(function() {
+                $("#nama_kk").validity("input:text, select");
             });
 
     
@@ -65,7 +65,7 @@ $(document).ready(function() {
                             </tr>
                             <tr class="odd">
                                 <td>Nama KK</td>
-                                <td><input style="width: 80%" type="text" name="nama_kk" maxlength="255" size="25" class="input-medium"/></td>
+                                <td><input style="width: 80%" id="nama_kk" type="text" name="nama_kk" maxlength="255" size="25" class="input-medium"/></td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
