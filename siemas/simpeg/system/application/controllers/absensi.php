@@ -6,6 +6,7 @@ class Absensi extends Controller {
         parent::Controller();
         $this->load->model('Absensi_model', 'absensi');
         $this->load->model('Pegawai_model', 'pegawai');
+        $this->load->model('Cuti_model', 'cuti');
     }
 
     function index() {
@@ -193,12 +194,13 @@ class Absensi extends Controller {
         $this->load->view('laporan/rekap_jam_efek', $data);
     }
 
-    function test() {
+    function blanko_absensi() {
+        $data = array();
+        $this->load->plugin('phpexcel');
 
-        echo $this->absensi->get_jam_efek_ideal_pkm(2011, 8);
-        echo "<br/>";
-        echo $this->absensi->get_jam_efek_ideal_bp(2011, 8);
-
+        // pake DUK aja
+        $data['list'] = $this->pegawai->get_duk();
+        $this->load->view('laporan/xls_blanko_absensi', $data);
     }
 
 }

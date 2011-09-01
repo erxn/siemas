@@ -507,7 +507,7 @@ class Pegawai extends Controller {
 
             if($urut == 1) {
                 unset($data['list']);
-                $data['list'] = $this->pegawai->get_duk('rank_pangkat');
+                $data['list'] = $this->pegawai->get_duk('rank_pangkat DESC');
             }
             
         } else {
