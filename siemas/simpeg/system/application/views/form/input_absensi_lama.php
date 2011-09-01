@@ -51,6 +51,12 @@
                                 <?php endfor; ?>
                         </select>
                         <input type="button" value="Tampilkan" class="submit-green" onclick="window.location = 'index.php/absensi/pilih_tanggal_absensi/' + $('#tahun').val() + '/' + $('#bulan').val()"/>
+
+                        <a href="index.php/absensi/blanko_absensi" class="submit-green xls-button" style="margin-left: 0px" title="Buat form absensi">
+                        <img src="template/ms-excel.png" alt=""/>
+                            Cetak Form Absensi
+                        </a>
+                        
                 </div>
 
                 <br style="clear: both"/>

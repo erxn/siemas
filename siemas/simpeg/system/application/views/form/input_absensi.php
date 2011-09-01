@@ -41,6 +41,7 @@
                     </thead>
                     <tbody>
                         <?php foreach ($absensi_pkm as $data) : ?>
+                        <?php $is_cuti = $this->cuti->is_cuti_tanggal($tahun, $bulan, $tanggal, $data['id_pegawai']) ?>
                             <tr <?php if ($i % 2 == 0)
                                 echo 'class="even"' ?>>
                                     <td>
@@ -51,11 +52,19 @@
                                     <td><?php echo format_nip($data['nip']); ?></td>
                                     <td><?php echo $data['nama']; ?></td>
                                     <td>
+                                        <?php if($is_cuti) : ?>
+                                        <em style="color: red">CUTI</em>
+                                        <?php else : ?>
                                         <input id="ck<?php echo $i ?>" type="checkbox" name="hadir[<?php echo $data['id_pegawai']; ?>]" class="ck_absen" <?php if($data['hadir'] == 1) echo "checked='checked'" ?>/>
                                         <label for="ck<?php echo $i ?>" style="display: inline" class="chk_label<?php if($data['hadir'] == 1) echo " LabelSelected" ?>" unselectable="on">Hadir</label>
+                                        <?php endif; ?>
                                     </td>
                                     <td>
+                                        <?php if($is_cuti) : ?>
+                                        <em style="color: red">CUTI</em>
+                                        <?php else : ?>
                                         <input type="text" id="field_0_<?php echo $i ?>" name="jam_hadir[<?php echo $data['id_pegawai']; ?>]" value="<?php if($data['jam_hadir'] != "") echo date("H:i", strtotime($data['jam_hadir'])); else echo "07:30" ?>" class="input-short" style="width: 70px; text-align: center"/>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                         <?php $i++; endforeach; ?>

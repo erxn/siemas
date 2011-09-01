@@ -64,4 +64,20 @@ class Cuti_model extends Model {
 
     }
 
+    function is_cuti_tanggal($tahun, $bulan, $tanggal, $id_pegawai) {
+        $data = array();
+        $tanggal = date("Y-m-d", strtotime("$tahun-$bulan-$tanggal"));
+
+        $q = $this->db->query("SELECT * FROM cuti
+                               WHERE tanggal_mulai <= '$tanggal' AND tanggal_selesai >= '$tanggal' AND id_pegawai = $id_pegawai");
+
+        if($q->num_rows() > 0)
+        {
+            $data = $q->row_array();
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
 }
