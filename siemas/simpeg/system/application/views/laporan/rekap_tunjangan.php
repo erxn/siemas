@@ -23,6 +23,10 @@ $nama_bulan = array(
 <div class="belowribbon">
     <h1>
         Pembayaran Tambahan Tunjangan Penghasilan (TTP)
+        <a href="index.php/penilaian/rekap_tunjangan_xls/<?php echo $bulan ?>/<?php echo $tahun ?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+            <img src="template/ms-excel.png" alt=""/>
+            Simpan ke Excel
+        </a>
     </h1>
 </div>
 
