@@ -239,4 +239,45 @@ class Penilaian extends Controller {
         $this->load->view('laporan/rekap_tunjangan', $data);
     }
 
+    // XLS
+
+    function laporan_nilai_dp3_xls($tahun = 0, $tahun_2 = 0) {
+        $data = array();
+
+        if($tahun == 0) {
+            $data['tahun_1'] = date("Y");
+        } else {
+            $data['tahun_1'] = $tahun;
+        }
+
+        $data['tahun_2'] = $tahun_2;
+
+        $data['daftar_nilai_1'] = $this->penilaian->get_nilai_dp3($data['tahun_1']);
+        $data['daftar_nilai_2'] = $this->penilaian->get_nilai_dp3($data['tahun_2']);
+
+        $data['list_tahun'] = $this->penilaian->get_tahun_dp3();
+
+        $this->load->plugin('phpexcel');
+        $this->load->view('laporan/xls_nilai_dp3', $data);
+    }
+
+    function laporan_nilai_tpp_xls($bulan = 0, $tahun = 0) {
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $data['tpp_pkm'] = $this->penilaian->get_data_tpp_pkm($data['tahun'], $data['bulan']);
+        $data['tpp_bp']  = $this->penilaian->get_data_tpp_bp($data['tahun'], $data['bulan']);
+
+        $this->load->plugin('phpexcel');
+        $this->load->view('laporan/xls_nilai_tpp', $data);
+    }
+
+
 }
