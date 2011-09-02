@@ -203,4 +203,59 @@ class Absensi extends Controller {
         $this->load->view('laporan/xls_blanko_absensi', $data);
     }
 
+    // XLS
+    
+    function rekap_absensi_xls($bulan = 0, $tahun = 0) {
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $data['bulan'], $data['tahun']);
+
+        $data['absensi_pkm'] = $this->absensi->get_data_absensi_pkm($data['tahun'], $data['bulan']);
+        $data['absensi_bp']  = $this->absensi->get_data_absensi_bp($data['tahun'], $data['bulan']);
+
+        $data['jumlah_hari_bulan_ini'] = $jumlah_hari_satu_bulan;
+
+        $data['tanggal_libur_pkm'] = $this->absensi->get_libur_pkm_all($data['tahun'], $data['bulan']);
+        $data['tanggal_libur_bp'] = $this->absensi->get_libur_bp_all($data['tahun'], $data['bulan']);
+
+        $this->load->plugin('phpexcel');
+        $this->load->view('laporan/xls_rekap_absensi', $data);
+    }
+
+    function rekap_jam_efek_xls($bulan = 0, $tahun = 0) {
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $jumlah_hari_satu_bulan = cal_days_in_month(CAL_GREGORIAN, $data['bulan'], $data['tahun']);
+
+        $data['jam_efek_pkm'] = $this->absensi->get_data_jam_efek_pkm($data['tahun'], $data['bulan']);
+        $data['jam_efek_bp']  = $this->absensi->get_data_jam_efek_bp($data['tahun'], $data['bulan']);
+
+        $data['jumlah_hari_bulan_ini'] = $jumlah_hari_satu_bulan;
+
+        $data['tanggal_libur_pkm'] = $this->absensi->get_libur_pkm_all($data['tahun'], $data['bulan']);
+        $data['tanggal_libur_bp'] = $this->absensi->get_libur_bp_all($data['tahun'], $data['bulan']);
+
+        $data['list_tahun'] = $this->absensi->get_tahun_absensi();
+
+        $this->load->plugin('phpexcel');
+        $this->load->view('laporan/xls_rekap_jam_efek', $data);
+    }
+
+
 }
