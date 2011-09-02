@@ -3,6 +3,10 @@
 <div class="belowribbon">
     <h1>
         Nilai DP3
+        <a href="index.php/penilaian/laporan_nilai_dp3_xls/<?php echo $tahun_1 ?>/<?php echo $tahun_2 ?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+            <img src="template/ms-excel.png" alt=""/>
+            Simpan ke Excel
+        </a>
     </h1>
 </div>
 
