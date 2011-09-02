@@ -13,6 +13,7 @@ class Laporan extends Controller{
     }
 
     function index(){
+
         $this->load->view('laporan_view');
     }
 
@@ -55,8 +56,10 @@ class Laporan extends Controller{
          $this->load->plugin('phpexcel');
 //         $lay_tgl=$this->lap->layanan_harian($tanggal, $bulan, $tahun);
 //        $layanan['layanan_tgl']=$lay_tgl;
-        
-         $lay=$this->lap->layanan();
+
+         $bulan=$this->input->post('bulan_lay');
+        $tahun=$this->input->post('tahun_lay');
+         $lay=$this->lap->layanan($bulan,$tahun);
         $layanan['layanan_h']=$lay;
        $this->load->view('laporan_harian_excel_lay',$layanan);
     }

@@ -68,7 +68,7 @@ class Antrian extends Controller {
     function isi_remed_hari_ini($id_pasien = 0, $id_kunjungan = 0, $id_antrian = 0) {
 
         $remed = array();
-
+        $tgl= date("Y-m-d");
         if($id_pasien != 0) {
             $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
             $remed['data_pasien']=$data_pasien_remed;
@@ -80,7 +80,7 @@ class Antrian extends Controller {
 
             // insert ke tabel remed_poli_gigi
             $data1 = array(
-                    'tanggal_kunjungan_gigi' => date("Y-m-d"),
+                    'tanggal_kunjungan_gigi' =>$tgl,
                     'anamnesis'      =>$this->input->post('n_anamnesis'),
                     'diagnosis'      =>$this->input->post('n_diagnosa'),
                     'keterangan'    =>$this->input->post('n_ket'),
@@ -114,6 +114,7 @@ class Antrian extends Controller {
 
         $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien);
         $remed['remed_gigi']=$remed_pasien;
+
 
         $remed_kia=$this->remed->get_remed_pasien_kia($id_pasien);
         $remed['remed_kia']=$remed_kia;
@@ -163,7 +164,41 @@ class Antrian extends Controller {
         $this->load->view('antrian_tabel_remed_view',$remed);
     }
 
-    
+
+    function tabel_tbc($id_pasien,$tbc){
+
+        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+        $remed['data_pasien']=$data_pasien_remed;
+
+         $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien,$tbc);
+        $remed['tbc']=$remed_tbc;
+        $this->load->view('p_tbc',$remed);
+
+    }
+
+function tabel_ispa($id_pasien,$ispa){
+
+        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+        $remed['data_pasien']=$data_pasien_remed;
+
+        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien,$ispa);
+        $remed['ispa']=$remed_ispa;
+
+        $this->load->view('p_ispa',$remed);
+
+    }
+
+    function tabel_diare($id_pasien,$diare){
+
+        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+        $remed['data_pasien']=$data_pasien_remed;
+
+        $remed_diare=$this->remed->remed_poli_umum_diare($id_pasien,$diare);
+        $remed['diare']=$remed_diare;
+
+        $this->load->view('p_diare',$remed);
+
+    }
 
 }
 

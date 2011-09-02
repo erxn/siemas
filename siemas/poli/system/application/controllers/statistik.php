@@ -13,9 +13,9 @@ class Statistik extends Controller {
         $this->load->view('statistik_view');
     }
 
-    function grafik_bulanan_penyakit($bulan, $tahun) {
-//        $bulan=$this->input->post('bulan_peny');
-//        $tahun=$this->input->post('tahun_peny');
+    function grafik_bulanan_penyakit() {
+        $bulan=$this->input->post('bulan_peny');
+        $tahun=$this->input->post('tahun_peny');
         $karies = $this->stat->get_id_by_penyakit("Karies Gigi");
         $pulpa = $this->stat->get_id_by_penyakit("Penyakit Pulpa & Jaringan Periapikal");
         $gusi = $this->stat->get_id_by_penyakit("Penyakit Gusi & Periodontal");

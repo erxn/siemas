@@ -117,9 +117,7 @@ class Pasien extends Controller {
         $pop_pasien=$this->remed->remed_poli_lain_pasien($id_pasien);
         $data['pop_pasien']=$pop_pasien;
 
-        $pop_tanggal=$this->remed->nyari_tanggal($tanggal_kunjungan_gigi);
-        $data['pop_tanggal']=$pop_tanggal;
-       $pop_gigi=$this->remed->get_remed_pasien_gigi($id_pasien);
+       $pop_gigi=$this->remed->get_remed_pop_gigi($id_pasien,$tanggal_kunjungan_gigi);
         $data['pop_gigi']=$pop_gigi;
 
         $this->load->view('data_remed_poli_gigi_view',$data);
@@ -130,10 +128,7 @@ class Pasien extends Controller {
         $pop_pasien=$this->remed->remed_poli_lain_pasien($id_pasien);
         $data['pop_pasien']=$pop_pasien;
 
-        $pop_tanggal_u=$this->remed->nyari_tanggal_u($tanggal_kunjungan_umum);
-        $data['pop_tanggal_u']=$pop_tanggal_u;
-
-       $pop_u=$this->remed->get_remed_pasien_umum($id_pasien);
+       $pop_u=$this->remed->get_remed_pop_umum($id_pasien,$tanggal_kunjungan_umum);
         $data['pop_umum']=$pop_u;
 
            $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien);
@@ -163,45 +158,6 @@ class Pasien extends Controller {
         $data['pop_kia']=$pop_k;
 
         $this->load->view('data_remed_poli_kia_view',$data);
-
-    }
-    function tabel_tbc($id_pasien){
-
-        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
-        $remed['data_pasien']=$data_pasien_remed;
-
-         $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien);
-        $remed['tbc']=$remed_tbc;
-
-        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien);
-        $remed['ispa']=$remed_ispa;
-
-
-        $this->load->view('p_tbc',$remed);
-
-    }
-
-function tabel_ispa($id_pasien){
-
-        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
-        $remed['data_pasien']=$data_pasien_remed;
-
-        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien);
-        $remed['ispa']=$remed_ispa;
-
-        $this->load->view('p_ispa',$remed);
-
-    }
-
-    function tabel_diare($id_pasien){
-
-        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
-        $remed['data_pasien']=$data_pasien_remed;
-
-        $remed_diare=$this->remed->remed_poli_umum_diare($id_pasien);
-        $remed['diare']=$remed_diare;
-
-        $this->load->view('p_diare',$remed);
 
     }
 
