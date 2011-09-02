@@ -1,59 +1,81 @@
-<?php $this->load->view('header')?>
- <div id="subnav">
-    <div class="container_12">
-        <div class="grid_12">
 
-        </div>
-    </div>
-    <div style="clear: both;"></div>
-</div>
+<table border="1">
 
-<?php if(count($hari_tindakan)>0){?>
+    <tbody>
+        <tr>
+            <td><select style="margin-left:10px; margin-bottom: 10px">
+                                <option value="0">Pilih bulan:</option>
+                                <option value="1">Januari</option>
+                                <option value="2">Februari</option>
+                                <option value="3">Maret</option>
+                                <option value="4">April</option>
+                                <option value="5">Mei</option>
+                                <option value="6">Juni</option>
+                                <option value="7">Juli</option>
+                                <option value="8">Agustus</option>
+                                <option value="9">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select></td>
+            <td><select style="margin-left:10px; margin-bottom: 10px">
+                                <option value="0">Pilih bulan:</option>
+                                <option value="1">Januari</option>
+                                <option value="2">Februari</option>
+                                <option value="3">Maret</option>
+                                <option value="4">April</option>
+                                <option value="5">Mei</option>
+                                <option value="6">Juni</option>
+                                <option value="7">Juli</option>
+                                <option value="8">Agustus</option>
+                                <option value="9">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select></td>
+        </tr>
+        <tr>
+            <td><select style="margin-left:10px;">
+                                <option value="0">Pilih tahun:</option>
+                                <option value="1">2000</option>
+                                <option value="2">2001</option>
+                                <option value="3">2002</option>
+                                <option value="4">2003</option>
+                                <option value="5">2004</option>
+                                <option value="6">2005</option>
+                                <option value="7">2006</option>
+                                <option value="8">2007</option>
+                                <option value="9">2008</option>
+                                <option value="10">2009</option>
+                                <option value="11">2010</option>
+                                <option value="12">2011</option>
+                            </select></td>
+            <td><select style="margin-left:10px;">
+                                <option value="0">Pilih tahun:</option>
+                                <option value="1">2000</option>
+                                <option value="2">2001</option>
+                                <option value="3">2002</option>
+                                <option value="4">2003</option>
+                                <option value="5">2004</option>
+                                <option value="6">2005</option>
+                                <option value="7">2006</option>
+                                <option value="8">2007</option>
+                                <option value="9">2008</option>
+                                <option value="10">2009</option>
+                                <option value="11">2010</option>
+                                <option value="12">2011</option>
+                            </select></td>
+        </tr>
+        <tr>
+            <td> <a style="text-decoration:none; margin-left:50px " href="index.php/laporan/bulanan_layanan" class="dashboard-module">
+                                        <img src="Template_files/lap_bul_tindakan.png" width="64" height="64" alt="edit" />
+                                        <span>Laporan Tindakan</span>
+                                    </a></td>
+            <td><a style="text-decoration:none; margin-left:30px" href="index.php/laporan/bulanan_penyakit" class="dashboard-module">
+                                        <img src="Template_files/lap_bul_penyakit.png" width="64" height="64" alt="edit" />
+                                        <span>Laporan Penyakit</span>
+                                    </a></td>
+        </tr>
+    </tbody>
+</table>
 
-
-<h2>Laporan Data Pasien Berdasarkan Layanan</h2>
-<h3>Tanggal:20 Mei 2011</h3>
-<table style="width:100%">
-
-            <thead >
-                <tr>
-                    <th style="width:2%">No</th>
-                    <th style="width:10%">Tgl Pendaftaran</th>
-                    <th style="width:8%">Id Pasien</th>
-                    <th style="width:10%">Nama KK</th>
-                    <th style="width:10%">Nama Pasien</th>
-                    <th style="width:2%">JK</th>
-                    <th style="width:8%">Tanggal Lahir</th>
-                    <th style="width:20%">Alamat</th>
-                    <th style="width:10%">Status Pelayan</th>
-                    <th style="width:10%">No Kartu</th>
-                    <th style="width:10%">Layanan</th>
-                </tr>
-            </thead>
-
-
-            <tbody >
-
-        <?php foreach ($hari_tindakan as $ht)
-        { ?>
-                <tr>
-                    <th style="width:2%"><?php echo "no" ?></th>
-                    <th style="width:10%"><?php echo $ht['tanggal_pendaftaran'];?></th>
-                    <th style="width:8%"><?php echo $ht['id_pasien'];?></th>
-                    <th style="width:10%"><?php echo $ht['nama_KK'];?></th>
-                    <th style="width:10%"><?php echo $ht['nama_pasien'];?></th>
-                    <th style="width:2%"><?php echo $ht['jk'];?></th>
-                    <th style="width:8%"><?php echo $ht['tanggal_lahir'];?></th>
-                    <th style="width:20%"><?php echo $ht['Alamat'];?></th>
-                    <th style="width:10%"><?php echo $ht['status_pelayanan'];?></th>
-                    <th style="width:10%"><?php echo $ht['no_kartu_layanan'];?></th>
-                    <th style="width:10%"><?php echo $ht['nama_layanan'];?></th>
-                </tr>
-                    <?php }?>
-            </tbody>
-
-        </table>
- <?php }?>
-
-<br />
-<a href='index.php/laporan/export_to_excell_tindakan'><span style='color:blue'>export ke excell</span></a>

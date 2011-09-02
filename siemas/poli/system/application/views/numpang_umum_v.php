@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -116,7 +116,7 @@ $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
                     ->mergeCells('AH5:AH6')->setCellValueByColumnAndRow(33, 5, "Jumlah")
                  ->mergeCells('AI5:AI6')->setCellValueByColumnAndRow(34, 5, "Harga")
                  ->mergeCells('AJ5:AJ6')->setCellValueByColumnAndRow(35, 5, "Jumlah Harga")
-             
+
         ->getStyle('A5:AO5')->applyFromArray($styleAlignHorizontalCenter);
         for($n=1;$n<=31;$n++){$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($n+1, 6, $n);}
          for($n=1;$n<=19;$n++){$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $n+6, $n);}
@@ -150,12 +150,13 @@ $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
             $i++;
         }
 
-       
+
         for ($k = 1; $k <= 31; $k++) {                  //k loopoing tanggal
-          
- 
-            $data = $this->lap->layanan_bulanan($k, $bulan, $tahun);
-                        $l = 7;
+
+
+            $data = $this->lap->layanan_bulanan($k, 8, 2011);
+
+            $l = 7;
 
             foreach ($data as $d) {
 
@@ -163,7 +164,7 @@ $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
                   $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(33, $l, '=SUM('.'C'.$l.':AG'.$l.')');
                   $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, '=('.'AH'.$l.'*AI'.$l.')');
                 $l++;
-                                
+
             }
 
         }
@@ -181,5 +182,11 @@ $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
 
         $objWriter = PHPEXCEL_IOFactory::createWriter($objPHPExcel, "Excel5");
         $objWriter->save("php://output");
-        
+
+?><?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 ?>

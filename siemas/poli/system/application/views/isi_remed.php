@@ -25,21 +25,6 @@
             $.uiTableFilter( theTable, $('#d_gigi').val());
         })
     });
-$(function() {
-        var theTable = $('#t_umum')
-
-        $("#b_umum").click(function() {
-            $.uiTableFilter( theTable, $('#d_umum').val());
-        })
-    });
-    $(function() {
-        var theTable = $('#t_kia')
-
-        $("#b_kia").click(function() {
-            $.uiTableFilter( theTable, $('#d_kia').val());
-        })
-
-    });
 
 
 </script>
@@ -122,7 +107,9 @@ $(function() {
         load_selesai();
         load_terisi();
     }
-
+$('#sukses').ajaxSuccess(function() {
+  $(this).text('input data berhasil');
+});
     
   
 </script>
@@ -196,17 +183,17 @@ $(function() {
     </ul>
             <div id="tabs-a"  class="module">
                 <form action="" method="post">
-                <table  id="t_gigi" style="width:100%; margin-left: 30px ; margin-top: 5px">
+                <table  id="t_gigi" style="width:96%; margin-left: 30px ; margin-top: 5px">
 
 
             <tr class="odd">
                 <td>Anamnesis:</td>
-                <td><textarea name="n_anamnesis" rows="5" cols="40" input=""></textarea></td>
+                <td><textarea name="n_anamnesis" rows="3" cols="40" input="" style="width: 90%"></textarea></td>
             </tr>
 
             <tr>
                 <td>Diagnosa:</td>
-                <td><textarea name="n_diagnosa" rows="5" cols="40"></textarea></td>
+                <td><textarea name="n_diagnosa" rows="3" cols="40" style="width: 90%"></textarea></td>
             </tr>
 
             <tr class="odd">
@@ -234,12 +221,12 @@ $(function() {
             <tr class="odd">
                 <td>Keterangan:</td>
 
-                <td><textarea name="n_ket" rows="5" cols="40"></textarea></td>
+                <td><textarea name="n_ket" rows="3" cols="40" style="width: 90%"></textarea></td>
             </tr>
 
             <tr>
                 <td></td>
-                <td><input name="submit"  type="submit"  class="submit-green" value="Simpan" name="simpan"></td>
+                <td><input id="sukses" name="submit"   type="submit"  class="submit-green" value="Simpan" name="simpan"></td>
             </tr>
    
                 </table>
@@ -266,7 +253,8 @@ $(function() {
                         <th style="width:23%">Tanggal Kunjungan</th>
                         <th style="width:21%">Anamnesis</th>
                         <th style="width:17%">Diagnosa</th>
-                        <th style="width:17%">Layanan</th>
+                        <th style="width:17%">Penyakit</th>
+                         <th style="width:17%">Layanan</th>
                         <th style="width:17%">Ket.</th>
                     </tr>
                 </thead>
@@ -281,7 +269,8 @@ $(function() {
                         <td ><a class="pop" href="index.php/pasien/remed_poli_gigi_pop/<?php echo $id_pasien;?>/<?php echo $rg['tanggal_kunjungan_gigi']?>"><?php echo tgl_indo($rg['tanggal_kunjungan_gigi']); ?></a></td>
                         <td><?php echo  word_limiter($rg['anamnesis'],5,'...');?></td>
                         <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
-                        <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?>, <?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
+                        <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?></td>
+                        <td><?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
                         <td><?php echo word_limiter($rg['keterangan'],5,'...');?></td>
                     </tr>
                             <?php }
@@ -316,7 +305,7 @@ $(function() {
                         <th style="width:20%">Anamnesis</th>
                         <th style="width:15%">Diagnosa</th>
                         <th style="width:10%">Penyakit</th>
-                        <th style="width:10%">P2M</th>
+                        <th style="width:10%" colspan="3">P2M</th>
                         <th style="width:6%">Ket.</th>
                     </tr>
                 </thead>
@@ -334,24 +323,9 @@ $(function() {
                        <td><?php echo word_limiter($ru['anamnesis'],3,'...');?></td>
                         <td><?php echo word_limiter($ru['diagnosa'],3,'...');?></td>
                         <td><?php echo word_limiter($ru['penyakit_umum'],3,'...');?></td>
-                        <td><a href="">
-                                    <?php
-                                    if($campak!==0) {
-                                        echo 'campak';
-                                    }
-                                    else if($ispa!==0) {
-                                        echo 'ispa';
-                                    }
-                                    else if($tbc!==0) {
-                                        echo 'tbc';
-                                    }
-                                    else if($diare!==0) {
-                                        echo 'diare';
-                                    }
-
-                                    ?>
-                            </a>
-                        </td>
+                        <td><a href="index.php/antrian/tabel_tbc/<?php echo $id_pasien;?>/<?php echo $tbc;?>">tbc</a> </td>
+                        <td><a href="index.php/antrian/tabel_ispa/<?php echo $id_pasien;?>/<?php echo $ispa;?>">ispa</a> </td>
+                        <td><a href="index.php/antrian/tabel_diare/<?php echo $id_pasien;?>/<?php echo $diare;?>">diare</a> </td>
                         <td><?php echo word_limiter($ru['keterangan'],5,'...');?></td>
                     </tr>
                             <?php }
@@ -388,3 +362,4 @@ $(function() {
 </div>
 
         <?php } ?>
+

@@ -25,40 +25,131 @@
     $(function() {
         $( ".tabs" ).tabs();
     });
+
+
 </script>
 
+<script type="text/javascript">
+
+    function update_href_bulanan_penyakit() {
+
+        var link = "index.php/laporan/bulanan_penyakit";
+        var bln = $('#bulan_lay').val();
+        var thn = $('#tahun_lay').val();
+
+        $('#btn_bulanan_penyakit').attr({'href': link + '/' + bln + '/' + thn});
+
+    }
+
+</script>
 
 <table border="0">
     <tbody>
         <tr>
-            <td><div  class="tabs"  style="margin:70px; margin-left:270px;width:500px">
+            <td><div  class="tabs"  style="margin-left: 30px;width:97%">
                     <ul>
                         <li><a href="#tabs-2">Laporan Bulanan</a></li>
                     </ul>
                     <div id="tabs-2">
-                      <table>
-                            <tr>
-                            <select style="margin-left:100px; margin-bottom: 30px">
-                                <option value="0">Pilih bulan:</option>
-                                <option value="1">Januari</option>
-                                <option value="2">Februari</option>
-                                <option value="3">Maret</option>
-                                <option value="4">April</option>
-                                <option value="5">Mei</option>
-                                <option value="6">Juni</option>
-                                <option value="7">Juli</option>
-                                <option value="8">Agustus</option>
-                                <option value="9">September</option>
-                                <option value="10">Oktober</option>
-                                <option value="11">November</option>
-                                <option value="12">Desember</option>
 
-                            </select>
-                            </tr>
 
+                        <table border="1">
+
+                            <tbody>
+                                <tr>
+                                    <td><select id="bulan_lay" style="margin-left:50px; margin-bottom: 10px">
+                                            <option value="0">Pilih bulan:</option>
+                                            <option value="1">Januari</option>
+                                            <option value="2">Februari</option>
+                                            <option value="3">Maret</option>
+                                            <option value="4">April</option>
+                                            <option value="5">Mei</option>
+                                            <option value="6">Juni</option>
+                                            <option value="7">Juli</option>
+                                            <option value="8">Agustus</option>
+                                            <option value="9">September</option>
+                                            <option value="10">Oktober</option>
+                                            <option value="11">November</option>
+                                            <option value="12">Desember</option>
+                                        </select></td>
+                                    <td><select style="margin-bottom: 10px;margin-left: 120px">
+                                            <option value="0">Pilih bulan:</option>
+                                            <option value="1">Januari</option>
+                                            <option value="2">Februari</option>
+                                            <option value="3">Maret</option>
+                                            <option value="4">April</option>
+                                            <option value="5">Mei</option>
+                                            <option value="6">Juni</option>
+                                            <option value="7">Juli</option>
+                                            <option value="8">Agustus</option>
+                                            <option value="9">September</option>
+                                            <option value="10">Oktober</option>
+                                            <option value="11">November</option>
+                                            <option value="12">Desember</option>
+                                        </select></td>
+                                </tr>
+                                <tr>
+                                    <td><select id="tahun_lay" style="margin-left:50px;">
+                                            <option value="0">Pilih tahun:</option>
+                                            <option value="1">2000</option>
+                                            <option value="2">2001</option>
+                                            <option value="3">2002</option>
+                                            <option value="4">2003</option>
+                                            <option value="5">2004</option>
+                                            <option value="6">2005</option>
+                                            <option value="7">2006</option>
+                                            <option value="8">2007</option>
+                                            <option value="9">2008</option>
+                                            <option value="10">2009</option>
+                                            <option value="11">2010</option>
+                                            <option value="12">2011</option>
+                                        </select></td>
+                                    <td><select style="margin-left: 120px">
+                                            <option value="0">Pilih tahun:</option>
+                                            <option value="1">2000</option>
+                                            <option value="2">2001</option>
+                                            <option value="3">2002</option>
+                                            <option value="4">2003</option>
+                                            <option value="5">2004</option>
+                                            <option value="6">2005</option>
+                                            <option value="7">2006</option>
+                                            <option value="8">2007</option>
+                                            <option value="9">2008</option>
+                                            <option value="10">2009</option>
+                                            <option value="11">2010</option>
+                                            <option value="12">2011</option>
+                                        </select></td>
+                                </tr>
+                                <tr>
+                                    <td> <a style="text-decoration:none;margin-left:50px " href="index.php/laporan/bulanan_layanan" class="dashboard-module">
+                                            <img src="Template_files/lap_bul_tindakan.png" width="64" height="64" alt="edit" />
+                                            <span>Laporan Tindakan</span>
+                                        </a></td>
+                                    <td><a style="text-decoration:none ;margin-left: 100px " href="index.php/laporan/bulanan_penyakit" class="dashboard-module">
+                                            <img src="Template_files/lap_bul_penyakit.png" width="64" height="64" alt="edit" />
+                                            <span>Laporan Penyakit</span>
+                                        </a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+            </td>
+            <td>
+                <div  class="tabs"  style="margin-left: 30px;width:100%">
+                    <ul>
+                        <li><a href="#tabs-4">Laporan Tahunan</a></li>
+                    </ul>
+
+                    <div id="tabs-4">
+                        <table>
                             <tr>
-                            <select style="margin-left:10px;">
-                                <option value="0">Pilih tahun:</option>
+                            <select style="margin-left: 60px;margin-bottom: 30px">
+                                <option value="0">Masukkan Tahun:</option>
                                 <option value="1">2000</option>
                                 <option value="2">2001</option>
                                 <option value="3">2002</option>
@@ -73,57 +164,6 @@
                                 <option value="12">2011</option>
                             </select>
                             </tr>
-                       
-                            <tr>
-                                <td>
-                                    <a style="text-decoration:none; margin-left:50px " href="index.php/laporan/bulanan_layanan" class="dashboard-module">
-                                        <img src="Template_files/lap_bul_tindakan.png" width="64" height="64" alt="edit" />
-                                        <span>Laporan Tindakan</span>
-                                    </a>
-                                </td>
-
-                            
-                                <td>
-                                    <a style="text-decoration:none; margin-left:30px" href="index.php/laporan/bulanan_penyakit" class="dashboard-module">
-                                        <img src="Template_files/lap_bul_penyakit.png" width="64" height="64" alt="edit" />
-                                        <span>Laporan Penyakit</span>
-                                    </a>
-                                </td>
-
-                            </tr>
-
-                        </table>
-
-                    </div>
-
-
-                </div>
-            </td>
-            <td>
-                <div  class="tabs"  style="width:300px">
-                    <ul>
-                        <li><a href="#tabs-4">Laporan Tahunan</a></li>
-                    </ul>
-
-                    <div id="tabs-4">
-                        <table>
-                            <tr>
-                                <select style="margin-left: 60px;margin-bottom: 30px">
-                                    <option value="0">Masukkan Tahun:</option>
-                                    <option value="1">2000</option>
-                                    <option value="2">2001</option>
-                                    <option value="3">2002</option>
-                                    <option value="4">2003</option>
-                                    <option value="5">2004</option>
-                                    <option value="6">2005</option>
-                                    <option value="7">2006</option>
-                                    <option value="8">2007</option>
-                                    <option value="9">2008</option>
-                                    <option value="10">2009</option>
-                                    <option value="11">2010</option>
-                                    <option value="12">2011</option>
-                                </select>
-                           </tr>
                             <tr>
                                 <td >
                                     <a style="text-decoration:none; margin-left: 60px" href="index.php/laporan/tahunan" class="dashboard-module">
