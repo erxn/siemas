@@ -13,7 +13,7 @@ Class Statistik_model extends Model {
                              FROM penyakit AS p
                              JOIN penyakit_remed_gigi AS r USING(id_penyakit)
                              JOIN remed_poli_gigi AS g USING(id_remed_gigi)
-                             WHERE p.kode_penyakit=$id_penyakit AND MONTH(g.tanggal_kunjungan_gigi)=$bulan AND YEAR(g.tanggal_kunjungan_gigi)=$tahun");
+                             WHERE p.kode_penyakit=$id_penyakit AND MONTH(g.tanggal_kunjungan_gigi)='$bulan' AND YEAR(g.tanggal_kunjungan_gigi)='$tahun'");
 
         $data = $q->row_array();
         
@@ -27,7 +27,7 @@ Class Statistik_model extends Model {
                              FROM penyakit AS p
                              JOIN penyakit_remed_gigi AS r USING(id_penyakit)
                              JOIN remed_poli_gigi AS g USING(id_remed_gigi)
-                             WHERE p.kode_penyakit=$id_penyakit AND  MONTH(g.tanggal_kunjungan_gigi) = $bulan AND YEAR(g.tanggal_kunjungan_gigi)=$tahun");
+                             WHERE p.kode_penyakit=$id_penyakit AND  MONTH(g.tanggal_kunjungan_gigi) = '$bulan' AND YEAR(g.tanggal_kunjungan_gigi)='$tahun'");
 
         $data = $q->row_array();
 

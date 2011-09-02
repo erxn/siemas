@@ -16,7 +16,7 @@ Class Rekam_medik_model extends Model{
                 ON remed_poli_gigi.id_remed_gigi=penyakit_remed_gigi.id_remed_gigi
             JOIN penyakit
                 ON penyakit_remed_gigi.id_penyakit=penyakit.id_penyakit
-            WHERE remed_poli_gigi.id_pasien=$id_pasien ");
+            WHERE remed_poli_gigi.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -75,14 +75,29 @@ Class Rekam_medik_model extends Model{
     }
 
 
+    function get_diagnosa_gigi($id_pasien,$tgl){               //buat nampilin tabel remed pasien yg KIA
+        $data=array();
+        $q=$this->db->query  ("SELECT *
+FROM remed_poli_gigi
+WHERE tanggal_kunjungan_gigi = '$tgl'
+AND id_pasien =$id_pasien");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+
     function get_remed_pasien_umum($id_pasien){               //buat nampilin tabel remed pasien yg KIA
         $data=array();
-        $q=$this->db->query  ("SELECT * FROM 
-             remed_poli_umum
-            JOIN penyakit_remed_umum
-                ON remed_poli_umum.id_remed_umum=penyakit_remed_umum.id_remed_umum
-            JOIN penyakit
-                ON penyakit_remed_umum.id_penyakit=penyakit.id_penyakit
+        $q=$this->db->query  ("SELECT * FROM
+             pasien
+                JOIN remed_poli_umum USING (id_pasien)
             WHERE remed_poli_umum.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
@@ -98,7 +113,7 @@ Class Rekam_medik_model extends Model{
 
     function data_pasien_remed($id_pasien){                               //buat nampilin data pasien di database di tampilan remed
          $data=array();
-        $q=$this->db->query("SELECT * FROM pasien WHERE id_pasien=$id_pasien" );
+        $q=$this->db->query("SELECT *,extract(YEAR FROM from_days(datediff(curdate(), pasien.tanggal_lahir))) AS umur FROM pasien WHERE id_pasien=$id_pasien" );
 
         if($q->num_rows()>0){
             foreach ($q->result_array()as $row){
@@ -144,7 +159,7 @@ Class Rekam_medik_model extends Model{
      
      function get_penyakit(){
       $data=array();
-        $q=$this->db->query  ("SELECT * FROM penyakit");
+        $q=$this->db->query  ("SELECT * FROM penyakit WHERE poli_id_poli=1");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -299,9 +314,13 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
     }
 
 
-    function remed_poli_umum_tbc($id_pasien){
+    function remed_poli_umum_tbc($id_pasien=0,$id_tbc=0){
             $data=array();
-        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN tbc WHERE id_pasien=$id_pasien");
+        $q=$this->db->query  ("SELECT *
+                                FROM remed_poli_umum AS r
+                                JOIN tbc AS c
+                                WHERE r.id_pasien ='$id_pasien'
+                                AND r.id_tbc ='$id_tbc'");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -314,9 +333,13 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
         return $data;
     }
 
-    function remed_poli_umum_ispa($id_pasien){
+    function remed_poli_umum_ispa($id_pasien=0,$id_ispa=0){
             $data=array();
-        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN ispa WHERE id_pasien=$id_pasien");
+        $q=$this->db->query  ("SELECT *
+                                FROM remed_poli_umum AS r
+                                JOIN ispa AS c
+                                WHERE r.id_pasien ='$id_pasien'
+                                AND r.id_ispa ='$id_ispa'");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -331,7 +354,10 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
 
     function remed_poli_umum_campak($id_pasien){
             $data=array();
-        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN campak WHERE id_pasien=$id_pasien");
+        $q=$this->db->query  ("SELECT r.campak_id_campak, c.*
+                                FROM remed_poli_umum as r
+                                JOIN campak as c
+                                    WHERE id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -344,9 +370,36 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
         return $data;
     }
 
-    function remed_poli_umum_diare($id_pasien){
+    function remed_poli_umum_diare($id_pasien=0,$id_diare=0){
             $data=array();
-        $q=$this->db->query  ("SELECT * FROM remed_poli_umum JOIN diare WHERE id_pasien=$id_pasien");
+        $q=$this->db->query  ("SELECT *
+                                FROM remed_poli_umum AS r
+                                JOIN diare AS c
+                                WHERE r.id_pasien ='$id_pasien'
+                                AND r.id_diare ='$id_diare'");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
+function get_remed_pop_gigi($id_pasien,$tgl){               //buat nampilin data remed pasien per id,,buat di input pelayanan,,,biar si dokter langsung input...yg tabel itu lho
+        $data=array();
+        $q=$this->db->query  ("SELECT * FROM layanan
+            JOIN remed_gigi_layanan
+                ON  layanan.id_layanan = remed_gigi_layanan.id_layanan
+            JOIN remed_poli_gigi
+                ON remed_gigi_layanan.id_remed_gigi=remed_poli_gigi.id_remed_gigi
+            JOIN penyakit_remed_gigi
+                ON remed_poli_gigi.id_remed_gigi=penyakit_remed_gigi.id_remed_gigi
+            JOIN penyakit
+                ON penyakit_remed_gigi.id_penyakit=penyakit.id_penyakit
+            WHERE remed_poli_gigi.id_pasien=$id_pasien AND remed_poli_gigi.tanggal_kunjungan_gigi='$tgl'");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -359,5 +412,22 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
         return $data;
     }
 
+     function get_remed_pop_umum($id_pasien,$tgl){               //buat nampilin tabel remed pasien yg KIA
+        $data=array();
+        $q=$this->db->query  ("SELECT * FROM
+             pasien
+                JOIN remed_poli_umum USING (id_pasien)
+            WHERE remed_poli_umum.id_pasien=$id_pasien AND remed_poli_umum.tanggal_kunjungan_umum='$tgl'");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
 }
 ?>

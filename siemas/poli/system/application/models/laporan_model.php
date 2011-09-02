@@ -10,6 +10,17 @@ Class Laporan_model extends Model{
         parent::Model();
     }
 
+     function get_tahun_kunjungan() {
+        $q = $this->db->query("SELECT distinct year(tanggal_kunjungan) AS tahun FROM `kunjungan` order by year(tanggal_kunjungan)");
+        if($q->num_rows() > 0) {
+            foreach ($q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
     function layanan_bulanan($tanggal, $bulan, $tahun){
          $data=array();
 
@@ -52,9 +63,17 @@ Class Laporan_model extends Model{
         
     }
 
-    function layanan(){
+    function layanan($bulan,$tahun){
          $data=array();
-        $kueri=$this->db->query("SELECT * FROM layanan WHERE keterangan='GIGI'" );
+        $kueri=$this->db->query("SELECT *
+FROM layanan
+JOIN remed_gigi_layanan
+USING ( id_layanan )
+JOIN remed_poli_gigi
+USING ( id_remed_gigi )
+WHERE layanan.keterangan = 'GIGI'
+AND MONTH( remed_poli_gigi.tanggal_kunjungan_gigi ) ='$bulan'
+AND YEAR( remed_poli_gigi.tanggal_kunjungan_gigi ) ='$tahun'" );
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
                 $data[]=$row;

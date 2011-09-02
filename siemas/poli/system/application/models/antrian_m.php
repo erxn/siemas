@@ -126,7 +126,7 @@ class Antrian_m extends Model {
 
     function data_pasien_remed($id_pasien){                               //buat nampilin data pasien di database di tampilan remed
          $data=array();
-        $q=$this->db->query("SELECT * FROM pasien WHERE id_pasien=$id_pasien" );
+        $q=$this->db->query("SELECT *,extract(YEAR FROM from_days(datediff(curdate(), pasien.tanggal_lahir))) AS umur FROM pasien WHERE id_pasien=$id_pasien" );
 
         if($q->num_rows()>0){
             foreach ($q->result_array()as $row){
