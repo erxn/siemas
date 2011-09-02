@@ -383,7 +383,47 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
           return 0;
       }
     }
+function get_remed_pop_gigi($id_pasien,$tgl){               //buat nampilin data remed pasien per id,,buat di input pelayanan,,,biar si dokter langsung input...yg tabel itu lho
+        $data=array();
+        $q=$this->db->query  ("SELECT * FROM layanan
+            JOIN remed_gigi_layanan
+                ON  layanan.id_layanan = remed_gigi_layanan.id_layanan
+            JOIN remed_poli_gigi
+                ON remed_gigi_layanan.id_remed_gigi=remed_poli_gigi.id_remed_gigi
+            JOIN penyakit_remed_gigi
+                ON remed_poli_gigi.id_remed_gigi=penyakit_remed_gigi.id_remed_gigi
+            JOIN penyakit
+                ON penyakit_remed_gigi.id_penyakit=penyakit.id_penyakit
+            WHERE remed_poli_gigi.id_pasien=$id_pasien AND remed_poli_gigi.tanggal_kunjungan_gigi='$tgl'");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
 
+        $q->free_result();
+        return $data;
+    }
+
+     function get_remed_pop_umum($id_pasien,$tgl){               //buat nampilin tabel remed pasien yg KIA
+        $data=array();
+        $q=$this->db->query  ("SELECT * FROM
+             pasien
+                JOIN remed_poli_umum USING (id_pasien)
+            WHERE remed_poli_umum.id_pasien=$id_pasien AND remed_poli_umum.tanggal_kunjungan_umum='$tgl'");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
 
 }
 ?>

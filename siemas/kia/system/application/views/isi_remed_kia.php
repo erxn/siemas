@@ -23,13 +23,7 @@
             $.uiTableFilter( theTable, $('#d_gigi').val());
         })
     });
-$(function() {
-        var theTable = $('#t_umum')
 
-        $("#b_umum").click(function() {
-            $.uiTableFilter( theTable, $('#d_umum').val());
-        })
-    });
 
 </script>
 
