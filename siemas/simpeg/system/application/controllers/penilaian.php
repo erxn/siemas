@@ -279,5 +279,22 @@ class Penilaian extends Controller {
         $this->load->view('laporan/xls_nilai_tpp', $data);
     }
 
+    function rekap_tunjangan_xls($bulan = 0, $tahun = 0) {
+        $data = array();
+
+        if($tahun == 0 || $bulan == 0) {
+            $data['tahun'] = intval(date("Y"));
+            $data['bulan'] = intval(date("n"));
+        } else {
+            $data['tahun'] = $tahun;
+            $data['bulan'] = $bulan;
+        }
+
+        $data['daftar_tunjangan'] = $this->penilaian->get_tunjangan($data['tahun'], $data['bulan']);
+
+        $this->load->plugin('phpexcel');
+        $this->load->view('laporan/xls_rekap_tunjangan', $data);
+    }
+
 
 }
