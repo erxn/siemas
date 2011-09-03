@@ -12,6 +12,12 @@ class Home extends Controller {
         $this->load->model("Event_model", "event");
     }
 
+    function login()
+    {
+        $data = array();
+        $this->load->view('ribbon_login', $data);
+    }
+
 
     function index()
     {

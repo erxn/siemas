@@ -1,4 +1,4 @@
-<body style="background: white url('../pegawai.jpg') top center no-repeat; font-family: Arial, sans-serif; color: white; text-shadow: 0px 3px 10px #000000">
+<body style="background: #333333 url('../pegawai.jpg') top center repeat; font-family: Arial, sans-serif; color: white; text-shadow: 0px 3px 10px #000000">
 
     <br/>
 
