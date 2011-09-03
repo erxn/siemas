@@ -218,6 +218,13 @@
 	background-position: left top !important;
 }
 
+.msoffice-icon-exit-32x32 {
+    width: 32px !important;
+	height: 32px !important;
+	margin-top: 0px !important;
+	background-image: url("./common/icons/application-exit.png") !important;
+	background-position: left top !important;
+}
 
 .msoffice-icon-calendar-32x32 {
     width: 32px !important;

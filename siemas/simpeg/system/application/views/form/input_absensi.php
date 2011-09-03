@@ -28,14 +28,17 @@
         <div class="module">
             <h2><span>Puskesmas Bogor Tengah</span></h2>
             <div class="module-table-body">
-                <table width="100%">
+                <table width="100%" id="pkm">
                     <?php $i = 0; if(!$this->absensi->is_libur_pkm($tahun, $bulan, $tanggal)) : ?>
                     <thead>
                         <tr>
                             <th width="5%">No</th>
                             <th width="20%">NIP</th>
                             <th width="35%">Nama</th>
-                            <th width="20%">Hadir?</th>
+                            <th width="20%">
+                                Hadir?
+                                <input type="button" style="font-size: 10px" value="Tandai semua" title="Tandai seluruhnya hadir" onclick="$('#pkm .ck_absen').attr('checked', 'checked'); $('#pkm .chk_label').addClass('LabelSelected')"/>
+                            </th>
                             <th width="20%">Jam hadir</th>
                         </tr>
                     </thead>

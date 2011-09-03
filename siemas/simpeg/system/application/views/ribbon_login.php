@@ -108,7 +108,10 @@
                                     <span class="ui-icon msoffice-icon-key-32x32"></span>
                                     <span class="ui-button-label">Login</span>
                                 </button>
-
+                                <button onclick="window.close();" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Keluar dari aplikasi">
+                                    <span class="ui-icon msoffice-icon-exit-32x32"></span>
+                                    <span class="ui-button-label">Keluar</span>
+                                </button>
                             </form>
 
                         </div>
@@ -129,6 +132,11 @@
 
             $(document).ready(function(){
                 resizeContent();
+                
+                <?php if(isset($login_error) && $login_error == true) : ?>
+                alert("Login gagal. Pastikan nama dan kata kunci sudah benar");
+                <?php endif; ?>
+
                 $('#username').focus();
             });
             

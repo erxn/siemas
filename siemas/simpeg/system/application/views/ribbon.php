@@ -125,6 +125,33 @@
                         </div>
                         <h3><span>Kalender</span></h3>
                     </li>
+                    <li id="groupKalender_ribbon-msofficeTabHome">
+                        <div>
+                            <table style="margin: 0px 10px 0px 10px; float: left">
+                                <tr>
+                                    <td colspan="2"><strong>Informasi Akun</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Login Terakhir</td>
+                                    <td>: <?php echo tampilan_tanggal_indonesia(date('d-m-Y', strtotime($this->session->userdata('admin_last_login'))), true, true); ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Pukul</td>
+                                    <td>: <?php echo date('H:i', strtotime($this->session->userdata('admin_last_login'))); ?></td>
+                                </tr>
+                            </table>
+
+                            <button href="index.php/home/ganti_password" class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Ganti kata kunci untuk login">
+                                <span class="ui-icon msoffice-icon-key-32x32"></span>
+                                <span class="ui-button-label">Ganti Password</span>
+                            </button>
+                            <button onclick='if(confirm("Logout dari aplikasi?")) location.href="index.php/home/logout"' class="ui-ribbon-element ui-ribbon-control ui-button ui-ribbon-large-button" title="Logout dari aplikasi">
+                                <span class="ui-icon msoffice-icon-exit-32x32"></span>
+                                <span class="ui-button-label">Logout</span>
+                            </button>
+                        </div>
+                        <h3><span>Akun</span></h3>
+                    </li>
                 </ul>
             </div>
 
