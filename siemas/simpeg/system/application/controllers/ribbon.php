@@ -6,6 +6,11 @@ class Ribbon extends Controller {
     {
         parent::Controller();
         $this->load->model("Absensi_model", "absensi");
+
+        // if not login
+        if ($this->session->userdata('admin_logged_in') != true) {
+            redirect('home/login');
+        }
     }
 
 

@@ -8,6 +8,11 @@ class Pegawai extends Controller {
         $this->load->model("Gaji_model", 'gaji');
         $this->load->model("Jabatan_model", 'jabatan');
         $this->load->model("Pangkat_model", 'pangkat');
+
+        // if not login
+        if ($this->session->userdata('admin_logged_in') != true) {
+            die("<h3>Anda harus login terlebih dahulu</h3>");
+        }
     }
 
     function index() {

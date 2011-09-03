@@ -226,7 +226,7 @@ EOS;
             <h4 id="tanggal_libur"></h4>
             <input type="hidden" value="0" id="bp_pemda" name="bp_pemda"/>
             <input type="hidden" id="tanggal" name="tanggal"/>
-            <input type="text" class="input-long" style="width: 200px;" id="keterangan_libur" name="keterangan"/>
+            <input type="text" class="input-long" style="width: 200px;" id="keterangan_libur" name="keterangan" placeholder="Keterangan"/>
             <input type="submit" value="Simpan" class="submit-green" style="margin: 0px" name="submit"/>
             <input type="button" value="Batal" class="submit-gray" style="margin: 0px" onclick="$('#popup_libur').fadeOut()"/>
         </form>
@@ -256,7 +256,7 @@ EOS;
                 if(bp == 1) $('#bp_pemda').val("1");
                 else $('#bp_pemda').val("0");
 
-                $('#tanggal_libur').text(tanggal + " " + bulan + " " + tahun + " adalah libur:");
+                $('#tanggal_libur').text("Keterangan libur " + tanggal + " " + bulan + " " + tahun + " :");
                 $('#tanggal').val(tahun + "-" + $('#bulan').val() + "-" + tanggal);
                 $(this).css({left: $(t).offset().left + 'px', top: $(t).offset().top + 25 + 'px'}).fadeIn()
 

@@ -8,6 +8,11 @@ class Penilaian extends Controller {
         $this->load->model("Penilaian_model", "penilaian");
         $this->load->model("Pegawai_model", "pegawai");
         $this->load->model("Absensi_model", "absensi");
+
+        // if not login
+        if ($this->session->userdata('admin_logged_in') != true) {
+            die("<h3>Anda harus login terlebih dahulu</h3>");
+        }
     }
 
     function index()
