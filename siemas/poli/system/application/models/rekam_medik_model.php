@@ -314,13 +314,12 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
     }
 
 
-    function remed_poli_umum_tbc($id_pasien=0,$id_tbc=0){
+    function remed_poli_umum_tbc($id_pasien=0){
             $data=array();
-        $q=$this->db->query  ("SELECT *
-                                FROM remed_poli_umum AS r
-                                JOIN tbc AS c
-                                WHERE r.id_pasien ='$id_pasien'
-                                AND r.id_tbc ='$id_tbc'");
+        $q=$this->db->query  ("SELECT * FROM
+             pasien
+                JOIN remed_poli_umum USING (id_pasien)
+            WHERE remed_poli_umum.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -333,13 +332,12 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
         return $data;
     }
 
-    function remed_poli_umum_ispa($id_pasien=0,$id_ispa=0){
+    function remed_poli_umum_ispa($id_pasien){
             $data=array();
-        $q=$this->db->query  ("SELECT *
-                                FROM remed_poli_umum AS r
-                                JOIN ispa AS c
-                                WHERE r.id_pasien ='$id_pasien'
-                                AND r.id_ispa ='$id_ispa'");
+        $q=$this->db->query  ("SELECT * FROM
+             pasien
+                JOIN remed_poli_umum USING (id_pasien)
+            WHERE remed_poli_umum.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -370,13 +368,12 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
         return $data;
     }
 
-    function remed_poli_umum_diare($id_pasien=0,$id_diare=0){
+    function remed_poli_umum_diare($id_pasien=0){
             $data=array();
-        $q=$this->db->query  ("SELECT *
-                                FROM remed_poli_umum AS r
-                                JOIN diare AS c
-                                WHERE r.id_pasien ='$id_pasien'
-                                AND r.id_diare ='$id_diare'");
+        $q=$this->db->query  ("SELECT * FROM
+             pasien
+                JOIN remed_poli_umum USING (id_pasien)
+            WHERE remed_poli_umum.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
