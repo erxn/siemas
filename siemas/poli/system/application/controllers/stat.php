@@ -25,6 +25,20 @@ class Stat extends Controller {
 
         $tgl=date("Y-m-d",strtotime($tgl));
 
+
+        
+        if($this->input->post('submit1')) {
+            $tgl1=$this->input->post('tgl_statistik1');
+
+        }
+        else {
+            $tgl1=date("d-m-Y");
+        }
+
+        $data['tgl1']=$tgl1;
+
+        $tgl1=date("Y-m-d",strtotime($tgl1));
+
         $wil1="pabaton";
         $stat1="Luar wilayah";
         $wil2="cibogor";
@@ -42,13 +56,23 @@ class Stat extends Controller {
         $gigi_lw=$this->stat->get_kunjungan_gigi_status($stat1,$gigi,$tgl);
         $gigi_lk=$this->stat->get_kunjungan_gigi_status($stat2,$gigi,$tgl);
 
-
         $penyakit1=$this->stat->get_kunjungan_gigi_penyakit($p1,$gigi,$tgl);
         $penyakit2=$this->stat->get_kunjungan_gigi_penyakit($p2,$gigi,$tgl);
         $penyakit3=$this->stat->get_kunjungan_gigi_penyakit($p3,$gigi,$tgl);
         $penyakit4=$this->stat->get_kunjungan_gigi_penyakit($p4,$gigi,$tgl);
         $penyakit5=$this->stat->get_kunjungan_gigi_penyakit($p5,$gigi,$tgl);
 
+
+        $gigi_pab1=$this->stat->get_kunjungan_gigi_wil($wil1,$gigi,$tgl1);
+        $gigi_cib1=$this->stat->get_kunjungan_gigi_wil($wil1,$gigi,$tgl1);
+        $gigi_lw1=$this->stat->get_kunjungan_gigi_status($stat1,$gigi,$tgl1);
+        $gigi_lk1=$this->stat->get_kunjungan_gigi_status($stat2,$gigi,$tgl1);
+
+        $penyakit11=$this->stat->get_kunjungan_gigi_penyakit($p1,$gigi,$tgl1);
+        $penyakit21=$this->stat->get_kunjungan_gigi_penyakit($p2,$gigi,$tgl1);
+        $penyakit31=$this->stat->get_kunjungan_gigi_penyakit($p3,$gigi,$tgl1);
+        $penyakit41=$this->stat->get_kunjungan_gigi_penyakit($p4,$gigi,$tgl1);
+        $penyakit51=$this->stat->get_kunjungan_gigi_penyakit($p5,$gigi,$tgl1);
 
         $grafik=array(
         'gigi_pab'=>$gigi_pab,
@@ -62,6 +86,16 @@ class Stat extends Controller {
         'penyakit4'=> $penyakit4,
         'penyakit5'=> $penyakit5,
 
+        'gigi_pab1'=>$gigi_pab1,
+        'gigi_cib1'=>$gigi_cib1,
+        'gigi_lw1'=>$gigi_lw1,
+        'gigi_lk1'=>$gigi_lk1,
+
+        'penyakit11'=> $penyakit11,
+        'penyakit21'=> $penyakit21,
+        'penyakit31'=> $penyakit31,
+        'penyakit41'=> $penyakit41,
+        'penyakit51'=> $penyakit51,
         );
         
         

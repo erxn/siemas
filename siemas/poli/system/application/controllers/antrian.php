@@ -65,7 +65,7 @@ class Antrian extends Controller {
         $this->antrian->ubah_status($id_antrian, 'TUNDA');
     }
 
-    function isi_remed_hari_ini($id_pasien = 0, $id_kunjungan = 0, $id_antrian = 0) {
+    function isi_remed_hari_ini($id_pasien = 0, $id_kunjungan = 0, $id_antrian = 0,$tgl=0) {
 
         $remed = array();
         $tgl= date("Y-m-d");
@@ -145,6 +145,7 @@ class Antrian extends Controller {
         $data_peny=$this->remed->get_penyakit($id_pasien);
         $remed['data_peny']=$data_peny;
 
+        
         $this->load->view('isi_remed',$remed);
     }
 
