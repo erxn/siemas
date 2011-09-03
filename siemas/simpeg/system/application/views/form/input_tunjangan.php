@@ -143,10 +143,10 @@ $nama_bulan = array(
                     <tbody>
                         <tr>
                             <td>
-                                <input type="text" id="gol_IV" class="number input-long" value="5" maxlength="3"/> %
+                                <input type="text" id="gol_IV" class="number input-long" value="0" maxlength="3"/> %
                             </td>
                             <td>
-                                <input type="text" id="gol_III" class="number input-long" value="15" maxlength="3"/> %
+                                <input type="text" id="gol_III" class="number input-long" value="0" maxlength="3"/> %
                             </td>
                             <td>
                                 <input type="text" id="gol_II" class="number input-long" value="0" maxlength="3"/> %
