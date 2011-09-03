@@ -52,7 +52,7 @@ class Laporan extends Controller{
     }
 
     
-    function bulanan_layanan(){
+    function bulanan_layanan($bulan,$tahun){
          $this->load->plugin('phpexcel');
 //         $lay_tgl=$this->lap->layanan_harian($tanggal, $bulan, $tahun);
 //        $layanan['layanan_tgl']=$lay_tgl;
