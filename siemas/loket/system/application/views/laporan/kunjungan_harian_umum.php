@@ -14,6 +14,17 @@
     .kotak:hover {
         background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
     }
+    .current {
+        width: 70px;
+        padding: 4px;
+        display: inline-block;
+        margin: 0px;
+        -moz-border-radius: 10px;
+        -moz-box-shadow: 1px 2px 10px #9FCFE5;
+        text-decoration: none;
+        background: -moz-linear-gradient(top, #ffffff, #9FCFE5);
+        font-size: 12px;
+    }
 </style>
 <!-- SUBNAV -->
 <div id="subnav">
@@ -25,7 +36,7 @@
     <div style="clear: both;"></div>
 </div>
 <!-- END SUBNAV -->
-<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Rekapitulasi Kunjungan</a> > Pasien Umum</div>
+<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Kunjungan Harian</a> > Pasien Umum</div>
 <!--<div style="font-size: 14px !important;padding: 2px; margin-left: 15px;"><a href="index.php/c_laporan">Laporan</a> > Rekapitulasi Kunjungan</div>-->
     <div>
         <div class="grid_6" style="width: 98%">
@@ -39,16 +50,7 @@
                 <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
                 <br/><br/>
                 Pilih Jenis Pelayanan:
-                <div align="left" style="width: 500px; height: auto;padding: 2px; text-align: center;">
-                        <a style="font-size: 12px !important;" href="index.php/kunjungan/kunjungan_harian" class="kotak">
-                            SEMUA</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a style="font-size: 12px !important;" href="index.php/kunjungan/kunjungan_harian_askes" class="kotak">
-                            ASKES</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="index.php/kunjungan/kunjungan_harian_jam" class="kotak">
-                            JAMKESMAS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="index.php/kunjungan/kunjungan_harian_umum" class="kotak">
-                            UMUM</a>
-                    </div>
+                <?php $this->load->view('pilih_layanan')?>
             </form>
             <div align="right"><a style="font-size: 15px !important" href="index.php/c_laporan/rekap_kunjungan_umum">Lihat Rekapan >></a></div>
             <hr/>

@@ -4,7 +4,7 @@
 <!-- SUBNAV -->
 <?php $this->load->view('subnav_laporan');?>
 <!-- END SUBNAV -->
-<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Rekapitulasi Kunjungan</a> > <a href="index.php/kunjungan/kunjungan_harian_umum">Pasien Umum </a>> Rekapan</div>
+<div style="font-size: 14px !important;padding: 4px; margin-left: 10px;"><a href="index.php/c_laporan">Laporan</a> > <a href="index.php/c_laporan/rekapitulasi_kunjungan">Kunjungan Harian</a> > <a href="index.php/kunjungan/kunjungan_harian_umum">Pasien Umum </a>> Rekapan</div>
 <div>
     <div class="grid_6" style="width: 98%">
         <div class="module">
@@ -12,11 +12,11 @@
             <div class="module-body">
                 <div>
                     <form method="post" action="">
-                    <table class="noborder" style="width: 35%">
+                    <table class="noborder" style="width: 100%">
                         <tr>
-                            <td>Pilih Bulan/Tahun</td>
+                            <td width="11%">Pilih Bulan/Tahun</td>
                             <td>:</td>
-                            <td>
+                            <td width="11%">
                                 <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
                                 <select name="bulan_kunjungan" style="width: 100%">
                                     <?php for($i=1;$i<=12;$i++) {?>
@@ -24,23 +24,32 @@
                                         <?php } ?>
                                 </select>
                             </td>
-                            <td>
+                            <td width="11%">
                                 <select name="tahun_kunjungan" style="width: 100%">
                                     <?php foreach($tahun as $thn) {?>
                                     <option value="<?php echo $thn['tahun'];?>" <?php if($laporan[0]['tahun'] == $thn) echo 'selected="selected"' ?>><?php echo $thn['tahun'];?></option>
                                         <?php }?>
                                 </select>
                             </td>
-                            <td>
+                            <td width="7%">
                                 <div align="right">
                                     <input type="submit" value="Pilih" class="submit-green" name="pilih">
                                 </div>
                             </td>
+                            <td align="right" width="67%">
+                                <a href="index.php/c_laporan/rekap_umum_xls/<?php echo $laporan[0]['bulan']."/".$laporan[0]['tahun']?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+                                    <img src="images/ms-excel.png" alt=""/>
+                                    Simpan ke Excel
+                                </a>
+                            </td>
                         </tr>
                     </table>
+                        
                     </form>
-                    <div align="right" style="font-size: 14px;"><a href="index.php/kunjungan/kunjungan_harian_umum">Daftar Nama Pasien</a></div>
-                        <hr/>
+                    
+                    <div style="font-size: 14px;"><a href="index.php/kunjungan/kunjungan_harian_umum">Daftar Nama Pasien</a></div>
+                    
+                    <hr/>
                 </div>
                 <?php $nama_bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember")
 
