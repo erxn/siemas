@@ -7,5 +7,15 @@ function xlsBOF(){
     return;
 }
 
+function xlsEOF() {
+    echo pack("ss",0x0A, 0x00);
+    return;
+}
+
+function xlswriteNumber($Row,$Col,$Value){
+    echo pack("sssss", 0x203, 14, $Row, $Col,0x0);
+    echo pack("d",$Value);
+    
+}
 header();
 ?>

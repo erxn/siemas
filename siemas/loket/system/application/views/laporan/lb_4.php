@@ -7,12 +7,12 @@
         <div class="module">
             <h2><span>Laporan Kunjungan: LB4</span></h2>
             <div class="module-body">
-<form method="post" action="">
-                    <table class="noborder" style="width: 35%">
+                <form method="post" action="">
+                    <table class="noborder" style="width: 100%">
                         <tr>
-                            <td>Pilih Bulan/Tahun</td>
+                            <td width="11%">Pilih Bulan/Tahun</td>
                             <td>:</td>
-                            <td>
+                            <td width="11%">
                                 <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
                                 <select name="bulan_kunjungan" style="width: 100%">
                                     <?php for($i=1;$i<=12;$i++) {?>
@@ -20,21 +20,25 @@
                                         <?php } ?>
                                 </select>
                             </td>
-                            <td>
+                            <td width="11%">
                                 <select name="tahun_kunjungan" style="width: 100%">
                                     <?php foreach($tahun as $thn) {?>
                                     <option value="<?php echo $thn['tahun'];?>" <?php if($laporan[0]['tahun'] == $thn) echo 'selected="selected"' ?>><?php echo $thn['tahun'];?></option>
                                         <?php }?>
                                 </select>
                             </td>
-                            <td>
+                            <td width="7%">
                                 <div align="right">
                                     <input type="submit" value="Pilih" class="submit-green" name="pilih">
                                 </div>
                             </td>
+                            <td align="right" width="67%"><a href="index.php/pegawai/laporan_duk_xls/" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+                                    <img src="images/ms-excel.png" alt=""/>
+                                    Simpan ke Excel
+                                </a></td>
                         </tr>
                     </table>
-                    </form>
+                </form>
                 <hr/>
                 <?php $nama_bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember")
 
@@ -44,28 +48,28 @@
                 <br/>
                 <table height="317"  style="width: 100%; font-size: 15px;">
                     <thead>
-                    <tr>
-                        <th style="font-size: 13px !important;" rowspan="2"><div align="center"><strong>No</strong></div>      <div align="center"></div></th>
-                        <th style="width: 30%;font-size: 15px;" rowspan="2"><div align="center"><strong>Kegiatan</strong></div>      <div align="center"></div></th>
-                        <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Kel. PABATON</strong></div></th>
-                        <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Kel. CIBOGOR</strong></div></th>
-                        <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Luar Wilayah</strong></div></th>
-                        <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Kab</strong></div></th>
-                        <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Jumlah</strong></div></th>
-                        <th style="font-size: 13px;" rowspan="2"><div align="center"><strong>TOTAL</strong></div>      <div align="center"></div></th>
-                    </tr>
-                    <tr>
-                        <th><div align="center"><strong>GAKIN</strong></div></th>
-                        <th><div align="center"><strong>NON GAKIN</strong></div></th>
-                        <th><div align="center"><strong>GAKIN</strong></div></th>
-                        <th><div align="center"><strong>NON GAKIN</strong></div></th>
-                        <th><div align="center"><strong>GAKIN</strong></div></th>
-                        <th><div align="center"><strong>NON GAKIN</strong></div></th>
-                        <th><div align="center"><strong>GAKIN</strong></div></th>
-                        <th><div align="center"><strong>NON GAKIN</strong></div></th>
-                        <th><div align="center"><strong>GAKIN</strong></div></th>
-                        <th><div align="center"><strong>NON GAKIN</strong></div></th>
-                    </tr>
+                        <tr>
+                            <th style="font-size: 13px !important;" rowspan="2"><div align="center"><strong>No</strong></div>      <div align="center"></div></th>
+                            <th style="width: 30%;font-size: 15px;" rowspan="2"><div align="center"><strong>Kegiatan</strong></div>      <div align="center"></div></th>
+                            <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Kel. PABATON</strong></div></th>
+                            <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Kel. CIBOGOR</strong></div></th>
+                            <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Luar Wilayah</strong></div></th>
+                            <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Kab</strong></div></th>
+                            <th style="font-size: 13px;" colspan="2"><div align="center"><strong>Jumlah</strong></div></th>
+                            <th style="font-size: 13px;" rowspan="2"><div align="center"><strong>TOTAL</strong></div>      <div align="center"></div></th>
+                        </tr>
+                        <tr>
+                            <th><div align="center"><strong>GAKIN</strong></div></th>
+                            <th><div align="center"><strong>NON GAKIN</strong></div></th>
+                            <th><div align="center"><strong>GAKIN</strong></div></th>
+                            <th><div align="center"><strong>NON GAKIN</strong></div></th>
+                            <th><div align="center"><strong>GAKIN</strong></div></th>
+                            <th><div align="center"><strong>NON GAKIN</strong></div></th>
+                            <th><div align="center"><strong>GAKIN</strong></div></th>
+                            <th><div align="center"><strong>NON GAKIN</strong></div></th>
+                            <th><div align="center"><strong>GAKIN</strong></div></th>
+                            <th><div align="center"><strong>NON GAKIN</strong></div></th>
+                        </tr>
                     </thead>
                     <tr>
                         <td><div align="center">1</div></td>
@@ -470,21 +474,21 @@
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                      <th colspan="2"><div align="center"><strong>JUMLAH</strong></div></th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
-                      <th>&nbsp;</th>
+                        <th colspan="2"><div align="center"><strong>JUMLAH</strong></div></th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </table>
-          </div>
+            </div>
         </div>
     </div>
 </div>

@@ -116,8 +116,7 @@ class M_kunjungan extends Model {
         return $jumlah_kunjungan[0]['jumlah'];
     }
 
-    function get_kunjungan_layanan_wil($tgl,$layanan,$wil){
-
+    function get_kunjungan_layanan_wil($tgl,$layanan,$wil,$stat){
         $q = $this->db->query("SELECT count(*) as jumlah
                                 FROM poli
                                 JOIN antrian using (id_poli)
@@ -127,7 +126,7 @@ class M_kunjungan extends Model {
 
                                 WHERE tanggal_kunjungan = '$tgl'
                                 AND status_pelayanan LIKE '%$layanan%'
-                                AND kelurahan_kk LIKE '%$wil%'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '%$stat%')
                                 AND status_bawa_kartu LIKE '%bawa%'
                                 ");
         $jumlah_kunjungan = $q->result_array();

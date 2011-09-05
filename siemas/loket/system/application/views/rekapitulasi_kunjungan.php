@@ -16,7 +16,7 @@
     <div style="clear: both;"></div>
 </div>
 <!-- END SUBNAV -->
-<div style="font-size: 14px !important;padding: 2px; margin-left: 15px;"><a href="index.php/c_laporan">Laporan</a> > Rekapitulasi Kunjungan</div>
+<div style="font-size: 14px !important;padding: 2px; margin-left: 15px;"><a href="index.php/c_laporan">Laporan</a> > Rekapitulasi Kunjungan Harian</div>
     <div>
         <div class="grid_6" style="width: 98%">
             <div class="module">
