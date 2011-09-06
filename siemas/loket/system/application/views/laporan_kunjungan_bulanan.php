@@ -11,11 +11,11 @@
             <h2><span>Laporan Kunjungan</span></h2>
             <div class="module-body">
                  <form method="post" action="index.php/c_laporan/laporan_kunjungan_bulanan">
-                    <table class="noborder" style="width: 35%">
+                    <table class="noborder" style="width: 100%">
                         <tr>
-                            <td>Pilih Bulan/Tahun</td>
+                            <td width="11%">Pilih Bulan/Tahun</td>
                             <td>:</td>
-                            <td>
+                            <td width="11%">
                                 <?php $bulan = array('','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sept','Okt','Nov','Des'); ?>
                                 <select name="bulan_kunjungan" style="width: 100%">
                                     <?php for($i=1;$i<=12;$i++) {?>
@@ -23,17 +23,23 @@
                                         <?php } ?>
                                 </select>
                             </td>
-                            <td>
+                            <td width="11%">
                                 <select name="tahun_kunjungan" style="width: 100%">
                                     <?php foreach($tahun as $thn) {?>
                                     <option value="<?php echo $thn['tahun'];?>" <?php if($laporan[0]['tahun'] == $thn) echo 'selected="selected"' ?>><?php echo $thn['tahun'];?></option>
                                         <?php }?>
                                 </select>
                             </td>
-                            <td>
+                            <td width="7%">
                                 <div align="right">
                                     <input type="submit" value="Pilih" class="submit-green" name="pilih">
                                 </div>
+                            </td>
+                            <td align="right" width="67%">
+                                <a href="index.php/c_laporan/lb4_xls/<?php echo intval($laporan[0]['bulan'])."/".$laporan[0]['tahun']?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+                                    <img src="images/ms-excel.png" alt=""/>
+                                    Simpan ke Excel
+                                </a>
                             </td>
                         </tr>
                     </table>

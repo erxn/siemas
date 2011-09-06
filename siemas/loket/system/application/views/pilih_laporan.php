@@ -19,9 +19,11 @@
 <div style="border: 0px solid fuchsia; width: 600px; height: auto;padding: 8px; ">
     <a href="index.php/c_laporan/rekapitulasi_setoran"   class="kotak"><img src="images/loket_pen.png" border="0"/> Rekapitulasi Setoran</a>
     <a href="index.php/c_laporan/rekap_kunjungan_umum"  class="kotak"><img src="images/loket_pen.png" border="0"/> Rekap Kunjungan Umum</a>
-    <a href="index.php/c_laporan/rekap_kunjungan_askes"  class="kotak"><img src="images/loket_pen.png" border="0"/> Rekap Kunjungan Askes</a>
-    <a href="index.php/c_laporan/rekap_kunjungan_lb4"  class="kotak"><img src="images/loket_pen.png" border="0"/> LB4</a>
     <a href="index.php/c_laporan/rekapitulasi_kunjungan" class="kotak"><img src="images/loket_pen.png" border="0"/> Kunjungan Harian</a>
+    <a href="index.php/c_laporan/rekap_kunjungan_askes"  class="kotak"><img src="images/loket_pen.png" border="0"/> Rekap Kunjungan Askes</a>
+    
+    <a href="index.php/c_laporan/laporan_kunjungan_bulanan"  class="kotak"><img src="images/loket_pen.png" border="0"/> Kunjungan Bulanan</a>
+    <a href="index.php/c_laporan/rekap_kunjungan_lb4"  class="kotak"><img src="images/loket_pen.png" border="0"/> LB4</a>
 </div>
 
 <script type="text/javascript">
