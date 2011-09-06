@@ -133,21 +133,21 @@ class M_kunjungan extends Model {
         return $jumlah_kunjungan[0]['jumlah'];
     }
 
-    function get_kunjungan_poli_st_layan($bln,$thn,$poli,$status,$wil,$luar){
+    function get_kunjungan_poli_st_layan($bln,$thn,$poli,$status){
         $q = $this->db->query("SELECT count(*) as jumlah
                                 FROM antrian
                                 JOIN kunjungan USING (id_kunjungan)
                                 JOIN pasien USING (id_pasien)
                                 JOIN kk USING (id_kk)
                                 WHERE id_poli = $poli
-                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '%$luar%')
+                                
                                 AND status_pelayanan = '$status'
                                 AND MONTH(tanggal_kunjungan) = '$bln'
                                 AND YEAR(tanggal_kunjungan) = '$thn'");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
     }
-
+//AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '%$luar%')
     function get_kunjungan_layanan($bln,$thn,$layanan,$status){
         $q = $this->db->query("SELECT COUNT(*) as jumlah
                                 FROM pasien
