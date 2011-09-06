@@ -35,6 +35,8 @@
         <!--<link rel="stylesheet" type="text/css" href="css/theme-green.css" media="screen" />-->
         <!--<link rel="stylesheet" type="text/css" href="css/theme-graphite.css" media="screen" />-->
 
+        <link rel="stylesheet" type="text/css" href="template/jquery.validity.css" media="screen" />
+
         <!-- JQuery engine script-->
         <script type="text/javascript" src="template/jquery-1.js"></script>
 
