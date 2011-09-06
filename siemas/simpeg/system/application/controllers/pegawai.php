@@ -168,6 +168,21 @@ class Pegawai extends Controller {
         $this->load->view('form/input_pegawai_sukses', $data);
     }
 
+    function profil($id) {
+
+        $data['data_pegawai'] = $this->pegawai->get_pegawai_by_id($id);
+        $data['data_pelatihan'] = $this->pegawai->get_pelatihan_pegawai($id);
+        $data['data_pendidikan'] = $this->pegawai->get_pendidikan_pegawai($id);
+        $data['data_tanggungan'] = $this->pegawai->get_tanggungan_pegawai($id);
+        $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
+
+        $data['jabatan'] = $this->pegawai->get_jabatan_terakhir($id);
+        $data['pangkat'] = $this->pegawai->get_pangkat_terakhir($id);
+        $data['gaji'] = $this->pegawai->get_gaji_terakhir($id);
+
+        $this->load->view('form/profil_pegawai', $data);
+    }
+
     function edit_pegawai_pilih() {
         $data['daftar_pegawai'] = $this->pegawai->get_semua_pegawai();
 

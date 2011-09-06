@@ -1,6 +1,6 @@
 <?php $this->load->view('header') ?>
 
-<form action="" method="post">
+<form action="" method="post" id="pass_form">
 
 <div class="belowribbon">
     <h1>
@@ -44,11 +44,11 @@
                     <tbody>
                         <tr>
                             <td>Nama baru</td>
-                            <td><input type="text" name="new_username" class="input-long" value="<?php echo $username; ?>"/></td>
+                            <td><input type="text" name="new_username" class="input-long" value="<?php echo $username; ?>" id="new_username"/></td>
                         </tr>
                         <tr>
                             <td>Password baru</td>
-                            <td><input type="text" name="new_password" class="input-long"/></td>
+                            <td><input type="text" name="new_password" class="input-long" id="new_password"/></td>
                         </tr>
                     </tbody>
                 </table>
@@ -70,5 +70,17 @@ $(document).ready(function(){
 })
 </script>
 <?php endif; ?>
+
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#pass_form').validity(function(){
+    $('#new_username').require("Nama harus diisi");
+    $('#new_password').require("Password harus diisi");
+});
+
+</script>
 
 <?php $this->load->view('footer') ?>

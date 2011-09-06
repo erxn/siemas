@@ -192,7 +192,7 @@ $this->load->view('header');
                         <tbody>
                             <tr>
                                 <td width="40%"><label>NIP</label></td>
-                                <td><strong><?php echo $data_pegawai['nip'] ?></strong></td>
+                                <td><strong><?php echo format_nip($data_pegawai['nip']) ?></strong></td>
                             </tr>
                             <tr>
                                 <td><label>Tanggal masuk</label></td>

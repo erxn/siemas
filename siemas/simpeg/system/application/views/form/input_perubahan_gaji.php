@@ -1,6 +1,6 @@
 <?php $this->load->view('header'); ?>
 
-<form action="" method="post">
+<form action="" method="post" id="form">
 
 <div class="belowribbon">
     <h1>
@@ -40,8 +40,8 @@
                         <tr>
                             <td width="30%">Pilih pegawai</td>
                             <td>
-                                <select name="sel_pegawai" class="input-long" onchange="load_gaji($(this).val())">
-                                    <option value="0">-</option>
+                                <select name="sel_pegawai" class="input-long" onchange="load_gaji($(this).val())" id="pegawai">
+                                    <option value="">-</option>
                                     <?php
                                     foreach ($daftar_pegawai as $pegawai) {
 
@@ -74,7 +74,7 @@
                             <td>Gaji baru</td>
                             <td>
                                 <script type="text/javascript" src="js/textbox_money.js"></script>
-                                <input type="text" name="gaji" maxlength="255" class="input-medium number"/>
+                                <input type="text" name="gaji" maxlength="255" class="input-medium number" id="gaji"/>
                             </td>
                         </tr>
                         <tr>
@@ -118,5 +118,19 @@
     }
 
 </script>
+
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('#pegawai').require("Pilih salah satu pegawai");
+    $('.datepicker').require("Tanggal harus diisi").match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Tanggal tidak valid');
+    $('#gaji').require("Gaji harus diisi");
+});
+
+</script>
+
 
 <?php $this->load->view('footer'); ?>

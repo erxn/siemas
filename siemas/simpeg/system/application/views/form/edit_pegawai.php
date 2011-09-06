@@ -2,12 +2,6 @@
 
 $this->load->view('header');
 
-//print_r($data_pegawai);
-//print_r($data_pelatihan);
-//print_r($data_pendidikan);
-//print_r($data_tanggungan);
-//exit;
-
 ?>
 
 <script type="text/javascript" src="template/jquery.js"></script>
@@ -328,39 +322,6 @@ $this->load->view('header');
     </div>
 
 <script type="text/javascript">
-
-    var pangkat = new Array();
-
-    pangkat['-'] = "";
-    pangkat['I / a'] = "Juru Muda";
-    pangkat['I / b'] = "Juru Muda Tingkat 1";
-    pangkat['I / c'] = "Juru";
-    pangkat['I / d'] = "Juru Tingkat 1";
-    pangkat['II / a'] = "Pengatur Muda";
-    pangkat['II / b'] = "Pengatur Muda Tingkat 1";
-    pangkat['II / c'] = "Pengatur";
-    pangkat['II / d'] = "Pengatur Tingkat 1";
-    pangkat['III / a'] = "Penata Muda";
-    pangkat['III / b'] = "Penata Muda Tingkat 1";
-    pangkat['III / c'] = "Penata";
-    pangkat['III / d'] = "Penata Tingkat 1";
-    pangkat['IV / a'] = "Pembina";
-    pangkat['IV / b'] = "Pembina Tingkat 1";
-    pangkat['IV / c'] = "Pembina Utama Muda";
-    pangkat['IV / d'] = "Pembina Utama Madya";
-    pangkat['IV / e'] = "Pembina Utama";
-
-    for(var j in pangkat) {
-
-        document.getElementById("gol_ruang").innerHTML += "<option value='"+j+"'>"+j+"</option>";
-
-    }
-
-    function setJabatan(gol_ruang) {
-
-        $("#pangkat").val(pangkat[gol_ruang]);
-
-    }
 
     function tambahPendidikan() {
         $('#tabel_pendidikan tbody>tr:last').clone(true).insertAfter('#tabel_pendidikan tbody>tr:last');

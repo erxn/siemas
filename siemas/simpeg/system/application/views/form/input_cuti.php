@@ -1,6 +1,6 @@
 <?php $this->load->view('header'); ?>
 
-<form action="" method="post">
+<form action="" method="post" id="form">
 
 <div class="belowribbon">
     <h1>
@@ -29,8 +29,8 @@
                         <tr>
                             <td>Pilih pegawai</td>
                             <td>
-                                <select name="sel_pegawai" class="input-long" onchange="load_cuti($(this).val())">
-                                    <option value="0">-</option>
+                                <select name="sel_pegawai" class="input-long" onchange="load_cuti($(this).val())" id="pegawai">
+                                    <option value="">-</option>
                                     <?php
                                     foreach ($daftar_pegawai as $pegawai) {
 
@@ -66,7 +66,7 @@
                         </tr>
                         <tr>
                             <td>Alamat selama cuti</td>
-                            <td><textarea cols="35" rows="3" name="alamat"></textarea></td>
+                            <td><textarea cols="35" rows="3" name="alamat" id="alamat"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
@@ -133,5 +133,17 @@
     }
 </script>
 
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('#pegawai').require("Pilih salah satu pegawai");
+    $('.datepicker').require("Tanggal harus diisi").match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Tanggal tidak valid');
+    $('#alamat').require("Alamat harus diisi");
+});
+
+</script>
 
 <?php $this->load->view('footer'); ?>

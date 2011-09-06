@@ -10,25 +10,35 @@
 
 <div id="page">
 
-    <div class="grid_6" style="width: 48%">
+    <div  style="margin: 0px 1%">
         <div class="module">
             <h2><span>Pilih pegawai</span></h2>
-            <div class="module-body">
-
-                <p id="list_filter_header">Klik nama pegawai yang akan diedit, atau cari pegawai: </p>
-
-                <ul class="bullets" id="list_filter">
-                    <?php foreach($daftar_pegawai as $p) : ?>
-                    <li><a href="index.php/pegawai/edit_pegawai/<?php echo $p['id_pegawai']; ?>"><?php echo $p['nama']; ?> &raquo;</a></li>
-                    <?php endforeach; ?>
-                </ul>
-
+            <div class="module-table-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="22">No</th>
+                            <th>Nama</th>
+                            <th width="220">Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; foreach($daftar_pegawai as $p) : ?>
+                        <tr <?php if ($i % 2 == 0) echo 'class="even"' ?>>
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $p['nama']; ?></td>
+                            <td>
+                                <a href="index.php/pegawai/edit_pegawai/<?php echo $p['id_pegawai'] ?>"><input type="button" value="Edit Data" class="submit-green"/></a>
+                                <a href="index.php/pegawai/profil/<?php echo $p['id_pegawai'] ?>"><input type="button" value="Lihat Profil" class="submit-green"/></a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
 </div>
-
-<script type="text/javascript" src="js/list_filter.js"></script>
 
 <?php $this->load->view('footer'); ?>

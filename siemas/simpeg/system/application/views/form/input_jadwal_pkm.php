@@ -132,4 +132,16 @@ function bbbbb(hari) {
 
 </script>
 
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('input:visible').require("Jam harus diisi").match('time24', 'Jam tidak valid');
+});
+
+</script>
+
+
 <?php $this->load->view('footer'); ?>
