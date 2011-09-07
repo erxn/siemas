@@ -84,6 +84,93 @@ class Antrian extends Controller {
                     'anamnesis'      =>$this->input->post('n_anamnesis'),
                     'diagnosis'      =>$this->input->post('n_diagnosa'),
                     'keterangan'    =>$this->input->post('n_ket'),
+                    'Khasus_penyakit'=>$this->input->post('kasus'),
+                    'Kunjungan_ibu_hamil'=>$this->input->post('hamil'),
+                    'Kunjungan_Anak_Prasekolah'=>$this->input->post('anak'),
+                    'id_kunjungan'  => $id_kunjungan, //sementara
+                    'id_pasien' => $id_pasien );
+            $id_remed=$this->remed->insert_diagnosis($data1);
+            $data1['diagnosa'] = $id_remed;
+            // insert ke tabel_layanan
+            $data2 = array(
+                    'id_layanan'   =>$this->input->post('n_layanan'),
+                    'id_remed_gigi'=>$id_remed,
+            );
+            $this->remed->insert_layanan($data2);
+
+
+            $data3=array(
+                    'id_penyakit' =>$this->input->post('n_penyakit'),
+                    'id_remed_gigi'=>$id_remed
+            );
+            $this->remed->insert_penyakit($data3);
+
+            // update ke TERISI
+            $this->antrian->ubah_status($id_antrian, 'TERISI');
+
+            redirect('antrian/remed_berhasil');
+
+        }
+
+        $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+        $remed['data_pasien']=$data_pasien_remed;
+
+        $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien);
+        $remed['remed_gigi']=$remed_pasien;
+
+
+        $remed_kia=$this->remed->get_remed_pasien_kia($id_pasien);
+        $remed['remed_kia']=$remed_kia;
+
+        $remed_umum=$this->remed->get_remed_pasien_umum($id_pasien);
+        $remed['remed_umum']=$remed_umum;
+
+        $remed_tbc=$this->remed->remed_poli_umum_tbc($id_kunjungan);
+        $remed['tbc']=$remed_tbc;
+
+        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_kunjungan);
+        $remed['ispa']=$remed_ispa;
+
+        $remed_diare=$this->remed->remed_poli_umum_diare($id_kunjungan);
+        $remed['diare']=$remed_diare;
+
+        $penyaki=$this->remed->penyakit($id_pasien);
+        $remed['penyakit']=$penyaki;
+        
+        $data_lay=$this->remed->get_layanan($id_pasien);
+        $remed['data_lay']=$data_lay;
+
+        $lab=$this->remed->lab($id_pasien);
+        $lab['lab']=$lab;
+
+        $remed['id_pasien']=$id_pasien;
+
+        $data_peny=$this->remed->get_penyakit($id_pasien);
+        $remed['data_peny']=$data_peny;
+
+        
+        $this->load->view('isi_remed',$remed);
+    }
+
+    function remed_berhasil($id_pasien = 0, $id_kunjungan = 0, $id_antrian = 0,$tgl=0) {
+
+        $remed = array();
+        $tgl= date("Y-m-d");
+        if($id_pasien != 0) {
+            $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
+            $remed['data_pasien']=$data_pasien_remed;
+        } else {
+            $remed['data_pasien']=null;
+        }
+
+        if($this->input->post('submit')) {
+
+            // insert ke tabel remed_poli_gigi
+            $data1 = array(
+                    'tanggal_kunjungan_gigi' =>$tgl,
+                    'anamnesis'      =>$this->input->post('n_anamnesis'),
+                    'diagnosis'      =>$this->input->post('n_diagnosa'),
+                    'keterangan'    =>$this->input->post('n_ket'),
                     'id_kunjungan'  => $id_kunjungan, //sementara
                     'id_pasien' => $id_pasien );
             $id_remed=$this->remed->insert_diagnosis($data1);
@@ -122,20 +209,20 @@ class Antrian extends Controller {
         $remed_umum=$this->remed->get_remed_pasien_umum($id_pasien);
         $remed['remed_umum']=$remed_umum;
 
-        $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien);
+        $remed_tbc=$this->remed->remed_poli_umum_tbc($id_kunjungan);
         $remed['tbc']=$remed_tbc;
 
-        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien);
+        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_kunjungan);
         $remed['ispa']=$remed_ispa;
-
-        $remed_campak=$this->remed->remed_poli_umum_campak($id_pasien);
-        $remed['campak']=$remed_campak;
-
-        $remed_diare=$this->remed->remed_poli_umum_diare($id_pasien);
+        
+        $remed_diare=$this->remed->remed_poli_umum_diare($id_kunjungan);
         $remed['diare']=$remed_diare;
 
         $data_lay=$this->remed->get_layanan($id_pasien);
         $remed['data_lay']=$data_lay;
+
+       $penyaki=$this->remed->penyakit($id_pasien);
+        $remed['penyakit']=$penyaki;
 
         $lab=$this->remed->lab($id_pasien);
         $lab['lab']=$lab;
@@ -145,8 +232,8 @@ class Antrian extends Controller {
         $data_peny=$this->remed->get_penyakit($id_pasien);
         $remed['data_peny']=$data_peny;
 
-        
-        $this->load->view('isi_remed',$remed);
+
+        $this->load->view('remed_berhasil',$remed);
     }
 
 
