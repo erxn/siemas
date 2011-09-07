@@ -121,7 +121,7 @@
                                         </select></td>
                                 </tr>
                                 <tr>
-                                    <td> <a style="text-decoration:none;margin-left:50px " href="index.php/laporan/bulanan_layanan" class="dashboard-module">
+                                    <td> <a style="text-decoration:none;margin-left:50px " href="index.php/laporan/bulanan_layanan/" class="dashboard-module">
                                             <img src="Template_files/lap_bul_tindakan.png" width="64" height="64" alt="edit" />
                                             <span>Laporan Tindakan</span>
                                         </a></td>

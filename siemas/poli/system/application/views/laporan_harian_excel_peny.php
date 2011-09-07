@@ -210,8 +210,6 @@ $objPHPExcel->getActiveSheet()->getStyle('D6:AM6')->applyFromArray($styleThinBla
 
 
 
-
-//FUNGSI ASLINYAHHH BUAT KODE 02
 $l = 9;
 for ($i = 1; $i <= 31; $i++) {
 

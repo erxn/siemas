@@ -4,22 +4,8 @@
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
 <script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
-
 <script type="text/javascript" src="js/jquery.uitablefilter.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
-    });
-</script>
-
-<script>
-    $(function() {
-        $( "#tabs1" ).tabs();
-        $( "#tabs2" ).tabs();
-        $( "#tabs" ).tabs();
-    });
-</script>
 
 <script>
     $(function() {
@@ -31,7 +17,7 @@
         });
     });
 
-    $(function() {
+     $(function() {
         var theTable = $('#t_gigi')
 
         $("#b_gigi").click(function() {
@@ -39,14 +25,50 @@
         })
     });
 
+
 </script>
+
+<script>
+    $(function() {
+
+        $( ".tabs" ).tabs();
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
+
+    });
+</script>
+
+<script type="text/javascript">
+
+    function load_selesai() {
+        $('#div-selesai').load("index.php/antrian/pasien_hari_ini/1");
+    }
+
+    function load_terisi() {
+        $('#div-terisi').load("index.php/antrian/pasien_terisi/1");
+    }
+    $(document).ready(function(){
+
+        load_terisi();
+        load_selesai();
+        setInterval("load_selesai()", 3000);
+        setInterval("load_terisi()", 3000);
+
+    });
+
+</script>
+
 
 <div id="subnav">
     <div class="container_12">
         <div class="grid_12">
             <ul>
-                <li><a href="">Medical Record</a></li>
-                <li><a href="#">Data Pasien</a></li>
+                <li><a href="index.php/antrian/isi_remed_hari_ini/">Isi Rekam Medik</a></li>
+                <li><a href="index.php/antrian/antri/1">Antrian</a></li>
             </ul>
 
         </div>
@@ -55,88 +77,299 @@
 </div>
 
 
-<h2 style="margin-left: 30px ; margin-top: 20px">Rekam Medik Pasien</h2>
-<div class="grid_6" style="width: 40%; margin-left:20px; margin-top: 30px ">
-    <div  id="tabs2">
-        <ul>
-            <li><a href="#tabs-a">Data Pasien</a></li>
+<div  class="tabs" style=" float:left; margin-top: 20px;margin-left: 30px; width:45%">
+    <ul>
+        <li><a href="#tabs-a">Daftar Pasien Hari ini</a></li>
+    </ul>
+    <div id="tabs-a" >
 
-        </ul>
-        <div id="tabs-a">
 
-            <form style="margin: 20px">
-                <table style="width:90%;" id="myTable" class="tablesorter" border="1">
+        <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-selesai">
+        </div>
+
+         <div class="module" style="background:none; float: none; margin-bottom: 0px" id="div-terisi">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function selesai(id) {
+
+        $.get('index.php/antrian/pasien_hari_ini/' + id);
+        load_selesai();
+        load_terisi();
+    }
+
+     function terisi(id) {
+
+        $.get('index.php/antrian/pasien_terisi/' + id);
+        load_selesai();
+        load_terisi();
+    }
+
+
+
+</script>
+<div  class="tabs" style="float:right;  margin-top: 20px;margin-right: 10px; width:47%">
+    <ul>
+        <li><a href="#tabs-a">Isi Rekam Medik Hari Ini</a></li>
+    </ul>
+    <div id="tabs-a" >
+        <div class="module" style="background:none; float: none">
+
+
+
+            <?php if($data_pasien == null) { ?>
+             <span class="notification n-success">Simpan data sukses...</span>
+
+           <h1> Pilih pasien kembali</h1>
+
+            <?php } else { ?>
+
+                <table style="width:90%;" id="myTable"  >
                     <strong></strong>
+                   <th colspan="2">Data Pasien</th>
                     <tr  class="odd">
-                        <td>Tanggal Pendaftaran:</td>
+                        <td><b>Tanggal Pendaftaran:</b>T</td>
                         <td style="width: 50%"><?php echo $data_pasien[0]['tanggal_pendaftaran']; ?> </td>
                     </tr>
                     <tr>
-                        <td>Nama Pasien:</td>
-                        <td style="width: 50%"><?php echo $data_pasien[0]['nama_pasien'];?></td>
+                        <td><b>Nama Pasien:</b></td>
+                        <td style="width: 50%"><b><h3><?php echo $data_pasien[0]['nama_pasien'];?></h3></b></td>
                     </tr>
                     <tr  class="odd">
-                        <td>Jenis Kelamin:</td>
+                        <td><b>Jenis Kelamin:</b></td>
                         <td style="width: 50%"><?php echo $data_pasien[0]['jk_pasien'];?></td>
 
                     </tr>
 
                     <tr>
-                        <td>Tanggal Lahir</td>
+                        <td><b>Tanggal Lahir</b></td>
                         <td><?php  echo $data_pasien[0]['tanggal_lahir'];?></td>
 
                     </tr>
                     <tr class="odd">
-                        <td >Umur</td>
-                        <td>umur</td>
+                        <td ><b>Umur</b></td>
+                        <td><?php  echo $data_pasien[0]['umur'];?></td>
 
                     </tr>
                     <tr>
-                        <td >Status Dalam Keluarga:</td>
+                        <td ><b>Status Dalam Keluarga:</b></td>
                         <td><?php echo $data_pasien[0]['status_dalam_keluarga'];?></td>
 
                     </tr>
                     <tr class="odd">
-                        <td>Status Pelayanan</td>
+                        <td><b>Status Pelayanan</b></td>
                         <td><?php echo $data_pasien[0]['status_pelayanan'];?></td>
                     </tr>
                     <tr>
-                        <td>No Kartu</td>
+                        <td><b>No Kartu</b></td>
                         <td><?php echo $data_pasien[0]['no_kartu_layanan'];?></td>
                     </tr>
                 </table>
-            </form>
         </div>
 
+
     </div>
-</div>
+        </div>
+
+       <div  class="tabs" style="float:right; margin-top: 10px; margin-right: 10px; width:47%">
+    <ul>
+        <li><a href="#tabs-a">Diagnosis Dokter</a></li>
+        <li><a href="#tabs-b">Poli Gigi</a></li>
+        <li><a href="#tabs-c">Poli Umum</a></li>
+        <li><a href="#tabs-d">Poli KIA</a></li>
+    </ul>
+            <div id="tabs-a"  class="module">
+                <form action="" method="post">
+                <table  id="t_gigi" style="width:96%; margin-left: 30px ; margin-top: 5px">
 
 
-<div class="module" style="width: 55% ;margin-right: 15px ">
+            <tr class="odd">
+                <td>Anamnesis:</td>
+                <td><textarea name="n_anamnesis" rows="3" cols="40" input="" style="width: 90%"></textarea></td>
+            </tr>
 
-    <div  id="tabs">
-        <ul>
-            <li><a href="#tabs-a">Poli Gigi</a></li>
-            <li><a href="#tabs-b">Poli KIA</a></li>
-            <li><a href="#tabs-c">Poli Umum</a></li>
-            <li><a href="#tabs-d">Lab</a></li>
-            <li><a href="#tabs-e">Rontgen</a></li>
+            <tr>
+                <td>Diagnosa:</td>
+                <td><textarea name="n_diagnosa" rows="3" cols="40" style="width: 90%"></textarea></td>
+            </tr>
 
-        </ul>
+            <tr class="odd">
+                <td>Penyakit:</td>
+                <td> <select name="n_penyakit">
+                        <?php foreach ($data_peny as $dp) {?>
+                        <option value="<?php echo $dp['id_penyakit'];?>"><?php echo $dp['nama_penyakit'];?></option>
+                            <?php } ?>
+                    </select>
+                </td>
+            </tr>
 
-        <div id="tabs-a">
+            <tr>
+                <td>Layanan Gigi:</td>
+                <td>
+                    <select name="n_layanan">
+                        <?php  foreach ($data_lay as $dl) { ?>
+                        <option value="<?php echo $dl['id_layanan']; ?>"><?php echo $dl['nama_layanan'];?></option>
+                            <?php } ?>
+                    </select>
+
+                </td>
+            </tr>
+
+            <tr class="odd">
+                <td>Keterangan:</td>
+
+                <td><textarea name="n_ket" rows="3" cols="40" style="width: 90%"></textarea></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input id="sukses" name="submit"   type="submit"  class="submit-green" value="Simpan" name="simpan"></td>
+            </tr>
+
+                </table>
+                </form>
+            </div>
+
+             <div id="tabs-b">
             <div style="padding: 10px; width:100%">
 
                 <div>
                     <form method="post" action="">
-                        <input class="datepicker" id="d_gigi" placeholder="Masukkan tanggal" name="n_tgl" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
+                        <input id="d_gigi" placeholder="Cari tanggal" name="n_tgl" type="text" class="input-long datepicker" style="vertical-align: top;"/>
                         <input type="button" class="submit-green" value="Cari " name="cari" id="b_gigi" />
                     </form>
                 </div>
 
 
             </div>
+         <div class="module" style="background:none">
             <table id="t_gigi"   style="width:99%">
+                <thead>
+                    <tr >
+                        <th style="width:5%">No</th>
+                        <th style="width:23%">Tanggal Kunjungan</th>
+                        <th style="width:21%">Anamnesis</th>
+                        <th style="width:17%">Diagnosa</th>
+                        <th style="width:17%">Penyakit</th>
+                         <th style="width:17%">Layanan</th>
+                        <th style="width:17%">Ket.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count ($remed_gigi)>0) {
+                        $i=1;
+                        foreach ($remed_gigi as $rg) {
+                            if($i%2==0) $x="odd";else $x="even";
+                            ?>
+                    <tr class="<?php echo $x ?>" >
+                        <td><?php echo $i++?></td>
+                        <td ><a class="pop" href="index.php/pasien/remed_poli_gigi_pop/<?php echo $id_pasien;?>/<?php echo $rg['tanggal_kunjungan_gigi']?>"><?php echo tgl_indo($rg['tanggal_kunjungan_gigi']); ?></a></td>
+                        <td><?php echo  word_limiter($rg['anamnesis'],5,'...');?></td>
+                        <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
+                        <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?></td>
+                        <td><?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
+                        <td><?php echo word_limiter($rg['keterangan'],5,'...');?></td>
+                    </tr>
+                            <?php }
+                    }
+                    ?>
+                </tbody>
+            </table>
+         </div>
+
+
+            <div style="clear: both"></div>
+
+
+        </div>
+
+
+        <div id="tabs-c">
+
+            <div style="padding: 10px;">
+
+                <form method="post" action="">
+                        <input id="d_umum" placeholder="Cari tanggal" name="" type="text" class="input-long datepicker" style="vertical-align: top;"/>
+                        <input type="button" class="submit-green" value="Cari " name="cari" id="" />
+                    </form>
+            </div>
+             <div class="module" style="background:none">
+            <table id="" class="tablesorter" border="1">
+                <thead>
+                    <tr>
+                        <th style="width:5%">No</th>
+                        <th style="width:35%">Tanggal Kunjungan</th>
+                        <th style="width:20%">Anamnesis</th>
+                        <th style="width:15%">Diagnosa</th>
+                        <th style="width:10%">Penyakit</th>
+                        <th style="width:10%" colspan="3">P2M</th>
+                        <th  style="width:6%">Ket.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <?php if (count ($remed_umum)>0) {
+                        $i=1;
+                        $b=0;
+                        foreach ($remed_umum as $ru) {
+
+                            if($i%2==0) $x="odd";else $x="even";
+                            ?>
+                    <tr clas="<?php echo $x ?>">
+                        <td><?php echo $i++?></td>
+                        <td><a class="pop" href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
+                       <td><?php echo word_limiter($ru['anamnesis'],3,'...');?></td>
+                        <td><?php echo word_limiter($ru['diagnosa'],3,'...');?></td>
+                        <td><?php echo word_limiter($ru['penyakit_umum'],3,'...');?></td>
+                        <td><a href="">
+                                    <?php if($ispa[$b]['id_ispa']!==null){
+                                        echo 'ispa';
+                                    }
+                                    else{ echo ''; }
+                                    ?> </a>
+                        </td>
+                        <td><a href="">
+                                    <?php if($tbc[$b]['id_tbc']!==null){
+                                        echo 'tbc';
+                                    }
+                                    else{
+                                        echo '';
+                                    }
+                                    ?> </a>
+                        </td>
+                         <td><a href="">
+                                    <?php if ($diare[$b]['id_diare']){
+                                        echo 'diare';
+                                    }
+                                    else{
+                                        echo '';
+                                    }
+                                     $b++; ?> </a>
+                        </td>
+                        <td><?php echo word_limiter($ru['keterangan'],5,'...');?></td>
+
+                    </tr>
+                            <?php }
+                    }
+                    ?>
+                </tbody>
+            </table>
+                 </div>
+        </div>
+
+         <div id="tabs-d">
+                <div style="padding: 10px; width:100%">
+                    <form method="post" action="">
+                        <input id="d_kia" placeholder="Cari tanggal" name="n_tgl2" type="text" class="input-long datepicker" style="vertical-align: top;"/>
+                        <input type="button" class="submit-green" value="Cari " name="cari" id="b_kia" />
+                    </form>
+
+            </div>
+         <div class="module" style="background:none">
+            <table id="t_kia"   style="width:99%">
                 <thead>
                     <tr >
                         <th style="width:5%">No</th>
@@ -147,247 +380,10 @@
                         <th style="width:13%">Ket.</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php if (count ($remed_gigi)>0) {
-                        $i=1;
-                        foreach ($remed_gigi as $rg) {
-                            if($i%2==0) $x="odd";else $x="even";
-                            ?>
-                    <tr clas="odd">
-                        <td><?php echo $i++?></td>
-                        <td><a href="index.php/pasien/remed_poli_gigi_pop/<?php echo $id_pasien;?>/<?php echo $rg['tanggal_kunjungan_gigi']?>"><?php echo tgl_indo($rg['tanggal_kunjungan_gigi']); ?></a></td>
-                        <td><?php echo  word_limiter($rg['anamnesis'],5,'...');?></td>
-                        <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
-                        <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?>, <?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
-                        <td><?php echo word_limiter($rg['keterangan'],5,'...');?></td>
-                    </tr>
-                            <?php }
-                    }
-                    ?>
-                </tbody>
             </table>
-
-            <div class="pager" id="pager">
-                <form action="">
-                    <div>
-
-                        <img class="first" src="Template_files/arrow-st.gif" alt="first"/>
-                        <img class="prev" src="Template_files/arrow-18.gif" alt="prev"/>
-                        <input type="text" class="pagedisplay input-short align-center"/>
-                        <img class="next" src="Template_files/arrow000.gif" alt="next"/>
-                        <img class="last" src="Template_files/arrow-su.gif" alt="last"/>
-                        <select class="pagesize input-medium align-center">
-                            <option value="10" selected="selected">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-
-            <div style="clear: both"></div>
-
-        </div>
-
-        <div id="tabs-b">
-
-            <div style="padding: 10px;">
-
-                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
-                <tr>
-
-                    <td><input type="submit" class="submit-green" value="Cari "></td>
-                </tr>
-
-            </div>
-            <table id="myTable" class="tablesorter" border="1" style="width:99%">
-                <thead>
-                    <tr>
-                        <th style="width:5%">No</th>
-                        <th style="width:20%">Tanggal Kunjungan</th>
-                        <th style="width:21%">Anamnesis</th>
-                        <th style="width:13%">Diagnosa</th>
-                        <th style="width:13%">Layanan</th>
-                        <th style="width:13%">Ket.</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-
-                    <?php if (count ($remed_kia)>0) {
-                        $i=1;
-                        foreach ($remed_kia as $rk) {
-                            if($i%2==0) $x="odd";else $x="odd"; ?>
-                    <tr clas="<?php echo $x ?>">
-                        <td><?php echo $i++?></td>
-                        <td><?php echo $rk['tanggal_kunjungan_kia']; ?></a></td>
-                        <td><?php echo word_limiter($rk['anamnesis'],5,'...');?></td>
-                        <td><?php echo $rk['diagnosa'];?></td>
-                        <td><?php echo  $rk['nama_layanan'];?>, <?php echo $rk['nama_penyakit'];?></td>
-                        <td><?php echo $rk['keterangan'];?></td>
-                    </tr>
-                            <?php }
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <div id="tabs-c">
-
-            <div style="padding: 10px;">
-
-                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
-                <tr>
-
-                    <td><input type="submit" class="submit-green" value="Cari "></td>
-                </tr>
-
-            </div>
-            <table id="myTable" class="tablesorter" border="1">
-                <thead>
-                    <tr>
-                        <th style="width:5%">No</th>
-                        <th style="width:18%">Tanggal Kunjungan</th>
-                        <th style="width:21%">Anamnesis</th>
-                        <th style="width:17%">Diagnosa</th>
-                        <th style="width:13%">Penyakit</th>
-                        <th style="width:13%">P2M</th>
-                        <th style="width:13%">Ket.</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-
-                    <?php if (count ($remed_umum)>0) {
-                        $i=1;
-                        foreach ($remed_umum as $ru) {
-                            if($i%2==0) $x="odd";else $x="even";
-                            ?>
-                    <tr clas="<?php echo $x ?>">
-                        <td><?php echo $i++?></td>
-                        <td><a href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
-                       <td><?php echo word_limiter($ru['anamnesis'],5,'...');?></td>
-                        <td><?php echo word_limiter($ru['diagnosa'],5,'...');?></td>
-                        <td><?php echo word_limiter($ru['nama_penyakit'],5,'...');?></td>
-                        <td><a href="">
-                                    <?php
-                                    if($campak!==0) {
-                                        echo 'campak';
-                                    }
-                                    else if($ispa!==0) {
-                                        echo 'ispa';
-                                    }
-                                    else if($tbc!==0) {
-                                        echo 'tbc';
-                                    }
-                                    else if($diare!==0) {
-                                        echo 'diare';
-                                    }
-
-                                    ?>
-                            </a>
-                        </td>
-                        <td><?php echo word_limiter($ru['keterangan'],5,'...');?></td>
-                    </tr>
-                            <?php }
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
-
-        <br/>
-        <br/>
-    </div>
-</div>
-
-
-
-<form action="" method="post">
-    <div class="module" style="float: left; margin-left:15px; margin-top: 30px; width: 40%">
-        <div>
-
-            <div id="tabs1">
-                <ul>
-                    <li><a href="#tabs1-1">Diagnosis Dokter</a></li>
-                </ul>
-                <div class="grid_12" style="margin-top:5%">
-                <span class="notification n-success">Simpan data sukses...</span>
-                <div id="tabs1-1">
-                    <table  id="myTable"  class="noborder" style="width:100%">
-                        <tr class="odd">
-                            <td>Anamnesis:</td>
-                            <td> </td>
-                            <td><textarea name="n_anamnesis" rows="5" cols="40" input=""></textarea></td>
-                        </tr>
-                    </table>
-                    <table class="noborder" style="width:100%">
-                        <tr>
-                            <td>Diagnosa:</td>
-                            <td>  </td>
-                            <td><textarea name="n_diagnosa" rows="5" cols="40"></textarea></td>
-                        </tr>
-                    </table>
-
-                    <table  id="myTable" class="noborder" style="width:100%">
-                        <tr class="odd">
-                            <td>Penyakit:</td>
-                            <td> <select name="n_penyakit">
-                                    <?php foreach ($data_peny as $dp) {?>
-                                    <option value="<?php echo $dp['id_penyakit'];?>"><?php echo $dp['nama_penyakit'];?></option>
-                                        <?php } ?>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Layanan Gigi:</td>
-                            <td>
-                                <select name="n_layanan">
-                                    <?php  foreach ($data_lay as $dl) { ?>
-                                    <option value="<?php echo $dl['id_layanan']; ?>"><?php echo $dl['nama_layanan'];?></option>
-                                        <?php } ?>
-                                </select>
-
-                            </td>
-                        </tr>
-                    </table>
-
                 </div>
-
-                <table  id="myTable" class="noborder" style="width:100%">
-                    <tr class="odd">
-                        <td>Keterangan:</td>
-
-                        <td><textarea name="n_ket" rows="5" cols="40"></textarea></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td><input name="submit"  type="submit" class="submit-green" value="Simpan" name="simpan"></td>
-
-
-                    </tr>
-                </table>
-
-
-            </div>
-
         </div>
-    </div>
-         </div>
-</form>
-
-
-<!-- Footer -->
-<div id="footer">
-    <div class="container_12">
-        <div class="grid_12">
-            <p>&copy; 2009. Magic Admin.</p>
-        </div>
-    </div>
 </div>
-</body>
-</html>
-<!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
+
+        <?php } ?>
+
