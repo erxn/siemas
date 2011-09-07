@@ -1,8 +1,4 @@
 <?php
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 Class Laporan_model extends Model{
 
@@ -63,17 +59,12 @@ Class Laporan_model extends Model{
         
     }
 
-    function layanan($bulan,$tahun){
+    function layanan(){
          $data=array();
         $kueri=$this->db->query("SELECT *
-FROM layanan
-JOIN remed_gigi_layanan
-USING ( id_layanan )
-JOIN remed_poli_gigi
-USING ( id_remed_gigi )
-WHERE layanan.keterangan = 'GIGI'
-AND MONTH( remed_poli_gigi.tanggal_kunjungan_gigi ) ='$bulan'
-AND YEAR( remed_poli_gigi.tanggal_kunjungan_gigi ) ='$tahun'" );
+                                FROM layanan
+                                
+                                WHERE layanan.keterangan = 'GIGI'" );
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
                 $data[]=$row;
@@ -197,5 +188,32 @@ AND YEAR( remed_poli_gigi.tanggal_kunjungan_gigi ) ='$tahun'" );
 
     }
 
+
+    function lb4($kec,$status,$kasus,$hamil,$anak){
+        $data=array();
+        $kueri=$this->db->query("
+
+                           SELECT COUNT( * ) AS jumlah
+                                FROM kk
+                                JOIN pasien
+                                USING ( id_kk )
+                                JOIN kunjungan
+                                USING ( id_pasien )
+                                JOIN remed_poli_gigi
+                                USING ( id_pasien )
+                                WHERE kk.kecamatan_kk LIKE '%$kec%'
+                                AND pasien.status_pelayanan LIKE '%$status%'
+                                AND remed_poli_gigi.Khasus_penyakit LIKE '%$kasus%'
+                                AND remed_poli_gigi.Kunjungan_ibu_hamil LIKE '%$hamil%'
+                                AND remed_poli_gigi.Kunjungan_Anak_Prasekolah LIKE '%$anak%'" );
+        if($kueri->num_rows()>0){
+            foreach ($kueri->result_array()as $row){
+                $data[]=$row;
+            }
+        }
+        $kueri->free_result();
+        return $data;
+
+    }
 
 }
