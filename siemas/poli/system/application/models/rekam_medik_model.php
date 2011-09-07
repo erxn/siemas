@@ -141,7 +141,26 @@ AND id_pasien =$id_pasien");
         $q->free_result();
         return $data;
     }
-    
+     function penyakit($id_pasien){               //buat nampilin tabel remed pasien yg KIA
+        $data=array();
+        $q=$this->db->query  ("SELECT *
+                                FROM remed_poli_umum
+                                JOIN penyakit_remed_umum
+                                USING ( id_remed_umum )
+                                JOIN penyakit
+                                USING ( id_penyakit )
+                                WHERE remed_poli_umum.id_pasien =$id_pasien");
+         if($q->num_rows() > 0)
+        {
+            foreach ($q->result_array() as $row)
+            {
+                $data[] = $row;
+            }
+        }
+
+        $q->free_result();
+        return $data;
+    }
      function get_layanan(){
       $data=array();
         $q=$this->db->query  ("SELECT * FROM layanan WHERE keterangan='GIGI'");
@@ -159,7 +178,7 @@ AND id_pasien =$id_pasien");
      
      function get_penyakit(){
       $data=array();
-        $q=$this->db->query  ("SELECT * FROM penyakit WHERE poli_id_poli=1");
+        $q=$this->db->query  ("SELECT * FROM penyakit WHERE id_poli=1");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -314,12 +333,12 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
     }
 
 
-    function remed_poli_umum_tbc($id_pasien=0){
+    function remed_poli_umum_tbc($id_kunjungan=0){
             $data=array();
         $q=$this->db->query  ("SELECT * FROM
              pasien
                 JOIN remed_poli_umum USING (id_pasien)
-            WHERE remed_poli_umum.id_pasien=$id_pasien");
+            WHERE remed_poli_umum.id_kunjungan=$id_kunjungan");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -332,12 +351,12 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
         return $data;
     }
 
-    function remed_poli_umum_ispa($id_pasien){
+    function remed_poli_umum_ispa($id_kunjungan){
             $data=array();
         $q=$this->db->query  ("SELECT * FROM
              pasien
                 JOIN remed_poli_umum USING (id_pasien)
-            WHERE remed_poli_umum.id_pasien=$id_pasien");
+            WHERE remed_poli_umum.id_kunjungan=$id_kunjungan");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -350,30 +369,13 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
         return $data;
     }
 
-    function remed_poli_umum_campak($id_pasien){
-            $data=array();
-        $q=$this->db->query  ("SELECT r.campak_id_campak, c.*
-                                FROM remed_poli_umum as r
-                                JOIN campak as c
-                                    WHERE id_pasien=$id_pasien");
-         if($q->num_rows() > 0)
-        {
-            foreach ($q->result_array() as $row)
-            {
-                $data[] = $row;
-            }
-        }
 
-        $q->free_result();
-        return $data;
-    }
-
-    function remed_poli_umum_diare($id_pasien=0){
+    function remed_poli_umum_diare($id_kunjungan=0){
             $data=array();
         $q=$this->db->query  ("SELECT * FROM
              pasien
                 JOIN remed_poli_umum USING (id_pasien)
-            WHERE remed_poli_umum.id_pasien=$id_pasien");
+            WHERE remed_poli_umum.id_kunjungan=$id_kunjungan");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
