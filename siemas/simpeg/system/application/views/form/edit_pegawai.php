@@ -6,7 +6,7 @@ $this->load->view('header');
 
 <script type="text/javascript" src="template/jquery.js"></script>
 
-<form action="" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data" id="form">
 
     <div class="belowribbon">
         <h1>
@@ -42,24 +42,24 @@ $this->load->view('header');
                         <tbody>
                             <tr>
                                 <td width="40%"><label>Nama</label></td>
-                                <td><input type="text" name="nama" maxlength="255" class="input-long" value="<?php echo $data_pegawai['nama'] ?>"/></td>
+                                <td><input type="text" name="nama" id="nama" maxlength="255" class="input-long" value="<?php echo $data_pegawai['nama'] ?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Tempat lahir</label></td>
-                                <td><input type="text" name="tempat_lahir" maxlength="255" class="input-long" value="<?php echo $data_pegawai['tempat_lahir'] ?>"/></td>
+                                <td><input type="text" name="tempat_lahir" id="tempat_lahir" maxlength="255" class="input-long" value="<?php echo $data_pegawai['tempat_lahir'] ?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Tanggal lahir</label></td>
-                                <td><input type="text" name="tanggal_lahir" maxlength="255" class="input-long" value="<?php echo format_tanggal_tampilan($data_pegawai['tanggal_lahir']) ?>"/><br/><small>(tanggal-bulan-tahun, misal 17-08-1945)</small></td>
+                                <td><input type="text" name="tanggal_lahir" id="tanggal_lahir" maxlength="255" class="input-long" value="<?php echo format_tanggal_tampilan($data_pegawai['tanggal_lahir']) ?>"/><br/><small>(tanggal-bulan-tahun, misal 17-08-1945)</small></td>
                             </tr>
                             <tr>
                                 <td><label>Alamat</label></td>
-                                <td><textarea name="alamat" rows="3" cols="25"><?php echo $data_pegawai['alamat'] ?></textarea></td>
+                                <td><textarea name="alamat" id="alamat" rows="3" cols="25"><?php echo $data_pegawai['alamat'] ?></textarea></td>
                             </tr>
                             <tr>
                                 <td><label>Jenis kelamin</label></td>
                                 <td>
-                                    <select name="jk" class="input-medium">
+                                    <select name="jk" class="input-medium" id="jk">
                                         <option value="" <?php if($data_pegawai['jk'] == "") echo "selected" ?>>-</option>
                                         <option value="L" <?php if($data_pegawai['jk'] == "L") echo "selected" ?>>L</option>
                                         <option value="P" <?php if($data_pegawai['jk'] == "P") echo "selected" ?>>P</option>
@@ -68,12 +68,12 @@ $this->load->view('header');
                             </tr>
                             <tr>
                                 <td><label>Agama</label></td>
-                                <td><input type="text" name="agama" maxlength="255" class="input-long" value="<?php echo $data_pegawai['agama'] ?>"/></td>
+                                <td><input type="text" name="agama" id="agama" maxlength="255" class="input-long" value="<?php echo $data_pegawai['agama'] ?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Gol. darah</label></td>
                                 <td>
-                                    <select name="gol_darah" class="input-medium">
+                                    <select name="gol_darah" id="gol_darah" class="input-medium">
                                         <option value=""   <?php if($data_pegawai['gol_darah'] == "") echo "selected" ?>>-</option>
                                         <option value="A"  <?php if($data_pegawai['gol_darah'] == "A") echo "selected" ?>>A</option>
                                         <option value="B"  <?php if($data_pegawai['gol_darah'] == "B") echo "selected" ?>>B</option>
@@ -85,7 +85,7 @@ $this->load->view('header');
                             <tr>
                                 <td><label>Status</label></td>
                                 <td>
-                                    <select name="status" class="input-medium">
+                                    <select name="status" id="status" class="input-medium">
                                         <option value="" <?php if($data_pegawai['status'] == "") echo "selected" ?>>-</option>
                                         <option value="Menikah" <?php if($data_pegawai['status'] == "Menikah") echo "selected" ?>>Menikah</option>
                                         <option value="Belum menikah" <?php if($data_pegawai['status'] == "Belum menikah") echo "selected" ?>>Belum menikah</option>
@@ -94,7 +94,7 @@ $this->load->view('header');
                             </tr>
                             <tr>
                                 <td><label>Telepon</label></td>
-                                <td><input type="text" name="telepon" maxlength="255" class="input-long" value="<?php echo $data_pegawai['telepon'] ?>"/></td>
+                                <td><input type="text" name="telepon" id="telepon" maxlength="255" class="input-long" value="<?php echo $data_pegawai['telepon'] ?>"/></td>
                             </tr>
                             <?php if($data_pegawai['pasfoto'] != "") : ?>
                             <tr>
@@ -139,7 +139,7 @@ $this->load->view('header');
                             <tr id="t_pendidikan<?php echo $data['id_pendidikan'] ?>">
                                 <td><input type="text" name="pendidikan[]" maxlength="255" class="input-full" value="<?php echo $data['pendidikan'] ?>"/>
                                 <input type="hidden" name="id_pendidikan[]" value="<?php echo $data['id_pendidikan'] ?>"/></td>
-                                <td><input type="text" name="tahun_pendidikan[]" maxlength="4" class="input-full" value="<?php echo $data['tahun_ijazah'] ?>"/></td>
+                                <td><input type="text" name="tahun_pendidikan[]" maxlength="4" class="input-full tahun_pendidikan" value="<?php echo $data['tahun_ijazah'] ?>"/></td>
                                 <td>
                                     <input type="button" value="Hapus" onclick="hapusPendidikan(<?php echo $data['id_pendidikan'] ?>)"/>
                                 </td>
@@ -147,7 +147,7 @@ $this->load->view('header');
                             <?php endforeach; else : ?>
                             <tr>
                                 <td><input type="text" name="pendidikan[]" maxlength="255" class="input-full"/></td>
-                                <td><input type="text" name="tahun_pendidikan[]" maxlength="4" class="input-full"/></td>
+                                <td><input type="text" name="tahun_pendidikan[]" maxlength="4" class="input-full tahun_pendidikan"/></td>
                             </tr>
                             <?php endif; ?>
                         </tbody>
@@ -176,7 +176,7 @@ $this->load->view('header');
                             <tr id="t_pelatihan<?php echo $data['id_pelatihan'] ?>">
                                 <td><input type="text" name="pelatihan[]" maxlength="255" class="input-full" value="<?php echo $data['pelatihan'] ?>"/>
                                 <input type="hidden" name="id_pelatihan[]" value="<?php echo $data['id_pelatihan'] ?>"/></td>
-                                <td><input type="text" name="tahun_pelatihan[]" maxlength="4" class="input-full" value="<?php echo $data['tahun'] ?>"/></td>
+                                <td><input type="text" name="tahun_pelatihan[]" maxlength="4" class="input-full tahun_pendidikan" value="<?php echo $data['tahun'] ?>"/></td>
                                 <td>
                                     <input type="button" value="Hapus" onclick="hapusPelatihan(<?php echo $data['id_pelatihan'] ?>)"/>
                                 </td>
@@ -184,7 +184,7 @@ $this->load->view('header');
                             <?php endforeach; else : ?>
                             <tr>
                                 <td><input type="text" name="pelatihan[]" maxlength="255" class="input-full"/></td>
-                                <td><input type="text" name="tahun_pelatihan[]" maxlength="4" class="input-full"/></td>
+                                <td><input type="text" name="tahun_pelatihan[]" maxlength="4" class="input-full tahun_pendidikan"/></td>
                             </tr>
                             <?php endif; ?>
                         </tbody>
@@ -220,8 +220,8 @@ $this->load->view('header');
                             <tr id="t_tanggungan<?php echo $data['id_tanggungan'] ?>">
                                 <td><?php echo $i++; ?></td>
                                 <td><input type="text" name="tanggungan_nama[]" maxlength="255" class="input-long" value="<?php echo $data['nama']; ?>"/></td>
-                                <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long" value="<?php echo format_tanggal_tampilan($data['tanggal_lahir']); ?>"/></td>
-                                <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="input-long" value="<?php echo format_tanggal_tampilan($data['tanggal_nikah']); ?>"/></td>
+                                <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long tanggal" value="<?php echo format_tanggal_tampilan($data['tanggal_lahir']); ?>"/></td>
+                                <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="input-long tanggal" value="<?php echo format_tanggal_tampilan($data['tanggal_nikah']); ?>"/></td>
                                 <td><input type="text" name="tanggungan_pekerjaan[]" maxlength="255" class="input-long" value="<?php echo $data['pekerjaan']; ?>"/></td>
                                 <td style="text-align: center">
                                     <select name="tanggungan_dapat_tunjangan[]" class="input-long">
@@ -239,8 +239,8 @@ $this->load->view('header');
                             <tr>
                                 <td>1</td>
                                 <td><input type="text" name="tanggungan_nama[]" maxlength="255" class="input-long"/></td>
-                                <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long"/></td>
-                                <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="input-long"/></td>
+                                <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long tanggal"/></td>
+                                <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="input-long tanggal"/></td>
                                 <td><input type="text" name="tanggungan_pekerjaan[]" maxlength="255" class="input-long"/></td>
                                 <td style="text-align: center">
                                     <select name="tanggungan_dapat_tunjangan[]" class="input-long">
@@ -271,11 +271,11 @@ $this->load->view('header');
                         <tbody>
                             <tr>
                                 <td width="40%"><label>NIP</label></td>
-                                <td><input type="text" name="nip" maxlength="255" class="input-long" value="<?php echo $data_pegawai['nip'] ?>"/></td>
+                                <td><input type="text" name="nip" id="nip" maxlength="255" class="input-long" value="<?php echo $data_pegawai['nip'] ?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Tanggal masuk</label></td>
-                                <td><input type="text" name="tanggal_masuk" maxlength="255" class="datepicker input-long" value="<?php echo format_tanggal_tampilan($data_pegawai['tanggal_masuk']) ?>"/></td>
+                                <td><input type="text" name="tanggal_masuk" id="tanggal_masuk" maxlength="255" class="datepicker input-long" value="<?php echo format_tanggal_tampilan($data_pegawai['tanggal_masuk']) ?>"/></td>
                             </tr>
                             <tr>
                                 <td><label>Status kepegawaian</label></td>
@@ -296,7 +296,7 @@ $this->load->view('header');
                             </tr>
                             <tr>
                                 <td><label>Kenaikan gaji YAD</label></td>
-                                <td><input type="text" name="kenaikan_yad" maxlength="255" class="datepicker input-long" value="<?php echo format_tanggal_tampilan($data_pegawai['kenaikan_YAD']) ?>"/></td>
+                                <td><input type="text" name="kenaikan_yad" id="kenaikan_yad" maxlength="255" class="datepicker input-long" value="<?php echo format_tanggal_tampilan($data_pegawai['kenaikan_YAD']) ?>"/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -385,5 +385,36 @@ $this->load->view('header');
 </script>
 
 </form>
+
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('#nama').require('Nama harus diisi');
+    $('#tempat_lahir').require('Tempat lahir harus diisi');
+    $('#tanggal_lahir').require('Tanggal lahir harus diisi').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal salah');
+    $('#alamat').require('Alamat harus diisi');
+    $('#jk').require('Jenis kelamin harus diisi');
+    $('#gol_darah').require('Gol darah harus diisi');
+    $('#tempat_lahir').require('Tempat lahir harus diisi');
+    $('#agama').require('Agama harus diisi');
+    $('#status').require('Status harus diisi');
+    $('#telepon').require('Telepon harus diisi');
+
+    $('.tahun_pendidikan').match('number', 'Harus berupa angka');
+    $('.tanggal').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal harus sesuai, contohnya: 01-05-2011');
+
+    $('#nip').require('NIP harus diisi').match('number', 'Harus diisi angka saja');
+    $('#tanggal_masuk, #kenaikan_yad').require('Harus diisi').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal salah');
+
+    $('.tmt').require('TMT harus diisi').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal salah');
+    $('#pangkat').require('Pangkat harus diisi');
+    $('#jabatan').require('Jabatan harus diisi');
+    $('#gaji').require('Gaji harus diisi').match('number', 'Isi dengan angka saja');
+});
+
+</script>
 
 <?php $this->load->view('footer'); ?>

@@ -3,7 +3,7 @@
 <script type="text/javascript" src="jquery.js"></script>
 
 <?php if(!($this->absensi->is_libur_pkm($tahun, $bulan, $tanggal) && $this->absensi->is_libur_bp($tahun, $bulan, $tanggal))) : ?>
-<form action="" method="post">
+<form action="" method="post" id="form">
 <?php endif; ?>
     
 <div class="belowribbon">
@@ -147,6 +147,17 @@ $(document).ready(function(){
 		}
 	});
 });
+</script>
+
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('input[type=text]').require("Jam harus diisi").match('time24', 'Jam tidak valid');
+});
+
 </script>
 
 <?php $this->load->view('footer'); ?>
