@@ -2,7 +2,7 @@
 
 <script type="text/javascript" src="jquery.js"></script>
 
-<form action="" method="post">
+<form action="" method="post" id="form">
 
 <div class="belowribbon">
     <h1>
@@ -53,5 +53,17 @@
 </div>
 
 </form>
+
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('form input').require('Harus diisi').match('number', 'Harus diisi angka');
+});
+
+</script>
+
 
 <?php $this->load->view('footer') ?>

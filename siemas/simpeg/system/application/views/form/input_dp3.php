@@ -1,6 +1,6 @@
 <?php $this->load->view('header'); ?>
 
-<form action="" method="post">
+<form action="" method="post" id="form">
 
 <div class="belowribbon">
     <h1>
@@ -70,5 +70,16 @@
 </form>
 
 <script type="text/javascript" src="js/keyhandler.js"></script>
+
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('.number').match('number', 'Harus diisi angka');
+});
+
+</script>
 
 <?php $this->load->view('footer'); ?>

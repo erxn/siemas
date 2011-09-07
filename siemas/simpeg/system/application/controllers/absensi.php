@@ -60,7 +60,7 @@ class Absensi extends Controller {
                     'id_absensi' => $id_absensi[$id],
                     'tanggal' => format_tanggal_database("{$data['tanggal']}-{$data['bulan']}-{$data['tahun']}"),
                     'hadir' => isset($hadir[$id]) ? 1 : 0,
-                    'jam_hadir' => ($jam_hadir[$id] == "") ? "07:30" : $jam_hadir[$id],
+                    'jam_hadir' => (!isset($jam_hadir[$id])) ? "00:00" : ($jam_hadir[$id] == "") ? "07:30" : $jam_hadir[$id],
                     'id_pegawai' => $id_pegawai[$id]
                     )
                 );

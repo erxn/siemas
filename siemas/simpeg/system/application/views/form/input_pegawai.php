@@ -4,7 +4,7 @@ $this->load->view('header');
 
 <script type="text/javascript" src="template/jquery.js"></script>
 
-<form action="" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data" id="form">
 
     <div class="belowribbon">
         <h1>
@@ -40,24 +40,24 @@ $this->load->view('header');
                         <tbody>
                             <tr>
                                 <td width="40%"><label>Nama</label></td>
-                                <td><input type="text" name="nama" maxlength="255" class="input-long"/></td>
+                                <td><input type="text" id="nama" name="nama" maxlength="255" class="input-long"/></td>
                             </tr>
                             <tr>
                                 <td><label>Tempat lahir</label></td>
-                                <td><input type="text" name="tempat_lahir" maxlength="255" class="input-long"/></td>
+                                <td><input type="text" id="tempat_lahir" name="tempat_lahir" maxlength="255" class="input-long"/></td>
                             </tr>
                             <tr>
                                 <td><label>Tanggal lahir</label></td>
-                                <td><input type="text" name="tanggal_lahir" maxlength="255" class="input-long"/> <br/><small>(tanggal-bulan-tahun, misal 17-08-1945)</small></td>
+                                <td><input type="text" id="tanggal_lahir" name="tanggal_lahir" maxlength="255" class="input-long"/> <br/><small>(tanggal-bulan-tahun, misal 17-08-1945)</small></td>
                             </tr>
                             <tr>
                                 <td><label>Alamat</label></td>
-                                <td><textarea name="alamat" rows="3" cols="25"></textarea></td>
+                                <td><textarea name="alamat" id="alamat" rows="3" cols="25"></textarea></td>
                             </tr>
                             <tr>
                                 <td><label>Jenis kelamin</label></td>
                                 <td>
-                                    <select name="jk" class="input-medium">
+                                    <select name="jk" class="input-medium" id="jk">
                                         <option value="">-</option>
                                         <option value="L">L</option>
                                         <option value="P">P</option>
@@ -66,12 +66,12 @@ $this->load->view('header');
                             </tr>
                             <tr>
                                 <td><label>Agama</label></td>
-                                <td><input type="text" name="agama" maxlength="255" class="input-long"/></td>
+                                <td><input type="text" id="agama" name="agama" maxlength="255" class="input-long"/></td>
                             </tr>
                             <tr>
                                 <td><label>Gol. darah</label></td>
                                 <td>
-                                    <select name="gol_darah" class="input-medium">
+                                    <select name="gol_darah" class="input-medium" id="gol_darah">
                                         <option value="">-</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -83,7 +83,7 @@ $this->load->view('header');
                             <tr>
                                 <td><label>Status</label></td>
                                 <td>
-                                    <select name="status" class="input-medium">
+                                    <select name="status" class="input-medium" id="status">
                                         <option value="">-</option>
                                         <option value="Menikah">Menikah</option>
                                         <option value="Belum menikah">Belum menikah</option>
@@ -92,7 +92,7 @@ $this->load->view('header');
                             </tr>
                             <tr>
                                 <td><label>Telepon</label></td>
-                                <td><input type="text" name="telepon" maxlength="255" class="input-long"/></td>
+                                <td><input type="text" id="telepon" name="telepon" maxlength="255" class="input-long"/></td>
                             </tr>
                             <tr>
                                 <td><label>Pas foto</label></td>
@@ -118,8 +118,8 @@ $this->load->view('header');
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="text" name="pendidikan[]" maxlength="255" class="input-full"/></td>
-                                <td><input type="text" name="tahun_pendidikan[]" maxlength="4" class="input-full"/></td>
+                                <td><input type="text" name="pendidikan[]" maxlength="255" class="input-full pendidikan"/></td>
+                                <td><input type="text" name="tahun_pendidikan[]" maxlength="4" class="input-full tahun_pendidikan"/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -143,7 +143,7 @@ $this->load->view('header');
                         <tbody>
                             <tr>
                                 <td><input type="text" name="pelatihan[]" maxlength="255" class="input-full"/></td>
-                                <td><input type="text" name="tahun_pelatihan[]" maxlength="4" class="input-full"/></td>
+                                <td><input type="text" name="tahun_pelatihan[]" maxlength="4" class="input-full tahun_pendidikan"/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -174,8 +174,8 @@ $this->load->view('header');
                             <tr>
                                 <td>1</td>
                                 <td><input type="text" name="tanggungan_nama[]" maxlength="255" class="input-long"/></td>
-                                <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long"/></td>
-                                <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="input-long"/></td>
+                                <td><input type="text" name="tanggungan_tanggal_lahir[]" maxlength="255" class="input-long tanggal"/></td>
+                                <td><input type="text" name="tanggungan_tanggal_nikah[]" maxlength="255" class="input-long tanggal"/></td>
                                 <td><input type="text" name="tanggungan_pekerjaan[]" maxlength="255" class="input-long"/></td>
                                 <td style="text-align: center">
                                     <select name="tanggungan_dapat_tunjangan[]" class="input-long">
@@ -203,11 +203,11 @@ $this->load->view('header');
                         <tbody>
                             <tr>
                                 <td width="40%"><label>NIP</label></td>
-                                <td><input type="text" name="nip" maxlength="255" class="input-long"/></td>
+                                <td><input type="text" name="nip" id="nip" maxlength="255" class="input-long"/></td>
                             </tr>
                             <tr>
                                 <td><label>Tanggal masuk</label></td>
-                                <td><input type="text" name="tanggal_masuk" maxlength="255" class="datepicker input-long"/></td>
+                                <td><input type="text" name="tanggal_masuk" id="tanggal_masuk" maxlength="255" class="datepicker input-long"/></td>
                             </tr>
                             <tr>
                                 <td><label>Status kepegawaian</label></td>
@@ -228,7 +228,7 @@ $this->load->view('header');
                             </tr>
                             <tr>
                                 <td><label>Kenaikan gaji YAD</label></td>
-                                <td><input type="text" name="kenaikan_yad" maxlength="255" class="datepicker input-long"/></td>
+                                <td><input type="text" name="kenaikan_yad" id="kenaikan_yad" maxlength="255" class="datepicker input-long"/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -250,7 +250,7 @@ $this->load->view('header');
                                     </select>
                                 </td>
                                 <td align="right"><label>TMT</label></td>
-                                <td><input type="text" name="tmt_gol_ruang" maxlength="255" class="datepicker input-long"/></td>
+                                <td><input type="text" name="tmt_gol_ruang" maxlength="255" class="datepicker input-long tmt"/></td>
                             </tr>
                             <tr>
                                 <td><label>Pangkat</label></td>
@@ -262,13 +262,13 @@ $this->load->view('header');
                                 <td><label>Jabatan</label></td>
                                 <td><input type="text" name="jabatan" id="jabatan" maxlength="255" class="input-full"/></td>
                                 <td align="right"><label>TMT</label></td>
-                                <td><input type="text" name="tmt_jabatan" maxlength="255" class="datepicker input-long"/></td>
+                                <td><input type="text" name="tmt_jabatan" maxlength="255" class="datepicker input-long tmt"/></td>
                             </tr>
                             <tr>
                                 <td><label>Gaji pokok</label></td>
                                 <td><input type="text" name="gaji" id="gaji" maxlength="255" class="input-full"/></td>
                                 <td align="right"><label>TMT</label></td>
-                                <td><input type="text" name="tmt_gaji" maxlength="255" class="datepicker input-long"/></td>
+                                <td><input type="text" name="tmt_gaji" maxlength="255" class="datepicker input-long tmt"/></td>
                             </tr>
                             <tr>
                                 <td><label>Atasan langsung</label></td>
@@ -352,5 +352,36 @@ $this->load->view('header');
     </script>
 
 </form>
+
+<script type="text/javascript" src="js/jquery.validity.js"></script>
+<script type="text/javascript">
+
+$.validity.setup({ outputMode:"modal" });
+
+$('#form').validity(function(){
+    $('#nama').require('Nama harus diisi');
+    $('#tempat_lahir').require('Tempat lahir harus diisi');
+    $('#tanggal_lahir').require('Tanggal lahir harus diisi').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal salah');
+    $('#alamat').require('Alamat harus diisi');
+    $('#jk').require('Jenis kelamin harus diisi');
+    $('#gol_darah').require('Gol darah harus diisi');
+    $('#tempat_lahir').require('Tempat lahir harus diisi');
+    $('#agama').require('Agama harus diisi');
+    $('#status').require('Status harus diisi');
+    $('#telepon').require('Telepon harus diisi');
+
+    $('.tahun_pendidikan').match('number', 'Harus berupa angka');
+    $('.tanggal').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal harus sesuai, contohnya: 01-05-2011');
+
+    $('#nip').require('NIP harus diisi').match('number', 'Harus diisi angka saja');
+    $('#tanggal_masuk, #kenaikan_yad').require('Harus diisi').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal salah');
+
+    $('.tmt').require('TMT harus diisi').match(/^([012]\d|30|31)\-([01]\d)\-\d{1,4}$/, 'Format tanggal salah');
+    $('#pangkat').require('Pangkat harus diisi');
+    $('#jabatan').require('Jabatan harus diisi');
+    $('#gaji').require('Gaji harus diisi').match('number', 'Isi dengan angka saja');
+});
+
+</script>
 
 <?php $this->load->view('footer'); ?>
