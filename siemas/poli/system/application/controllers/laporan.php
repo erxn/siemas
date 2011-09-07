@@ -36,31 +36,15 @@ class Laporan extends Controller{
        $data['hari_tindakan']=$this->lap->lap_ht();
        $this->load->view('lap_ht_v',$data);
   }
-  function export_to_excell_tindakan()
-    {
-    $query['hari_tindakan_excell']=$this->lap->lap_ht_excell();
-    $this->load->view('lap_ht_excell_v',$query);
-    }
-
-    function lap_bulanan_tindakan(){
-       
-        $this->load->view('lap_bulanan_tindakan');
-    }
-
-    function lap_bulanan_penyakit(){
-        $this->load->view('lap_bulanan_penyakit');
-    }
-
-    
-    function bulanan_layanan($bulan,$tahun){
+    function bulanan_layanan(){
          $this->load->plugin('phpexcel');
 //         $lay_tgl=$this->lap->layanan_harian($tanggal, $bulan, $tahun);
 //        $layanan['layanan_tgl']=$lay_tgl;
 
-         $bulan=$this->input->post('bulan_lay');
-        $tahun=$this->input->post('tahun_lay');
-         $lay=$this->lap->layanan($bulan,$tahun);
+         $lay=$this->lap->layanan();
+
         $layanan['layanan_h']=$lay;
+      
        $this->load->view('laporan_harian_excel_lay',$layanan);
     }
 
@@ -74,7 +58,10 @@ class Laporan extends Controller{
         $this->load->view('laporan_tahunan');
     }
 
-   
+   function lb4(){
+       $this->load->plugin('phpexcel');
+       $this->load->view('lb4');
+   }
     
 }
 ?>

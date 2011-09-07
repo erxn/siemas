@@ -1,7 +1,13 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-?>
+class Home extends Controller {
+
+    function __construct() {
+        parent::Controller();
+    }
+
+    function index() {
+        $this->load->view('home_gigi');
+    }
+
+}

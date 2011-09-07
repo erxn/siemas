@@ -12,8 +12,9 @@ class Stat extends Controller {
 
     function index() {
         $data=array();
+        $data['p'] = false;
 
-        if($this->input->post('submit')) {
+        if($this->input->post('tgl_statistik')) {
             $tgl=$this->input->post('tgl_statistik');
 
         }
@@ -27,8 +28,9 @@ class Stat extends Controller {
 
 
         
-        if($this->input->post('submit1')) {
+        if($this->input->post('tgl_statistik1')) {
             $tgl1=$this->input->post('tgl_statistik1');
+            if($_POST['bandingan']==1) $data['p'] = true;
 
         }
         else {
