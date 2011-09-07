@@ -1,4 +1,7 @@
 <?php
+//echo $bulan;
+//echo "<br>";
+//echo $tahun; die();
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -149,12 +152,13 @@ $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
 
             $i++;
         }
-
-       
+//$bln = $bulan;
+//$thn = $tahun;
+//
         for ($k = 1; $k <= 31; $k++) {                  //k loopoing tanggal
           
  
-            $data = $this->lap->layanan_bulanan($k, $bulan, $tahun);
+            $data = $this->lap->layanan_bulanan($k, 8, 2011);
                         $l = 7;
 
             foreach ($data as $d) {

@@ -98,9 +98,9 @@
                 <div class="container_12">
                     <div class="grid_12">
                         <ul id="nav">
-                             <li><a href="index.php/antrian/antri/1">Antrian</a></li>
-                            <li><a href="index.php/stat">Statistik</a></li>
-                            <li><a href="index.php/laporan">Laporan</a></li>
+                            <li id="<?php if($this->uri->segment(1)== "antrian") echo "current"?>"><a href="index.php/antrian/antri/1">Antrian</a></li>
+                            <li id="<?php if($this->uri->segment(1)== "stat") echo "current"?>"><a href="index.php/stat">Statistik</a></li>
+                            <li id="<?php if($this->uri->segment(1)== "laporan") echo "current"?>"><a href="index.php/laporan">Laporan</a></li>
                              <li><a href="index.php/">Logout</a></li>
 
                         </ul>

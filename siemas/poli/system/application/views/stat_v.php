@@ -49,6 +49,17 @@ $jumlah_kunjungan_04 = $grafik['penyakit3'];
 $jumlah_kunjungan_05 = $grafik['penyakit4'];
 $jumlah_kunjungan_08 = $grafik['penyakit5'];
 
+$jumlah_kunjungan_pab1 = $grafik['gigi_pab1'];
+$jumlah_kunjungan_cib1 = $grafik['gigi_cib1'];
+$jumlah_kunjungan_LW1 = $grafik['gigi_lw1'];
+$jumlah_kunjungan_LKot1 = $grafik['gigi_lk1'];
+
+$jumlah_kunjungan_021 = $grafik['penyakit11'];
+$jumlah_kunjungan_031 = $grafik['penyakit21'];
+$jumlah_kunjungan_041 = $grafik['penyakit31'];
+$jumlah_kunjungan_051 = $grafik['penyakit41'];
+$jumlah_kunjungan_081 = $grafik['penyakit51'];
+
 ?>
 
 <script type="text/javascript" src="js/highcharts.js"></script>
@@ -202,7 +213,7 @@ $jumlah_kunjungan_08 = $grafik['penyakit5'];
             },
             series: [{
                     name: 'Jumlah',
-                    data: [<?php echo $jumlah_kunjungan_pab ?>, <?php echo $jumlah_kunjungan_cib ?>, <?php echo $jumlah_kunjungan_LW ?>, <?php echo $jumlah_kunjungan_LKot ?>]
+                    data: [<?php echo $jumlah_kunjungan_pab1 ?>, <?php echo $jumlah_kunjungan_cib1 ?>, <?php echo $jumlah_kunjungan_LW1 ?>, <?php echo $jumlah_kunjungan_LKot1 ?>]
                 }]
         });
 
@@ -252,7 +263,7 @@ $jumlah_kunjungan_08 = $grafik['penyakit5'];
             },
             series: [{
                     name: 'Jumlah',
-                    data: [<?php echo $jumlah_kunjungan_02 ?>, <?php echo $jumlah_kunjungan_03 ?>, <?php echo $jumlah_kunjungan_04 ?>, <?php echo $jumlah_kunjungan_05 ?>, <?php echo $jumlah_kunjungan_08 ?>]
+                    data: [<?php echo $jumlah_kunjungan_021 ?>, <?php echo $jumlah_kunjungan_031 ?>, <?php echo $jumlah_kunjungan_041 ?>, <?php echo $jumlah_kunjungan_051 ?>, <?php echo $jumlah_kunjungan_081 ?>]
                 }]
         });
     });
@@ -265,15 +276,15 @@ $jumlah_kunjungan_08 = $grafik['penyakit5'];
 
         <li><a href="#tabs-a">Harian</a></li>
     </ul>
-
+<form action="" method="post">
     <div id="tabs-a" style="">
-        <form action="" method="post">
+        
 
             Pilih tanggal:
             <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik" class="input-medium" value="<?php echo $tgl ?>"/>
             <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
 
-        </form>
+        
         <br/>
         <hr/>
 
@@ -281,25 +292,25 @@ $jumlah_kunjungan_08 = $grafik['penyakit5'];
         <div style="width: 48%; float: right; height: 300px;" id="grafik2"></div>
         <hr/>
 
-        <a href="#" style="margin-left: 450px" class="btn-gplus gplus-blue" onclick="$('#banding').fadeIn();$('#is_banding').val('1');return false;"> Melihat perbandingan</a>
+        <a href="#" style="margin-left: 450px" class="btn-gplus gplus-blue" onclick="$('#banding').fadeIn(); $('#is_banding').val('1'); $('#bandingan').val('1'); return false;"> Melihat perbandingan</a>
         <input type="hidden" id="is_banding" value="0" name="is_banding" />
         <a href="#" class="btn-gplus gplus-red" onclick="$('#banding').fadeOut(); $('#is_banding').val('0'); return false;">x</a>
-        <div id="banding" style="display:none">
-            <form action="" method="post">
 
-                Pilih tanggal:
-                <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik1" class="input-medium" value="<?php echo $tgl ?>"/>
-                <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
+        <div id="banding" style="<?php if($p==false) echo "display:none"?>">
+            <input type="hidden" name="bandingan" id="bandingan" value="<?php if($p==true) echo 1; else echo 0;?>" />
 
-            </form>
+            <p style="float:left" >Pilih tanggal:</p>
+                <input type="text"  style="float:left" class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik1" class="input-medium" value="<?php echo $tgl1 ?>"/>
+                <input type="submit" style="float:left" value="Tampilkan" class="submit-green" name="submit1"/>
+
+            <br /> <br />
             <div style="width: 48%; float: left; height: 300px;" id="grafik3"></div>
             
             <div style="width: 48%; float: right; height: 300px;" id="grafik4"></div>
-        </div>
-
-
+       
         <div style="clear: both"></div>
-        <br/>
-
+      
+        </div>
     </div>
+</form>
 </div>
