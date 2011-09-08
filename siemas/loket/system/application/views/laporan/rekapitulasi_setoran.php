@@ -78,9 +78,9 @@
                             <th style="font-size: 15px;" class="header" width="90"><div align="center"><strong>MANTUOX</strong></div></th>
                         </tr>
                     </thead>
-                    <?php $umum=0; $gigi=0; $labor=0;  $radio=0; $ekg=0; $haji=0; $rb=0;$anak=0; $dalam=0;$usg=0; $catin=0;$mantuox=0;$jum=0;
+                    <?php $umum=0; $gigi=0; $labor=0;  $radio=0; $ekg=0; $haji=0; $rb=0;$anak=0; $dalam=0;$usg=0;$kb=0; $catin=0;$kir=0;$mantuox=0;$jum=0;
                           $i=1;foreach($laporan as $lap){
-                                $jumlah = $lap['umum']+$lap['labor']+$lap['rontgen']+$lap['ekg']+$lap['haji']+$lap['rb']+$lap['anak']+$lap['dalam']+$lap['usg']+$lap['catin']+$lap['mantuox'];
+                                $jumlah = $lap['umum']+$lap['gigi']+$lap['labor']+$lap['rontgen']+$lap['ekg']+$lap['haji']+$lap['rb']+$lap['kb']+$lap['kir']+$lap['anak']+$lap['dalam']+$lap['usg']+$lap['catin']+$lap['mantuox'];
                    ?>
 
 
@@ -96,9 +96,9 @@
                         <td class="font_kecil"><?php echo number_format($lap['anak'])?></td>
                         <td class="font_kecil"><?php echo number_format($lap['dalam'])?></td>
                         <td class="font_kecil"><?php echo number_format($lap['usg'])?></td>
-                        <td class="font_kecil"></td>
+                        <td class="font_kecil"><?php echo number_format($lap['kb'])?></td>
                         <td class="font_kecil"><?php echo number_format($lap['catin'])?></td>
-                        <td class="font_kecil"></td>
+                        <td class="font_kecil"><?php echo number_format($lap['kir'])?></td>
                         <td class="font_kecil"><?php echo number_format($lap['mantuox'])?></td>
                         <td class="font_kecil"><b><?php echo number_format($jumlah)?></b></td>
                         <td class="font_kecil"></td>
@@ -113,7 +113,9 @@
                           $anak  += $lap['anak'];
                           $dalam  += $lap['dalam'];
                           $usg  += $lap['usg'];
+                          $kb  += $lap['kb'];
                           $catin += $lap['catin'];
+                          $kir  += $lap['kir'];
                           $mantuox += $lap['mantuox'];
                           $jum += $jumlah;
                     }?>
@@ -129,11 +131,11 @@
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($anak) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($dalam) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($usg) ?></th>
-                        <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($kb) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($catin) ?></th>
-                        <th class="header" style="font-size: 15px; text-align: right !important">&nbsp;</th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($kir) ?></th>
                         <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($mantuox) ?></th>
-                        <th class="header" style="font-size: 15px;" align="right"><?php echo number_format($jum) ?></th>
+                        <th class="header" style="font-size: 15px; text-align: right !important"><?php echo number_format($jum) ?></th>
                         <th class="header" style="font-size: 15px;" align="right">&nbsp;</th>
                     </tr>
                 </table>
