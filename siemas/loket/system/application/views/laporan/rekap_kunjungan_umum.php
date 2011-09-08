@@ -37,7 +37,7 @@
                                 </div>
                             </td>
                             <td align="right" width="67%">
-                                <a href="index.php/c_laporan/rekap_umum_xls/<?php echo $laporan[0]['bulan']."/".$laporan[0]['tahun']?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+                                <a href="index.php/c_laporan/rekap_umum_xls/<?php echo intval($laporan[0]['bulan'])."/".$laporan[0]['tahun']?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
                                     <img src="images/ms-excel.png" alt=""/>
                                     Simpan ke Excel
                                 </a>

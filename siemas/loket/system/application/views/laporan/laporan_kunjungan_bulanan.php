@@ -36,7 +36,7 @@
                                 </div>
                             </td>
                             <td align="right" width="67%">
-                                <a href="index.php/c_laporan/lb4_xls/<?php echo intval($laporan[0]['bulan'])."/".$laporan[0]['tahun']?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+                                <a href="index.php/c_laporan/kunjungan_bulanan_xls/<?php echo intval($laporan[0]['bulan'])."/".$laporan[0]['tahun']?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
                                     <img src="images/ms-excel.png" alt=""/>
                                     Simpan ke Excel
                                 </a>
@@ -51,17 +51,17 @@
                 <h3 align="center"><strong>LAPORAN KUNJUNGAN PUSKESMAS BOGOR TENGAH</strong></h3>
                 <h3 align="center"><strong>BULAN: <?php echo $nama_bulan[intval($laporan[0]['bulan'])]." ".$laporan[0]['tahun']?></strong></h3>
                 <br/>
-                <table width="82%" height="317" class="tablesorter" id="myTable" style="width: 71%; font-size: 15px;">
+                <table height="317" style="width: 50%; font-size: 15px;">
                     <thead>
                         <tr>
-                            <th class="header" width="167" rowspan="2"><div align="center"><strong>JENIS KUNJUNGAN</strong></div></th>
-                            <th class="header" width="93" rowspan="2"><div align="center"><strong>ASKES</strong></div></th>
+                            <th class="header" width="40%" rowspan="2"><div align="center"><strong>JENIS KUNJUNGAN</strong></div></th>
+                            <th class="header" width="20%" rowspan="2"><div align="center"><strong>ASKES</strong></div></th>
                             <th class="header" colspan="2"><div align="center"><strong>GRATIS</strong></div></th>
-                            <th class="header" width="341" rowspan="2"><div align="center"><strong>BAYAR</strong></div></th>
+                            <th class="header" width="20%" rowspan="2"><div align="center"><strong>BAYAR</strong></div></th>
                         </tr>
                         <tr>
-                            <th class="header" width="125"><div align="center"><strong>ASKESKIN</strong></div></th>
-                            <th class="header" width="228"><div align="center"><strong>LAIN-LAIN</strong></div></th>
+                            <th class="header" width="20%"><div align="center"><strong>ASKESKIN</strong></div></th>
+                            <th class="header" width="20%"><div align="center"><strong>LAIN-LAIN</strong></div></th>
                         </tr>
                     </thead>
                     <tr>
@@ -87,17 +87,17 @@
                     </tr>
                     <tr>
                         <td>Laboratorium</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['lab_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['lab_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['lab_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['lab_bayar']?></td>
                     </tr>
                     <tr>
                         <td>RB</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['rb_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['rb_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['rb_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['rb_bayar']?></td>
                     </tr>
                     <tr>
                         <td>Haji</td>
@@ -136,17 +136,17 @@
                     </tr>
                     <tr>
                         <td>Rontgen Gigi</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_gigi_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_gigi_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_gigi_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['rontgen_gigi_bayar']?></td>
                     </tr>
                     <tr>
                         <td>Rujukan</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td align="center"><?php echo $laporan[0]['rujukan_askes']?></td>
+                        <td align="center"><?php echo $laporan[0]['rujukan_askeskin']?></td>
+                        <td align="center"><?php echo $laporan[0]['rujukan_gr']?></td>
+                        <td align="center"><?php echo $laporan[0]['rujukan_bayar']?></td>
                     </tr>
                     <tr>
                         <td><div align="center"><strong>JUMLAH</strong></div></td>

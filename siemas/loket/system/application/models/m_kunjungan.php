@@ -309,9 +309,40 @@ class M_kunjungan extends Model {
         
         return $jumlah_kunjungan[0]['jumlah'];
     }
+
+    /******* KUNJUNGAN ASKES DAN JAMKESMAS BUAT REKAP BULANAN*****************/
+    function kunj_askes_jam_poli($poli,$status,$bln,$thn){
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM antrian
+                                JOIN kunjungan USING (id_kunjungan)
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE id_poli = $poli
+
+                                AND status_pelayanan = '$status'
+                                AND status_bawa_kartu = 'Bawa'
+                                AND MONTH(tanggal_kunjungan) = '$bln'
+                                AND YEAR(tanggal_kunjungan) = '$thn'");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
     
     /****************************************************************************************************/
 
+    /*Lihat kunjungan berdasarkan keterangan*/
+    function get_total_by_ket($bln,$thn,$ket,$layanan){
+        $q = $this->db->query("SELECT COUNT(DISTINCT kunjungan.id_kunjungan) as total
+                                FROM pasien
+                                JOIN kunjungan ON pasien.id_pasien = kunjungan.id_pasien
+                                JOIN kunjungan_has_layanan ON kunjungan_has_layanan.id_kunjungan = kunjungan.id_kunjungan
+                                JOIN layanan USING (id_layanan)
+                                WHERE MONTH(tanggal_kunjungan) = '$bln'
+                                AND YEAR(tanggal_kunjungan) = '$thn'                                
+                                AND keterangan LIKE '%$ket%'
+                                AND status_pelayanan = '$layanan'");
+        $h = $q->result_array();
+        return $h[0]['total'];
+    }
 
 
 

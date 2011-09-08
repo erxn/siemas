@@ -181,5 +181,18 @@ class M_pembayaran extends Model {
         return $total;
     }
 
+    function get_total_by_ket($tgl,$ket,$poli){
+        $q = $this->db->query("SELECT SUM(harga_layanan) as total
+                                FROM `layanan`
+                                JOIN kunjungan_has_layanan USING (id_layanan)
+                                JOIN kunjungan USING (id_kunjungan)
+                                WHERE
+                                tanggal_kunjungan = '$tgl'
+                                AND
+                                (keterangan LIKE '%$ket%'
+                                OR layanan.poli LIKE '%$poli%')");
+        $h = $q->result_array();
+        return $h[0]['total'];
+    }
     
 }
