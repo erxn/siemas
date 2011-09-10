@@ -12,8 +12,9 @@ class Stat extends Controller {
 
     function index() {
         $data=array();
-
-        if($this->input->post('submit')) {
+        $data['p'] = false;
+        
+        if($this->input->post('tgl_statistik')) {
             $tgl=$this->input->post('tgl_statistik');
         }
         else {
@@ -23,6 +24,21 @@ class Stat extends Controller {
         $data['tgl']=$tgl;
 
         $tgl=date("Y-m-d",strtotime($tgl));
+
+
+        
+         if($this->input->post('tgl_statistik1')) {
+            $tgl1=$this->input->post('tgl_statistik1');
+            if($_POST['bandingan']==1) $data['p'] = true;
+
+        }
+        else {
+            $tgl1=date("d-m-Y");
+        }
+
+        $data['tgl1']=$tgl1;
+
+        $tgl1=date("Y-m-d",strtotime($tgl1));
 
         $wil1="pabaton";
         $stat1="Luar wilayah";
@@ -42,6 +58,17 @@ class Stat extends Controller {
         $campak=$this->stat->get_kunjungan_umum_campak($umum,$tgl);
         $umum=$this->stat->get_kunjungan_umum_m($umum,$tgl);
 
+        $umum_pab1=$this->stat->get_kunjungan_umum_wil($wil1,$umum,$tgl1);
+        $umum_cib1=$this->stat->get_kunjungan_umum_wil($wil1,$umum,$tgl1);
+        $umum_lw1=$this->stat->get_kunjungan_umum_status($stat1,$umum,$tgl1);
+        $umum_lk1=$this->stat->get_kunjungan_umum_status($stat2,$umum,$tgl1);
+
+        $tbc1=$this->stat->get_kunjungan_umum_tbc($umum,$tgl1);
+        $diare1=$this->stat->get_kunjungan_umum_diare($umum,$tgl1);
+        $ispa1=$this->stat->get_kunjungan_umum_ispa($umum,$tgl1);
+        $campak1=$this->stat->get_kunjungan_umum_campak($umum,$tgl1);
+        $umum1=$this->stat->get_kunjungan_umum_m($umum,$tgl1);
+
         $grafik=array(
 
         'umum_pab'=>$umum_pab,
@@ -49,12 +76,22 @@ class Stat extends Controller {
         'umum_lw'=>$umum_lw,
         'umum_lk'=>$umum_lk,
 
-
         'tbc'=>$tbc,
         'diare'=>$diare,
         'ispa'=>$ispa,
         'campak'=> $campak,
         'umum'=>$umum,
+
+        'umum_pab1'=>$umum_pab1,
+        'umum_cib1'=>$umum_cib1,
+        'umum_lw1'=>$umum_lw1,
+        'umum_lk1'=>$umum_lk1,
+
+        'tbc1'=>$tbc1,
+        'diare1'=>$diare1,
+        'ispa1'=>$ispa1,
+        'campak1'=> $campak1,
+        'umum1'=>$umum1,
         
         );
 

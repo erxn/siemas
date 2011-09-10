@@ -23,13 +23,6 @@
             $.uiTableFilter( theTable, $('#d_gigi').val());
         })
     });
-$(function() {
-        var theTable = $('#t_umum')
-
-        $("#b_umum").click(function() {
-            $.uiTableFilter( theTable, $('#d_umum').val());
-        })
-    });
 
 </script>
 
@@ -122,7 +115,7 @@ $(function() {
     </ul>
     <div id="tabs-a" >
         <div class="module" style="background:none; float: none; margin-bottom: 0px">
-            <h3>Data Pasien</h3>
+           
 
             <?php if($data_pasien == null) { ?>
 
@@ -131,6 +124,8 @@ $(function() {
                 <?php } else { ?>
 
             <table style="">
+                <th colspan="2">Data Pasien</th>
+                
                 <strong></strong>
                 <tr  class="odd">
                     <td><b>Tanggal Pendaftaran:</b></td>
@@ -197,10 +192,16 @@ $(function() {
                     <td>Diagnosis:</td>
                     <td><textarea name="n_diagnosis" rows="3" cols="40" style="width: 90%"></textarea></td>
                 </tr>
+
                 <tr class="odd">
-                    <td>Penyakit:</td>
-                    <td><textarea name="n_penyakit" rows="3" cols="40" style="width: 90%"></textarea></td>
-                </tr>
+                <td>Penyakit:</td>
+                <td> <select name="n_penyakit">
+                        <?php foreach ($data_peny as $dp) {?>
+                        <option value="<?php echo $dp['id_penyakit'];?>"><?php echo $dp['nama_penyakit'];?></option>
+                            <?php } ?>
+                    </select>
+                </td>
+            </tr>
                 <tr>
                     <td>Keterangan:</td>
                     <td><textarea name="n_keterangan" rows="3" cols="40" style="width: 90%"></textarea></td>
@@ -425,6 +426,7 @@ $(function() {
                         <th style="width:30%">Tanggal Kunjungan</th>
                         <th style="width:21%">Anamnesis</th>
                         <th style="width:13%">Diagnosa</th>
+                         <th style="width:13%">Penyakit</th>
                         <th style="width:13%">Layanan</th>
                         <th style="width:13%">Ket.</th>
                     </tr>
@@ -440,7 +442,8 @@ $(function() {
                         <td ><a class="pop" href="index.php/pasien/remed_poli_gigi_pop/<?php echo $id_pasien;?>/<?php echo $rg['tanggal_kunjungan_gigi']?>"><?php echo tgl_indo($rg['tanggal_kunjungan_gigi']); ?></a></td>
                         <td><?php echo  word_limiter($rg['anamnesis'],5,'...');?></td>
                         <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
-                        <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?>, <?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
+                        <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?></td>
+                        <td> <?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
                         <td><?php echo word_limiter($rg['keterangan'],5,'...');?></td>
                     </tr>
                             <?php }
@@ -478,7 +481,7 @@ $(function() {
                         <th style="width:21%">Anamnesis</th>
                         <th style="width:17%">Diagnosa</th>
                         <th style="width:13%">Penyakit</th>
-                        <th style="width:13%">P2M</th>
+                        <th style="width:13%" colspan="3">P2M</th>
                         <th style="width:13%">Ket.</th>
                     </tr>
                 </thead>
@@ -487,6 +490,7 @@ $(function() {
 
                     <?php if (count ($remed_umum)>0) {
                         $i=1;
+                        $b=0;
                         foreach ($remed_umum as $ru) {
                             if($i%2==0) $x="odd";else $x="even";
                             ?>
@@ -495,24 +499,31 @@ $(function() {
                         <td><a class="pop" href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
                        <td><?php echo word_limiter($ru['anamnesis'],5,'...');?></td>
                         <td><?php echo word_limiter($ru['diagnosa'],5,'...');?></td>
-                        <td><?php echo word_limiter($ru['penyakit_umum'],5,'...');?></td>
+                        <td><?php echo $penyakit['nama_penyakit'];?></td>
                         <td><a href="">
-                                    <?php
-                                    if($campak!==0) {
-                                        echo 'campak';
-                                    }
-                                    else if($ispa!==0) {
+                                    <?php if($ispa[$b]['id_ispa']!==null){
                                         echo 'ispa';
                                     }
-                                    else if($tbc!==0) {
+                                    else{ echo ''; }
+                                    ?> </a>
+                        </td>
+                        <td><a href="">
+                                    <?php if($tbc[$b]['id_tbc']!==null){
                                         echo 'tbc';
                                     }
-                                    else if($diare!==0) {
+                                    else{
+                                        echo '';
+                                    }
+                                    ?> </a>
+                        </td>
+                         <td><a href="">
+                                    <?php if ($diare[$b]['id_diare']){
                                         echo 'diare';
                                     }
-
-                                    ?>
-                            </a>
+                                    else{
+                                        echo '';
+                                    }
+                                     $b++; ?> </a>
                         </td>
                         <td><?php echo word_limiter($ru['keterangan'],5,'...');?></td>
                     </tr>
