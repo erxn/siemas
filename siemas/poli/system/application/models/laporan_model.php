@@ -189,8 +189,8 @@ Class Laporan_model extends Model{
     }
 
 
-    function lb4($kec,$status,$kasus,$hamil,$anak){
-        $data=array();
+    function lb4($wil,$stat,$status,$kasus,$hamil,$anak,$tgl){
+     
         $kueri=$this->db->query("
 
                            SELECT COUNT( * ) AS jumlah
@@ -201,19 +201,80 @@ Class Laporan_model extends Model{
                                 USING ( id_pasien )
                                 JOIN remed_poli_gigi
                                 USING ( id_pasien )
-                                WHERE kk.kecamatan_kk LIKE '%$kec%'
+                                WHERE (kk.kelurahan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
                                 AND pasien.status_pelayanan LIKE '%$status%'
+                                AND kunjungan.tanggal_kunjungan = '$tgl'
                                 AND remed_poli_gigi.Khasus_penyakit LIKE '%$kasus%'
-                                AND remed_poli_gigi.Kunjungan_ibu_hamil LIKE '%$hamil%'
-                                AND remed_poli_gigi.Kunjungan_Anak_Prasekolah LIKE '%$anak%'" );
-        if($kueri->num_rows()>0){
-            foreach ($kueri->result_array()as $row){
-                $data[]=$row;
-            }
-        }
-        $kueri->free_result();
-        return $data;
+                                AND (remed_poli_gigi.Kunjungan_ibu_hamil LIKE '%$hamil%'
+                                OR remed_poli_gigi.Kunjungan_Anak_Prasekolah LIKE '%$anak%')" );
+      $q=$kueri->result_array();
+      return $q[0]['jumlah'];
 
+    }
+
+
+    function get_penyakit($tgl,$status,$wil,$stat,$penyakit){
+                    $q = $this->db->query("SELECT count( * ) AS jumlah
+                                                FROM kk
+                                                JOIN pasien ON kk.id_kk = pasien.id_KK
+                                                JOIN kunjungan ON pasien.id_kunjungan = kunjungan.id_kunjungan
+                                                JOIN remed_poli_gigi ON kunjungan.id_kunjungan = remed_poli_gigi.id_kunjungan
+                                                JOIN penyakit_remed_gigi ON remed_poli_gigi.id_remed_gigi = penyakit_remed_gigi.id_remed_gigi
+                                                JOIN penyakit ON penyakit_remed_gigi.id_penyakit = penyakit.id_penyakit
+                                                WHERE kunjungan.tanggal_kunjungan = '$tgl'
+                                                AND penyakit.nama_penyakit LIKE '%$penyakit%'
+                                                AND (kelurahan_kk LIKE '%$wil%'
+                                                OR status_wil_luar LIKE '$stat')
+                                                AND status_pelayanan = '$status'
+                                                                                ");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    function get_pasien_baru($tgl,$status,$wil,$stat){
+            $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
+                                AND kunjungan.tanggal_kunjungan = '$tgl'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                AND status_pelayanan = '$status'
+                                ");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+    function get_pasien_lama($tgl,$status,$wil,$stat){
+            $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                JOIN kk USING (id_kk)
+                                WHERE NOT kunjungan.tanggal_kunjungan = pasien.tanggal_pendaftaran
+                                AND kunjungan.tanggal_kunjungan = '$tgl'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                AND status_pelayanan = '$status'
+                                ");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
+
+
+    function get_layanan($tgl,$status,$wil,$stat,$layanan){
+                    $q = $this->db->query("SELECT count( * ) AS jumlah
+                                                FROM kk
+                                                JOIN pasien ON kk.id_kk = pasien.id_KK
+                                                JOIN kunjungan ON pasien.id_kunjungan = kunjungan.id_kunjungan
+                                                JOIN remed_poli_gigi ON kunjungan.id_kunjungan = remed_poli_gigi.id_kunjungan
+                                                JOIN remed_gigi_layanan ON remed_poli_gigi.id_remed_gigi = remed_gigi_layanan.id_remed_gigi
+                                                JOIN layanan ON remed_gigi_layanan.id_layanan = layanan.id_layanan
+                                                WHERE kunjungan.tanggal_kunjungan = '$tgl'
+                                                AND layanan.nama_layanan LIKE '%$layanan%'
+                                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                                AND status_pelayanan = '%$status%'
+                                                                                ");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
     }
 
 }
