@@ -17,7 +17,7 @@
                 <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $selesai[$i]['jk_pasien'] . ', ' . $selesai[$i]['umur'] . ' th'; ?></small>
             </td>
             <td valign="middle" align="right">
-                <a href="http://localhost/siemas/umum/index.php/antrian/isi_remed_hari_ini/<?php echo $selesai[$i]['id_pasien'];?>/<?php echo $selesai[$i]['id_kunjungan'];?>/<?php echo $selesai[$i]['id_antrian']?>" style="text-decoration: none" onclick="ter(<?php echo $selesai[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-blue">Isi rekam medik</a>
+                <a href="http://localhost/siemas/umum/index.php/antrian/isi_remed_hari_ini/<?php echo $selesai[$i]['id_pasien'];?>/<?php echo $selesai[$i]['id_kunjungan'];?>/<?php echo $selesai[$i]['id_antrian']?>/<?php echo $selesai[$i]['tanggal_kunjungan'];?>" style="text-decoration: none" onclick="ter(<?php echo $selesai[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-blue">Isi rekam medik</a>
               </td>
 
         </tr>

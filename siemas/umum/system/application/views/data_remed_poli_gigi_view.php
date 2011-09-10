@@ -106,7 +106,7 @@
 
                                 <tr class="odd">
                                     <td><b>Nama:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_pasien[0]['nama_pasien'];?></td>
+                                    <td style="width: 50%"><h3><?php echo $pop_pasien[0]['nama_pasien'];?></h3></td>
 
                                 </tr>
 
@@ -142,7 +142,7 @@
 
                                 <tr>
                                     <td><b>Tanggal Kunjungan:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_tanggal[0]['tanggal_kunjungan_gigi'];?></td>
+                                    <td style="width: 50%"><?php echo $pop_gigi[0]['tanggal_kunjungan_gigi'];?></td>
                                 </tr>
 
                                  <tr class="odd">
@@ -159,11 +159,11 @@
                                     <td><b>Penyakit:</b></td>
                                     <td><?php echo $pop_gigi[0]['nama_penyakit'];?></td>
                                 </tr>
-
-                                <tr><td>Layanan</td>
-                                    <td <?php echo $pop_gigi[0]['nama_layanan'];?></td>
+                                <tr>
+                                    <td><b>Layanan:</b></td>
+                                    <td><?php echo $pop_gigi[0]['nama_layanan'];?></td>
                                 </tr>
-
+                                
                                 <tr class="odd">
                                     <td><b>Harga:</b></td>
                                     <td><?php echo $pop_gigi[0]['harga'];?></td>

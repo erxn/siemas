@@ -1,5 +1,6 @@
 <?php $this->load->view('header');?>
 
+
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
@@ -8,7 +9,7 @@
 
 <script>
     $(function() {
-        $( "#datepicker" ).datepicker({
+        $( ".datepicker" ).datepicker({
             changeMonth: true,
             changeYear: true,
             dateFormat: "dd-mm-yy"
@@ -49,6 +50,16 @@ $jumlah_kunjungan_ispa = $grafik['ispa'];
 $jumlah_kunjungan_campak = $grafik['campak'];
 $jumlah_kunjungan_umum = $grafik['umum'];
 
+$jumlah_kunjungan_pab1 = $grafik['umum_pab1'];
+$jumlah_kunjungan_cib1 = $grafik['umum_cib1'];
+$jumlah_kunjungan_LW1 = $grafik['umum_lw1'];
+$jumlah_kunjungan_LKot1 = $grafik['umum_lk1'];
+
+$jumlah_kunjungan_tbc1 = $grafik['tbc1'];
+$jumlah_kunjungan_diare1 = $grafik['diare1'];
+$jumlah_kunjungan_ispa1 = $grafik['ispa1'];
+$jumlah_kunjungan_campak1 = $grafik['campak1'];
+$jumlah_kunjungan_umum1 = $grafik['umum1'];
 ?>
 
 <script type="text/javascript" src="js/highcharts.js"></script>
@@ -200,7 +211,7 @@ $jumlah_kunjungan_umum = $grafik['umum'];
             },
             series: [{
                     name: 'Jumlah',
-                    data: [<?php echo $jumlah_kunjungan_pab ?>, <?php echo $jumlah_kunjungan_cib ?>, <?php echo $jumlah_kunjungan_LW ?>, <?php echo $jumlah_kunjungan_LKot ?>]
+                    data: [<?php echo $jumlah_kunjungan_pab1 ?>, <?php echo $jumlah_kunjungan_cib1 ?>, <?php echo $jumlah_kunjungan_LW1 ?>, <?php echo $jumlah_kunjungan_LKot1 ?>]
                 }]
         });
 
@@ -249,7 +260,7 @@ $jumlah_kunjungan_umum = $grafik['umum'];
             },
             series: [{
                     name: 'Jumlah',
-                    data: [<?php echo $jumlah_kunjungan_tbc ?>, <?php echo $jumlah_kunjungan_diare ?>, <?php echo $jumlah_kunjungan_ispa ?>, <?php echo $jumlah_kunjungan_campak ?>, <?php echo $jumlah_kunjungan_umum ?>]
+                    data: [<?php echo $jumlah_kunjungan_tbc1 ?>, <?php echo $jumlah_kunjungan_diare1 ?>, <?php echo $jumlah_kunjungan_ispa1 ?>, <?php echo $jumlah_kunjungan_campak1 ?>, <?php echo $jumlah_kunjungan_umum1 ?>]
                 }]
         });
     });
@@ -262,15 +273,15 @@ $jumlah_kunjungan_umum = $grafik['umum'];
 
         <li><a href="#tabs-a">Harian</a></li>
     </ul>
-
+<form action="" method="post">
     <div id="tabs-a" style="">
-        <form action="" method="post">
+        
 
             Pilih tanggal:
-            <input type="text"  id="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik" class="input-medium" value="<?php echo $tgl ?>"/>
+            <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik" class="input-medium" value="<?php echo $tgl ?>"/>
             <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
 
-        </form>
+       
         <br/>
         <hr/>
 
@@ -279,22 +290,25 @@ $jumlah_kunjungan_umum = $grafik['umum'];
          <br/>
         <hr/>
        
-        <a href="#" style="margin-left: 500px" class="btn-gplus gplus-blue" onclick="$('#banding').fadeIn();$('#is_banding').val('1');return false;"> Melihat perbandingan</a>
+        <a href="#" style="margin-left: 500px" class="btn-gplus gplus-blue" onclick="$('#banding').fadeIn();$('#is_banding').val('1');$('#bandingan').val('1');return false;"> Melihat perbandingan</a>
         <input type="hidden" id="is_banding" value="0" name="is_banding" />
         <a href="#" class="btn-gplus gplus-red" onclick="$('#banding').fadeOut(); $('#is_banding').val('0'); return false;">x</a>
-        <div id="banding" style="display:none">
-            <form action="" method="post">
 
-                Pilih tanggal:
-                <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik1" class="input-medium" value="<?php echo $tgl ?>"/>
-                <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
+        <div id="banding" style="<?php if($p==false) echo "display:none";?>"">
+            <input type="hidden" name="bandingan" id="bandingan" value="<?php if($p==true) echo 1; else echo 0;?>" />
+            
+                <p style="float: left;">Pilih tanggal:</p>
+                <input type="text" style="float: left;" class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik1" class="input-medium" value="<?php echo $tgl1 ?>"/>
+                <input type="submit" style="float: left;" value="Tampilkan" class="submit-green" name="submit"/>
 
-            </form>
+                <br /><br />
+            
             <div style="width: 48%; float: left; height: 300px;" id="grafik3"></div>
             <div style="width: 48%; float: right; height: 300px;" id="grafik4"></div>
-        </div>
+        
         <div style="clear: both"></div>
-        <br/>
+       </div>
+        <br/></div>
 
-    </div>
+    </form>
 </div>

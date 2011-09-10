@@ -7,6 +7,7 @@
 class Laporan extends Controller{
 function Laporan(){
     parent::Controller();
+    $this->load->model('laporan_model','lap');
 }
 
 function index(){
@@ -29,5 +30,14 @@ function lap_b_diare(){
 function lap_b_ispa(){
     $this->load->view('lap_h_ispa_v');
 }
+
+ function bulanan_layanan(){
+         $this->load->plugin('phpexcel');
+         
+         $penyakit=$this->lap->penyakit();
+         $penyakit['penyakit']=$penyakit;
+       $this->load->view('lap_bulanan_penyakit_v',$penyakit);
+    }
+
 }
 ?>
