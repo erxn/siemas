@@ -15,7 +15,7 @@ class Antrian extends Controller {
     }
 
     function index() {
-
+        redirect('antrian/antri/1');
     }
 
     function antri() {
@@ -65,7 +65,7 @@ class Antrian extends Controller {
         $this->antrian->ubah_status($id_antrian, 'TUNDA');
     }
 
-    function isi_remed_hari_ini($id_pasien = 0, $id_kunjungan = 0, $id_antrian = 0,$tgl=0) {
+    function isi_remed_hari_ini($id_pasien = 0, $id_kunjungan = 0, $id_antrian = 0, $tgl=0) {
 
         $remed = array();
         $tgl= date("Y-m-d");
@@ -108,7 +108,7 @@ class Antrian extends Controller {
             // update ke TERISI
             $this->antrian->ubah_status($id_antrian, 'TERISI');
 
-            redirect('antrian/remed_berhasil');
+            redirect("antrian/remed_berhasil/{$id_pasien}/{$id_kunjungan}/{$id_antrian}/{$tgl}");
 
         }
 
@@ -161,39 +161,6 @@ class Antrian extends Controller {
             $remed['data_pasien']=$data_pasien_remed;
         } else {
             $remed['data_pasien']=null;
-        }
-
-        if($this->input->post('submit')) {
-
-            // insert ke tabel remed_poli_gigi
-            $data1 = array(
-                    'tanggal_kunjungan_gigi' =>$tgl,
-                    'anamnesis'      =>$this->input->post('n_anamnesis'),
-                    'diagnosis'      =>$this->input->post('n_diagnosa'),
-                    'keterangan'    =>$this->input->post('n_ket'),
-                    'id_kunjungan'  => $id_kunjungan, //sementara
-                    'id_pasien' => $id_pasien );
-            $id_remed=$this->remed->insert_diagnosis($data1);
-            $data1['diagnosa'] = $id_remed;
-            // insert ke tabel_layanan
-            $data2 = array(
-                    'id_layanan'   =>$this->input->post('n_layanan'),
-                    'id_remed_gigi'=>$id_remed,
-            );
-            $this->remed->insert_layanan($data2);
-
-
-            $data3=array(
-                    'id_penyakit' =>$this->input->post('n_penyakit'),
-                    'id_remed_gigi'=>$id_remed
-            );
-            $this->remed->insert_penyakit($data3);
-
-            // update ke TERISI
-            $this->antrian->ubah_status($id_antrian, 'TERISI');
-
-            redirect('antrian/isi_remed_hari_ini');
-
         }
 
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
