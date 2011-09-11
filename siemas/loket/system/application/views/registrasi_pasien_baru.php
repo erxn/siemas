@@ -41,7 +41,7 @@
                         <img width="20" height="20" src="Template_files/tambah.png" alt="Tambah"/> KK Baru
                     </a>
                 </div>
-                <table id="myTable" class="tablesorter" style="width: 100%">
+                <table style="width: 100%">
                     <thead>
                         <tr>
                             <th class="header" style="width: 1%;">No</th>

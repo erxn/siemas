@@ -1062,57 +1062,79 @@ class C_laporan extends Controller {
 
     function kunjungan_bulanan_xls($bln,$thn){
         $data = array();
-        $gigi = 1; $umum = 2; $kia=3; $anak=7; $dalam=8;
+        $gigi = 1; $umum = 2; $kia=3; $lab=4; $radiologi=5;$rujuk = 6; $anak=7; $dalam=8;
         $askes = 'Askes'; $askeskin = 'Jamkesmas'; $gr = 'Lain-lain'; $bayar = 'Umum';
+        
 
-        $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'radiologi';
+        $ekg = 'ekg'; $usg = 'usg'; $haji='haji';$rontgen = 'Thorax Foto';
+        $rontgen_gigi = "Pemeriksaan X-ray gigi";
+        $rb = "RB";
 
-        $umum_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askes);
-        $umum_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$askeskin);
-        $umum_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$gr);
-        $umum_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar);
-
-        $gigi_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askes);
-        $gigi_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$askeskin);
-        $gigi_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$gr);
-        $gigi_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$bayar);
-
-        $kia_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askes);
-        $kia_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askeskin);
-        $kia_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$gr);
-        $kia_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar);
-
-        $ekg_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$askes);
-        $ekg_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$askeskin);
-        $ekg_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$gr);
-        $ekg_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$bayar);
-
-        $anak_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$askes);
-        $anak_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$askeskin);
-        $anak_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$gr);
-        $anak_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$bayar);
-
-        $dalam_askes = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$askes);
-        $dalam_askeskin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$askeskin);
-        $dalam_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$gr);
-        $dalam_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$bayar);
-
+        /*KUNJUNGAN ASKES */
+        $umum_askes = $this->M_kunjungan->kunj_askes_jam_poli($umum,$askes,$bln,$thn);
+        $gigi_askes = $this->M_kunjungan->kunj_askes_jam_poli($gigi,$askes,$bln,$thn);
+        $kia_askes = $this->M_kunjungan->kunj_askes_jam_poli($kia,$askes,$bln,$thn);
+        $lab_askes = $this->M_kunjungan->kunj_askes_jam_poli($lab,$askes,$bln,$thn);
+        $rb_askes = $this->M_kunjungan->get_total_by_ket($bln,$thn,$rb,$askes);
         $haji_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$askes);
-        $haji_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$askeskin);
-        $haji_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$gr);
-        $haji_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$bayar);
-
+        $ekg_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$askes);
+        $anak_askes = $this->M_kunjungan->kunj_askes_jam_poli($anak,$askes,$bln,$thn);
+        $dalam_askes = $this->M_kunjungan->kunj_askes_jam_poli($dalam,$askes,$bln,$thn);
+        //rontgen gigi uda jelas. rontgen aja darimana? 
         $rontgen_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$askes);
+        $rontgen_gigi_askes = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen_gigi,$askes);
+        $rujukan_askes = $this->M_kunjungan->kunj_askes_jam_poli($rujuk,$askes,$bln,$thn);
+
+        /*KUNJUNGAN ASKESKIN/ JAMKESMAS */
+        $umum_askeskin = $this->M_kunjungan->kunj_askes_jam_poli($umum,$askeskin,$bln,$thn);
+        $gigi_askeskin = $this->M_kunjungan->kunj_askes_jam_poli($gigi,$askeskin,$bln,$thn);
+        $kia_askeskin = $this->M_kunjungan->kunj_askes_jam_poli($kia,$askeskin,$bln,$thn);
+        $lab_askeskin = $this->M_kunjungan->kunj_askes_jam_poli($lab,$askeskin,$bln,$thn);
+        $rb_askeskin = $this->M_kunjungan->get_total_by_ket($bln,$thn,$rb,$askeskin);
+        $haji_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$askeskin);
+        $ekg_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$askeskin);
+        $anak_askeskin = $this->M_kunjungan->kunj_askes_jam_poli($anak,$askeskin,$bln,$thn);
+        $dalam_askeskin = $this->M_kunjungan->kunj_askes_jam_poli($dalam,$askeskin,$bln,$thn);
+        //rontgen gigi uda jelas. rontgen aja darimana?
         $rontgen_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$askeskin);
+        $rontgen_gigi_askeskin = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen_gigi,$askeskin);
+        $rujukan_askeskin = $this->M_kunjungan->kunj_askes_jam_poli($rujuk,$askeskin,$bln,$thn);
+
+        /*GRATIS*/
+        $gigi_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$gr);
+        $umum_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$gr);
+        $kia_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$gr);
+        $lab_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$lab,$gr);
+        $rb_gr = $this->M_kunjungan->get_total_by_ket($bln,$thn,$rb,$askes);
+        $haji_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$gr);
+        $ekg_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$gr);$anak_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$gr);
+        $anak_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$gr);
+        $dalam_gr = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$gr);
         $rontgen_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$gr);
+        $rontgen_gigi_gr = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen_gigi,$gr);
+        $rujukan_gr = $this->M_kunjungan->kunj_askes_jam_poli($rujuk,$askeskin,$bln,$thn);
+
+        /*UMUM / BAYAR*/
+        $umum_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$umum,$bayar);
+        $gigi_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$gigi,$bayar);
+        $lab_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$lab,$bayar);
+        $rb_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rb,$askeskin);
+        $kia_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar);
+        $ekg_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$ekg,$bayar);
+        $anak_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$anak,$bayar);
+        $dalam_bayar = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$dalam,$bayar);
+        $haji_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$haji,$bayar);
         $rontgen_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen,$bayar);
+        $rontgen_gigi_bayar = $this->M_kunjungan->get_kunjungan_layanan($bln,$thn,$rontgen_gigi,$bayar);
+        $rujukan_bayar = $this->M_kunjungan->kunj_askes_jam_poli($rujuk,$bayar,$bln,$thn);
+
 
         $laporan[] = array(
                 'umum_askes' => $umum_askes,
                 'umum_askeskin' => $umum_askeskin,
                 'umum_gr' => $umum_gr,
                 'umum_bayar' => $umum_bayar,
-
+                
                 'gigi_askes' => $gigi_askes,
                 'gigi_askeskin' => $gigi_askeskin,
                 'gigi_gr' => $gigi_gr,
@@ -1123,6 +1145,16 @@ class C_laporan extends Controller {
                 'kia_gr' => $kia_gr,
                 'kia_bayar' => $kia_bayar,
 
+                'rb_askes' => $rb_askes,
+                'rb_askeskin' => $rb_askeskin,
+                'rb_gr' => $rb_gr,
+                'rb_bayar' => $rb_bayar,
+
+                'lab_askes' => $lab_askes,
+                'lab_askeskin' => $lab_askeskin,
+                'lab_gr' => $lab_gr,
+                'lab_bayar' => $lab_bayar,
+            
                 'ekg_askes' => $ekg_askes,
                 'ekg_askeskin' => $ekg_askeskin,
                 'ekg_gr' => $ekg_gr,
@@ -1148,9 +1180,20 @@ class C_laporan extends Controller {
                 'rontgen_gr' => $rontgen_gr,
                 'rontgen_bayar' => $rontgen_bayar,
 
+                'rontgen_gigi_askes' => $rontgen_gigi_askes,
+                'rontgen_gigi_askeskin' => $rontgen_gigi_askeskin,
+                'rontgen_gigi_gr' => $rontgen_gigi_gr,
+                'rontgen_gigi_bayar' => $rontgen_gigi_bayar,
+
+                'rujukan_askes' => $rujukan_askes,
+                'rujukan_askeskin' => $rujukan_askeskin,
+                'rujukan_gr' => $rujukan_gr,
+                'rujukan_bayar' => $rujukan_bayar,
+
                 'bulan' => $bln,
                 'tahun' => $thn
                 );
+        
         $data['laporan'] = $laporan;
         $this->load->plugin('phpexcel');
         $this->load->view('excel/kunjungan_bulanan_xls', $data);
