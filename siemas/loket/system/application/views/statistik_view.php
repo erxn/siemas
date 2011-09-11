@@ -279,8 +279,6 @@ $(document).ready(function() {
             <br/>
 
             <div style="width: 48%; float: left; height: 300px;" id="grafik3"></div>
-            <br/>
-
             <div style="width: 48%; float: left; height: 300px;" id="grafik4"></div>
             <pre>
             <?php //print_r($laporan) ?>

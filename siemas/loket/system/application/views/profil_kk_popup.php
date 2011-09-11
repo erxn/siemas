@@ -26,7 +26,7 @@
                     <br/>
                     
                     <h4>Daftar Anggota Keluarga</h4>
-                    <table id="myTable" class="tablesorter">
+                    <table>
                         <thead>
                             <tr>
                                 <th style="width:2%">No</th>

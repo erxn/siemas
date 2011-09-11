@@ -128,143 +128,78 @@ $xls->getActiveSheet()->getStyle('B6:F7')->applyFromArray($styleThinBlackBorderO
     $xls->getActiveSheet()->setCellValue("C8", $laporan[0]['umum_askes']);
     $xls->getActiveSheet()->setCellValue("C9", $laporan[0]['gigi_askes']);
     $xls->getActiveSheet()->setCellValue("C10",$laporan[0]['kia_askes']);
-    $xls->getActiveSheet()->setCellValue("C11", "Lab");
-    $xls->getActiveSheet()->setCellValue("C12", "RB");
+    $xls->getActiveSheet()->setCellValue("C11",$laporan[0]['lab_askes']);
+    $xls->getActiveSheet()->setCellValue("C12",$laporan[0]['rb_askes']);
 
     $xls->getActiveSheet()->setCellValue("C13",$laporan[0]['haji_askes']);
     $xls->getActiveSheet()->setCellValue("C14",$laporan[0]['ekg_askes']);
-    $xls->getActiveSheet()->setCellValue("C15", $laporan[0]['anak_askes']);
+    $xls->getActiveSheet()->setCellValue("C15",$laporan[0]['anak_askes']);
 
     $xls->getActiveSheet()->setCellValue("C16",$laporan[0]['dalam_askes']);
-    $xls->getActiveSheet()->setCellValue("C17", $laporan[0]['rontgen_askes']);
-    $xls->getActiveSheet()->setCellValue("C18", "Rontgen Gigi");
-    $xls->getActiveSheet()->setCellValue("C19", "Rujukan");
+    $xls->getActiveSheet()->setCellValue("C17",$laporan[0]['rontgen_askes']);
+    $xls->getActiveSheet()->setCellValue("C18",$laporan[0]['rontgen_gigi_askes']);
+    $xls->getActiveSheet()->setCellValue("C19",$laporan[0]['rujukan_askes']);
     $xls->getActiveSheet()->setCellValue("C20", "=SUM(C8:C19)");
 
     // A.S.K.E.S.K.I.N
-    $xls->getActiveSheet()->setCellValue("D8", "Umum");
-    $xls->getActiveSheet()->setCellValue("D9", "Gigi");
-    $xls->getActiveSheet()->setCellValue("D10", "KIA");
-    $xls->getActiveSheet()->setCellValue("D11", "Lab");
-    $xls->getActiveSheet()->setCellValue("D12", "RB");
+    $xls->getActiveSheet()->setCellValue("D8", $laporan[0]['umum_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D9", $laporan[0]['gigi_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D10",$laporan[0]['kia_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D11",$laporan[0]['lab_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D12",$laporan[0]['rb_askeskin']);
 
-    $xls->getActiveSheet()->setCellValue("D13", "Haji");
-    $xls->getActiveSheet()->setCellValue("D14", "EKG");
-    $xls->getActiveSheet()->setCellValue("D15", "Spesialis Anak");
+    $xls->getActiveSheet()->setCellValue("D13", $laporan[0]['haji_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D14", $laporan[0]['ekg_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D15", $laporan[0]['anak_askeskin']);
 
-    $xls->getActiveSheet()->setCellValue("D16", "Spesialis Dalam");
-    $xls->getActiveSheet()->setCellValue("D17", "Rontgen");
-    $xls->getActiveSheet()->setCellValue("D18", "Rontgen Gigi");
-    $xls->getActiveSheet()->setCellValue("D19", "Rujukan");
-    $xls->getActiveSheet()->setCellValue("D20", "J U M L A H");
+    $xls->getActiveSheet()->setCellValue("D16", $laporan[0]['dalam_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D17", $laporan[0]['rontgen_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D18", $laporan[0]['rontgen_gigi_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D19", $laporan[0]['rujukan_askeskin']);
+    $xls->getActiveSheet()->setCellValue("D20", "=SUM(D8:D19)");
 
     // LAIN-LAIN
-    $xls->getActiveSheet()->setCellValue("E8", "Umum");
-    $xls->getActiveSheet()->setCellValue("E9", "Gigi");
-    $xls->getActiveSheet()->setCellValue("E10", "KIA");
-    $xls->getActiveSheet()->setCellValue("E11", "Lab");
-    $xls->getActiveSheet()->setCellValue("E12", "RB");
+    $xls->getActiveSheet()->setCellValue("E8", $laporan[0]['umum_gr']);
+    $xls->getActiveSheet()->setCellValue("E9", $laporan[0]['gigi_gr']);
+    $xls->getActiveSheet()->setCellValue("E10",$laporan[0]['kia_gr']);
+    $xls->getActiveSheet()->setCellValue("E11",$laporan[0]['lab_gr']);
+    $xls->getActiveSheet()->setCellValue("E12",$laporan[0]['rb_gr']);
 
-    $xls->getActiveSheet()->setCellValue("E13", "Haji");
-    $xls->getActiveSheet()->setCellValue("E14", "EKG");
-    $xls->getActiveSheet()->setCellValue("E15", "Spesialis Anak");
+    $xls->getActiveSheet()->setCellValue("E13", $laporan[0]['haji_gr']);
+    $xls->getActiveSheet()->setCellValue("E14", $laporan[0]['ekg_gr']);
+    $xls->getActiveSheet()->setCellValue("E15", $laporan[0]['anak_gr']);
 
-    $xls->getActiveSheet()->setCellValue("E16", "Spesialis Ealam");
-    $xls->getActiveSheet()->setCellValue("E17", "Rontgen");
-    $xls->getActiveSheet()->setCellValue("E18", "Rontgen Gigi");
-    $xls->getActiveSheet()->setCellValue("E19", "Rujukan");
-    $xls->getActiveSheet()->setCellValue("E20", "J U M L A H");
+    $xls->getActiveSheet()->setCellValue("E16", $laporan[0]['dalam_gr']);
+    $xls->getActiveSheet()->setCellValue("E17", $laporan[0]['rontgen_gr']);
+    $xls->getActiveSheet()->setCellValue("E18", $laporan[0]['rontgen_gigi_gr']);
+    $xls->getActiveSheet()->setCellValue("E19", $laporan[0]['rujukan_gr']);
+    $xls->getActiveSheet()->setCellValue("E20", "=SUM(E8:E19)");
 
     // BAYAR
-    $xls->getActiveSheet()->setCellValue("F8", "Umum");
-    $xls->getActiveSheet()->setCellValue("F9", "Gigi");
-    $xls->getActiveSheet()->setCellValue("F10", "KIA");
-    $xls->getActiveSheet()->setCellValue("F11", "Lab");
-    $xls->getActiveSheet()->setCellValue("F12", "RB");
+    $xls->getActiveSheet()->setCellValue("F8", $laporan[0]['umum_bayar']);
+    $xls->getActiveSheet()->setCellValue("F9", $laporan[0]['gigi_bayar']);
+    $xls->getActiveSheet()->setCellValue("F10",$laporan[0]['kia_bayar']);
+    $xls->getActiveSheet()->setCellValue("F11",$laporan[0]['lab_bayar']);
+    $xls->getActiveSheet()->setCellValue("F12", $laporan[0]['rb_bayar']);
 
-    $xls->getActiveSheet()->setCellValue("F13", "Haji");
-    $xls->getActiveSheet()->setCellValue("F14", "EKG");
-    $xls->getActiveSheet()->setCellValue("F15", "Spesialis Anak");
+    $xls->getActiveSheet()->setCellValue("F13",$laporan[0]['haji_bayar']);
+    $xls->getActiveSheet()->setCellValue("F14",$laporan[0]['ekg_bayar']);
+    $xls->getActiveSheet()->setCellValue("F15",$laporan[0]['anak_bayar']);
 
-    $xls->getActiveSheet()->setCellValue("F16", "Spesialis Dalam");
-    $xls->getActiveSheet()->setCellValue("F17", "Rontgen");
-    $xls->getActiveSheet()->setCellValue("F18", "Rontgen Gigi");
-    $xls->getActiveSheet()->setCellValue("F19", "Rujukan");
-    $xls->getActiveSheet()->setCellValue("F20", "J U M L A H");
+    $xls->getActiveSheet()->setCellValue("F16", $laporan[0]['dalam_bayar']);
+    $xls->getActiveSheet()->setCellValue("F17", $laporan[0]['rontgen_bayar']);
+    $xls->getActiveSheet()->setCellValue("F18", $laporan[0]['rontgen_gigi_bayar']);
+    $xls->getActiveSheet()->setCellValue("F19", $laporan[0]['haji_bayar']);
+    $xls->getActiveSheet()->setCellValue("F20", "=SUM(F8:F19)");
 
-    $xls->getActiveSheet()->getStyle("B8:B19")->getAlignment()->setVertical('left');
-    $xls->getActiveSheet()->getStyle("C8:F19")->getAlignment()->setVertical('center');
-    $xls->getActiveSheet()->getStyle("B20:F20")->getAlignment()->setVertical('center');
+    $xls->getActiveSheet()->getStyle("B8:B19")->getAlignment()->setHorizontal('left');
+    $xls->getActiveSheet()->getStyle("C8:F19")->getAlignment()->setVertical('center')->setHorizontal('center');
+    $xls->getActiveSheet()->getStyle("B20:F20")->getAlignment()->setVertical('center')->setHorizontal('center');
+    $xls->getActiveSheet()->getStyle("B20:F20")->getFont()->setBold(true);
     $xls->getActiveSheet()->getStyle("B8:B19")->getFont()->setSize(11);
     $xls->getActiveSheet()->getStyle("B20")->getFont()->setSize(12);
     $xls->getActiveSheet()->getStyle("B8:F20")->applyFromArray($styleThinBlackBorderOutline);
 
-    // A,E,F,G,I,L: center
-//
-//    $xls->getActiveSheet()->getStyle("A$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("B$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("C$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("D$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("E$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("F$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("G$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("H$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("I$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("J$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("K$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("L$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("M$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("N$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("O$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("P$i")->getAlignment()->setHorizontal('center');
-//    $xls->getActiveSheet()->getStyle("Q$i")->getAlignment()->setHorizontal('center');
-//
-//
-//
-//$y = 9;
-//$z = $i - 1;
-
-////echo $i." ".$z;exit;
-//$xls->getActiveSheet()->setCellValue("A$i","JUMLAH");
-//$xls->getActiveSheet()->setCellValue("B$i","=SUM(B$y:B$z)");
-//$xls->getActiveSheet()->setCellValue("C$i","=SUM(C$y:C$z)");
-//$xls->getActiveSheet()->setCellValue("D$i","=SUM(D$y:D$z)");
-//$xls->getActiveSheet()->setCellValue("E$i","=SUM(E$y:E$z)");
-//$xls->getActiveSheet()->setCellValue("F$i","=SUM(F$y:F$z)");
-//$xls->getActiveSheet()->setCellValue("G$i","=SUM(G$y:G$z)");
-//$xls->getActiveSheet()->setCellValue("H$i","=SUM(H$y:H$z)");
-//$xls->getActiveSheet()->setCellValue("I$i","=SUM(I$y:I$z)");
-//$xls->getActiveSheet()->setCellValue("J$i","=SUM(J$y:J$z)");
-//$xls->getActiveSheet()->setCellValue("K$i","=SUM(K$y:K$z)");
-//$xls->getActiveSheet()->setCellValue("L$i","=SUM(L$y:L$z)");
-//$xls->getActiveSheet()->setCellValue("M$i","=SUM(M$y:M$z)");
-//$xls->getActiveSheet()->setCellValue("N$i","=SUM(N$y:N$z)");
-//$xls->getActiveSheet()->setCellValue("O$i","=SUM(O$y:O$z)");
-//$xls->getActiveSheet()->setCellValue("P$i","=SUM(P$y:P$z)");
-
-// output it
-////
-////$xls->getActiveSheet()->getStyle("A$i:Q$i")->applyFromArray($styleThinBlackBorderOutline);
-////$xls->getActiveSheet()->getStyle("A$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("B$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("C$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("D$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("E$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("F$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("G$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("H$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("I$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("J$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("K$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("L$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("M$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("N$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("O$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("P$i")->getAlignment()->setHorizontal('center');
-////    $xls->getActiveSheet()->getStyle("Q$i")->getAlignment()->setHorizontal('center');
-//
-//    $xls->getActiveSheet()->getStyle("A$i:Q$i")->getFont()->setBold(true);
-//    $xls->getActiveSheet()->getRowDimension($i)->setRowHeight(25);
 header('Content-Type: application/vnd.ms-excel');
 header('Content-Disposition: attachment;filename="Lap.Kunj_' . $bulan . '_' . $tahun . '.xls"');
 

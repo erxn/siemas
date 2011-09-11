@@ -6,14 +6,21 @@
     $(document).ready(function() {
         $(function() {
             //              $("#form_kk").validity("input:text, select");
+            
+            $.validity.setup({outputMode:'modal'});
+
             $("#pasien_baru").validity(function() {
                 $("#nama").require();
                 $("#tanggal_lahir").require()
                                    .match("number")                    // In the format of a number:
-                                   .range(1, 31); ;
+                                   .range(1, 31, 'Tanggal lahir tidak valid');
+                $("#tahun_lahir").require()
+                                   .match("number")                    // In the format of a number:
+                                   .range(1500, 2500, 'Tahun tidak valid');
                 $("#kelurahan").require();
                 $("#kecamatan").require();
                 $("#kota").require();
+                $("#jk_pasien").require();
             });
         });
     });
@@ -37,8 +44,12 @@
                         </tr>
                         <tr>
                             <td>Jenis Kelamin</td>
-                            <td><input type="radio" name="jk_pasien" value="Laki-laki"/>Laki-laki &nbsp;&nbsp;&nbsp;
-                                <input type="radio" name="jk_pasien" value="Perempuan" />Perempuan
+                            <td>
+                                    <select name="jk_pasien" id="jk_pasien">
+                                        <option value=""></option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
                             </td>
                         </tr>
 
@@ -51,7 +62,7 @@
                                     <option value="<?php echo $i; ?>"><?php echo $bulan[$i]; ?></option>
                                         <?php } ?>
                                 </select>
-                                <input name="tahun_pasien" class="input-short"  style="width: 11%" type="text" size="3" maxlength="4"/>
+                                <input name="tahun_pasien" id="tahun_lahir" class="input-short"  style="width: 11%" type="text" size="3" maxlength="4"/>
                             </td>
                         </tr>
                         <tr>

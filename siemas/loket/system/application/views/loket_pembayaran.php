@@ -66,9 +66,9 @@
                 <br/>
                 <a class="button float-left" align="left" href="index.php/pembayaran" ><span>Perbaharui Data</span></a>
                 <div>
-                    <h3  class="float-right" style="margin-right: 2%">Total: <?php echo count($pembayaran) ?> orang</h3>
+                    <h3  class="float-right" style="margin-right: 0">Total: <?php echo count($pembayaran) ?> orang</h3>
                     <br/>
-                    <table  class="tablesorter" style="width: 98%;">
+                    <table  style="width: 100%;">
                         <thead>
                             <tr>
                                 <th class="header" style="width: 1%;">No</th>

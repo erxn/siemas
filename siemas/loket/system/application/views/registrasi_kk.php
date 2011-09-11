@@ -48,12 +48,15 @@ $(document).ready(function() {
     $(document).ready(function() {
         $(function() {
             //              $("#form_kk").validity("input:text, select");
+            $.validity.setup({outputMode:'modal'});
+
             $("#form_kk").validity(function() {
                 $("#nama").require();
                 $("#alamat").require();
                 $("#kelurahan").require();
                 $("#kecamatan").require();
                 $("#kota").require();
+                $("#jenis_kelamin").require();
             });
         });
     });
@@ -81,12 +84,15 @@ $(document).ready(function() {
                             <tr>
                                 <td>Jenis Kelamin</td>
                                 <td>
-                                    <input type="radio" name="jk_kk" value="Laki-laki"/>Laki-laki
-                                    <input type="radio" name="jk_kk" value="Perempuan" />Perempuan
+                                    <select name="jk_kk" id="jenis_kelamin">
+                                        <option value=""></option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr class="odd">
-                                <td>Alamat</td>
+                                <td style="vertical-align: top">Alamat</td>
                                 <td>
                                     <textarea id="alamat" cols="26" rows="2" name="alamat"></textarea>
                                 </td>

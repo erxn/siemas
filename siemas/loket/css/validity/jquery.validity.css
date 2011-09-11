@@ -2,7 +2,7 @@
  * Style used by the label output mode.
  * Applied to the error labels that get positioned after an input.
  */
-label.error { 
+label.error {
     color:#C03926;
     margin-left:2px;     
     /*background-image:url('arrow.gif');*/
@@ -20,16 +20,19 @@ label.error {
  * and '.validity-modal-msg:hover' is applied to suggest 
  * to the user that the boxes are clickable.
  */
-.validity-modal-msg { 
-    position:absolute; 
-    z-index:2; 
-    background-color:#999; 
-    border:solid 1px #000; 
+.validity-modal-msg {
+    position:absolute;
+    z-index:2;
+    background-color:#FFF;
+    border:solid 1px #767676;
     padding:4px;
-    cursor:pointer; 
+    cursor:pointer;
+    background: -moz-linear-gradient(top, #FFFFFF, #c9d9ef);
+    -moz-border-radius: 2px;
+    -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.25);
 }
-.validity-modal-msg:hover { 
-    background-color:#aaa; 
+.validity-modal-msg:hover {
+    opacity: 0.8;
 }
 
 /*

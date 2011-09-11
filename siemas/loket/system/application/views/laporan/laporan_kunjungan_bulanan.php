@@ -71,7 +71,7 @@
                         <td align="center"><?php echo $laporan[0]['umum_gr']?></td>
                         <td align="center"><?php echo $laporan[0]['umum_bayar']?></td>
                     </tr>
-                    <tr>
+                    <tr class="odd">
                         <td>BP Gigi</td>
                         <td align="center"><?php echo $laporan[0]['gigi_askes']?></td>
                         <td align="center"><?php echo $laporan[0]['gigi_askeskin']?></td>
@@ -85,7 +85,7 @@
                         <td align="center"><?php echo $laporan[0]['kia_gr']?></td>
                         <td align="center"><?php echo $laporan[0]['kia_bayar']?></td>
                     </tr>
-                    <tr>
+                    <tr class="odd">
                         <td>Laboratorium</td>
                         <td align="center"><?php echo $laporan[0]['lab_askes']?></td>
                         <td align="center"><?php echo $laporan[0]['lab_askeskin']?></td>
@@ -99,7 +99,7 @@
                         <td align="center"><?php echo $laporan[0]['rb_gr']?></td>
                         <td align="center"><?php echo $laporan[0]['rb_bayar']?></td>
                     </tr>
-                    <tr>
+                    <tr class="odd">
                         <td>Haji</td>
                         <td align="center"><?php echo $laporan[0]['haji_askes']?></td>
                         <td align="center"><?php echo $laporan[0]['haji_askeskin']?></td>
@@ -113,7 +113,7 @@
                         <td align="center"><?php echo $laporan[0]['ekg_gr']?></td>
                         <td align="center"><?php echo $laporan[0]['ekg_bayar']?></td>
                     </tr>
-                    <tr>
+                    <tr class="odd">
                         <td>Spesialis anak</td>
                         <td align="center"><?php echo $laporan[0]['anak_askes']?></td>
                         <td align="center"><?php echo $laporan[0]['anak_askeskin']?></td>
@@ -127,7 +127,7 @@
                         <td align="center"><?php echo $laporan[0]['dalam_gr']?></td>
                         <td align="center"><?php echo $laporan[0]['dalam_bayar']?></td>
                     </tr>
-                    <tr>
+                    <tr class="odd">
                         <td>Rontgen</td>
                         <td align="center"><?php echo $laporan[0]['rontgen_askes']?></td>
                         <td align="center"><?php echo $laporan[0]['rontgen_askeskin']?></td>
@@ -141,7 +141,7 @@
                         <td align="center"><?php echo $laporan[0]['rontgen_gigi_gr']?></td>
                         <td align="center"><?php echo $laporan[0]['rontgen_gigi_bayar']?></td>
                     </tr>
-                    <tr>
+                    <tr class="odd">
                         <td>Rujukan</td>
                         <td align="center"><?php echo $laporan[0]['rujukan_askes']?></td>
                         <td align="center"><?php echo $laporan[0]['rujukan_askeskin']?></td>
