@@ -49,14 +49,15 @@ class Pasien extends Controller {
             );
 
             $id_kunjungan = $this->M_kunjungan->insert_id_kunjungan($data_kunjungan);
-
+            
             $id_poli = $this->M_antrian->get_id_by_poli($this->input->post('poli'));
+            
             $data_antrian = array(
                 'status'    => "ANTRI",
                 'id_kunjungan' => $id_kunjungan,
                 'id_poli' => $id_poli[0]
             );
-
+            
             $antrian = $this->M_antrian->tambah_antrian($data_antrian);
             redirect('registrasi/index');
         }

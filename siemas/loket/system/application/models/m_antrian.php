@@ -18,7 +18,7 @@ class M_antrian extends Model {
                             JOIN kk using (id_kk)
                             WHERE id_poli=$id_poli
                             AND tanggal_kunjungan = '$now'
-                            AND status != 'SELESAI'
+                            AND status IN ('TUNDA', 'ANTRI', 'SEDANG DIPROSES')
                             ORDER BY id_kunjungan DESC");
 
         if($q->num_rows() > 0) {

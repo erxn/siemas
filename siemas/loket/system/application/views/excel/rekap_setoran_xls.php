@@ -115,7 +115,7 @@ $xls->getActiveSheet()->getColumnDimension("C")->setWidth(9);
 $xls->getActiveSheet()->getColumnDimension("D")->setWidth(9);
 $xls->getActiveSheet()->getColumnDimension("E")->setWidth(9);
 
-$xls->getActiveSheet()->getColumnDimension('A')->setWidth(11);
+$xls->getActiveSheet()->getColumnDimension('A')->setWidth(8);
 //$xls->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 //$xls->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
 //$xls->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
@@ -140,23 +140,23 @@ $xls->getActiveSheet()->getStyle('A6:Q8')->getFill()->setFillType(Style_Fill::FI
 $i=9; foreach ($laporan as $hasil) :
     //print_r($hasil);exit;
     $xls->getActiveSheet()->setCellValue("A$i", $i-8);
-    $xls->getActiveSheet()->setCellValue("B$i", floatval($hasil['umum']));
-    $xls->getActiveSheet()->setCellValue("C$i", floatval($hasil['gigi']));
-    $xls->getActiveSheet()->setCellValue("D$i", floatval($hasil['labor']));
-    $xls->getActiveSheet()->setCellValue("E$i", floatval($hasil['rontgen']));
+    $xls->getActiveSheet()->setCellValue("B$i", number_format(floatval($hasil['umum'])));
+    $xls->getActiveSheet()->setCellValue("C$i", number_format(floatval($hasil['gigi'])));
+    $xls->getActiveSheet()->setCellValue("D$i", number_format(floatval($hasil['labor'])));
+    $xls->getActiveSheet()->setCellValue("E$i", number_format(floatval($hasil['rontgen'])));
 
-    $xls->getActiveSheet()->setCellValue("F$i", floatval($hasil['ekg']));
-    $xls->getActiveSheet()->setCellValue("G$i", floatval($hasil['haji']));
-    $xls->getActiveSheet()->setCellValue("H$i", floatval($hasil['rb']));
+    $xls->getActiveSheet()->setCellValue("F$i", number_format(floatval($hasil['ekg'])));
+    $xls->getActiveSheet()->setCellValue("G$i", number_format(floatval($hasil['haji'])));
+    $xls->getActiveSheet()->setCellValue("H$i", number_format(floatval($hasil['rb'])));
 
-    $xls->getActiveSheet()->setCellValue("I$i", floatval($hasil['anak']));
-    $xls->getActiveSheet()->setCellValue("J$i", floatval($hasil['dalam']));
-    $xls->getActiveSheet()->setCellValue("K$i", floatval($hasil['usg']));
-    $xls->getActiveSheet()->setCellValue("L$i", floatval($hasil['kb']));
-    $xls->getActiveSheet()->setCellValue("M$i", floatval($hasil['catin']));
-    $xls->getActiveSheet()->setCellValue("N$i", floatval($hasil['kir']));
-    $xls->getActiveSheet()->setCellValue("O$i", floatval($hasil['mantuox']));
-    $xls->getActiveSheet()->setCellValue("P$i", "=SUM(B$i:O$i)");
+    $xls->getActiveSheet()->setCellValue("I$i", number_format(floatval($hasil['anak'])));
+    $xls->getActiveSheet()->setCellValue("J$i", number_format(floatval($hasil['dalam'])));
+    $xls->getActiveSheet()->setCellValue("K$i", number_format(floatval($hasil['usg'])));
+    $xls->getActiveSheet()->setCellValue("L$i", number_format(floatval($hasil['kb'])));
+    $xls->getActiveSheet()->setCellValue("M$i", number_format(floatval($hasil['catin'])));
+    $xls->getActiveSheet()->setCellValue("N$i", number_format(floatval($hasil['kir'])));
+    $xls->getActiveSheet()->setCellValue("O$i", number_format(floatval($hasil['mantuox'])));
+    $xls->getActiveSheet()->setCellValue("P$i", "=(SUM(B$i:O$i))");
 
     $xls->getActiveSheet()->getStyle("A$i:P$i")->getAlignment()->setVertical('center');
     $xls->getActiveSheet()->getStyle("A$i:P$i")->getFont()->setSize(10);

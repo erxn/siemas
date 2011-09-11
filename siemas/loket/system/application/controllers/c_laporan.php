@@ -483,8 +483,6 @@ class C_laporan extends Controller {
             $kunj_umum_LW =      $this->M_kunjungan->get_poli_wil($tgl,$umum,0,$stat1,'Umum');
             $kunj_umum_LKot =    $this->M_kunjungan->get_poli_wil($tgl,$umum,0,$stat2,'Umum');
 
-            
-
             $kunj_gigi_pabaton = $this->M_kunjungan->get_poli_wil($tgl,$gigi,$wil1,0,'Umum');
             $kunj_gigi_cibogor = $this->M_kunjungan->get_poli_wil($tgl,$gigi,$wil2,0,'Umum');
             $kunj_gigi_LW = $this->M_kunjungan->get_poli_wil($tgl,$gigi,0,$stat1,'Umum');
@@ -495,6 +493,11 @@ class C_laporan extends Controller {
             $kunj_kia_LW = $this->M_kunjungan->get_poli_wil($tgl,$kia,0,$stat1,'Umum');
             $kunj_kia_LKot = $this->M_kunjungan->get_poli_wil($tgl,$kia,0,$stat2,'Umum');
             
+            $kunj_kb_pabaton = $this->M_kunjungan->get_total_by_ket_wil($tgl,$ket,$layanan,$wil,$stat);
+            $kunj_kb_cibogor = $this->M_kunjungan->get_poli_wil($tgl,$kb,$wil2,0,'Umum');
+            $kunj_kb_LW = $this->M_kunjungan->get_poli_wil($tgl,$kb,0,$stat1,'Umum');
+            $kunj_kb_LKot = $this->M_kunjungan->get_poli_wil($tgl,$kia,0,$stat2,'Umum');
+
             $laporan[] = array(
 
                 'lama_pab' => $kunj_lama_pabaton,
@@ -1057,7 +1060,7 @@ class C_laporan extends Controller {
 
         $data['laporan'] = $laporan;
         $this->load->plugin('phpexcel');
-        $this->load->view('excel/lb_4_xls', $data);
+        $this->load->view('excel/lb4_xls', $data);
     }
 
     function kunjungan_bulanan_xls($bln,$thn){
