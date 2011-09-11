@@ -32,7 +32,7 @@
                                     <input type="submit" value="Pilih" class="submit-green" name="pilih">
                                 </div>
                             </td>
-                            <td align="right" width="67%"><a href="index.php/pegawai/laporan_duk_xls/" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
+                            <td align="right" width="67%"><a href="index.php/c_laporan/lb4_xls/<?php echo intval($laporan[0]['bulan'])."/".$laporan[0]['tahun']?>" class="submit-green xls-button" style="margin-left: 10px" title="Simpan sebagai file Excel">
                                     <img src="images/ms-excel.png" alt=""/>
                                     Simpan ke Excel
                                 </a></td>
