@@ -1,0 +1,261 @@
+<div style="display: none;" id="cboxOverlay"></div><div class="" id="colorbox" style="padding-bottom: 42px; padding-right: 42px; display: none;"><div style="" id="cboxWrapper"><div style=""><div style="float: left;" id="cboxTopLeft"></div><div style="float: left;" id="cboxTopCenter"></div><div style="float: left;" id="cboxTopRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxMiddleLeft"></div><div style="float: left;" id="cboxContent"><div class="" style="width: 0pt; height: 0pt; overflow: hidden;" id="cboxLoadedContent"></div><div class="" style="" id="cboxLoadingOverlay"></div><div class="" style="" id="cboxLoadingGraphic"></div><div class="" style="" id="cboxTitle"></div><div class="" style="" id="cboxCurrent"></div><div class="" style="" id="cboxNext"></div><div class="" style="" id="cboxPrevious"></div><div class="" style="" id="cboxSlideshow"></div><div class="" style="" id="cboxClose"></div></div><div style="float: left;" id="cboxMiddleRight"></div></div><div style="clear: left;"><div style="float: left;" id="cboxBottomLeft"></div><div style="float: left;" id="cboxBottomCenter"></div><div style="float: left;" id="cboxBottomRight"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div><div id="header">
+
+
+
+            <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:30px">
+            <img src="Template_files/puskesmas.png" style="position: absolute; top:4px; left:85px">
+            <img src="Template_files/alamat.png" style="position: absolute; top:40px; left:85px">
+            <img src="Template_files/gigi.png" style="position: absolute; top:10px; right:2px">
+            <!-- Header. Main part -->
+            <div id="header-main">
+                <div class="container_12">
+                    <div class="grid_12">
+                        <ul id="nav">
+                            <li id=""><a href="index.php/antrian/antri/1">Antrian</a></li>
+                            <li id=""><a href="index.php/antrian/isi_remed_hari_ini">Isi Rekam Medik</a></li>
+                            <li id=""><a href="index.php/stat">Statistik</a></li>
+                            <li id=""><a href="index.php/laporan">Laporan</a></li>
+                            <li id="current"><a href="index.php/kunjungan/kunjungan_hari_ini">Kunjungan</a></li>
+                             <li><a href="index.php/">Logout</a></li>
+
+                        </ul>
+
+                    </div><!-- End. .grid_12-->
+                    </div><!-- End. .grid_12-->
+                    <div style="clear: both;"></div>
+                </div><!-- End. .container_12 -->
+            </div> <!-- End #header-main -->
+
+<style>
+    .kotak {
+        width: 70px;
+        height:30px;
+        padding: 4px;
+        display: inline-block;
+        margin: 0px;
+        -moz-border-radius: 10px;
+        -moz-box-shadow: 1px 2px 10px #666666;
+        text-decoration: none;
+        background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE);
+        font-size: 12px;
+    }
+    .kotak:hover {
+        background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+    }
+    .current {
+        width: 70px;height:30px;
+        padding: 4px;
+        display: inline-block;
+        margin: 0px;
+        -moz-border-radius: 10px;
+        -moz-box-shadow: 1px 2px 10px #9FCFE5;
+        text-decoration: none;
+        background: -moz-linear-gradient(top, #ffffff, #9FCFE5);
+        font-size: 12px;
+    }
+</style>
+<script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen">
+<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css">
+<script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
+    });
+</script>
+
+
+<script>
+    $(function() {
+
+        $( ".tabs" ).tabs();
+    });
+
+     $(function() {
+        $( "#datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'd MM yy',
+            monthNames: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+        });
+    });
+</script>
+
+<div id="subnav">
+    <div class="container_12">
+        <div class="grid_12">
+
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+
+<div>
+
+        <div class="grid_6" style="width: 98%">
+            <div class="module">
+                <h2><span>REKAPITULAS KUNJUNGAN HARIAN</span></h2>
+                <div class="module-body">
+                   <form action="" method="post">
+
+                Pilih tanggal:
+                <input id="datepicker" name="tgl_kunjungan" class="input-medium hasDatepicker" value="" type="text">
+                <input value="Tampilkan" class="submit-green" name="submit" type="submit">
+                <br>
+                <h3 style="margin-top: 0px" align="right"></h3>
+                Pilih Jenis Pelayanan:
+               <div style="width: 500px; height: auto;padding: 2px; text-align: center;" align="left">
+                        <a style="font-size: 12px !important;" href="index.php/kunjungan/kunjungan_hari_ini" class="kotak current">
+                            SEMUA</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a style="font-size: 12px !important;" href="index.php/kunjungan/kunjungan_askes" class="kotak ">
+                            ASKES</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="index.php/kunjungan/kunjungan_jamkesmas" class="kotak ">
+                            JAMKESMAS</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="index.php/kunjungan/kunjungan_umum" class="kotak ">
+                            UMUM</a>
+                    </div>            </form>
+            <br>
+            <hr>
+            <h3 align="right">Total Pasien: 8 orang</h3>
+<table style="width: 99%">
+                <thead>
+                    <tr>
+                        <th style="width:2%">No</th>
+                        <th style="width:3%">No. Kunjungan</th>
+                        <th style="width:13%">Nama Pasien</th>
+                        <th style="width:20%">Alamat</th>
+                        <th style="width:10%">Status Pelayanan</th>
+                        <th style="width:6%">Layanan</th>
+                        <th style="width:6%">Penyakit</th>
+                        <th style="width:6%">Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                       <tr class="even ">
+                        <td class="align-center">1</td>
+                        <td class="align-center">2</td>
+                        <td>Annisa Anastasia                            <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">Perempuan, 20 th</small>
+                        </td>
+                        <td>Jl. Babakan Raya 4 Kel. Bogor Tengah, Kec. Pabaton, Bogor</td>
+                        <td>Askes<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">11233466</small>
+                        </td>
+                        <td class="align-center">Odontektomi ringan</td>
+                        <td class="align-center">Gangguan Gigi &amp; Jaringan Penunjang Lain</td>
+                        <td class="align-center">200</td>
+
+                    </tr>
+                                        <tr class="odd ">
+                        <td class="align-center">2</td>
+                        <td class="align-center">3</td>
+                        <td>Farhad Alaydrus                            <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">Laki-laki, 30 th</small>
+                        </td>
+                        <td>Jl. Bara 3 Kel. Bogor Tengah, Kec. Pabaton, Bogor</td>
+                        <td>Askes<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">12345678</small>
+                        </td>
+                        <td class="align-center">Scalling per-regio</td>
+                        <td class="align-center">Penyakit Dentofasial termasuk Inaloklusi</td>
+                        <td class="align-center">13</td>
+
+                    </tr>
+                                        <tr class="even ">
+                        <td class="align-center">3</td>
+                        <td class="align-center">5</td>
+                        <td>Muslimah                            <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">Perempuan, 67 th</small>
+                        </td>
+                        <td>Jl. Perwira VIII Kel. Bogor Barat, Kec. Kebon Pedes, Bogor</td>
+                        <td>Lain-lain<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">0</small>
+                        </td>
+                        <td class="align-center">Gigi tiruan lepas sebagian</td>
+                        <td class="align-center">Penyakit Pulpa &amp; Jaringan Periapikal</td>
+                        <td class="align-center">100</td>
+
+                    </tr>
+                                        <tr class="odd ">
+                        <td class="align-center">4</td>
+                        <td class="align-center">6</td>
+                        <td>Muslimah                            <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">Perempuan, 67 th</small>
+                        </td>
+                        <td>Jl. Perwira VIII Kel. Bogor Barat, Kec. Kebon Pedes, Bogor</td>
+                        <td>Lain-lain<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">0</small>
+                        </td>
+                        <td class="align-center">Jacket Crown Porcelain</td>
+                        <td class="align-center">Penyakit Gusi &amp; Periodontal</td>
+                        <td class="align-center">400</td>
+
+                    </tr>
+                                        <tr class="even ">
+                        <td class="align-center">5</td>
+                        <td class="align-center">8</td>
+                        <td>Raden Bagus                            <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">Laki-laki, 11 th</small>
+                        </td>
+                        <td>Jl. Bara 3 Kel. Bogor Tengah, Kec. Pabaton, Bogor</td>
+                        <td>Askes<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">12345678</small>
+                        </td>
+                        <td class="align-center">Gigi tiruan penuh 1 rahang</td>
+                        <td class="align-center">Penyakit Gusi &amp; Periodontal</td>
+                        <td class="align-center">600</td>
+
+                    </tr>
+                                        <tr class="odd ">
+                        <td class="align-center">6</td>
+                        <td class="align-center">10</td>
+                        <td>lalalal                            <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">,  th</small>
+                        </td>
+                        <td>Jl. Perwira VIII Kel. Bogor Barat, Kec. Kebon Pedes, Bogor</td>
+                        <td>Umum<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">0</small>
+                        </td>
+                        <td class="align-center">-</td>
+                        <td class="align-center">-</td>
+                        <td class="align-center">0</td>
+
+                    </tr>
+                                        <tr class="even ">
+                        <td class="align-center">7</td>
+                        <td class="align-center">12</td>
+                        <td>Fatih                             <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">Laki-laki, 7 th</small>
+                        </td>
+                        <td>jl. Pendidikan 6 Kel. Kebon Pedes, Kec. Tanah Sareal, Bogor</td>
+                        <td>Askes<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">1234567890</small>
+                        </td>
+                        <td class="align-center">Alveolektomi 1 gigi</td>
+                        <td class="align-center">Penyakit Pulpa &amp; Jaringan Periapikal</td>
+                        <td class="align-center">15</td>
+
+                    </tr>
+                                        <tr class="odd ">
+                        <td class="align-center">8</td>
+                        <td class="align-center">13</td>
+                        <td>Anita Daulay                            <br>
+                            <small style="font-size: 10px; color: #777777; font-weight: normal">Perempuan, 11 th</small>
+                        </td>
+                        <td>Jl. Bara 3 Kel. Bogor Tengah, Kec. Pabaton, Bogor</td>
+                        <td>Askes<br>
+                            <small style="font-size: 12px; color: #777777; font-weight: normal">12345678</small>
+                        </td>
+                        <td class="align-center">Ordhonti ringan</td>
+                        <td class="align-center">Penyakit Pulpa &amp; Jaringan Periapikal</td>
+                        <td class="align-center">600</td>
+
+                    </tr>
+                                    </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+    </div><div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
