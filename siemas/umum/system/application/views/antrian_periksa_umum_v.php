@@ -19,6 +19,10 @@
             </td>
             <td valign="middle" align="right">
                 <a href="#" style="text-decoration: none" onclick="selesai(<?php echo $s[$i]['id_antrian'] ?>); return false" class="btn-gplus gplus-blue">Selesai</a>
+                <a href="#" style="text-decoration: none" onclick="rujuk(<?php echo $s[$i]['id_antrian'] ?>, <?php echo $s[$i]['id_kunjungan'] ?>, 5); return false" class="btn-gplus gplus-blue">Lab</a>
+                <a href="#" style="text-decoration: none" onclick="rujuk(<?php echo $s[$i]['id_antrian'] ?>, <?php echo $s[$i]['id_kunjungan'] ?>, 4); return false" class="btn-gplus gplus-blue">Radiologi</a>
+
+
             </td>
 
         </tr>

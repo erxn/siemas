@@ -851,18 +851,21 @@ form.login {
 
     .selesai {
 
-         width:110px;
-        height:110px;
-        padding: 8px;
-        display: inline-block;
-       margin: 5px;
-        -moz-border-radius: 10px;
-        -moz-box-shadow: 1px 3px 10px #666666;
-        text-decoration: none;
+        width: 200px;
+       height:200px;
+                padding: 8px;
+                display: inline-block;
+                margin: 5px;
+                -moz-border-radius: 10px;
+                -moz-box-shadow: 1px 3px 10px #666666;
+                text-decoration: none;
+                font-size: 17px;
         background: -moz-linear-gradient(top, #b5d6f9, #e5e7e9);
     }
     .selesai:hover {
         background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+         font-weight: bold;
+                text-decoration: none;
     }
 
 

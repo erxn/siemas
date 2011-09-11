@@ -67,6 +67,17 @@ class Antrian extends Controller {
         $this->antrian->ubah_status($id_antrian, 'TUNDA');
     }
 
+    function rujuk($id_antrian,$id_kunjungan,$id_poli){
+        $this->antrian->ubah_status($id_antrian, 'SELESAI');
+        $data_antrian = array(
+                'status'    => "ANTRI",
+                'id_kunjungan' => $id_kunjungan,
+                'id_poli' => $id_poli
+            );
+
+            $antrian = $this->M_antrian->tambah_antrian($data_antrian);
+    }
+
     function pasien_hari_ini($id_poli) {
         $antrian=$this->antrian->tabel_antrian_terisi($id_poli);
         $data['ter']=$antrian;
@@ -483,6 +494,8 @@ class Antrian extends Controller {
 
         $this->load->view('ispa_v');
     }
+
+
 }
 
 ?>

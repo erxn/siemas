@@ -125,6 +125,18 @@ class Antrian_m extends Model{
 
     }
 
+    function tambah_antrian($data){
+        $insert = $this->db->insert('antrian',$data);
+
+        if($insert){
+            return $this->db->insert_id(); //fungsi dari CInya
+        }
+        else {
+            return 0;
+        }
+    }
+
+
     function data_pasien_remed($id_pasien){                               //buat nampilin data pasien di database di tampilan remed
          $data=array();
         $q=$this->db->query("SELECT * FROM pasien WHERE id_pasien=$id_pasien" );

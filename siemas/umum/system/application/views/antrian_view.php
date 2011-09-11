@@ -35,6 +35,7 @@
     function load_tabel_selesai() {
         $('#div-selesai').load("index.php/antrian/tabel_selesai/2");
     }
+    
 
     $(document).ready(function(){
         load_tabel_antri();
@@ -103,6 +104,15 @@ function lewati(id) {
 function selesai(id) {
 
     $.get('index.php/antrian/selesai/' + id);
+    load_tabel_antri();
+    load_tabel_periksa();
+    load_tabel_tunda();
+
+}
+function rujuk(id_antrian, id_kunjungan, poli) {
+
+    //alert(id_antrian + ' ' + id_kunjungan + ' ' + poli);
+    $.get('index.php/antrian/rujuk/' + id_antrian + '/' + '/' + id_kunjungan+ '/' + poli);
     load_tabel_antri();
     load_tabel_periksa();
     load_tabel_tunda();
