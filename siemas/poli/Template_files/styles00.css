@@ -2,7 +2,7 @@
 /* -------------------- Basic HTML tags -------------------- */
 
 body {
-	font: 13px/1.5 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font: 14px/1.5 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	color: #444444;
 	background-color: #f6f6f6;
 	}
@@ -81,11 +81,12 @@ fieldset {
 
 a, 
 a:visited { 
-	color:#0063be; text-decoration: none; 
+	color:#0063be; 
 	}
 
 a:hover, a:active { 
-	text-decoration: underline; 
+	text-decoration: none;
+        font-weight:bold;
 	}
 
 h1 a, h1 a:visited, h2 a, h2 a:visited, h3 a, h3 a:visited, h4 a, h4 a:visited, h5 a, h5 a:visited, h6 a, h6 a:visited { 
@@ -275,7 +276,14 @@ ul#nav li#current a {
 	}
 
 
+ul#nav li#cur { /* give the id="current" to the currently selected tab */
+	background:ffffff;
+	}
 
+ul#nav li#cur a {
+	background:ffffff;
+	color:#ffffff;
+	}
 
 /* -------------------- Box module -------------------- */
 
@@ -283,7 +291,6 @@ div.module {
 	background: url('module-b.gif') no-repeat scroll bottom left; 
 	float: right; 
 	width: 100%; 
-	margin-bottom: 100px; 
 	margin-top: 30px ;
 	
 }
@@ -549,6 +556,23 @@ input.submit-green {
 	cursor: pointer;
 	}
 
+    
+
+input.submit-next { 
+	background: url(next.png) top left repeat-x;
+	border: 0; 
+	border-top: 1px solid #6bd091; 
+	border-left: 1px solid #6bd091; 
+	border-right: 1px solid #349c5c; 
+	border-bottom: 1px solid #349c5c; 
+	color: #ffffff; 
+	font-size: 14px; 
+	padding: 2px 12px; 
+	margin: 0px 10px 0 0;
+	cursor: pointer;
+        width: 30px;
+	}
+
 input.submit-green-hover { 
 	background-image: url(submit-h.gif);
 	}
@@ -783,8 +807,7 @@ form.login {
 	float: right; 
 	background: url(dashboar.gif) top left no-repeat; 
 	margin: 0 8px 8px 0;  
-	text-align: center; 
-	color: #444444; 
+	text-align: center;
 	}
 	
 .dashboard-module:hover{
@@ -802,7 +825,7 @@ form.login {
 	}
 	
 .dashboard-module span { 
-	margin-top: 10px; 
+	
 	display: block; 
 	}
 
@@ -816,17 +839,154 @@ form.login {
 		vertical-align: top;
 }
 
- .kotak {
-		
-        width:7%;
+
+.table-gw {
+	width: 100%;
+	margin: 0 0 10px 0;
+	border-left: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
+	}
+
+.table-gw.tr {
+	border-collapse: separate;
+	border-right: 1px solid #aaaaaa;
+	border-left: 1px solid #aaaaaa;
+	}
+
+.table-gw th {
+	background-color: #eeeeee;
+	color: #499744;
+	padding: 5px;
+	text-align: left;
+	border-right: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
+	}
+
+.table-gw td {
+	background-color: #uuufff;
+	padding: 5px;;
+	border-right: 1px solid #d9d9d9;
+	}
+
+.table-gw tr.odd td { /* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
+	background-color: #f455fa;
+	}
+
+.kotak {
+
+        width:110px;
+        height:110px;
         padding: 8px;
         display: inline-block;
        margin: 5px;
+       cursor: pointer;
         -moz-border-radius: 10px;
         -moz-box-shadow: 1px 3px 10px #666666;
         text-decoration: none;
-        background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE);
+        background: -moz-linear-gradient(top, #b0f9ab, #EEEEEE);
     }
     .kotak:hover {
         background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+        font-weight: normal !important;
     }
+
+     .periksa {
+        width:110px;
+        height:110px;
+        padding: 8px;
+        display: inline-block;
+       margin: 5px;
+       cursor: pointer;
+        -moz-border-radius: 10px;
+        -moz-box-shadow: 1px 3px 10px #666666;
+        text-decoration: none;
+        background: -moz-linear-gradient(top, #f8b3b6, #e5e7e9);
+    }
+    .periksa:hover {
+        background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+         font-weight: normal !important;
+    }
+
+    .selesai {
+
+       width: 200px;
+       height:200px;
+                padding: 8px;
+                display: inline-block;
+                margin: 5px;
+                -moz-border-radius: 10px;
+                -moz-box-shadow: 1px 3px 10px #666666;
+                text-decoration: none;
+                font-size: 17px;
+        background: -moz-linear-gradient(top, #b5d6f9, #e5e7e9);
+    }
+    .selesai:hover {
+        background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+         font-weight: normal !important;
+          font-weight: bold;
+                text-decoration: none;
+    }
+
+
+    .but {
+
+        width:13%;
+        padding: 8px;
+        display: inline-block;
+       margin: 5px;
+       cursor: pointer;
+        -moz-border-radius: 5px;
+        -moz-box-shadow: 1px 3px 5px #666666;
+        text-decoration: none;
+        color:#1c6aac;
+        font: 16px/1.5 "Lucida Sans Unicode","Lucida Grande",sans-serif;
+        font-weight: bold;
+        background: -moz-linear-gradient(top, #b0dde7, #EEEEEE);
+    }
+    .but:hover {
+        background: -moz-linear-gradient(top, #FFFFFF, #DDDDDD);
+    }
+
+
+
+    .gplus-green  {
+    background-image: -moz-linear-gradient(center top , #3D9400, #398A00);
+    border: 1px solid #29691D;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.gplus-green:hover, .gplus-red:hover, .gplus-blue:hover  {
+    opacity: 0.9;
+    -moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.4);
+    font-weight: normal !important;
+}
+
+.gplus-red {
+    background-image: -moz-linear-gradient(center top , #DD4B39, #D14836);
+    border: 1px solid #B0281A;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.gplus-blue {
+    background-image: -moz-linear-gradient(center top , #4D90FE, #4787ED);
+    border: 1px solid #2F5BB7;
+    color: #FFFFFF !important;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-gplus {
+    -moz-border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: normal;
+    height: 27px;
+    line-height: 37px;
+    margin: 3px;
+    margin-top: 10px;
+    outline: 0 none;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+}
