@@ -99,8 +99,8 @@
                     <div class="grid_12">                       												
                         <ul id="nav">
                             <li><a href="index.php/antrian/antri/2">Antrian</a></li>
+                            <li><a href="index.php/antrian/isi_remed_hari_ini">Isi Rekam MEdik</a></li>
                             <li><a href="index.php/stat">Statistik</a></li>
-                            <li><a href="index.php/laporan">Laporan</a></li>
                              <li><a href="">Logout</a></li>
 
                         </ul>

@@ -40,7 +40,7 @@ class Stat_m extends Model{
 
     function get_kunjungan_umum_tbc($umum=0,$tgl=0){
         $q = $this->db->query("
-                            SELECT COUNT( remed_poli_umum.id_tbc ) AS jumlah
+                            SELECT COUNT( * ) AS jumlah
                             FROM `antrian`
                             JOIN kunjungan
                             USING ( id_kunjungan )
@@ -48,6 +48,8 @@ class Stat_m extends Model{
                             USING ( id_pasien )
                             JOIN remed_poli_umum
                             USING ( id_pasien )
+                            JOIN tbc
+                            USING (id_remed_umum)
                             WHERE tanggal_kunjungan = '$tgl'
                             AND antrian.id_poli = $umum
                             ");
@@ -57,7 +59,7 @@ class Stat_m extends Model{
 
     function get_kunjungan_umum_diare($umum=0,$tgl=0){
         $q = $this->db->query("
-                            SELECT COUNT( remed_poli_umum.id_diare ) AS jumlah
+                            SELECT COUNT( * ) AS jumlah
                             FROM `antrian`
                             JOIN kunjungan
                             USING ( id_kunjungan )
@@ -65,6 +67,8 @@ class Stat_m extends Model{
                             USING ( id_pasien )
                             JOIN remed_poli_umum
                             USING ( id_pasien )
+                            JOIN diare
+                            USING (id_remed_umum)
                             WHERE tanggal_kunjungan = '$tgl'
                             AND antrian.id_poli = $umum
                             ");
@@ -75,7 +79,7 @@ class Stat_m extends Model{
 
     function get_kunjungan_umum_ispa($umum=0,$tgl=0){
         $q = $this->db->query("
-                            SELECT COUNT( remed_poli_umum.id_ispa ) AS jumlah
+                            SELECT COUNT( * ) AS jumlah
                             FROM `antrian`
                             JOIN kunjungan
                             USING ( id_kunjungan )
@@ -83,6 +87,8 @@ class Stat_m extends Model{
                             USING ( id_pasien )
                             JOIN remed_poli_umum
                             USING ( id_pasien )
+                            JOIN ispa
+                            USING (id_remed_umum)
                             WHERE tanggal_kunjungan = '$tgl'
                             AND antrian.id_poli = $umum
                             ");
@@ -90,26 +96,11 @@ class Stat_m extends Model{
         return $jum_umum[0]['jumlah'];
     }
 
-    function get_kunjungan_umum_campak($umum=0,$tgl=0){
-        $q = $this->db->query("
-                            SELECT COUNT( remed_poli_umum.campak_id_campak ) AS jumlah
-                            FROM `antrian`
-                            JOIN kunjungan
-                            USING ( id_kunjungan )
-                            JOIN pasien
-                            USING ( id_pasien )
-                            JOIN remed_poli_umum
-                            USING ( id_pasien )
-                            WHERE tanggal_kunjungan = '$tgl'
-                            AND antrian.id_poli = $umum
-                            ");
-        $jum_umum = $q->result_array();
-        return $jum_umum[0]['jumlah'];
-    }
+    
 
     function get_kunjungan_umum_m($umum=0,$tgl=0){
         $q = $this->db->query("
-                            SELECT COUNT( remed_poli_umum.penyakit_umum ) AS jumlah
+                            SELECT COUNT( * ) AS jumlah
                             FROM `antrian`
                             JOIN kunjungan
                             USING ( id_kunjungan )
