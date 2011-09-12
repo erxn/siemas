@@ -120,7 +120,7 @@
 
             <?php if($data_pasien == null) { ?>
 
-            <h1> Pilih pasien dulu</h1>
+                <h4> Pilih pasien yang berada disebelah kiri terlebih dahulu</h4>
 
                 <?php } else { ?>
 

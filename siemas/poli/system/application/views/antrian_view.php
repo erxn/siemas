@@ -33,7 +33,7 @@
         $('#div-tunda').load("index.php/antrian/tabel_tunda/1");
     }
     function load_tabel_selesai() {
-        $('#div-selesai').load("index.php/antrian/tabel_selesai/1");
+        $('#div-selesai').load("index.php/antrian/pasien_terisi/1");
     }
 
     $(document).ready(function(){
