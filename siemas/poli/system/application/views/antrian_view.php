@@ -55,8 +55,7 @@
     <div class="container_12">
         <div class="grid_12">
             <ul>
-                <li><a href="index.php/antrian/isi_remed_hari_ini/">Isi Rekam Medik</a></li>
-                <li><a href="index.php/antrian/antri/1">Antrian</a></li>
+               
             </ul>
 
         </div>

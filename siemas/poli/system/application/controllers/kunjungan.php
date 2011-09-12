@@ -72,7 +72,7 @@ function kunjungan_hari_ini(){
 
         $kunj_jamkesmas=$this->kunj->get_status_harian($tgl,'Jamkesmas');
         $data['kunj_jamkesmas']=$kunj_jamkesmas;
-        $this->load->view('kunjunga_jamkesmas',$data);
+        $this->load->view('kunjungan_jamkesmas',$data);
     }
 
     function kunjungan_umum(){
