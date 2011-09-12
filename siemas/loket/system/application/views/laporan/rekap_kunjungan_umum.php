@@ -100,6 +100,7 @@
                            $umum_pab = 0; $umum_cib = 0; $umum_LW=0; $umum_LKot=0;
                            $gigi_pab = 0; $gigi_cib = 0; $gigi_LW=0; $gigi_LKot=0;
                            $kia_pab = 0; $kia_cib = 0; $kia_LW=0; $kia_LKot=0;
+                           $kb_pab = 0; $kb_cib = 0; $kb_LW=0; $kb_LKot=0;
                           $i=1;foreach($laporan as $lap){
 
                                 $lama_pab += $lap['lama_pab'];
@@ -126,7 +127,12 @@
                                 $kia_cib += $lap['kia_cib'];
                                 $kia_LW += $lap['kia_LW'];
                                 $kia_LKot += $lap['kia_LKot'];
-                                
+
+                                $kb_pab += $lap['kb_pab'];
+                                $kb_cib += $lap['kb_cib'];
+                                $kb_LW += $lap['kb_LW'];
+                                $kb_LKot += $lap['kb_LKot'];
+
 
                       ?>
               <tr class="<?if($i%2==0) echo "odd"?>" align="center">
@@ -151,10 +157,10 @@
                     <td><?php echo $lap['kia_cib']?></td>
                     <td><?php echo $lap['kia_LW']?></td>
                     <td><?php echo $lap['kia_LKot']?></td>
-                    <td>29</td>
-                    <td>29</td>
-                    <td>29</td>
-                    <td>29</td>
+                    <td><?php echo $lap['kb_pab']?></td>
+                    <td><?php echo $lap['kb_cib']?></td>
+                    <td><?php echo $lap['kb_LW']?></td>
+                    <td><?php echo $lap['kb_LKot']?></td>
                   </tr>
                    
                  <?php }?>
@@ -180,10 +186,10 @@
                     <th><?php echo $kia_cib?></th>
                     <th><?php echo $kia_LW?></th>
                     <th><?php echo $kia_LKot?></th>
-                    <th>29</th>
-                    <th>29</th>
-                    <th>29</th>
-                    <th>29</th>
+                    <th><?php echo $kb_pab?></th>
+                    <th><?php echo $kb_cib?></th>
+                    <th><?php echo $kb_LW?></th>
+                    <th><?php echo $kb_LKot?></th>
                     
                   </tr>
                 </table>

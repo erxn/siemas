@@ -346,14 +346,15 @@ class M_kunjungan extends Model {
 
     function get_total_by_ket_wil($tgl,$ket,$layanan,$wil,$stat){
         $q = $this->db->query("SELECT COUNT(DISTINCT kunjungan.id_kunjungan) as total
-                                FROM pasien
-                                JOIN kunjungan ON pasien.id_pasien = kunjungan.id_pasien
-                                JOIN kunjungan_has_layanan ON kunjungan_has_layanan.id_kunjungan = kunjungan.id_kunjungan
+                                FROM kk
+                                JOIN pasien USING (id_kk)
+                                JOIN kunjungan USING (id_pasien)
+                                JOIN kunjungan_has_layanan ON kunjungan.id_kunjungan = kunjungan_has_layanan.id_kunjungan
                                 JOIN layanan USING (id_layanan)
-                                WHERE MONTH(tanggal_kunjungan) = '$bln'
-                                AND YEAR(tanggal_kunjungan) = '$thn'
-                                AND keterangan LIKE '%$ket%'
-                                AND status_pelayanan = '$layanan'");
+                                WHERE tanggal_kunjungan = '$tgl'
+                                AND status_pelayanan = '$layanan'
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '%$stat%')
+                                AND keterangan LIKE '%$ket%'");
         $h = $q->result_array();
         return $h[0]['total'];
     }

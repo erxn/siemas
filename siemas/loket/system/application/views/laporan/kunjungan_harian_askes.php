@@ -71,7 +71,7 @@
                 </thead>
                 <tbody>
                     <?php $i=1; if(isset($askes)) { foreach ($askes as $hasil) {?>
-                    <tr class="<?if($i%2==0) echo "odd"; else echo "even";?>">
+                    <tr class="<?php if($i%2==0) echo "odd"; else echo "even";?>">
                         <td class="align-center"><?php echo $i++; ?></td>
                         <td><?php echo $hasil['kode_pasien']?></td>
                         <td><?php echo $hasil['no_kunjungan'];?></td>
