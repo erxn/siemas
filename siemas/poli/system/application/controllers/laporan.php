@@ -7,7 +7,7 @@
 class Laporan extends Controller{
     function Laporan(){
         parent::Controller();
-         $this->load->model('laporan_model', "lap");
+        $this->load->model('laporan_model', "lap");
         $this->load->library('pagination');
 
     }
@@ -19,26 +19,22 @@ class Laporan extends Controller{
 
     function bulanan_layanan($bulan, $tahun){
 
-//        echo $bulan . ' ' . $tahun; exit;
-
-         $this->load->plugin('phpexcel');
-         
-         $lay=$this->lap->layanan();
+        $this->load->plugin('phpexcel');
+        $lay=$this->lap->layanan();
         $layanan['layanan_h']=$lay;
         $layanan['bulan'] = $bulan;
         $layanan['tahun'] = $tahun;
-      
-       $this->load->view('laporan_harian_excel_lay',$layanan);
+        $this->load->view('laporan_harian_excel_lay',$layanan);
     }
 
-     function bulanan_penyakit($bulan,$tahun){
+     function bulanan_penyakit($bulan, $tahun){
         $this->load->plugin('phpexcel');
         $data['bulan']=$bulan;
         $data['tahun']=$tahun;
         $this->load->view('laporan_harian_excel_peny');
     }
 
-    function tahunan(){
+    function tahunan($tahun){
         $this->load->plugin('phpexcel');
         $this->load->view('laporan_tahunan');
     }
