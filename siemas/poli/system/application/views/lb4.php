@@ -11,7 +11,7 @@ $objPHPExcel = new PHPExcel();
 $styleThinBlackBorderOutline = array(
         'borders' => array(
                 'outline' => array(
-                        'style' => PHPEXCEL_Style_Border::BORDER_THIN,
+                        'style' => Style_Border::BORDER_THIN,
                         'color' => array('argb' => 'FF000000'),
                 ),
         ),
@@ -20,7 +20,7 @@ $styleThinBlackBorderOutline = array(
 $styleThinBlackBorderAll = array(
         'borders' => array(
                 'allborders' => array(
-                        'style' => PHPEXCEL_Style_Border::BORDER_THIN,
+                        'style' => Style_Border::BORDER_THIN,
                         'color' => array('argb' => 'FF000000'),
                 ),
         ),
@@ -29,13 +29,13 @@ $styleThinBlackBorderAll = array(
 // Align
 $styleAlignHorizontalCenter = array(
         'alignment' => array(
-                'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+                'horizontal' => Style_Alignment::HORIZONTAL_CENTER,
         ),
 );
 
 $styleAlignVerticalCenter = array(
         'alignment' => array(
-                'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER,
+                'vertical' => Style_Alignment::VERTICAL_CENTER,
         ),
 );
 
@@ -45,8 +45,8 @@ $objPHPExcel->getProperties()->setCreator("Siemas")
         ->setTitle("")
         ->setSubject("");
 $objPHPExcel->getActiveSheet()->getPageSetup()
-        ->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
-        ->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4)
+        ->setOrientation(Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
+        ->setPaperSize(Worksheet_PageSetup::PAPERSIZE_A4)
         ->setFitToWidth(1)->setFitToHeight(0);
 
 $objPHPExcel->getActiveSheet()->getPageMargins()->setTop(0.75)
@@ -177,7 +177,7 @@ $objPHPExcel->getActiveSheet()->getStyle('D5:F5')->applyFromArray($styleThinBlac
 $objPHPExcel->getActiveSheet()->getStyle('G5:N5')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('D6:N7')->applyFromArray($styleThinBlackBorderAll);
 $objPHPExcel->getActiveSheet()->getStyle('O5:Q7')->applyFromArray($styleThinBlackBorderAll);
-$objPHPExcel->getActiveSheet()->getStyle('A5:Q7')->getFill()->setFillType(PHPEXCEL_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFDDEEDD');
+$objPHPExcel->getActiveSheet()->getStyle('A5:Q7')->getFill()->setFillType(Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFDDEEDD');
 
 
 
@@ -195,7 +195,7 @@ $objPHPExcel->setActiveSheetIndex(0);
 header('Content-Type: application/vnd.ms-excel');
 //header('Content-Disposition: attachment;filename="rekap_resep_bulanan_' . $namanya . '-' . $tahun . '.xls"');
 
-$objWriter = PHPEXCEL_IOFactory::createWriter($objPHPExcel, "Excel5");
+$objWriter = IOFactory::createWriter($objPHPExcel, "Excel5");
 $objWriter->save("php://output");
 
 ?>
