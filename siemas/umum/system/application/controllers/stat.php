@@ -55,7 +55,6 @@ class Stat extends Controller {
         $tbc=$this->stat->get_kunjungan_umum_tbc($umum,$tgl);
         $diare=$this->stat->get_kunjungan_umum_diare($umum,$tgl);
         $ispa=$this->stat->get_kunjungan_umum_ispa($umum,$tgl);
-        $campak=$this->stat->get_kunjungan_umum_campak($umum,$tgl);
         $umum=$this->stat->get_kunjungan_umum_m($umum,$tgl);
 
         $umum_pab1=$this->stat->get_kunjungan_umum_wil($wil1,$umum,$tgl1);
@@ -66,7 +65,6 @@ class Stat extends Controller {
         $tbc1=$this->stat->get_kunjungan_umum_tbc($umum,$tgl1);
         $diare1=$this->stat->get_kunjungan_umum_diare($umum,$tgl1);
         $ispa1=$this->stat->get_kunjungan_umum_ispa($umum,$tgl1);
-        $campak1=$this->stat->get_kunjungan_umum_campak($umum,$tgl1);
         $umum1=$this->stat->get_kunjungan_umum_m($umum,$tgl1);
 
         $grafik=array(
@@ -79,7 +77,6 @@ class Stat extends Controller {
         'tbc'=>$tbc,
         'diare'=>$diare,
         'ispa'=>$ispa,
-        'campak'=> $campak,
         'umum'=>$umum,
 
         'umum_pab1'=>$umum_pab1,
@@ -90,7 +87,6 @@ class Stat extends Controller {
         'tbc1'=>$tbc1,
         'diare1'=>$diare1,
         'ispa1'=>$ispa1,
-        'campak1'=> $campak1,
         'umum1'=>$umum1,
         
         );

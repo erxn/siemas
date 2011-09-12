@@ -7,27 +7,6 @@
 <script type="text/javascript" src="js/jquery.uitablefilter.js"></script>
 
 
-<script>
-    $(function() {
-        $( ".datepicker" ).datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'd MM yy',
-            monthNames: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
-        });
-    });
-    $(function() {
-        var theTable = $('#t_gigi')
-
-        $("#b_gigi").click(function() {
-            $.uiTableFilter( theTable, $('#d_gigi').val());
-        })
-    });
-
-
-</script>
-
-
 <script type="text/javascript">
     $(document).ready(function(){
         $(".pop").colorbox({initialHeight: "900px", initialWidth: "900px", width: "70%", height: "85%"})
@@ -40,6 +19,26 @@
         $( ".tabs" ).tabs();
     });
 
+
+</script>
+
+<script>
+    $(function() {
+        $( ".datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'd MM yy',
+            monthNames: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+        });
+    });
+
+    $(function() {
+        var theTable = $('#t_gigi')
+
+        $("#b_gigi").click(function() {
+            $.uiTableFilter( theTable, $('#d_gigi').val());
+        })
+    });
 
 </script>
 
