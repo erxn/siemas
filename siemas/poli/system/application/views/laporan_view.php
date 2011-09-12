@@ -65,7 +65,7 @@
 
 </script>
 
-<div class="tabs" style="margin-left: 1%;width: 48%; float: left">
+<div class="tabs" style="margin-left: 1%;width: 48%; float: left; margin-top: 20px">
     <ul>
         <li><a href="#tabs-2">Laporan Bulanan</a></li>
     </ul>
@@ -151,7 +151,7 @@
 </div>
 
 
-<div class="tabs" style="margin-right: 1%;width: 48%; float: right">
+<div class="tabs" style="margin-right: 1%;width: 48%; float: right; margin-top: 20px">
     <ul>
         <li><a href="#tabs-4">Laporan Tahunan</a></li>
     </ul>

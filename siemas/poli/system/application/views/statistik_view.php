@@ -30,9 +30,9 @@
 </script>
 
 <div class="container_12">
-    <div class="grid_12" style=" width: 40%; margin-left:130px; margin-top: 100px ">
+    <div class="grid_12" style=" width: 40%; margin-left:130px; margin-top: 20px ">
 
-        <div  id="tabs" style="margin-left:40px">
+        <div  id="tabs" style="margin: 0 1%">
             <ul>
                 <li><a href="#tabs-a">Statistik Penyakit</a></li>
             </ul>

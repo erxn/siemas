@@ -271,7 +271,7 @@ $jumlah_kunjungan_081 = $grafik['penyakit51'];
 </script>
 
 
-<div  class="tabs" style="margin-left: 30px;width:95%">
+<div  class="tabs" style="margin: 0 1%; margin-top: 20px">
     <ul>
 
         <li><a href="#tabs-a">Harian</a></li>
