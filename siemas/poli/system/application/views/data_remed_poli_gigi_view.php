@@ -128,7 +128,7 @@
                                                 <td style="width:20%"><b>Kecamatan:</b></td>
                                                 <td><?php echo $pop_pasien[0]['kecamatan_kk'];?></td>
                                                </tr>
-                                                `<tr>
+                                                <tr>
                                                 <td><b>Keluruhan:</b></td>
                                                 <td><?php echo $pop_pasien[0]['kelurahan_kk'];?></td>
                                                </tr>

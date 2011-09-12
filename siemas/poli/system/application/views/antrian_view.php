@@ -65,7 +65,7 @@
 
 
 
-<div  class="tabs" style="margin-left: 50px; margin-top: 50px; float:left; width: 45%">
+<div  class="tabs" style="margin-left: 1%; margin-top: 20px; float:left; width: 48%">
     <ul>
         <li><a href="#tabs-a">Antri</a></li>
     </ul>
@@ -111,7 +111,7 @@ function selesai(id) {
 </script>
 
 
-<div  class="tabs" style="margin-right: 50px; margin-top: 50px;  float:right; width: 45%">
+<div  class="tabs" style="margin-right: 1%; margin-top: 20px;  float:right; width: 48%">
     <ul>
         <li><a href="#tabs-b">Sedang Diperiksa</a></li>
     </ul>
