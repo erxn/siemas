@@ -104,7 +104,7 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('AJ')->setWidth(15);
 
 $objPHPExcel->getActiveSheet()->getStyle('A2:F4')->getFont()->setSize(8);
 
-$objPHPExcel->getActiveSheet()->getStyle('A5:AJ30')->getFont()->setSize(9);
+$objPHPExcel->getActiveSheet()->getStyle('A5:AJ40')->getFont()->setSize(9);
 
 $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('G2:U2')->setCellValueByColumnAndRow(6, 2, "Laporan Kegiatan Harian BP Gigi ");
@@ -126,11 +126,11 @@ $objPHPExcel->getActiveSheet()
 for ($n = 1; $n <= 31; $n++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($n + 1, 6, $n);
 }
-for ($n = 1; $n <= 19; $n++) {
+for ($n = 1; $n <= 33; $n++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $n + 6, $n);
 }
 $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->applyFromArray($styleAlignHorizontalCenter);
-$objPHPExcel->getActiveSheet()->getStyle('C6:AK25')->applyFromArray($styleAlignHorizontalCenter);
+$objPHPExcel->getActiveSheet()->getStyle('C6:AK39')->applyFromArray($styleAlignHorizontalCenter);
 $objPHPExcel->getActiveSheet()->getStyle('AO5:AO6')->applyFromArray($styleAlignHorizontalCenter);
 $objPHPExcel->getActiveSheet()->getStyle('A5:A6')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('B5:B6')->applyFromArray($styleThinBlackBorderOutline);
@@ -141,7 +141,7 @@ $objPHPExcel->getActiveSheet()->getStyle('AJ5:AJ6')->applyFromArray($styleThinBl
 $objPHPExcel->getActiveSheet()->getStyle('D5:F5')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('G5:AG5')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('D6:AJ6')->applyFromArray($styleThinBlackBorderAll);
-$objPHPExcel->getActiveSheet()->getStyle('A7:AJ25')->applyFromArray($styleThinBlackBorderAll);
+$objPHPExcel->getActiveSheet()->getStyle('A7:AJ39')->applyFromArray($styleThinBlackBorderAll);
 $objPHPExcel->getActiveSheet()->getStyle('A5:AJ6')->getFill()->setFillType(Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFDDEEDD');
 
 // the real data

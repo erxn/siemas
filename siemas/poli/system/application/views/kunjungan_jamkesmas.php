@@ -89,7 +89,7 @@
                        <td><?php echo $jamkesmas['no_kunjungan'];?></td>
                         <td><?php echo $jamkesmas['nama_pasien'];?> <br/>
                             <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $jamkesmas['jk_pasien'] . ', ' . $jamkesmas['umur'] . ' th'; ?></small></td>
-                        <td><?php echo $jamkesmas['alamat_kk']." ".$k['kelurahan_kk']." ".$jamkesmas['kecamatan_kk'];?></td>
+                        <td><?php echo $jamkesmas['alamat_kk']." ".$jamkesmas['kelurahan_kk']." ".$jamkesmas['kecamatan_kk'];?></td>
                         <td><?php echo $jamkesmas['no_kartu_layanan']?>
                         </td>
                         <td><?php echo $jamkesmas['nama_penyakit']?></td>

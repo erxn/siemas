@@ -1,4 +1,4 @@
-<h3>Selesai diperiksa: <?php  echo count($sel); ?> orang</h3>
+<h3>Jumlah pasien yang belum diisi rekam mediknya: <?php  echo count($sel); ?> orang</h3>
 <table id="myTable" class="tablesorter" border="8" style=" margin-top: 5px;width:100%">
                 <thead>
                     <tr>

@@ -115,7 +115,7 @@ class Antrian extends Controller {
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
         $remed['data_pasien']=$data_pasien_remed;
 
-        $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien);
+        $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien,$tgl);
         $remed['remed_gigi']=$remed_pasien;
 
 
@@ -166,14 +166,14 @@ class Antrian extends Controller {
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
         $remed['data_pasien']=$data_pasien_remed;
 
-        $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien);
+        $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien,$tgl);
         $remed['remed_gigi']=$remed_pasien;
 
 
         $remed_kia=$this->remed->get_remed_pasien_kia($id_pasien);
         $remed['remed_kia']=$remed_kia;
 
-        $remed_umum=$this->remed->get_remed_pasien_umum($id_pasien);
+        $remed_umum=$this->remed->get_remed_pasien_umum($id_pasien,$tgl);
         $remed['remed_umum']=$remed_umum;
 
         $remed_tbc=$this->remed->remed_poli_umum_tbc($id_kunjungan);

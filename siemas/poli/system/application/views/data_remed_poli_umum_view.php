@@ -105,7 +105,7 @@
                                
                                 <tr class="odd">
                                     <td><b>Nama:</b></td>
-                                    <td style="width: 50%"><?php echo $pop_pasien[0]['nama_pasien'];?></td>
+                                    <td style="width: 50%"><h3><?php echo $pop_pasien[0]['nama_pasien'];?></h3></td>
 
                                 </tr>
 
@@ -115,7 +115,7 @@
                                 </tr>
                                 <tr class="odd">
                                     <td><b>Umur:</b></td>
-                                    <td>20</td>
+                                    <td><?php  echo $pop_pasien[0]['umur'];?></td>
                                 </tr>
                               <tr >
                                     <td><b>Alamat:</b></td>
@@ -156,7 +156,7 @@
 
                                  <tr class="odd">
                                     <td><b>Penyakit:</b></td>
-                                    <td><?php echo $pop_umum[0]['penyakit_umum'];?></td>
+                                    <td><?php echo $pop_umum[0]['nama_penyakit'];?></td>
                                 </tr>
 
                                 <tr><td>P2M</td>
