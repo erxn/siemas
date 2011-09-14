@@ -343,6 +343,11 @@
                                 $b=0;
                                 foreach ($remed_umum as $ru) {
 
+                                    $ispa = $this->remed->remed_poli_umum_ispa($ru['id_kunjungan'], $ru['tanggal_kunjungan_umum']);
+                                    $tbc = $this->remed->remed_poli_umum_tbc($ru['id_kunjungan'], $ru['tanggal_kunjungan_umum']);
+                                    $diare = $this->remed->remed_poli_umum_diare($ru['id_kunjungan'], $ru['tanggal_kunjungan_umum']);
+                                    $penyakit = $this->remed->penyakit($ru['id_pasien'], $ru['tanggal_kunjungan_umum']);
+
                                     if($i%2==0) $x="odd";else $x="even";
                                     ?>
                         <tr clas="<?php echo $x ?>">
@@ -350,10 +355,11 @@
                             <td><a class="pop" href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
                             <td><?php echo word_limiter($ru['anamnesis'],3,'...');?></td>
                             <td><?php echo word_limiter($ru['diagnosa'],3,'...');?></td>
-                            <td><?php echo word_limiter($penyakit['nama_penyakit'],3,'...');?></td>
+                            <td><?php echo word_limiter($ru['nama_penyakit'],3,'...');?></td>
                             <td><a href="">
                                                 <?php if($ispa[$b]['id_ispa']!==null) {
                                                     echo 'ispa';
+                                                   // print_r($ispa);
                                                 }
                                                 else {
                                                     echo '';
@@ -370,7 +376,7 @@
                 ?> </a>
                             </td>
                             <td><a href="">
-                                                <?php if ($diare[$b]['id_diare']) {
+                                                <?php if ($diare[$b]['id_diare']!==null) {
                                                     echo 'diare';
                                                 }
                                                 else {

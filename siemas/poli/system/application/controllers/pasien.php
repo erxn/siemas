@@ -136,10 +136,7 @@ class Pasien extends Controller {
 
         $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien);
         $remed['ispa']=$remed_ispa;
-
-        $remed_campak=$this->remed->remed_poli_umum_campak($id_pasien);
-        $remed['campak']=$remed_tbc;
-
+        
         $remed_diare=$this->remed->remed_poli_umum_diare($id_pasien);
         $remed['diare']=$remed_diare;
         
