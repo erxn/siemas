@@ -98,6 +98,10 @@ AND id_pasien =$id_pasien");
         $q=$this->db->query  ("SELECT * FROM
              pasien
                 JOIN remed_poli_umum USING (id_pasien)
+                JOIN penyakit_remed_umum
+                                USING ( id_remed_umum )
+                                JOIN penyakit
+                                USING ( id_penyakit )
             WHERE remed_poli_umum.id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
@@ -267,7 +271,7 @@ AND id_pasien =$id_pasien");
 
     function remed_poli_lain_pasien($id_pasien){
             $data=array();
-        $q=$this->db->query  ("SELECT * FROM pasien JOIN kk WHERE id_pasien=$id_pasien");
+        $q=$this->db->query  ("SELECT *,extract(YEAR FROM from_days(datediff(curdate(), pasien.tanggal_lahir))) AS umur FROM pasien JOIN kk WHERE id_pasien=$id_pasien");
          if($q->num_rows() > 0)
         {
             foreach ($q->result_array() as $row)
@@ -337,7 +341,8 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
             $data=array();
         $q=$this->db->query  ("SELECT * FROM
              pasien
-                JOIN remed_poli_umum USING (id_pasien)
+                JOIN remed_poli_umum ON pasien.id_pasien=remed_poli_umum.id_pasien
+                JOIN tbc ON remed_poli_umum.id_remed_umum=tbc.id_remed_umum
             WHERE remed_poli_umum.id_kunjungan=$id_kunjungan");
          if($q->num_rows() > 0)
         {
@@ -355,7 +360,8 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
             $data=array();
         $q=$this->db->query  ("SELECT * FROM
              pasien
-                JOIN remed_poli_umum USING (id_pasien)
+                JOIN remed_poli_umum ON pasien.id_pasien=remed_poli_umum.id_pasien
+                JOIN ispa ON remed_poli_umum.id_remed_umum=ispa.id_remed_umum
             WHERE remed_poli_umum.id_kunjungan=$id_kunjungan");
          if($q->num_rows() > 0)
         {
@@ -374,7 +380,8 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
             $data=array();
         $q=$this->db->query  ("SELECT * FROM
              pasien
-                JOIN remed_poli_umum USING (id_pasien)
+                JOIN remed_poli_umum ON pasien.id_pasien=remed_poli_umum.id_pasien
+                JOIN diare ON remed_poli_umum.id_remed_umum=diare.id_remed_umum
             WHERE remed_poli_umum.id_kunjungan=$id_kunjungan");
          if($q->num_rows() > 0)
         {
@@ -416,6 +423,10 @@ function get_remed_pop_gigi($id_pasien,$tgl){               //buat nampilin data
         $q=$this->db->query  ("SELECT * FROM
              pasien
                 JOIN remed_poli_umum USING (id_pasien)
+                JOIN penyakit_remed_umum
+                                USING ( id_remed_umum )
+                                JOIN penyakit
+                                USING ( id_penyakit )
             WHERE remed_poli_umum.id_pasien=$id_pasien AND remed_poli_umum.tanggal_kunjungan_umum='$tgl'");
          if($q->num_rows() > 0)
         {

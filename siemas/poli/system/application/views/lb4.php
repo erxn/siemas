@@ -187,7 +187,7 @@ $objPHPExcel->getActiveSheet()->getStyle('O5:Q7')->applyFromArray($styleThinBlac
 $objPHPExcel->getActiveSheet()->getStyle('A5:Q7')->getFill()->setFillType(Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFDDEEDD');
 
 
-//kunjungan lama
+//kunjungan baru
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, 10, $p_a_kunj_baru);
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, 10, $p_j_kunj_baru);
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, 10, $p_u_kunj_baru);

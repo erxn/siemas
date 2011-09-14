@@ -44,8 +44,8 @@ class Laporan extends Controller{
 
 
         $lw='luar wilayah'; $lk='luar kota';
-       $pab='baton';    $cib='cibogor';
-       $askes='askes';  $jamkesmas='jamkesmas'; $umum='umum;';
+       $pab='pabaton';    $cib='cibogor';
+       $askes='Askes';  $jamkesmas='Jamkesmas'; $umum='Umum;';
        $lama='lama';    $baru='baru';
        $hamil_ya='ya';  $hamil_tdk='tidak';
        $anak_ya='ya';  $anak_tdk='tidak';

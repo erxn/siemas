@@ -201,7 +201,7 @@ Class Laporan_model extends Model{
                                 USING ( id_pasien )
                                 JOIN remed_poli_gigi
                                 USING ( id_pasien )
-                                WHERE (kk.kelurahan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                WHERE (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
                                 AND pasien.status_pelayanan LIKE '%$status%'
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
                                 AND remed_poli_gigi.Khasus_penyakit LIKE '%$kasus%'
@@ -214,19 +214,18 @@ Class Laporan_model extends Model{
 
 
     function get_penyakit($tgl,$status,$wil,$stat,$penyakit){
-                    $q = $this->db->query("SELECT count( * ) AS jumlah
-                                                FROM kk
-                                                JOIN pasien ON kk.id_kk = pasien.id_KK
-                                                JOIN kunjungan ON pasien.id_kunjungan = kunjungan.id_kunjungan
-                                                JOIN remed_poli_gigi ON kunjungan.id_kunjungan = remed_poli_gigi.id_kunjungan
-                                                JOIN penyakit_remed_gigi ON remed_poli_gigi.id_remed_gigi = penyakit_remed_gigi.id_remed_gigi
-                                                JOIN penyakit ON penyakit_remed_gigi.id_penyakit = penyakit.id_penyakit
-                                                WHERE kunjungan.tanggal_kunjungan = '$tgl'
-                                                AND penyakit.nama_penyakit LIKE '%$penyakit%'
-                                                AND (kelurahan_kk LIKE '%$wil%'
-                                                OR status_wil_luar LIKE '$stat')
-                                                AND status_pelayanan = '$status'
-                                                                                ");
+                    $q = $this->db->query("SELECT COUNT(*) as jumlah
+                                        FROM `kunjungan`
+                                        JOIN pasien ON kunjungan.id_pasien = pasien.id_pasien
+                                        JOIN kk ON pasien.id_KK = kk.id_kk
+                                        JOIN remed_poli_gigi ON kunjungan.id_kunjungan = remed_poli_gigi.id_kunjungan
+                                        JOIN penyakit_remed_gigi ON remed_poli_gigi.id_remed_gigi = penyakit_remed_gigi.id_remed_gigi
+                                        JOIN penyakit ON penyakit_remed_gigi.id_penyakit = penyakit.id_penyakit
+                                        WHERE tanggal_kunjungan = '$tgl'
+                                        AND penyakit.nama_penyakit LIKE '$penyakit'
+                                        AND pasien.status_pelayanan LIKE '$status'
+                                        AND( kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                                        ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
     }
@@ -238,8 +237,8 @@ Class Laporan_model extends Model{
                                 JOIN kk USING (id_kk)
                                 WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
-                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
-                                AND status_pelayanan = '$status'
+                                AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                AND pasien.status_pelayanan = '%$status%'
                                 ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
@@ -252,8 +251,8 @@ Class Laporan_model extends Model{
                                 JOIN kk USING (id_kk)
                                 WHERE NOT kunjungan.tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
-                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
-                                AND status_pelayanan = '$status'
+                                AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                AND pasien.status_pelayanan = '%$status%'
                                 ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
@@ -264,14 +263,14 @@ Class Laporan_model extends Model{
                     $q = $this->db->query("SELECT count( * ) AS jumlah
                                                 FROM kk
                                                 JOIN pasien ON kk.id_kk = pasien.id_KK
-                                                JOIN kunjungan ON pasien.id_kunjungan = kunjungan.id_kunjungan
+                                                JOIN kunjungan ON pasien.id_pasien = kunjungan.id_pasien
                                                 JOIN remed_poli_gigi ON kunjungan.id_kunjungan = remed_poli_gigi.id_kunjungan
                                                 JOIN remed_gigi_layanan ON remed_poli_gigi.id_remed_gigi = remed_gigi_layanan.id_remed_gigi
                                                 JOIN layanan ON remed_gigi_layanan.id_layanan = layanan.id_layanan
                                                 WHERE kunjungan.tanggal_kunjungan = '$tgl'
                                                 AND layanan.nama_layanan LIKE '%$layanan%'
-                                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
-                                                AND status_pelayanan = '%$status%'
+                                                AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '$stat')
+                                                AND pasien.status_pelayanan = '%$status%'
                                                                                 ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
