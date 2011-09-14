@@ -53,7 +53,7 @@ class Stat_m extends Model{
                                 USING ( id_remed_gigi )
                                 JOIN penyakit
                                 USING ( id_penyakit )
-                                WHERE tanggal_kunjungan = '$tgl'
+                                WHERE kunjungan.tanggal_kunjungan = '$tgl'
                                 AND antrian.id_poli =$poli
                                 AND penyakit.nama_penyakit LIKE '%$n_penyakit%'");
         $jum_penyakit=$q->result_array();
