@@ -1,14 +1,5 @@
 <?php
 
-//echo $bulan;
-//echo "<br>";
-//echo $tahun; die();
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//view
 $nama_bulan = array(
     "",
     "Januari",
@@ -25,10 +16,7 @@ $nama_bulan = array(
     "Desember"
 );
 
-$tahun = $laporan[0]['tahun'];
-$bulan = $nama_bulan[$laporan[0]['bulan']];
-
-
+//view
 $objPHPExcel = new PHPExcel();
 
 // border
@@ -65,7 +53,7 @@ $styleAlignVerticalCenter = array(
 
 // Set properties
 $objPHPExcel->getProperties()->setCreator("Siemas")
-        ->setLastModifiedBy("")
+        ->setLastModifiedBy("Meri Marlina")
         ->setTitle("Rekap Harian Tindakan Gigi")
         ->setSubject("Rekap Harian Tindakan Gigi");
 $objPHPExcel->getActiveSheet()->getPageSetup()
@@ -176,39 +164,28 @@ foreach ($layanan_h as $lay) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $i, $lay['nama_layanan']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(34, $i, $lay['harga']);
 
+
+    for ($k = 1; $k <= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun); $k++) {
+
+        $jumlah = $this->lap->get_jumlah_layanan($lay['nama_layanan'], date('Y-m-d', strtotime("$tahun-$bulan-$k")));
+        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1 + $k, $i, $jumlah);
+
+        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(33, $i, '=SUM(' . 'C' . $i . ':AG' . $i . ')');
+        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $i, '=(' . 'AH' . $i . '*AI' . $i . ')');
+
+    }
+
+
     $i++;
 }
 
-for ($k = 1; $k <= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun); $k++) {
-
-
-    $data = $this->lap->layanan_bulanan($k, $bulan, $tahun);
-    $l = 7;
-
-    foreach ($data as $d) {
-
-        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1 + $k, $l, $d['jumlah']);
-        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(33, $l, '=SUM(' . 'C' . $l . ':AG' . $l . ')');
-        $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, '=(' . 'AH' . $l . '*AI' . $l . ')');
-
-        $l++;
-    }
-}
-
-
-
-
-
-
-//       $objPHPExcel->getActiveSheet()->getStyle('A6:F' . ($i-1))->applyFromArray($styleThinBlackBorderOutline);
-
-$objPHPExcel->getActiveSheet()->setTitle('bulanan layanan');
+$objPHPExcel->getActiveSheet()->setTitle('Bulanan Layanan');
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
 $objPHPExcel->setActiveSheetIndex(0);
 
 header('Content-Type: application/vnd.ms-excel');
-//header('Content-Disposition: attachment;filename="rekap_resep_bulanan_' . $namanya . '-' . $tahun . '.xls"');
+header('Content-Disposition: attachment;filename="Laporan_kegiatan_gigi_' . $nama_bulan[$bulan] . '-' . $tahun . '.xls"');
 
 $objWriter = IOFactory::createWriter($objPHPExcel, "Excel5");
 $objWriter->save("php://output");
