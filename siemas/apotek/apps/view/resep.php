@@ -9,8 +9,14 @@
                                 <li><a href="<?php echo $this->base_url?>index.php/home">Home</a></li>
                                 <li><a href="<?php echo $this->base_url?>index.php/history">History</a></li>
                                 <li><a href="<?php echo $this->base_url?>index.php/obat">Obat</a></li>
-                                <li><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa</a></li>
-				<li><a href="<?php echo $this->base_url?>index.php/statistik">Statistik</a></li>
+                                <li><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa
+                                    <?php if($jumlah_kadaluarsa > 0) { ?>
+                                    <div style="display: inline-block; padding: 0px 3px !important; background: red; color: white; font-weight: bold; margin-left: 5px; -moz-border-radius: 5px">
+                                    <?php echo $jumlah_kadaluarsa ?>
+                                    </div>
+                                    <?php } ?>
+                                </a></li>
+                                <li><a href="<?php echo $this->base_url?>index.php/statistik">Statistik</a></li>
                             </ul>
                     <div class="iconMenu">
 						<a href="<?php echo $this->base_url?>index.php/resep">
@@ -39,17 +45,16 @@
             <div style="clear: both;"></div>
             <!-- Sub navigation -->
 
-            <form method="POST"
-                        onsubmit="if(document.getElementById('kunjungan').value == '') {alert('No kunjungan Harus Diisi'); return false} " id="form_resep" >
             <div id="subnav">
                 <div class="container_12">
                     <div class="grid_12">
-						
-                        
+
                     <div id="resep">
+                        <FORM method="POST">
                          Tanggal resep yang akan diinputkan adalah
-                           <input class="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal">
-								
+                           <input class="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal2">
+                           <input type="submit" value="Ubah" />
+                        </FORM>
                     </div>
                     </div><!-- End. .grid_12-->
                 </div><!-- End. .container_12 -->
@@ -58,6 +63,9 @@
         </div> <!-- End #header -->
         
 		<div class="container_12">
+
+                    <form method="POST"
+                        onsubmit="if(document.getElementById('kunjungan').value == '') {alert('No kunjungan Harus Diisi'); return false} " id="form_resep" >
                     
                     <table>
 					<tr>
@@ -65,12 +73,21 @@
 							<p align="left" style="margin-bottom: 5px;">no kunjungan :</p>
 						</td>
 						<td width="300px">
-							<input type="text" class="input_angka" id="kunjungan" name="kunjungan"  maxlength="255" size="30">
+							<input type="text" class="input_angka, ido2" id="kunjungan" name="kunjungan"  maxlength="255" size="30">
+						</td>
+					</tr>
+                                        <tr>
+						<td width="100px">
+							<p align="left" style="margin-bottom: 5px;">nama pasien :</p>
+						</td>
+						<td width="300px">
+							<input type="text" class="input_angka" id="kunjungan" name="kunjungan"  maxlength="255" size="30" disabled="disabled" />
 						</td>
 					</tr>
                                         
                                         <tr>
                                             <td>
+                                                <input type="hidden" class="input_angka" name="tanggal"  value="<?php echo $tanggal; ?>">
                                             </td>
                                             <td>
 						<?php echo $verify; ?></td>
@@ -116,13 +133,13 @@
                                   </tfoot>
 
 				</table>
+                    </form>
                             </div>
                     </div>
 
                         <div style="clear: both;"></div>
 						
 			</div> <!-- End .grid_12 -->
-        </form>
 
            
         <!-- Footer -->
@@ -151,10 +168,22 @@
                     arrayObat[<?php echo $list->id_obat; ?>] = "<?php echo $list->nbk_obat; ?>";
                 <?php } } ?>
 
+            var arrayPasien = new Array();
+                <?php if(isset($kunjungan_pasien)){ foreach ($kunjungan_pasien as $list) { ?>
+                    arrayPasien[<?php echo $list->no_kunjungan; ?>] = "<?php echo $list->nama_pasien; ?>";
+                <?php } } ?>
+
             $('.ido').keyup(function(){
 
               var id_obat = $(this).val();
               $(this).parent('td').next().find('input').val(arrayObat[id_obat]);
+
+            })
+
+            $('.ido2').keyup(function(){
+
+              var id_pasien = $(this).val();
+              $(this).parent('td').parent('tr').next().find('input').val(arrayPasien[id_pasien]);
 
             })
 

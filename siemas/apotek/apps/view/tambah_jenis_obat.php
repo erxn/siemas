@@ -5,8 +5,6 @@
                     <div class="grid_12">
                         <ul style="margin-left: 0px;">
                             <li id="current"><a href="<?php echo $this->base_url?>index.php/obat/tambah_jenis_obat">Tambah Jenis Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/obat/pemakaian_narkotik">Pemakaian Narkotik</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/obat/Kadaluarsa">Kadaluarsa</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/obat/pemakaian_obat">Pemakaian Obat</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/obat">Daftar Obat</a></li>
 
@@ -21,7 +19,7 @@
 
 		<div class="container_12">
                     <form method="post" onsubmit="if(document.getElementById('nbk').value == '') return false;">
-
+                        <?php echo $verify?>
                         <table>
 					<tr>
 						<td width="200px">
@@ -55,9 +53,18 @@
                                             </td>
 						
 					</tr>
-                                            <td></td><td></td><td><input type="submit" class="submit-green" value="Tambah"></td>
                                         <tr>
+                                            <td>
+                                                    <p align="right">jumlah :</p>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                    <input type="text" maxlength="255"  name="jumlah" />
+                                            </td>
+					</tr>
 
+                                        <tr>
+                                            <td></td><td></td><td><input type="submit" class="submit-green" value="Tambah"></td>
 					</tr>
 				</table>
                     </form>

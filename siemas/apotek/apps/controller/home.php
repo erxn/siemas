@@ -12,8 +12,8 @@ class Controller_home extends Panada {
     
     public function index(){
         $views['page_title']    = 'Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['jumlah_daftar'] = $this->obat->jumlah();
-        $views['jumlah_kadaluarsa'] = NULL;
         $views['jumlah_habis'] = $this->histori->cek_jumlah_habis();
         $this->view_index($views);
     }

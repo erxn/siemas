@@ -20,7 +20,7 @@
                                 <tr>
                                     <td>Jumlah obat yang akan kadaluarsa :</td>
                                     <td><?php echo $jumlah_kadaluarsa ; ?></td>
-                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/obat<?php echo $hasil['id_pasien'] ; ?>/<?php echo $hasil['tanggal'] ; ?>">
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/kadaluarsa/lihat_obat_total">
                                             <input type="submit" value="Lihat daftar obat" /></a></td>
                                 </tr>
                                 <?php } ?>

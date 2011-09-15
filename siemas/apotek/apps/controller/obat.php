@@ -14,6 +14,7 @@ class Controller_obat extends Panada {
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['verify'] = $this->session->get('verify_update');
         $this->session->remove('verify_update');
         $list = $this->obat->ambil();
@@ -26,6 +27,7 @@ class Controller_obat extends Panada {
     public function kadaluarsa(){
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Kadaluarsa Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $this->view_kadaluarsa($views);
     }
 
@@ -33,6 +35,7 @@ class Controller_obat extends Panada {
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Pemakaian Narkotik - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $list = $this->obat->ambil_narkotik();
         $views['narkotik'] = $list;
         $this->view_pemakaian_narkotik($views);
@@ -42,6 +45,7 @@ class Controller_obat extends Panada {
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Pemakaian Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['verify']    = NULL;
         $views['list_nama_obat'] = $this->obat->ambil_nama_obat();
         $n='1';
@@ -61,12 +65,15 @@ class Controller_obat extends Panada {
     public function tambah_jenis_obat(){
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Tambah Jenis Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
+        $views['verify'] = NULL;
         if($_POST){
             $nbk_obat = $_POST['nbk_obat'];
             $satuan_obat = $_POST['satuan_obat'];
             $narkotik = $_POST['narkotik'];
-            $this->obat->tambah_jenis_obat($nbk_obat, $satuan_obat, $narkotik);
-            $views['verify']='Resep dengan id antrian '.$nbk_obat.' berhasil dimasukan.';
+            $jumlah = $_POST['jumlah'];
+            $this->obat->tambah_jenis_obat($nbk_obat, $satuan_obat, $narkotik, $jumlah);
+            $views['verify']='Obat '.$nbk_obat.' telah berhasil dimasukan.';
         }
         $this->view_tambah_jenis_obat($views);
     }
@@ -74,6 +81,7 @@ class Controller_obat extends Panada {
     public function update($id){
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['daftar'] = $this->obat->ambil_obat($id);
         if($_POST){
             $nbk_obat = $_POST['nbk_obat'];

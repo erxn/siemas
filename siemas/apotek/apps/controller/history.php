@@ -28,6 +28,7 @@ class Controller_history extends Panada {
     public function index(){
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'History - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $this->view_history($views);
     }
 
@@ -35,12 +36,14 @@ class Controller_history extends Panada {
         $views['tanggal'] = date('d-m-Y');
         $poli2 = str_replace("_", " ", $poli);
         $views['isi'] = $this->obat->history_isi_pemakaian($poli2, $tanggal);
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $this->view_isi_history_pemakaian($views);
     }
 
     public function isi_resep($id_pasien,$tanggal){
         $views['tanggal'] = date('d-m-Y');
         $views['isi'] = $this->obat->history_isi_resep($id_pasien, $tanggal);
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $this->view_isi_history_resep($views);
     }
 
@@ -48,6 +51,7 @@ class Controller_history extends Panada {
         $views['tanggal'] = date('d-m-Y');
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['page_title'] = 'History Resep - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['hasil'] = NULL;
 
         
@@ -85,6 +89,7 @@ class Controller_history extends Panada {
         $views['tanggal'] = date('d-m-Y');
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['page_title'] = 'History Resep - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['hasil'] = NULL;
          if($_POST){
             if(isset ($_POST['tanggal'])){
@@ -107,6 +112,7 @@ class Controller_history extends Panada {
     public function tambah_obat(){
         $this->date->cek_history_harian(date('Y-m-d'));
         $views['page_title']    = 'History Pemasukan Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['tanggal'] = date('d-m-Y');
         $views['hasil'] = NULL;
          if($_POST){

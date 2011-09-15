@@ -9,7 +9,13 @@
                 <li><a href="<?php echo $this->base_url ?>index.php/home">Home</a></li>
                 <li><a href="<?php echo $this->base_url ?>index.php/history">History</a></li>
                 <li><a href="<?php echo $this->base_url ?>index.php/obat">Obat</a></li>
-                <li><a href="<?php echo $this->base_url ?>index.php/kadaluarsa">Kadaluarsa</a></li>
+                <li><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa
+                        <?php if($jumlah_kadaluarsa > 0) { ?>
+                        <div style="display: inline-block; padding: 0px 3px !important; background: red; color: white; font-weight: bold; margin-left: 5px; -moz-border-radius: 5px">
+                        <?php echo $jumlah_kadaluarsa ?>
+                        </div>
+                        <?php } ?>
+                    </a></li>
                 <li><a href="<?php echo $this->base_url ?>index.php/statistik">Statistik</a></li>
             </ul>
             <div class="iconMenu">
@@ -86,7 +92,7 @@
                                 <td><?php echo $list->satuan_obat; ?></td>
                                 <td><input  class="input_angka" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
                                            ></td>
-                                <td><input type="text" name="kadaluarsa" class="tanggal" value="<?php echo $tanggal; ?>"></td>
+                                <td><input type="text" name="kadaluarsa[<?php echo $n ?>]" class="tanggal" value="<?php echo $tanggal; ?>"></td>
                                 <td><input type="text"  id="field_1_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
                             </tr>
 <?php $n++;
