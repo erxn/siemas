@@ -66,7 +66,11 @@
                 </td>
             </tr>
         </table>
-
+        <div style="clear: both"></div>
+        <?php if($verify) { ?>
+                <?php echo $verify; ?>
+            <?php } ?>
+        <div style="clear: both"></div>
         <!-- Example table -->
         <div class="module" style="width: 933px ;">
             <h2><span>Data Obat</span></h2>

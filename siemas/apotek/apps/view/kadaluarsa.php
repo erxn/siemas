@@ -100,7 +100,7 @@
         
         <script type="text/javascript">
             $(document).ready(function(){
-                $(".popup").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                $(".popup").colorbox({initialHeight: "1000px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
                         $( "#datepicker" ).datepicker({
                             changeMonth: true,
                             changeYear: true

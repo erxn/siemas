@@ -61,10 +61,33 @@ class Model_obat {
     }
 
     public function history_bt($BT){
+        $data = array();
+        $data[] = new stdClass();
+        $result = $this->db->results("SELECT DISTINCT(no_sbkk),tanggal FROM history_obat WHERE tanggal LIKE '$BT%' ORDER BY tanggal");
+        if(isset ($result)){
+            $n=0;
+            foreach ($result as $value) {
+                $data[$n]->no_sbkk = $value->no_sbkk;
+                $data[$n]->tanggal = $this->date->reverse($value->tanggal);
+                $n++;
+            }
+        }
+        return $data;
+    }
 
-        $result = $this->db->results("SELECT DISTINCT(no_sbkk),tanggal FROM history_obat WHERE tanggal LIKE '$BT%' ORDER BY tanggal",'array');
-
-        return $result;
+    public function history_isi_pemasukan($tanggal,$sbkk){
+        $data = array();
+        $data[] = new stdClass();
+        $result = $this->db->results("SELECT id_obat,penambahan_obat FROM history_obat WHERE tanggal='$tanggal' AND no_sbkk='$sbkk'");
+        $n=0;
+        foreach ($result as $daftar){
+            $data[$n]->id_obat = $daftar->id_obat;
+            $data[$n]->nbk_obat = $this->db->find_var("SELECT nbk_obat FROM obat WHERE id_obat = '$daftar->id_obat'");
+            $data[$n]->satuan_obat = $this->db->find_var("SELECT satuan_obat FROM obat WHERE id_obat = '$daftar->id_obat'");
+            $data[$n]->penambahan_obat = $daftar->penambahan_obat;
+            $n++;
+        }
+        return $data;
     }
 
     public function history_pemakaian($tanggal){
@@ -171,12 +194,15 @@ class Model_obat {
     public function lihat_kadaluarsa($tanggal,$sbkk){
         $data = array();
         $data[] = new stdClass();
-        $result = $this->db->results("SELECT id_obat FROM history_obat
-                                    WHERE tanggal='$tanggal' AND no_sbkk='$sbkk'");
+        $date = date("Y-m-d");
+        $kadaluarsa = date("Y-m-d", strtotime("+14 days"));
+        $result = $this->db->results("SELECT id_obat,tanggal_kadaluarsa FROM history_obat
+                                    WHERE tanggal='$tanggal' AND no_sbkk='$sbkk' AND tanggal_kadaluarsa>='$date' AND tanggal_kadaluarsa<='$kadaluarsa'");
         if(isset ($result)){
             $n=0;
             foreach ($result as $value) {
                 $data[$n]->id_obat = $value->id_obat;
+                $data[$n]->kadaluarsa = $value->tanggal_kadaluarsa;
                 $data[$n]->nbk_obat = $this->db->find_var("SELECT nbk_obat FROM obat WHERE id_obat='$value->id_obat'");
                 $n++;
             }
@@ -189,7 +215,7 @@ class Model_obat {
         $data[] = new stdClass();
         $date = date("Y-m-d");
         $kadaluarsa = date("Y-m-d", strtotime("+14 days"));
-        $result = $this->db->results("SELECT no_sbkk, tanggal, id_obat FROM history_obat
+        $result = $this->db->results("SELECT no_sbkk, tanggal, tanggal_kadaluarsa, id_obat FROM history_obat
                                     WHERE tanggal_kadaluarsa>='$date' AND tanggal_kadaluarsa<='$kadaluarsa'");
         if(isset ($result)){
             $n=0;
@@ -197,6 +223,7 @@ class Model_obat {
                 $data[$n]->tanggal_input = $this->date->reverse($value->tanggal);
                 $data[$n]->no_sbkk = $value->no_sbkk;
                 $data[$n]->id_obat = $value->id_obat;
+                $data[$n]->kadaluarsa = $value->tanggal_kadaluarsa;
                 $data[$n]->nbk_obat = $this->db->find_var("SELECT nbk_obat FROM obat WHERE id_obat='$value->id_obat'");
                 $n++;
             }

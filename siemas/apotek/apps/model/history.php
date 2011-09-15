@@ -51,9 +51,9 @@ class Model_history {
     }
 
     public function gabung2($mm,$yy){
-
-        $result = $yy.'-'.$mm;
-
+        if($mm>9)
+            $result = $yy.'-'.$mm;
+            else $result = $yy.'-0'.$mm;
         return $result;
     }
 
