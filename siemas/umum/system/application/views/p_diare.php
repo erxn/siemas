@@ -144,7 +144,7 @@
 
                                 <tr>
                                     <td><b>Turgor:</b></td>
-                                    <td><?php echo $diarea[0]['turgor'];?></td>
+                                    <td><?php echo $diare[0]['turgor'];?></td>
                                 </tr>
                                 <tr  class="odd">
                                     <td><b>Derajat dehidrasi:</b></td>
@@ -152,7 +152,7 @@
                                 </tr>
                                   <tr>
                                     <td><b>Pemeriksaan lab khorela  :</b></td>
-                                    <td><?php echo $diarea[0]['turgor'];?></td>
+                                    <td><?php echo $diare[0]['turgor'];?></td>
                                 </tr>
                                 <tr  class="odd">
                                     <td><b>Pemakaian:</b></td>

@@ -177,7 +177,6 @@
             <li><a href="#tabs1-1">Isi Rekam Medik</a></li>
             <li><a href="#tabs-a">Poli Gigi</a></li>
             <li><a href="#tabs-b">Poli Umum</a></li>
-            <li><a href="#tabs-c">Poli KIA</a></li>
         </ul>
         <div id="tabs1-1">
             <table  id="myTable"  class="noborder" style="width:100%">
@@ -497,32 +496,35 @@
                         <td><a class="pop" href="index.php/pasien/remed_poli_umum_pop/<?php echo $id_pasien;?>/<?php echo $ru['tanggal_kunjungan_umum']?>"><?php echo tgl_indo($ru['tanggal_kunjungan_umum']); ?></a></td>
                        <td><?php echo word_limiter($ru['anamnesis'],5,'...');?></td>
                         <td><?php echo word_limiter($ru['diagnosa'],5,'...');?></td>
-                        <td><?php echo $penyakit['nama_penyakit'];?></td>
-                        <td><a href="">
-                                    <?php if($ispa[$b]['id_ispa']!==null){
-                                        echo 'ispa';
-                                    }
-                                    else{ echo ''; }
-                                    ?> </a>
-                        </td>
-                        <td><a href="">
-                                    <?php if($tbc[$b]['id_tbc']!==null){
-                                        echo 'tbc';
-                                    }
-                                    else{
-                                        echo '';
-                                    }
-                                    ?> </a>
-                        </td>
-                         <td><a href="">
-                                    <?php if ($diare[$b]['id_diare']){
-                                        echo 'diare';
-                                    }
-                                    else{
-                                        echo '';
-                                    }
-                                     $b++; ?> </a>
-                        </td>
+                        <td><?php echo $ru['nama_penyakit'];?></td>
+                        <td><a class="pop" href="index.php/antrian/pop_ispa/<?php echo $ru['id_pasien']?>/<?php echo $ru['id_kunjungan']?>">
+                                                <?php if(isset($ispa[$b]['id_ispa']) && $ispa[$b]['id_ispa']!==null) {
+                                                    echo 'ispa';
+                                                   // print_r($ispa);
+                                                }
+                                                else {
+                                                    echo '';
+                }
+                ?> </a>
+                            </td>
+                            <td><a class="pop" href="index.php/antrian/pop_tbc/<?php echo $ru['id_pasien']?>/<?php echo $ru['id_kunjungan']?>">
+                                                <?php if(isset($tbc[$b]['id_tbc']) && $tbc[$b]['id_tbc']!==null) {
+                                                    echo 'tbc';
+                                                }
+                                                else {
+                                                    echo '';
+                }
+                ?> </a>
+                            </td>
+                            <td><a class="pop" href="index.php/antrian/pop_diare/<?php echo $ru['id_pasien']?>/<?php echo $ru['id_kunjungan']?>">
+                                                <?php if (isset($diare[$b]['id_diare']) && $diare[$b]['id_diare']!==null) {
+                                                    echo 'diare';
+                                                }
+                                                else {
+                                                    echo '';
+                }
+                $b++; ?> </a>
+                            </td>
                         <td><?php echo word_limiter($ru['keterangan'],5,'...');?></td>
                     </tr>
                             <?php }
@@ -531,36 +533,6 @@
                 </tbody>
             </table>
              </div>
-        </div>
-
-         <div id="tabs-c">
-
-            <div style="padding: 10px;">
-
-                <input id="datepicker" placeholder="Masukkan tanggal" type="text" class="input-long" style="vertical-align: top; margin-top: 5px;"/>
-                <tr>
-
-                    <td><input type="submit" class="submit-green" value="Cari "></td>
-                </tr>
-
-            </div>
-            <table id="myTable" class="tablesorter" border="1">
-                <thead>
-                    <tr>
-                        <th style="width:5%">No</th>
-                        <th style="width:18%">Tanggal Pemeriksaan</th>
-                        <th style="width:21%">Jenis Pemeriksaan</th>
-                        <th style="width:17%">hasil Pemeriksaan</th>
-                        <th style="width:13%">Pemeriksaan Khusus</th>
-                        <th style="width:13%">Ket.</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-
-
-                </tbody>
-            </table>
         </div>
 </div>
 
