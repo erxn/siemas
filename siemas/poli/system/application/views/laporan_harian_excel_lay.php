@@ -170,9 +170,14 @@ for ($k = 1; $k <= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun); $k++) {
         $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1 + $k, $l, $d['jumlah']);
         $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(33, $l, '=SUM(' . 'C' . $l . ':AG' . $l . ')');
         $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, '=(' . 'AH' . $l . '*AI' . $l . ')');
+
         $l++;
     }
 }
+
+
+
+
 
 
 //       $objPHPExcel->getActiveSheet()->getStyle('A6:F' . ($i-1))->applyFromArray($styleThinBlackBorderOutline);
