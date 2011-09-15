@@ -26,7 +26,7 @@ Class Laporan_model extends Model{
                                  FROM remed_poli_gigi r
                                  JOIN remed_gigi_layanan l USING (id_remed_gigi)
                                  WHERE r.tanggal_kunjungan_gigi = '$tgl'
-                                 GROUP BY l.id_layanan" );
+                                 ASC a.id_layanan" );
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
                 $data[]=$row;
@@ -64,7 +64,7 @@ Class Laporan_model extends Model{
         $kueri=$this->db->query("SELECT *
                                 FROM layanan
                                 
-                                WHERE layanan.keterangan = 'GIGI'" );
+                                WHERE layanan.keterangan = 'GIGI' GROUP BY id_layanan" );
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
                 $data[]=$row;
@@ -238,7 +238,7 @@ Class Laporan_model extends Model{
                                 WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
                                 AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
-                                AND pasien.status_pelayanan = '%$status%'
+                                AND pasien.status_pelayanan LIKE '%$status%'
                                 ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
@@ -252,7 +252,7 @@ Class Laporan_model extends Model{
                                 WHERE NOT kunjungan.tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
                                 AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
-                                AND pasien.status_pelayanan = '%$status%'
+                                AND pasien.status_pelayanan LIKE '%$status%'
                                 ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
@@ -270,8 +270,11 @@ Class Laporan_model extends Model{
                                                 WHERE kunjungan.tanggal_kunjungan = '$tgl'
                                                 AND layanan.nama_layanan LIKE '%$layanan%'
                                                 AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '$stat')
-                                                AND pasien.status_pelayanan = '%$status%'
+                                                AND pasien.status_pelayanan LIKE '%$status%'
                                                                                 ");
+//        echo $this->db->last_query();
+//        echo "<hr/>";
+
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
     }

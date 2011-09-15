@@ -220,35 +220,35 @@ class Antrian extends Controller {
     }
 
 
-    function tabel_tbc($id_pasien,$tbc){
+    function tabel_tbc($id_pasien,$id_kunjungan){
 
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
         $remed['data_pasien']=$data_pasien_remed;
 
-         $remed_tbc=$this->remed->remed_poli_umum_tbc($id_pasien,$tbc);
+         $remed_tbc=$this->remed->remed_poli_umum_tbc($id_kunjungan);
         $remed['tbc']=$remed_tbc;
         $this->load->view('p_tbc',$remed);
 
     }
 
-function tabel_ispa($id_pasien,$ispa){
+function tabel_ispa($id_pasien,$id_kunjungan){
 
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
         $remed['data_pasien']=$data_pasien_remed;
 
-        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_pasien,$ispa);
+        $remed_ispa=$this->remed->remed_poli_umum_ispa($id_kunjungan);
         $remed['ispa']=$remed_ispa;
 
         $this->load->view('p_ispa',$remed);
 
     }
 
-    function tabel_diare($id_pasien,$diare){
+    function tabel_diare($id_pasien,$id_kunjungan){
 
         $data_pasien_remed=$this->remed->data_pasien_remed($id_pasien);    //model
         $remed['data_pasien']=$data_pasien_remed;
 
-        $remed_diare=$this->remed->remed_poli_umum_diare($id_pasien,$diare);
+        $remed_diare=$this->remed->remed_poli_umum_diare($id_kunjungan);
         $remed['diare']=$remed_diare;
 
         $this->load->view('p_diare',$remed);
