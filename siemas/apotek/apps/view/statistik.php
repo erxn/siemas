@@ -9,8 +9,14 @@
                                 <li><a href="<?php echo $this->base_url?>index.php/home">Home</a></li>
                                 <li><a href="<?php echo $this->base_url?>index.php/history">History</a></li>
                                 <li><a href="<?php echo $this->base_url?>index.php/obat">Obat</a></li>
-                                <li><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa</a></li>
-				<li id="current"><a href="<?php echo $this->base_url?>index.php/statistik">Statistik</a></li>
+                                <li><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa
+                                    <?php if($jumlah_kadaluarsa > 0) { ?>
+                                    <div style="display: inline-block; padding: 0px 3px !important; background: red; color: white; font-weight: bold; margin-left: 5px; -moz-border-radius: 5px">
+                                    <?php echo $jumlah_kadaluarsa ?>
+                                    </div>
+                                    <?php } ?>
+                                </a></li>
+                                <li id="current"><a href="<?php echo $this->base_url?>index.php/statistik">Statistik</a></li>
                             </ul>
                     <div class="iconMenu">
 						<a href="<?php echo $this->base_url?>index.php/resep">

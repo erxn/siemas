@@ -65,5 +65,19 @@ class Model_history {
         return $result;
     }
 
+    public function tambah_bulan($date){
+
+        $TB = explode("-", $date);
+        if($TB[1]<12){
+            $tmp = $TB[1] + 1;
+            $result = $TB[0].'-'.$tmp;
+        } else{
+            $tmp = $TB[0] + 1;
+            $result = $tmp.'-01';
+        }
+
+        return $result;
+    }
+
 }
 

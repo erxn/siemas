@@ -3,10 +3,8 @@
             <div id="subnav">
                 <div class="container_12">
                     <div class="grid_12">
-                        <ul>
-							
-							<li><a href="<?php echo $this->base_url?>index.php/laporan/pemakaian">Pemakaian Obat</a></li>
-							<li><a href="<?php echo $this->base_url?>index.php/laporan/pemasukan">Pemasukan Obat</a></li>
+                        <ul style="margin-left: 677px;">
+			
 							<li><a href="<?php echo $this->base_url?>index.php/laporan/tahunan">Tahunan</a></li>
 							<li><a href="<?php echo $this->base_url?>index.php/laporan/bulanan">Bulanan</a></li>
 							<li><a href="<?php echo $this->base_url?>index.php/laporan/harian">Harian</a></li>
@@ -26,8 +24,6 @@
 							<li><a href="<?php echo $this->base_url?>index.php/laporan/harian">Harian</a></li>
 							<li><a href="<?php echo $this->base_url?>index.php/laporan/bulanan">Bulanan</a></li>
 							<li><a href="<?php echo $this->base_url?>index.php/laporan/tahunan">Tahunan</a></li>
-							<li><a href="<?php echo $this->base_url?>index.php/laporan/pemasukan">Pemasukan Obat</a></li>
-							<li><a href="<?php echo $this->base_url?>index.php/laporan/pemakaian">Pemakaian Obat</a></li>	
 		
 						</ul>
 

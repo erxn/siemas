@@ -9,7 +9,13 @@
                                 <li><a href="<?php echo $this->base_url?>index.php/home">Home</a></li>
                                 <li><a href="<?php echo $this->base_url?>index.php/history">History</a></li>
                                 <li><a href="<?php echo $this->base_url?>index.php/obat">Obat</a></li>
-                                <li id="current""><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa</a></li>
+                                <li id="current""><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa
+                                    <?php if($jumlah_kadaluarsa > 0) { ?>
+                                    <div style="display: inline-block; padding: 0px 3px !important; background: red; color: white; font-weight: bold; margin-left: 5px; -moz-border-radius: 5px">
+                                    <?php echo $jumlah_kadaluarsa ?>
+                                    </div>
+                                    <?php } ?>
+                                </a></li>
 				<li><a href="<?php echo $this->base_url?>index.php/statistik">Statistik</a></li>
                             </ul>
                     <div class="iconMenu">
@@ -31,7 +37,7 @@
 						Laporan</a></span>
 					</div>
                     </div><!-- End. .grid_12-->
-
+                    
                     <div style="clear: both;"></div>
 
                 </div><!-- End. .container_12 -->
@@ -39,15 +45,49 @@
             <div style="clear: both;"></div>
         </div> <!-- End #header -->
 
-		<div class="container_12">
-
-
+        <div class="container_12">
+                    <div style="clear: both;"></div>
+                    <?php if($hasil) {   ?>
+                        <div class="module" style="width: 533px ;">
+                        <div class="module-table-body">
+                        <table id="myTable" class="tablesorter" >
+                        	<thead>
+                                <tr>
+                                    <th style="width:35%">Tanggal Input Obat</th>
+                                    <th style="width:20%">No SBKK</th>
+                                    <th style="width:35%">Jumlah jenis obat</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $n='1'; foreach ($hasil as $hasil3) { ?>
+                                <tr>
+                                    <td><?php echo $hasil3->tanggal ; ?></td>
+                                    <td><?php echo $hasil3->no_sbkk ; ?></td>
+                                    <td><?php echo $hasil3->jumlahnya ; ?></td>
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/kadaluarsa/lihat_obat/<?php echo $hasil3->tanggal ; ?>/<?php echo $hasil3->no_sbkk ; ?>">
+                                            <input type="submit" value="Lihat Obat" /></a></td>
+                                </tr>
+                                
+                                <?php $n++; } ?>
+                                <tr>
+                                    <td></td>
+                                    <td><b>Total :</b></td>
+                                    <td><?php echo $jumlah_kadaluarsa ; ?></td>
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/kadaluarsa/lihat_obat_total">
+                                            <input type="submit" value="Lihat Obat" /></a></td>
+                                </tr>
+                            </tbody>
+                        </table></div></div>
+                    <?php } else if(isset ($alert)) { ?>
+                                <?php echo $alert; ?>
+                    <?php } ?>
 
                 
 
-			</div> <!-- End .grid_12 -->
+		</div> <!-- End .grid_12 -->
 
-
+                <div style="clear: both;"></div>
         <!-- Footer -->
         <div id="footer">
         	<div class="container_12">
@@ -57,7 +97,20 @@
             </div>
             <div style="clear:both;"></div>
         </div> <!-- End #footer -->
-	</body>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".popup").colorbox({initialHeight: "900px", initialWidth: "900px", width: "55%", height: "75%", onComplete: function(){
+                        $( "#datepicker" ).datepicker({
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                    }
+                });
+            });
+        </script>
+
+</body>
 </html>
 <!-- This document originaly created by R Bagus Dimas Putra r4yv1n@yahoo.com -->
 

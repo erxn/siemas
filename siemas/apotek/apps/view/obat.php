@@ -6,8 +6,6 @@
                         <ul style="margin-left: 0px;">
 
                             <li><a href="<?php echo $this->base_url?>index.php/obat/tambah_jenis_obat">Tambah Jenis Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/obat/pemakaian_narkotik">Pemakaian Narkotik</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/obat/Kadaluarsa">Kadaluarsa</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/obat/pemakaian_obat">Pemakaian Obat</a></li>
                             <li id="current"><a href="<?php echo $this->base_url?>index.php/obat">Daftar Obat</a></li>
 

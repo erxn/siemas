@@ -13,11 +13,13 @@ class Controller_laporan extends Panada {
     
     public function index(){
         $views['page_title']    = 'Laporan - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $this->view_laporan($views);
     }
 	
 	public function harian(){
         $views['page_title']    = 'Laporan Harian - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['base_url']    = $this->base_url;
 		$views['tanggal'] = date('d-m-Y');
 		$views['date']=NULL;
@@ -37,7 +39,7 @@ class Controller_laporan extends Panada {
 	
 	public function bulanan(){
             $views['page_title']    = 'Laporan Bulanan - Apotek';
-            
+            $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
             if($_POST){
 		$bulan=$_POST['bulan'];
                 $tahun=$_POST['tahun'];
@@ -57,11 +59,27 @@ class Controller_laporan extends Panada {
 	
 	public function tahunan(){
         $views['page_title']    = 'Laporan Tahunan - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
+        if($_POST){
+		$bulan=8;
+                $tahun=$_POST['tahun'];
+                if($bulan<10)
+                    {$TB = $tahun.'-0'.$bulan;}
+                    else{$TB = $tahun.'-'.$bulan;}
+                $n=1;
+                $data_tahunan = $this->excel->tahunan($TB);
+                $this->session->set('data_tahunan',$data_tahunan);
+                $this->session->set('bulan_bulanan',$bulan);
+                $this->session->set('tahun_bulanan',$tahun);
+                $this->redirect('index.php/excel/tahunan/');
+            }
+
         $this->view_laporan_tahunan($views);
     }
 	
 	public function pemasukan(){
         $views['page_title']    = 'Laporan Pemasukan Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['tanggal'] = date('d-m-Y');
         $views['hasil'] = NULL;
          if($_POST){
@@ -83,6 +101,7 @@ class Controller_laporan extends Panada {
 	
 	public function pemakaian(){
         $views['page_title']    = 'Laporan Pemakaian Obat - Apotek';
+        $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['tanggal'] = date('d-m-Y');
         $this->view_laporan_pemakaian($views);
     }

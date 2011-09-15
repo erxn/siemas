@@ -35,6 +35,31 @@ class Model_obat {
         return $result;
     }
 
+    public function auto_pasien($tanggal){
+        $data = array();
+        $data[] = new stdClass();
+        $result = $this->db->results("SELECT no_kunjungan, id_pasien FROM kunjungan WHERE tanggal_kunjungan='$tanggal'");
+        if(isset ($result)){
+            $n=0;
+            foreach ($result as $value) {
+                $data[$n]->no_kunjungan = $value->no_kunjungan;
+                $data[$n]->nama_pasien = $this->db->find_var("SELECT nama_pasien FROM pasien WHERE id_pasien='$value->id_pasien'");
+            
+                $n++;
+            }
+        }
+        return $data;
+    }
+
+    public function cek_kadaluarsa(){
+
+        $date = date("Y-m-d");
+        $kadaluarsa = date("Y-m-d", strtotime("+14 days"));
+        $data = $this->db->find_var("SELECT COUNT(*) FROM history_obat
+                                    WHERE tanggal_kadaluarsa>='$date' AND tanggal_kadaluarsa<='$kadaluarsa'");
+        return $data;
+    }
+
     public function history_bt($BT){
 
         $result = $this->db->results("SELECT DISTINCT(no_sbkk),tanggal FROM history_obat WHERE tanggal LIKE '$BT%' ORDER BY tanggal",'array');
@@ -133,8 +158,53 @@ class Model_obat {
         return $result;
     }
 
-    public function resep_pasien($tanggal,$no_kunjungan){
+    public function kadaluarsa(){
 
+        $date = date("Y-m-d");
+        $kadaluarsa = date("Y-m-d", strtotime("+14 days"));
+        $data = $this->db->results("SELECT no_sbkk, tanggal, COUNT(*) AS jumlahnya FROM history_obat
+                                    WHERE tanggal_kadaluarsa>='$date' AND tanggal_kadaluarsa<='$kadaluarsa'
+                                    GROUP BY no_sbkk ORDER BY tanggal ASC ");
+        return $data;
+    }
+
+    public function lihat_kadaluarsa($tanggal,$sbkk){
+        $data = array();
+        $data[] = new stdClass();
+        $result = $this->db->results("SELECT id_obat FROM history_obat
+                                    WHERE tanggal='$tanggal' AND no_sbkk='$sbkk'");
+        if(isset ($result)){
+            $n=0;
+            foreach ($result as $value) {
+                $data[$n]->id_obat = $value->id_obat;
+                $data[$n]->nbk_obat = $this->db->find_var("SELECT nbk_obat FROM obat WHERE id_obat='$value->id_obat'");
+                $n++;
+            }
+        }
+        return $data;
+    }
+
+    public function lihat_obat_kadaluarsa(){
+        $data = array();
+        $data[] = new stdClass();
+        $date = date("Y-m-d");
+        $kadaluarsa = date("Y-m-d", strtotime("+14 days"));
+        $result = $this->db->results("SELECT no_sbkk, tanggal, id_obat FROM history_obat
+                                    WHERE tanggal_kadaluarsa>='$date' AND tanggal_kadaluarsa<='$kadaluarsa'");
+        if(isset ($result)){
+            $n=0;
+            foreach ($result as $value) {
+                $data[$n]->tanggal_input = $this->date->reverse($value->tanggal);
+                $data[$n]->no_sbkk = $value->no_sbkk;
+                $data[$n]->id_obat = $value->id_obat;
+                $data[$n]->nbk_obat = $this->db->find_var("SELECT nbk_obat FROM obat WHERE id_obat='$value->id_obat'");
+                $n++;
+            }
+        }
+        return $data;
+    }
+
+    public function resep_pasien($tanggal,$no_kunjungan){
         $id_pasien = $this->db->find_var("SELECT id_pasien FROM kunjungan WHERE no_kunjungan='$no_kunjungan' AND tanggal_kunjungan='$tanggal'");
         $waktu = $tanggal.' '.date('H:i:s');
         $data['waktu']=$waktu;
@@ -165,7 +235,7 @@ class Model_obat {
                         $data2['stok_obat'] = $total;
                         $data3['id_obat'] = $result->id_obat;
                         if( isset($kadaluarsa[$n])){
-                        $data['tanggal_kadaluarsa'] = $kadaluarsa[$n];}
+                        $data['tanggal_kadaluarsa'] = $this->date->reverse($kadaluarsa[$n]);}
                         if( isset($batch[$n])){
                         $data['no_batch'] = $batch[$n];}
                         $data['id_obat'] = $result->id_obat;
@@ -216,11 +286,12 @@ class Model_obat {
 		}
     }
 
-    public function tambah_jenis_obat($nbk_obat, $satuan_obat, $narkotik){
+    public function tambah_jenis_obat($nbk_obat, $satuan_obat, $narkotik, $jumlah){
 
         $data['nbk_obat'] = $nbk_obat;
         $data['satuan_obat'] = $satuan_obat;
         $data['narkotik'] = $narkotik;
+        $data['stok_obat'] = $jumlah;
         $query = $this->db->insert('obat',$data);;
 
     }

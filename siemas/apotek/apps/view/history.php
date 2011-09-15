@@ -5,7 +5,6 @@
                     <div class="grid_12">
                         <ul style="margin-left: 50px;">
                             
-                            <li><a href="<?php echo $this->base_url?>index.php/history/Kadaluarsa">Kadaluarsa</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
                             <li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
@@ -26,7 +25,6 @@
 			<li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
                         <li><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
                         <li><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
-			<li><a href="<?php echo $this->base_url?>index.php/history/Kadaluarsa">Kadaluarsa</a></li>
 
 			</ul>
 
