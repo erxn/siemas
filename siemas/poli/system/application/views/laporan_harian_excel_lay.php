@@ -9,6 +9,26 @@
  */
 
 //view
+$nama_bulan = array(
+    "",
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+);
+
+$tahun = $laporan[0]['tahun'];
+$bulan = $nama_bulan[$laporan[0]['bulan']];
+
+
 $objPHPExcel = new PHPExcel();
 
 // border
@@ -45,7 +65,7 @@ $styleAlignVerticalCenter = array(
 
 // Set properties
 $objPHPExcel->getProperties()->setCreator("Siemas")
-        ->setLastModifiedBy("085697977177")
+        ->setLastModifiedBy("")
         ->setTitle("Rekap Harian Tindakan Gigi")
         ->setSubject("Rekap Harian Tindakan Gigi");
 $objPHPExcel->getActiveSheet()->getPageSetup()
