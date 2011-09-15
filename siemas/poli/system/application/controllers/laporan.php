@@ -31,7 +31,7 @@ class Laporan extends Controller{
         $this->load->plugin('phpexcel');
         $data['bulan']=$bulan;
         $data['tahun']=$tahun;
-        $this->load->view('laporan_harian_excel_peny');
+        $this->load->view('laporan_harian_excel_peny', $data);
     }
 
     function tahunan($tahun){

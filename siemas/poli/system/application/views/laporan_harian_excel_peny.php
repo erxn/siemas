@@ -4,9 +4,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-$bulan = 8;
-$tahun = 2011;
+$nama_bulan = array(
+    "",
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+);
 
 //view
 $objPHPExcel = new PHPExcel();
@@ -47,8 +59,8 @@ $styleAlignVerticalCenter = array(
 // Set properties
 $objPHPExcel->getProperties()->setCreator("Siemas")
         ->setLastModifiedBy("SIEMAS")
-        ->setTitle("Rekap Harian Tindakan Gigi")
-        ->setSubject("Rekap Harian Tindakan Gigi");
+        ->setTitle("Rekap Bulanan Tindakan Gigi")
+        ->setSubject("Rekap Bulanan Tindakan Gigi");
 $objPHPExcel->getActiveSheet()->getPageSetup()
         ->setOrientation(Worksheet_PageSetup::ORIENTATION_LANDSCAPE)
         ->setPaperSize(Worksheet_PageSetup::PAPERSIZE_A4)
@@ -908,7 +920,7 @@ $objPHPExcel->getActiveSheet()->setTitle('Harian');
 $objPHPExcel->setActiveSheetIndex(0);
 
 header('Content-Type: application/vnd.ms-excel');
-//header('Content-Disposition: attachment;filename="rekap_resep_bulanan_' . $namanya . '-' . $tahun . '.xls"');
+header('Content-Disposition: attachment;filename="Laporan_bulanan_Penyakit' . $nama_bulan[$bulan]. '-' . $tahun . '.xls"');
 
 $objWriter = IOFactory::createWriter($objPHPExcel, "Excel5");
 $objWriter->save("php://output");
