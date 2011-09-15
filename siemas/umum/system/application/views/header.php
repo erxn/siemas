@@ -98,10 +98,14 @@
                 <div class="container_12">
                     <div class="grid_12">                       												
                         <ul id="nav">
-                            <li><a href="index.php/antrian/antri/2">Antrian</a></li>
-                            <li><a href="index.php/antrian/isi_remed_hari_ini">Isi Rekam MEdik</a></li>
-                            <li><a href="index.php/stat">Statistik</a></li>
-                             <li><a href="">Logout</a></li>
+
+
+
+                            <li id="<?php if($this->uri->segment(1)== "antrian" && $this->uri->segment(2)=="antri" ) echo "current"?>"><a href="index.php/antrian/antri/2">Antrian</a></li>
+
+                            <li id="<?php if(($this->uri->segment(1)=="antrian" && $this->uri->segment(2)=="isi_remed_hari_ini")|| $this->uri->segment(2)=="remed_berhasil") echo "current"?>"><a href="index.php/antrian/isi_remed_hari_ini">Isi Rekam Medik</a></li>
+                            <li id="<?php if($this->uri->segment(1)== "stat") echo "current"?>"><a href="index.php/stat">Statistik</a></li>
+                             <li><a href="index.php/">Logout</a></li>
 
                         </ul>
 
