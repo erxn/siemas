@@ -159,25 +159,7 @@
                                     <td><?php echo $pop_umum[0]['nama_penyakit'];?></td>
                                 </tr>
 
-                                <tr><td>P2M</td>
-                                    <td
-                                     <?php
-                                    if($tbc!==0) {
-                                        echo 'tbc';
-                                    }
-                                    else if($ispa!==0) {
-                                        echo 'ispa';
-                                    }
-                                    else if($tbc!==0) {
-                                        echo 'tbc';
-                                    }
-                                    else if($diare!==0) {
-                                        echo 'diare';
-                                    }
-
-                                    ?></td>
-                                </tr>
-
+                               
                                 <tr class="odd">
                                     <td><b>Keterangan:</b></td>
                                     <td><?php echo $pop_umum[0]['keterangan'];?></td>

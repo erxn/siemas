@@ -356,8 +356,8 @@
                             <td><?php echo word_limiter($ru['anamnesis'],3,'...');?></td>
                             <td><?php echo word_limiter($ru['diagnosa'],3,'...');?></td>
                             <td><?php echo word_limiter($ru['nama_penyakit'],3,'...');?></td>
-                            <td><a href="">
-                                                <?php if($ispa[$b]['id_ispa']!==null) {
+                            <td><a class="pop" href="index.php/antrian/tabel_ispa/<?php echo $ru['id_pasien']?>/<?php echo $ru['id_kunjungan']?>">
+                                                <?php if(isset($ispa[$b]['id_ispa']) && $ispa[$b]['id_ispa']!==null) {
                                                     echo 'ispa';
                                                    // print_r($ispa);
                                                 }
@@ -366,8 +366,8 @@
                 }
                 ?> </a>
                             </td>
-                            <td><a href="">
-                                                <?php if($tbc[$b]['id_tbc']!==null) {
+                            <td><a class="pop" href="index.php/antrian/tabel_tbc/<?php echo $ru['id_pasien']?>/<?php echo $ru['id_kunjungan']?>">
+                                                <?php if(isset($tbc[$b]['id_tbc']) && $tbc[$b]['id_tbc']!==null) {
                                                     echo 'tbc';
                                                 }
                                                 else {
@@ -375,8 +375,8 @@
                 }
                 ?> </a>
                             </td>
-                            <td><a href="">
-                                                <?php if ($diare[$b]['id_diare']!==null) {
+                            <td><a class="pop" href="index.php/antrian/tabel_diare/<?php echo $ru['id_pasien']?>/<?php echo $ru['id_kunjungan']?>">
+                                                <?php if (isset($diare[$b]['id_diare']) && $diare[$b]['id_diare']!==null) {
                                                     echo 'diare';
                                                 }
                                                 else {
@@ -392,11 +392,12 @@
         ?>
                     </tbody>
                 </table>
-            </div>
-        </div>
 
-    </div>
 
         <?php } ?>
+            </div>
+
+        </div>
 
 </div>
+    </div>
