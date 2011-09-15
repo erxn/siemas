@@ -31,7 +31,7 @@ $xls->getProperties()->setCreator("SIM Puskesmas Bogor Tengah")
 
 $xls->setActiveSheetIndex(0);
 
-$xls->getDefaultStyle()->getFont()->setName('Arial');
+$xls->getDefaultStyle()->getFont()->setName('Calibri');
 
 $styleThinBlackBorderOutline = array(
     'borders' => array(
@@ -121,7 +121,8 @@ $xls->getActiveSheet()
         ->setCellValue('AD7', 'LPKM')
         ->setCellValue('AE7', 'Kab')
         ;
-//$xls->getActiveSheet()->getStyle('A6')->getFill()->getStartColor()->setRGB('C0C0C0');
+$xls->getActiveSheet()->getStyle('A8:AE8')->getFill()->setFillType(Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFD8D8D8');
+
 
 for ($i = 0; $i <= 30; $i++)
     $xls->getActiveSheet()->setCellValueByColumnAndRow($i, 8, $i+1);
@@ -201,7 +202,13 @@ $i=9; foreach ($laporan as $hasil) :
     $xls->getActiveSheet()->setCellValue("X$i", $hasil['kia_cib']);
     $xls->getActiveSheet()->setCellValue("Y$i", $hasil['kia_LW']);
     $xls->getActiveSheet()->setCellValue("Z$i", $hasil['kia_LKot']);
-    
+
+    $xls->getActiveSheet()->setCellValue("AA$i", $hasil['kb_pab']+$hasil['kb_cib']+$hasil['kb_LW']+$hasil['kb_LKot']);
+    $xls->getActiveSheet()->setCellValue("AB$i", $hasil['kb_pab']);
+    $xls->getActiveSheet()->setCellValue("AC$i", $hasil['kb_cib']);
+    $xls->getActiveSheet()->setCellValue("AD$i", $hasil['kb_LW']);
+    $xls->getActiveSheet()->setCellValue("AE$i", $hasil['kb_LKot']);
+
 
     $xls->getActiveSheet()->getStyle("A$i:AE$i")->getAlignment()->setVertical('center');
     $xls->getActiveSheet()->getStyle("A$i:AE$i")->getFont()->setSize(10);
@@ -270,6 +277,11 @@ $xls->getActiveSheet()->setCellValue("W$i","=SUM(W9:W$z)");
 $xls->getActiveSheet()->setCellValue("X$i","=SUM(X9:X$z)");
 $xls->getActiveSheet()->setCellValue("Y$i","=SUM(Y9:Y$z)");
 $xls->getActiveSheet()->setCellValue("Z$i","=SUM(Z9:Z$z)");
+$xls->getActiveSheet()->setCellValue("AA$i","=SUM(AA9:AA$z)");
+$xls->getActiveSheet()->setCellValue("AB$i","=SUM(AB9:AB$z)");
+$xls->getActiveSheet()->setCellValue("AC$i","=SUM(AC9:AC$z)");
+$xls->getActiveSheet()->setCellValue("AD$i","=SUM(AD9:AD$z)");
+$xls->getActiveSheet()->setCellValue("AE$i","=SUM(AE9:AE$z)");
 // output it
 
 $xls->getActiveSheet()->getStyle("A$i:AE$i")->applyFromArray($styleThinBlackBorderOutline);

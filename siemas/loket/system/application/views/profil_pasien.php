@@ -5,8 +5,8 @@
         <div class="module-body">
             <table class="noborder" style="width: 100% !important">
                 <tr class="odd">
-                    <td style="width: 25%">ID Pasien</td>
-                    <td style="width: 75%"><?php echo $pasien[0]['kode_pasien'];?></td>
+                    <td style="width: 22%">ID Pasien</td>
+                    <td style="width: 78%"><?php echo $pasien[0]['kode_pasien'];?></td>
                 </tr>
                 <tr>
                     <td>Nama Kepala Keluarga</td>
@@ -30,8 +30,25 @@
                 </tr>
                 <tr class="odd">
                     <td>Status Pelayanan</td>
-                    <td><?php echo $pasien[0]['status_pelayanan'];?></td>
+                    <td><?php echo $pasien[0]['status_pelayanan'];
+                    if($this->uri->segment(2)== "registrasi_kunjungan"){
+                        if($pasien[0]['status_pelayanan'] == 'Umum') {
+                            ?>&nbsp;&nbsp;<input type="button" value="Ubah status" onclick="$('#status_baru, #nomer_kartu').show(); $(this).hide()"></td>
                 </tr>
+                <tr id="status_baru" style="display: none">
+                    <td>Status Baru</td>
+                    <td><select name="status_pelayanan" onchange="if($(this).val() == 'askes' || $(this).val() == 'jamkesmas') $('#nomer_kartu').show(); else $('#nomer_kartu').hide()">
+                                    <option value="askes">Askes</option>
+                                    <option value="jamkesmas">Jamkesmas</option>
+                                    <option value="lain-lain">GR</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="nomer_kartu" style="display: none">
+                    <td>No.Kartu</td>
+                    <td><input class="input-short" type="text"/></td>
+                </tr>
+                <?php }}?>
                 <?php if(($pasien[0]['status_pelayanan'] == 'Askes')||($pasien[0]['status_pelayanan'] == 'Jamkesmas')){?>
                 <tr>
                     <td>No. Kartu</td>
@@ -39,9 +56,7 @@
                 </tr>
                 <?php }?>
                 <?php if(isset($x)) {?>
-                <tr>
-                    <td colspan="2">&nbsp;</td>
-                </tr>
+                
                 
                 <tr class="odd">
                     <td>&nbsp;</td>

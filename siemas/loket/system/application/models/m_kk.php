@@ -28,6 +28,8 @@ class M_kk extends Model {
         }
 
         $q->free_result();
+
+       // print_r($data);exit;
         return $data;
     }
 

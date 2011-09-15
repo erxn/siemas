@@ -132,15 +132,18 @@
                 <div class="container_12">
                     <div class="grid_12">
                         <img src="Template_files/logo0000.gif"  style="position: absolute; top:10px; left:20px"/>
-                        <img src="Template_files/puskesmas.png" style="position: absolute; top:10px; left:90px" />
-                        <img src="Template_files/alamat.png" style="position: absolute; top:50px; left:90px" />
+                        <div style="margin-left: 25px; margin-top: 5px; color: white; text-shadow: 3px 3px 10px #000000; width: 400px; display: inline-block">
+                            <span style="font-size: 28px">Puskesmas Bogor Tengah</span>
+                            <br/>
+                            <span style="font-size: 22px">Loket</span>
+                        </div>
                         <ul id="nav">
                             <li id="<?php if($this->uri->segment(1)== "") echo "current"?>"><a href="index.php">Home</a></li>
                             <li id="<?php if(($this->uri->segment(1)== "kk")||($this->uri->segment(1)== "registrasi")||($this->uri->segment(2)=="registrasi_pasien_sukses")) echo "current"?>"><a href="index.php/registrasi">Registrasi</a></li>
                             <li id="<?php if($this->uri->segment(1)== "pembayaran") echo "current"?>"><a href="index.php/pembayaran">Pembayaran</a></li>
                             <li id="<?php if(($this->uri->segment(1)== "pasien")&&($this->uri->segment(2)!= "registrasi_pasien_sukses")) echo "current"?>"><a href="index.php/pasien">Data Pasien</a></li>
                             <li id="<?php if($this->uri->segment(1)== "statistik") echo "current"?>"><a href="index.php/statistik">Statistik</a></li>
-                            <li id="<?php if($this->uri->segment(1)== "c_laporan") echo "current"?>"><a href="index.php/c_laporan">Laporan</a></li>
+                            <li id="<?php if($this->uri->segment(1)== "c_laporan" || $this->uri->segment(1)== "kunjungan") echo "current"?>"><a href="index.php/c_laporan">Laporan</a></li>
                         </ul>
                     </div>
                 </div>
