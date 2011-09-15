@@ -15,7 +15,7 @@
     }
 </style>
 
-<div style="border: 0px solid fuchsia; width: 400px; height: auto;padding: 2px; text-align: center; margin: 0 auto">
+<div style="border: 0px solid fuchsia; width: 500px; height: auto;padding: 2px; text-align: center; margin: 0 auto">
     <a href="#" onclick="tambah_antrian('Umum'); return false;" class="kotak"><img src="images/umum.png" border="0"/><br/>Poli Umum</a>
     <a href="#" onclick="tambah_antrian('Gigi'); return false;" class="kotak"><img src="images/gigi.png" border="0"/><br/>Poli Gigi</a>
     <a href="#" onclick="tambah_antrian('Kia'); return false;" class="kotak"><img src="images/kia.png" border="0"/><br/>Poli KIA</a>

@@ -59,7 +59,7 @@
                                     if($i%2==0) $x="odd";
                                 else $x ="even"; ?>
                             <tr class="<?php echo $x;?>">
-                                <td><?php echo $i++; ?></td>
+                                <td align="center"><?php echo $i++; ?></td>
                                 <td><a href="index.php/pasien/profil_pasien/<?php echo $anggota['id_kk'] ?>/<?php echo $anggota['id_pasien'] ?>" class="popup"><?php echo $anggota['nama_pasien'] ?></a></td>
                                 <td><?php echo $anggota['status_dalam_keluarga'] ?></td>
                             </tr>

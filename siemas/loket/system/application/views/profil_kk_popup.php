@@ -29,7 +29,7 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="width:2%">No</th>
+                                <th align="center" style="width:2%">No</th>
                                 <th style="width:10%">Nama Anggota</th>
                                 <th style="width:10%">Status</th>
                             </tr>
@@ -39,7 +39,7 @@
                             if($i%2==0) $x="odd";
                                 else $x ="even"; ?>
                             <tr class="<?php echo $x;?>">
-                                <td><?php echo $i++; ?></td>
+                                <td align="center"><?php echo $i++; ?></td>
                                 <td style="color: #0063BE"><?php echo $anggota['nama_pasien'] ?></td>
                                 <td><?php echo $anggota['status_dalam_keluarga'] ?></td>
                             </tr>

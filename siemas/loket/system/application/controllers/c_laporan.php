@@ -791,6 +791,11 @@ class C_laporan extends Controller {
             $kunj_kia_LW = $this->M_kunjungan->get_poli_wil($tgl,$kia,0,$stat1,'Umum');
             $kunj_kia_LKot = $this->M_kunjungan->get_poli_wil($tgl,$kia,0,$stat2,'Umum');
 
+            $kunj_kb_pabaton = $this->M_kunjungan->get_total_by_ket_wil($tgl,'kb','Umum',$wil1,0);
+            $kunj_kb_cibogor = $this->M_kunjungan->get_total_by_ket_wil($tgl,'kb','Umum',$wil2,0);
+            $kunj_kb_LW = $this->M_kunjungan->get_total_by_ket_wil($tgl,'kb','Umum',0,$stat1);
+            $kunj_kb_LKot = $this->M_kunjungan->get_total_by_ket_wil($tgl,'kb','Umum',0,$stat2);
+            
             $laporan[] = array(
 
                 'lama_pab' => $kunj_lama_pabaton,
@@ -818,6 +823,11 @@ class C_laporan extends Controller {
                 'kia_LW' => $kunj_kia_LW,
                 'kia_LKot' => $kunj_kia_LKot,
 
+                'kb_pab' => $kunj_kb_pabaton,
+                'kb_cib' => $kunj_kb_cibogor,
+                'kb_LW' => $kunj_kb_LW,
+                'kb_LKot' => $kunj_kb_LKot,
+                
                 'bulan' => $bln,
                 'tahun' => $thn
                 );
@@ -934,9 +944,6 @@ class C_laporan extends Controller {
         $kunj_ngakin_lw = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lw);
         $kunj_gakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$askeskin,$lk);
         $kunj_ngakin_lk = $this->M_kunjungan->get_kunjungan_jamkesmas($bln,$thn,0,$bayar,$lk);
-
-       // $kunj_lama_gakin_pabaton = $this->M_kunjungan->get_pasien_lama_jam($bln,$thn,$pab,$askeskin);
-       // $kunj_lama_ngakin_pabaton = $this->M_kunjungan->get_pasien_lama_jam($bln,$thn,$pab,$bayar);
 
         $kia_pab_gakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$askeskin,$pab,0);
         $kia_pab_ngakin = $this->M_kunjungan->get_kunjungan_poli_st_layan($bln,$thn,$kia,$bayar,$pab,0);

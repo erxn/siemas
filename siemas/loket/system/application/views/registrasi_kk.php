@@ -182,7 +182,7 @@ $(document).ready(function() {
                             <tr class="even">
                                 <td class="align-center"><?php echo $i++;?></td>
                                 <td><a class="popup" href="index.php/kk/profil_kk/<?php echo $kk['id_kk']?>"><?php echo $kk['nama_kk'];?></a></td>
-                                <td><?php echo substr($kk['jk_kk'],0,1)?></td>
+                                <td align="center"><?php echo substr($kk['jk_kk'],0,1)?></td>
                                 <td><?php echo $kk['alamat_kk']."<br/> Kel. ".$kk['kelurahan_kk']."<br/> Kec. ".$kk['kecamatan_kk'].", ".$kk['kota_kab_kk'];?></td>
                                 <td>
                                     <?php 
