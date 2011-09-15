@@ -47,6 +47,12 @@ class Controller_history extends Panada {
         $this->view_isi_history_resep($views);
     }
 
+        public function lihat_isi_pemasukan($tanggal,$sbkk){
+        $tanggalr = $this->date->reverse($tanggal);
+        $views['isi'] = $this->obat->history_isi_pemasukan($tanggalr,$sbkk);
+        $this->view_isi_history_pemasukan($views);
+    }
+
     public function pemakaian_obat(){
         $views['tanggal'] = date('d-m-Y');
         $this->date->cek_history_harian(date('Y-m-d'));
@@ -119,10 +125,10 @@ class Controller_history extends Panada {
             if(isset ($_POST['bulan']) && isset ($_POST['tahun'])){
                 $BT = $this->date->gabung2($_POST['bulan'], $_POST['tahun']);
                 $hasil = $this->obat->history_bt($BT);
-                if(isset ($hasil)){
+                if(isset ($hasil[0]->no_sbkk)){
                     $views['hasil'] = $hasil;
                 }   else{
-                        $views['alert'] = 'Hasil pencarian pada bulan '.$_POST['bulan'].' tahun '.$_POST['tahun'].' tidak ada.';
+                        $views['alert'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[$_POST['bulan']].' tahun '.$_POST['tahun'].' tidak ada.';
                     }
             }
             if(isset ($_POST['tanggal'])){
