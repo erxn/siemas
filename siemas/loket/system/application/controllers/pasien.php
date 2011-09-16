@@ -41,11 +41,23 @@ class Pasien extends Controller {
             $jumlah_kunjungan = $this->M_kunjungan->tambah_no_kunjungan($now);
             $no_kunjungan = $jumlah_kunjungan+1;
 
+            $status_diubah = false;
+
+            if($this->input->post('status_pelayanan')!=""){
+                 $status_baru = array(
+                    'status_pelayanan'  => $this->input->post('status_pelayanan'),
+                    'no_kartu_layanan'   => $this->input->post('nomer_kartu')
+                );
+                $this->db->where('id_pasien', $id_pasien);
+                $this->db->update('pasien', $status_baru);
+
+                $status_diubah = true;
+            }
             $data_kunjungan = array(
                     'tanggal_kunjungan'  => $now,
                     'id_pasien'              => $id_pasien,
                     'no_kunjungan'          => $no_kunjungan,
-                    'status_bawa_kartu' => $status_kartu
+                    'status_bawa_kartu' => ($status_diubah) ? 'Bawa' : $status_kartu
             );
 
             $id_kunjungan = $this->M_kunjungan->insert_id_kunjungan($data_kunjungan);

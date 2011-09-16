@@ -109,10 +109,12 @@
                             <td>Status Pelayanan</td>
                             <td><?php echo $pasien[0]['status_pelayanan']?></td>
                         </tr>
+                        <?php if($pasien[0]['status_pelayanan']=="Askes"||$pasien[0]['status_pelayanan']=="Jamkesmas"){?>
                         <tr  class="odd">
                             <td>No. Kartu</td>
                             <td><?php echo $pasien[0]['no_kartu_layanan']?></td>
                         </tr>
+                        <?php }?>
                         <tr class="odd">
                             <td><h5>Poli Tujuan</h5></td>
                             <td><h5><?php echo strtoupper(ucfirst($poli));?></h5>
@@ -121,7 +123,7 @@
                                     <small style="font-size: 11px">No. Kunjungan</small>
                                     <h3 style="color: #2BA234"><?php echo $kunjungan[0]?></h3>
                                 </div>
-                                <div style="font-size: 11px;width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
+                                <div style="width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
                                     <small>ID Pasien</small>
                                     <h3 style="color: #2BA234"><?php echo $pasien[0]['kode_pasien']?></h3>
                                 </div>

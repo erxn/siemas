@@ -74,7 +74,7 @@
                     <tr class="<?php if($i%2==0) echo "odd"; else echo "even";?>">
                         <td class="align-center"><?php echo $i++; ?></td>
                         <td><?php echo $hasil['kode_pasien']?></td>
-                        <td><?php echo $hasil['no_kunjungan'];?></td>
+                        <td align="center"><?php echo $hasil['no_kunjungan'];?></td>
                         <td><a class="popup" href="index.php/pasien/profil_pasien/<?php echo $hasil['id_KK']."/".$hasil['id_pasien'];?>">
                             <?php echo $hasil['nama_pasien'];?></a>
                             <br/>
