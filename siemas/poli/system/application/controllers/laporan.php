@@ -42,8 +42,10 @@ class Laporan extends Controller{
    function lb4($bln,$thn){
        $this->load->plugin('phpexcel');
 
+       $data['bulan']=$bln;
+       $data['tahun']=$thn;
 
-        $lw='luar wilayah'; $lk='luar kota';
+       $lw='luar wilayah'; $lk='luar kota';
        $pab='pabaton';    $cib='cibogor';
        $askes='Askes';  $jamkesmas='Jamkesmas'; $umum='Umum;';
        $lama='lama';    $baru='baru';

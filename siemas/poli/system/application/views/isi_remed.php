@@ -126,8 +126,9 @@
                     <?php } else { ?>
 
                 <table style="width:100%;">
-                    <strong></strong>
-                    <th colspan="2">Data Pasien</th>
+                    <tr>
+                        <th colspan="2">Data Pasien</th>
+                    </tr>
                     <tr  class="odd">
                         <td><b>Tanggal Pendaftaran:</b></td>
                         <td style="width: 50%"><?php echo $data_pasien[0]['tanggal_pendaftaran']; ?> </td>

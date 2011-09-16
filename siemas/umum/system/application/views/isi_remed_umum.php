@@ -74,7 +74,7 @@
     <div style="clear: both;"></div>
 </div>
 
-<div  class="tabs" style=" float:left; margin-top: 20px;margin-left: 30px; width:45%">
+<div  class="tabs" style=" float:left; margin-top: 20px;margin-left: 1%; width:48%">
     <ul>
         <li><a href="#tabs-a">Daftar Pasien Hari ini</a></li>
     </ul>
@@ -107,7 +107,8 @@
 
 
 </script>
-<div  class="tabs" style="float:right;  margin-right: 10px; margin-top: 20px; width:45%">
+<div style="float: right; width: 48%; margin-right: 1%">
+<div  class="tabs" style="margin-top: 20px;">
     <ul>
         <li><a href="#tabs-a">Isi Rekam Medik Hari Ini</a></li>
     </ul>
@@ -117,14 +118,14 @@
 
             <?php if($data_pasien == null) { ?>
 
-            <h1> Pilih pasien dulu</h1>
+            <h3>Pilih pasien dari daftar di sebelah kiri</h3>
 
                 <?php } else { ?>
 
-            <table style="">
-                <th colspan="2">Data Pasien</th>
-                
-                <strong></strong>
+            <table style="width: 100%">
+                <tr>
+                    <th colspan="2">Data Pasien</th>
+                </tr>
                 <tr  class="odd">
                     <td><b>Tanggal Pendaftaran:</b></td>
                     <td style="width: 50%"><?php echo $data_pasien[0]['tanggal_pendaftaran']; ?> </td>
@@ -171,7 +172,7 @@
 
 <br/>
 
-<div  class="tabs" style="float:right;  margin-right: 10px; margin-top: 20px; width:45%">
+<div  class="tabs" style="margin-top: 20px;">
     <form action="" method="post">
         <ul>
             <li><a href="#tabs1-1">Isi Rekam Medik</a></li>
@@ -179,8 +180,12 @@
             <li><a href="#tabs-b">Poli Umum</a></li>
         </ul>
         <div id="tabs1-1">
-            <table  id="myTable"  class="noborder" style="width:100%">
-
+            <table style="width:100%">
+                <tr>
+                    <th colspan="2">
+                        Isi data pemeriksaan
+                    </th>
+                </tr>
                 <tr class="odd">
                     <td width="25%">Anamnesis:</td>
                     <td><textarea name="n_anamnesis" rows="3" cols="40" style="width: 90%"></textarea></td>
@@ -404,6 +409,7 @@
         </div>
     </form>
      <div id="tabs-a">
+         <!--
             <div style="padding: 10px; width:100%">
 
                 <div>
@@ -415,8 +421,9 @@
 
 
             </div>
+         -->
          <div class="module" style="background:none">
-            <table id="t_gigi"   style="width:99%">
+            <table id="t_gigi"   style="width:100%">
                 <thead>
                     <tr >
                         <th style="width:5%">No</th>
@@ -458,19 +465,19 @@
 
         <div id="tabs-b">
 
+            <!--
             <div style="padding: 10px;">
 
-                   <div>
+                <div>
                     <form method="post" action="">
                         <input id="d_umum" placeholder="Cari tanggal" name="n_tgl" type="text" class="input-long datepicker" style="vertical-align: top;"/>
                         <input type="button" class="submit-green" value="Cari " name="cari" id="b_umum" />
                     </form>
                 </div>
-
-
             </div>
+            -->
          <div class="module" style="background:none">
-            <table id="t_umum"   style="width:99%">
+            <table id="t_umum"   style="width:100%">
                 <thead>
                     <tr>
                         <th style="width:5%">No</th>
@@ -534,6 +541,7 @@
             </table>
              </div>
         </div>
+</div>
 </div>
 
 

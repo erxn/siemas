@@ -68,7 +68,7 @@
 
 </script>
 
-<div class="tabs" style="margin-left: 200px;width: 48%; margin-top: 20px">
+<div class="tabs" style="margin-left: 1%;width: 48%; margin-top: 20px">
     <ul>
         <li><a href="#tabs-2">Laporan Bulanan</a></li>
     </ul>

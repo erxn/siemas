@@ -133,7 +133,7 @@ $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C4:J4')->setCellValueByColumnA
 
 $objPHPExcel->getActiveSheet()
         ->mergeCells('B5:B8')->setCellValueByColumnAndRow(1, 5, "Tanggal")
-        ->mergeCells('C5:AL5')->setCellValueByColumnAndRow(2, 5, "golongan Umur")
+        ->mergeCells('C5:AL5')->setCellValueByColumnAndRow(2, 5, "Golongan Umur")
         ->mergeCells('AM5:AM8')->setCellValueByColumnAndRow(38, 5, "Jumlah")
         ->mergeCells('C6:F6')->setCellValueByColumnAndRow(2, 6, "1-4 Tahun")
         ->mergeCells('G6:J6')->setCellValueByColumnAndRow(6, 6, "5-9 Tahun")
@@ -292,7 +292,7 @@ $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C45:M45')->setCellValueByColum
 
 $objPHPExcel->getActiveSheet()
         ->mergeCells('B46:B49')->setCellValueByColumnAndRow(1, 46, "Tanggal")
-        ->mergeCells('C46:AL46')->setCellValueByColumnAndRow(2, 46, "golongan Umur")
+        ->mergeCells('C46:AL46')->setCellValueByColumnAndRow(2, 46, "Golongan Umur")
         ->mergeCells('AM46:AM49')->setCellValueByColumnAndRow(38, 46, "Jumlah")
         ->mergeCells('C47:F47')->setCellValueByColumnAndRow(2, 47, "1-4 Tahun")
         ->mergeCells('G47:J47')->setCellValueByColumnAndRow(6, 47, "5-9 Tahun")
@@ -452,7 +452,7 @@ $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C87:M87')->setCellValueByColum
 
 $objPHPExcel->getActiveSheet()
         ->mergeCells('B88:B91')->setCellValueByColumnAndRow(1, 88, "Tanggal")
-        ->mergeCells('C88:AL88')->setCellValueByColumnAndRow(2, 88, "golongan Umur")
+        ->mergeCells('C88:AL88')->setCellValueByColumnAndRow(2, 88, "Golongan Umur")
         ->mergeCells('AM88:AM91')->setCellValueByColumnAndRow(38, 88, "Jumlah")
         ->mergeCells('C89:F89')->setCellValueByColumnAndRow(2, 89, "1-4 Tahun")
         ->mergeCells('G89:J89')->setCellValueByColumnAndRow(6, 89, "5-9 Tahun")
@@ -613,7 +613,7 @@ $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C129:M129')->setCellValueByCol
 
 $objPHPExcel->getActiveSheet()
         ->mergeCells('B130:B133')->setCellValueByColumnAndRow(1, 130, "Tanggal")
-        ->mergeCells('C130:AL130')->setCellValueByColumnAndRow(2, 130, "golongan Umur")
+        ->mergeCells('C130:AL130')->setCellValueByColumnAndRow(2, 130, "Golongan Umur")
         ->mergeCells('AM130:AM133')->setCellValueByColumnAndRow(38, 130, "Jumlah")
         ->mergeCells('C131:F131')->setCellValueByColumnAndRow(2, 131, "1-4 Tahun")
         ->mergeCells('G131:J131')->setCellValueByColumnAndRow(6, 131, "5-9 Tahun")
@@ -771,7 +771,7 @@ $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C170:N170')->setCellValueByCol
 
 $objPHPExcel->getActiveSheet()
         ->mergeCells('B171:B174')->setCellValueByColumnAndRow(1, 171, "Tanggal")
-        ->mergeCells('C171:AL171')->setCellValueByColumnAndRow(2, 171, "golongan Umur")
+        ->mergeCells('C171:AL171')->setCellValueByColumnAndRow(2, 171, "Golongan Umur")
         ->mergeCells('AM171:AM174')->setCellValueByColumnAndRow(38, 171, "Jumlah")
         ->mergeCells('C172:F172')->setCellValueByColumnAndRow(2, 172, "1-4 Tahun")
         ->mergeCells('G172:J172')->setCellValueByColumnAndRow(6, 172, "5-9 Tahun")
@@ -927,7 +927,7 @@ $objPHPExcel->getActiveSheet()->setTitle('Harian');
 $objPHPExcel->setActiveSheetIndex(0);
 
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Laporan_bulanan_Penyakit' . $nama_bulan[$bulan]. '-' . $tahun . '.xls"');
+header('Content-Disposition: attachment;filename="Laporan_bulanan_penyakit_' . $nama_bulan[$bulan]. '-' . $tahun . '.xls"');
 
 $objWriter = IOFactory::createWriter($objPHPExcel, "Excel5");
 $objWriter->save("php://output");
