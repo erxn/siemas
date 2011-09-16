@@ -176,7 +176,7 @@ class M_pembayaran extends Model {
     }
 
     function total_karcis_umum($tgl){
-        $jum = $this->M_kunjungan->kunjungan_layanan($tgl,'Umum');
+        $jum = $this->M_kunjungan->total_karcis_umum($tgl);
         $total = $jum*3000;
         return $total;
     }

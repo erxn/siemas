@@ -109,12 +109,12 @@
 
                             <div style="font-size: 11px;width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
                                 <small>No. Kunjungan</small>
-                                <h1 style="color: #2BA234"><?php echo $kunjungan['no_kunjungan']; ?></h1>
+                                <h3 style="color: #2BA234"><?php echo $kunjungan['no_kunjungan']; ?></h3>
                             </div>
 
                             <div style="font-size: 11px;width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
                                 <small>ID Pasien</small>
-                                <h1 style="color: #2BA234"><?php echo $pasien[0]['kode_pasien']?></h1>
+                                <h3 style="color: #2BA234"><?php echo $pasien[0]['kode_pasien']?></h3>
                             </div>
 
                         </td>

@@ -1,4 +1,7 @@
 <br/>
+
+<form id="pasien_lama" name="status_kartu" method="post" action="index.php/pasien/registrasi_pasien_lama/<?php echo $pasien[0]['id_pasien'] ?>">
+
 <div class="grid_6" style="width: 98%">
     <div class="module">
         <h2><span>Profil Pasien</span></h2>
@@ -33,20 +36,21 @@
                     <td><?php echo $pasien[0]['status_pelayanan'];
                     if($this->uri->segment(2)== "registrasi_kunjungan"){
                         if($pasien[0]['status_pelayanan'] == 'Umum') {
-                            ?>&nbsp;&nbsp;<input type="button" value="Ubah status" onclick="$('#status_baru, #nomer_kartu').show(); $(this).hide()"></td>
+                            ?>&nbsp;&nbsp;<input type="button" value="Ubah status" onclick="$('#status_baru').show(); $(this).hide()"></td>
                 </tr>
                 <tr id="status_baru" style="display: none">
                     <td>Status Baru</td>
-                    <td><select name="status_pelayanan" onchange="if($(this).val() == 'askes' || $(this).val() == 'jamkesmas') $('#nomer_kartu').show(); else $('#nomer_kartu').hide()">
-                                    <option value="askes">Askes</option>
-                                    <option value="jamkesmas">Jamkesmas</option>
-                                    <option value="lain-lain">GR</option>
+                    <td><select name="status_pelayanan" onchange="if($(this).val() == 'Askes' || $(this).val() == 'Jamkesmas') $('#nomer_kartu').show(); else $('#nomer_kartu').hide()">
+                                    <option value="">- Pilih -</option>
+                                    <option value="Askes">Askes</option>
+                                    <option value="Jamkesmas">Jamkesmas</option>
+                                    <option value="Lain-lain">GR</option>
                         </select>
                     </td>
                 </tr>
                 <tr id="nomer_kartu" style="display: none">
                     <td>No.Kartu</td>
-                    <td><input class="input-short" type="text"/></td>
+                    <td><input class="input-short" type="text" name="nomer_kartu"/></td>
                 </tr>
                 <?php }}?>
                 <?php if(($pasien[0]['status_pelayanan'] == 'Askes')||($pasien[0]['status_pelayanan'] == 'Jamkesmas')){?>
@@ -61,7 +65,7 @@
                 <tr class="odd">
                     <td>&nbsp;</td>
                     <td>
-                        <form id="pasien_lama" name="status_kartu" method="post" action="index.php/pasien/registrasi_pasien_lama/<?php echo $pasien[0]['id_pasien'] ?>">
+                        
                             <?php if(($pasien[0]['status_pelayanan'] == 'Askes')||($pasien[0]['status_pelayanan'] == 'Jamkesmas')){?>
                             <input type="radio" name="status_kartu"  value="Bawa" id="kartu_Y">
                             <label for="kartu_Y" style="display: inline !important" class="btn-gplus gplus-green">Bawa kartu</label>
@@ -70,7 +74,6 @@
                             <label for="kartu_T" style="display: inline !important" class="btn-gplus gplus-red">Tidak Bawa</label>
                             <?php }?>
                             <input type="hidden" id="poli" name="poli" value=""/>
-                        </form>
                     </td>
                 </tr>
                 <?php }?>
@@ -78,3 +81,5 @@
         </div>
     </div>
 </div>
+
+</form>

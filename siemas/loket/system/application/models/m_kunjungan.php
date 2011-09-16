@@ -210,6 +210,15 @@ class M_kunjungan extends Model {
 
     /***********************************************************************************************************************/
     /*pusing dah ama fungsi -.-*/
+    function total_karcis_umum($tgl){
+        $q = $this->db->query("SELECT count(*) as jumlah
+                                FROM kunjungan
+                                JOIN pasien USING (id_pasien)
+                                WHERE tanggal_kunjungan = '$tgl'
+                                AND (status_pelayanan = 'Umum' OR status_bawa_kartu = 'Tidak')");
+        $jumlah_kunjungan = $q->result_array();
+        return $jumlah_kunjungan[0]['jumlah'];
+    }
     
     /*INI buat nyari total kunjungan HARIAN untuk per status layanan*/
     function kunjungan_layanan($tgl,$layanan){
