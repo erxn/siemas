@@ -116,16 +116,18 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('AM')->setWidth(10);
 // header
 //$objPHPExcell->getActiveSheet()->getStyle('A1:H1')->getFont()->setSize(12);
 
+$objPHPExcel->getActiveSheet()->getStyle('A1:J1')->getFont()->setSize(16);
 $objPHPExcel->getActiveSheet()->getStyle('A2:F4')->getFont()->setSize(8);
 
 $objPHPExcel->getActiveSheet()->getStyle('A5:AN500')->getFont()->setSize(9);
 
-
-$objPHPExcel->setActiveSheetIndex(0)->mergeCells('M1:Z1')->setCellValueByColumnAndRow(13, 1, "Laporan Penyakit Harian BP Gigi ");
+$objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:J1')->setCellValueByColumnAndRow(0, 1, "Laporan Bulanan Penyakit");
 
 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A2:D2')->setCellValueByColumnAndRow(0, 2, "Kecamatan  :  Bogor Tengah");
-
 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A3:C3')->setCellValueByColumnAndRow(0, 3, "Kota  :  Bogor");
+$objPHPExcel->setActiveSheetIndex(0)->mergeCells('M2:Q2')->setCellValueByColumnAndRow(34, 2, "Bulan: $nama_bulan[$bulan]");
+$objPHPExcel->setActiveSheetIndex(0)->mergeCells('M3:Q3')->setCellValueByColumnAndRow(34, 3, "");
+
 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C4:J4')->setCellValueByColumnAndRow(2, 4, "Nama penyakit: Karies Gigi(02)");
 //$objPHPExcel->setActiveSheetIndex(0)->mergeCells('A4:F4')->setCellValueByColumnAndRow(0, 4, $date);
 
@@ -279,6 +281,7 @@ for ($i = 1; $i <= 31; $i++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, $data['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(36, $l, $data['c']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(37, $l, $data['d']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(38, $l, '=SUM(' . 'C' . $l . ':AL' . $l . ')');
 
     $l++;
 }
@@ -438,6 +441,7 @@ for ($i = 1; $i <= 31; $i++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, $data['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(36, $l, $data['c']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(37, $l, $data['d']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(38, $l, '=SUM(' . 'C' . $l . ':AL' . $l . ')');
 
     $l++;
 }
@@ -596,6 +600,7 @@ for ($i = 1; $i <= 31; $i++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, $data['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(36, $l, $data['c']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(37, $l, $data['d']);
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(38, $l, '=SUM(' . 'C' . $l . ':AL' . $l . ')');
 
     $l++;
 }
@@ -756,6 +761,7 @@ for ($i = 1; $i <= 31; $i++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, $data['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(36, $l, $data['c']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(37, $l, $data['d']);
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(38, $l, '=SUM(' . 'C' . $l . ':AL' . $l . ')');
 
     $l++;
 }
@@ -909,6 +915,7 @@ for ($i = 1; $i <= 31; $i++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(35, $l, $data['b']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(36, $l, $data['c']);
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(37, $l, $data['d']);
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(38, $l, '=SUM(' . 'C' . $l . ':AL' . $l . ')');
 
     $l++;
 }

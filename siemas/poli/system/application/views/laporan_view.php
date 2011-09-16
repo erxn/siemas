@@ -53,15 +53,18 @@
 
     }
 
-    function go_to_tahunan() {
+    function go_to_bulanan_lb4() {
 
-        var link = "index.php/laporan/tahunan";
-        var thn = $('#tahunan_tahun').val();
+        var link = "index.php/laporan/lb4";
+        var bln = $('#lb4_bulan').val();
+        var thn = $('#lb4_tahun').val();
 
-        if (thn == 0) alert("Pilih bulan dan tahun terlebih dahulu");
-        else window.location = link + '/' + thn;
+        if (bln == 0 || thn == 0) alert("Pilih bulan dan tahun terlebih dahulu");
+        else window.location = link + '/' + bln + '/' + thn;
 
     }
+
+   
 
 </script>
 
@@ -166,7 +169,7 @@
                     </td>
                     <td align="center">
                         <br/>
-                        <a style="text-decoration:none; margin: 0px !important; float: none !important" href="" onclick="" id="btn_bulanan_peny" class="dashboard-module">
+                        <a style="text-decoration:none; margin: 0px !important; float: none !important" href="" onclick="go_to_bulanan_lb4(); return false;" id="btn_bulanan_peny" class="dashboard-module">
                             <img src="Template_files/lap_bul_penyakit.png" width="64" height="64" alt="edit" />
                             <span>LB4</span>
                         </a>

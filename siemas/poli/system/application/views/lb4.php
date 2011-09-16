@@ -515,6 +515,13 @@ $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11, 28, $lk_a_ganggua
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12, 28, $lk_j_gangguan_gusi);
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13,28, $lk_u_gangguan_gusi);
 
+for($i=10;$i<=29;$i++){
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14, $i,"=C$i+F$i+I$i+L$i");
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15, $i,"=D$i+G$i+J$i+M$i");
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16, $i,"=E$i+H$i+K$i+N$i");
+
+}
+
 $objPHPExcel->getActiveSheet()->setTitle('Harian');
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
