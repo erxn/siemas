@@ -26,7 +26,7 @@ Class Laporan_model extends Model{
                                  FROM remed_poli_gigi r
                                  JOIN remed_gigi_layanan l USING (id_remed_gigi)
                                  WHERE r.tanggal_kunjungan_gigi = '$tgl'
-                                 ASC a.id_layanan" );
+                                 GROUP BY l.id_layanan" );
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
                 $data[]=$row;
@@ -59,12 +59,26 @@ Class Laporan_model extends Model{
         
     }
 
+    function get_jumlah_layanan($layanan, $tanggal) {
+
+        $q = $this->db->query("SELECT COUNT(id_remed_gigi) as jumlah
+                                FROM
+                                layanan
+                                JOIN remed_gigi_layanan USING (id_layanan)
+                                JOIN remed_poli_gigi USING(id_remed_gigi)
+                                WHERE tanggal_kunjungan_gigi = '$tanggal'
+                                AND nama_layanan = '$layanan'");
+        $jumlah = $q->result_array();
+        return $jumlah[0]['jumlah'];
+
+    }
+
     function layanan(){
-         $data=array();
+        $data=array();
         $kueri=$this->db->query("SELECT *
                                 FROM layanan
                                 
-                                WHERE layanan.keterangan = 'GIGI' GROUP BY id_layanan" );
+                                WHERE layanan.keterangan = 'GIGI'" );
         if($kueri->num_rows()>0){
             foreach ($kueri->result_array()as $row){
                 $data[]=$row;

@@ -27,7 +27,7 @@ class Laporan extends Controller{
         $this->load->view('laporan_harian_excel_lay',$layanan);
     }
 
-     function bulanan_penyakit($bulan, $tahun){
+    function bulanan_penyakit($bulan, $tahun){
         $this->load->plugin('phpexcel');
         $data['bulan']=$bulan;
         $data['tahun']=$tahun;
