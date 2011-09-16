@@ -15,31 +15,21 @@ class Stat extends Controller {
         $data['p'] = false;
 
         if($this->input->post('tgl_statistik')) {
-            $tgl=$this->input->post('tgl_statistik');
-
-        }
-        else {
-            $tgl=date("d-m-Y");
+            $tgl=format_tanggal_database($this->input->post('tgl_statistik'));
+        } else {
+            $tgl=date("Y-m-d");
         }
 
         $data['tgl']=$tgl;
-
-        $tgl=date("Y-m-d",strtotime($tgl));
-
-
         
         if($this->input->post('tgl_statistik1')) {
-            $tgl1=$this->input->post('tgl_statistik1');
+            $tgl1=format_tanggal_database($this->input->post('tgl_statistik1'));
             if($_POST['bandingan']==1) $data['p'] = true;
-
-        }
-        else {
-            $tgl1=date("d-m-Y");
+        } else {
+            $tgl1=date("Y-m-d");
         }
 
         $data['tgl1']=$tgl1;
-
-        $tgl1=date("Y-m-d",strtotime($tgl1));
 
         $wil1="pabaton";
         $stat1="Luar wilayah";
@@ -54,7 +44,7 @@ class Stat extends Controller {
         $p5="gangguan gigi & jaringan penunjang lain";
 
         $gigi_pab=$this->stat->get_kunjungan_gigi_wil($wil1,$gigi,$tgl);
-        $gigi_cib=$this->stat->get_kunjungan_gigi_wil($wil1,$gigi,$tgl);
+        $gigi_cib=$this->stat->get_kunjungan_gigi_wil($wil2,$gigi,$tgl);
         $gigi_lw=$this->stat->get_kunjungan_gigi_status($stat1,$gigi,$tgl);
         $gigi_lk=$this->stat->get_kunjungan_gigi_status($stat2,$gigi,$tgl);
 
@@ -66,7 +56,7 @@ class Stat extends Controller {
 
 
         $gigi_pab1=$this->stat->get_kunjungan_gigi_wil($wil1,$gigi,$tgl1);
-        $gigi_cib1=$this->stat->get_kunjungan_gigi_wil($wil1,$gigi,$tgl1);
+        $gigi_cib1=$this->stat->get_kunjungan_gigi_wil($wil2,$gigi,$tgl1);
         $gigi_lw1=$this->stat->get_kunjungan_gigi_status($stat1,$gigi,$tgl1);
         $gigi_lk1=$this->stat->get_kunjungan_gigi_status($stat2,$gigi,$tgl1);
 
@@ -99,8 +89,6 @@ class Stat extends Controller {
         'penyakit41'=> $penyakit41,
         'penyakit51'=> $penyakit51,
         );
-        
-        
 
         $data['grafik']=$grafik;
 

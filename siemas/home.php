@@ -103,7 +103,7 @@
         <div class="kontainer">
             <a href="loket" class="kotak"><img src="images/loket.png" border="0"/><br/>Loket</a>
             <a href="umum" class="kotak"><img src="images/umum.png" border="0"/><br/>Poli Umum</a>
-            <a href="poli" class="kotak"><img src="images/gigi.png" border="0"/><br/>Poli Gigi</a>
+            <a href="poli/index.php" class="kotak"><img src="images/gigi.png" border="0"/><br/>Poli Gigi</a>
             <a href="#" class="kotak-disabled"><img src="images/kia_gray.png" border="0"/><br/>Poli KIA</a>
             <a href="#" class="kotak" style="visibility: hidden"><img src="images/kia.png" border="0"/><br/>Poli KIA</a>
             <a href="#" class="kotak-disabled"><img src="images/lab_gray.png" border="0"/><br/>Laboratorium</a>

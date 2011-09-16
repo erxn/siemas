@@ -61,37 +61,37 @@
 </script>
 <script type="text/javascript">
     function load_antrian_umum() {
-        $('#tabs-a').load("index.php/C_antrian/antrian_umum");
+        $('#tabs-a').load("index.php/c_antrian/antrian_umum");
         setTimeout("load_antrian_umum()", 1000);
     }
 
     function load_antrian_gigi() {
-        $('#tabs-b').load("index.php/C_antrian/antrian_gigi");
+        $('#tabs-b').load("index.php/c_antrian/antrian_gigi");
         setTimeout("load_antrian_gigi()", 1000);
     }
 
      function load_antrian_kia() {
-        $('#tabs-c').load("index.php/C_antrian/antrian_kia");
+        $('#tabs-c').load("index.php/c_antrian/antrian_kia");
         setTimeout("load_antrian_kia()", 1000);
     }
 
      function load_antrian_anak() {
-        $('#tabs-d').load("index.php/C_antrian/antrian_anak");
+        $('#tabs-d').load("index.php/c_antrian/antrian_anak");
         setTimeout("load_antrian_anak()", 1000);
     }
 
     function load_antrian_dalam() {
-        $('#tabs-e').load("index.php/C_antrian/antrian_dalam");
+        $('#tabs-e').load("index.php/c_antrian/antrian_dalam");
         setTimeout("load_antrian_dalam()", 1000);
     }
 
      function load_antrian_lab() {
-        $('#tabs-f').load("index.php/C_antrian/antrian_lab");
+        $('#tabs-f').load("index.php/c_antrian/antrian_lab");
         setTimeout("load_antrian_lab()", 1000);
     }
 
     function load_antrian_radio() {
-        $('#tabs-g').load("index.php/C_antrian/antrian_radiologi");
+        $('#tabs-g').load("index.php/c_antrian/antrian_radiologi");
         setTimeout("load_antrian_radio()", 1000);
     }
     $(document).ready(function(){

@@ -75,7 +75,7 @@ class Antrian extends Controller {
                 'id_poli' => $id_poli
             );
 
-            $antrian = $this->M_antrian->tambah_antrian($data_antrian);
+            $antrian = $this->antrian->tambah_antrian($data_antrian);
     }
 
     function pasien_hari_ini($id_poli) {

@@ -281,10 +281,9 @@ $jumlah_kunjungan_081 = $grafik['penyakit51'];
         
 
             Pilih tanggal:
-            <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik" class="input-medium" value="<?php echo $tgl ?>"/>
-            <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
-
-        
+            <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik" class="input-medium" value="<?php echo format_tanggal_tampilan($tgl) ?>"/>
+            <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>        
+        <br/>
         <br/>
         <hr/>
 
@@ -300,7 +299,7 @@ $jumlah_kunjungan_081 = $grafik['penyakit51'];
             <input type="hidden" name="bandingan" id="bandingan" value="<?php if($p==true) echo 1; else echo 0;?>" />
 
             <p style="float:left" >Pilih tanggal:</p>
-                <input type="text"  style="float:left" class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik1" class="input-medium" value="<?php echo $tgl1 ?>"/>
+                <input type="text"  style="float:left" class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik1" class="input-medium" value="<?php echo format_tanggal_tampilan($tgl1) ?>"/>
                 <input type="submit" style="float:left" value="Tampilkan" class="submit-green" name="submit1"/>
 
             <br /> <br />

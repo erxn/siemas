@@ -122,9 +122,7 @@
             <?php } else { ?>
 <span class="notification n-success">Data berhasil disimpan</span>
 
-           <h1> Pilih pasien kembali</h1>
-
-                <table style="width:90%;" id="myTable"  >
+                <table style="width:100%;">
                     <strong></strong>
                    <th colspan="2">Data Pasien</th>
                     <tr  class="odd">
