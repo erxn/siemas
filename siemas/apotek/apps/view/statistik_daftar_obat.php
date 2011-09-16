@@ -23,7 +23,7 @@
                                     <td class="align-center"><?php echo $list->id_obat ; ?></td>
                                     <td><?php echo $list->nbk_obat ; ?></td>
                                     <td><?php echo $list->satuan_obat ; ?></td>
-                                    <td><input type="text" maxlength="255" value="<?php echo $list->stok_obat ; ?>" disabled="disabled" /></td>
+                                    <td align="center"><?php echo $list->stok_obat ; ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

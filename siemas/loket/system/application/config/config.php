@@ -12,9 +12,9 @@
 |
 */
 
-//$path = ltrim(str_replace(rtrim($_SERVER['DOCUMENT_ROOT'], '/'), '', rtrim(FCPATH, '/')) . '/', '/');
-//$protocol = (isset($_SERVER['HTTPS'])) ? 'https://' : 'http://';
-$config['base_url'] = "http://localhost/siemas/loket/";//$protocol . $_SERVER['HTTP_HOST'] . '/' . $path;
+$root = "http://".$_SERVER['HTTP_HOST'];
+$root .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+$config['base_url'] = $root; //"http://localhost/siemas/loket/";
 /*
 |--------------------------------------------------------------------------
 | Index File
