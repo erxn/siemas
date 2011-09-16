@@ -4,6 +4,22 @@
  * and open the template in the editor.
 */
 
+$nama_bulan = array(
+    "",
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+);
+
 //view
 $objPHPExcel = new PHPExcel();
 
@@ -78,11 +94,12 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('Q')->setWidth(5);
 //$objPHPExcell->getActiveSheet()->getStyle('A1:H1')->getFont()->setSize(12);
 
 $objPHPExcel->getActiveSheet()->getStyle('A2:F4')->getFont()->setSize(8);
-$objPHPExcel->getActiveSheet()->getStyle('D2:J2')->getFont()->setSize(20);
+$objPHPExcel->getActiveSheet()->getStyle('D1:J1')->getFont()->setSize(20);
 $objPHPExcel->getActiveSheet()->getStyle('A5:Q200')->getFont()->setSize(9);
 
 
-$objPHPExcel->setActiveSheetIndex(0)->mergeCells('D2:J2')->setCellValueByColumnAndRow(3, 2, "LB4 Bu De");
+$objPHPExcel->setActiveSheetIndex(0)->mergeCells('D1:J1')->setCellValueByColumnAndRow(3, 1, "LB4");
+$objPHPExcel->setActiveSheetIndex(0)->mergeCells('D2:J2')->setCellValueByColumnAndRow(3, 2, "Bulan " . $nama_bulan[$bulan] . ' ' . $tahun);
 
 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A3:B3')->setCellValueByColumnAndRow(0, 3, "Kecamatan  :  Bogor Tengah");
 
@@ -133,13 +150,13 @@ $objPHPExcel->getActiveSheet()
         ->setCellValueByColumnAndRow(1, 18, "Pencabutan gigi tetap")
         ->setCellValueByColumnAndRow(1, 19, "Tumpatan gigi suung")
         ->setCellValueByColumnAndRow(1, 20, "Pencabutan gigi sulung")
-        ->setCellValueByColumnAndRow(1, 21, "pengobatan pulpa & jaringan periapikal")
-        ->setCellValueByColumnAndRow(1, 22, "pengobatan gusi dan atau periodontal")
+        ->setCellValueByColumnAndRow(1, 21, "Pengobatan pulpa & jaringan periapikal")
+        ->setCellValueByColumnAndRow(1, 22, "Pengobatan gusi dan atau periodontal")
         ->setCellValueByColumnAndRow(1, 23, "Pembersihan karang gigi")
         ->setCellValueByColumnAndRow(1, 24, "Karies gigi")
         ->setCellValueByColumnAndRow(1, 25, "Penyakit pulpa dan jaringan periapikal")
         ->setCellValueByColumnAndRow(1, 26, "Penyakit gusi dan periodontal")
-        ->setCellValueByColumnAndRow(1, 27, "penyakit dentofasial termasuk inaloklusi")
+        ->setCellValueByColumnAndRow(1, 27, "Penyakit dentofasial termasuk inaloklusi")
         ->setCellValueByColumnAndRow(1, 28, "Gangguan gigi dan jaringan lainnya")
 
 
@@ -152,25 +169,25 @@ $objPHPExcel->getActiveSheet()
         ->setCellValueByColumnAndRow(1, 34, "Pencabutan gigi sulung")
         ->setCellValueByColumnAndRow(1, 35, "Pencabutan gigi sulung")
         ->setCellValueByColumnAndRow(1, 36, "Pengobatan pulpa")
-        ->setCellValueByColumnAndRow(1, 37, "PEngobatan periodontal")
+        ->setCellValueByColumnAndRow(1, 37, "Pengobatan periodontal")
         ->setCellValueByColumnAndRow(1, 38, "Pembersihan karang gigi")
         ->setCellValueByColumnAndRow(1, 39, "Rujukan ke puskesmas")
-        ->setCellValueByColumnAndRow(1, 40, "PEmbinaan ke SD UKGS")
+        ->setCellValueByColumnAndRow(1, 40, "Pembinaan ke SD UKGS")
         ->setCellValueByColumnAndRow(1, 41, "Jumlah murid SD UKGS")
-        ->setCellValueByColumnAndRow(1, 42, " Murid SD UKGS yang perlu perawatan ")
+        ->setCellValueByColumnAndRow(1, 42, "Murid SD UKGS yang perlu perawatan ")
         ->setCellValueByColumnAndRow(1, 43, "Murid SD UKGS yang mendapat perawatan")
-        ->setCellValueByColumnAndRow(1, 44, "PEnyuluhan di sekolah SD/MI")
-        ->setCellValueByColumnAndRow(1, 45, "PEnyuluhan di sekolah TK/RA")
+        ->setCellValueByColumnAndRow(1, 44, "Penyuluhan di sekolah SD/MI")
+        ->setCellValueByColumnAndRow(1, 45, "Penyuluhan di sekolah TK/RA")
         ->setCellValueByColumnAndRow(1, 46, "Sikat gigi masal di SD/MA")
         ->setCellValueByColumnAndRow(1, 47, "Sikat gigi masal di TK/RA")
         ->setCellValueByColumnAndRow(1, 48, "Pembinaan ke desa UKGMD")
-        ->setCellValueByColumnAndRow(1, 49," Penduduk yang mendapatkan penyuluhan kesehatan gigi")
+        ->setCellValueByColumnAndRow(1, 49, "Penduduk yang mendapatkan penyuluhan kesehatan gigi")
         ->setCellValueByColumnAndRow(1, 50, "Rujukan kader,Posyandu,BP, sekolah")
         ->getStyle('A5:AO5')->applyFromArray($styleAlignHorizontalCenter);
 for($n=1;$n<=19;$n++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $n+9, $n);
 }
-for($n=1;$n<=21;$n++) {
+for($n=1;$n<=20;$n++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $n+30, $n);
 }
 
@@ -515,7 +532,7 @@ $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11, 28, $lk_a_ganggua
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12, 28, $lk_j_gangguan_gusi);
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13,28, $lk_u_gangguan_gusi);
 
-for($i=10;$i<=29;$i++){
+for($i=10;$i<=28;$i++){
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14, $i,"=C$i+F$i+I$i+L$i");
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15, $i,"=D$i+G$i+J$i+M$i");
 $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16, $i,"=E$i+H$i+K$i+N$i");
@@ -528,7 +545,7 @@ $objPHPExcel->getActiveSheet()->setTitle('Harian');
 $objPHPExcel->setActiveSheetIndex(0);
 
 header('Content-Type: application/vnd.ms-excel');
-//header('Content-Disposition: attachment;filename="rekap_resep_bulanan_' . $namanya . '-' . $tahun . '.xls"');
+header('Content-Disposition: attachment;filename="LB4_Gigi_' . $nama_bulan[$bulan]. '-' . $tahun . '.xls"');
 
 $objWriter = IOFactory::createWriter($objPHPExcel, "Excel5");
 $objWriter->save("php://output");

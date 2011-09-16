@@ -16,7 +16,7 @@ class Antrian extends Controller {
     }
 
     function index() {
-
+        redirect('antrian/antri/2');
     }
 
     function antri($id_poli) {

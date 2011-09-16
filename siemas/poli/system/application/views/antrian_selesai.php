@@ -2,7 +2,7 @@
 <table id="myTable" class="tablesorter" border="8" style=" margin-top: 5px;width:100%">
                 <thead>
                     <tr>
-                        <th style="width:75px">No. Kunjungan</th>
+                        <th style="width:75px">No. Kunj.</th>
                         <th>Nama Pasien</th>
                     </tr>
                 </thead>

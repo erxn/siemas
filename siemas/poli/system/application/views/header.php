@@ -90,8 +90,8 @@
 
 
             <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:30px" />
-            <img src="Template_files/puskesmas.png" style="position: absolute; top:4px; left:85px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:40px; left:85px" />
+            <img src="Template_files/puskesmas.png" style="position: absolute; top:12px; left:85px" />
+            <img src="Template_files/alamat.png" style="position: absolute; top:48px; left:90px" />
             <img src="Template_files/gigi.png" style="position: absolute; top:10px; right:2px" />
             <!-- Header. Main part -->
             <div id="header-main">
