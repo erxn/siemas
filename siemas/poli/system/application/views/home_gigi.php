@@ -26,9 +26,9 @@
                     <div style="width: 500px; height: auto;padding: 8px; text-align: center; margin: 10px auto">
                         <table border="0" class="noborder">
                                         <tr>
-                                            <td><a href="http://localhost/siemas/poli/index.php/antrian/antri/1" class="selesai"><img src="" border="0"/><br/>
+                                            <td><a href="<?php echo base_url() ?>index.php/antrian/antri/1" class="selesai"><img src="" border="0"/><br/>
                             Antrian Poli Gigi</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                            <td ><a href="http://localhost/siemas/poli/index.php/antrian/isi_remed_hari_ini/" class="selesai"><img src="" border="0"/><br/>
+                                            <td ><a href="<?php echo base_url() ?>index.php/antrian/isi_remed_hari_ini/" class="selesai"><img src="" border="0"/><br/>
                            Isi Rekam Medik </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                         </tr>
                                     

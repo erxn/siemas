@@ -327,7 +327,7 @@
                 </form>
                 -->
             </div>
-            <div class="module"  style="padding: 0px; margin: 0px; border: none; background: none">
+            <div class="module"  style="padding: 0px; margin: 0px; border: none; background: none; float: none">
                 <table width="100%">
                     <thead>
                         <tr>
@@ -399,8 +399,8 @@
                 </table>
 
 
-        <?php } ?>
             </div>
+        <?php } ?>
 
         </div>
 

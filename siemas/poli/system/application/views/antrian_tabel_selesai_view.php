@@ -10,7 +10,7 @@
                 <tbody>
                    <?php for ($i=0; $i<=count($selesai)-1; $i++) {?>
         <tr <?php if($i%2!=0) echo 'class="odd"' ?>>
-            <td><?php echo $selesai[$i]['no_kunjungan']?></td>
+            <td align="center"><?php echo $selesai[$i]['no_kunjungan']?></td>
             <td style="border-right: 1px solid transparent"><?php echo $selesai[$i]['nama_pasien']; ?>
                 <br/>
                 <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $selesai[$i]['jk_pasien'] . ', ' . $selesai[$i]['umur'] . ' th'; ?></small>
