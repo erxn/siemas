@@ -215,7 +215,7 @@ Class Laporan_model extends Model{
                                 USING ( id_pasien )
                                 JOIN remed_poli_gigi
                                 USING ( id_pasien )
-                                WHERE (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                WHERE (kk.kelurahan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
                                 AND pasien.status_pelayanan LIKE '%$status%'
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
                                 AND remed_poli_gigi.Khasus_penyakit LIKE '%$kasus%'
@@ -238,7 +238,7 @@ Class Laporan_model extends Model{
                                         WHERE tanggal_kunjungan = '$tgl'
                                         AND penyakit.nama_penyakit LIKE '$penyakit'
                                         AND pasien.status_pelayanan LIKE '$status'
-                                        AND( kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                        AND( kk.kelurahan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
                                                         ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];
@@ -251,7 +251,7 @@ Class Laporan_model extends Model{
                                 JOIN kk USING (id_kk)
                                 WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
-                                AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                AND (kk.kelurahan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
                                 AND pasien.status_pelayanan LIKE '%$status%'
                                 ");
         $jumlah_kunjungan = $q->result_array();
@@ -265,7 +265,7 @@ Class Laporan_model extends Model{
                                 JOIN kk USING (id_kk)
                                 WHERE NOT kunjungan.tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND kunjungan.tanggal_kunjungan = '$tgl'
-                                AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
+                                AND (kk.kelurahan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '%$stat%')
                                 AND pasien.status_pelayanan LIKE '%$status%'
                                 ");
         $jumlah_kunjungan = $q->result_array();
@@ -283,7 +283,7 @@ Class Laporan_model extends Model{
                                                 JOIN layanan ON remed_gigi_layanan.id_layanan = layanan.id_layanan
                                                 WHERE kunjungan.tanggal_kunjungan = '$tgl'
                                                 AND layanan.nama_layanan LIKE '%$layanan%'
-                                                AND (kk.kecamatan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '$stat')
+                                                AND (kk.kelurahan_kk LIKE '%$wil%' OR kk.status_wil_luar LIKE '$stat')
                                                 AND pasien.status_pelayanan LIKE '%$status%'
                                                                                 ");
 //        echo $this->db->last_query();

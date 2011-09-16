@@ -117,7 +117,7 @@ AND id_pasien =$id_pasien");
 
     function data_pasien_remed($id_pasien){                               //buat nampilin data pasien di database di tampilan remed
          $data=array();
-        $q=$this->db->query("SELECT *,extract(YEAR FROM from_days(datediff(curdate(), pasien.tanggal_lahir))) AS umur FROM pasien WHERE id_pasien=$id_pasien" );
+        $q=$this->db->query("SELECT pasien.*,kk.*,extract(YEAR FROM from_days(datediff(curdate(), pasien.tanggal_lahir))) AS umur FROM pasien JOIN kk USING (id_kk) WHERE pasien.id_pasien=$id_pasien" );
 
         if($q->num_rows()>0){
             foreach ($q->result_array()as $row){

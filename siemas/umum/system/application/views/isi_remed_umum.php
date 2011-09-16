@@ -151,6 +151,10 @@
 
                 </tr>
                 <tr>
+                    <td>Alamat</td>
+                    <td><?php echo $data_pasien[0]['alamat_kk'].", Kel. ".$data_pasien[0]['kelurahan_kk']."<br/>Kec. ".$data_pasien[0]['kecamatan_kk'].", Kab/Kota ".$data_pasien[0]['kota_kab_kk']?></td>
+                </tr>
+                <tr>
                     <td ><b>Status Dalam Keluarga:</b></td>
                     <td><?php echo $data_pasien[0]['status_dalam_keluarga'];?></td>
 
