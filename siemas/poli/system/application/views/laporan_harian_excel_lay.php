@@ -114,8 +114,11 @@ $objPHPExcel->getActiveSheet()->getStyle('A2:F4')->getFont()->setSize(8);
 
 $objPHPExcel->getActiveSheet()->getStyle('A5:AJ40')->getFont()->setSize(9);
 
-$objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(15);
-$objPHPExcel->setActiveSheetIndex(0)->mergeCells('G2:U2')->setCellValueByColumnAndRow(6, 2, "Laporan Kegiatan Harian BP Gigi ");
+$objPHPExcel->getActiveSheet()->getStyle('G1:U1')->getFont()->setSize(15);
+$objPHPExcel->setActiveSheetIndex(0)->mergeCells('G1:U1')->setCellValueByColumnAndRow(6, 1, "Laporan Kegiatan Harian BP Gigi");
+
+$objPHPExcel->getActiveSheet()->getStyle('G2:U2')->getFont()->setSize(12);
+$objPHPExcel->setActiveSheetIndex(0)->mergeCells('G2:U2')->setCellValueByColumnAndRow(6, 2, "Bulan " . $nama_bulan[$bulan] . ' ' . $tahun);
 
 $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A3:B3')->setCellValueByColumnAndRow(0, 3, "Kecamatan  :  Bogor Tengah");
 
@@ -138,8 +141,8 @@ for ($n = 1; $n <= 33; $n++) {
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $n + 6, $n);
 }
 $objPHPExcel->getActiveSheet()->getStyle('G2:U2')->applyFromArray($styleAlignHorizontalCenter);
-$objPHPExcel->getActiveSheet()->getStyle('C6:AK39')->applyFromArray($styleAlignHorizontalCenter);
-$objPHPExcel->getActiveSheet()->getStyle('AO5:AO6')->applyFromArray($styleAlignHorizontalCenter);
+$objPHPExcel->getActiveSheet()->getStyle('C6:AG6')->applyFromArray($styleAlignHorizontalCenter);
+//$objPHPExcel->getActiveSheet()->getStyle('AO5:AO6')->applyFromArray($styleAlignHorizontalCenter);
 $objPHPExcel->getActiveSheet()->getStyle('A5:A6')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('B5:B6')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('C5:C6')->applyFromArray($styleThinBlackBorderOutline);
@@ -149,8 +152,9 @@ $objPHPExcel->getActiveSheet()->getStyle('AJ5:AJ6')->applyFromArray($styleThinBl
 $objPHPExcel->getActiveSheet()->getStyle('D5:F5')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('G5:AG5')->applyFromArray($styleThinBlackBorderOutline);
 $objPHPExcel->getActiveSheet()->getStyle('D6:AJ6')->applyFromArray($styleThinBlackBorderAll);
-$objPHPExcel->getActiveSheet()->getStyle('A7:AJ39')->applyFromArray($styleThinBlackBorderAll);
+//$objPHPExcel->getActiveSheet()->getStyle('A7:AJ39')->applyFromArray($styleThinBlackBorderAll);
 $objPHPExcel->getActiveSheet()->getStyle('A5:AJ6')->getFill()->setFillType(Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFDDEEDD');
+$objPHPExcel->getActiveSheet()->getStyle('A5:AJ6')->getAlignment()->setVertical('center');
 
 // the real data
 
@@ -162,7 +166,7 @@ array_shift($layanan_h);
 foreach ($layanan_h as $lay) {
 
     $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $i, $lay['nama_layanan']);
-    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(34, $i, $lay['harga']);
+    $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(34, $i, $lay['harga'] * 1000);
 
 
     for ($k = 1; $k <= cal_days_in_month(CAL_GREGORIAN, $bulan, $tahun); $k++) {
@@ -175,6 +179,9 @@ foreach ($layanan_h as $lay) {
 
     }
 
+    $objPHPExcel->getActiveSheet()->getStyle("A$i:AJ$i")->applyFromArray($styleThinBlackBorderAll);
+    $objPHPExcel->getActiveSheet()->getStyle("C$i:AH$i")->applyFromArray($styleAlignHorizontalCenter);
+    $objPHPExcel->getActiveSheet()->getStyle("AH$i:AJ$i")->getNumberFormat()->setFormatCode('_(* #,##0_);_(* (#,##0);_(* "-"_);_(@_)');
 
     $i++;
 }
