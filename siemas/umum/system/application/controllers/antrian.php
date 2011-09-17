@@ -231,8 +231,8 @@ class Antrian extends Controller {
         $data_lay=$this->remed->get_layanan($id_pasien);
         $remed['data_lay']=$data_lay;
 
-        $lab=$this->remed->lab($id_pasien);
-        $lab['lab']=$lab;
+//        $lab=$this->remed->lab($id_pasien);
+//        $lab['lab']=$lab;
 
          $penyaki=$this->antrian->penyakit($id_pasien);
         $remed['penyakit']=$penyaki;

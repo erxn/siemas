@@ -134,7 +134,7 @@
                 </tr>
                 <tr>
                     <td><b>Nama Pasien:</b></td>
-                    <td style="width: 50%"><b><h4><?php echo $data_pasien[0]['nama_pasien'];?></h4></b></td>
+                    <td style="width: 50%; border-right: none; color: #0063be; font-weight: bold"><b><h4><?php echo $data_pasien[0]['nama_pasien'];?></h4></b></td>
                 </tr>
                 <tr  class="odd">
                     <td><b>Jenis Kelamin:</b></td>

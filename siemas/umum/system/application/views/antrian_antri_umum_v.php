@@ -15,7 +15,7 @@
         <?php for ($i=0; $i<=count($a)-1; $i++) {?>
         <tr <?php if($i%2!=0) echo 'class="odd"' ?>>
             <td class="align-center"><?php echo $a[$i]['no_kunjungan']?></td>
-            <td style="border-right: none"><?php echo $a[$i]['nama_pasien']; ?>
+            <td style="border-right: none; color: #0063be; font-weight: bold"><?php echo $a[$i]['nama_pasien']; ?>
                 <br/>
                 <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $a[$i]['jk_pasien'] . ', ' . $a[$i]['umur'] . ' th'; ?></small>
             </td>
