@@ -15,6 +15,10 @@ class Controller_tambah_obat extends Panada {
         $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['tanggal'] = date('d-m-Y');
         $views['verify']    = NULL;
+        if($this->session->get('verify')){
+            $views['verify'] = $this->session->get('verify');
+            $this->session->remove('verify');
+        }
         $views['error']    = NULL;
         $list = $this->obat->ambil();
         $views['list'] = $list;
@@ -35,9 +39,11 @@ class Controller_tambah_obat extends Panada {
                         else {$kadaluarsa1[$n]= NULL;}
                     $n++;
                     }
-                $views['verify']    = 'Tambah obat dengan no sbkk '.$sbkk.' berhasil dimasukan.';
+                $verify    = 'Tambah obat dengan no sbkk '.$sbkk.' berhasil dimasukan.';
+                $this->session->set('verify',$verify);
                 $this->obat->tambah($sbkk, $isi, $kadaluarsa1, $batch);
                 }
+           $this->redirect('index.php/tambah_obat');
         }
 
 
