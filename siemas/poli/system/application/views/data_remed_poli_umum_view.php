@@ -104,8 +104,8 @@
                             <table style="width:100%" id="myTable"  border="none">
                                
                                 <tr class="odd">
-                                    <td><b>Nama:</b></td>
-                                    <td style="width: 50%"><h3><?php echo $pop_pasien[0]['nama_pasien'];?></h3></td>
+                                    <td ><b>Nama:</b></td>
+                                    <td style="width: 50%;width: 50%;color: #0063be; font-weight: bold"><h3><?php echo $pop_pasien[0]['nama_pasien'];?></h3></td>
 
                                 </tr>
 

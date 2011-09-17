@@ -12,7 +12,7 @@
         <?php for ($i=0; $i<=count($s)-1; $i++) {?>
         <tr <?php if($i%2!=0) echo 'class="odd"' ?>>
             <td class="align-center"><?php echo $s[$i]['no_kunjungan']?></td>
-            <td style="border-right: none"><?php echo $s[$i]['nama_pasien']; ?>
+            <td style="border-right: none;color: #0063be; font-weight: bold"><?php echo $s[$i]['nama_pasien']; ?>
                 <br/>
                 <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $s[$i]['jk_pasien'] . ', ' . $s[$i]['umur'] . ' th'; ?></small>
             </td>
