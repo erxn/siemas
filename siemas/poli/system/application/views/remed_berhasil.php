@@ -130,8 +130,8 @@
                         <td style="width: 50%"><?php echo $data_pasien[0]['tanggal_pendaftaran']; ?> </td>
                     </tr>
                     <tr>
-                        <td><b>Nama Pasien:</b></td>
-                        <td style="width: 50%"><b><h3><?php echo $data_pasien[0]['nama_pasien'];?></h3></b></td>
+                        <td ><b>Nama Pasien:</b></td>
+                        <td style="width: 50%;color: #0063be; font-weight: bold"><b><h3><?php echo $data_pasien[0]['nama_pasien'];?></h3></b></td>
                     </tr>
                     <tr  class="odd">
                         <td><b>Jenis Kelamin:</b></td>
