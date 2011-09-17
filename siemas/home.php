@@ -52,7 +52,7 @@
             }
             .kontainer {
                 -moz-box-shadow: 1px 3px 10px rgba(0,0,0,0.4);
-                width: 480px;
+                width: 600px;
                 height: auto;
                 padding: 30px 2px;
                 text-align: center;
@@ -64,7 +64,7 @@
             }
             .header {
                 -moz-box-shadow: 1px 3px 10px rgba(0,0,0,0.4);
-                width: 480px;
+                width: 600px;
                 height: auto;
                 padding: 10px 2px;
                 text-align: center;
@@ -78,7 +78,7 @@
             }
             .footer {
                 -moz-box-shadow: 1px 3px 10px rgba(0,0,0,0.4);
-                width: 480px;
+                width: 600px;
                 height: auto;
                 padding: 2px 2px;
                 text-align: center;
@@ -104,11 +104,16 @@
             <a href="loket" class="kotak"><img src="images/loket.png" border="0"/><br/>Loket</a>
             <a href="umum" class="kotak"><img src="images/umum.png" border="0"/><br/>Poli Umum</a>
             <a href="poli/index.php" class="kotak"><img src="images/gigi.png" border="0"/><br/>Poli Gigi</a>
-            <a href="#" class="kotak-disabled"><img src="images/kia_gray.png" border="0"/><br/>Poli KIA</a>
-            <a href="#" class="kotak" style="visibility: hidden"><img src="images/kia.png" border="0"/><br/>Poli KIA</a>
-            <a href="#" class="kotak-disabled"><img src="images/lab_gray.png" border="0"/><br/>Laboratorium</a>
-            <a href="#" class="kotak-disabled"><img src="images/radiologi_gray.jpg" border="0"/><br/>Radiologi</a>
             <a href="apotek" class="kotak"><img src="images/apotek.png" border="0"/><br/>Apotek</a>
+
+            <a href="antrian/index.php/lab" class="kotak"><img src="images/lab.png" border="0"/><br/>Laboratorium</a>
+            <a href="#" class="kotak-disabled" style="visibility: hidden"><img src="images/lab.png" border="0"/><br/>&nbsp;</a>
+            <a href="#" class="kotak-disabled" style="visibility: hidden"><img src="images/lab.png" border="0"/><br/>&nbsp;</a>
+            <a href="antrian/index.php/radiologi" class="kotak"><img src="images/radiologi.jpg" border="0"/><br/>Radiologi</a>
+
+            <a href="antrian/index.php/kia" class="kotak"><img src="images/kia.png" border="0"/><br/>Poli KIA</a>
+            <a href="antrian/index.php/sp_anak" class="kotak"><img src="images/sp_anak.png" border="0"/><br/>Sp. Anak</a>
+            <a href="antrian/index.php/sp_dalam" class="kotak"><img src="images/sp_dalam.png" border="0"/><br/>Sp. Dalam</a>
             <a href="simpeg" class="kotak"><img src="images/pegawai.png" border="0"/><br/>Kepegawaian</a>
         </div>
         <div class="footer">
