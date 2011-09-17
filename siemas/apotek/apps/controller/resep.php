@@ -20,10 +20,15 @@ class Controller_resep extends Panada {
         $views['page_title']    = 'Resep - Apotek';
         $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['verify']    = NULL;
+        if($this->session->get('verify')){
+            $views['verify'] = $this->session->get('verify');
+            $this->session->remove('verify');
+        }
         $views['list_nama_obat'] = $this->obat->ambil_nama_obat();
         $n='1';
         if($_POST){
-            $this->session->set('tanggal_resep', $_POST['tanggal2']);
+            if(isset($_POST['tanggal2']))
+                $this->session->set('tanggal_resep', $_POST['tanggal2']);
             if(isset($_POST['kunjungan'])){
                 $tanggal2 = $_POST['tanggal'];
                 $tanggal = $this->date->reverse($tanggal2);
@@ -32,9 +37,11 @@ class Controller_resep extends Panada {
                 $jumlah = $_POST['jumlah'];
                 $id_pasien = $this->obat->resep_pasien($tanggal, $no_kunjungan);
                 $this->obat->tambah_isi_resep($id_pasien, $tanggal, $id_obat, $jumlah);
-                $views['verify']='Resep dengan id antrian '.$no_kunjungan.' berhasil dimasukan.';
+                $verify='Resep dengan id antrian '.$no_kunjungan.' berhasil dimasukan.';
+                $this->session->set('verify',$verify);
+                $this->redirect('index.php/resep');
             } else{
-                                $this->redirect('index.php/resep');}
+                $this->redirect('index.php/resep');}
         }
 
         $this->view_resep($views);
