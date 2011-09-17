@@ -29,9 +29,12 @@
 
 
             <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:30px" />
-            <img src="Template_files/puskesmas.png" style="position: absolute; top:12px; left:85px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:48px; left:90px" />
-            <img src="Template_files/gigi.png" style="position: absolute; top:10px; right:2px" />
+            <img src="Template_files/puskesmas.png" style="position: absolute; top:28px; left:95px" />
+
+            <div style="position: absolute; top:6px; right:10px; color: white; text-shadow: 3px 3px 10px #000000; font-size: 30px">
+                Radiologi
+                <img src="images/radiologi.jpg" alt="" style="vertical-align: middle; width: 96px; height: 96px; -moz-border-radius: 6px"/>
+            </div>
             <!-- Header. Main part -->
             <div id="header-main">
                 <div class="container_12">
