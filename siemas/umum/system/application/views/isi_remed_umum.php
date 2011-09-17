@@ -132,7 +132,7 @@
                 </tr>
                 <tr>
                     <td><b>Nama Pasien:</b></td>
-                    <td style="width: 50%"><b><h4><?php echo $data_pasien[0]['nama_pasien'];?></h4></b></td>
+                    <td style="width: 50%;color: #0063be; font-weight: bold"><b><h4><?php echo $data_pasien[0]['nama_pasien'];?></h4></b></td>
                 </tr>
                 <tr  class="odd">
                     <td><b>Jenis Kelamin:</b></td>
@@ -151,7 +151,7 @@
 
                 </tr>
                 <tr>
-                    <td>Alamat</td>
+                    <td><b>Alamat</b></td>
                     <td><?php echo $data_pasien[0]['alamat_kk'].", Kel. ".$data_pasien[0]['kelurahan_kk']."<br/>Kec. ".$data_pasien[0]['kecamatan_kk'].", Kab/Kota ".$data_pasien[0]['kota_kab_kk']?></td>
                 </tr>
                 <tr>
@@ -544,10 +544,10 @@
                 </tbody>
             </table>
              </div>
+
+    <?php } ?>
         </div>
 </div>
 </div>
 
 
-
-    <?php } ?>
