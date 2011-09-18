@@ -52,7 +52,7 @@
                     <div id="resep">
                         <FORM method="POST">
                          Tanggal resep yang akan diinputkan adalah
-                           <input class="tanggal" type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal2">
+                           <input class="tanggal" type="text" class="" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal2">
                            <input type="submit" value="Ubah" />
                         </FORM>
                     </div>
@@ -70,24 +70,24 @@
                     <table>
 					<tr>
 						<td width="100px">
-							<p align="left" style="margin-bottom: 5px;">no kunjungan :</p>
+							<p align="left" style="margin-bottom: 5px;">No kunjungan :</p>
 						</td>
 						<td width="300px">
-							<input type="text" class="input_angka, ido2" id="kunjungan" name="kunjungan"  maxlength="255" size="30">
+							<input type="text" class="input_angka ido2 input-long" id="kunjungan" name="kunjungan"  maxlength="255" size="30">
 						</td>
 					</tr>
                                         <tr>
 						<td width="100px">
-							<p align="left" style="margin-bottom: 5px;">nama pasien :</p>
+							<p align="left" style="margin-bottom: 5px;">Nama pasien :</p>
 						</td>
 						<td width="300px">
-							<input type="text" class="input_angka" id="kunjungan" name="kunjungan"  maxlength="255" size="30" disabled="disabled" />
+							<input type="text" class="input_angka input-long" id="kunjungan" name="kunjungan"  maxlength="255" size="30" disabled="disabled" />
 						</td>
 					</tr>
                                         
                                         <tr>
                                             <td>
-                                                <input type="hidden" class="input_angka" name="tanggal"  value="<?php echo $tanggal; ?>">
+                                                <input type="hidden" class="input_angka input-long" name="tanggal"  value="<?php echo $tanggal; ?>">
                                             </td>
                                             <td>
 						<?php echo $verify; ?></td>
@@ -102,13 +102,13 @@
                                  <thead>
 					<tr>
 						<th width="23%" class="align-center">
-							id obat
+							ID obat
 						</th>
 						<th width="50%" class="align-center">
-							nama obat
+							Nama obat
 						</th>
 						<th width="27%" class="align-center">
-							jumlah
+							Jumlah
 						</th>
 					</tr>
                                   </thead>
@@ -116,18 +116,18 @@
                                   <tbody>
                                       <?php for($n=1; $n<=50; $n++){ ?>
 					<tr id="tr_<?php echo $n; ?>" <?php if($n > 6) echo 'style="display:none"' ?>>
-                                            <td class="align-center"><input type="text" class="ido" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
-                                            <td class="align-center"><input type="text" class="autocomplete" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
-                                            <td class="align-center"><input type="text" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="ido input-long" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="autocomplete input-long" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
+                                            <td class="align-center"><input type="text" class="input-long" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                         </tr>
                                       <?php } ?>
                                   </tbody>
                                   <tfoot>
 					<tr>
                                             <td></td>
-                                            <td class="align-center"><input class="submit-green" type="submit" value="Benar"</td>
+                                            <td class="align-center"><input class="submit-green" type="submit" value="Simpan"</td>
                                             <td><a href="#" class="button" onclick="tabelFleksibel(); return false;">
-                    <span><img src="<?php echo $this->base_url?>template_files/plus-sma.gif" width="12" height="9" alt="" style="padding:10px 0 0 0;"/> Tambah data</span>
+                    <span><img src="<?php echo $this->base_url?>Template_files/plus-sma.gif" width="12" height="9" alt="" style="padding:10px 0 0 0;"/> Tambah data</span>
                 </a></td>
 					</tr>
                                   </tfoot>

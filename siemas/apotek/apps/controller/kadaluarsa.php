@@ -14,6 +14,9 @@ class Controller_kadaluarsa extends Panada {
         $views['tanggal'] = date('d-m-Y');
         $views['page_title'] = 'Kadaluarsa - Apotek';
         $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
+        if(!$this->obat->cek_kadaluarsa()){
+            $views['alert'] = 'Tidak ada obat yang kadaluarsa';
+        }
         $views['hasil'] = NULL;
         $views['hasil'] = $this->obat->kadaluarsa();
         $this->view_kadaluarsa($views);

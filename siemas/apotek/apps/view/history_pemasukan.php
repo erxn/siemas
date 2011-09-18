@@ -21,12 +21,12 @@
 
 		<div class="container_12">
 
-                   <form method="post">
+                   <form method="post" onsubmit="if($('#bulan').val() == 0 || $('#tahun').val() == 0) return false;">
                                 <table>
 					<tr>
 						<td width="120px">
                                                     <select name="bulan" id="bulan" style="width:100px;">
-                                                        <option selected="selected">Pilih Bulan</option>
+                                                        <option value="0" selected="selected">Pilih Bulan</option>
                                                         <option value="1">Januari</option>
                                                         <option value="2">Februari</option>
                                                         <option value="3">Maret</option>
@@ -42,7 +42,7 @@
                                                     </select>
 						</td>
 						<td width="120px">
-							<select name="tahun" id="tahun" style="width:100px;">
+							<select value="0" name="tahun" id="tahun" style="width:100px;">
                                                         <option selected="selected">Pilih tahun</option>
                                                         <option value="2011">2011</option>
                                                         <option value="2012">2012</option>

@@ -26,8 +26,8 @@
 						<td width="100px">
 							Pilih tanggal :
 						</td>
-						<td width="100px">
-							<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal" class="tanggal">
+						<td width="150px">
+							<input type="text" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal" class="tanggal input-long">
                                                         
 						</td>
 						<td> &nbsp &nbsp &nbsp

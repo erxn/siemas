@@ -53,25 +53,6 @@
                             </tbody>
                         </table>
                         </form>
-                        <div class="pager" id="pager">
-                            <form action="">
-                                <div>
-                                <img class="first" src="<?php echo $this->base_url?>Template_files/arrow-st.gif" alt="first"/>
-                                <img class="prev" src="<?php echo $this->base_url?>Template_files/arrow-18.gif" alt="prev"/>
-                                <input type="text" class="pagedisplay input-short align-center"/>
-                                <img class="next" src="<?php echo $this->base_url?>Template_files/arrow000.gif" alt="next"/>
-                                <img class="last" src="<?php echo $this->base_url?>Template_files/arrow-su.gif" alt="last"/>
-                                <select class="pagesize input-short align-center">
-                                    <option value="<?php echo $jumlah ?>">Semua</option>
-                                    <option value="10" selected="selected">10</option>
-                                    <option value="20">20</option>
-                                    <option value="30">30</option>
-                                    <option value="40">40</option>
-                                    <option value="50">50</option>
-                                </select>
-                                </div>
-                            </form>
-                        </div>
 
                         <div style="clear: both"></div>
                      </div> <!-- End .module-table-body -->

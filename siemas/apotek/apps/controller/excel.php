@@ -481,7 +481,7 @@ class Controller_excel extends Panada {
             $x=$bulan;
             $y=$nick_tahun;
         for($n=1;$n<=12;$n++){
-            $bulan_tahun = $this->nick_bulan[$x].'-'.$y;
+            $bulan_tahun = $this->nick_bulan[$x]." '".$y;
             $objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow($n+2, 4, $bulan_tahun);
             $x++;
             if($x>12){
@@ -531,7 +531,7 @@ class Controller_excel extends Panada {
         $objPHPExcel->setActiveSheetIndex(0);
 
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="rekap_resep_tahunan_' . $namanya . '-' . $tahun . 'S/D' . $this->nama_bulan[$bulan2].'-'.$tahun2.'.xls"');
+        header('Content-Disposition: attachment;filename="rekap_resep_tahunan_' . $namanya . '-' . $tahun . '--' . $this->nama_bulan[$bulan2].'-'.$tahun2.'.xls"');
 
         $objWriter = PHPEXCEL_IOFactory::createWriter($objPHPExcel, "Excel5");
         $objWriter->save("php://output");
