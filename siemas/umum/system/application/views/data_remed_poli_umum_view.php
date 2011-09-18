@@ -154,11 +154,7 @@
                                     <td><?php echo $pop_umum[0]['diagnosa'];?></td>
                                 </tr>
 
-                                 <tr class="odd">
-                                    <td><b>Penyakit:</b></td>
-                                    <td><?php echo $pop_umum[0]['nama_penyakit'];?></td>
-                                </tr>
-
+                                 
                                 
 
                                 <tr>
