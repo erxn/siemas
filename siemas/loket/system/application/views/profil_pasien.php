@@ -67,10 +67,10 @@
                     <td>
                         
                             <?php if(($pasien[0]['status_pelayanan'] == 'Askes')||($pasien[0]['status_pelayanan'] == 'Jamkesmas')){?>
-                            <input type="radio" name="status_kartu"  value="Bawa" id="kartu_Y">
+                            <input type="radio" name="status_kartu" checked="checked"  value="Bawa" id="kartu_Y">
                             <label for="kartu_Y" style="display: inline !important" class="btn-gplus gplus-green">Bawa kartu</label>
                             &nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="status_kartu"  value="Tidak" checked="checked" id="kartu_T">
+                            <input type="radio" name="status_kartu"  value="Tidak" id="kartu_T">
                             <label for="kartu_T" style="display: inline !important" class="btn-gplus gplus-red">Tidak Bawa</label>
                             <?php }?>
                             <input type="hidden" id="poli" name="poli" value=""/>
