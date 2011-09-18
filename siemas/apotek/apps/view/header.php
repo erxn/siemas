@@ -157,7 +157,7 @@
                         
                     </div>
                     <div class="grid_4">
-                        <a href="" id="logout">
+                        <a href="<?php echo dirname($this->base_url) ?>" id="logout">
                         Logout
                         </a>
                     </div>

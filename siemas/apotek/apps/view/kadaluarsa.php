@@ -37,20 +37,25 @@
 						Laporan</a></span>
 					</div>
                     </div><!-- End. .grid_12-->
-                    
-                    <div style="clear: both;"></div>
-
                 </div><!-- End. .container_12 -->
             </div> <!-- End #header-main -->
-            <div style="clear: both;"></div>
+        <!-- Sub navigation -->
+            <div id="subnav">
+                <div class="container_12">
+                    <div class="grid_12">
+                    </div><!-- End. .grid_12-->
+                </div><!-- End. .container_12 -->
+                <div style="clear: both;"></div>
+            </div> <!-- End #subnav -->
         </div> <!-- End #header -->
 
         <div class="container_12">
                     <div style="clear: both;"></div>
-                    <?php if($hasil) {   ?>
                         <div class="module" style="width: 533px ;">
+                            <h2><span>Informasi Obat Kadaluarsa</span></h2>
                         <div class="module-table-body">
-                        <table id="myTable" class="tablesorter" >
+                        <?php if($hasil) {   ?>
+                        <table >
                         	<thead>
                                 <tr>
                                     <th style="width:35%">Tanggal Input Obat</th>
@@ -78,10 +83,13 @@
                                             <input type="submit" value="Lihat Obat" /></a></td>
                                 </tr>
                             </tbody>
-                        </table></div></div>
+                        </table>
                     <?php } else if(isset ($alert)) { ?>
+                            <h3 style="color:green; margin-left: 17px;">
                                 <?php echo $alert; ?>
+                            </h3>
                     <?php } ?>
+                        </div></div>
 
                 
 

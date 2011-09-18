@@ -36,20 +36,24 @@
 						Laporan</a></span>
 					</div>
                     </div><!-- End. .grid_12-->
-
-                    <div style="clear: both;"></div>
-
                 </div><!-- End. .container_12 -->
             </div> <!-- End #header-main -->
-            <div style="clear: both;"></div>
-        </div> <!-- End #header -->                
+        <!-- Sub navigation -->
+            <div id="subnav">
+                <div class="container_12">
+                    <div class="grid_12">
+                    </div><!-- End. .grid_12-->
+                </div><!-- End. .container_12 -->
+                <div style="clear: both;"></div>
+            </div> <!-- End #subnav -->
+            </div> <!-- End #header -->
 
         <div class="container_12">
 
         <?php $this->view_isi_statistik();?>
 
                         <div style="clear: both;"></div>
-                                        <div class="iconMenu" >
+                                        <div class="iconMenu" style="margin-left:0;">
 						<a href="<?php echo $this->base_url?>index.php/resep">
 						<img src="<?php echo $this->base_url?>Template_files/images/resep.png" alt="member" width="150px" height="150px"/></a>
 						<span><a style="color:#0000ff;" href="<?php echo $this->base_url?>index.php/resep">

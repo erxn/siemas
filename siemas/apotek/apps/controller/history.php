@@ -70,7 +70,7 @@ class Controller_history extends Panada {
                     $views['hasil2'] = $hasil;
                     $views['alert2'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[intval($_POST['bulan'])].' tahun '.$_POST['tahun'].' adalah :';
                 }   else{
-                        $views['alert2'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[intval($_POST['bulan'])].' tahun '.$_POST['tahun'].' tidak ada.';
+                        $views['alert2'] = '<span class="notification n-error">Hasil pencarian pada bulan '.$this->nama_bulan[intval($_POST['bulan'])].' tahun '.$_POST['tahun'].' tidak ada.</span>';
                     }
             }
             if(isset ($_POST['tanggal'])){
@@ -81,7 +81,7 @@ class Controller_history extends Panada {
                     $views['tanggal2'] = $tanggal;
                     $views['alert'] = 'Hasil pencarian pada tanggal '.$_POST['tanggal'].' adalah :';
                 }   else{
-                        $views['alert'] = 'Hasil pencarian pada tanggal '.$_POST['tanggal'].' tidak ada.';
+                        $views['alert'] = '<span class="notification n-error">Hasil pencarian pada tanggal '.$_POST['tanggal'].' tidak ada.</span>';
                 }
 
          }
@@ -105,7 +105,7 @@ class Controller_history extends Panada {
                     $views['hasil'] = $hasil;
                     $views['alert'] = 'Hasil pencarian pada bulan '.$_POST['tanggal'].' adalah :';
                 }   else{
-                        $views['alert'] = 'Hasil pencarian pada bulan '.$_POST['tanggal'].' tidak ada.';
+                        $views['alert'] = '<span class="notification n-error">Hasil pencarian pada bulan '.$_POST['tanggal'].' tidak ada.</span>';
                 }
 
          }
@@ -128,7 +128,7 @@ class Controller_history extends Panada {
                 if(isset ($hasil[0]->no_sbkk)){
                     $views['hasil'] = $hasil;
                 }   else{
-                        $views['alert'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[$_POST['bulan']].' tahun '.$_POST['tahun'].' tidak ada.';
+                        $views['alert'] = '<span class="notification n-error">Hasil pencarian pada bulan '.$this->nama_bulan[$_POST['bulan']].' tahun '.$_POST['tahun'].' tidak ada.</span>';
                     }
             }
             if(isset ($_POST['tanggal'])){

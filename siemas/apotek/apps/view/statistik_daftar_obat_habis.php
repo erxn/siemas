@@ -23,7 +23,7 @@
                                     <td class="align-center"><?php echo $list->id_obat ; ?></td>
                                     <td><?php echo $list->nbk_obat ; ?></td>
                                     <td><?php echo $list->satuan_obat ; ?></td>
-                                    <td align="center"><?php echo $list->stok_obat ; ?></td>
+                                    <td align="right"><?php echo $list->stok_obat ; ?></td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

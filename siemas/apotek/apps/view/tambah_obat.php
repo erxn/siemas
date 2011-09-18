@@ -37,12 +37,16 @@
 						Laporan</a></span>
             </div>
         </div><!-- End. .grid_12-->
-
-        <div style="clear: both;"></div>
-
     </div><!-- End. .container_12 -->
 </div> <!-- End #header-main -->
-<div style="clear: both;"></div>
+<!-- Sub navigation -->
+            <div id="subnav">
+                <div class="container_12">
+                    <div class="grid_12">
+                    </div><!-- End. .grid_12-->
+                </div><!-- End. .container_12 -->
+                <div style="clear: both;"></div>
+            </div> <!-- End #subnav -->
 </div> <!-- End #header -->
 
 <div class="container_12">
@@ -53,8 +57,8 @@
                 <td width="100px">
                     <p align="right">No SBKK :</p>
                 </td>
-                <td width="120px">
-                    <input type="text" maxlength="255" name="no_sbkk" id="sbkk">
+                <td width="220px">
+                    <input type="text" class=" input-long" maxlength="255" name="no_sbkk" id="sbkk">
                 </td>
             </tr>
             <tr>
@@ -62,7 +66,7 @@
                     <p align="right">Tanggal :</p>
                 </td>
                 <td>
-                    <input type="text" maxlength="255" name="tanggal" class="tanggal" value="<?php echo $tanggal; ?>">
+                    <input type="text" maxlength="255" name="tanggal" class="tanggal input-long" value="<?php echo $tanggal; ?>">
                 </td>
             </tr>
         </table>
@@ -94,10 +98,10 @@
                                 <td class="align-center"><?php echo $list->id_obat; ?></td>
                                 <td><?php echo $list->nbk_obat; ?></td>
                                 <td><?php echo $list->satuan_obat; ?></td>
-                                <td><input  class="input_angka" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
+                                <td><input  class="input_angka input-long" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
                                            ></td>
-                                <td><input type="text" name="kadaluarsa[<?php echo $n ?>]" class="tanggal" value="<?php echo $tanggal; ?>"></td>
-                                <td><input type="text"  id="field_1_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
+                                <td><input type="text" class=" input-long" name="kadaluarsa[<?php echo $n ?>]" class="tanggal" value="<?php echo $tanggal; ?>"></td>
+                                <td><input type="text" class=" input-long"  id="field_1_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
                             </tr>
 <?php $n++;
                         } ?>
@@ -105,7 +109,7 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><input class="submit-gray" type="submit" value="Tambah"</td>
+                            <td><input class="submit-green" type="submit" value="Tambah"</td>
                         </tr>
                     </tbody>
                 </table>
