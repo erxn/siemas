@@ -286,6 +286,8 @@
                             <th style="width:17%">Diagnosa</th>
                             <th style="width:17%">Penyakit</th>
                             <th style="width:17%">Layanan</th>
+                            <th style="width:10%">Ibu Hamil</th>
+                            <th style="width:10">Anak</th>
                             <th style="width:17%">Ket.</th>
                         </tr>
                     </thead>
@@ -302,6 +304,8 @@
                             <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
                             <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?></td>
                             <td><?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
+                            <td><?php echo $rg['Kunjungan_ibu_hamil']?></td>
+                             <td><?php echo $rg['Kunjungan_Anak_Prasekolah']?></td>
                             <td><?php echo word_limiter($rg['keterangan'],5,'...');?></td>
                         </tr>
                                     <?php }
