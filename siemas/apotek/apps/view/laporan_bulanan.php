@@ -44,7 +44,7 @@
 						</td>
 						<td width="120px">
 							<select name="tahun" id="tahun" style="width:100px;">
-                                                        <option selected="selected">Pilih tahun</option>
+                                                        <option selected="selected">Pilih Tahun</option>
                                                         <option value="2011">2011</option>
                                                         <option value="2012">2012</option>
                                                         <option value="2013">2013</option>

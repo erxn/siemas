@@ -52,19 +52,19 @@
                                         <div class="iconMenu" >
 						<a href="<?php echo $this->base_url?>index.php/resep">
 						<img src="<?php echo $this->base_url?>Template_files/images/resep.png" alt="member" width="150px" height="150px"/></a>
-						<span><a href="<?php echo $this->base_url?>index.php/resep">
+						<span><a style="color:#0000ff;" href="<?php echo $this->base_url?>index.php/resep">
 						Resep</a></span>
 					</div>
 					<div class="iconMenu">
 						<a href="<?php echo $this->base_url?>index.php/tambah_obat">
 						<img src="<?php echo $this->base_url?>Template_files/images/tambah_obat.png" alt="member" width="150px" height="150px"/></a>
-						<span><a href="<?php echo $this->base_url?>index.php/tambah_obat">
+						<span><a style="color:#0000ff;" href="<?php echo $this->base_url?>index.php/tambah_obat">
 						Tambah Obat</a></span>
 					</div>
 					<div class="iconMenu">
 						<a href="<?php echo $this->base_url?>index.php/laporan">
 						<img src="<?php echo $this->base_url?>Template_files/images/laporan.png" alt="member" width="150px" height="150px"/></a>
-						<span ><a href="<?php echo $this->base_url?>index.php/laporan">
+						<span ><a style="color:#0000ff;" href="<?php echo $this->base_url?>index.php/laporan">
 						Laporan</a></span>
 					</div>
 
