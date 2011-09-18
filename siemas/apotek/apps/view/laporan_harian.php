@@ -34,6 +34,11 @@
 							<input type="submit" class="submit-green" value="PILIH">
 						</td>
 					</tr>
+                                        <tr>
+                                            <?php if(isset ($alert)){
+                                                echo $alert;
+                                            } ?>
+                                        </tr>
 					</table>
 					
 					

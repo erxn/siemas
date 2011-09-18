@@ -24,7 +24,10 @@ class Controller_laporan extends Panada {
 		$views['tanggal'] = date('d-m-Y');
 		$views['date']=NULL;
                 $views['base_awal']=$this->date->dasar_url($this->base_url);
-                    
+                if($this->session->get('alert_harian')){
+                    $views['alert']=$this->session->get('alert_harian');
+                    $this->session->remove('alert_harian');
+                }
 		if($_POST){
 			$tanggal=$_POST['tanggal'];
 			$views['date']=$tanggal;
@@ -40,6 +43,10 @@ class Controller_laporan extends Panada {
 	public function bulanan(){
             $views['page_title']    = 'Laporan Bulanan - Apotek';
             $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
+            if($this->session->get('alert_bulanan')){
+                    $views['alert']=$this->session->get('alert_bulanan');
+                    $this->session->remove('alert_bulanan');
+                }
             if($_POST){
 		$bulan=$_POST['bulan'];
                 $tahun=$_POST['tahun'];
