@@ -89,7 +89,7 @@
                        <td><?php echo $umum['no_kunjungan'];?></td>
                         <td><?php echo $umum['nama_pasien'];?> <br/>
                             <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $umum['jk_pasien'] . ', ' . $umum['umur'] . ' th'; ?></small></td>
-                        <td><?php echo $umum['alamat_kk']." ".$umum['kelurahan_kk']." ".$umum['kecamatan_kk'];?></td>
+                        <td><?php echo $umum['alamat_kk']." Kel. ".$umum['kelurahan_kk']." Kec. ".$umum['kecamatan_kk'];?></td>
                         <td><?php echo $umum['no_kartu_layanan']?>
                         </td>
                         <td><?php echo $umum['nama_penyakit']?></td>

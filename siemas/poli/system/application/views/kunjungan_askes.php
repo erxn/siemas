@@ -90,7 +90,7 @@
                        <td><?php echo $askes['no_kunjungan'];?></td>
                         <td><?php echo $askes['nama_pasien'];?> <br/>
                             <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $askes['jk_pasien'] . ', ' . $askes['umur'] . ' th'; ?></small></td>
-                        <td><?php echo $askes['alamat_kk']." ".$askes['kelurahan_kk']." ".$askes['kecamatan_kk'];?></td>
+                        <td><?php echo $askes['alamat_kk']." Kel. ".$askes['kelurahan_kk']." Kec. ".$askes['kecamatan_kk'];?></td>
                         <td><?php echo $askes['no_kartu_layanan']?>
                         </td>
                         <td><?php echo $askes['nama_penyakit']?></td>

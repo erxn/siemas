@@ -89,7 +89,7 @@
                        <td><?php echo $k['no_kunjungan'];?></td>
                         <td><?php echo $k['nama_pasien'];?> <br/>
                             <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $k['jk_pasien'] . ', ' . $k['umur'] . ' th'; ?></small></td>
-                        <td><?php echo $k['alamat_kk']." ".$k['kelurahan_kk']." ".$k['kecamatan_kk'];?></td>
+                        <td><?php echo $k['alamat_kk']." Kel. ".$k['kelurahan_kk']." Kec. ".$k['kecamatan_kk'];?></td>
                         <td><?php echo $k['status_pelayanan']?><br/>
                             <small style="font-size: 12px; color: #777777; font-weight: normal"><?php echo $k['no_kartu_layanan']?></small>
                         </td>
