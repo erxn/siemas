@@ -135,8 +135,7 @@ Class Rekam_medik_model extends Model{
 
         $data=array();
         $q=$this->db->query("SELECT *
-                                FROM pemeriksaan_lab
-                                JOIN remed_umum_lab as a USING(id_pemeriksaan_lab)
+                                FROM remed_umum_lab as a USING(id_pemeriksaan_lab)
                                 JOIN remed_poli_umum as b USING(id_remed_umum)
                                 WHERE b.id_pasien=$id_pasien" );
 
