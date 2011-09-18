@@ -24,10 +24,32 @@
                                                             return confirm('Apakah anda yakin ingin membuat laporan tahun ' + document.getElementById('tahun').value + '?');
                                                             else return false;">
                     <table>
+                        <tr>
+                            <font color="#FF7777" style="margin-left:10px;">Pilih bulan sebagai awal tahun!</font>
+                        </tr>
+                        <br/>
 					<tr>
-						<td width="120px">
-                                                    <select name="tahun" id="tahun" style="width:100px;">
-                                                        <option selected="selected">Pilih tahun</option>
+						<td>
+                                                    <select name="bulan" id="bulan" style="width:100px;">
+                                                        <option selected="selected">Bulan</option>
+                                                        <option value="1">Januari</option>
+                                                        <option value="2">Februari</option>
+                                                        <option value="3">Maret</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">Mei</option>
+                                                        <option value="6">Juni</option>
+                                                        <option value="7">Juli</option>
+                                                        <option value="8">Agustus</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">Oktober</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">Desember</option>
+                                                    </select>
+						</td>
+						<td>-</td>
+                                                <td>
+							<select name="tahun" id="tahun" style="width:100px;">
+                                                        <option selected="selected">Tahun</option>
                                                         <option value="2011">2011</option>
                                                         <option value="2012">2012</option>
                                                         <option value="2013">2013</option>
@@ -44,6 +66,7 @@
 						</td>
 						<td>
 							<input type="submit" class="submit-green" value="PILIH">
+                                                        <?php if(isset ($tes)){echo $tes;} ?>
 						</td>
 					</tr>
 					</table>

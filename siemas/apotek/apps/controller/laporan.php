@@ -61,7 +61,7 @@ class Controller_laporan extends Panada {
         $views['page_title']    = 'Laporan Tahunan - Apotek';
         $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         if($_POST){
-		$bulan=8;
+		$bulan=$_POST['bulan'];
                 $tahun=$_POST['tahun'];
                 if($bulan<10)
                     {$TB = $tahun.'-0'.$bulan;}
