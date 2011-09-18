@@ -96,13 +96,12 @@
     });
 </script>
 
-<div  class="tabs" style="width:50%; margin-left: 300px; margin-top: 100px;">
-    <ul>
-        <li><a href="#tabs-a">Rekam Medik ISPA</a></li>
-    </ul>
-    <div id="tabs-a">
-
-                            <table style="width:100%" id="myTable" class="tablesorter" border="1">
+<div class="grid_6" style="width: 98%">
+        <div class="module" style="background: none">
+                        <h2>
+                            <span>DIARE</span>
+                            </h2>
+                            <table style="width:100%" id="myTable"  border="none">
 
 
                                 <tr class="odd">
