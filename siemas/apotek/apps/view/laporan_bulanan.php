@@ -61,9 +61,13 @@
 						</td>
 						<td>
 							<input type="submit" class="submit-green" value="PILIH">
-                                                        <?php if(isset ($tes)){echo $tes;} ?>
 						</td>
 					</tr>
+                                        <tr>
+                                            <?php if(isset ($alert)){
+                                                echo $alert;
+                                            } ?>
+                                        </tr>
 					</table>
 					
 					

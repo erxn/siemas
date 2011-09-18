@@ -145,6 +145,10 @@ class Controller_excel extends Panada {
         $objWriter = PHPEXCEL_IOFactory::createWriter($objPHPExcel, "Excel5");
         $objWriter->save("php://output");
         }
+        else{
+            $alert = '<span class="notification n-error">Data yang anda cari tidak ada!</span>';
+            $this->session->set('alert_harian',$alert);
+        }
     $this->redirect('index.php/laporan/harian/');
     }
 
@@ -357,6 +361,10 @@ class Controller_excel extends Panada {
 
         $objWriter = PHPEXCEL_IOFactory::createWriter($objPHPExcel, "Excel5");
         $objWriter->save("php://output");
+        }
+        else{
+            $alert = '<span class="notification n-error">Data yang anda cari tidak ada!</span>';
+            $this->session->set('alert_bulanan',$alert);
         }
     $this->redirect('index.php/laporan/bulanan/');
     }
