@@ -184,6 +184,7 @@
             <li><a href="#tabs-b">Poli Umum</a></li>
         </ul>
         <div id="tabs1-1">
+            <div class="module" style="background: none; float: none">
             <table style="width:100%">
                 <tr>
                     <th colspan="2">
@@ -192,7 +193,7 @@
                 </tr>
                 <tr class="odd">
                     <td width="25%">Anamnesis:</td>
-                    <td><textarea name="n_anamnesis" rows="3" cols="40" style="width: 90%"></textarea></td>
+                    <td ><textarea name="n_anamnesis" rows="3" cols="40" style="width: 90%"></textarea></td>
                 </tr>
                 <tr>
                     <td>Diagnosis:</td>
@@ -213,7 +214,7 @@
                     <td><textarea name="n_keterangan" rows="3" cols="40" style="width: 90%"></textarea></td>
                 </tr>
                 <tr>
-                    <td>P2M</td>
+                    <td class="odd">P2M</td>
                     <td>
                         <a  href="#"  class="btn-gplus gplus-blue" onclick="$('#tbc').fadeIn(); $('#is_tbc').val('1'); return false;">TBC</a>
                         <a  href="#" class="btn-gplus gplus-blue" onclick="$('#diare').fadeIn(); $('#is_diare').val('1'); return false;">Diare</a>
@@ -410,6 +411,7 @@
                     </td>
                 </tr>
             </table>
+            </div>
         </div>
     </form>
      <div id="tabs-a">
@@ -484,7 +486,7 @@
                 </div>
             </div>
             -->
-         <div class="module" style="background:none">
+         <div class="module" style="background:none; float: none">
             <table id="t_umum"   style="width:100%">
                 <thead>
                     <tr>
