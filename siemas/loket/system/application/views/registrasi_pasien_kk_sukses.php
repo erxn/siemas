@@ -121,7 +121,7 @@
 
                                 <div style="width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
                                     <small style="font-size: 11px">No. Kunjungan</small>
-                                    <h3 style="color: #2BA234"><?php echo $kunjungan[0]?></h3>
+                                    <h3 style="color: #2BA234"><?php echo $kunjungan;?></h3>
                                 </div>
                                 <div style="width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
                                     <small>ID Pasien</small>

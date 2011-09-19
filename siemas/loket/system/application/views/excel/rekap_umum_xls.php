@@ -84,7 +84,7 @@ $xls->getActiveSheet()->getStyle('A6:AE8')->getFont()->setSize(10);
 
 $xls->getActiveSheet()
         ->setCellValue('A6', 'TGL')
-        ->setCellValue('B6', 'KUNJUNGAN gigi')
+        ->setCellValue('B6', 'KUNJUNGAN LAMA')
         ->setCellValue('G6', 'KUNJUNGAN BARU')
         ->setCellValue('L6', 'KUNJUNGAN UMUM')
         ->setCellValue('Q6', 'KUNJUNGAN GIGI')
@@ -172,12 +172,12 @@ $xls->getActiveSheet()->getStyle('A6:AE8')->applyFromArray($styleThinBlackBorder
 $i=9; foreach ($laporan as $hasil) :
 
     $xls->getActiveSheet()->setCellValue("A$i", $i-8);
-    $xls->getActiveSheet()->setCellValue("B$i", $hasil['umum_pab']+$hasil['umum_cib']+$hasil['umum_LW']+$hasil['umum_LKot']);
+    $xls->getActiveSheet()->setCellValue("B$i", $hasil['lama_pab']+$hasil['lama_cib']+$hasil['lama_LW']+$hasil['lama_LKot']);
 
-    $xls->getActiveSheet()->setCellValue("C$i", $hasil['umum_pab']);
-    $xls->getActiveSheet()->setCellValue("D$i", $hasil['umum_cib']);
-    $xls->getActiveSheet()->setCellValue("E$i", $hasil['umum_LW']);
-    $xls->getActiveSheet()->setCellValue("F$i", $hasil['umum_LKot']);
+    $xls->getActiveSheet()->setCellValue("C$i", $hasil['lama_pab']);
+    $xls->getActiveSheet()->setCellValue("D$i", $hasil['lama_cib']);
+    $xls->getActiveSheet()->setCellValue("E$i", $hasil['lama_LW']);
+    $xls->getActiveSheet()->setCellValue("F$i", $hasil['lama_LKot']);
 
     $xls->getActiveSheet()->setCellValue("G$i", $hasil['baru_pab']+$hasil['baru_cib']+$hasil['baru_LW']+$hasil['baru_LKot']);
     $xls->getActiveSheet()->setCellValue("H$i", $hasil['baru_pab']);

@@ -4,7 +4,7 @@
     <head>
         <base href="<?php echo base_url(); ?>" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8;charset=utf-8" />
-        <title>Puskesmas Bogor Tengah</title>
+        <title>Poli Gigi - Puskesmas Bogor Tengah</title>
 
 
 
@@ -91,7 +91,7 @@
 
             <img src="Template_files/logo0000.gif" style="position: absolute; top:16px; left:30px" />
             <img src="Template_files/puskesmas.png" style="position: absolute; top:12px; left:85px" />
-            <img src="Template_files/alamat.png" style="position: absolute; top:48px; left:90px" />
+            <!--<img src="Template_files/alamat.png" style="position: absolute; top:48px; left:90px" />-->
             <img src="Template_files/gigi.png" style="position: absolute; top:10px; right:2px" />
             <!-- Header. Main part -->
             <div id="header-main">
@@ -104,7 +104,7 @@
                             <li id="<?php if($this->uri->segment(1)== "stat") echo "current"?>"><a href="index.php/stat">Statistik</a></li>
                             <li id="<?php if($this->uri->segment(1)== "laporan") echo "current"?>"><a href="index.php/laporan">Laporan</a></li>
                             <li id="<?php if($this->uri->segment(1)== "kunjungan") echo "current"?>"><a href="index.php/kunjungan/kunjungan_hari_ini">Kunjungan</a></li>
-                             <li><a href="index.php/">Logout</a></li>
+                             <li><a href="../">Logout</a></li>
 
                         </ul>
 

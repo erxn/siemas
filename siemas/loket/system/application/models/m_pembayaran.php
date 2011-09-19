@@ -17,7 +17,7 @@ class M_pembayaran extends Model {
                                 JOIN pasien USING (id_pasien)
                                 JOIN kk USING (id_kk)
                                 WHERE kunjungan.tanggal_kunjungan = '$tanggal'
-                                AND antrian.status = 'SELESAI'
+                                AND antrian.status IN('SELESAI', 'TERISI')
                                 ORDER BY status_pembayaran DESC, no_kunjungan ASC");
         if($q->num_rows() > 0) {
             foreach ($q->result_array() as $row) {
@@ -38,7 +38,7 @@ class M_pembayaran extends Model {
                                 JOIN pasien USING (id_pasien)
                                 JOIN kk USING (id_kk)
                                 WHERE kunjungan.tanggal_kunjungan = '$tanggal'
-                                AND antrian.status = 'SELESAI'
+                                AND antrian.status IN('SELESAI', 'TERISI')
                                 AND pasien.nama_pasien LIKE '%$nama%'
                                 ORDER BY status_pembayaran DESC, no_kunjungan ASC");
         if($q->num_rows() > 0) {
@@ -48,6 +48,7 @@ class M_pembayaran extends Model {
         }
 
         $q->free_result();
+        
         return $data;
     }
 

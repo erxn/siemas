@@ -36,7 +36,6 @@ class Statistik extends Controller{
         $kunj_baru_cibogor = $this->M_kunjungan->get_pasien_baru_wil_stat($tgl,$wil2,0);
         $kunj_baru_LW = $this->M_kunjungan->get_pasien_baru_wil_stat($tgl,0,$stat1);
         $kunj_baru_LKot = $this->M_kunjungan->get_pasien_baru_wil_stat($tgl,0,$stat2);
-        
         $kunj_umum_pabaton = $this->M_kunjungan->get_kunjungan_poli_wil($wil1,$umum,$tgl);
         $kunj_umum_cibogor = $this->M_kunjungan->get_kunjungan_poli_wil($wil2,$umum,$tgl);
         $kunj_umum_LW = $this->M_kunjungan->get_kunjungan_poli_status($stat1,$umum,$tgl);
@@ -133,7 +132,7 @@ class Statistik extends Controller{
             );
 
          $data['laporan'] = $laporan;
-         
+        
         $this->load->view('statistik_view', $data);
     }
 }

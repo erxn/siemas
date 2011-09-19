@@ -8,7 +8,7 @@
 <div>
     <div class="grid_6" style="width: 98%">
         <div class="module">
-            <h2><span>Laporan Kunjungan</span></h2>
+            <h2><span>Laporan Kunjungan Bulanan</span></h2>
             <div class="module-body">
                  <form method="post" action="index.php/c_laporan/laporan_kunjungan_bulanan">
                     <table class="noborder" style="width: 100%">
@@ -107,7 +107,7 @@
                         <td align="center"><?php echo $laporan[0]['haji_bayar']?></td>
                     </tr>
                     <tr>
-                        <td> EKG</td>
+                        <td>EKG</td>
                         <td align="center"><?php echo $laporan[0]['ekg_askes']?></td>
                         <td align="center"><?php echo $laporan[0]['ekg_askeskin']?></td>
                         <td align="center"><?php echo $laporan[0]['ekg_gr']?></td>
@@ -150,10 +150,10 @@
                     </tr>
                     <tr>
                         <td><div align="center"><strong>JUMLAH</strong></div></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
+                        <td style="font-weight: bold" align="center"><?php echo $laporan[0]['rontgen_askes']+$laporan[0]['dalam_askes']+$laporan[0]['anak_askes']+$laporan[0]['ekg_askes']+$laporan[0]['lab_askes']+$laporan[0]['lab_askes']+$laporan[0]['umum_askes']+$laporan[0]['gigi_askes']+$laporan[0]['kia_askes']+$laporan[0]['rb_askes']+$laporan[0]['haji_askes']+$laporan[0]['rujukan_askes']+$laporan[0]['rontgen_gigi_askes'];?></td>
+                        <td style="font-weight: bold" align="center"><?php echo $laporan[0]['rontgen_askeskin']+$laporan[0]['dalam_askeskin']+$laporan[0]['anak_askeskin']+$laporan[0]['ekg_askeskin']+$laporan[0]['lab_askeskin']+$laporan[0]['lab_askeskin']+$laporan[0]['umum_askeskin']+$laporan[0]['gigi_askeskin']+$laporan[0]['kia_askeskin']+$laporan[0]['rb_askeskin']+$laporan[0]['haji_askeskin']+$laporan[0]['rujukan_askeskin']+$laporan[0]['rontgen_gigi_askeskin'];?></td>
+                        <td style="font-weight: bold" align="center"><?php echo $laporan[0]['rontgen_gr']+$laporan[0]['dalam_gr']+$laporan[0]['anak_gr']+$laporan[0]['ekg_gr']+$laporan[0]['lab_gr']+$laporan[0]['lab_gr']+$laporan[0]['umum_gr']+$laporan[0]['gigi_gr']+$laporan[0]['kia_gr']+$laporan[0]['rb_gr']+$laporan[0]['haji_gr']+$laporan[0]['rujukan_gr']+$laporan[0]['rontgen_gigi_gr'];?></td>
+                        <td style="font-weight: bold" align="center"><?php echo $laporan[0]['rontgen_bayar']+$laporan[0]['dalam_bayar']+$laporan[0]['anak_bayar']+$laporan[0]['ekg_bayar']+$laporan[0]['lab_bayar']+$laporan[0]['lab_bayar']+$laporan[0]['umum_bayar']+$laporan[0]['gigi_bayar']+$laporan[0]['kia_bayar']+$laporan[0]['rb_bayar']+$laporan[0]['haji_bayar']+$laporan[0]['rujukan_bayar']+$laporan[0]['rontgen_gigi_bayar'];?></td>
                     </tr>
                 </table>
 

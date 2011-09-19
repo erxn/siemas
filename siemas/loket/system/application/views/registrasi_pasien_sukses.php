@@ -109,7 +109,7 @@
 
                             <div style="font-size: 11px;width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
                                 <small>No. Kunjungan</small>
-                                <h3 style="color: #2BA234"><?php echo $kunjungan['no_kunjungan']; ?></h3>
+                                <h3 style="color: #2BA234"><?php echo $kunjungan; ?></h3>
                             </div>
 
                             <div style="font-size: 11px;width: 100px; padding: 5px; text-align: center; border: 2px solid #2BA234" class="kotak">
