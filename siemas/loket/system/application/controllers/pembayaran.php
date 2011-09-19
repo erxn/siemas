@@ -23,13 +23,15 @@ class Pembayaran extends Controller {
         if($this->input->post('cari')) {
             $nama = $this->input->post('nama');
             $pembayaran = $this->M_pembayaran->data_pembayaran_pasien($tanggal, $nama);
+            
         } else {
             $pembayaran = $this->M_pembayaran->data_pembayaran($tanggal);
         }
 
+        
         $data['pembayaran'] = $pembayaran;
         
-        //if($this->input->post(''))
+        
 
         $this->load->view('loket_pembayaran',$data);
     }

@@ -240,7 +240,7 @@ class M_kunjungan extends Model {
                                 JOIN kk USING (id_kk)
                                 WHERE tanggal_kunjungan = pasien.tanggal_pendaftaran
                                 AND tanggal_kunjungan = '$tgl'
-                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '$stat')
+                                AND (kelurahan_kk LIKE '%$wil%' OR status_wil_luar LIKE '%$stat%')
                                 ");
         $jumlah_kunjungan = $q->result_array();
         return $jumlah_kunjungan[0]['jumlah'];

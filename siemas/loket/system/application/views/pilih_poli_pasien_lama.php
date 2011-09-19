@@ -23,7 +23,7 @@
     <a href="#" onclick="tambah_antrian('Spesialis Penyakit Dalam'); return false;" class="kotak"><img src="images/sp_dalam.png" border="0"/><br/>Sps. Dalam</a>
     <a href="#" onclick="tambah_antrian('Lab'); return false;" class="kotak"><img src="images/lab.png" border="0"/><br/>Laboratorium</a>
     <a href="#" onclick="tambah_antrian('Radiologi'); return false;" class="kotak"><img src="images/radiologi.jpg" border="0"/><br/>Radiologi</a>
-    <a  href="#" onclick="tambah_antrian('Rujukan'); return false;" class="kotak"><img src="images/radiologi.jpg" border="0"/><br/>Rujukan</a>
+    <a  href="#" onclick="tambah_antrian('Rujukan'); return false;" class="kotak"><img src="images/rujukan.png" border="0"/><br/>Rujukan</a>
 </div>
 
 <script type="text/javascript">

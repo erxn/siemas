@@ -25,6 +25,7 @@ class Registrasi extends Controller {
 
             $data['hasil_cari_pasien'] = $pasien;
         }
+        $data['title'] = 'Registrasi Pasien';
         $this->load->view('registrasi', $data);
         
         }

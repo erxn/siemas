@@ -49,15 +49,6 @@ $jumlah_kunjungan_diare = $grafik['diare'];
 $jumlah_kunjungan_ispa = $grafik['ispa'];
 $jumlah_kunjungan_umum = $grafik['umum'];
 
-$jumlah_kunjungan_pab1 = $grafik['umum_pab1'];
-$jumlah_kunjungan_cib1 = $grafik['umum_cib1'];
-$jumlah_kunjungan_LW1 = $grafik['umum_lw1'];
-$jumlah_kunjungan_LKot1 = $grafik['umum_lk1'];
-
-$jumlah_kunjungan_tbc1 = $grafik['tbc1'];
-$jumlah_kunjungan_diare1 = $grafik['diare1'];
-$jumlah_kunjungan_ispa1 = $grafik['ispa1'];
-$jumlah_kunjungan_umum1 = $grafik['umum1'];
 ?>
 
 <script type="text/javascript" src="js/highcharts.js"></script>
@@ -163,105 +154,8 @@ $jumlah_kunjungan_umum1 = $grafik['umum1'];
                     data: [<?php echo $jumlah_kunjungan_tbc ?>, <?php echo $jumlah_kunjungan_diare ?>, <?php echo $jumlah_kunjungan_ispa ?>,<?php echo $jumlah_kunjungan_umum ?>]
                 }]
         });
+        })
 
-          chart3 = new Highcharts.Chart({
-            chart: {
-                renderTo: 'grafik3',
-                defaultSeriesType: 'bar'
-            },
-            title: {
-                text: 'Grafik jumlah kunjungan'
-            },
-            subtitle: {
-                text: 'Berdasarkan wilayah'
-            },
-            xAxis: {
-                categories: ['Pabaton', 'Cibogor', 'Luar wilayah', 'Luar kota'],
-                title: {
-                    text: null
-                }
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Jumlah kunjungan',
-                    align: 'high'
-                }
-            },
-            tooltip: {
-                formatter: function() {
-                    return ''+
-                        this.series.name +': '+ this.y +' orang';
-                }
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            credits: {
-                enabled: false
-            },
-            series: [{
-                    name: 'Jumlah',
-                    data: [<?php echo $jumlah_kunjungan_pab1 ?>, <?php echo $jumlah_kunjungan_cib1 ?>, <?php echo $jumlah_kunjungan_LW1 ?>, <?php echo $jumlah_kunjungan_LKot1 ?>]
-                }]
-        });
-
-        chart4 = new Highcharts.Chart({
-            chart: {
-                renderTo: 'grafik4',
-                defaultSeriesType: 'bar'
-            },
-            title: {
-                text: 'Grafik jumlah kunjungan'
-            },
-            subtitle: {
-                text: 'Berdasarkan Penyakit'
-            },
-            xAxis: {
-                categories: ['tbc', 'diare', 'ispa','Umum'],
-                title: {
-                    text: null
-                }
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Jumlah kunjungan',
-                    align: 'high'
-                }
-            },
-            tooltip: {
-                formatter: function() {
-                    return ''+
-                        this.series.name +': '+ this.y +' orang';
-                }
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            credits: {
-                enabled: false
-            },
-            series: [{
-                    name: 'Jumlah',
-                    data: [<?php echo $jumlah_kunjungan_tbc1 ?>, <?php echo $jumlah_kunjungan_diare1 ?>, <?php echo $jumlah_kunjungan_ispa1 ?>, <?php echo $jumlah_kunjungan_umum1 ?>]
-                }]
-        });
-    });
 
 </script>
 
@@ -276,7 +170,7 @@ $jumlah_kunjungan_umum1 = $grafik['umum1'];
         
 <br/>
             Pilih tanggal:
-            <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik" class="input-medium" value="<?php echo $tgl ?>"/>
+            <input type="text"  class="datepicker" placeholder="Masukkan tanggal" name="tgl_statistik" class="input-medium" value="<?php echo format_tanggal_tampilan($tgl) ?>"/>
             <input type="submit" value="Tampilkan" class="submit-green" name="submit"/>
 
        
@@ -291,6 +185,5 @@ $jumlah_kunjungan_umum1 = $grafik['umum1'];
         
         <div style="clear: both"></div>
        </div>
-        <br/></div>
-
+</form>
 </div>

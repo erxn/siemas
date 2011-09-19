@@ -12,7 +12,8 @@ class Pasien extends Controller {
     }
 
     function index() {
-        $this->load->view('data_pasien');
+        $data['title'] = 'Data Pasien';
+        $this->load->view('data_pasien',$data);
     }
 
     function profil_pasien($id_kk,$kode_pasien) {
@@ -113,7 +114,7 @@ class Pasien extends Controller {
                     'id_pasien'              => $id_pasien_baru,
                     'no_kunjungan'          => $no_kunjungan
             );
-
+            
             $id_kunjungan = $this->M_kunjungan->insert_id_kunjungan($data_kunjungan);
             
             $id_poli = $this->M_antrian->get_id_by_poli($poli);
@@ -130,11 +131,12 @@ class Pasien extends Controller {
                 
             }
         }
-
+//        $data_view['title'] = 'Data Pasien';
         $this->load->view('registrasi_pasien_sukses', $data_view);
     }
 
     function registrasi_pasien_proses() {
+        
         $this->load->view('registrasi_pasien_sukses');
     }
 
@@ -147,10 +149,13 @@ class Pasien extends Controller {
         $data['pasien'] = $pasien_baru;
         $data['kunjungan'] = $no_kunjungan;
         $data['poli'] = $poli;
+        $data['title'] = "Registrasi Pasien";
         if($status == "kk_baru")
+            
         $this->load->view('registrasi_pasien_sukses', $data);
         else if($status == "kk_lama")
-        $this->load->view('registrasi_pasien_kk_sukses', $data);
+        
+            $this->load->view('registrasi_pasien_kk_sukses', $data);
     }
 
 

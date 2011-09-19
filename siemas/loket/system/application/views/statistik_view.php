@@ -23,11 +23,12 @@
 </div>
 <!-- END SUBNAV -->
 
+
 <?php
 
 // perhitungannya di sini ajah
 
-$jumlah_kunjungan_lama = @$laporan['lama_pab'] + $laporan['lama_cib'] + $laporan['lama_LW'] + $laporan['lama_LKot'];
+$jumlah_kunjungan_lama = $laporan['lama_pab'] + $laporan['lama_cib'] + $laporan['lama_LW'] + $laporan['lama_LKot'];
 $jumlah_kunjungan_baru = $laporan['baru_pab'] + $laporan['baru_cib'] + $laporan['baru_LW'] + $laporan['baru_LKot'];
 
 $jumlah_kunjungan_pab = $laporan['lama_pab'] + $laporan['baru_pab'];
@@ -51,6 +52,7 @@ $jumlah_kunjungan_umum = $laporan['umum'];
 $jumlah_kunjungan_lain = $laporan['lain'];
 
 ?>
+
 
 <script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript">
@@ -281,7 +283,7 @@ $(document).ready(function() {
             <div style="width: 48%; float: left; height: 300px;" id="grafik3"></div>
             <div style="width: 48%; float: left; height: 300px;" id="grafik4"></div>
             <pre>
-            <?php //print_r($laporan) ?>
+            
             </pre>
         </div>
     </div>

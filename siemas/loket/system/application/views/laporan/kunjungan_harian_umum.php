@@ -79,11 +79,11 @@
                             <small style="font-size: 10px; color: #777777; font-weight: normal"><?php echo $hasil['jk_pasien'] . ', ' . $hasil['umur'] . ' th'; ?></small>
                         </td>
                         <td><?php echo $hasil['alamat_kk']." ".$hasil['kelurahan_kk']." ".$hasil['kecamatan_kk'];?></td>
-                        <td><?php echo $hasil['status_pelayanan']?><br/>
+                        <td align="center"><?php echo $hasil['status_pelayanan']?><br/>
                             <small style="font-size: 12px; color: #777777; font-weight: normal"><?php echo $hasil['no_kartu_layanan']?></small>
                         </td>
-                        <td><?php if($hasil['status_bawa_kartu']=='Tidak') echo 'Tidak Bawa'; else echo '--'?></td>
-                        <td><?php echo $hasil['nama_poli']?></td>
+                        <td align="center"><?php if($hasil['status_pelayanan'] == 'Umum' || $hasil['status_pelayanan'] == 'Lain-lain') echo '-'; else if($hasil['status_bawa_kartu']=='Tidak') echo 'Tidak Bawa'; else echo '-'?></td>
+                        <td align="center"><?php echo $hasil['nama_poli']?></td>
                     </tr>
                     <?php }}else { ?>
                             <tr>

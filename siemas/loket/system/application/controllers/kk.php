@@ -41,12 +41,14 @@ class Kk extends Controller {
                 
             }
         }
-        $this->load->view('registrasi_kk');
+        $data['title'] = "Registrasi KK";
+        $this->load->view('registrasi_kk',$data);
     }
 
     function registrasi_kk_sukses($id_kk_yang_baru) {
         $kk_baru = $this->M_kk->lihat_profil_kk($id_kk_yang_baru);
         $data['kk'] = $kk_baru;
+        $data['title'] = "Registrasi KK";
         $this->load->view('registrasi_kk_sukses', $data);
     }
 
@@ -54,6 +56,7 @@ class Kk extends Controller {
         $data = array();
         $nama_kk = $this->input->post('nama_kk');
         $alamat_kk = $this->input->post('alamat_kk');
+        $data['title'] = "Registrasi KK";
         if($this->input->post('cari')) {
 
         $hasil_cari = $this->M_kk->cari_kk($nama_kk,$alamat_kk);

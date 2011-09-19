@@ -203,11 +203,16 @@
                         <td><textarea name="n_diagnosa" rows="3" cols="40" style="width: 90%"></textarea></td>
                     </tr>
 
+                    <?php array_shift($data_peny); ?>
+
                     <tr class="odd">
                         <td style="vertical-align: top">Penyakit:</td>
                         <td> <select name="n_penyakit">
+                                <option value="5">-</option>
                                     <?php foreach ($data_peny as $dp) {?>
-                                <option value="<?php echo $dp['id_penyakit'];?>"><?php echo $dp['nama_penyakit'];?>  | 0<?php echo $dp['kode_penyakit'];?></option>
+                                <option value="<?php echo $dp['id_penyakit'];?>">
+                                <?php echo $dp['nama_penyakit'];?>  | 0<?php echo $dp['kode_penyakit'];?>
+                                </option>
                                         <?php } ?>
                             </select>
                         </td>

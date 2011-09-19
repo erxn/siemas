@@ -132,7 +132,7 @@
                 <div class="container_12">
                     <div class="grid_12">
                         <img src="Template_files/logo0000.gif"  style="position: absolute; top:10px; left:20px"/>
-                        <div style="position: absolute; left: 85px; top: 5px; color: white; text-shadow: 3px 3px 10px #000000; width: 350px; display: inline-block">
+                        <div style="position: absolute; left: 85px; top: 5px; color: white; text-shadow: 3px 3px 10px #000000; width: 400px; display: inline-block">
                             <span style="font-size: 28px">Puskesmas Bogor Tengah</span>
                             <br/>
                             <span style="font-size: 22px">Loket</span>
@@ -144,7 +144,7 @@
                             <li id="<?php if(($this->uri->segment(1)== "pasien")&&($this->uri->segment(2)!= "registrasi_pasien_sukses")) echo "current"?>"><a href="index.php/pasien">Data Pasien</a></li>
                             <li id="<?php if($this->uri->segment(1)== "statistik") echo "current"?>"><a href="index.php/statistik">Statistik</a></li>
                             <li id="<?php if($this->uri->segment(1)== "c_laporan" || $this->uri->segment(1)== "kunjungan") echo "current"?>"><a href="index.php/c_laporan">Laporan</a></li>
-                            <li><a href="../">Logout</a></li>
+                            <li id=""><a href="../">Keluar</a></li>
                         </ul>
                     </div>
                 </div>

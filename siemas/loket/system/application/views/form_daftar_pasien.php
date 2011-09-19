@@ -21,6 +21,7 @@
                 $("#kecamatan").require();
                 $("#kota").require();
                 $("#jk_pasien").require();
+                $("#nomor:visible").require();
             });
         });
     });
