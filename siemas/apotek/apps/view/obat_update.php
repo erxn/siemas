@@ -1,10 +1,32 @@
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('.validasi').validity(function(){
+
+           $('.input_angka').match('number');
+           $( "#tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
+
+        });
+
+        $.validity.setup({ outputMode:"modal" });
+
+
+    });
+
+
+</script>
 <br/>
 <div class="grid_6" style="width: 97%">
 <div class="container_12">
         <div class="module">
             <h2><span>Update Obat</span></h2>
 
-                        <form method="POST" action="<?php echo $this->base_url?>index.php/obat/update/<?php echo $daftar->id_obat ; ?>">
+                        <form method="POST" class="validasi" action="<?php echo $this->base_url?>index.php/obat/update/<?php echo $daftar->id_obat ; ?>">
 
 
             <div class="module-table-body">
@@ -26,7 +48,7 @@
                             </tr>
                             <tr>
                                 <td>Stok Obat &nbsp :</td>
-                                <td><input class="input-long" type="text" maxlength="255" name="stok_obat" value="<?php echo $daftar->stok_obat; ?>" /></td>
+                                <td><input class="input-long input_angka" type="text" maxlength="255" name="stok_obat" value="<?php echo $daftar->stok_obat; ?>" /></td>
                             </tr>
                             <tr>
                                 <td></td>

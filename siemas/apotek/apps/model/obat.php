@@ -60,6 +60,29 @@ class Model_obat {
         return $data;
     }
 
+    public function cek_obat($id_obat){
+        $temp = 1;
+        $n=1;
+        foreach ($id_obat as $result) {
+                if($id_obat[$n]){
+                $nbk = $this->db->results("SELECT * FROM obat WHERE id_obat='$id_obat[$n]'");
+                if(!$nbk){
+                    $temp = 0;
+                    break;
+                }
+                }
+			$n++;
+		}
+        return $temp;
+    }
+
+    public function cek_pasien($no_kunjungan,$tanggal_kunjungan){
+
+        $result = $this->db->results("SELECT * FROM kunjungan where no_kunjungan='$no_kunjungan' AND tanggal_kunjungan='$tanggal_kunjungan'");
+
+        return $result;
+    }
+
     public function history_bt($BT){
         $data = array();
         $data[] = new stdClass();

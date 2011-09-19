@@ -100,7 +100,7 @@
                                 <td><?php echo $list->satuan_obat; ?></td>
                                 <td><input  class="input_angka input-long" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
                                            ></td>
-                                <td><input type="text" class=" input-long" name="kadaluarsa[<?php echo $n ?>]" class="tanggal" value="<?php echo $tanggal; ?>"></td>
+                                <td><input type="text" class="tanggal input-long" name="kadaluarsa[<?php echo $n ?>]" value="<?php echo $tanggal; ?>"></td>
                                 <td><input type="text" class=" input-long"  id="field_1_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
                             </tr>
 <?php $n++;

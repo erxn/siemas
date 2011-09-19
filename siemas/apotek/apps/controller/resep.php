@@ -35,9 +35,15 @@ class Controller_resep extends Panada {
                 $no_kunjungan = $_POST['kunjungan'];
                 $id_obat = $_POST['id_obat'];
                 $jumlah = $_POST['jumlah'];
-                $id_pasien = $this->obat->resep_pasien($tanggal, $no_kunjungan);
-                $this->obat->tambah_isi_resep($id_pasien, $tanggal, $id_obat, $jumlah);
-                $verify='Resep dengan id antrian '.$no_kunjungan.' berhasil dimasukan.';
+                $cek_obat = $this->obat->cek_obat($id_obat);
+                $cek_pasien = $this->obat->cek_pasien($no_kunjungan,$tanggal);
+                if($jumlah && $id_obat && $cek_obat && $cek_pasien){
+                    $id_pasien = $this->obat->resep_pasien($tanggal, $no_kunjungan);
+                    $this->obat->tambah_isi_resep($id_pasien, $tanggal, $id_obat, $jumlah);
+                    $verify='Resep dengan id antrian '.$no_kunjungan.' berhasil dimasukan.';
+                } else{
+                    $verify='<span class="notification n-error">Data yang dimasukan tidak benar atau tidak lengkap.</span>';
+                }
                 $this->session->set('verify',$verify);
                 $this->redirect('index.php/resep');
             } else{

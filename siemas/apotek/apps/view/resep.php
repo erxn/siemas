@@ -65,7 +65,7 @@
 		<div class="container_12">
 
                     <form method="POST"
-                        onsubmit="if(document.getElementById('kunjungan').value == '') {alert('No kunjungan Harus Diisi'); return false} " id="form_resep" >
+                        onsubmit="if(document.getElementById('kunjungan').value == '') {alert('No kunjungan Harus Diisi'); return false} " id="form_resep" class="resep">
                     
                     <table>
 					<tr>
@@ -81,19 +81,24 @@
 							<p align="left" style="margin-bottom: 5px;">Nama pasien :</p>
 						</td>
 						<td width="300px">
-							<input type="text" class="input_angka input-long" id="kunjungan" name="kunjungan"  maxlength="255" size="30" disabled="disabled" />
+							<input type="text" class=" input-long" id="kunjungan" name="kunjungan"  maxlength="255" size="30" disabled="disabled" />
 						</td>
 					</tr>
                                         
                                         <tr>
                                             <td>
-                                                <input type="hidden" class="input_angka input-long" name="tanggal"  value="<?php echo $tanggal; ?>">
+                                                <input type="hidden" class="input-long" name="tanggal"  value="<?php echo $tanggal; ?>">
                                             </td>
-                                            <td>
-						<?php echo $verify; ?></td>
+                                            
 					</tr>
-                                        
 				</table>
+                        
+                        <div style="clear: both;"></div>
+                        
+                        <table>
+                            <tr><td><?php echo $verify; ?></td></tr>
+                        </table>
+
                     <div class="module" style="width: 473px ;">
                     <h2><span>Data Obat</span></h2>
 
@@ -116,9 +121,9 @@
                                   <tbody>
                                       <?php for($n=1; $n<=50; $n++){ ?>
 					<tr id="tr_<?php echo $n; ?>" <?php if($n > 6) echo 'style="display:none"' ?>>
-                                            <td class="align-center"><input type="text" class="ido input-long" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="ido input-long input_angka" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <td class="align-center"><input type="text" class="autocomplete input-long" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
-                                            <td class="align-center"><input type="text" class="input-long" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="input-long input_angka" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                         </tr>
                                       <?php } ?>
                                   </tbody>
@@ -152,6 +157,29 @@
             <div style="clear:both;"></div>
         </div> <!-- End #footer -->
 
+
+        <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('.resep').validity(function(){
+
+           $('.input_angka').match('number');
+           $( "#tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
+
+        });
+
+        $.validity.setup({ outputMode:"modal" });
+
+
+    });
+
+
+</script>
         <script type="text/javascript">
 
             var x = 7;
