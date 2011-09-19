@@ -2,7 +2,7 @@
 
 class Sp_dalam extends Controller {
 
-    var $id_poli = 10;             // sesuai databes
+    var $id_poli = 8;             // sesuai databes
     var $folder_view = 'sp_dalam'; // folder di view
     var $controller  = 'sp_dalam'; // myself
 
