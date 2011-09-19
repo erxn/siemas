@@ -20,8 +20,10 @@
 
 <br/>
 
-                <form method="POST">
-
+                <form method="POST" class="valid">
+                        <table>
+                            <tr><td><?php echo $verify; ?></td></tr>
+                        </table>
                             <table>
                                 <tr>
                                     <td width="100px">
@@ -83,9 +85,9 @@
  ?>
                                         <tr id="tr_<?php echo $n; ?>" <?php if ($n > 6)
                                             echo 'style="display:none"' ?>>
-                                                <td class="align-center"><input type="text" class="ido input-medium" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                                <td class="align-center"><input type="text" class="ido input-medium input_angka" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                                 <td class="align-center"><input type="text" class="autocomplete input-long" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
-                                                <td class="align-center"><input type="text" class="input-medium" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                                <td class="align-center"><input type="text" class="input-medium input_angka" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             </tr>
 <?php } ?>
                                     </tbody>
@@ -118,6 +120,29 @@
             <div style="clear:both;"></div>
         </div> <!-- End #footer -->
 	</body>
+
+        <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('.valid').validity(function(){
+
+           $('.input_angka').match('number');
+           $( "#tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
+
+        });
+
+        $.validity.setup({ outputMode:"modal" });
+
+
+    });
+
+
+</script>
         <script type="text/javascript">
 
             var x = 7;

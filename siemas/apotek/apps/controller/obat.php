@@ -47,6 +47,8 @@ class Controller_obat extends Panada {
         $views['page_title'] = 'Pemakaian Obat - Apotek';
         $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $views['verify']    = NULL;
+        $views['verify'] = $this->session->get('verify');
+        $this->session->remove('verify');
         $views['list_nama_obat'] = $this->obat->ambil_nama_obat();
         $n='1';
         if($_POST){
@@ -56,8 +58,15 @@ class Controller_obat extends Panada {
             $id_obat = $_POST['id_obat'];
             $jumlah = $_POST['jumlah'];
             $keterangan = $_POST['keterangan'];
-            $this->obat->tambah_isi_pemakaian($intern, $tanggal, $id_obat, $jumlah, $keterangan);
-            $views['verify']='pemakaian obat pada unit layanan '.$intern.' berhasil dimasukan.';
+                $cek_obat = $this->obat->cek_obat($id_obat);
+                if($jumlah && $id_obat && $cek_obat && $intern){
+                    $this->obat->tambah_isi_pemakaian($intern, $tanggal, $id_obat, $jumlah, $keterangan);
+                    $verify='Pemakaian obat pada unit layanan '.$intern.' berhasil dimasukan.';
+                } else{
+                    $verify='<span class="notification n-error">Data yang dimasukan tidak benar atau tidak lengkap.</span>';
+                }
+            $this->session->set('verify',$verify);
+            $this->redirect('index.php/obat/pemakaian_obat');
         }
         $this->view_pemakaian_obat($views);
     }

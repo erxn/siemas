@@ -6,9 +6,9 @@
                         <ul style="margin-left: 50px;">
 
                             
-                            <li><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
-                            <li id="current"><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/riwayat/pemakaian_obat">Pemakaian Obat</a></li>
+                            <li id="current"><a href="<?php echo $this->base_url?>index.php/riwayat/tambah_obat">Tambah Obat</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/riwayat/resep">Resep</a></li>
 
                         </ul>
 
@@ -83,7 +83,7 @@
                                 <tr>
                                     <td><?php echo $hasil->tanggal ; ?></td>
                                     <td><?php echo $hasil->no_sbkk ; ?></td>
-                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/history/lihat_isi_pemasukan/<?php echo $hasil->tanggal ; ?>/<?php echo $hasil->no_sbkk ; ?>">
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/riwayat/lihat_isi_pemasukan/<?php echo $hasil->tanggal ; ?>/<?php echo $hasil->no_sbkk ; ?>">
                                             <input type="submit" value="Lihat Obat" /></a></td>
                                 </tr>
                                 <?php } ?>

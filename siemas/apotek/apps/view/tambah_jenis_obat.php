@@ -18,7 +18,7 @@
 </div> <!-- End #header -->
 
 <div class="container_12">
-    <form method="post" onsubmit="if(document.getElementById('nbk').value == '') return false;">
+    <form method="post" class="valid" onsubmit="if(document.getElementById('nbk').value == '') return false;">
         <?php echo $verify ?>
         <table>
             <tr>
@@ -59,7 +59,7 @@
                 </td>
                 <td></td>
                 <td>
-                    <input type="text" class="input-long" maxlength="255"  name="jumlah" />
+                    <input type="text" class="input-long input_angka" maxlength="255"  name="jumlah" />
                 </td>
             </tr>
 
@@ -83,6 +83,28 @@
     <div style="clear:both;"></div>
 </div> <!-- End #footer -->
 </body>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('.valid').validity(function(){
+
+           $('.input_angka').match('number');
+           $( "#tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
+
+        });
+
+        $.validity.setup({ outputMode:"modal" });
+
+
+    });
+
+
+</script>
 </html>
 <!-- This document saved from http://www.xooom.pl/work/magicadmin/admin.html? -->
 

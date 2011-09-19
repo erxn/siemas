@@ -5,9 +5,9 @@
                     <div class="grid_12">
                         <ul style="margin-left: 50px;">
                             
-                            <li><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/riwayat/pemakaian_obat">Pemakaian Obat</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/riwayat/tambah_obat">Tambah Obat</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/riwayat/resep">Resep</a></li>
 
                         </ul>
 
@@ -22,9 +22,9 @@
 
                     <ul>
 
-			<li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
-                        <li><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
-                        <li><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
+			<li><a href="<?php echo $this->base_url?>index.php/riwayat/resep">Resep</a></li>
+                        <li><a href="<?php echo $this->base_url?>index.php/riwayat/tambah_obat">Tambah Obat</a></li>
+                        <li><a href="<?php echo $this->base_url?>index.php/riwayat/pemakaian_obat">Pemakaian Obat</a></li>
 
 			</ul>
 

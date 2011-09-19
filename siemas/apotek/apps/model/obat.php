@@ -119,11 +119,11 @@ class Model_obat {
         return $data;
     }
 
-    public function history_pemakaian_bt($BT){
-
-        $result = $this->db->results("SELECT DISTINCT(waktu) FROM pemakainan_intern WHERE waktu LIKE '$BT%' ORDER BY waktu");
-        $n=1;
-        $data = NULL;
+    public function history_pemakaian_bt($bulan,$tahun){
+        $data = array();
+        $result = $this->db->results("SELECT DISTINCT(waktu) FROM pemakainan_intern 
+                WHERE year(waktu) = '$tahun' AND month(waktu) = '$bulan' ORDER BY waktu");
+        $n=0;
         if($result){
             foreach ($result as $list){
                 $data[$n]['tanggal'] = $this->date->reverse($list->waktu);

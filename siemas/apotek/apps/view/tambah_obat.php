@@ -6,8 +6,8 @@
     <div class="container_12">
         <div class="grid_12">
             <ul id="nav">
-                <li><a href="<?php echo $this->base_url ?>index.php/home">Home</a></li>
-                <li><a href="<?php echo $this->base_url ?>index.php/history">History</a></li>
+                <li><a href="<?php echo $this->base_url ?>index.php/Beranda">Beranda</a></li>
+                <li><a href="<?php echo $this->base_url ?>index.php/riwayat">Riwayat</a></li>
                 <li><a href="<?php echo $this->base_url ?>index.php/obat">Obat</a></li>
                 <li><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa
                         <?php if($jumlah_kadaluarsa > 0) { ?>

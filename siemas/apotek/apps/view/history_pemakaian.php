@@ -6,9 +6,9 @@
                         <ul style="margin-left: 50px;">
 
                             
-                            <li id="current"><a href="<?php echo $this->base_url?>index.php/history/pemakaian_obat">Pemakaian Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/history/tambah_obat">Tambah Obat</a></li>
-                            <li><a href="<?php echo $this->base_url?>index.php/history/resep">Resep</a></li>
+                            <li id="current"><a href="<?php echo $this->base_url?>index.php/riwayat/pemakaian_obat">Pemakaian Obat</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/riwayat/tambah_obat">Tambah Obat</a></li>
+                            <li><a href="<?php echo $this->base_url?>index.php/riwayat/resep">Resep</a></li>
 
                         </ul>
 
@@ -23,7 +23,7 @@
 
                    <form method="post"
                                               onsubmit="if((document.getElementById('bulan').value != 'Pilih Bulan')&&(document.getElementById('tahun').value != 'Pilih tahun'))
-                                                        return confirm('Apakah anda yakin ingin melihat history bulan ' + document.getElementById('bulan').value
+                                                        return confirm('Apakah anda yakin ingin melihat Riwayat bulan ' + document.getElementById('bulan').value
                                                         + ' tahun ' + document.getElementById('tahun').value + '?'); else return false;">
                                 <table>
 					<tr>
@@ -100,7 +100,7 @@
                                 <?php foreach ($hasil as $hasilnya) { ?>
                                 <tr>
                                     <td><?php echo $hasilnya->poli ; ?></td>
-                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/history/isi_pemakaian/<?php echo str_replace(" ", "_", $hasilnya->poli) ; ?>/<?php echo $tanggal2 ; ?>">
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/riwayat/isi_pemakaian/<?php echo str_replace(" ", "_", $hasilnya->poli) ; ?>/<?php echo $tanggal2 ; ?>">
                                             <input type="submit" value="Lihat Obat" /></a></td>
                                 </tr>
                                 <?php } ?>
@@ -130,7 +130,7 @@
                                 <?php foreach ($hasilnya['poli'] as $list) { ?>
                                 <tr>
                                     <td><?php echo $list->poli ; ?></td>
-                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/history/isi_pemakaian/<?php echo str_replace(" ", "_", $list->poli) ; ?>/<?php echo $hasilnya['tanggal2']; ?>">
+                                    <td><a class="popup" href="<?php echo $this->base_url?>index.php/riwayat/isi_pemakaian/<?php echo str_replace(" ", "_", $list->poli) ; ?>/<?php echo $hasilnya['tanggal2']; ?>">
                                             <input type="submit" value="Lihat Obat" /></a></td>
                                 </tr>
                                 <?php } ?>
