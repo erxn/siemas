@@ -2,7 +2,7 @@
 
 class Sp_anak extends Controller {
 
-    var $id_poli = 9;         // sesuai databes
+    var $id_poli = 7;         // sesuai databes
     var $folder_view = 'sp_anak'; // folder di view
     var $controller  = 'sp_anak'; // myself
 
@@ -21,6 +21,7 @@ class Sp_anak extends Controller {
     function tabel_antri() {
         $ant=$this->antrian->tabel_antrian_a($this->id_poli);
         $data['a']=$ant;
+        //print_r($data);exit;
         $this->load->view($this->folder_view . '/antrian_tabel_antri_view', $data);
     }
 
