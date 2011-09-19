@@ -1,6 +1,6 @@
 <?php defined('THISPATH') or die('Can\'t access directly!');
 
-class Controller_history extends Panada {
+class Controller_riwayat extends Panada {
 
     var $nama_bulan = array(
             "",
@@ -64,8 +64,7 @@ class Controller_history extends Panada {
 
          if($_POST){
             if(isset ($_POST['bulan']) && isset ($_POST['tahun'])){
-                $BT = $this->date->gabung2($_POST['bulan'], $_POST['tahun']);
-                $hasil = $this->obat->history_pemakaian_bt($BT);
+                $hasil = $this->obat->history_pemakaian_bt($_POST['bulan'],$_POST['tahun']);
                 if(isset ($hasil)){
                     $views['hasil2'] = $hasil;
                     $views['alert2'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[intval($_POST['bulan'])].' tahun '.$_POST['tahun'].' adalah :';
@@ -103,9 +102,9 @@ class Controller_history extends Panada {
                 $hasil = $this->obat->history_resep($tanggal);
                 if(isset ($hasil)){
                     $views['hasil'] = $hasil;
-                    $views['alert'] = 'Hasil pencarian pada bulan '.$_POST['tanggal'].' adalah :';
+                    $views['alert'] = 'Hasil pencarian pada tanggal '.$_POST['tanggal'].' adalah :';
                 }   else{
-                        $views['alert'] = '<span class="notification n-error">Hasil pencarian pada bulan '.$_POST['tanggal'].' tidak ada.</span>';
+                        $views['alert'] = '<span class="notification n-error">Hasil pencarian pada tanggal '.$_POST['tanggal'].' tidak ada.</span>';
                 }
 
          }
