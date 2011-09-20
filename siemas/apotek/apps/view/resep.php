@@ -65,7 +65,13 @@
 		<div class="container_12">
 
                     <form method="POST"
-                        onsubmit="if(document.getElementById('kunjungan').value == '') {alert('No kunjungan Harus Diisi'); return false} " id="form_resep" class="resep">
+                        onsubmit="if(document.getElementById('kunjungan').value == '') {alert('No kunjungan Harus Diisi'); return false};
+                                <?php for($z=1; $z<=50; $z++){
+                                          $id_input_id_obat='id'.$z;
+                                          $id_input_jumlah_obat='jml'.$z;?>
+                                if((document.getElementById('<?php echo $id_input_id_obat; ?>').value != '')&&(document.getElementById('<?php echo $id_input_jumlah_obat; ?>').value == '')) {alert('Ada jumlah obat yang belum diisi'); return false};
+                                          <?php } ?>"
+                                        id="form_resep" class="resep">
                     
                     <table>
 					<tr>
@@ -119,11 +125,13 @@
                                   </thead>
 
                                   <tbody>
-                                      <?php for($n=1; $n<=50; $n++){ ?>
+                                      <?php for($n=1; $n<=50; $n++){
+                                          $id_input_id_obat='id'.$n;
+                                          $id_input_jumlah_obat='jml'.$n;?>
 					<tr id="tr_<?php echo $n; ?>" <?php if($n > 6) echo 'style="display:none"' ?>>
-                                            <td class="align-center"><input type="text" class="ido input-long input_angka" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="ido input-long input_angka" id="<?php echo $id_input_id_obat; ?>" name="id_obat[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                             <td class="align-center"><input type="text" class="autocomplete input-long" name="nama_obat[<?php echo $n; ?>]" maxlength="255" size="30"></td>
-                                            <td class="align-center"><input type="text" class="input-long input_angka" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
+                                            <td class="align-center"><input type="text" class="input-long input_angka" id="<?php echo $id_input_jumlah_obat; ?>" name="jumlah[<?php echo $n; ?>]" maxlength="255" size="10"></td>
                                         </tr>
                                       <?php } ?>
                                   </tbody>
@@ -157,30 +165,7 @@
             <div style="clear:both;"></div>
         </div> <!-- End #footer -->
 
-
-        <script type="text/javascript">
-
-    $(document).ready(function(){
-
-        $('.resep').validity(function(){
-
-           $('.input_angka').match('number');
-           $( "#tanggal" ).datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'dd-mm-yy'
-                });
-
-        });
-
-        $.validity.setup({ outputMode:"modal" });
-
-
-    });
-
-
-</script>
-        <script type="text/javascript">
+       <script type="text/javascript">
 
             var x = 7;
 
@@ -238,9 +223,32 @@
             aktifinAutokomplit();
         });
 
-        
+
 
 </script>
+        <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('.resep').validity(function(){
+
+           $('.input_angka').match('number');
+           $( "#tanggal" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+                });
+
+        });
+
+        $.validity.setup({ outputMode:"modal" });
+
+
+    });
+
+
+</script>
+ 
 
 </body>
 </html>
