@@ -40,7 +40,7 @@ class Controller_resep extends Panada {
                 if($jumlah && $id_obat && $cek_obat && $cek_pasien){
                     $id_pasien = $this->obat->resep_pasien($tanggal, $no_kunjungan);
                     $this->obat->tambah_isi_resep($id_pasien, $tanggal, $id_obat, $jumlah);
-                    $verify='Resep dengan id antrian '.$no_kunjungan.' berhasil dimasukan.';
+                    $verify='<div class="notification n-success">Resep dengan id antrian '.$no_kunjungan.' berhasil dimasukan.</div>';
                 } else{
                     $verify='<span class="notification n-error">Data yang dimasukan tidak benar atau tidak lengkap.</span>';
                 }

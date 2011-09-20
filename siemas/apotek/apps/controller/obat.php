@@ -61,7 +61,7 @@ class Controller_obat extends Panada {
                 $cek_obat = $this->obat->cek_obat($id_obat);
                 if($jumlah && $id_obat && $cek_obat && $intern){
                     $this->obat->tambah_isi_pemakaian($intern, $tanggal, $id_obat, $jumlah, $keterangan);
-                    $verify='Pemakaian obat pada unit layanan '.$intern.' berhasil dimasukan.';
+                    $verify='<div class="notification n-success">Pemakaian obat pada unit layanan '.$intern.' berhasil dimasukan.</div>';
                 } else{
                     $verify='<span class="notification n-error">Data yang dimasukan tidak benar atau tidak lengkap.</span>';
                 }
