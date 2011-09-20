@@ -262,7 +262,7 @@ class Pegawai extends Controller {
             $data_pendidikan = $this->input->post('pendidikan');
             $tahun_pendidikan = $this->input->post('tahun_pendidikan');
 
-            for ($i = 0; $i < count($id_pendidikan); $i++) {
+            for ($i = 0; $i < count($data_pendidikan); $i++) {
                 if ($data_pendidikan[$i] != "") {
                     if ($id_pendidikan[$i] == "") { // new, insert it
                         $this->pegawai->insert_data_pendidikan(array(
@@ -285,7 +285,7 @@ class Pegawai extends Controller {
             $data_pelatihan = $this->input->post('pelatihan');
             $tahun_pelatihan = $this->input->post('tahun_pelatihan');
 
-            for ($i = 0; $i < count($id_pelatihan); $i++) {
+            for ($i = 0; $i < count($data_pelatihan); $i++) {
                 if ($data_pelatihan[$i] != "") {
                     if ($id_pelatihan[$i] == "") { // new, insert it
                         $this->pegawai->insert_data_pelatihan(array(
@@ -312,7 +312,7 @@ class Pegawai extends Controller {
             $dapat_tunjangan_tanggungan = $this->input->post('tanggungan_dapat_tunjangan');
             $keterangan_tanggungan = $this->input->post('tanggungan_keterangan');
 
-            for ($i = 0; $i < count($id_tanggungan); $i++) {
+            for ($i = 0; $i < count($nama_tanggungan); $i++) {
                 if ($nama_tanggungan[$i] != "") {
                     if ($id_tanggungan[$i] == "") {
                         $this->pegawai->insert_data_tanggungan(array(
