@@ -65,7 +65,7 @@ class Controller_riwayat extends Panada {
          if($_POST){
             if(isset ($_POST['bulan']) && isset ($_POST['tahun'])){
                 $hasil = $this->obat->history_pemakaian_bt($_POST['bulan'],$_POST['tahun']);
-                if(isset ($hasil)){
+                if($hasil){
                     $views['hasil2'] = $hasil;
                     $views['alert2'] = 'Hasil pencarian pada bulan '.$this->nama_bulan[intval($_POST['bulan'])].' tahun '.$_POST['tahun'].' adalah :';
                 }   else{
