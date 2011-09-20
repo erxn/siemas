@@ -137,6 +137,35 @@
                             <br/>
                             <span style="font-size: 22px">Loket</span>
                         </div>
+                        <?php
+
+                        if(!function_exists('tampilan_tanggal_indonesia')) {
+                            function tampilan_tanggal_indonesia($tanggal, $pake_hari = true, $pake_tahun = true) {
+
+                                // input: yy-mm-dd
+
+                                $namaHari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu");
+                                $namaBulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+                                $d = strtotime($tanggal);
+
+                                $date_string = date('j', $d) . " " . $namaBulan[(date('n', $d)-1)];
+
+                                if($pake_hari)
+                                    $date_string = $namaHari[date('N', $d)] . ", " . $date_string;
+
+                                if($pake_tahun)
+                                    $date_string = $date_string . " " . date("Y", $d);
+
+                                return $date_string;
+
+                            }
+                        }
+
+                        ?>
+                        <div style="position: absolute; top:10px; right:20px; color: white; text-shadow: 3px 3px 10px #000000; font-size: 20px">
+                            <?php echo tampilan_tanggal_indonesia("today"); ?>
+                        </div>
                         <ul id="nav">
                             <li id="<?php if($this->uri->segment(1)== "") echo "current"?>"><a href="index.php">Home</a></li>
                             <li id="<?php if(($this->uri->segment(1)== "kk")||($this->uri->segment(1)== "registrasi")||($this->uri->segment(2)=="registrasi_pasien_sukses")) echo "current"?>"><a href="index.php/registrasi">Registrasi</a></li>
