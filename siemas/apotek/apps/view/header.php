@@ -157,8 +157,39 @@
                         
                     </div>
                     <div class="grid_4">
+
+                        <?php
+
+                        if(!function_exists('tampilan_tanggal_indonesia')) {
+                            function tampilan_tanggal_indonesia($tanggal, $pake_hari = true, $pake_tahun = true) {
+
+                                // input: yy-mm-dd
+
+                                $namaHari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu");
+                                $namaBulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+                                $d = strtotime($tanggal);
+
+                                $date_string = date('j', $d) . " " . $namaBulan[(date('n', $d)-1)];
+
+                                if($pake_hari)
+                                    $date_string = $namaHari[date('N', $d)] . ", " . $date_string;
+
+                                if($pake_tahun)
+                                    $date_string = $date_string . " " . date("Y", $d);
+
+                                return $date_string;
+
+                            }
+                        }
+
+                        ?>
+                        <div style="color: white; position: absolute; top: 10px; left: 60px; font-weight: bold;">
+                            <?php echo tampilan_tanggal_indonesia("today"); ?>
+                        </div>
+
                         <a href="<?php echo dirname($this->base_url) ?>" id="logout">
-                        Logout
+                        Keluar
                         </a>
                     </div>
                 </div>
