@@ -9,12 +9,13 @@
                 <li><a href="<?php echo $this->base_url ?>index.php/Beranda">Beranda</a></li>
                 <li><a href="<?php echo $this->base_url ?>index.php/riwayat">Riwayat</a></li>
                 <li><a href="<?php echo $this->base_url ?>index.php/obat">Obat</a></li>
-                <li><a href="<?php echo $this->base_url?>index.php/kadaluarsa">Kadaluarsa
-                        <?php if($jumlah_kadaluarsa > 0) { ?>
-                        <div style="display: inline-block; padding: 0px 3px !important; background: red; color: white; font-weight: bold; margin-left: 5px; -moz-border-radius: 5px">
-                        <?php echo $jumlah_kadaluarsa ?>
+                <li><a href="<?php echo $this->base_url ?>index.php/kadaluarsa">Kadaluarsa
+                        <?php if ($jumlah_kadaluarsa > 0) {
+ ?>
+                            <div style="display: inline-block; padding: 0px 3px !important; background: red; color: white; font-weight: bold; margin-left: 5px; -moz-border-radius: 5px">
+<?php echo $jumlah_kadaluarsa ?>
                         </div>
-                        <?php } ?>
+<?php } ?>
                     </a></li>
                 <li><a href="<?php echo $this->base_url ?>index.php/statistik">Statistik</a></li>
             </ul>
@@ -40,13 +41,13 @@
     </div><!-- End. .container_12 -->
 </div> <!-- End #header-main -->
 <!-- Sub navigation -->
-            <div id="subnav">
-                <div class="container_12">
-                    <div class="grid_12">
-                    </div><!-- End. .grid_12-->
-                </div><!-- End. .container_12 -->
-                <div style="clear: both;"></div>
-            </div> <!-- End #subnav -->
+<div id="subnav">
+    <div class="container_12">
+        <div class="grid_12">
+        </div><!-- End. .grid_12-->
+    </div><!-- End. .container_12 -->
+    <div style="clear: both;"></div>
+</div> <!-- End #subnav -->
 </div> <!-- End #header -->
 
 <div class="container_12">
@@ -71,35 +72,36 @@
             </tr>
         </table>
         <div style="clear: both"></div>
-        <?php if($verify) { ?>
-                <?php echo $verify; ?>
-            <?php } ?>
-        <div style="clear: both"></div>
-        <!-- Example table -->
-        <div class="module" style="width: 933px ;">
-            <h2><span>Data Obat</span></h2>
+        <?php if ($verify) {
+ ?>
+<?php echo $verify; ?>
+<?php } ?>
+                        <div style="clear: both"></div>
+                        <!-- Example table -->
+                        <div class="module" style="width: 933px ;">
+                            <h2><span>Data Obat</span></h2>
 
-            <div class="module-table-body">
-                <table >
-                    <thead>
-                        <tr>
-                            <th style="width:7%">ID Obat</th>
-                            <th style="width:28%">Nama Obat</th>
-                            <th style="width:8%">Satuan</th>
-                            <th style="width:7%">Jumlah</th>
-                            <th style="width:17%">Kadaluarsa</th>
-                            <th style="width:13%">No Batch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $n = 1;
+                            <div class="module-table-body">
+                                <table >
+                                    <thead>
+                                        <tr>
+                                            <th style="width:7%">ID Obat</th>
+                                            <th style="width:28%">Nama Obat</th>
+                                            <th style="width:8%">Satuan</th>
+                                            <th style="width:7%">Jumlah</th>
+                                            <th style="width:17%">Kadaluarsa</th>
+                                            <th style="width:13%">No Batch</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+<?php $n = 1;
                         foreach ($list as $list) { ?>
                             <tr>
                                 <td class="align-center"><?php echo $list->id_obat; ?></td>
                                 <td><?php echo $list->nbk_obat; ?></td>
                                 <td><?php echo $list->satuan_obat; ?></td>
                                 <td><input  class="input_angka input-long" type="text"  id="field_0_<?php echo $n - 1 ?>" name="tambah[<?php echo $n ?>]" maxlength="255" size="10px"
-                                           ></td>
+                                            ></td>
                                 <td><input type="text" class="tanggal input-long" name="kadaluarsa[<?php echo $n ?>]" value="<?php echo $tanggal; ?>"></td>
                                 <td><input type="text" class=" input-long"  id="field_1_<?php echo $n - 1 ?>" name="no_batch[<?php echo $n ?>]" maxlength="255" size="20px"></td>
                             </tr>
@@ -113,12 +115,12 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
 
                 <div style="clear: both"></div>
             </div> <!-- End .module-table-body -->
         </div> <!-- End .module -->
-        </form>
+    </form>
     <div style="clear: both"></div>
 </div> <!-- End .grid_12 -->
 
@@ -139,12 +141,12 @@
 
         $('#form_obat').validity(function(){
 
-           $('.input_angka').match('number');
-           $( "#tanggal" ).datepicker({
+            $('.input_angka').match('number');
+            $( "#tanggal" ).datepicker({
                 changeMonth: true,
                 changeYear: true,
                 dateFormat: 'dd-mm-yy'
-                });
+            });
 
         });
 

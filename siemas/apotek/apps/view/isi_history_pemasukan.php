@@ -1,6 +1,6 @@
 <br/>
 <div class="grid_6" style="width: 95%">
-<div class="container_12">
+    <div class="container_12">
         <div class="module">
             <h2><span>Daftar isi resep</span></h2>
 
@@ -23,7 +23,8 @@
                                 <td><?php echo $list->satuan_obat; ?></td>
                                 <td><?php echo $list->penambahan_obat; ?></td>
                             </tr>
-                        <?php $n++; } ?>
+                        <?php $n++;
+                        } ?>
                     </tbody>
                 </table>
 
@@ -31,5 +32,5 @@
                 <div style="clear: both"></div>
             </div> <!-- End .module-table-body -->
         </div> <!-- End .module -->
-</div> <!-- End .grid_12 -->
+    </div> <!-- End .grid_12 -->
 </div>
