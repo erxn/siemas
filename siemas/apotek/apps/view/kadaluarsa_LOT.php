@@ -1,6 +1,6 @@
 <br/>
 <div class="grid_6" style="width: 99%">
-<div class="container_12">
+    <div class="container_12">
         <div class="module">
             <h2><span>Daftar obat yang akan kadaluarsa</span></h2>
 
@@ -17,7 +17,8 @@
                     </thead>
                     <tbody>
                         <?php $n = '1';
-                        foreach ($obat_kadaluarsa as $list) { ?>
+                        foreach ($obat_kadaluarsa as $list) {
+                        ?>
                             <tr>
                                 <td><?php echo $list->tanggal_input; ?></td>
                                 <td><?php echo $list->no_sbkk; ?></td>
@@ -25,7 +26,8 @@
                                 <td><?php echo $list->nbk_obat; ?></td>
                                 <td><?php echo $list->kadaluarsa; ?></td>
                             </tr>
-                        <?php $n++; } ?>
+                        <?php $n++;
+                        } ?>
                     </tbody>
                 </table>
 
@@ -33,5 +35,5 @@
                 <div style="clear: both"></div>
             </div> <!-- End .module-table-body -->
         </div> <!-- End .module -->
-</div> <!-- End .grid_12 -->
+    </div> <!-- End .grid_12 -->
 </div>
