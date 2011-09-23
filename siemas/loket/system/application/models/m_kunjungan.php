@@ -33,6 +33,14 @@ class M_kunjungan extends Model {
         return $q->result_array();
 
     }
+    function get_status_bawa_kartu($id_kunjungan) {
+        $q = $this->db->query("SELECT status_bawa_kartu
+                            FROM kunjungan
+                            WHERE
+                            id_kunjungan = $id_kunjungan");
+        return $q->result_array();
+
+    }
 
     function get_tahun_kunjungan() {
         $q = $this->db->query("SELECT distinct year(tanggal_kunjungan) AS tahun FROM `kunjungan` order by year(tanggal_kunjungan)");

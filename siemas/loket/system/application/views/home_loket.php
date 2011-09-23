@@ -25,11 +25,11 @@
                 <div class="module-body">
                     <div style="width: 800px; height: auto;padding: 8px; text-align: center; margin: 10px auto">
                         <a href="index.php/registrasi" class="kotak"><img src="images/antrian2.png" border="0"/><br/>
-                            Antrian & Registrasi</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Registrasi</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="index.php/pembayaran" class="kotak"><img src="images/loket_besar.png" border="0"/><br/>
                             Pembayaran</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="index.php/pasien" class="kotak"><img src="images/pasien.png" border="0"/><br/>
-                            Data Pasien</a>
+                        <a href="index.php/c_laporan" class="kotak"><img src="images/loket_gede.png" border="0"/><br/>
+                            Laporan</a>
                     </div>
                     <div>
                         <div id="container" style="width: 98%; height: 10%px; margin: 0 auto">
