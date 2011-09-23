@@ -45,7 +45,7 @@ class Pembayaran extends Controller {
         $data_pasien = $this->M_pasien->lihat_profil_pasien($id_kk, $id_pasien);
         $data['pasien'] = $data_pasien;
         $data['kunjungan'] = $id;
-
+        $data['status_bawa_kartu'] = $this->M_kunjungan->get_status_bawa_kartu($id_kunjungan);
         $data['daftar_layanan'] = $this->M_pembayaran->get_layanan();
 
         $this->load->view('input_pembayaran',$data);

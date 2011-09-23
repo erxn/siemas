@@ -59,7 +59,7 @@
                         <tr class="odd">
                             <td>Status Pelayanan</td>
                             <td>:</td>
-                            <td>Umum</td>
+                            <td><?php if($status_bawa_kartu=='Tidak')echo "Umum"; else echo $pasien[0]['status_pelayanan']?></td>
                             <td></td>
                         </tr>
                         <tr>
