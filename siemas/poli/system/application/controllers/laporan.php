@@ -34,10 +34,7 @@ class Laporan extends Controller{
         $this->load->view('laporan_harian_excel_peny', $data);
     }
 
-    function tahunan($tahun){
-        $this->load->plugin('phpexcel');
-        $this->load->view('laporan_tahunan');
-    }
+   
 
    function lb4($bln,$thn){
        $this->load->plugin('phpexcel');

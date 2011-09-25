@@ -85,8 +85,7 @@ class Antrian extends Controller {
                     'diagnosis'      =>$this->input->post('n_diagnosa'),
                     'keterangan'    =>$this->input->post('n_ket'),
                     'Khasus_penyakit'=>$this->input->post('kasus'),
-                    'Kunjungan_ibu_hamil'=>$this->input->post('hamil'),
-                    'Kunjungan_Anak_Prasekolah'=>$this->input->post('anak'),
+                    'Kunjungan'=>$this->input->post('kunjungan'),
                     'id_kunjungan'  => $id_kunjungan, //sementara
                     'id_pasien' => $id_pasien );
             $id_remed=$this->remed->insert_diagnosis($data1);
@@ -118,7 +117,7 @@ class Antrian extends Controller {
         $remed_pasien=$this->remed->get_remed_pasien_gigi($id_pasien,$tgl);
         $remed['remed_gigi']=$remed_pasien;
 
-//
+
 //        $remed_kia=$this->remed->get_remed_pasien_kia($id_pasien);
 //        $remed['remed_kia']=$remed_kia;
 
