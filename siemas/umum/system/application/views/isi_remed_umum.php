@@ -109,8 +109,12 @@
 </script>
 <div style="float: right; width: 48%; margin-right: 1%">
 <div  class="tabs" style="margin-top: 20px;">
+        <form action="" method="post">
     <ul>
         <li><a href="#tabs-a">Isi Rekam Medik Hari Ini</a></li>
+         <li><a href="#tabs-b">Isi Rekam Medik</a></li>
+            <li><a href="#tabs-c">Poli Gigi</a></li>
+            <li><a href="#tabs-d">Poli Umum</a></li>
     </ul>
     <div id="tabs-a" >
         <div class="module" style="background:none; float: none; margin-bottom: 0px">
@@ -169,21 +173,8 @@
                 </tr>
             </table>
         </div>
-
-
     </div>
-</div>
-
-<br/>
-
-<div  class="tabs" style="margin-top: 20px;">
-    <form action="" method="post">
-        <ul>
-            <li><a href="#tabs1-1">Isi Rekam Medik</a></li>
-            <li><a href="#tabs-a">Poli Gigi</a></li>
-            <li><a href="#tabs-b">Poli Umum</a></li>
-        </ul>
-        <div id="tabs1-1">
+              <div id="tabs-b">
             <div class="module" style="background: none; float: none">
             <table style="width:100%">
                 <tr>
@@ -414,7 +405,9 @@
             </div>
         </div>
     </form>
-     <div id="tabs-a">
+
+
+     <div id="tabs-c">
          <!--
             <div style="padding: 10px; width:100%">
 
@@ -438,8 +431,7 @@
                         <th style="width:13%">Diagnosa</th>
                          <th style="width:13%">Penyakit</th>
                         <th style="width:13%">Layanan</th>
-                         <th style="width:10%">Ibu Hamil</th>
-                            <th style="width:10">Anak</th>
+                         <th style="width:10%">Kunjungan</th>
                             <th style="width:13%">Ket.</th>
                     </tr>
                 </thead>
@@ -456,8 +448,7 @@
                         <td><?php echo word_limiter($rg['diagnosis'],5,'...');?></td>
                         <td><?php echo  word_limiter($rg['nama_penyakit'],5,'...');?></td>
                         <td> <?php echo word_limiter($rg['nama_layanan'],5,'...>>');?></td>
-                        <td><?php echo $rg['Kunjungan_ibu_hamil']?></td>
-                        <td><?php echo $rg['Kunjungan_Anak_Prasekolah']?></td>
+                        <td><?php echo $rg['Kunjungan']?></td>
                         <td><?php echo word_limiter($rg['keterangan'],5,'...');?></td>
                     </tr>
                             <?php }
@@ -466,14 +457,12 @@
                 </tbody>
             </table>
          </div>
-            
+
 
             <div style="clear: both"></div>
 
         </div>
-
-
-        <div id="tabs-b">
+ <div id="tabs-d">
 
             <!--
             <div style="padding: 10px;">
@@ -542,7 +531,7 @@
                 }
                 $b++; ?> </a>
                             </td>
-                          
+
                         <td><?php echo word_limiter($ru['keterangan'],5,'...');?></td>
                     </tr>
                             <?php }
@@ -552,9 +541,14 @@
             </table>
              </div>
 
+</div>
+
+<br/>
+
+
     <?php } ?>
         </div>
 </div>
-</div>
+
 
 

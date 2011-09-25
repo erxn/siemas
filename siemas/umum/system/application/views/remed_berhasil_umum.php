@@ -74,7 +74,7 @@
     <div style="clear: both;"></div>
 </div>
 
-<div  class="tabs" style=" float:left; margin-top: 20px;margin-left: 30px; width:45%">
+<div  class="tabs" style=" float:left; margin-top: 20px;margin-left: 30px; width:35%">
     <ul>
         <li><a href="#tabs-a">Daftar Pasien Hari ini</a></li>
     </ul>
@@ -107,69 +107,27 @@
 
 
 </script>
-<div  class="tabs" style="float:right;  margin-right: 10px; margin-top: 20px; width:45%">
+<div  class="tabs" style="float:right;  margin-right: 10px; margin-top: 20px; width:60%">
     <ul>
-        <li><a href="#tabs-a">Isi Rekam Medik Hari Ini</a></li>
+         <li><a href="#tabs-a">Isi Rekam Medik</a></li>
+           
     </ul>
     <div id="tabs-a" >
         <div class="module" style="background:none; float: none; margin-bottom: 0px">
 
 
             <?php if($data_pasien == null) { ?>
-            <span class="notification n-success">Data berhasil disimpan. Pilih pasien kembali</span>
-  <?php } else { ?>
-             <span class="notification n-success">Simpan data sukses...</span>
+            <span class="notification n-success">Data berhasil disimpan. Pilih pasien kembali </span>
+                     
+           <?php } else { ?>
+            
+        
+             <?php }?>
+</div>
 
-            <table style="">
-                <th colspan="2">Data Pasien</th>
-
-                <strong></strong>
-                <tr  class="odd">
-                    <td><b>Tanggal Pendaftaran:</b></td>
-                    <td style="width: 50%"><?php echo $data_pasien[0]['tanggal_pendaftaran']; ?> </td>
-                </tr>
-                <tr>
-                    <td><b>Nama Pasien:</b></td>
-                    <td style="width: 50%; border-right: none; color: #0063be; font-weight: bold"><b><h4><?php echo $data_pasien[0]['nama_pasien'];?></h4></b></td>
-                </tr>
-                <tr  class="odd">
-                    <td><b>Jenis Kelamin:</b></td>
-                    <td style="width: 50%"><?php echo $data_pasien[0]['jk_pasien'];?></td>
-
-                </tr>
-
-                <tr>
-                    <td><b>Tanggal Lahir</b></td>
-                    <td><?php  echo $data_pasien[0]['tanggal_lahir'];?></td>
-
-                </tr>
-                <tr class="odd">
-                    <td ><b>Umur</b></td>
-                    <td><?php echo $data_pasien[0]['umur']?> tahun</td>
-
-                </tr>
-                <tr>
-                    <td ><b>Status Dalam Keluarga:</b></td>
-                    <td><?php echo $data_pasien[0]['status_dalam_keluarga'];?></td>
-
-                </tr>
-                <tr class="odd">
-                    <td><b>Status Pelayanan</b></td>
-                    <td><?php echo $data_pasien[0]['status_pelayanan'];?></td>
-                </tr>
-                <tr>
-                    <td><b>No Kartu</b></td>
-                    <td><?php echo $data_pasien[0]['no_kartu_layanan'];?></td>
-                </tr>
-            </table>
-      
-  </div>
+    </div>
 
 
     </div>
-</div>
-
-<br/>
 
 
-    <?php } ?>
