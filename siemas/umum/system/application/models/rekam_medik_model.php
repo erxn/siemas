@@ -50,30 +50,7 @@ Class Rekam_medik_model extends Model{
         return $data;
     }
 
-    function get_remed_pasien_kia($id_pasien){               //buat nampilin tabel remed pasien yg KIA
-        $data=array();
-        $q=$this->db->query  ("SELECT * FROM layanan
-            JOIN layanan_remed_kia
-                ON  layanan.id_layanan = layanan_remed_kia.id_layanan
-            JOIN remed_poli_kia
-                ON layanan_remed_kia.id_remed_kia=remed_poli_kia.id_remed_kia
-            JOIN penyakit_remed_kia
-                ON remed_poli_kia.id_remed_kia=penyakit_remed_kia.id_remed_kia
-            JOIN penyakit
-                ON penyakit_remed_kia.id_penyakit=penyakit.id_penyakit
-             WHERE remed_poli_kia.id_pasien=$id_pasien");
-         if($q->num_rows() > 0)
-        {
-            foreach ($q->result_array() as $row)
-            {
-                $data[] = $row;
-            }
-        }
-
-        $q->free_result();
-        return $data;
-    }
-
+    
 
     function get_remed_pasien_umum($id_pasien){               //buat nampilin tabel remed pasien yg KIA
         $data=array();
@@ -294,24 +271,7 @@ function nyari_tanggal_u($tanggal_kunjungan_umum){
 
     }
 
-    function nyari_tanggal_k($tanggal_kunjungan_kia){
-
-         $data=array();
-        $q=$this->db->query  ("SELECT * FROM remed_poli_kia WHERE tanggal_kunjungan_kia='$tanggal_kunjungan_kia'");
-         if($q->num_rows() > 0)
-        {
-            foreach ($q->result_array() as $row)
-            {
-                $data[] = $row;
-            }
-        }
-
-        $q->free_result();
-        return $data;
-
-    }
-
-
+   
     function remed_poli_umum_tbc($id_kunjungan){
             $data=array();
         $q=$this->db->query  ("SELECT *
