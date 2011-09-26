@@ -164,6 +164,20 @@ $nama_bulan = array(
         </div>
     </div>
 
+    <script type="text/javascript">
+
+    function samakanTunjangan() {
+
+        $('.tunjangan').each(function(){
+
+            var tunj_bulan_lalu = $(this).parent('td').prev().text();
+            $(this).val(tunj_bulan_lalu);
+
+        });
+
+    }
+
+    </script>
 
     <div style="margin: 0px 1%">
 
@@ -177,7 +191,11 @@ $nama_bulan = array(
                             <th>Nama</th>
                             <th>Jabatan</th>
                             <th>Golongan</th>
-                            <th>Tunjangan</th>
+                            <th>Tunjangan bulan lalu</th>
+                            <th>
+                                Tunjangan bulan ini<br/>
+                                <input type="button" class="submit-green" style="font-size: 10px" value="Samakan dengan bulan lalu" title="Samakan tunjangan bulan ini dengan bulan lalu" onclick="samakanTunjangan()"/>
+                            </th>
                             <th>PPh 21</th>
                         </tr>
                     </thead>
@@ -191,6 +209,7 @@ $nama_bulan = array(
                                 <td><?php echo $data['nama']; ?></td>
                                 <td><?php $j = $this->pegawai->get_jabatan_terakhir($data['id_pegawai']); echo $j['jabatan'] ?></td>
                                 <td><?php $g = $this->pegawai->get_pangkat_terakhir($data['id_pegawai']); echo $g['golongan'] ?></td>
+                                <td align="right"><?php echo format_rupiah($data['tunjangan_lalu']) ?></td>
                                 <td><input type="text" maxlength="255" value="<?php echo intval($data['tunjangan']) ?>" id="field_0_<?php echo $i-1 ?>" name="tunjangan[]" class="number input-long tunjangan" golongan="<?php $g = $this->pegawai->get_pangkat_terakhir($data['id_pegawai']); $h = explode(" / ", $g['golongan']); echo $h[0] ?>"/></td>
                                 <td><input type="text" maxlength="255" value="<?php echo intval($data['pph21']) ?>"     id="field_1_<?php echo $i-1 ?>" name="pph21[]"     class="number input-long"/></td>
                             </tr>

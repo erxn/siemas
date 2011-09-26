@@ -345,7 +345,7 @@
                 var c = true;
 
                 if(form_changed == true) {
-                    c = confirm("Akan meninggalkan form ini? Data yang belum disimpan akan hilang");
+                    c = confirm("Form telah diubah tetapi belum disimpan. Tinggalkan form ini tanpa disimpan?");
                 }
                 
                 if(c == false) return false;
