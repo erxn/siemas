@@ -37,17 +37,15 @@
                                         <img src="<?php echo $this->base_url ?>Template_files/ms-excel.png" alt=""/>&nbsp;<input type="submit" class="submit-green" value="Simpan">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <?php
-                                    if (isset($alert)) {
-                                        echo $alert;
-                                    }
-                                    ?>
-                                </tr>
                             </table>
                         </div>
                     </form>
                 </div>
+                <?php
+                if (isset($alert)) {
+                    echo $alert;
+                }
+                ?>
             </div>
         </div> <!-- End .grid_12 -->
     </div></div>

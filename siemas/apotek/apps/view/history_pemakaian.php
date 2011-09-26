@@ -26,7 +26,7 @@
             <h2><span>Pilih berdasarkan bulan dan tahun !</span></h2>
             <form method="post"
                   onsubmit="if((document.getElementById('bulan').value != 'Pilih Bulan')&&(document.getElementById('tahun').value != 'Pilih tahun'))
-                      return confirm('Apakah anda yakin ingin melihat Riwayat bulan ' + document.getElementById('bulan').value
+                      return confirm('Apakah anda yakin ingin melihat Riwayat bulan ' + nama_bulan[document.getElementById('bulan').value]
                           + ' tahun ' + document.getElementById('tahun').value + '?'); else return false;">
                 <div class="module-table-body">
                     <table>
@@ -34,15 +34,15 @@
                             <td width="120px">
                                 <select name="bulan" id="bulan" style="width:100px;">
                                     <option selected="selected">Pilih Bulan</option>
-                                    <option value="01">Januari</option>
-                                    <option value="02">Februari</option>
-                                    <option value="03">Maret</option>
-                                    <option value="04">April</option>
-                                    <option value="05">Mei</option>
-                                    <option value="06">Juni</option>
-                                    <option value="07">Juli</option>
-                                    <option value="08">Agustus</option>
-                                    <option value="09">September</option>
+                                    <option value="1">Januari</option>
+                                    <option value="2">Februari</option>
+                                    <option value="3">Maret</option>
+                                    <option value="4">April</option>
+                                    <option value="5">Mei</option>
+                                    <option value="6">Juni</option>
+                                    <option value="7">Juli</option>
+                                    <option value="8">Agustus</option>
+                                    <option value="9">September</option>
                                     <option value="10">Oktober</option>
                                     <option value="11">November</option>
                                     <option value="12">Desember</option>

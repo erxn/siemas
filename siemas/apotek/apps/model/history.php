@@ -66,6 +66,13 @@ class Model_history {
         return $result;
     }
 
+    public function nama_pasien($id_pasien) {
+
+        $result = $this->db->find_var("SELECT nama_pasien FROM pasien WHERE id_pasien = '$id_pasien'");
+
+        return $result;
+    }
+
     public function reverse($date) {
 
         $reverse = explode("-", $date);

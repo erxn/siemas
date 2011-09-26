@@ -51,10 +51,9 @@
         <div class="grid_12">
 
             <div id="resep">
-                <FORM method="POST">
+                <FORM onChange="document.location.href='<?php echo $this->base_url ?>index.php/resep/ganti_tanggal/'+document.getElementById('ganti_tanggal').value">
                     Tanggal resep yang akan diinputkan adalah
-                    <input class="tanggal" type="text" class="" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal2">
-                    <input type="submit" value="Ubah" />
+                    <input id="ganti_tanggal" class="tanggal" type="text" class="" maxlength="255" value="<?php echo $tanggal; ?>" name="tanggal2">
                 </FORM>
             </div>
         </div><!-- End. .grid_12-->

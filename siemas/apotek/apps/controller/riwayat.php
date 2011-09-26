@@ -44,6 +44,7 @@ class Controller_riwayat extends Panada {
 
     public function isi_resep($id_pasien, $tanggal) {
         $views['tanggal'] = date('d-m-Y');
+        $views['nama_pasien'] = $this->date->nama_pasien($id_pasien);
         $views['isi'] = $this->obat->history_isi_resep($id_pasien, $tanggal);
         $views['jumlah_kadaluarsa'] = $this->obat->cek_kadaluarsa();
         $this->view_isi_history_resep($views);
