@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1
+-- version 3.5.0-dev
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 03, 2011 at 10:00 AM
--- Server version: 5.1.41
+-- Generation Time: Sep 26, 2011 at 09:59 AM
+-- Server version: 5.1.41-3ubuntu12.3
 -- PHP Version: 5.3.2-1ubuntu4.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -33,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `absensi` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_absensi`),
   KEY `fk_absensi_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=263 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=310 ;
 
 --
 -- Dumping data for table `absensi`
@@ -260,7 +261,54 @@ INSERT INTO `absensi` (`id_absensi`, `tanggal`, `hadir`, `jam_hadir`, `id_pegawa
 (259, '2011-08-18', 1, '07:30:00', 14),
 (260, '2011-08-18', 1, '07:30:00', 15),
 (261, '2011-08-18', 1, '07:30:00', 4),
-(262, '2011-08-18', 1, '07:30:00', 3);
+(262, '2011-08-18', 1, '07:30:00', 3),
+(263, '2011-09-07', 0, '07:30:00', 7),
+(264, '2011-09-07', 1, '09:00:00', 1),
+(265, '2011-09-07', 1, '07:30:00', 2),
+(266, '2011-09-07', 1, '08:00:00', 8),
+(267, '2011-09-07', 1, '07:30:00', 9),
+(268, '2011-09-07', 1, '07:30:00', 10),
+(269, '2011-09-07', 1, '07:30:00', 11),
+(270, '2011-09-07', 1, '07:30:00', 13),
+(271, '2011-09-07', 1, '07:30:00', 5),
+(272, '2011-09-07', 1, '07:30:00', 14),
+(273, '2011-09-07', 1, '07:30:00', 15),
+(274, '2011-09-07', 1, '07:30:00', 4),
+(275, '2011-09-07', 1, '07:30:00', 3),
+(276, '2011-09-07', 1, '07:30:00', 6),
+(277, '2011-09-07', 1, '07:30:00', 12),
+(278, '2011-09-20', 1, '07:30:00', 7),
+(279, '2011-09-20', 1, '07:30:00', 1),
+(280, '2011-09-20', 1, '07:30:00', 2),
+(281, '2011-09-20', 1, '07:30:00', 8),
+(282, '2011-09-20', 1, '07:30:00', 9),
+(283, '2011-09-20', 1, '07:30:00', 10),
+(284, '2011-09-20', 1, '07:30:00', 11),
+(285, '2011-09-20', 1, '07:30:00', 13),
+(286, '2011-09-20', 1, '07:30:00', 5),
+(287, '2011-09-20', 1, '07:30:00', 14),
+(288, '2011-09-20', 1, '07:30:00', 15),
+(289, '2011-09-20', 1, '07:30:00', 4),
+(290, '2011-09-20', 1, '07:30:00', 16),
+(291, '2011-09-20', 1, '07:30:00', 3),
+(292, '2011-09-20', 1, '07:30:00', 6),
+(293, '2011-09-20', 1, '07:30:00', 12),
+(294, '2011-09-19', 1, '07:30:00', 7),
+(295, '2011-09-19', 1, '07:30:00', 1),
+(296, '2011-09-19', 1, '07:30:00', 2),
+(297, '2011-09-19', 1, '07:30:00', 8),
+(298, '2011-09-19', 1, '07:30:00', 9),
+(299, '2011-09-19', 1, '07:30:00', 10),
+(300, '2011-09-19', 1, '07:30:00', 11),
+(301, '2011-09-19', 0, '07:30:00', 13),
+(302, '2011-09-19', 1, '07:30:00', 5),
+(303, '2011-09-19', 1, '07:30:00', 14),
+(304, '2011-09-19', 1, '07:30:00', 15),
+(305, '2011-09-19', 1, '07:30:00', 4),
+(306, '2011-09-19', 1, '07:30:00', 16),
+(307, '2011-09-19', 1, '07:30:00', 3),
+(308, '2011-09-19', 1, '07:30:00', 6),
+(309, '2011-09-19', 1, '07:30:00', 12);
 
 -- --------------------------------------------------------
 
@@ -281,7 +329,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `last_login`) VALUES
-(1, 'tatausaha', '82849c85acf1f4e6e4eec748f0aeddf4', '2011-09-03 09:57:15');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2011-09-26 09:52:30');
 
 -- --------------------------------------------------------
 
@@ -299,7 +347,7 @@ CREATE TABLE IF NOT EXISTS `cuti` (
   `keterangan` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_cuti`),
   KEY `fk_cuti_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `cuti`
@@ -308,8 +356,8 @@ CREATE TABLE IF NOT EXISTS `cuti` (
 INSERT INTO `cuti` (`id_cuti`, `tanggal_mulai`, `tanggal_selesai`, `keperluan`, `alamat_cuti`, `id_pegawai`, `keterangan`) VALUES
 (2, '2011-08-02', '2011-08-04', 'Cuti tahunan', '', 6, ''),
 (3, '2011-08-11', '2011-09-08', 'Cuti karena alasan penting', '', 7, ''),
-(4, '2011-08-25', '2011-09-07', 'Cuti tahunan', '', 7, 'Ke padang'),
-(5, '2011-08-30', '2011-09-01', 'Cuti tahunan', '', 15, '');
+(5, '2011-08-30', '2011-09-01', 'Cuti tahunan', '', 15, ''),
+(6, '2011-09-20', '2011-09-22', 'Cuti tahunan', 'Bogor', 7, '');
 
 -- --------------------------------------------------------
 
@@ -324,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `gaji` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_gaji`),
   KEY `fk_gaji_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `gaji`
@@ -348,7 +396,8 @@ INSERT INTO `gaji` (`id_gaji`, `TMT`, `gaji`, `id_pegawai`) VALUES
 (15, '0000-00-00', '0.0000', 13),
 (16, '2011-08-24', '99999999.9999', 10),
 (17, '0000-00-00', '0.0000', 14),
-(18, '0000-00-00', '0.0000', 15);
+(18, '0000-00-00', '0.0000', 15),
+(19, '2011-09-14', '750000.0000', 16);
 
 -- --------------------------------------------------------
 
@@ -363,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `jabatan` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_jabatan`),
   KEY `fk_jabatan_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `jabatan`
@@ -384,7 +433,9 @@ INSERT INTO `jabatan` (`id_jabatan`, `TMT`, `jabatan`, `id_pegawai`) VALUES
 (26, '0000-00-00', 'Perawat', 14),
 (27, '0000-00-00', 'Bidan Penyelia', 15),
 (28, '0000-00-00', 'Pranata Lab', 4),
-(29, '0000-00-00', 'Tata Usaha', 3);
+(29, '0000-00-00', 'Tata Usaha', 3),
+(30, '2011-09-15', 'Dokter Gigi', 2),
+(31, '2011-09-14', 'Kebersihan', 16);
 
 -- --------------------------------------------------------
 
@@ -436,7 +487,7 @@ CREATE TABLE IF NOT EXISTS `kegiatan` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_kegiatan`),
   KEY `fk_kegiatan_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `kegiatan`
@@ -446,7 +497,9 @@ INSERT INTO `kegiatan` (`id_kegiatan`, `tanggal`, `lokasi`, `kegiatan`, `id_pega
 (1, '2011-08-02', 'SMPN Bogor', 'Imunisasi ', 10),
 (2, '2011-08-05', 'Pabaton', 'Posyandu', 12),
 (3, '2011-08-09', 'Kantor walikota', 'Sosialisasi dan promosi kesehatan', 12),
-(4, '2011-08-24', 'Cibogor', 'Promosi kesehatan', 10);
+(4, '2011-08-24', 'Cibogor', 'Promosi kesehatan', 10),
+(5, '2011-09-07', 'Puskesmas', 'Rapat', 7),
+(6, '2011-09-20', 'Kominfo', 'Presentasi', 7);
 
 -- --------------------------------------------------------
 
@@ -487,7 +540,7 @@ CREATE TABLE IF NOT EXISTS `nilai_dp3` (
   `kepemimpinan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_dp3`),
   KEY `fk_dp3_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=205 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=219 ;
 
 --
 -- Dumping data for table `nilai_dp3`
@@ -560,20 +613,6 @@ INSERT INTO `nilai_dp3` (`id_dp3`, `id_pegawai`, `tahun`, `kesetiaan`, `prestasi
 (174, 12, 2016, 0, 0, 0, 0, 0, 0, 0, 0),
 (175, 13, 2016, 0, 0, 0, 0, 0, 0, 0, 0),
 (176, 14, 2016, 0, 0, 0, 0, 0, 0, 0, 0),
-(177, 1, 2011, 70, 0, 30, 0, 0, 0, 20, 0),
-(178, 2, 2011, 100, 70, 0, 0, 0, 20, 0, 30),
-(179, 3, 2011, 65, 0, 70, 0, 20, 0, 30, 0),
-(180, 4, 2011, 56, 0, 0, 70, 0, 30, 0, 0),
-(181, 5, 2011, 56, 0, 20, 0, 70, 0, 0, 0),
-(182, 6, 2011, 56, 20, 0, 30, 0, 70, 0, 0),
-(183, 8, 2011, 65, 30, 0, 0, 0, 0, 0, 70),
-(184, 9, 2011, 56, 0, 10, 0, 0, 0, 50, 0),
-(185, 10, 2011, 65, 40, 0, 10, 0, 50, 0, 0),
-(186, 11, 2011, 56, 0, 40, 0, 50, 0, 0, 0),
-(187, 12, 2011, 65, 0, 0, 50, 0, 10, 0, 0),
-(188, 13, 2011, 1, 1, 1, 1, 1, 1, 1, 1),
-(189, 14, 2011, 2, 2, 2, 2, 2, 2, 2, 2),
-(190, 15, 2011, 3, 4, 4, 5, 6, 7, 8, 9),
 (191, 1, 2012, 0, 0, 0, 0, 0, 0, 0, 0),
 (192, 2, 2012, 0, 0, 0, 0, 0, 0, 0, 0),
 (193, 3, 2012, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -587,7 +626,21 @@ INSERT INTO `nilai_dp3` (`id_dp3`, `id_pegawai`, `tahun`, `kesetiaan`, `prestasi
 (201, 12, 2012, 0, 0, 0, 0, 0, 0, 0, 0),
 (202, 13, 2012, 0, 0, 0, 0, 0, 0, 0, 0),
 (203, 14, 2012, 3, 3, 3, 0, 3, 3, 3, 34),
-(204, 15, 2012, 4, 4, 4, 4, 4, 4, 4, 4);
+(204, 15, 2012, 4, 4, 4, 4, 4, 4, 4, 4),
+(205, 1, 2011, 70, 0, 30, 0, 0, 0, 20, 0),
+(206, 2, 2011, 100, 70, 0, 0, 0, 20, 0, 30),
+(207, 6, 2011, 56, 20, 0, 30, 0, 70, 0, 0),
+(208, 8, 2011, 65, 30, 0, 0, 0, 0, 0, 70),
+(209, 9, 2011, 56, 0, 10, 0, 0, 0, 50, 0),
+(210, 10, 2011, 65, 40, 0, 10, 0, 50, 0, 0),
+(211, 11, 2011, 56, 0, 40, 0, 50, 0, 0, 0),
+(212, 12, 2011, 65, 0, 0, 50, 0, 10, 0, 0),
+(213, 13, 2011, 1, 1, 1, 1, 1, 1, 1, 1),
+(214, 5, 2011, 56, 0, 20, 0, 70, 0, 0, 0),
+(215, 14, 2011, 2, 2, 2, 2, 2, 2, 2, 2),
+(216, 15, 2011, 3, 4, 4, 5, 6, 7, 8, 9),
+(217, 4, 2011, 56, 0, 0, 70, 0, 30, 0, 0),
+(218, 3, 2011, 65, 0, 70, 0, 20, 0, 30, 0);
 
 -- --------------------------------------------------------
 
@@ -603,43 +656,45 @@ CREATE TABLE IF NOT EXISTS `nilai_tpp` (
   `pegawai_id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_nilai_tpp`),
   KEY `fk_nilai_tpp_pegawai1` (`pegawai_id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=239 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=271 ;
 
 --
 -- Dumping data for table `nilai_tpp`
 --
 
 INSERT INTO `nilai_tpp` (`id_nilai_tpp`, `tahun`, `bulan`, `tpp`, `pegawai_id_pegawai`) VALUES
-(149, 2011, 8, 58.7333, 7),
-(150, 2011, 8, 54.5, 1),
-(151, 2011, 8, 58.7333, 2),
-(152, 2011, 8, 54.5, 8),
-(153, 2011, 8, 54.5, 9),
-(154, 2011, 8, 50.2667, 10),
-(155, 2011, 8, 50.2667, 11),
-(156, 2011, 8, 37.7, 13),
-(157, 2011, 8, 62.7, 5),
-(158, 2011, 8, 45.9, 14),
-(159, 2011, 8, 45.9, 15),
-(160, 2011, 8, 50.1333, 4),
-(161, 2011, 8, 58.6, 3),
-(162, 2011, 8, 47.619, 6),
-(163, 2011, 8, 42.8571, 12),
-(224, 2011, 9, 0, 7),
-(225, 2011, 9, 0, 1),
-(226, 2011, 9, 0, 2),
-(227, 2011, 9, 0, 8),
-(228, 2011, 9, 0, 9),
-(229, 2011, 9, 0, 10),
-(230, 2011, 9, 0, 11),
-(231, 2011, 9, 0, 13),
-(232, 2011, 9, 0, 5),
-(233, 2011, 9, 0, 14),
-(234, 2011, 9, 0, 15),
-(235, 2011, 9, 0, 4),
-(236, 2011, 9, 0, 3),
-(237, 2011, 9, 0, 6),
-(238, 2011, 9, 0, 12);
+(239, 2011, 9, 8.13333, 7),
+(240, 2011, 9, 12.2, 1),
+(241, 2011, 9, 12.2, 2),
+(242, 2011, 9, 12.2, 8),
+(243, 2011, 9, 12.2, 9),
+(244, 2011, 9, 12.2, 10),
+(245, 2011, 9, 12.2, 11),
+(246, 2011, 9, 8.13333, 13),
+(247, 2011, 9, 12.2, 5),
+(248, 2011, 9, 12.2, 14),
+(249, 2011, 9, 12.2, 15),
+(250, 2011, 9, 12.2, 4),
+(251, 2011, 9, 8.13333, 16),
+(252, 2011, 9, 12.2, 3),
+(253, 2011, 9, 13.6364, 6),
+(254, 2011, 9, 13.6364, 12),
+(255, 2011, 8, 58.7333, 7),
+(256, 2011, 8, 54.5, 1),
+(257, 2011, 8, 58.7333, 2),
+(258, 2011, 8, 54.5, 8),
+(259, 2011, 8, 54.5, 9),
+(260, 2011, 8, 50.2667, 10),
+(261, 2011, 8, 50.2667, 11),
+(262, 2011, 8, 37.7, 13),
+(263, 2011, 8, 62.7, 5),
+(264, 2011, 8, 45.9, 14),
+(265, 2011, 8, 45.9, 15),
+(266, 2011, 8, 50.1333, 4),
+(267, 2011, 8, 0, 16),
+(268, 2011, 8, 58.6, 3),
+(269, 2011, 8, 47.619, 6),
+(270, 2011, 8, 42.8571, 12);
 
 -- --------------------------------------------------------
 
@@ -655,33 +710,25 @@ CREATE TABLE IF NOT EXISTS `pangkat_golongan` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_pangkat_golongan`),
   KEY `fk_pangkat_golongan_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `pangkat_golongan`
 --
 
 INSERT INTO `pangkat_golongan` (`id_pangkat_golongan`, `TMT`, `pangkat`, `golongan`, `id_pegawai`) VALUES
-(1, '1970-01-01', '', '-', 1),
-(2, '1970-01-01', '', '-', 2),
 (5, '1970-01-01', '', '-', 5),
-(6, '1970-01-01', '', '-', 6),
-(7, '1970-01-01', '', '-', 7),
 (8, '1970-01-01', '', '-', 8),
 (9, '1970-01-01', '', '-', 9),
 (11, '0000-00-00', '', '-', 11),
 (12, '0000-00-00', '', '-', 12),
-(14, '2011-08-01', 'Penata Muda', 'III / a', 7),
 (15, '0000-00-00', '', '-', 13),
 (17, '2011-08-17', 'Penata', 'III / c', 12),
 (18, '2011-08-31', 'Pembina', 'IV / a', 12),
-(19, '2011-08-01', 'Penata Muda Tingkat 1', 'III / b', 1),
-(20, '2011-08-02', 'Penata Tingkat 1', 'III / d', 2),
 (21, '2011-08-10', 'Pembina Utama Muda', 'IV / c', 14),
 (23, '2008-08-01', 'Penata Muda', 'III / a', 10),
 (24, '2009-07-02', 'Penata Muda Tingkat 1', 'III / b', 10),
 (25, '2008-10-01', 'Penata Tingkat 1', 'III / d', 7),
-(26, '2009-04-01', 'Pembina Utama Muda', 'IV / c', 1),
 (27, '2010-04-01', 'Pembina Utama Muda', 'IV / c', 2),
 (28, '2010-04-01', 'Pembina Utama Muda', 'IV / c', 6),
 (29, '2007-04-01', 'Pembina Tingkat 1', 'IV / b', 8),
@@ -691,7 +738,11 @@ INSERT INTO `pangkat_golongan` (`id_pangkat_golongan`, `TMT`, `pangkat`, `golong
 (33, '2009-04-01', 'Penata', 'III / c', 5),
 (34, '2009-10-01', 'Penata', 'III / c', 15),
 (35, '2010-04-01', 'Penata', 'III / c', 4),
-(36, '2010-10-01', 'Penata Muda Tingkat 1', 'III / b', 3);
+(36, '2010-10-01', 'Penata Muda Tingkat 1', 'III / b', 3),
+(37, '2011-09-14', 'Juru Tingkat 1', 'I / d', 16),
+(38, '2009-04-01', 'Pembina Utama Muda', 'IV / c', 1),
+(39, '2010-01-01', 'Penata Muda', 'III / a', 16),
+(40, '2011-09-20', 'Pembina Tingkat 1', 'IV / b', 12);
 
 -- --------------------------------------------------------
 
@@ -723,28 +774,29 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `rank_struktural` int(11) NOT NULL,
   PRIMARY KEY (`id_pegawai`),
   KEY `fk_pegawai_pegawai` (`id_atasan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `pegawai`
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `nip`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `jk`, `agama`, `gol_darah`, `telepon`, `status`, `tanggal_masuk`, `pasfoto`, `kenaikan_YAD`, `status_kepegawaian`, `sumber_gaji`, `id_atasan`, `bp_pemda`, `aktif`, `rank_pangkat`, `rank_struktural`) VALUES
-(1, '195603271983022001', 'Dr. YOHANA MARI YUSTINI', 'Magelang', '1956-03-27', '', '', '', '', '', '', '1970-01-01', '0', '1970-01-01', 'PNS', 'DIPA daerah', 7, 0, 1, 10, 1),
-(2, '195702071984032002', 'Drg. MELLYAWATI', 'Magelang', '1957-02-07', '', '', '', '', '', '', '1970-01-01', 'DSC00607.JPG', '1977-01-05', 'PNS', 'DIPA daerah', 7, 0, 1, 12, 1),
-(3, '197001021992032004', 'FEBBY HENDRIYANI  S.', 'Bandung', '1970-01-02', '', '', '', '', '', '', '1970-01-01', 'DSC006071.JPG', '1970-01-01', 'PNS', 'DIPA daerah', 4, 0, 1, 10, 4),
-(4, '196604171988031016', 'DWIJO KURJIANTO, AMAK', 'Bogor', '1966-04-17', '', '', '', '', '', '', '1970-01-01', 'DSC02143.JPG', '1970-01-01', 'PNS', 'DIPA daerah', 5, 0, 1, 11, 3),
-(5, '196311031989012001', 'HUSNA', 'Padang', '1963-11-03', '', '', '', '', '', '', '1970-01-01', 'colors.jpg', '1970-01-01', 'PNS', 'DIPA daerah', 6, 0, 1, 11, 2),
-(6, '195808301988032001', 'Dr. DINDIN A. SETIAWATY', 'Bogor', '1958-08-30', 'jauh', 'L', '', 'AB', '', 'Belum menikah', '1979-01-04', 'colors.jpg', '1970-01-01', 'CPNS', 'DIPA daerahh', 7, 1, 1, 15, 1),
-(7, '197009022000031004', 'Dr. ILHAM CHAIDIR', 'Temanggung', '1970-09-02', '', '', '', '', '', '', '1970-01-01', '0', '1970-01-13', 'PNS', 'DIPA daerah', NULL, 0, 1, 9, 0),
-(8, '195711021988032002', 'Dr. LINA RUFLINA', 'Sukabumi', '1957-11-02', '', '', '', '', '', '', '1970-01-01', '0', '1970-01-01', 'PNS', 'DIPA daerah', 7, 0, 1, 14, 1),
-(9, '196402121991032007', 'Drg. SITI MILYARNI REMIKA, MM', 'Jakarta', '1964-02-12', '', '', '', '', '', '', '1970-01-01', 'naruto_sasuke0004.jpg', '1970-01-01', 'PNS', 'DIPA daerah', 7, 0, 1, 14, 1),
-(10, '195605251981112001', 'ROSMIATI', 'Belitung', '1956-05-25', 'Bogor', 'P', 'Islam', 'B', '081379915387', 'Menikah', '2011-07-14', 'naruto_sasuke0004.jpg', '2011-08-19', 'PNS', 'DIPA daerah', 7, 0, 1, 10, 1),
-(11, '196203071982122002', 'SADIYAH, AMKG', 'Tegal', '1962-03-07', '', 'P', '', '', '', '', '2011-07-02', 'Y400_right_bright_.jpg', '0000-00-00', 'PNS', 'DIPA daerah', 7, 0, 1, 12, 1),
-(12, '197403112006042011', 'Drg. KARINA AMALIA', 'Bogor', '1974-03-11', '', '', '', '', '', '', '0000-00-00', '0', '0000-00-00', 'PNS', 'DIPA daerah', 7, 1, 1, 13, 1),
-(13, '197001191992022001', 'SUGIHARYATI, AMKeb', 'Bogor', '1970-01-19', '', '', '', '', '', '', '0000-00-00', '0', '0000-00-00', 'PNS', 'DIPA daerah', 7, 0, 1, 11, 1),
-(14, '197003221990032005', 'ENENG SURTININGSIH, AMKep', 'Karawang', '1970-03-22', 'Perumahan', '', '', '', '', '', '0000-00-00', '0', '0000-00-00', 'PNS', 'DIPA daerah', 10, 0, 1, 15, 2),
-(15, '196912081990032002', 'ENDAH PURASANTI, AMKeb', 'Jakarta', '1969-12-08', '', '', '', '', '', '', '0000-00-00', '0', '0000-00-00', 'PNS', 'DIPA daerah', 2, 0, 1, 11, 2);
+(1, '195603271983022001', 'Dr. YOHANA MARI YUSTINI', 'Magelang', '1956-03-27', 'Bogor Raya Permai No. 10', 'P', 'Islam', 'B', '-', 'Menikah', '1970-01-01', '0', '1970-01-01', 'PNS', 'DIPA daerah', 7, 0, 1, 15, 1),
+(2, '195702071984032002', 'Drg. MELLYAWATI', 'Magelang', '1957-02-07', 'Jakarta', 'P', 'Islam', 'B', '-', 'Menikah', '1970-01-01', '0', '1977-01-05', 'PNS', 'DIPA daerah', 7, 0, 1, 12, 1),
+(3, '197001021992032004', 'FEBBY HENDRIYANI  S.', 'Bandung', '1970-01-02', '', '', '', '', '', '', '1970-01-01', NULL, '1970-01-01', 'PNS', 'DIPA daerah', 4, 0, 1, 10, 4),
+(4, '196604171988031016', 'DWIJO KURJIANTO, AMAK', 'Bogor', '1966-04-17', 'Cibinong', 'L', 'Islam', 'A', '0912887245', 'Menikah', '1970-01-01', '0', '2011-12-01', 'PNS', 'DIPA daerah', 5, 0, 1, 11, 3),
+(5, '196311031989012001', 'HUSNA', 'Padang', '1963-11-03', 'Bogor', 'P', 'Islam', 'B', '065514263', 'Menikah', '1970-01-01', '0', '1970-01-01', 'PNS', 'DIPA daerah', 6, 0, 1, 11, 2),
+(6, '195808301988032001', 'Dr. DINDIN A. SETIAWATY', 'Bogor', '1958-08-30', 'Jakarta', 'P', 'Islam', 'AB', '0871626845', 'Menikah', '1979-01-04', '0', '1970-01-01', 'CPNS', 'DIPA daerahh', 7, 1, 1, 15, 1),
+(7, '197009022000031004', 'Dr. ILHAM CHAIDIR', 'Temanggung', '1970-09-02', 'Bogor', 'L', 'Islam', 'B', '08123772638', 'Menikah', '1970-01-01', '0', '1970-01-13', 'PNS', 'DIPA daerah', NULL, 0, 1, 9, 0),
+(8, '195711021988032002', 'Dr. LINA RUFLINA', 'Sukabumi', '1957-11-02', 'Bogor', 'P', 'Islam', 'O', '08728632465', 'Menikah', '1970-01-01', '0', '1970-01-01', 'PNS', 'DIPA daerah', 7, 0, 1, 14, 1),
+(9, '196402121991032007', 'Drg. SITI MILYARNI REMIKA, MM', 'Jakarta', '1964-02-12', '', '', '', '', '', '', '1970-01-01', NULL, '1970-01-01', 'PNS', 'DIPA daerah', 7, 0, 1, 14, 1),
+(10, '195605251981112001', 'ROSMIATI', 'Belitung', '1956-05-25', 'Bogor', 'P', 'Islam', 'B', '081379915387', 'Menikah', '2011-07-14', NULL, '2011-08-19', 'PNS', 'DIPA daerah', 7, 0, 1, 10, 1),
+(11, '196203071982122002', 'SADIYAH, AMKG', 'Tegal', '1962-03-07', '', 'P', '', '', '', '', '2011-07-02', NULL, '0000-00-00', 'PNS', 'DIPA daerah', 7, 0, 1, 12, 1),
+(12, '197403112006042011', 'Drg. KARINA AMALIA', 'Bogor', '1974-03-11', '', '', '', '', '', '', '0000-00-00', NULL, '0000-00-00', 'PNS', 'DIPA daerah', 7, 1, 1, 14, 1),
+(13, '197001191992022001', 'SUGIHARYATI, AMKeb', 'Bogor', '1970-01-19', '', '', '', '', '', '', '0000-00-00', NULL, '0000-00-00', 'PNS', 'DIPA daerah', 7, 0, 1, 11, 1),
+(14, '197003221990032005', 'ENENG SURTININGSIH, AMKep', 'Karawang', '1970-03-22', 'Perumahan', '', '', '', '', '', '0000-00-00', NULL, '0000-00-00', 'PNS', 'DIPA daerah', 10, 0, 1, 15, 2),
+(15, '196912081990032002', 'ENDAH PURASANTI, AMKeb', 'Jakarta', '1969-12-08', 'Jakarta', 'P', 'Islam', 'B', '-', 'Belum menikah', '2010-09-01', '0', '2011-11-11', 'PNS', 'DIPA daerah', 2, 0, 1, 11, 2),
+(16, '198612262010012017', 'AGTI NURVITASARI, SKM', 'Tasikmalaya', '1986-12-26', 'Paledang', 'P', 'Islam', 'A', '08137726618', 'Menikah', '2011-09-07', '0', '2011-09-08', 'PNS', 'DIPA daerah', 5, 0, 1, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -759,19 +811,20 @@ CREATE TABLE IF NOT EXISTS `pelatihan` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_pelatihan`),
   KEY `fk_pelatihan_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `pelatihan`
 --
 
 INSERT INTO `pelatihan` (`id_pelatihan`, `tahun`, `pelatihan`, `id_pegawai`) VALUES
-(1, 2000, 'Saya', 4),
 (2, 2001, 'pendidikan 1', 5),
 (3, 2003, 'pendidikan 2', 5),
 (4, 2011, 'Pelatihan PHP', 10),
 (5, 2012, 'Pelatihan Sekuriti', 10),
-(6, 2011, 'Pelatihan', 2);
+(6, 2010, 'Pelatihan Teknis Fungsional', 2),
+(7, 2010, 'Pelatihan Antropometri', 6),
+(8, 2007, 'Kewaspadaan Universal', 8);
 
 -- --------------------------------------------------------
 
@@ -786,19 +839,27 @@ CREATE TABLE IF NOT EXISTS `pendidikan` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_pendidikan`),
   KEY `fk_pendidikan_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `pendidikan`
 --
 
 INSERT INTO `pendidikan` (`id_pendidikan`, `tahun_ijazah`, `pendidikan`, `id_pegawai`) VALUES
-(1, 2000, 'Saya', 4),
-(2, 2001, 'pendidikan 1', 5),
-(3, 2003, 'pendidikan 2', 5),
+(1, 2007, 'D3 Analis Kesehatan', 4),
+(2, 0, 'SAA Yayasan Imam Bonjol', 5),
+(3, 1992, 'STLKF Jakarta', 5),
 (4, 2008, 'SMA N 1 Metro', 10),
 (5, 2012, 'Institut Pertanian Bogor', 10),
-(12, 2005, 'SMP Negeri 1 Metro', 10);
+(12, 2005, 'SMP Negeri 1 Metro', 10),
+(14, 1994, 'FK UI', 7),
+(15, 1982, 'FK Sebelas Maret Surakarta', 1),
+(16, 1982, 'Fakultas Kedokteran Gigi UPDMD', 2),
+(17, 1986, 'FK UNPAD', 6),
+(18, 1987, 'FK YARSI Jakarta', 8),
+(19, 1997, 'SMA Bogor', 4),
+(20, 2000, 'AKBID', 15),
+(21, 1990, 'SMA', 15);
 
 -- --------------------------------------------------------
 
@@ -812,7 +873,7 @@ CREATE TABLE IF NOT EXISTS `tanggal_libur` (
   `keterangan` varchar(255) DEFAULT NULL,
   `bp_pemda` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_tanggal_libur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `tanggal_libur`
@@ -827,7 +888,8 @@ INSERT INTO `tanggal_libur` (`id_tanggal_libur`, `tanggal`, `keterangan`, `bp_pe
 (13, '2011-08-18', 'Cuti kemerdekaan', 1),
 (14, '2011-08-02', 'Test', 0),
 (15, '2011-07-14', 'Test', 0),
-(16, '2011-08-29', 'Cuti bersama', 0);
+(16, '2011-08-29', 'Cuti bersama', 0),
+(17, '2011-09-21', 'Libur', 0);
 
 -- --------------------------------------------------------
 
@@ -846,17 +908,24 @@ CREATE TABLE IF NOT EXISTS `tanggungan` (
   `id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_tanggungan`),
   KEY `fk_tanggungan_pegawai1` (`id_pegawai`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `tanggungan`
 --
 
 INSERT INTO `tanggungan` (`id_tanggungan`, `nama`, `tanggal_lahir`, `tanggal_nikah`, `pekerjaan`, `dapat_tunjangan`, `keterangan`, `id_pegawai`) VALUES
-(1, 'tttt', '1970-01-01', '1970-01-01', '', 1, 'uuuu', 4),
-(2, 'tanggungan 1', '1970-01-01', '1970-01-01', '', 0, '', 5),
-(3, 'tanggungan 2', '1970-01-01', '1970-01-01', '', 1, '', 5),
-(4, 'Fulan', '1990-12-04', '2014-07-03', 'Guru', 1, '', 10);
+(1, 'Samujiati', '1968-12-31', '1991-10-06', 'IRT', 1, '', 4),
+(4, 'Fulan', '1990-12-04', '2014-07-03', 'Guru', 1, '', 10),
+(6, 'Rizky Ramadhan', '1995-12-14', '0000-00-00', 'SMA', 1, '', 4),
+(7, 'Rini Ahmadi', '1975-05-31', '1997-11-10', 'IRT', 1, '', 7),
+(8, 'Wahyu Drajad Santoso', '1956-10-10', '1983-03-20', 'Swasta', 1, '', 1),
+(9, 'Fulan', '0000-00-00', '0000-00-00', '', 1, '', 4),
+(10, 'Nabila Choirunnisa', '1998-09-15', '0000-00-00', 'SMA', 1, '', 7),
+(11, 'R. Ahmad Ramdoni', '1964-01-28', '1992-10-05', 'PNS', 1, '', 15),
+(12, 'Azam Wahid Rameda', '1993-07-27', '0000-00-00', 'Pelajar', 1, '', 15),
+(13, 'Naufal Mahdi Rameda', '1996-05-13', '0000-00-00', 'Pelajar', 1, '', 15),
+(14, 'Dimas', '1990-05-19', '0000-00-00', 'Mahasiswa', 1, '', 7);
 
 -- --------------------------------------------------------
 
@@ -873,7 +942,7 @@ CREATE TABLE IF NOT EXISTS `tunjangan` (
   `pegawai_id_pegawai` int(11) NOT NULL,
   PRIMARY KEY (`id_tunjangan`),
   KEY `fk_tunjangan_pegawai1` (`pegawai_id_pegawai`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=232 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=248 ;
 
 --
 -- Dumping data for table `tunjangan`
@@ -916,19 +985,19 @@ INSERT INTO `tunjangan` (`id_tunjangan`, `tahun`, `bulan`, `tunjangan`, `pph21`,
 (58, 2010, 7, '0.0000', '0.0000', 10),
 (59, 2010, 7, '0.0000', '0.0000', 11),
 (60, 2010, 7, '0.0000', '0.0000', 12),
-(61, 2011, 9, '0.0000', '0.0000', 1),
-(62, 2011, 9, '0.0000', '0.0000', 2),
-(63, 2011, 9, '0.0000', '0.0000', 3),
-(64, 2011, 9, '0.0000', '0.0000', 4),
-(65, 2011, 9, '0.0000', '0.0000', 5),
-(66, 2011, 9, '0.0000', '0.0000', 6),
-(67, 2011, 9, '0.0000', '0.0000', 7),
-(68, 2011, 9, '0.0000', '0.0000', 8),
-(69, 2011, 9, '0.0000', '0.0000', 9),
-(70, 2011, 9, '0.0000', '0.0000', 10),
-(71, 2011, 9, '0.0000', '0.0000', 11),
-(72, 2011, 9, '0.0000', '0.0000', 12),
-(73, 2011, 9, '0.0000', '0.0000', 13),
+(244, 2011, 9, '0.0000', '0.0000', 15),
+(243, 2011, 9, '0.0000', '0.0000', 14),
+(242, 2011, 9, '0.0000', '0.0000', 5),
+(241, 2011, 9, '0.0000', '0.0000', 13),
+(240, 2011, 9, '0.0000', '0.0000', 12),
+(239, 2011, 9, '0.0000', '0.0000', 11),
+(238, 2011, 9, '0.0000', '0.0000', 10),
+(237, 2011, 9, '0.0000', '0.0000', 9),
+(236, 2011, 9, '0.0000', '0.0000', 8),
+(235, 2011, 9, '0.0000', '0.0000', 6),
+(234, 2011, 9, '1000000.0000', '150000.0000', 2),
+(233, 2011, 9, '1200000.0000', '180000.0000', 1),
+(232, 2011, 9, '1500000.0000', '75000.0000', 7),
 (158, 2011, 12, '0.0000', '0.0000', 1),
 (159, 2011, 12, '0.0000', '0.0000', 2),
 (160, 2011, 12, '0.0000', '0.0000', 3),
@@ -960,80 +1029,11 @@ INSERT INTO `tunjangan` (`id_tunjangan`, `tahun`, `bulan`, `tunjangan`, `pph21`,
 (186, 2011, 11, '600000.0000', '0.0000', 15),
 (219, 2011, 8, '70000.0000', '3500.0000', 2),
 (218, 2011, 8, '1500000.0000', '75000.0000', 1),
-(217, 2011, 8, '600000.0000', '30000.0000', 7);
+(217, 2011, 8, '600000.0000', '30000.0000', 7),
+(245, 2011, 9, '0.0000', '0.0000', 4),
+(246, 2011, 9, '0.0000', '0.0000', 16),
+(247, 2011, 9, '0.0000', '0.0000', 3);
 
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `absensi`
---
-ALTER TABLE `absensi`
-  ADD CONSTRAINT `fk_absensi_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `cuti`
---
-ALTER TABLE `cuti`
-  ADD CONSTRAINT `fk_cuti_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `gaji`
---
-ALTER TABLE `gaji`
-  ADD CONSTRAINT `fk_gaji_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `jabatan`
---
-ALTER TABLE `jabatan`
-  ADD CONSTRAINT `fk_jabatan_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `kegiatan`
---
-ALTER TABLE `kegiatan`
-  ADD CONSTRAINT `fk_kegiatan_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `nilai_dp3`
---
-ALTER TABLE `nilai_dp3`
-  ADD CONSTRAINT `fk_dp3_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `nilai_tpp`
---
-ALTER TABLE `nilai_tpp`
-  ADD CONSTRAINT `fk_nilai_tpp_pegawai1` FOREIGN KEY (`pegawai_id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `pangkat_golongan`
---
-ALTER TABLE `pangkat_golongan`
-  ADD CONSTRAINT `fk_pangkat_golongan_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `pegawai`
---
-ALTER TABLE `pegawai`
-  ADD CONSTRAINT `fk_pegawai_pegawai` FOREIGN KEY (`id_atasan`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `pelatihan`
---
-ALTER TABLE `pelatihan`
-  ADD CONSTRAINT `fk_pelatihan_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `pendidikan`
---
-ALTER TABLE `pendidikan`
-  ADD CONSTRAINT `fk_pendidikan_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tanggungan`
---
-ALTER TABLE `tanggungan`
-  ADD CONSTRAINT `fk_tanggungan_pegawai1` FOREIGN KEY (`id_pegawai`) REFERENCES `pegawai` (`id_pegawai`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

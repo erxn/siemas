@@ -41,9 +41,14 @@ class Penilaian_model extends Model {
 
     function get_tunjangan($tahun, $bulan) {
         $data = array();
+        
+        $tahun_bulan_lalu = date("Y", strtotime("$tahun-$bulan -1 month"));
+        $bulan_bulan_lalu = date("m", strtotime("$tahun-$bulan -1 month"));
+
         $q = $this->db->query("SELECT pegawai.id_pegawai,
                                       pegawai.nama,
                                       nilai_tpp.tpp,
+                                      tunjangan_lalu.tunjangan AS tunjangan_lalu,
                                       tunjangan.tunjangan,
                                       tunjangan.pph21
                                FROM pegawai
@@ -51,6 +56,10 @@ class Penilaian_model extends Model {
                                ON pegawai.id_pegawai = tunjangan.pegawai_id_pegawai
                                   AND tunjangan.tahun = $tahun
                                   AND tunjangan.bulan = $bulan
+                               LEFT JOIN tunjangan AS tunjangan_lalu
+                               ON pegawai.id_pegawai = tunjangan_lalu.pegawai_id_pegawai
+                                  AND tunjangan_lalu.tahun = $tahun_bulan_lalu
+                                  AND tunjangan_lalu.bulan = $bulan_bulan_lalu
                                LEFT JOIN nilai_tpp
                                ON pegawai.id_pegawai = nilai_tpp.pegawai_id_pegawai
                                   AND nilai_tpp.tahun = $tahun

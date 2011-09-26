@@ -2,7 +2,7 @@
 
 <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/redmond/jquery-ui-1.8.14.custom.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="Template_files/colorbox.css" />                <!--java script buat pop up-->
+<link rel="stylesheet" type="text/css" href="colorbox.css" />                <!--java script buat pop up-->
 <script type="text/javascript" src="Template_files/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="js/jquery.uitablefilter.js"></script>
 
