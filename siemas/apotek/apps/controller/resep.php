@@ -29,8 +29,6 @@ class Controller_resep extends Panada {
         $views['list_nama_obat'] = $this->obat->ambil_nama_obat();
         $n = '1';
         if ($_POST) {
-            if (isset($_POST['tanggal2']))
-                $this->session->set('tanggal_resep', $_POST['tanggal2']);
             if (isset($_POST['kunjungan'])) {
                 $tanggal2 = $_POST['tanggal'];
                 $tanggal = $this->date->reverse($tanggal2);
@@ -54,6 +52,11 @@ class Controller_resep extends Panada {
         }
 
         $this->view_resep($views);
+    }
+
+    public function ganti_tanggal($tanggal) {
+        $this->session->set('tanggal_resep', $tanggal);
+        $this->redirect('index.php/resep');
     }
 
 }

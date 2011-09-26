@@ -1,6 +1,7 @@
 <br/>
 <div class="grid_6" style="width: 95%">
-<div class="container_12">
+    <div class="container_12">
+        Nama pasien : <?php echo $nama_pasien; ?>
         <div class="module">
             <h2><span>Daftar isi resep</span></h2>
 
@@ -16,14 +17,16 @@
                     </thead>
                     <tbody>
                         <?php $n = 1;
-                        foreach ($isi as $list) { ?>
+                        foreach ($isi as $list) {
+ ?>
                             <tr>
                                 <td class="align-center"><?php echo $list['id_obat']; ?></td>
                                 <td><?php echo $list['nbk_obat']; ?></td>
                                 <td><?php echo $list['satuan_obat']; ?></td>
                                 <td><?php echo $list['jumlah']; ?></td>
                             </tr>
-                        <?php $n++; } ?>
+<?php $n++;
+                        } ?>
                     </tbody>
                 </table>
 
@@ -31,5 +34,5 @@
                 <div style="clear: both"></div>
             </div> <!-- End .module-table-body -->
         </div> <!-- End .module -->
-</div> <!-- End .grid_12 -->
+    </div> <!-- End .grid_12 -->
 </div>

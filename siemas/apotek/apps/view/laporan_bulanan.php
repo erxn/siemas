@@ -26,7 +26,7 @@
 
                     <form method="post"
                           onsubmit="if((document.getElementById('bulan').value != 'Pilih Bulan')&&(document.getElementById('tahun').value != 'Pilih tahun'))
-                              return confirm('Apakah anda yakin ingin membuat laporan bulan ' + document.getElementById('bulan').value
+                              return confirm('Apakah anda yakin ingin membuat laporan bulan ' + nama_bulan[document.getElementById('bulan').value]
                                   + ' tahun ' + document.getElementById('tahun').value + '?'); else return false;">
                         <div class="module-table-body">
                             <table>
@@ -70,17 +70,15 @@
                                         <img src="<?php echo $this->base_url ?>Template_files/ms-excel.png" alt=""/>&nbsp;<input type="submit" class="submit-green" value="Simpan">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <?php
-                                    if (isset($alert)) {
-                                        echo $alert;
-                                    }
-                                    ?>
-                                </tr>
                             </table>
                         </div>
                     </form>
                 </div>
+                <?php
+                if (isset($alert)) {
+                    echo $alert;
+                }
+                ?>
             </div>
         </div> <!-- End .grid_12 -->
     </div></div>

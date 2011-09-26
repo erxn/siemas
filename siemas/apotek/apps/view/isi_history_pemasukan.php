@@ -2,7 +2,7 @@
 <div class="grid_6" style="width: 95%">
     <div class="container_12">
         <div class="module">
-            <h2><span>Daftar isi resep</span></h2>
+            <h2><span>Daftar isi obat yang ditambahkan</span></h2>
 
             <div class="module-table-body">
                 <table >
